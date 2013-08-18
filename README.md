@@ -1,4 +1,4 @@
-pim-docs
-========
+Akeneo PIM Documentation
+========================
 
 The Akeneo PIM documentation
