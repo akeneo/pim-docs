@@ -5,8 +5,11 @@ Akeneo PIM documentation
 
 Akeneo is an open source Product Information Management (PIM) system designed for retailers looking for efficient answers to their multichannel needs.
 
+
 Quick start
 -----------
+
+Install your PIM :
 
 .. toctree::
    :hidden:
@@ -18,7 +21,7 @@ Quick start
 Cookbook
 --------
 
-How to customize the PIM to fit your needs :
+Customize the PIM to fit your needs :
 
 .. toctree::
    :hidden:
@@ -30,7 +33,7 @@ How to customize the PIM to fit your needs :
 Bundles
 -------
 
-Documentation of PIM bundles.
+Dive into PIM bundles :
 
 .. toctree::
    :hidden:
@@ -42,7 +45,7 @@ Documentation of PIM bundles.
 Contributing
 ------------
 
-Contribute to Akeneo PIM:
+Contribute to Akeneo PIM :
 
 .. toctree::
    :hidden:
