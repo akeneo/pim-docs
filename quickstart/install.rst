@@ -1,52 +1,79 @@
 Install 
 =======
 
-System requirements
--------------------
-TODO
-
 Clone repository
 ----------------
 
-I want install my own PIM : 
+I want install my own PIM instance to customize it :
 
-git clone pim-ce
+.. code-block:: bash
+
+    $ git clone git@github.com:akeneo/pim-ce.git
 
 I want install my own PIM with demo data : 
 
-git clone pim-ce-demo
+.. code-block:: bash
+
+    $ git clone git@github.com:akeneo/pim-ce-demo.git
 
 I want install the PIM to contribute :
 
-git clone pim-dev
+.. code-block:: bash
+
+    $ git clone git@github.com:akeneo/pim-dev.git
+
+Check your PHP configuration
+----------------------------
+
+.. code-block:: bash
+
+    $ php app/check.php
 
 Install dependencies
 --------------------
 
-curl
+First, install composer :
 
-php composer.phar install + incenteev
+.. code-block:: bash
 
-rights
+    $ curl -sS https://getcomposer.org/installer | php
+
+Then use it to install the dependencies, the prompt will ask you for configuration parameters :
+
+.. code-block:: bash
+
+    $ php composer.phar install
+
+Check rights
+------------
+
+TODO
+
 
 Setup database
 --------------
 
-install-db.sh
+The following script helps to create database, schema and load demo data if you're using the demo bundle :
 
-NB : add your own data set : TODO
+.. code-block:: bash
+
+    $ ./init-db.sh
 
 Deploy assets
 -------------
 
-assets.sh
+The following script helps to properly deploy assets  :
+
+.. code-block:: bash
+
+    $ ./assets.sh
 
 Virtual host
 ------------
 
-http://my-host/
+TODO
 
-Notes about production mode
+Production mode
 ---------------------------
 
 TODO
