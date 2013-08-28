@@ -1,20 +1,17 @@
-Akeneo PIM documentation
-========================
+Akeneo PIM technical documentation
+==================================
 
 .. image:: images/logo-square-100x100.jpg
 
-Akeneo is an open source Product Information Management (PIM) system designed for retailers looking for efficient answers to their multichannel needs.
-
+Akeneo is an open source Product Information Management system based on Symfony 2 and designed for retailers looking for efficient answers to their multichannel needs.
 
 Quick start
 -----------
 
-Install your PIM :
+Install the PIM, setup your specific catalog and customize import, enrich and export to fit your business needs :
 
 .. toctree::
    :hidden:
-
-   quickstart/index
 
 .. include:: /quickstart/map.rst.inc
 
