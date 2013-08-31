@@ -20,4 +20,20 @@ These items provide their expected configurations to be used.
 
 For instance, to import a CSV file as products, the reader read each lines, the processor transform a line to a product, and the writer ensures to save each product.
 
+Create a bundle
+---------------
+
+Create a new bundle that extends Connector :
+
+.. code-block:: bash
+<?php
+
+namespace Acme\Bundle\MyBundle;
+
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Pim\Bundle\BatchBundle\Connector\Connector;
+
+class AcmeMyBundle extends Connector
+{
+}
 
