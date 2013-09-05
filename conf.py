@@ -23,9 +23,17 @@ import sys, os
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
 
+sys.path.append(os.path.abspath('_exts/fabpot/sphinx-php'))
+from sphinx.highlighting import lexers
+from pygments.lexers.web import PhpLexer
+
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = []
+extensions = ['sensio.sphinx.refinclude', 'sensio.sphinx.configurationblock', 'sensio.sphinx.phpcode']
+lexers['php'] = PhpLexer(startinline=True)
+lexers['php-annotations'] = PhpLexer(startinline=True)
+
+primary_domain = 'php'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
