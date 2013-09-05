@@ -44,23 +44,25 @@ Registering the BatchOperation
 
 Then you must register in the DIC the newly created operation and tag it:
 
-.. code-block:: yaml
+.. configuration-block::
 
-    # src/Acme/Bundle/DemoBundle/Resources/config/services.yml
-    services:
-        acme_demo_bundle.batch_operation.capitalize_values:
-            class: Acme\Bundle\DemoBundle\BatchOperation\CapitalizeValues
-            tags:
-                - { name: 'pim_catalog.batch_operation', alias: 'capitalize-values' }
+    .. code-block:: yaml
 
-.. code-block:: xml
+        # src/Acme/Bundle/DemoBundle/Resources/config/services.yml
+        services:
+            acme_demo_bundle.batch_operation.capitalize_values:
+                class: Acme\Bundle\DemoBundle\BatchOperation\CapitalizeValues
+                tags:
+                    - { name: 'pim_catalog.batch_operation', alias: 'capitalize-values' }
 
-    <!-- src/Acme/Bundle/DemoBundle/Resources/config/services.xml -->
-    <service
-        id="acme_demo_bundle.batch_operation.capitalize_values"
-        class="Acme\Bundle\DemoBundle\BatchOperation\CapitalizeValues">
-        <tag name="pim_catalog.batch_operation" alias="capitalize-values" />
-    </service>
+    .. code-block:: xml
+
+        <!-- src/Acme/Bundle/DemoBundle/Resources/config/services.xml -->
+        <service
+            id="acme_demo_bundle.batch_operation.capitalize_values"
+            class="Acme\Bundle\DemoBundle\BatchOperation\CapitalizeValues">
+            <tag name="pim_catalog.batch_operation" alias="capitalize-values" />
+        </service>
 
 NB: The alias will be used in the url (``/enrich/batch-operation/capitalize-values/configure``)
 
