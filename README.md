@@ -6,9 +6,11 @@ The Akeneo PIM documentation
 Installation
 ------------
 
+Clone this repository.
+
 Download and install [Sphinx](http://sphinx-doc.org/).
 
-Download composer and run `php composer.phar install`.
+Download composer `curl -s https://getcomposer.org/installer | php` and run `php composer.phar install`.
 
 Build the documention
 ---------------------
