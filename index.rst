@@ -49,3 +49,10 @@ Contribute to Akeneo PIM :
 
    contributing/index
 
+Technical references
+--------------------
+
+.. toctree::
+   :hidden:
+
+.. include:: /references/map.rst.inc
