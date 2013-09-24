@@ -39,6 +39,12 @@ Dive into PIM bundles :
 
 .. include:: /bundles/map.rst.inc
 
+Dive into BAP bundles :
+
+* `Oro Platform documentation`_
+
+.. _Oro Platform documentation: https://magecore.atlassian.net/wiki/display/DOC/Oro+Documentaion+Home
+
 Contributing
 ------------
 
@@ -48,11 +54,5 @@ Contribute to Akeneo PIM :
    :hidden:
 
    contributing/index
-
-Technical references
---------------------
-
-.. toctree::
-   :hidden:
 
 .. include:: /references/map.rst.inc
