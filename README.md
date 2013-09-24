@@ -10,7 +10,7 @@ Clone this repository.
 
 Download and install [Sphinx](http://sphinx-doc.org/).
 ```bash
-    $ sudo apt-get install python3-sphinx
+    $ sudo apt-get install python-setuptools python-dev build-essential
 ```
 
 Download composer `curl -s https://getcomposer.org/installer | php` and run `php composer.phar install`.
