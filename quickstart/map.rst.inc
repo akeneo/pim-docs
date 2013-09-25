@@ -1,6 +1,4 @@
-* :doc:`/quickstart/index`
-* :doc:`/quickstart/install`
-* :doc:`/quickstart/setup-data`
-* :doc:`/quickstart/unit-test`
-* :doc:`/quickstart/behat`
+* `Install`_ community edition
+
+.. _Install: https://github.com/akeneo/pim-community-standard/blob/master/README.md
 
