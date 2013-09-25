@@ -1,27 +1,38 @@
-CatalogBundle https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/CatalogBundle
+* Catalog bundle:
+    https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/CatalogBundle
 
-DashboardBundle
+* Dashboard bundle:
+    https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/DashboardBundle
 
-FilterBundle
+* Filter bundle:
+    https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/FilterBundle
 
-GridBundle
+* Grid bundle:
+    https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/GridBundle
 
-ImportExportBundle
+* ImportExport bundle:
+    https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/ImportExportBundle
 
-InstallerBundle
+* Installer bundle:
+    https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/InstallerBundle
 
-JsFormValidationBundle
+* JsFormValidation bundle:
+    https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/JsFormValidationBundle
 
-NavigationBundle
+* Navigation bundle:
+    https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/NavigationBundle
 
-SearchBundle
+* Search bundle:
+    https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/SearchBundle
 
-TranslationBundle
+* Translation bundle:
+    https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/TranslationBundle
 
-UIBundle
+* UI bundle:
+    https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/UIBundle
 
-UserBundle
+* User bundle:
+    https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/UserBundle
 
-VersioningBundle
-
-
+* Versioning bundle:
+    https://github.com/akeneo/pim-community-bundles/tree/master/src/Pim/Bundle/VersioningBundle
