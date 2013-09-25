@@ -1,4 +1,4 @@
-* `Install`_ community edition
+* `Install community edition`_
 
-.. _Install: https://github.com/akeneo/pim-community-standard/blob/master/README.md
+.. _Install community edition: https://github.com/akeneo/pim-community-standard/blob/master/README.md
 
