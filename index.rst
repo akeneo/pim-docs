@@ -30,16 +30,11 @@ Customize the PIM to fit your needs :
 Bundles
 -------
 
-Dive into PIM bundles :
+PIM bundles :
 
-.. toctree::
-   :hidden:
+.. include:: /bundles/index.rst
 
-   bundles/index
-
-.. include:: /bundles/map.rst.inc
-
-Dive into BAP bundles :
+BAP bundles documentation:
 
 * `Oro Platform documentation`_
 
