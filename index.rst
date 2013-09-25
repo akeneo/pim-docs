@@ -23,8 +23,6 @@ Customize the PIM to fit your needs :
 .. toctree::
    :hidden:
 
-   cookbook/index
-
 .. include:: /cookbook/map.rst.inc
 
 Bundles
@@ -48,6 +46,4 @@ Contribute to Akeneo PIM :
 .. toctree::
    :hidden:
 
-   contributing/index
-
-.. include:: /references/map.rst.inc
+.. include:: /contributing/map.rst.inc
