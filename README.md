@@ -8,10 +8,9 @@ Installation
 
 Clone this repository.
 
-Download and install [Sphinx](http://sphinx-doc.org/).
+Install [Sphinx](http://sphinx-doc.org/).
 ```bash
-    $ sudo apt-get install python-setuptools python-dev build-essential
-    $ sudo easy_install -U Sphinx
+    $ sudo apt-get install python-sphinx
 ```
 
 Download composer `curl -s https://getcomposer.org/installer | php` and run `php composer.phar install`.
