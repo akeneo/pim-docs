@@ -5,7 +5,7 @@ The Akeneo PIM allows the classification of products inside a customizable categ
 
 Add properties to your own category
 -----------------------------------
-The first step is to create your own class that extends PIM `Category` class.
+The first step is to create a class that extends PIM `Category` class.
 
 Class inheritance is implemented with a Doctrine discriminator map. Please be sure not to use `Category` as
 the name of your class so as to avoid unexpected problems.
