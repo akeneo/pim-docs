@@ -37,7 +37,7 @@
 {%- block footer %}
     <div class="footer">
         <div class="container">
-            <p class="muted">
+            <p class="muted text-center">
                 {%- if show_copyright %}
                   {%- if hasdoc('copyright') %}
                     {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
