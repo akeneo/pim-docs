@@ -1,5 +1,59 @@
-{% extends "default/layout.html" %}
+{% extends "basic/layout.html" %}
 
 {%- block doctype -%}
 <!DOCTYPE html>
 {%- endblock -%}
+
+{%- block extrahead %}
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
+
+{%- block header %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{%- block relbar1 %}{% endblock %}
+{%- block relbar2 %}{% endblock %}
+
+
+{%- block content %}
+    <div id="main" class="container">
+        <div class="row">
+            <div class="span3">
+                {% include "sidebar.html" %}
+            </div>
+            <div class="span9">
+              {%- block document %}
+                  <div class="row">
+                    {% block body %}{% endblock %}
+                  </div>
+              {%- endblock %}
+            </div>
+        </div>
+    </div>
+{%- endblock %}
+
+{%- block footer %}
+    <div class="footer">
+        <div class="container">
+            <p class="muted">
+                {%- if show_copyright %}
+                  {%- if hasdoc('copyright') %}
+                    {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
+                  {%- else %}
+                    {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
+                  {%- endif %}
+                {%- endif %}
+                {%- if last_updated %}
+                  {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
+                {%- endif %}
+                {%- if show_sphinx %}
+                  {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
+                {%- endif %}
+            </p>
+        </div>
+    </div>
+{%- endblock %}
+  </body>
+</html>

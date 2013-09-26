@@ -1,1 +1,3 @@
-@import url("default.css");
+#main {
+    margin-top: 55px;
+}
