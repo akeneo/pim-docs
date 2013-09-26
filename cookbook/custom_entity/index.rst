@@ -106,6 +106,9 @@ you must define a datagridmanager
     use Oro\Bundle\GridBundle\Field\FieldDescriptionCollection;
     use Oro\Bundle\GridBundle\Field\FieldDescriptionInterface;
     use Oro\Bundle\GridBundle\Filter\FilterInterface;
+    use Oro\Bundle\GridBundle\Action\ActionInterface;
+    use Oro\Bundle\GridBundle\Property\FieldProperty;
+    use Oro\Bundle\GridBundle\Property\UrlProperty;
 
     class ManufacturerDatagridManager extends DatagridManager
     {
@@ -288,7 +291,30 @@ What about a nice delete button on the grid line to quickly delete a manufacture
             )
         );
 
-You may ask yourself how the grid will guess the id
+We need to provide the identifying field to the datagrid
+manager as well as the route for the edit and delete actions.
+
+.. code-block:: php
+
+    protected function getProperties()
+    {
+        $fieldId = new FieldDescription();
+        $fieldId->setName('id');
+        $fieldId->setOptions(
+            array(
+                'type'     => FieldDescriptionInterface::TYPE_INTEGER,
+                'required' => true,
+            )
+        );
+
+        return array(
+            new FieldProperty($fieldId),
+            new UrlProperty('edit_link', $this->router, 'acme_customentity_manufacturer_edit', array('id')),
+            new UrlProperty('delete_link', $this->router, 'acme_customentity_manufacturer_delete', array('id'))
+        );
+    }
+
+
 
 Adding a create button to the grid screen
 .........................................
@@ -310,6 +336,9 @@ Inside the index.html.twig, we replace the <div class="navigation"> with this on
 
         {{ elements.page_header(title, buttons, null) }}
     </div>
+
+Creating the edit and creation action
+.....................................
 
 Creating the attribute type
 Overriding the product value to link it to the custom entity

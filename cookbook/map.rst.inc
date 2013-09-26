@@ -1,3 +1,5 @@
+* Setup data
+    * :doc:`/cookbook/setup_data/customize_installer`
 * Form customization
     * :doc:`/cookbook/form_customization/add_a_new_tab_to_product_edit_form`
 * Mass edition
@@ -10,3 +12,7 @@
     * :doc:`/cookbook/custom_entity/index`
 * Adding an entry to the menu
     * TO BE DONE
+* Product
+    .. include:: /cookbook/product/map.rst.inc
+* Categories
+    * :doc:`/cookbook/category/add-properties-to-category`
