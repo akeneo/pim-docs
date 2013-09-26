@@ -1,3 +1,5 @@
+* Setup data
+    * :doc:`/cookbook/setup_data/customize_installer`
 * Form customization
     * :doc:`/cookbook/form_customization/add_a_new_tab_to_product_edit_form`
 * Mass edition
