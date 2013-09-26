@@ -4,7 +4,9 @@
 <!DOCTYPE html>
 {%- endblock -%}
 
-{%- block extrahead %}
+{# Include bootstrap before theme css for easy overriding #}
+{%- block htmltitle %}
+    {{ super() }}
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% endblock %}
@@ -24,11 +26,9 @@
                 {% include "sidebar.html" %}
             </div>
             <div class="span9">
-              {%- block document %}
-                  <div class="row">
+                {%- block document %}
                     {% block body %}{% endblock %}
-                  </div>
-              {%- endblock %}
+                {%- endblock %}
             </div>
         </div>
     </div>

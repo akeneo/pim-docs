@@ -1,3 +1,37 @@
-#main {
-    margin-top: 55px;
+body {
+  padding-top: 50px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
+
+a {
+    color: #9665b1;
+}
+
+a:hover {
+    color: #8d45b6;
+}
+
+.navbar-fixed-top input {
+    margin-top: 5px;
+}
+
+.navbar-fixed-top form {
+    margin-bottom: 0;
+}
+
+.footer {
+    background: #eee;
+}
+
+.footer p {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.sidebar h3 a {
+    color: #444;
 }
