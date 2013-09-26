@@ -8,7 +8,7 @@ Akeneo is an open source Product Information Management system based on Symfony 
 Quick start
 -----------
 
-Install the PIM, setup your specific catalog and customize import, enrich and export to fit your business needs :
+Install the PIM :
 
 .. toctree::
    :hidden:
@@ -25,6 +25,27 @@ Customize the PIM to fit your needs :
 
 .. include:: /cookbook/map.rst.inc
 
+References
+----------
+
+Understand some core concepts :
+
+.. toctree::
+   :hidden:
+
+.. include:: /references/map.rst.inc
+
+
+Contributing
+------------
+
+Contribute to Akeneo PIM :
+
+.. toctree::
+   :hidden:
+
+.. include:: /contributing/map.rst.inc
+
 Bundles
 -------
 
@@ -38,12 +59,3 @@ BAP bundles documentation:
 
 .. _Oro Platform documentation: https://magecore.atlassian.net/wiki/display/DOC/Oro+Documentaion+Home
 
-Contributing
-------------
-
-Contribute to Akeneo PIM :
-
-.. toctree::
-   :hidden:
-
-.. include:: /contributing/map.rst.inc
