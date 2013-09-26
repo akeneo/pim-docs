@@ -1,9 +1,10 @@
 How to define my own data set with the installer
 ================================================
 
-By default the PIM is setuped with data that are defined into PimInstallerBundle, overrided by PimDemoBundle (if you use demo data).
+By default the PIM is setup with data defined into PimInstallerBundle, and overridden in PimDemoBundle 
+(if you use demo data).
 
-The following steps allow you to define easily your own basic entities when you install the PIM.
+The following steps allow you to easily define your own basic entities when you install the PIM.
 
 Disable the demo data loading
 -----------------------------
@@ -54,7 +55,7 @@ You can define :
 * pim_installer_families.yml
 * pim_installer_groups.yml
 
-For instance, to declare your own channels :
+For example, to declare your own channels :
 
 .. code-block:: yaml
 
