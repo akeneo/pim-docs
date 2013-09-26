@@ -6,6 +6,8 @@
     * :doc:`/cookbook/import_export/create-connector`
 * Access Control List
     * :doc:`/cookbook/acl/define-acl`
+* Product
+    .. include:: /cookbook/product/map.rst.inc
+
 * Categories
     * :doc:`/cookbook/category/add-properties-to-category`
-
