@@ -36,13 +36,13 @@ First step is to create a new class that implements ``MassEditAction``:
         }
     }
 
-This class is the one that will store all the information about the operation to run and
-the form type to display to configure it.
+This class will contain all the information about the operation to run and the form type which is used to configure it.
+
 
 Registering the MassEditAction
 ------------------------------
 
-Then you must register in the DIC the newly created operation and tag it:
+After the class is created, you must register it as a service in the DIC with the pim_catalog.mass_edit_action tag:
 
 .. configuration-block::
 
@@ -69,7 +69,7 @@ NB: The alias will be used in the url (``/enrich/mass-edit-action/capitalize-val
 Translating the mass edit action choice
 ---------------------------------------
 
-Once you've done the previous operations (and eventually cleared your cache), you should see
+Once you've realized the previous operations (and eventually cleared your cache), you should see
 a new option on the ``/enrich/mass-edit-action/choose`` page.
 Akeneo will generate for you a translation key following this pattern:
 ``pim_catalog.mass_edit_action.%alias%.label``.
