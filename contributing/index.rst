@@ -1,2 +1,0 @@
-Bundles documentation
-=====================

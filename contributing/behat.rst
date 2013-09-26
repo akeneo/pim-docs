@@ -1,5 +1,5 @@
-Behat
-=====
+Setup Behat
+===========
 
 The PIM comes with a set of Behat scenarios that :
 

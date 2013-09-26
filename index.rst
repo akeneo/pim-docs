@@ -23,23 +23,16 @@ Customize the PIM to fit your needs :
 .. toctree::
    :hidden:
 
-   cookbook/index
-
 .. include:: /cookbook/map.rst.inc
 
 Bundles
 -------
 
-Dive into PIM bundles :
+PIM bundles :
 
-.. toctree::
-   :hidden:
+.. include:: /bundles/index.rst
 
-   bundles/index
-
-.. include:: /bundles/map.rst.inc
-
-Dive into BAP bundles :
+BAP bundles documentation:
 
 * `Oro Platform documentation`_
 
@@ -53,6 +46,4 @@ Contribute to Akeneo PIM :
 .. toctree::
    :hidden:
 
-   contributing/index
-
-.. include:: /references/map.rst.inc
+.. include:: /contributing/map.rst.inc

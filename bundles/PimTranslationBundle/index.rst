@@ -1,6 +1,0 @@
-Translation Bundle
-==================
-
-
-
-
