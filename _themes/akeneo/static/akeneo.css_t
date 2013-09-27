@@ -53,6 +53,21 @@ dt:hover>a.headerlink {
     margin-bottom: 0;
 }
 
+.logo {
+    margin: 0;
+}
+.logo img {
+    max-height: 40px;
+}
+.logo img:hover {
+    opacity: 0.8;
+}
+
+.navbar .brand {
+    margin-left: 0;
+    padding-left: 10px;
+}
+
 .footer {
     background: #eee;
 }
