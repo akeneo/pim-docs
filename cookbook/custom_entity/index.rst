@@ -19,8 +19,8 @@ specific attribute itself like the manufacturing country.
 Creating the entity
 -------------------
 
-As Akeneo relies heavily on standard tool like Doctine, creating the entity is
-quite straightforward for any developer with Doctrine habits.
+As Akeneo relies heavily on standard tool like Doctrine, creating the entity is
+quite straightforward for any developer with Doctrine experience.
 
 .. code-block:: php
 
@@ -186,7 +186,7 @@ Declaring the grid view action
 
 Defining the grid view
 ......................
-The Acme/Bundle/CustomEntityBundle/Resources/view/Manufacturer/index.html.twig file will contains:
+The Acme/Bundle/CustomEntityBundle/Resources/view/Manufacturer/index.html.twig file will contain:
 
 .. code-block:: html+jinja
 
@@ -211,13 +211,13 @@ The Acme/Bundle/CustomEntityBundle/Resources/view/Manufacturer/index.html.twig f
 From this point a working grid screen is visible at /app_dev.php/custom-entity/manufacturer (where custom-entity is the
 route prefix used for the bundle).
 
-And if some customers are manually added to the database, the pagination will be visible as well.
-
-But the grid will still be empty, as no field are define yet to be displayed.
+If some customers are manually added to the database, the pagination will be visible as well, but the grid will still be
+empty, as no displayable fields are defined yet.
 
 Defining fields used in the grid
 ................................
-Fields must specifically defined to be usable in the grid and where they can be used (column, filtering, sorting...). In order to do that, the configureFields method in the ManufacturerGridManager is overriden:
+Fields must be specifically configured to be usable in the grid as columns, for filtering or for sorting. 
+In order to do that, the configureFields method in the ManufacturerGridManager has to be overridden:
 
 .. code-block:: php
 
@@ -247,15 +247,15 @@ a filter for the code is available and the column is sortable too, as defined by
 Adding a field to the grid is pretty simple and the options are self explanatory.
 Do not hesitate to look at the FilterInterface interface to have a list of available filter types, which are pretty complete.
 
-Adding the name and country fields is left as an exercice for the reader ;)
+Adding the name and country fields is left as an exercise for the reader ;)
 
 
-Defining row behaviour and buttons
+Defining row behavior and buttons
 ..................................
 
 What if we want to be redirected to the edit form when clicking on the line of a grid item ?
 
-In order to do that, the getRowActions method of the grid manager is overriden:
+In order to do that, the getRowActions method of the grid manager is overridden:
 
 .. code-block:: php
 
@@ -291,8 +291,8 @@ What about a nice delete button on the grid line to quickly delete a manufacture
             )
         );
 
-We need to provide the identifying field to the datagrid
-manager as well as the route for the edit and delete actions.
+We need to provide the identifying field inside the datagridmanager, as well as the route for the edit and delete 
+actions.
 
 .. code-block:: php
 
