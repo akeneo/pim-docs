@@ -1,17 +1,26 @@
 Technical entities
 ==================
 
+Product
+-------
+
 The main entity is the product which,
 
 * has values,
 * belongs to a family,
 * is positioned in many categories.
 
+Product value
+-------------
+
 Each product value is linked to a product and an attribute.
 
-The product data model is based on Entity - Attribute - Value, this implementation is done inside OroFlexibleEntityBundle an customized in PimCatalogBundle.
+The product data model is based on Entity - Attribute - Value, this implementation resides in OroFlexibleEntityBundle an customized in PimCatalogBundle.
 
 FYI, a document oriented storage is already planned to deal with high volume of data.
+
+Product attribute
+-----------------
 
 An attribute defines the type and the properties of a value.
 
@@ -38,11 +47,14 @@ Scoped property defines that the attribute has different value for each channel,
 
 An attribute can be localized and scoped, so a different value for each combination of locale and channel, ex: ecommerce - french, ecommerce english, etc
 
+Family and completeness
+-----------------------
+
 The family defines the list of attributes of a product, you can also add some optional attributes for a dedicated product.
 
 Note that, except the identifier attribute (usualy the sku), there is no required attribute for a product.
 
-An attribute is expected for a channel, description can be required for ecommerce but not for mobile.
+An attribute is expected for a channel, for instance, description can be required for ecommerce but not for mobile.
 
-
+The product completeness is calculated for each channel and locale combination.
 
