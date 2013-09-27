@@ -1,5 +1,5 @@
-Product manager
-===============
+How to programmatically manipulate products
+===========================================
 
 Prerequites
 -----------
@@ -16,8 +16,6 @@ As stated above, the product manager is a service you can get from the symfony c
 
     $this->container->get('pim_catalog.manager.product');
 
-How to programmatically manipulate products
--------------------------------------------
 
 In the following examples, we will use $pm as the product manager object.
 
@@ -108,14 +106,81 @@ Keeping color example, the option value `purple` is "Purple" in english and "Vio
 
 * Localize a product
 
-A product can have different values depending of the locale:
+A product can have different values depending of the locale.
+We considers that the locales `en_US` and `fr_FR` are already created and activated.
+
+.. code-block:: php
+
+    $pm = $this->productManager;
+    $product = $pm->createFlexible();
+
+    // create a localizable attribute
+    $attribute = $pm->createAttribute('pim_catalog_text');
+    $attribute->setCode('name');
+    $attribute->setTranslatable(true);
+
+    $pm->addAttributeToProduct($product, $attribute);
+
+    $product->setName('My name', 'en_US');
+    $product->setName('Mon nom', 'fr_FR');
+
+    echo $product->getName(); // returns "My name"
+
+    $product->setLocale('fr_FR');
+    echo $product->getName(); // returns "Mon nom"
 
 * Manage scopes
 
+Akeneo PIM is a multi-channels application so you can define different scopes to use.
+We considers that channels `ecommerce` and `mobile` are already created.
+
+.. code-block:: php
+
+    $pm = $this->productManager;
+    $product = $pm->createFlexible();
+
+    // create a scopable attribute
+    $attribute = $pm->createAttribute('pim_catalog_text');
+    $attribute->setCode('image_hd');
+    $attribute->setScopable(true);
+
+    $pm->addAttributeToProduct($product, $attribute);
+
+    $product->setImageHd('my_ecommerce_image', null, 'ecommerce');
+    $product->setImageHd('my_mobile_image', null, 'mobile');
+
+    $product->setScope('ecommerce');
+    echo $product->getImageHd(); // returns "my_ecommerce_image"
+
+    $product->setScope('mobile');
+    echo $product->getImageHd(); // returns "my_mobile_image"
+
+
 * Manage translations + scopes
 
+By the way, product attributes can be define as scopable AND localizable.
 
+.. code-block:: php
 
+    $pm = $this->productManager;
+    $product = $pm->createFlexible();
+
+    // create a localizable attribute
+    $attribute = $pm->createAttribute('pim_catalog_textarea');
+    $attribute->setCode('short_description');
+    $attribute->setScopable(true);
+    $attribute->setTranslatable(true);
+
+    $pm->addAttributeToProduct($product, $attribute);
+
+    $product->setShortDescription('Ecommerce and en_US', 'en_US', 'ecommerce');
+    $product->setShortDescription('Mobile and en_US', 'en_US', 'mobile');
+    $product->setShortDescription('Ecommerce et fr_FR', 'fr_FR', 'ecommerce');
+    $product->setShortDescription('Mobile et fr_FR', 'fr_FR', 'mobile');
+
+    $product->setLocale('en_US');
+    $product->setScope('ecommerce');
+    echo $product->getShortDescription(); // returns "Ecommerce and en_US"
 
 
 How to define your own product manager
@@ -126,19 +191,9 @@ You just have to extends Akeneo PIM Catalog bundle and change
 `pim_catalog.manager.product.class` parameter in `config.yml` file.
 
 .. code-block:: yaml
-parameters:
-    pim_catalog.manager.product.class: MyProject\Bundle\CatalogBundle\Manager\ProductManager
+
+    parameters:
+        pim_catalog.manager.product.class: MyProject\Bundle\CatalogBundle\Manager\ProductManager
 
 You must afterwards create a ProductManager class extending Akeneo PIM ProductManager.
-
-How to redefine my own classes
-------------------------------
-
-The FlexibleEntityBundle from Oro Platform provides a dynamic attributes management system which offers different
-value storage, querying, form binding and validation systems.
-
-It uses a configuration file to define the different parts of the EAV schema.
-
-
-
 
