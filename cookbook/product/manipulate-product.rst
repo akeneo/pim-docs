@@ -179,18 +179,10 @@ We considers that channels `ecommerce` and `mobile` are already created.
     $product->setScope('ecommerce');
     echo $product->getShortDescription(); // returns "Ecommerce and en_US"
 
+Get a product
+-------------
 
-How to define your own product manager
---------------------------------------
+.. code-block:: php
 
-You can easily define your own product manager with Sf2 DIC.
-You just have to extends Akeneo PIM Catalog bundle and change 
-`pim_catalog.manager.product.class` parameter in `config.yml` file.
-
-.. code-block:: yaml
-
-    parameters:
-        pim_catalog.manager.product.class: MyProject\Bundle\CatalogBundle\Manager\ProductManager
-
-You must afterwards create a ProductManager class extending Akeneo PIM ProductManager.
+    $product = $pm->find($myProductId);
 
