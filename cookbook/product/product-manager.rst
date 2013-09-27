@@ -4,14 +4,13 @@ Product manager
 Prerequites
 -----------
 
-The Akeneo PIM project a service to manage your product entities.
+The Akeneo PIM project introduces a service to help you manage your product entities.
 This part of the application extends the `Oro Platform`_ bundle named `FlexibleEntityBundle`_.
 
 .. _FlexibleEntityBundle: https://magecore.atlassian.net/wiki/display/DOC/OroFlexibleEntityBundle
 .. _Oro Platform: http://www.orocrm.com/oro-platform
 
-As stated above, product manager is a service you can get from the symfony container.    
-You just have to call `pim_catalog.manager.product` from a ContainerInterface class as below:
+As stated above, the product manager is a service you can get from the symfony container :
 
 .. code-block:: php
 
@@ -45,8 +44,8 @@ In the following examples, we will use $pm as the product manager object.
 
 * Create an option
 
-In some case, you can want to provide some possible values to a product.
-Here an example to create t-shirt with different colors.
+In some cases, you will want to restrain values to a list of possibilities for a product attribute.
+For instance, this example creates a color attribute with a list of predefined options :
 
 .. code-block:: php
 
@@ -79,8 +78,7 @@ Here an example to create t-shirt with different colors.
 
 * Translate your datas.
 
-Keeping the example of a color, 
-the option value `purple` is "Purple" in english and "Violet" in french.
+Keeping color example, the option value `purple` is "Purple" in english and "Violet" in french.
 
 .. code-block:: php
 
@@ -120,24 +118,24 @@ A product can have different values depending of the locale:
 
 
 
-How to redefine your own product manager
-----------------------------------------
+How to define your own product manager
+--------------------------------------
 
-You can easily redefine your own product manager with Sf2 DIC.
+You can easily define your own product manager with Sf2 DIC.
 You just have to extends Akeneo PIM Catalog bundle and change 
-`pim_catalog.manager.product.class` parameter in `parameters.yml` file.
+`pim_catalog.manager.product.class` parameter in `config.yml` file.
 
 .. code-block:: yaml
 parameters:
     pim_catalog.manager.product.class: MyProject\Bundle\CatalogBundle\Manager\ProductManager
 
-Now you've to create your ProductManager class extending Akeneo PIM ProductManager.
+You must afterwards create a ProductManager class extending Akeneo PIM ProductManager.
 
 How to redefine my own classes
 ------------------------------
 
-The FlexibleEntityBundle from Oro Platform provides a dynamic attributes management, different
-values storage and querying and form binding and validation.
+The FlexibleEntityBundle from Oro Platform provides a dynamic attributes management system which offers different
+value storage, querying, form binding and validation systems.
 
 It uses a configuration file to define the different parts of the EAV schema.
 
