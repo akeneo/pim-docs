@@ -1,15 +1,16 @@
-How to register a new mass edit action on products
+How to Register a New Mass Edit Action on Products
 ==================================================
 
 The Akeneo PIM comes with a number of mass edit actions.
-It also comes with a simple way to define your own mass edit action
+It also comes with a simple method to define your own mass edit action
 on selected products.
 
 Creating a MassEditAction
 -------------------------
-First step is to create a new class that implements ``MassEditAction``:
+The first step is to create a new class that implements ``MassEditAction``:
 
 .. code-block:: php
+    :linenos:
 
     namespace Acme\Bundle\DemoBundle\MassEditAction;
 
@@ -64,12 +65,14 @@ After the class is created, you must register it as a service in the DIC with th
             <tag name="pim_catalog.mass_edit_action" alias="capitalize-values" />
         </service>
 
-NB: The alias will be used in the url (``/enrich/mass-edit-action/capitalize-values/configure``)
+.. note::
 
-Translating the mass edit action choice
+    The alias will be used in the url (``/enrich/mass-edit-action/capitalize-values/configure``)
+
+Translating the Mass Edit Action Choice
 ---------------------------------------
 
-Once you've realized the previous operations (and eventually cleared your cache), you should see
+Once you have realized the previous operations (and eventually cleared your cache), you should see
 a new option on the ``/enrich/mass-edit-action/choose`` page.
 Akeneo will generate for you a translation key following this pattern:
 ``pim_catalog.mass_edit_action.%alias%.label``.

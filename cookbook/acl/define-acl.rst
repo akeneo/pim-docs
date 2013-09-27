@@ -1,12 +1,12 @@
-How to define Access Control List
+How to Define Access Control List
 =================================
 
 The access control list is editable on each user's role.
 
-Define on each controller actions
+Define on each Controller Actions
 ---------------------------------
 
-You can define a resource on the controller itself and on each action as in the following exemple :
+You can define a resource for the controller itself and for each action as in the following example :
 
 .. code-block:: php
 
@@ -40,18 +40,18 @@ You can define a resource on the controller itself and on each action as in the 
         }
     }
 
-Here, a resource pim_catalog_product with a child pim_catalog_product_index will be created when you'll run the command :
+Here, a resource pim_catalog_product with a child pim_catalog_product_index will be created when the command is run:
 
 .. code-block:: bash
 
     $ php app/console oro:acl:load
 
-Each time you access to the related route, the system check if you're granted to access.
+Each time you access the related route, the system checks if you have the right permissions.
 
-Check into a twig template
+Check into a Twig Template
 --------------------------
 
-You can explicitely check if you're granted to access to a resource in a a twig template :
+You can explicitely check if you're allowed to access to a resource in a a twig template :
 
 .. code-block:: jinja
 

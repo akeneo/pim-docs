@@ -1,1 +1,181 @@
-@import url("default.css");
+body {
+    padding-top: 50px;
+}
+
+a {
+    color: #9665b1;
+}
+a:hover {
+    color: #8d45b6;
+}
+
+h1 {
+    font-size: 24px;
+}
+h2 {
+    font-size: 20px;
+}
+h3 {
+    font-size: 18px;
+}
+
+a.headerlink {
+    visibility: hidden;
+    margin-left: 8px;
+    padding: 2px 5px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+a.headerlink:hover {
+    background-color: #9665b1;
+    color: #fff;
+}
+h1:hover>a.headerlink,
+h2:hover>a.headerlink,
+h3:hover>a.headerlink,
+h4:hover>a.headerlink,
+h5:hover>a.headerlink,
+h6:hover>a.headerlink,
+dt:hover>a.headerlink {
+    visibility: visible;
+    text-decoration: none;
+}
+
+.alpha {
+    margin-left: 0;
+}
+.omega {
+    margin-right: 0;
+}
+
+.navbar-fixed-top input {
+    margin-top: 5px;
+}
+.navbar-fixed-top form {
+    margin-bottom: 0;
+}
+.affix,
+.navbar-fixed-top {
+    -webkit-transform: scale3d(1,1,1);
+}
+
+.logo {
+    margin: 0;
+}
+.logo img {
+    max-height: 40px;
+}
+.logo img:hover {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+}
+
+.navbar .brand {
+    margin-left: 0;
+    padding-left: 10px;
+}
+
+.footer {
+    background: #eee;
+}
+.footer p {
+    margin: 20px 0;
+}
+
+.sidebar h3 a {
+    color: #444;
+}
+
+.section {
+    padding-top: 40px;
+    margin-top: -40px;
+}
+
+.section>h1 {
+    padding: 5px 15px;
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.section>h2 {
+    padding: 0 15px;
+    background: #f3f3f3;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+
+tt {
+    background-color: #d6e8f5;
+    padding: 0 1px;
+}
+.admonition.note tt {
+    background-color: #80c7fa;
+}
+
+@media (max-width: 979px) {
+  body {
+    padding-top: 0;
+  }
+  .sidebar {
+    position: static;
+  }
+}
+
+.admonition {
+    margin: 10px 0;
+    padding: 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+}
+.admonition-title {
+    font-weight: bold;
+}
+
+.admonition.hint,
+.admonition.tip {
+    background: #c9f8be;
+    border-color: #79e05f;
+}
+
+.admonition.note {
+    background: #d2e8f5;
+    border-color: #6cbeee;
+}
+
+.admonition.warning,
+.admonition.important {
+    background: #f6d199;
+    border-color: #eeaf5f;
+}
+
+.admonition.caution,
+.admonition.attention,
+.admonition.danger,
+.admonition.error {
+    background: #fdc0c0;
+    border-color: #f18a8a;
+}
+
+.highlight {
+    border-radius: 3px;
+}
+pre {
+    background-color: #272822;
+    color: inherit;
+    white-space: pre;
+}
+.linenodiv {
+    opacity: 0.85;
+    color: #888;
+    margin-right: -6px;
+}
+.highlighttable {
+    width: 100%;
+}
+
+.sidebar>ul {
+    list-style: none;
+    margin-left: 0;
+}
