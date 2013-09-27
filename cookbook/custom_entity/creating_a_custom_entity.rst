@@ -8,6 +8,7 @@ As Akeneo relies heavily on standard tool like Doctrine, creating the entity is
 quite straightforward for any developer with Doctrine experience.
 
 .. code-block:: php
+    :linenos:
 
     namespace Acme\Bundle\CustomEntity\Entity;
 
@@ -83,6 +84,7 @@ To benefit from the grid component (which comes natively with filtering and sort
 a datagrid manager must be defined:
 
 .. code-block:: php
+    :linenos:
 
     namespace Acme\Bundle\CustomEntity\Datagrid;
 
@@ -106,6 +108,7 @@ This datagrid manager will be declared as a service and configured to link it to
 .. configuration-block::
 
     .. code-block:: yaml
+        :linenos:
 
         # src/Acme/Bundle/CustomEntityBundle/Resources/config/datagrid.yml
         services:
@@ -126,6 +129,7 @@ Declaring the grid view action
 ..............................
 
 .. code-block:: php
+    :linenos:
                 
     namespace Acme\Bundle\CustomEntityBundle\Controller;
 
@@ -150,7 +154,7 @@ Declaring the grid view action
          *     requirements={"_format" = "html|json"},
          *     defaults={"_format" = "html"}
          * )
-        */
+         */
         public function indexAction(Request $request)
         {
             $queryBuilder = $this->get('doctrine')->getManager()->createQueryBuilder();
@@ -178,6 +182,7 @@ Defining the grid view
 The ``Acme/Bundle/CustomEntityBundle/Resources/view/Manufacturer/index.html.twig`` file will contain:
 
 .. code-block:: html+jinja
+    :linenos:
 
     {% extends 'PimCatalogBundle::layout.html.twig' %}
      
@@ -212,6 +217,7 @@ Fields must be specifically configured to be usable in the grid as columns, for 
 In order to do that, the ``ManufacturerGridManager::configureFields`` method has to be overridden:
 
 .. code-block:: php
+    :linenos:
 
     public function configureFields(FieldDescriptionCollection $fieldsCollection)
     {
@@ -250,6 +256,7 @@ What if we want to be redirected to the edit form when clicking on the line of a
 In order to do that, the ``ManufacturerDatagridManager::getRowActions`` method is overridden:
 
 .. code-block:: php
+    :linenos:
 
     public function getRowActions()
     {
@@ -271,22 +278,24 @@ In order to do that, the ``ManufacturerDatagridManager::getRowActions`` method i
 What about a nice delete button on the grid line to quickly delete a manufacturer ?
 
 .. code-block:: php
+    :linenos:
 
-        $deleteAction = array(
-            'name'         => 'delete',
-            'type'         => ActionInterface::TYPE_DELETE,
-            'acl_resource' => 'root',
-            'options'      => array(
-                'label' => $this->translate('Delete'),
-                'icon'  => 'trash',
-                'link'  => 'delete_link'
-            )
-        );
+    $deleteAction = array(
+        'name'         => 'delete',
+        'type'         => ActionInterface::TYPE_DELETE,
+        'acl_resource' => 'root',
+        'options'      => array(
+            'label' => $this->translate('Delete'),
+            'icon'  => 'trash',
+            'link'  => 'delete_link'
+        )
+    );
 
 We need to provide the identifying field inside the datagridmanager, as well as the route for the edit and delete 
 actions.
 
 .. code-block:: php
+    :linenos:
 
     protected function getProperties()
     {
@@ -315,6 +324,7 @@ Now that the grid can display data from our manufacturers, let's add a create bu
 Inside the ``index.html.twigi``, we replace the ``<div class="navigation">`` with this one:
 
 .. code-block:: html+jinja
+    :linenos:
 
     <div class="navigation clearfix navbar-extra navbar-extra-right">
         {% set buttons %}
@@ -333,6 +343,7 @@ Creating the form type for this entity
 ......................................
 
 .. code-block:: php
+    :linenos:
 
     namespace Acme\Bundle\CustomEntityBundle\Form\Type;
 
@@ -367,6 +378,7 @@ Creating the form type for this entity
 The edit and creation action
 .....................................
 .. code-block:: php
+    :linenos:
 
     /**
      * @Route("/create")
@@ -413,6 +425,7 @@ The edit view
 .............
 
 .. code-block:: html+jinja
+    :linenos:
 
     {% extends 'PimCatalogBundle::layout.html.twig' %}                                                                                                                                                
     {% set action = form.vars.value.id ? 'Edit' : 'Add' %}
@@ -491,6 +504,7 @@ So in the ``Resources/Manufacturer/index.html.twig``, let's replace the call to 
 with this one:
 
 .. code-block:: html+jinja
+    :linenos:
 
       {% set buttons %}
           {{ elements.createBtn(
@@ -508,6 +522,7 @@ Adding a delete action
 ......................
 
 .. code-block:: php
+    :linenos:
 
     /**
      * @Method({"delete"})
@@ -537,17 +552,18 @@ Adding a delete button in the grid
 In the ``ManufacturerGridManager::getRowActions``, let's add the following lines:
 
 .. code-block:: php
+    :linenos:
 
-        $deleteAction = array(
-            'name'         => 'delete',
-            'type'         => ActionInterface::TYPE_DELETE,
-            'acl_resource' => 'root',
-            'options'      => array(
-                'label' => $this->translate('Delete'),
-                'icon'  => 'trash',
-                'link'  => 'delete_link'
-            )
-        );
+    $deleteAction = array(
+        'name'         => 'delete',
+        'type'         => ActionInterface::TYPE_DELETE,
+        'acl_resource' => 'root',
+        'options'      => array(
+            'label' => $this->translate('Delete'),
+            'icon'  => 'trash',
+            'link'  => 'delete_link'
+        )
+    );
 
 Do not forget to add it to the return array.
 
@@ -555,6 +571,7 @@ We need to provide what is the delete_link as well, in the ``ManufacturerGridMan
 in the array that is returned as well:
 
 .. code-block:: php
+    :linenos:
 
     new UrlProperty('delete_link', $this->router, 'acme_customentity_manufacturer_remove', array('id'))
 
