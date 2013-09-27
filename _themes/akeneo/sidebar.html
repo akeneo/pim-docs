@@ -1,0 +1,12 @@
+<div class="sidebar affix span3 alpha">
+    {%- block sidebarlogo %}
+        {%- if logo %}
+            <p class="logo">
+                <a href="{{ pathto(master_doc) }}">
+                    <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+                </a>
+            </p>
+        {%- endif %}
+    {%- endblock %}
+    {%- include "localtoc.html" %}
+</div>

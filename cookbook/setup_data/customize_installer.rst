@@ -1,7 +1,7 @@
 How to Define my own Data Set with the Installer
 ================================================
 
-By default the PIM is setup with data defined into PimInstallerBundle, and overridden in PimDemoBundle 
+By default the PIM is setup with data defined into PimInstallerBundle, and overridden in PimDemoBundle
 (if you use demo data).
 
 The following steps allow you to easily define your own basic entities when you install the PIM.
