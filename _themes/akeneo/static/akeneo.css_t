@@ -84,6 +84,11 @@ dt:hover>a.headerlink {
     padding: 0 20px;
 }
 
+.sidebar {
+    top: 50px;
+    bottom: 65px;
+    overflow-y: auto;
+}
 .sidebar h3 a {
     color: #bbb;
     text-decoration: none;
