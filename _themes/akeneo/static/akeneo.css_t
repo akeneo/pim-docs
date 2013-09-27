@@ -174,3 +174,8 @@ pre {
 .highlighttable {
     width: 100%;
 }
+
+.sidebar>ul {
+    list-style: none;
+    margin-left: 0;
+}
