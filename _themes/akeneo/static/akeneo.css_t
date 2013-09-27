@@ -81,10 +81,16 @@ dt:hover>a.headerlink {
 }
 .footer p {
     margin: 20px 0;
+    padding: 0 20px;
 }
 
 .sidebar h3 a {
-    color: #444;
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.5s ease;
+}
+.sidebar h3 a:hover {
+    color: #777;
 }
 
 .section {
@@ -175,7 +181,40 @@ pre {
     width: 100%;
 }
 
-.sidebar>ul {
+/* List styles */
+ul {
     list-style: none;
+}
+.sidebar>ul {
     margin-left: 0;
+}
+
+ul ul li:before {
+    content: '\f0da';
+    font-family: FontAwesome;
+    color: #aaa;
+    display: inline-block;
+    margin-left: -10px;
+    width: 10px;
+    transition: color 0.5s ease-out;
+}
+ul ul li:hover:before {
+    color: #444;
+}
+
+.section>ul.simple li:before,
+dl:before {
+    content: '\f054';
+    font-family: FontAwesome;
+    font-size: 12px;
+    color: #aaa;
+    float: left;
+    margin-left: -10px;
+    margin-right: 5px;
+    width: 10px;
+    transition: color 0.5s ease-out;
+}
+.section>ul.simple li:hover:before,
+dl:hover:before {
+    color: #444;
 }

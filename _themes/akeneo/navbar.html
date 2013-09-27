@@ -10,7 +10,7 @@
                     </h1>
                     {%- block rootrellink %}
                         <a class="brand" href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}
-                        <span class="navbar-text pull-left"><b>{{ version|e }}</b></span>
+                        <span class="navbar-text pull-left"><b>{{ version|e|upper }}</b></span>
                     {%- endblock %}
                 </div>
                 <div class="span4">
