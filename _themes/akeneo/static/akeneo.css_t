@@ -1,5 +1,5 @@
 body {
-  padding-top: 50px;
+    padding-top: 50px;
 }
 
 a {
@@ -22,11 +22,13 @@ h3 {
 a.headerlink {
     visibility: hidden;
     margin-left: 8px;
-    padding: 3px 7px;
+    padding: 2px 5px;
+    border: 1px solid transparent;
+    border-radius: 3px;
 }
 a.headerlink:hover {
-    background-color: #9665B1;
-    color: #FFF;
+    background-color: #9665b1;
+    color: #fff;
 }
 h1:hover>a.headerlink,
 h2:hover>a.headerlink,
@@ -52,6 +54,10 @@ dt:hover>a.headerlink {
 .navbar-fixed-top form {
     margin-bottom: 0;
 }
+.affix,
+.navbar-fixed-top {
+    -webkit-transform: scale3d(1,1,1);
+}
 
 .logo {
     margin: 0;
@@ -60,6 +66,8 @@ dt:hover>a.headerlink {
     max-height: 40px;
 }
 .logo img:hover {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
     opacity: 0.8;
 }
 
@@ -79,23 +87,31 @@ dt:hover>a.headerlink {
     color: #444;
 }
 
+.section {
+    padding-top: 40px;
+    margin-top: -40px;
+}
+
 .section>h1 {
     padding: 5px 15px;
-    background: #F6E0FF;
-    border: 1px solid #DBA5E2;
+    background: #eee;
+    border: 1px solid #ccc;
     border-radius: 3px;
 }
 
 .section>h2 {
     padding: 0 15px;
-    background: #FBF2FF;
-    border: 1px solid #FBDDFF;
+    background: #f3f3f3;
+    border: 1px solid #e0e0e0;
     border-radius: 3px;
 }
 
 tt {
-    background-color: #ecf0f3;
+    background-color: #d6e8f5;
     padding: 0 1px;
+}
+.admonition.note tt {
+    background-color: #80c7fa;
 }
 
 @media (max-width: 979px) {
@@ -119,25 +135,42 @@ tt {
 
 .admonition.hint,
 .admonition.tip {
-    background: #C9F8BE;
-    border-color: #79E05F;
+    background: #c9f8be;
+    border-color: #79e05f;
 }
 
 .admonition.note {
-    background: #C8E8F7;
-    border-color: #96BEFA;
+    background: #d2e8f5;
+    border-color: #6cbeee;
 }
 
 .admonition.warning,
 .admonition.important {
-    background: #F6D199;
-    border-color: #EEAF5F;
+    background: #f6d199;
+    border-color: #eeaf5f;
 }
 
 .admonition.caution,
 .admonition.attention,
 .admonition.danger,
 .admonition.error {
-    background: #FDC0C0;
-    border-color: #F18A8A;
+    background: #fdc0c0;
+    border-color: #f18a8a;
+}
+
+.highlight {
+    border-radius: 3px;
+}
+pre {
+    background-color: #272822;
+    color: inherit;
+    white-space: pre;
+}
+.linenodiv {
+    opacity: 0.85;
+    color: #888;
+    margin-right: -6px;
+}
+.highlighttable {
+    width: 100%;
 }
