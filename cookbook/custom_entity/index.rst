@@ -17,7 +17,7 @@ than using a standard attribute option, because the manufacturer needs
 specific attribute itself like the manufacturing country.
 
 * Creating the entity and the associated screens
-    * :doc:`/cookbook/custom_entity/creating_entity`
+    * :doc:`creating_a_custom_entity`
 
 * Creating an attribute type linked to this custom entity
     To be done...

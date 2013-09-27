@@ -1,5 +1,5 @@
-How to create a custom entity and the screen to manage it
-=========================================================
+How to create a custom entity and the screens to manage it
+==========================================================
 
 Creating the entity
 -------------------
@@ -80,7 +80,7 @@ The grid class
 ..............
 
 To benefit from the grid component (which comes natively with filtering and sorting),
-you must define a datagridmanager
+a datagrid manager must be defined:
 
 .. code-block:: php
 
@@ -101,9 +101,9 @@ you must define a datagridmanager
 
 Defining the service
 ....................
-Then we will declare this datagrid manager as a service and configure this service to link it to our manufacturer entity.
+This datagrid manager will be declared as a service and configured to link it to our manufacturer entity.
 
-In Resources/config/datagrid.yml inside our bundle:
+In ``Resources/config/datagrid.yml`` inside our bundle:
 
 .. code-block:: yml
 
@@ -131,9 +131,15 @@ Declaring the grid view action
                 
     namespace Acme\Bundle\CustomEntityBundle\Controller;
 
+    use Acme\Bundle\CustomEntityBundle\Entity\Manufacturer;
+
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
     use Symfony\Component\HttpFoundation\Request;
+    use Symfony\Component\HttpFoundation\Response;
+
 
     /**
      * @Route("/manufacturer")
@@ -171,7 +177,7 @@ Declaring the grid view action
 
 Defining the grid view
 ......................
-The Acme/Bundle/CustomEntityBundle/Resources/view/Manufacturer/index.html.twig file will contain:
+The ``Acme/Bundle/CustomEntityBundle/Resources/view/Manufacturer/index.html.twig`` file will contain:
 
 .. code-block:: html+jinja
 
@@ -193,19 +199,19 @@ The Acme/Bundle/CustomEntityBundle/Resources/view/Manufacturer/index.html.twig f
     <div id="manufacturer-grid"></div>
     {% endblock %}
 
-From this point a working grid screen is visible at /app_dev.php/custom-entity/manufacturer (where custom-entity is the
+From this point a working grid screen is visible at ``/app_dev.php/custom-entity/manufacturer`` (where ``custom-entity`` is the
 route prefix used for the bundle).
 
-If some customers are manually added to the database, the pagination will be visible as well, but the grid will still be
-empty, as no displayable fields are defined yet.
+If some manufacturers are manually added to the database, the pagination will be visible as well, but the grid will still be
+empty, as there's no displayable fields defined yet.
 
 .. note::
-   Look at the Cookbook recipe "How to add an menu entry" to add your own link to this grid. 
+   Have a look at the Cookbook recipe "How to add an menu entry" to add your own link in the menu to this grid. 
 
 Defining fields used in the grid
 ................................
 Fields must be specifically configured to be usable in the grid as columns, for filtering or for sorting. 
-In order to do that, the configureFields method in the ManufacturerGridManager has to be overridden:
+In order to do that, the ``ManufacturerGridManager::configureFields`` method has to be overridden:
 
 .. code-block:: php
 
@@ -243,7 +249,7 @@ Defining row behavior and buttons
 
 What if we want to be redirected to the edit form when clicking on the line of a grid item ?
 
-In order to do that, the getRowActions method of the grid manager is overridden:
+In order to do that, the ``ManufacturerDatagridManager::getRowActions`` method is overridden:
 
 .. code-block:: php
 
@@ -308,7 +314,7 @@ Adding a create button to the grid screen
 .........................................
 Now that the grid can display data from our manufacturers, let's add a create button to add a new manufacturer.
 
-Inside the index.html.twig, we replace the <div class="navigation"> with this one:
+Inside the ``index.html.twigi``, we replace the ``<div class="navigation">`` with this one:
 
 .. code-block:: html+jinja
 
@@ -407,77 +413,81 @@ The edit and creation action
 
 The edit view
 .............
-In Resources/views/edit.html.twig
+In ``Resources/views/edit.html.twig``
+
 .. code-block:: html+jinja
-{% extends 'PimCatalogBundle::layout.html.twig' %}                                                                                                                                                
 
-{% set action = form.vars.value.id ? 'Edit' : 'Add' %}
+    {% extends 'PimCatalogBundle::layout.html.twig' %}                                                                                                                                                
 
-{% set title = action|trans ~ ' Manufacturer'|trans %}
+    {% set action = form.vars.value.id ? 'Edit' : 'Add' %}
 
-{% block content %}
-<form action="{{ form.vars.value.id ?
-                path('acme_customentity_manufacturer_edit', { id: form.vars.value.id }) :
-                path('acme_customentity_manufacturer_create') }}" method="POST" class="form-horizontal">
+    {% set title = action|trans ~ ' Manufacturer'|trans %}
 
-    <div class="navigation clearfix navbar-extra navbar-extra-right">
-        <div class="row-fluid">
-            <div class="pull-right">
+    {% block content %}
+    <form action="{{ form.vars.value.id ?
+                    path('acme_customentity_manufacturer_edit', { id: form.vars.value.id }) :
+                    path('acme_customentity_manufacturer_create') }}" method="POST" class="form-horizontal">
+
+        <div class="navigation clearfix navbar-extra navbar-extra-right">
+            <div class="row-fluid">
                 <div class="pull-right">
-                    <div class="btn-group icons-holder">
-                        <a class="btn" href="{{ path('acme_customentity_manufacturer_index') }}" title="{{ 'Back to grid' | trans }}"><i class="icon-chevron-left"></i></a>
-                    </div>
-                    <div class="btn-group">
-                        <button type="submit" class="btn btn-primary"><i class="hide-text">Save </i> {{ ' Save'|trans }}</button>
+                    <div class="pull-right">
+                        <div class="btn-group icons-holder">
+                            <a class="btn" href="{{ path('acme_customentity_manufacturer_index') }}" title="{{ 'Back to grid' | trans }}"><i class="icon-chevron-left"></i></a>
+                        </div>
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-primary"><i class="hide-text">Save </i> {{ ' Save'|trans }}</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="pull-left">
-                <div class="navbar-content pull-left">
-                    <div class="navbar-title clearfix-oro">
-                        <div class="sub-title">{{ title }}</div>
-                    </div>
-               </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row-fluid">
-        {% if form.vars.errors|length %}
-            <div class="alert alert-error">
-                {{ form_errors(form) }}
-            </div>
-        {% endif %}
-
-        <div id="accordion1" class="accordion">
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
-                        <i class="icon-collapse-alt"></i>
-                        {{ "Manufacturer Properties"|trans }}
-                    </a>
-                </div>
-                <div id="collapseOne" class="accordion-body in">
-                    <div class="accordion-inner">
-                        {{ form_row(form.code) }}
-                        {{ form_row(form.name) }}
-                        {{ form_row(form.country) }}
-                    </div>
+                <div class="pull-left">
+                    <div class="navbar-content pull-left">
+                        <div class="navbar-title clearfix-oro">
+                            <div class="sub-title">{{ title }}</div>
+                        </div>
+                   </div>
                 </div>
             </div>
         </div>
-    </div>
-    {{ form_row(form._token) }}
-</form>
-{% endblock %}
+
+        <div class="row-fluid">
+            {% if form.vars.errors|length %}
+                <div class="alert alert-error">
+                    {{ form_errors(form) }}
+                </div>
+            {% endif %}
+
+            <div id="accordion1" class="accordion">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+                            <i class="icon-collapse-alt"></i>
+                            {{ "Manufacturer Properties"|trans }}
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="accordion-body in">
+                        <div class="accordion-inner">
+                            {{ form_row(form.code) }}
+                            {{ form_row(form.name) }}
+                            {{ form_row(form.country) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ form_row(form._token) }}
+    </form>
+    {% endblock %}
 
 Adding a create button to the grid screen
 .........................................
+
 Now that we have a working edit screen, let's add a Create button on the grid view !
-So in the ``Resources/Manufacturer/index.html.twig``, let's replace the call to the elements.page_header macro
+So in the ``Resources/Manufacturer/index.html.twig``, let's replace the call to the ``elements.page_header`` macro
 with this one:
 
 .. code-block:: html+jinja
+
       {% set buttons %}
           {{ elements.createBtn(
               'New manufacturer',
@@ -521,7 +531,8 @@ Adding a delete button in the grid
 ..................................
 
 In the ``ManufacturerGridManager::getRowActions``, let's add the following lines:
-.. code-block:: 
+
+.. code-block:: php
 
         $deleteAction = array(
             'name'         => 'delete',
@@ -539,7 +550,8 @@ Do not forget to add it to the return array.
 We need to provide what is the delete_link as well, in the ``ManufacturerGridManager::getProperties``,
 in the array that is returned as well:
 
-.. code-block::
+.. code-block:: php
 
     new UrlProperty('delete_link', $this->router, 'acme_customentity_manufacturer_remove', array('id'))
 
+A grid button should be displayed on each line (symbolized with "...") that allow to delete the line.
