@@ -13,6 +13,7 @@ the name of your class so as to avoid unexpected problems.
 For example, we can add an image property with a textfield.
 
 .. code-block:: php
+    :linenos:
 
     namespace MyProject/Bundle/CatalogBundle/Entity;
 

@@ -10,7 +10,7 @@ This part of the application extends the `Oro Platform`_ bundle named `FlexibleE
 .. _FlexibleEntityBundle: https://magecore.atlassian.net/wiki/display/DOC/OroFlexibleEntityBundle
 .. _Oro Platform: http://www.orocrm.com/oro-platform
 
-As stated above, product manager is a service you can get from the symfony container.    
+As stated above, product manager is a service you can get from the symfony container.
 You just have to call `pim_catalog.manager.product` from a ContainerInterface class as below:
 
 .. code-block:: php
@@ -53,7 +53,7 @@ Here an example to create t-shirt with different colors.
    // create a color attribute
    $att = $pm->createAttribute('pim_catalog_simpleselect');
    $att->setCode('color');
-   
+
    // create option values linked to the attribute
    $opt1 = $pm->createAttributeOption();
    $opt1->setCode('purple');
@@ -79,7 +79,7 @@ Here an example to create t-shirt with different colors.
 
 * Translate your datas.
 
-Keeping the example of a color, 
+Keeping the example of a color,
 the option value `purple` is "Purple" in english and "Violet" in french.
 
 .. code-block:: php
@@ -104,7 +104,7 @@ the option value `purple` is "Purple" in english and "Violet" in french.
     // ... do the same for $opt2
 
     echo $product->getColor(); // returns "Purple"
-    
+
     $product->getColor()->getOption()->setLocale('fr_FR');
     echo $product->getColor(); // returns "Violet"
 
@@ -124,7 +124,7 @@ How to redefine your own product manager
 ----------------------------------------
 
 You can easily redefine your own product manager with Sf2 DIC.
-You just have to extends Akeneo PIM Catalog bundle and change 
+You just have to extends Akeneo PIM Catalog bundle and change
 `pim_catalog.manager.product.class` parameter in `parameters.yml` file.
 
 .. code-block:: yaml

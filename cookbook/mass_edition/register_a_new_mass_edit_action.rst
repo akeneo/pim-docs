@@ -10,6 +10,7 @@ Creating a MassEditAction
 First step is to create a new class that implements ``MassEditAction``:
 
 .. code-block:: php
+    :linenos:
 
     namespace Acme\Bundle\DemoBundle\MassEditAction;
 

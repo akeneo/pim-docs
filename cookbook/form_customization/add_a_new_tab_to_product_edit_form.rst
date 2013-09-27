@@ -22,6 +22,7 @@ To override these templates, you need to create 2 new files:
     {{ elements.form_navbar(['Categories', 'Attributes', 'Completeness', 'History', 'Custom tab']) }}
 
 .. code-block:: html+jinja
+    :linenos:
 
     {# _tab-panes.html.twig #}
     <!-- Original content -->
