@@ -1,4 +1,4 @@
-How to define my own data set with the installer
+How to Define my own Data Set with the Installer
 ================================================
 
 By default the PIM is setup with data defined into PimInstallerBundle, and overridden in PimDemoBundle 
@@ -6,7 +6,7 @@ By default the PIM is setup with data defined into PimInstallerBundle, and overr
 
 The following steps allow you to easily define your own basic entities when you install the PIM.
 
-Disable the demo data loading
+Disable the Demo Data Loading
 -----------------------------
 
 .. code-block:: yaml
@@ -15,7 +15,7 @@ Disable the demo data loading
     pim_demo:
         load_data: false
 
-Create a bundle
+Create a Bundle
 ---------------
 
 Create a new bundle :
@@ -40,7 +40,7 @@ Register it into AppKernel.php :
             // ...
             new Acme\Bundle\AcmeBundle\PimAcmeBundle(),
 
-Add your own data
+Add your own Data
 -----------------
 
 Add your pim_installer_*.yml files into the Resources/config/ of your bundle.

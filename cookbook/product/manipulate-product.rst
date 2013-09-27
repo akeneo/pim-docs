@@ -1,8 +1,8 @@
 How to programmatically manipulate products
 ===========================================
 
-Prerequites
------------
+Prerequisites
+-------------
 
 The Akeneo PIM project introduces a service to help you manage your product entities.
 This part of the application extends the `Oro Platform`_ bundle named `FlexibleEntityBundle`_.
@@ -76,7 +76,7 @@ For instance, this example creates a color attribute with a list of predefined o
 
 * Translate your datas.
 
-Keeping color example, the option value `purple` is "Purple" in english and "Violet" in french.
+Keeping the color example, the option value `purple` is "Purple" in English and "Violet" in French.
 
 .. code-block:: php
 

@@ -1,13 +1,13 @@
-How to create a new connector
+How to Create a New Connector
 =============================
 
-As your catalog, your data sources, channels and the business rules to apply on data are unique.
+Like your catalog, your data sources, channels and the business rules to apply on data are unique.
 
-That's why a common task is to work on connectors to import and export the PIM data as expected.
+This is why a common task is to work on connectors to import and export the PIM data as expected.
 
 Akeneo PIM comes with a set of configurable connectors based on re-usable classes and services.
 
-Main concepts
+Main Concepts
 -------------
 
 A connector can be packaged as a Symfony bundle.
@@ -18,9 +18,10 @@ Each job is composed of steps, each step can contain a reader, a processor and a
 
 These items provide their expected configurations to be used.
 
-For instance, to import a CSV file as products, the reader read each lines, the processor transform a line to a product, and the writer ensures to save each product.
+For instance, to import a CSV file as products, the reader reads each line, the processor transforms them into products, 
+and the writer then saves the products.
 
-Create a bundle
+Create a Bundle
 ---------------
 
 Create a new bundle that extends Connector :
@@ -36,12 +37,12 @@ Create a new bundle that extends Connector :
     {
     }
 
-Create a reader
+Create a Reader
 ---------------
 
 A reader is a class that :
 
-* extends AbstractConfigurableStepElement to make it configurable with a set of expected configuration fields
+* extends AbstractConfigurableStepElement by adding a set of expected configuration fields
 * implements ItemReaderInterface
 
 .. code-block:: php
@@ -55,7 +56,7 @@ A reader is a class that :
     {
     }
 
-Then this class is defined as service as in following exemple :
+This class is then defined as service, like in following example :
 
 .. configuration-block::
 

@@ -1,13 +1,13 @@
-How to add a new tab to the product edit form
-==================================================
+How to Add a New Tab on the Product Edit Form
+=============================================
 
-To a new tab to the product edit form, you will need to override the
-templates for form navbar (``PimCatalogBundle:Product:_navbar.html.twig``)
+To add a new tab on the product edit form, you will need to override the
+templates for the navbar form (``PimCatalogBundle:Product:_navbar.html.twig``)
 and tab panes (``PimCatalogBundle:Product:_tab-panes.html.twig``).
 
 .. _see here: http://symfony.com/doc/current/cookbook/bundles/inheritance.html
 
-In order to do this, you will need a bundle that is a child of ``PimCatalogBundle`` (`see here`_).
+In order to do this, you will need to define a bundle that is a child of ``PimCatalogBundle`` (`see here`_).
 
 Overriding the templates
 ------------------------------
@@ -50,14 +50,14 @@ To override these templates, you need to create 2 new files:
 
 .. note::
 
-    Make sure you clear the cache to ensure that your templates are loaded
+    Make sure you clear the cache to enable your templates to be loaded.
 
 .. warning::
 
     For the created tab pane to work, its ``id`` attribute must match the navbar title for this tab pane
     (transformed to lowercase and spaces replaced with dashes)
 
-If you would like to have a different order of the tab panes, simply reorder the arguments passed to
+If you would like to have a different order in the tab panes, simply reorder the arguments passed to
 ``elements.form_navbar``:
 
 .. code-block:: html+jinja

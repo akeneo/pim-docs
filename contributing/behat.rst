@@ -3,7 +3,7 @@ Setup Behat
 
 The PIM comes with a set of Behat scenarios that :
 
-* describe the PIM features and the expected behaviour
+* describe the PIM features and the expected behavior
 * ensure there is no regression from functional point of view
 
 Install Behat
@@ -15,7 +15,7 @@ You can install behat dependencies with composer. Dependencies are defined in Ak
   $ php composer.phar install --dev
 
 
-Install Selenium server
+Install Selenium Server
 -----------------------
 Download Selenium server 2.33 `here`_.
 

@@ -1,16 +1,16 @@
-How to add new properties to a category
+How to Add New Properties to a Category
 =======================================
 
 The Akeneo PIM allows the classification of products inside a customizable category tree.
 
-Add properties to your own category
+Add Properties to your own Category
 -----------------------------------
 The first step is to create a class that extends PIM `Category` class.
 
 Class inheritance is implemented with a Doctrine discriminator map. Please be sure not to use `Category` as
 the name of your class so as to avoid unexpected problems.
 
-For example, we can add an image property with a textfield.
+For example, we can add an image property with a text field.
 
 .. code-block:: php
 
@@ -43,8 +43,8 @@ For example, we can add an image property with a textfield.
     }
 
 
-Define the category class to use
---------------------------------
+Define the Category Class
+-------------------------
 
 The mapping of the new category entity must be added inside the `app/config.yml` file :
 
