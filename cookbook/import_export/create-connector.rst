@@ -27,6 +27,7 @@ Create a Bundle
 Create a new bundle that extends Connector :
 
 .. code-block:: php
+    :linenos:
 
     namespace Acme\Bundle\MyBundle;
 
@@ -46,6 +47,7 @@ A reader is a class that :
 * implements ItemReaderInterface
 
 .. code-block:: php
+    :linenos:
 
     namespace Pim\Bundle\ImportExportBundle\Reader;
 
@@ -54,6 +56,27 @@ A reader is a class that :
 
     class MyReader extends AbstractConfigurableStepElement implements ItemReaderInterface
     {
+        protected $foo;
+
+        ...
+
+        public function getConfigurationFields()
+        {
+            // This configuration is used to display the reader form
+            return array(
+                'foo' => array(
+                    'type' => 'text',
+                    'required' => true,
+                    ...
+                )
+            );
+        }
+
+        public function read(StepExecution $stepExecution)
+        {
+            // The logic of your reader where you can use the configured $this->foo
+        }
+
     }
 
 This class is then defined as service, like in following example :
@@ -63,10 +86,8 @@ This class is then defined as service, like in following example :
     .. code-block:: yaml
 
        pim_import_export.reader.product:
-            class: %pim_import_export.reader.product.class%
+            class: '%pim_import_export.reader.product.class%'
             arguments:
-                - @pim_catalog.manager.product
+                - '@pim_catalog.manager.product'
 
 Note that you can use any existing readers in your own connector.
-
-To be continued ...
