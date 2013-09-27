@@ -10,6 +10,7 @@ Creating a MassEditAction
 The first step is to create a new class that implements ``MassEditAction``:
 
 .. code-block:: php
+    :linenos:
 
     namespace Acme\Bundle\DemoBundle\MassEditAction;
 
@@ -64,7 +65,9 @@ After the class is created, you must register it as a service in the DIC with th
             <tag name="pim_catalog.mass_edit_action" alias="capitalize-values" />
         </service>
 
-NB: The alias will be used in the url (``/enrich/mass-edit-action/capitalize-values/configure``)
+.. note::
+
+    The alias will be used in the url (``/enrich/mass-edit-action/capitalize-values/configure``)
 
 Translating the Mass Edit Action Choice
 ---------------------------------------
