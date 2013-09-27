@@ -218,3 +218,20 @@ dl:before {
 dl:hover:before {
     color: #444;
 }
+
+/* Search page */
+.span9>form input[type="submit"] {
+    padding: 4px 12px;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    background-color: #d6d6d6;
+    background-image: -webkit-linear-gradient(to bottom, #ffffff, #e6e6e6);
+    background-image: -moz-linear-gradient(to bottom, #ffffff, #e6e6e6);
+    background-image: -o-linear-gradient(to bottom, #ffffff, #e6e6e6);
+    background-image: -ms-linear-gradient(to bottom, #ffffff, #e6e6e6);
+    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    text-transform: capitalize;
+}
+.span9>form input[type="text"] {
+    margin: 0;
+}
