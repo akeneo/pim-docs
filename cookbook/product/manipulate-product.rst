@@ -19,39 +19,30 @@ As stated above, the product manager is a service you can get from the symfony c
 
 In the following examples, we will use $pm as the product manager object.
 
-* Create a product with an identifier value
+Create an attribute
+-------------------
+
+* Create a text attribute
 
 .. code-block:: php
 
-    // create a product
-    $product = $pm->createFlexible();
+    // create an attribute
+    $attribute = $pm->createAttribute('pim_catalog_text');
+    $attribute->setCode('title');
 
-    // create an identifier attribute
-    $attribute = $pm->createAttribute('pim_catalog_identifier');
-    $attribute->setCode('sku');
+    $pm->getStorageManager()->persist($attribute);
+    $pm->getStorageManager()->flush();
 
-    // link product and attribute
-    $pm->addAttributeToProduct($product, $attribute);
-
-    // assign a sku value
-    $product->setSku('akeneo-001');
-
-    // get the value as ProductValueInterface or string
-    $productValue = $product->getSku();
-    $sku = (string) $product->getSku();
-
-* Create an option
+* Create a simple select attribute
 
 In some cases, you will want to restrain values to a list of possibilities for a product attribute.
-For instance, this example creates a color attribute with a list of predefined options :
+For instance, this example creates a color attribute with a list of predefined options:
 
 .. code-block:: php
 
-   // create a color attribute
    $att = $pm->createAttribute('pim_catalog_simpleselect');
    $att->setCode('color');
    
-   // create option values linked to the attribute
    $opt1 = $pm->createAttributeOption();
    $opt1->setCode('purple');
    $att->addOption($opt1);
@@ -64,23 +55,12 @@ For instance, this example creates a color attribute with a list of predefined o
    $opt3->setCode('blue');
    $att->addOption($opt3);
 
-   // link product and attribute
-   $product = $pm->createFlexible();
-   $pm->addAttributeToProduct($product, $att);
-
-   // assign a color
-   $product->setColor($opt1);
-
-   // returns [purple]
-   echo $product->getColor();
-
-* Translate your datas.
+* Create a simple select attribute with translatable values
 
 Keeping color example, the option value `purple` is "Purple" in english and "Violet" in french.
 
 .. code-block:: php
 
-    // create option values with i18n linked to the attribute
     $opt1 = $pm->createAttributeOption();
     $opt1->setCode('purple');
     $opt1->setTranslatable(true);
@@ -97,29 +77,69 @@ Keeping color example, the option value `purple` is "Purple" in english and "Vio
 
     $att->addOption($opt1);
 
-    // ... do the same for $opt2
-
-    echo $product->getColor(); // returns "Purple"
-    
-    $product->getColor()->getOption()->setLocale('fr_FR');
-    echo $product->getColor(); // returns "Violet"
-
-* Localize a product
-
-A product can have different values depending of the locale.
-We considers that the locales `en_US` and `fr_FR` are already created and activated.
+* Create a localizable attribute
 
 .. code-block:: php
-
-    $pm = $this->productManager;
-    $product = $pm->createFlexible();
 
     // create a localizable attribute
     $attribute = $pm->createAttribute('pim_catalog_text');
     $attribute->setCode('name');
     $attribute->setTranslatable(true);
 
-    $pm->addAttributeToProduct($product, $attribute);
+* Create a scopable attribute
+
+.. code-block:: php
+
+    // create a scopable attribute
+    $attribute = $pm->createAttribute('pim_catalog_text');
+    $attribute->setCode('image_hd');
+    $attribute->setScopable(true);
+
+* Create a localizable AND scopable attribute
+
+.. code-block:: php
+
+    // create a localizable attribute
+    $attribute = $pm->createAttribute('pim_catalog_textarea');
+    $attribute->setCode('short_description');
+    $attribute->setScopable(true);
+    $attribute->setTranslatable(true);
+
+
+Create a product
+----------------
+
+.. code-block:: php
+
+    // create a product
+    $product = $pm->createFlexible();
+
+Enrich a product
+----------------
+
+* Set text value
+
+.. code-block:: php
+
+    $product->setSku('akeneo-001');
+    $product->setTitle('My product title');
+
+    $productValue = $product->getSku();
+    $sku = (string) $product->getSku();
+
+* Set option value
+
+.. code-block:: php
+
+   $product->setColor($opt1);
+   echo $product->getColor(); // returns [purple]
+
+* Set localized value
+
+A product can have different values depending of the locale.
+We considers that the locales `en_US` and `fr_FR` are already created and activated.
+
+.. code-block:: php
 
     $product->setName('My name', 'en_US');
     $product->setName('Mon nom', 'fr_FR');
@@ -129,22 +149,12 @@ We considers that the locales `en_US` and `fr_FR` are already created and activa
     $product->setLocale('fr_FR');
     echo $product->getName(); // returns "Mon nom"
 
-* Manage scopes
+* Set scopable value
 
 Akeneo PIM is a multi-channels application so you can define different scopes to use.
 We considers that channels `ecommerce` and `mobile` are already created.
 
 .. code-block:: php
-
-    $pm = $this->productManager;
-    $product = $pm->createFlexible();
-
-    // create a scopable attribute
-    $attribute = $pm->createAttribute('pim_catalog_text');
-    $attribute->setCode('image_hd');
-    $attribute->setScopable(true);
-
-    $pm->addAttributeToProduct($product, $attribute);
 
     $product->setImageHd('my_ecommerce_image', null, 'ecommerce');
     $product->setImageHd('my_mobile_image', null, 'mobile');
@@ -156,22 +166,9 @@ We considers that channels `ecommerce` and `mobile` are already created.
     echo $product->getImageHd(); // returns "my_mobile_image"
 
 
-* Manage translations + scopes
-
-By the way, product attributes can be define as scopable AND localizable.
+* Set localizable and scopable value
 
 .. code-block:: php
-
-    $pm = $this->productManager;
-    $product = $pm->createFlexible();
-
-    // create a localizable attribute
-    $attribute = $pm->createAttribute('pim_catalog_textarea');
-    $attribute->setCode('short_description');
-    $attribute->setScopable(true);
-    $attribute->setTranslatable(true);
-
-    $pm->addAttributeToProduct($product, $attribute);
 
     $product->setShortDescription('Ecommerce and en_US', 'en_US', 'ecommerce');
     $product->setShortDescription('Mobile and en_US', 'en_US', 'mobile');
