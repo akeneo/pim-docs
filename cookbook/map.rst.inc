@@ -10,5 +10,7 @@
     * :doc:`/cookbook/acl/define-acl`
 * Manipulate product
     * :doc:`/cookbook/product/manipulate-product`
+* Creating custom entities
+    * :doc:`/cookbook/custom_entity/index`
 * Categories
     * :doc:`/cookbook/category/add-properties-to-category`
