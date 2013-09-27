@@ -103,21 +103,19 @@ Defining the service
 ....................
 This datagrid manager will be declared as a service and configured to link it to our manufacturer entity.
 
-In ``Resources/config/datagrid.yml`` inside our bundle:
+.. configuration-block::
 
-.. code-block:: yml
+    .. code-block:: yaml
 
-    parameters:                                                                                                                  
-        acme_customentity.datagrid.manager.manufacturer.class: Acme\Bundle\CustomEntity\Datagrid\ManufacturerDatagridManager
-
-    services:
-        acme_customentity.datagrid.manager.manufacturer:
-            class: %acme_customentity.datagrid.manager.manufacturer.class%
-            tags:
-                - name:          oro_grid.datagrid.manager
-                  datagrid_name: manufacturers
-                  entity_hint:   manufacturers
-                  route_name:    acme_customentity_manufacturer_index
+        # src/Acme/Bundle/CustomEntityBundle/Resources/config/datagrid.yml
+        services:
+            acme_customentity.datagrid.manager.manufacturer:
+                class: Acme\Bundle\CustomEntity\Datagrid\ManufacturerDatagridManager
+                tags:
+                    - name:          oro_grid.datagrid.manager
+                      datagrid_name: manufacturers
+                      entity_hint:   manufacturers
+                      route_name:    acme_customentity_manufacturer_index
 
 .. note::
 
@@ -413,12 +411,10 @@ The edit and creation action
 
 The edit view
 .............
-In ``Resources/views/edit.html.twig``
 
 .. code-block:: html+jinja
 
     {% extends 'PimCatalogBundle::layout.html.twig' %}                                                                                                                                                
-
     {% set action = form.vars.value.id ? 'Edit' : 'Add' %}
 
     {% set title = action|trans ~ ' Manufacturer'|trans %}
@@ -433,10 +429,14 @@ In ``Resources/views/edit.html.twig``
                 <div class="pull-right">
                     <div class="pull-right">
                         <div class="btn-group icons-holder">
-                            <a class="btn" href="{{ path('acme_customentity_manufacturer_index') }}" title="{{ 'Back to grid' | trans }}"><i class="icon-chevron-left"></i></a>
+                            <a class="btn"
+                                href="{{ path('acme_customentity_manufacturer_index') }}"
+                                title="{{ 'Back to grid' | trans }}"><i class="icon-chevron-left"></i></a>
                         </div>
                         <div class="btn-group">
-                            <button type="submit" class="btn btn-primary"><i class="hide-text">Save </i> {{ ' Save'|trans }}</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="hide-text">Save </i> {{ ' Save'|trans }}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -460,7 +460,10 @@ In ``Resources/views/edit.html.twig``
             <div id="accordion1" class="accordion">
                 <div class="accordion-group">
                     <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+                        <a class="accordion-toggle"
+                            data-toggle="collapse"
+                            data-parent="#accordion1"
+                            href="#collapseOne">
                             <i class="icon-collapse-alt"></i>
                             {{ "Manufacturer Properties"|trans }}
                         </a>
@@ -478,6 +481,7 @@ In ``Resources/views/edit.html.twig``
         {{ form_row(form._token) }}
     </form>
     {% endblock %}
+
 
 Adding a create button to the grid screen
 .........................................
