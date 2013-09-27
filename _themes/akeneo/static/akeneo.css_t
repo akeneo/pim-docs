@@ -235,3 +235,6 @@ dl:hover:before {
 .span9>form input[type="text"] {
     margin: 0;
 }
+#search-results .context {
+    display: none;
+}
