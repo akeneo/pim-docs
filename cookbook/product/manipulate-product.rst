@@ -187,8 +187,8 @@ How to define your own product manager
 --------------------------------------
 
 You can easily define your own product manager with Sf2 DIC.
-You just have to extends Akeneo PIM Catalog bundle and change 
-`pim_catalog.manager.product.class` parameter in `config.yml` file.
+You just have to extends Akeneo PIM Catalog bundle and change `pim_catalog.manager.product.class` parameter in the 
+`parameters.yml` file of your bundle.
 
 .. code-block:: yaml
 
