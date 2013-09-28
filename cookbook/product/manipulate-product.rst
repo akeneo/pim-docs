@@ -42,7 +42,7 @@ For instance, this example creates a color attribute with a list of predefined o
 
    $att = $pm->createAttribute('pim_catalog_simpleselect');
    $att->setCode('color');
-   
+
    $opt1 = $pm->createAttributeOption();
    $opt1->setCode('purple');
    $att->addOption($opt1);
@@ -183,5 +183,6 @@ We considers that channels `ecommerce` and `mobile` are already created.
 Get a product
 -------------
 
-$product = $pm->find($myProductId);
+.. code-block:: php
 
+    $product = $pm->find($myProductId);

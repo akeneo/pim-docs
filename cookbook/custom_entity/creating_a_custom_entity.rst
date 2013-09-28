@@ -321,7 +321,7 @@ Adding a create button to the grid screen
 .........................................
 Now that the grid can display data from our manufacturers, let's add a create button to add a new manufacturer.
 
-Inside the ``index.html.twigi``, we replace the ``<div class="navigation">`` with this one:
+Inside the ``index.html.twig``, we replace the ``<div class="navigation">`` with this one:
 
 .. code-block:: html+jinja
     :linenos:

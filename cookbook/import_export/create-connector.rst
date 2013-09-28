@@ -18,7 +18,7 @@ Each job is composed of steps, each step can contain a reader, a processor and a
 
 These items provide their expected configurations to be used.
 
-For instance, to import a CSV file as products, the reader reads each line, the processor transforms them into products, 
+For instance, to import a CSV file as products, the reader reads each line, the processor transforms them into products,
 and the writer then saves the products.
 
 Create a Bundle
