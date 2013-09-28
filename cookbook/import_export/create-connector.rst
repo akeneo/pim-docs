@@ -29,13 +29,25 @@ Create a new bundle that extends Connector :
 .. code-block:: php
     :linenos:
 
-    namespace Acme\Bundle\MyBundle;
+    namespace Acme\Bundle\MyConnectorBundle;
 
     use Symfony\Component\DependencyInjection\ContainerBuilder;
-    use Pim\Bundle\BatchBundle\Connector\Connector;
+    use Oro\Bundle\BatchBundle\Connector\Connector;
 
-    class AcmeMyBundle extends Connector
+    class AcmeMyConnectorBundle extends Connector
     {
+    }
+
+Register the bundle in AppKernel :
+
+.. code-block:: php
+    :linenos:
+
+    public function registerBundles()
+    {
+        // ...
+            new Acme\Bundle\MyConnectorBundle\AcmeMyConnectorBundle(),
+        // ...
     }
 
 Create a Reader
