@@ -18,7 +18,7 @@ Each job is composed of steps, each step can contain a reader, a processor and a
 
 These items provide their expected configurations to be used.
 
-For instance, to import a CSV file as products, the reader reads each line, the processor transforms them into products,
+For instance, to import a CSV file as products, the reader reads each line, the processor transforms them into products, 
 and the writer then saves the products.
 
 Create a Bundle
@@ -50,56 +50,38 @@ Register the bundle in AppKernel :
         // ...
     }
 
-Create a Reader
----------------
+Configure your connector
+------------------------
 
-A reader is a class that :
+Configure a job in Resource/config/jobs.yml :
 
-* extends AbstractConfigurableStepElement by adding a set of expected configuration fields
-* implements ItemReaderInterface
+.. code-block:: yaml
 
-.. code-block:: php
-    :linenos:
+    connector:
+        name: My Connector
+        jobs:
+           product_export:
+               title: acme_my_connector.jobs.product_export.title
+               type:  export
+               steps:
+                   export:
+                       title:     acme_my_connector.jobs.product_export.step.title
+                       reader:    pim_import_export.reader.product
+                       processor: pim_import_export.processor.heterogeneous_csv_serializer
+                       writer:    pim_import_export.writer.file
 
-    namespace Pim\Bundle\ImportExportBundle\Reader;
+We use here some existing reader, processor and writer.
 
-    use Pim\Bundle\BatchBundle\Item\ItemReaderInterface;
-    use Pim\Bundle\ImportExportBundle\AbstractConfigurableStepElement;
+Title keys can be translated in messages.yml
 
-    class MyReader extends AbstractConfigurableStepElement implements ItemReaderInterface
-    {
-        protected $foo;
+.. code-block:: yaml
 
-        ...
+    acme_my_connector:
+        jobs:
+            product_export:
+                title: Product export
+                step.title: Export
 
-        public function getConfigurationFields()
-        {
-            // This configuration is used to display the reader form
-            return array(
-                'foo' => array(
-                    'type' => 'text',
-                    'required' => true,
-                    ...
-                )
-            );
-        }
+Now if you refresh cache, your new export is useable in Spread > Export profile.
 
-        public function read(StepExecution $stepExecution)
-        {
-            // The logic of your reader where you can use the configured $this->foo
-        }
-
-    }
-
-This class is then defined as service, like in following example :
-
-.. configuration-block::
-
-    .. code-block:: yaml
-
-       pim_import_export.reader.product:
-            class: '%pim_import_export.reader.product.class%'
-            arguments:
-                - '@pim_catalog.manager.product'
-
-Note that you can use any existing readers in your own connector.
+You can now create your own reader, processor or writer as services.
