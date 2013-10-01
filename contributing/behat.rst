@@ -15,7 +15,7 @@ These scenarios allow to :
 
 Install Behat
 -------------
-You can install Behat dependencies with composer.
+You can install Behat dependencies with composer (on pim-community-dev).
 
 .. code-block:: bash
 
@@ -33,6 +33,26 @@ Install Firefox 20.0
 In order to use Selenium RC, you must actually install `firefox 20.0`_.
 
 .. _firefox 20.0: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/20.0.1/
+
+Configure Behat
+---------------
+
+Setup the test environment, begin by copy and update the app/config/parameters_test.yml, then run :
+
+.. code-block:: bash
+  
+    $ ./install.sh all test
+
+Then copy behat.yml.dist to behat.yml, edit base_url parameter to match your host :
+
+.. code-block:: yaml
+
+    default:
+        ...
+        extensions:
+            Behat\MinkExtension\Extension:
+                ...
+                base_url: http://akeneo-pim.local/app_behat.php/
 
 Run features
 ------------
