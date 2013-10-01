@@ -1,14 +1,21 @@
 Setup Behat
 ===========
 
-The PIM comes with a set of Behat scenarios that :
+.. image:: /_themes/akeneo/static/behat-logo.png
+   :width: 150
+   :alt: Behat logo
+   :target: http://behat.org/
 
-* describe the PIM features and the expected behavior
-* ensure there is no regression from functional point of view
+The PIM comes with a set of Behat scenarios : https://github.com/akeneo/pim-community-dev/tree/master/features
+
+These scenarios allow to :
+
+* describe the PIM features and the expected behavior for a real user
+* ensure there is no regression from functional point of view during the development cycle
 
 Install Behat
 -------------
-You can install behat dependencies with composer. Dependencies are defined in Akeneo-PIM project.
+You can install Behat dependencies with composer.
 
 .. code-block:: bash
 
@@ -30,15 +37,17 @@ In order to use Selenium RC, you must actually install `firefox 20.0`_.
 Run features
 ------------
 
-So now you must launch Selenium like this :
+So now you can launch Selenium like this :
 
 .. code-block:: bash
 
   $ java -jar selenium-server-standalone-2.33.0.jar
 
 
-And in another terminal, you can launch behat tests from your repository :
+Then you can runs features :
 
 .. code-block:: bash
 
-  > ~/git/akeneo-pim$ ./bin/behat
+  > ~/git/pim-community-dev$ ./bin/behat
+
+More details and options on http://behat.org/

@@ -251,3 +251,9 @@ dl:hover:before {
 #search-results .context {
     display: none;
 }
+
+/* Behat page */
+#setup-behat .image-reference {
+    float: right;
+}
+
