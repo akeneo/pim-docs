@@ -59,6 +59,11 @@ quite straightforward for any developer with Doctrine experience.
         protected $country;
 
         /* Getters and setters... */
+
+        public function __toString()
+        {
+            return $this->code. ':' . $this->getName();
+        }
     }
 
 .. note::

@@ -20,5 +20,5 @@ specific attribute itself like the manufacturing country.
     * :doc:`creating_a_custom_entity`
 
 * Creating an attribute type linked to this custom entity
-    To be done...
+    * :doc:`association_with_product`
 
