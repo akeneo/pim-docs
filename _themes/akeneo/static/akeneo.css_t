@@ -182,8 +182,16 @@ pre {
     color: #888;
     margin-right: -6px;
 }
+td.linenos {
+   width: 35px;
+   min-width: 35px;
+}
 .highlighttable {
     width: 100%;
+}
+div[class^="highlight-"] {
+    max-width: 100%;
+    overflow: auto;
 }
 
 /* List styles */
@@ -243,3 +251,9 @@ dl:hover:before {
 #search-results .context {
     display: none;
 }
+
+/* Behat page */
+#setup-behat .image-reference {
+    float: right;
+}
+

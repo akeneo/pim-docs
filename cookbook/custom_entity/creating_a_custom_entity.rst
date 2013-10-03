@@ -135,7 +135,7 @@ Declaring the grid view action
 
 .. code-block:: php
     :linenos:
-                
+
     namespace Acme\Bundle\CustomEntityBundle\Controller;
 
     use Acme\Bundle\CustomEntityBundle\Entity\Manufacturer;
@@ -190,7 +190,7 @@ The ``Acme/Bundle/CustomEntityBundle/Resources/view/Manufacturer/index.html.twig
     :linenos:
 
     {% extends 'PimCatalogBundle::layout.html.twig' %}
-     
+
     {% set title = 'Manufacturers overview'|trans %}
 
     {% block head_script %}
@@ -201,7 +201,7 @@ The ``Acme/Bundle/CustomEntityBundle/Resources/view/Manufacturer/index.html.twig
     {% block content %}
 
     <div class="navigation clearfix navbar-extra navbar-extra-right">
-        {{ elements.page_header(title, null, null) }}                                                            
+        {{ elements.page_header(title, null, null) }}
     </div>
 
     <div id="manufacturer-grid"></div>
@@ -214,11 +214,11 @@ If some manufacturers are manually added to the database, the pagination will be
 empty, as there's no displayable fields defined yet.
 
 .. note::
-   Have a look at the Cookbook recipe "How to add an menu entry" to add your own link in the menu to this grid. 
+   Have a look at the Cookbook recipe "How to add an menu entry" to add your own link in the menu to this grid.
 
 Defining fields used in the grid
 ................................
-Fields must be specifically configured to be usable in the grid as columns, for filtering or for sorting. 
+Fields must be specifically configured to be usable in the grid as columns, for filtering or for sorting.
 In order to do that, the ``ManufacturerGridManager::configureFields`` method has to be overridden:
 
 .. code-block:: php
@@ -241,7 +241,7 @@ In order to do that, the ``ManufacturerGridManager::configureFields`` method has
             )
         );
 
-        $fieldsCollection->add($codeField);                                                                  
+        $fieldsCollection->add($codeField);
     }
 
 You should  now see the code column in the grid. You might notice as well that
@@ -296,7 +296,7 @@ What about a nice delete button on the grid line to quickly delete a manufacture
         )
     );
 
-We need to provide the identifying field inside the datagridmanager, as well as the route for the edit and delete 
+We need to provide the identifying field inside the datagridmanager, as well as the route for the edit and delete
 actions.
 
 .. code-block:: php
@@ -326,7 +326,7 @@ Adding a create button to the grid screen
 .........................................
 Now that the grid can display data from our manufacturers, let's add a create button to add a new manufacturer.
 
-Inside the ``index.html.twigi``, we replace the ``<div class="navigation">`` with this one:
+Inside the ``index.html.twig``, we replace the ``<div class="navigation">`` with this one:
 
 .. code-block:: html+jinja
     :linenos:
@@ -387,7 +387,7 @@ The edit and creation action
 
     /**
      * @Route("/create")
-     * @Template("AcmeCustomEntityBundle:Manufacturer:edit.html.twig") 
+     * @Template("AcmeCustomEntityBundle:Manufacturer:edit.html.twig")
      */
     public function createAction()
     {
@@ -432,7 +432,7 @@ The edit view
 .. code-block:: html+jinja
     :linenos:
 
-    {% extends 'PimCatalogBundle::layout.html.twig' %}                                                                                                                                                
+    {% extends 'PimCatalogBundle::layout.html.twig' %}
     {% set action = form.vars.value.id ? 'Edit' : 'Add' %}
 
     {% set title = action|trans ~ ' Manufacturer'|trans %}
@@ -519,7 +519,7 @@ with this one:
               null
           ) }}
       {% endset %}
-  
+
       {{ elements.page_header(title, buttons, null) }}
 
 

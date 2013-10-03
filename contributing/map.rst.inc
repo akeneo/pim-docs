@@ -1,3 +1,4 @@
+* :doc:`/contributing/contributing`
 * `Install development repository`_
 * :doc:`/contributing/behat`
 * :doc:`/contributing/service_definition`

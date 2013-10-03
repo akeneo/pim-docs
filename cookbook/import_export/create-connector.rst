@@ -29,65 +29,59 @@ Create a new bundle that extends Connector :
 .. code-block:: php
     :linenos:
 
-    namespace Acme\Bundle\MyBundle;
+    namespace Acme\Bundle\MyConnectorBundle;
 
     use Symfony\Component\DependencyInjection\ContainerBuilder;
-    use Pim\Bundle\BatchBundle\Connector\Connector;
+    use Oro\Bundle\BatchBundle\Connector\Connector;
 
-    class AcmeMyBundle extends Connector
+    class AcmeMyConnectorBundle extends Connector
     {
     }
 
-Create a Reader
----------------
-
-A reader is a class that :
-
-* extends AbstractConfigurableStepElement by adding a set of expected configuration fields
-* implements ItemReaderInterface
+Register the bundle in AppKernel :
 
 .. code-block:: php
     :linenos:
 
-    namespace Pim\Bundle\ImportExportBundle\Reader;
-
-    use Pim\Bundle\BatchBundle\Item\ItemReaderInterface;
-    use Pim\Bundle\ImportExportBundle\AbstractConfigurableStepElement;
-
-    class MyReader extends AbstractConfigurableStepElement implements ItemReaderInterface
+    public function registerBundles()
     {
-        protected $foo;
-
-        ...
-
-        public function getConfigurationFields()
-        {
-            // This configuration is used to display the reader form
-            return array(
-                'foo' => array(
-                    'type' => 'text',
-                    'required' => true,
-                    ...
-                )
-            );
-        }
-
-        public function read(StepExecution $stepExecution)
-        {
-            // The logic of your reader where you can use the configured $this->foo
-        }
-
+        // ...
+            new Acme\Bundle\MyConnectorBundle\AcmeMyConnectorBundle(),
+        // ...
     }
 
-This class is then defined as service, like in following example :
+Configure your connector
+------------------------
 
-.. configuration-block::
+Configure a job in Resource/config/jobs.yml :
 
-    .. code-block:: yaml
+.. code-block:: yaml
 
-       pim_import_export.reader.product:
-            class: '%pim_import_export.reader.product.class%'
-            arguments:
-                - '@pim_catalog.manager.product'
+    connector:
+        name: My Connector
+        jobs:
+           product_export:
+               title: acme_my_connector.jobs.product_export.title
+               type:  export
+               steps:
+                   export:
+                       title:     acme_my_connector.jobs.product_export.step.title
+                       reader:    pim_import_export.reader.product
+                       processor: pim_import_export.processor.heterogeneous_csv_serializer
+                       writer:    pim_import_export.writer.file
 
-Note that you can use any existing readers in your own connector.
+We use here some existing reader, processor and writer.
+
+Title keys can be translated in messages.yml
+
+.. code-block:: yaml
+
+    acme_my_connector:
+        jobs:
+            product_export:
+                title: Product export
+                step.title: Export
+
+Now if you refresh cache, your new export is useable in Spread > Export profile.
+
+You can now create your own reader, processor or writer as services.
