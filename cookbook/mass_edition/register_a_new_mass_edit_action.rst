@@ -14,9 +14,9 @@ The first step is to create a new class that implements ``MassEditAction``:
 
     namespace Acme\Bundle\DemoBundle\MassEditAction;
 
-    use Pim\Bundle\CatalogBundle\MassEditAction\MassEditAction;
+    use Pim\Bundle\CatalogBundle\MassEditAction\MassEditActionInterface;
 
-    class CapitalizeValues implements MassEditAction
+    class CapitalizeValues implements MassEditActionInterface
     {
         protected $attributeNames;
 
