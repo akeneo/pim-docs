@@ -5,12 +5,18 @@ We're glad to welcome contributions on Akeneo PIM !
 
 You can get involved by :
 
+* translate the application
 * contribute on documentation
 * report a bug on github
 * fix bugs
 * propose a technical enhancement
 * create a new connector
 * write a feature request
+
+Translate
+---------
+
+* Create an account and begin to translate on : http://crowdin.net/project/akeneo
 
 Contribute on documentation
 ---------------------------
