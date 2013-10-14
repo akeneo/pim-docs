@@ -1,7 +1,7 @@
-How to use the custom entity as an attribute type
-==================================================
+How to Use a Custom Entity as an Attribute Type
+===============================================
 
-Creating the attribute type
+Creating the Attribute Type
 ---------------------------
 
 .. code-block:: php
@@ -65,14 +65,15 @@ The following configuration must be loaded by your bundle extension:
         tags:
             - { name: oro_flexibleentity.attributetype, alias: acme_customentity_manufacturer_single_material }
 
-Overriding the product value to link it to the custom entity
+Overriding the Product Value to Link it to the Custom Entity
 ------------------------------------------------------------
-We now have a custom attribute type that will allow to select instance of our entity. But we still need to provide a way to link on the Doctrine side the product (via its product value), to the entity we have.
+We now have a custom attribute type that will allow to select instance of our entity, but we still need to provide a way
+to link the product to the entity we have on the Doctrine side (via its product value).
 
-So we need to provide a replacement for the native Akeneo ProductValue.
+For this, we need to provide a replacement to the native Akeneo ProductValue.
 Unfortunately, annotations of a parent class are not transmitted to the child class, so we cannot just
-extend from the native ProductValue and add the missing part.
-We need to copy and paste the whole class, and add the following bit:
+extend the native ProductValue and add the missing part.
+We need to copy and paste the whole class, and add the following lines:
 
 .. code-block:: php
     :linenos:
@@ -108,8 +109,8 @@ We need to copy and paste the whole class, and add the following bit:
     We are thinking about ways to avoid the copy paste of the full product value class, but we do not have
     a good working solution yet.
 
-Registering the new product value class to be used instead of the native one
-----------------------------------------------------------------------------
+Registering the New Product Value Class
+---------------------------------------
 Setting the Doctrine's resolve target option in  ``app/config/config.yml``
 
 .. code-block:: yaml
@@ -120,7 +121,7 @@ Setting the Doctrine's resolve target option in  ``app/config/config.yml``
             resolve_target_entities:
                 Pim\Bundle\CatalogBundle\Model\ProductValueInterface: Acme\Bundle\CustomEntityBundle\Entity\ProductValue
 
-We configure as well the FlexibleEntity Manager that is responsible for managing product.
+Configuring the FlexibleEntity Manager that is responsible for managing product:
 
 .. code-block:: yaml
     :linenos:

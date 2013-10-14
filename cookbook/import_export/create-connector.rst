@@ -1,7 +1,7 @@
 How to Create a New Connector
 =============================
 
-Like your catalog, your data sources, channels and the business rules to apply on data are unique.
+Like your catalog, your data sources, channels and business rules are unique.
 
 This is why a common task is to work on connectors to import and export the PIM data as expected.
 
@@ -50,7 +50,7 @@ Register the bundle in AppKernel :
         // ...
     }
 
-Configure your connector
+Configure your Connector
 ------------------------
 
 Configure a job in Resource/config/jobs.yml :
@@ -70,7 +70,7 @@ Configure a job in Resource/config/jobs.yml :
                        processor: pim_import_export.processor.heterogeneous_csv_serializer
                        writer:    pim_import_export.writer.file
 
-We use here some existing reader, processor and writer.
+We used here some existing readers, processors and writers.
 
 Title keys can be translated in messages.yml
 
@@ -82,6 +82,6 @@ Title keys can be translated in messages.yml
                 title: Product export
                 step.title: Export
 
-Now if you refresh cache, your new export is useable in Spread > Export profile.
+Now if you refresh cache, your new export is usable in Spread > Export profile.
 
 You can now create your own reader, processor or writer as services.

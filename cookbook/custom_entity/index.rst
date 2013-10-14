@@ -1,8 +1,8 @@
-How to create a custom entity and use it as a product attribute
+How to Create a Custom Entity and Use it as a Product Attribute
 ===============================================================
 
-Why creating a custom entity ?
-------------------------------
+Why Create a Custom Entity ?
+----------------------------
 
 In some cases, you may need to manage different entities than the one natively
 provided by Akeneo and link them to the products.

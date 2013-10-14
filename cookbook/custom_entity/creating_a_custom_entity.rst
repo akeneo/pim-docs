@@ -1,10 +1,10 @@
-How to create a custom entity and the screens to manage it
+How to Create a Custom Entity and the Screens to Manage it
 ==========================================================
 
-Creating the entity
+Creating the Entity
 -------------------
 
-As Akeneo relies heavily on standard tool like Doctrine, creating the entity is
+As Akeneo relies heavily on standard tools like Doctrine, creating the entity is
 quite straightforward for any developer with Doctrine experience.
 
 .. code-block:: php
@@ -68,21 +68,21 @@ quite straightforward for any developer with Doctrine experience.
 
 .. note::
     We've added a code attribute in order to get a non technical unique key.
-    We already have the id, which is the primary key. But this primary key
+    We already have the id, which is the primary key, but this primary key
     is really dependent of Akeneo, it's an internal id that does not carry any
-    meaning for the user. So the role of the code is to be a unique identifier
+    meaning for the user. The role of the code is to be a unique identifier
     that will make sense for the user and that will be used with other
     applications.
 
     In the very case of our manufacturer data, they will certainly come from
     the ERP, with their own code that we will store in this attribute.
 
-Creating the entity management screens
+Creating the Entity Management Screens
 --------------------------------------
-The grid
+The Grid
 ********
 
-The grid class
+The Grid Class
 ..............
 
 To benefit from the grid component (which comes natively with filtering and sorting),
@@ -106,7 +106,7 @@ a datagrid manager must be defined:
     {
     }
 
-Defining the service
+Defining the Service
 ....................
 This datagrid manager will be declared as a service and configured to link it to our manufacturer entity.
 
@@ -130,7 +130,7 @@ This datagrid manager will be declared as a service and configured to link it to
     Your bundle must declare an extension to load this datagrid.yml file
     (see http://symfony.com/doc/current/cookbook/bundles/extension.html for more information)
 
-Declaring the grid view action
+Declaring the Grid View Action
 ..............................
 
 .. code-block:: php
@@ -182,7 +182,7 @@ Declaring the grid view action
 
     }
 
-Defining the grid view
+Defining the Grid View
 ......................
 The ``Acme/Bundle/CustomEntityBundle/Resources/view/Manufacturer/index.html.twig`` file will contain:
 
@@ -216,8 +216,8 @@ empty, as there's no displayable fields defined yet.
 .. note::
    Have a look at the Cookbook recipe "How to add an menu entry" to add your own link in the menu to this grid.
 
-Defining fields used in the grid
-................................
+Defining the Fields which are Used in the Grid
+..............................................
 Fields must be specifically configured to be usable in the grid as columns, for filtering or for sorting.
 In order to do that, the ``ManufacturerGridManager::configureFields`` method has to be overridden:
 
@@ -253,7 +253,7 @@ Do not hesitate to look at the FilterInterface interface to have a list of avail
 Adding the name and country fields is left as an exercise for the reader ;)
 
 
-Defining row behavior and buttons
+Defining Row Behavior and Buttons
 ..................................
 
 What if we want to be redirected to the edit form when clicking on the line of a grid item ?
@@ -322,7 +322,7 @@ actions.
 
 
 
-Adding a create button to the grid screen
+Adding a Create Button to the Grid Screen
 .........................................
 Now that the grid can display data from our manufacturers, let's add a create button to add a new manufacturer.
 
@@ -344,7 +344,7 @@ Inside the ``index.html.twig``, we replace the ``<div class="navigation">`` with
         {{ elements.page_header(title, buttons, null) }}
     </div>
 
-Creating the form type for this entity
+Creating the Form Type for this Entity
 ......................................
 
 .. code-block:: php
@@ -380,8 +380,8 @@ Creating the form type for this entity
         }
     }
 
-The edit and creation action
-.....................................
+The Edit and Create actions
+...........................
 .. code-block:: php
     :linenos:
 
@@ -426,7 +426,7 @@ The edit and creation action
         )
     }
 
-The edit view
+The Edit View
 .............
 
 .. code-block:: html+jinja
@@ -501,7 +501,7 @@ The edit view
     {% endblock %}
 
 
-Adding a create button to the grid screen
+Adding a Create Button to the Grid Screen
 .........................................
 
 Now that we have a working edit screen, let's add a Create button on the grid view !
@@ -551,7 +551,7 @@ Adding a delete action
 
 Adding a CRSF protection by using the ``form.csrf_provider`` is left as an exercise for the reader ;)
 
-Adding a delete button in the grid
+Adding a Delete Button in the Grid
 ..................................
 
 In the ``ManufacturerGridManager::getRowActions``, let's add the following lines:

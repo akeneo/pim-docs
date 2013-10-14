@@ -1,43 +1,43 @@
 Contribute to Akeneo PIM
 ========================
 
-We're glad to welcome contributions on Akeneo PIM !
+We gladly welcome contributions on Akeneo PIM !
 
 You can get involved by :
 
-* translate the application
-* contribute on documentation
-* report a bug on github
-* fix bugs
-* propose a technical enhancement
-* create a new connector
-* write a feature request
+* translating the application
+* contributing to the documentation
+* reporting a bug on github
+* fixing bugs
+* proposing a technical enhancement
+* creating a new connector
+* submitting a feature request
 
-Translate
----------
+Translating
+-----------
 
 * Create an account and begin to translate on : http://crowdin.net/project/akeneo
 
-Contribute on documentation
----------------------------
+Contributing to the Documentation
+---------------------------------
 
 * Fork https://github.com/akeneo/pim-docs
 * Do a Pull Request
 
-Report a bug
-------------
+Reporting a Bug
+---------------
 
 * Check if this issue is already known : https://github.com/akeneo/pim-community-dev/issues 
 * Install https://github.com/akeneo/pim-community-dev master
 * Reproduce the bug
 * Create a new github issue that :
 
-  * uses title to clearly describe the issue
+  * clearly describe the issue in its title
   * describes the steps to reproduce the bug
   * gives information on your environment (OS, PHP version, browser)
 
-Fix a bug
----------
+Fixing a Bug
+------------
 
 * Check if this bug is well described as an issue
 * Discuss on the issue and announce that you're working on it
@@ -45,23 +45,23 @@ Fix a bug
 * Write the fix
 * Do a Pull Request that follows https://github.com/akeneo/pim-community-dev/blob/master/CONTRIBUTING.md
 
-Propose a technical enhancement
--------------------------------
+Proposing a Technical Enhancement
+---------------------------------
 
 * Fork https://github.com/akeneo/pim-community-dev
 * Describe the enhancement, write some sample code
 * Do a Pull Request that allows to discuss on the enhancement
 
-Create a new connector
-----------------------
+Creating a New Connector
+------------------------
 
 We're happy to connect the PIM with any third-party system !
 
 * Begin by check on the forum that nobody is writing the same connector : http://www.akeneo.com/forum/importexport-connectors/
 * Create your connector :doc:`/cookbook/import_export/create-connector`
 
-Write a feature request
------------------------
+Submitting a Feature Request
+----------------------------
 
 * you can propose any feature there http://www.akeneo.com/forum/feature-request/
 * after discussion this feature could be planned in our roadmap
