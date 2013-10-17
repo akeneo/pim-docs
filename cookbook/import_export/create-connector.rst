@@ -53,7 +53,7 @@ Register the bundle in AppKernel :
 Configure your Connector
 ------------------------
 
-Configure a job in Resource/config/jobs.yml :
+Configure a job in Resources/config/jobs.yml :
 
 .. code-block:: yaml
 
