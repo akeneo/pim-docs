@@ -57,17 +57,17 @@ Then copy behat.yml.dist to behat.yml, edit base_url parameter to match your hos
 Run features
 ------------
 
-So now you can launch Selenium like this :
+You can now launch Selenium by issuing the following command :
 
 .. code-block:: bash
 
   $ java -jar selenium-server-standalone-2.33.0.jar
 
 
-Then you can runs features :
+Feature tests can be run by issuing the following command :
 
 .. code-block:: bash
 
   > ~/git/pim-community-dev$ ./bin/behat
 
-More details and options on http://behat.org/
+More details and options are available on http://behat.org/

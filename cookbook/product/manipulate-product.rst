@@ -1,4 +1,4 @@
-How to programmatically manipulate products
+How to Programmatically Manipulate Products
 ===========================================
 
 Prerequisites
@@ -19,7 +19,7 @@ As stated above, the product manager is a service you can get from the symfony c
 
 In the following examples, we will use $pm as the product manager object.
 
-Create an attribute
+Create an Attribute
 -------------------
 
 * Create a text attribute
@@ -106,7 +106,7 @@ Keeping the color example, the option value `purple` is "Purple" in English and 
     $attribute->setTranslatable(true);
 
 
-Create a product
+Create a Product
 ----------------
 
 .. code-block:: php
@@ -114,10 +114,10 @@ Create a product
     // create a product
     $product = $pm->createFlexible();
 
-Enrich a product
+Enrich a Product
 ----------------
 
-* Set text value
+* Set Text Value
 
 .. code-block:: php
 
@@ -127,14 +127,14 @@ Enrich a product
     $productValue = $product->getSku();
     $sku = (string) $product->getSku();
 
-* Set option value
+* Set Option Value
 
 .. code-block:: php
 
    $product->setColor($opt1);
    echo $product->getColor(); // returns [purple]
 
-* Set localized value
+* Set Localized Value
 
 A product can have different values depending of the locale.
 We considers that the locales `en_US` and `fr_FR` are already created and activated.
@@ -149,10 +149,10 @@ We considers that the locales `en_US` and `fr_FR` are already created and activa
     $product->setLocale('fr_FR');
     echo $product->getName(); // returns "Mon nom"
 
-* Set scopable value
+* Set Scopable Value
 
-Akeneo PIM is a multi-channels application so you can define different scopes to use.
-We considers that channels `ecommerce` and `mobile` are already created.
+Akeneo PIM is a multi-channel application so you can define different scopes to use.
+We consider that channels `ecommerce` and `mobile` are already created.
 
 .. code-block:: php
 
@@ -166,7 +166,7 @@ We considers that channels `ecommerce` and `mobile` are already created.
     echo $product->getImageHd(); // returns "my_mobile_image"
 
 
-* Set localizable and scopable value
+* Set Localizable and Scopable Value
 
 .. code-block:: php
 
@@ -180,7 +180,7 @@ We considers that channels `ecommerce` and `mobile` are already created.
     echo $product->getShortDescription(); // returns "Ecommerce and en_US"
 
 
-Get a product
+Get a Product
 -------------
 
 .. code-block:: php
