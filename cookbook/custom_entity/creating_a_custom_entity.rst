@@ -179,7 +179,6 @@ Declaring the Grid View Action
 
             return $this->render($view, array('datagrid' => $datagrid->createView()));
         }
-
     }
 
 Defining the Grid View
@@ -438,10 +437,12 @@ The Edit View
     {% set title = action|trans ~ ' Manufacturer'|trans %}
 
     {% block content %}
-    <form action="{{ form.vars.value.id ?
-                    path('acme_customentity_manufacturer_edit', { id: form.vars.value.id }) :
-                    path('acme_customentity_manufacturer_create') }}" method="POST" class="form-horizontal">
-
+    {% if form.vars.value.id %}
+        {% set action = path('acme_customentity_manufacturer_edit', { id: form.vars.value.id }) %}
+    {% else %}
+        {% set action = path('acme_customentity_manufacturer_create') %}
+    {% endif %}
+    {{ form_start(form, { 'action': action }) }}
         <div class="navigation clearfix navbar-extra navbar-extra-right">
             <div class="row-fluid">
                 <div class="pull-right">
