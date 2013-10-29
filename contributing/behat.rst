@@ -43,7 +43,7 @@ included in the URL):
 
 .. code-block:: apache
 
-    <VirtualHost *:80>                                                                                        
+    <VirtualHost *:80>
         ServerName akeneo-pim-behat.local
 
         RewriteEngine On
@@ -67,8 +67,9 @@ included in the URL):
 
     </VirtualHost>
 
+.. note::
 
-Do not forget to update your `/etc/hosts` file to include the VirtualHost hostname:
+    Do not forget to update your ``/etc/hosts`` file to include the VirtualHost hostname:
 
 .. code-block:: bash
 
@@ -78,13 +79,13 @@ Do not forget to update your `/etc/hosts` file to include the VirtualHost hostna
 Configure Behat
 ---------------
 
-Setup the test environment, begin by copy and update the app/config/parameters_test.yml, then run :
+Setup the test environment, begin by copy and update the app/config/parameters_test.yml, then run:
 
 .. code-block:: bash
-  
+
     $ ./install.sh all test
 
-Then copy behat.yml.dist to behat.yml, edit base_url parameter to match your host :
+Then copy behat.yml.dist to behat.yml, edit base_url parameter to match your host:
 
 .. code-block:: yaml
 
@@ -98,14 +99,14 @@ Then copy behat.yml.dist to behat.yml, edit base_url parameter to match your hos
 Run features
 ------------
 
-You can now launch Selenium by issuing the following command :
+You can now launch Selenium by issuing the following command:
 
 .. code-block:: bash
 
   $ java -jar selenium-server-standalone-2.33.0.jar
 
 
-Feature tests can be run by issuing the following command :
+Feature tests can be run by issuing the following command:
 
 .. code-block:: bash
 
