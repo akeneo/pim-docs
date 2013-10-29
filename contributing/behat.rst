@@ -34,6 +34,47 @@ In order to use Selenium RC, you must actually install `firefox 20.0`_.
 
 .. _firefox 20.0: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/20.0.1/
 
+Create a VirtualHost
+--------------------
+To be sure to test in an environment as close as possible to a production environment,
+we need to define a specific VirtualHost with production RewriteRule (some limitations
+of Oro Platform does not allow to have production environment with the boostrap file
+included in the URL):
+
+.. code-block:: apache
+
+    <VirtualHost *:80>                                                                                        
+        ServerName akeneo-pim-behat.local
+
+        RewriteEngine On
+
+        DocumentRoot /home/akeneo/pim//web
+        <Directory /home/akeneo/pim/web>
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride None
+            Order allow,deny
+            allow from all
+        </Directory>
+
+        RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f
+        RewriteRule ^(.*) %{DOCUMENT_ROOT}/app_behat.php [QSA,L]
+
+        ErrorLog ${APACHE_LOG_DIR}/akeneo-pim-behat_error.log
+
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/akeneo-pim-behat_access.log combined
+
+    </VirtualHost>
+
+
+Do not forget to update your `/etc/hosts` file to include the VirtualHost hostname:
+
+.. code-block:: bash
+
+    127.0.0.1   akeneo-pim-behat.local
+
+
 Configure Behat
 ---------------
 
