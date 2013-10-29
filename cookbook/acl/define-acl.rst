@@ -84,6 +84,28 @@ There are two ways of defining the ACL:
             }
         }
 
+To use the **entity** ACL type, you mus also add a ``@Config`` annotation to your entitiy:
+
+    .. code-block:: php
+
+        // YourCustomBundle/Entity/CustomEntity.php
+        use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\Config;
+
+        /**
+         * @Config(
+         *  defaultValues={
+         *      "entity"={"label"="Custom entity", "plural_label"="Custom entities"},
+         *      "security"={
+         *          "type"="ACL",
+         *          "group_name"=""
+         *      }
+         *  }
+         * )
+         */
+        class CustomEntity
+        {
+        }
+
 For a more complete explanation of the ACL options, refer to `OroSecurityBundle`_.
 
 .. _OroSecurityBundle: https://github.com/orocrm/platform/tree/master/src/Oro/Bundle/SecurityBundle
