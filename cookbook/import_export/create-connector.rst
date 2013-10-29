@@ -12,7 +12,7 @@ Main Concepts
 
 A connector can be packaged as a Symfony bundle.
 
-It contains jobs as imports and exports.
+It contains jobs such as imports and exports.
 
 Each job is composed of steps, each step can contain a reader, a processor and a writer.
 
@@ -72,7 +72,7 @@ Configure a job in ``Resources/config/jobs.yml``:
 
 We used here some existing readers, processors and writers.
 
-Title keys can be translated in messages.yml
+Title keys can be translated in ``messages.yml``
 
 .. code-block:: yaml
 
@@ -82,6 +82,6 @@ Title keys can be translated in messages.yml
                 title: Product export
                 step.title: Export
 
-Now if you refresh cache, your new export is usable in Spread > Export profile.
+Now if you refresh cache, your new export can be found under Spread > Export profiles.
 
 You can now create your own reader, processor or writer as services.
