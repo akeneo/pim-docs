@@ -18,13 +18,13 @@ Each job is composed of steps, each step can contain a reader, a processor and a
 
 These items provide their expected configurations to be used.
 
-For instance, to import a CSV file as products, the reader reads each line, the processor transforms them into products, 
+For instance, to import a CSV file as products, the reader reads each line, the processor transforms them into products,
 and the writer then saves the products.
 
 Create a Bundle
 ---------------
 
-Create a new bundle that extends Connector :
+Create a new bundle that extends Connector:
 
 .. code-block:: php
     :linenos:
@@ -38,7 +38,7 @@ Create a new bundle that extends Connector :
     {
     }
 
-Register the bundle in AppKernel :
+Register the bundle in AppKernel:
 
 .. code-block:: php
     :linenos:
@@ -53,7 +53,7 @@ Register the bundle in AppKernel :
 Configure your Connector
 ------------------------
 
-Configure a job in Resources/config/jobs.yml :
+Configure a job in ``Resources/config/jobs.yml``:
 
 .. code-block:: yaml
 

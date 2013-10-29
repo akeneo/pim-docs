@@ -6,9 +6,9 @@ Setup Behat
    :alt: Behat logo
    :target: http://behat.org/
 
-The PIM comes with a set of Behat scenarios : https://github.com/akeneo/pim-community-dev/tree/master/features
+The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-community-dev/tree/master/features
 
-These scenarios allow to :
+These scenarios allow to:
 
 * describe the PIM features and the expected behavior for a real user
 * ensure there is no regression from functional point of view during the development cycle

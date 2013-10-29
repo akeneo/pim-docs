@@ -1,7 +1,7 @@
 How to Define my own Data Set with the Installer
 ================================================
 
-By default the PIM is setup with data defined into PimInstallerBundle, and overridden in PimDemoBundle
+By default the PIM is setup with data defined into ``PimInstallerBundle``, and overridden in ``PimDemoBundle``
 (if you use demo data).
 
 The following steps allow you to easily define your own basic entities when you install the PIM.
@@ -18,7 +18,7 @@ Disable the Demo Data Loading
 Create a Bundle
 ---------------
 
-Create a new bundle :
+Create a new bundle:
 
 .. code-block:: php
 
@@ -30,7 +30,7 @@ Create a new bundle :
     {
     }
 
-Register it into AppKernel.php :
+Register it into ``AppKernel.php``:
 
 .. code-block:: php
 
@@ -43,19 +43,19 @@ Register it into AppKernel.php :
 Add your own Data
 -----------------
 
-Add your pim_installer_*.yml files into the Resources/config/ of your bundle.
+Add your ``pim_installer_*.yml`` files into the ``Resources/config/`` of your bundle.
 
-You can define :
+You can define:
 
-* pim_installer_locales.yml
-* pim_installer_currencies.yml
-* pim_installer_categories.yml
-* pim_installer_channels.yml
-* pim_installer_attributes.yml
-* pim_installer_families.yml
-* pim_installer_groups.yml
+* ``pim_installer_locales.yml``
+* ``pim_installer_currencies.yml``
+* ``pim_installer_categories.yml``
+* ``pim_installer_channels.yml``
+* ``pim_installer_attributes.yml``
+* ``pim_installer_families.yml``
+* ``pim_installer_groups.yml``
 
-For example, to declare your own channels :
+For example, to declare your own channels:
 
 .. code-block:: yaml
 
@@ -70,12 +70,14 @@ For example, to declare your own channels :
         - USD
       tree: default
 
-Take a look to Pim/Bundle/InstallerBundle/Resource/config to see what is the expected format.
+.. tip::
+
+  Take a look at ``Pim/Bundle/InstallerBundle/Resource/config`` to see what is the expected format.
 
 Install the DB
 --------------
 
-You can now (re)install your database by running :
+You can now (re)install your database by running:
 
 .. code-block:: bash
 

@@ -17,9 +17,24 @@ To override these templates, you need to create 2 new files:
 - ``(AcmeCatalogBundle)/Resources/views/Product/_tab-panes.html.twig``
 
 .. code-block:: html+jinja
+    :linenos:
 
     {# _navbar.html.twig #}
-    {{ elements.form_navbar(['Categories', 'Attributes', 'Completeness', 'History', 'Custom tab']) }}
+    {% set form_tabs=["Attributes"] %}
+
+    {% if resource_granted("pim_catalog_product_categories_view") %}
+        {% set form_tabs = form_tabs|merge(['Categories']) %}
+    {% endif %}
+
+    {% if associations is not empty and resource_granted("pim_catalog_product_categories_view") %}
+        {% set form_tabs = form_tabs|merge(['Associations']) %}
+    {% endif %}
+
+    {# Let's add a new tab here #}
+    {% set form_tabs = form_tabs|merge(['Custom tab']) %}
+
+    {% set form_tabs = form_tabs|merge(['Completeness', 'History']) %}
+    {{ elements.form_navbar(form_tabs) }}
 
 .. code-block:: html+jinja
     :linenos:
@@ -30,9 +45,17 @@ To override these templates, you need to create 2 new files:
         {% include 'PimCatalogBundle:Product:_attributes.html.twig' %}
     </div>
 
-    <div class="tab-pane" id="categories">
-       {% include 'PimCatalogBundle:Product:_associateCategories.html.twig' %}
-    </div>
+    {% if resource_granted("pim_catalog_product_categories_view") %}
+        <div class="tab-pane" id="categories">
+           {% include 'PimCatalogBundle:Product:_associateCategories.html.twig' %}
+        </div>
+    {% endif %}
+
+    {% if associations is not empty and resource_granted("pim_catalog_product_associations_view") %}
+        <div class="tab-pane" id="associations">
+           {% include 'PimCatalogBundle:Product:_associations.html.twig' %}
+        </div>
+    {% endif %}
 
     <div class="tab-pane" id="completeness">
        {% include 'PimCatalogBundle:Product:_completeness.html.twig' %}
@@ -59,9 +82,4 @@ To override these templates, you need to create 2 new files:
     (transformed to lowercase and spaces replaced with dashes)
 
 If you would like to have a different order in the tab panes, simply reorder the arguments passed to
-``elements.form_navbar``:
-
-.. code-block:: html+jinja
-
-    {# _navbar.html.twig #}
-    {{ elements.form_navbar(['Categories', 'Custom tab', 'Attributes', 'Completeness', 'History']) }}
+``elements.form_navbar``.

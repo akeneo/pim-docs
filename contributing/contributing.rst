@@ -3,7 +3,7 @@ Contribute to Akeneo PIM
 
 We gladly welcome contributions on Akeneo PIM !
 
-You can get involved by :
+You can get involved by:
 
 * translating the application
 * contributing to the documentation
@@ -16,7 +16,7 @@ You can get involved by :
 Translating
 -----------
 
-* Create an account and begin to translate on : http://crowdin.net/project/akeneo
+* Create an account and begin to translate on: http://crowdin.net/project/akeneo
 
 Contributing to the Documentation
 ---------------------------------
@@ -27,10 +27,10 @@ Contributing to the Documentation
 Reporting a Bug
 ---------------
 
-* Check if this issue is already known : https://github.com/akeneo/pim-community-dev/issues 
+* Check if this issue is already known: https://github.com/akeneo/pim-community-dev/issues
 * Install https://github.com/akeneo/pim-community-dev master
 * Reproduce the bug
-* Create a new github issue that :
+* Create a new github issue that:
 
   * clearly describe the issue in its title
   * describes the steps to reproduce the bug
@@ -57,7 +57,7 @@ Creating a New Connector
 
 We're happy to connect the PIM with any third-party system !
 
-* Begin by check on the forum that nobody is writing the same connector : http://www.akeneo.com/forum/importexport-connectors/
+* Begin by check on the forum that nobody is writing the same connector: http://www.akeneo.com/forum/importexport-connectors/
 * Create your connector :doc:`/cookbook/import_export/create-connector`
 
 Submitting a Feature Request

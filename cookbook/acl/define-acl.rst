@@ -6,7 +6,7 @@ The access control list is editable on each user's role.
 Define on each Controller Actions
 ---------------------------------
 
-You can define a resource for the controller itself and for each action as in the following example :
+You can define a resource for the controller itself and for each action as in the following example:
 
 .. code-block:: php
 
@@ -51,7 +51,7 @@ Each time you access the related route, the system checks if you have the right 
 Check into a Twig Template
 --------------------------
 
-You can explicitely check if you're allowed to access to a resource in a a twig template :
+You can explicitely check if you're allowed to access to a resource in a a twig template:
 
 .. code-block:: jinja
 

@@ -25,7 +25,7 @@ Product Attribute
 
 An attribute defines the type and the properties of a value.
 
-Native types are :
+Native types are:
 
 * identifier, ex: the SKU
 * text, ex: the name
@@ -46,13 +46,13 @@ An attribute with an activated localized property has different values for each 
 
 A scoped attribute has different value for each channel, eg: e-commerce and mobile
 
-An attribute can be localized and scoped, and therefore have different values for each combination of locale and 
+An attribute can be localized and scoped, and therefore have different values for each combination of locale and
 channel, eg: e-commerce - French, e-commerce English, etc.
 
 Family and Completeness
 -----------------------
 
-The family defines the list of attributes of a product, you can also add some optional attributes for a dedicated 
+The family defines the list of attributes of a product, you can also add some optional attributes for a dedicated
 product.
 
 Note that, except the identifier attribute (usually the SKU), there is no required attribute for a product.

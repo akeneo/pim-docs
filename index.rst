@@ -7,7 +7,7 @@ efficient answers to their multichannel needs.
 Quick start
 -----------
 
-Install the PIM :
+Install the PIM:
 
 .. toctree::
    :hidden:
@@ -17,7 +17,7 @@ Install the PIM :
 Cookbook
 --------
 
-Customize the PIM to fit your needs :
+Customize the PIM to fit your needs:
 
 .. toctree::
    :hidden:
@@ -27,7 +27,7 @@ Customize the PIM to fit your needs :
 References
 ----------
 
-Understand some core concepts :
+Understand some core concepts:
 
 .. toctree::
    :hidden:
@@ -38,7 +38,7 @@ Understand some core concepts :
 Contributing
 ------------
 
-Contribute to Akeneo PIM :
+Contribute to Akeneo PIM:
 
 .. toctree::
    :hidden:
@@ -48,7 +48,7 @@ Contribute to Akeneo PIM :
 Bundles
 -------
 
-PIM bundles :
+PIM bundles:
 
 .. include:: /bundles/index.rst
 

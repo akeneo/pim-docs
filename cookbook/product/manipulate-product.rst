@@ -10,14 +10,14 @@ This part of the application extends the `Oro Platform`_ bundle named `FlexibleE
 .. _FlexibleEntityBundle: https://magecore.atlassian.net/wiki/display/DOC/OroFlexibleEntityBundle
 .. _Oro Platform: http://www.orocrm.com/oro-platform
 
-As stated above, the product manager is a service you can get from the symfony container :
+As stated above, the product manager is a service you can get from the symfony container:
 
 .. code-block:: php
 
     $this->container->get('pim_catalog.manager.product');
 
 
-In the following examples, we will use $pm as the product manager object.
+In the following examples, we will use ``$pm`` as the product manager object.
 
 Create an Attribute
 -------------------
@@ -57,7 +57,7 @@ For instance, this example creates a color attribute with a list of predefined o
 
 * Create a simple select attribute with translatable values
 
-Keeping the color example, the option value `purple` is "Purple" in English and "Violet" in French.
+Keeping the color example, the value of the option **purple** is "Purple" in English and "Violet" in French.
 
 .. code-block:: php
 
@@ -99,7 +99,7 @@ Keeping the color example, the option value `purple` is "Purple" in English and 
 
 .. code-block:: php
 
-    // create a localizable attribute
+    // create a localizable and scopable attribute
     $attribute = $pm->createAttribute('pim_catalog_textarea');
     $attribute->setCode('short_description');
     $attribute->setScopable(true);
@@ -137,7 +137,7 @@ Enrich a Product
 * Set Localized Value
 
 A product can have different values depending of the locale.
-We considers that the locales `en_US` and `fr_FR` are already created and activated.
+We considers that the locales **en_US** and **fr_FR** are already created and activated.
 
 .. code-block:: php
 
@@ -152,7 +152,7 @@ We considers that the locales `en_US` and `fr_FR` are already created and activa
 * Set Scopable Value
 
 Akeneo PIM is a multi-channel application so you can define different scopes to use.
-We consider that channels `ecommerce` and `mobile` are already created.
+We consider that channels **ecommerce** and **mobile** are already created.
 
 .. code-block:: php
 
