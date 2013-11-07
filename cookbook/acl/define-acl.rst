@@ -84,7 +84,7 @@ There are two ways of defining the ACL:
             }
         }
 
-To use the **entity** ACL type, you mus also add a ``@Config`` annotation to your entitiy:
+To use the **entity** ACL type, you must also add a ``@Config`` annotation to your entity:
 
     .. code-block:: php
 
