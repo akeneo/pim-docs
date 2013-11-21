@@ -173,10 +173,8 @@ This datagrid manager will be declared as a service and configured to link it to
     .. code-block:: yaml
         :linenos:
 
-        # src/Acme/Bundle/CustomEntityBundle/Resources/config/datagrid.yml
+        # src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
         parameters:
-            pim_catalog.datagrid.manager.product.class: Pim\Bundle\IcecatDemoBundle\Datagrid\ProductDatagridManager
-            pim_catalog.datagrid.manager.association_product_datagrid.class: Pim\Bundle\IcecatDemoBundle\Datagrid\AssociationProductDatagridManager
             pim_icecatdemo.datagrid.manager.vendor.class: Pim\Bundle\IcecatDemoBundle\Datagrid\VendorDatagridManager
 
         services:
@@ -329,7 +327,7 @@ A complete CRUD can be easily obtained by defining a service for its configurati
     .. code-block:: yaml
         :linenos:
 
-        # src/Acme/Bundle/CustomEntityBundle/Resources/config/custom_entities.yml
+        # src/Pim/Bundle/IcecatDemoBundle/Resources/config/custom_entities.yml
         services:
             pim_icecat_demo.custom_entity.configuration:
                 class: '%pim_custom_entity.configuration.default.class%'
