@@ -1,6 +1,9 @@
 How to Create a Custom Entity and the Screens to Manage it
 ==========================================================
 
+.. note::
+    The code inside this cookbook entry is visible in the IcecatDemoBundle_.
+
 Creating the Entity
 -------------------
 
@@ -10,22 +13,23 @@ quite straightforward for any developer with Doctrine experience.
 .. code-block:: php
     :linenos:
 
-    namespace Acme\Bundle\CustomEntity\Entity;
+    namespace Pim\Bundle\IcecatDemoBundle\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
     use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+    use Symfony\Component\Validator\Constraints as Assert;
 
     /**
-     * Manufacturer entity
+     * Vendor entity
      *
      * @ORM\Entity
      * @ORM\Table(
-     *     name="acme_customentity_manufacturer",
-     *     uniqueConstraints={@ORM\UniqueConstraint(name="acme_customentity_manufacturer_code_uc", columns={"code"})}
+     *     name="pim_icecatdemo_vendor",
+     *     uniqueConstraints={@ORM\UniqueConstraint(name="pim_icecatdemo_vendor_code", columns={"code"})}
      * )
-     * @UniqueEntity(fields="code", message="This manufacturer code is already used.")
+     * @UniqueEntity(fields="code", message="This code is already taken")
      */
-    class Manufacturer
+    class Vendor
     {
         /**
          * @var integer $id
@@ -40,34 +44,86 @@ quite straightforward for any developer with Doctrine experience.
          * @var string $code
          *
          * @ORM\Column(name="code", type="string", length=100)
+         * @Assert\Regex(pattern="/^[a-zA-Z0-9_]+$/")
+         * @Assert\Length(max=100, min=1)
          */
         protected $code;
 
         /**
-         * @var string $name
+         * @var string $label
          *
-         * @ORM\Column(name="name", type="string", length=255)
+         * @ORM\Column(name="label", type="string", length=250, nullable=false)
+         * @Assert\Length(max=250, min=1)
          */
-        protected $name;
-
+        protected $label;
 
         /**
-         * @var string $country
+         * Get id
          *
-         * @ORM\Column(name="country", type="string", length=150)
+         * @return int
          */
-        protected $country;
+        public function getId()
+        {
+            return $this->id;
+        }
 
-        /* Getters and setters... */
+        /**
+         * Get code
+         *
+         * @return string
+         */
+        public function getCode()
+        {
+            return $this->code;
+        }
 
+        /**
+         * Get label
+         *
+         * @return string
+         */
+        public function getLabel()
+        {
+            return $this->label;
+        }
+
+        /**
+         * Set code
+         *
+         * @param  string $code
+         * @return Vendor
+         */
+        public function setCode($code)
+        {
+            $this->code = $code;
+
+            return $this;
+        }
+
+        /**
+         * Set label
+         *
+         * @param  string $label
+         * @return Vendor
+         */
+        public function setLabel($label)
+        {
+            $this->label = $label;
+
+            return $this;
+        }
+
+        /**
+         * {@inheritdoc}
+         */
         public function __toString()
         {
-            return $this->code. ':' . $this->getName();
+            return $this->code;
         }
     }
 
 .. note::
-    We've added a code attribute in order to get a non technical unique key.
+    We have added a code attribute in order to get a non technical unique key.
     We already have the id, which is the primary key, but this primary key
     is really dependent of Akeneo, it's an internal id that does not carry any
     meaning for the user. The role of the code is to be a unique identifier
@@ -91,18 +147,20 @@ a datagrid manager must be defined:
 .. code-block:: php
     :linenos:
 
-    namespace Acme\Bundle\CustomEntity\Datagrid;
+    namespace Pim\Bundle\IcecatDemoBundle\Datagrid;
 
-    use Oro\Bundle\GridBundle\Datagrid\DatagridManager;
+    use Oro\Bundle\GridBundle\Action\ActionInterface;
+    use Oro\Bundle\GridBundle\Filter\FilterInterface;
     use Oro\Bundle\GridBundle\Field\FieldDescription;
     use Oro\Bundle\GridBundle\Field\FieldDescriptionCollection;
     use Oro\Bundle\GridBundle\Field\FieldDescriptionInterface;
-    use Oro\Bundle\GridBundle\Filter\FilterInterface;
-    use Oro\Bundle\GridBundle\Action\ActionInterface;
-    use Oro\Bundle\GridBundle\Property\FieldProperty;
-    use Oro\Bundle\GridBundle\Property\UrlProperty;
+    use Pim\Bundle\CustomEntityBundle\Datagrid\DatagridManager;
 
-    class ManufacturerDatagridManager extends DatagridManager
+    /**
+     * Domain datagrid manager
+     *
+     */
+    class VendorDatagridManager extends DatagridManager
     {
     }
 
@@ -116,121 +174,46 @@ This datagrid manager will be declared as a service and configured to link it to
         :linenos:
 
         # src/Acme/Bundle/CustomEntityBundle/Resources/config/datagrid.yml
+        parameters:
+            pim_catalog.datagrid.manager.product.class: Pim\Bundle\IcecatDemoBundle\Datagrid\ProductDatagridManager
+            pim_catalog.datagrid.manager.association_product_datagrid.class: Pim\Bundle\IcecatDemoBundle\Datagrid\AssociationProductDatagridManager
+            pim_icecatdemo.datagrid.manager.vendor.class: Pim\Bundle\IcecatDemoBundle\Datagrid\VendorDatagridManager
+
         services:
-            acme_customentity.datagrid.manager.manufacturer:
-                class: Acme\Bundle\CustomEntity\Datagrid\ManufacturerDatagridManager
-                tags:
-                    - name:          oro_grid.datagrid.manager
-                      datagrid_name: manufacturers
-                      entity_hint:   manufacturers
-                      route_name:    acme_customentity_manufacturer_index
+            pim_icecatdemo.datagrid.manager.vendor:
+                    class: '%pim_icecatdemo.datagrid.manager.vendor.class%'
+                    tags:
+                        - name:               oro_grid.datagrid.manager
+                          datagrid_name:      vendors
+                          entity_hint:        vendors
+                          route_name:         pim_customentity_index
+                          custom_entity_name: vendor
+
 
 .. note::
 
     Your bundle must declare an extension to load this datagrid.yml file
     (see http://symfony.com/doc/current/cookbook/bundles/extension.html for more information)
 
-Declaring the Grid View Action
-..............................
-
-.. code-block:: php
-    :linenos:
-
-    namespace Acme\Bundle\CustomEntityBundle\Controller;
-
-    use Acme\Bundle\CustomEntityBundle\Entity\Manufacturer;
-
-    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-    use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Component\HttpFoundation\Response;
-
-
-    /**
-     * @Route("/manufacturer")
-     */
-    class ManufacturerController extends Controller
-    {
-        /**
-         * @Route(
-         *     "/.{_format}",
-         *     requirements={"_format" = "html|json"},
-         *     defaults={"_format" = "html"}
-         * )
-         */
-        public function indexAction(Request $request)
-        {
-            $queryBuilder = $this->get('doctrine')->getManager()->createQueryBuilder();
-            $queryBuilder->select('m')->from('AcmeCustomEntityBundle:Manufacturer', 'm');
-
-            $queryFactory = $this->get('acme_customentity.datagrid.manager.manufacturer.default_query_factory');
-            $queryFactory->setQueryBuilder($queryBuilder);
-
-            $datagridManager = $this->get('acme_customentity.datagrid.manager.manufacturer');
-            $datagrid = $datagridManager->getDatagrid();
-
-            if ( $request->getRequestFormat() === 'json') {
-                $view = 'OroGridBundle:Datagrid:list.json.php';
-            } else {
-                $view = 'AcmeCustomEntityBundle:Manufacturer:index.html.twig';
-            }
-
-            return $this->render($view, array('datagrid' => $datagrid->createView()));
-        }
-    }
-
-Defining the Grid View
-......................
-The ``Acme/Bundle/CustomEntityBundle/Resources/view/Manufacturer/index.html.twig`` file will contain:
-
-.. code-block:: html+jinja
-    :linenos:
-
-    {% extends 'PimCatalogBundle::layout.html.twig' %}
-
-    {% set title = 'Manufacturers overview'|trans %}
-
-    {% block head_script %}
-        {{ parent() }}
-        {% include 'OroGridBundle:Include:javascript.html.twig' with {'datagridView': datagrid, 'selector': '#manufacturer-grid'} %}
-    {% endblock %}
-
-    {% block content %}
-
-    <div class="navigation clearfix navbar-extra navbar-extra-right">
-        {{ elements.page_header(title, null, null) }}
-    </div>
-
-    <div id="manufacturer-grid"></div>
-    {% endblock %}
-
-From this point a working grid screen is visible at ``/app_dev.php/custom-entity/manufacturer`` (where ``custom-entity`` is the
-route prefix used for the bundle).
-
-If some manufacturers are manually added to the database, the pagination will be visible as well, but the grid will still be
-empty, as there's no displayable fields defined yet.
-
-.. note::
-   Have a look at the Cookbook recipe "How to add an menu entry" to add your own link in the menu to this grid.
+    The ProductDatagridManager and AssociationProductDatagridManager also have to be overriden by changing the 
+    parameters containing the name of their classes.
 
 Defining the Fields which are Used in the Grid
 ..............................................
 Fields must be specifically configured to be usable in the grid as columns, for filtering or for sorting.
-In order to do that, the ``ManufacturerGridManager::configureFields`` method has to be overridden:
+In order to do that, the ``VendorGridManager::configureFields`` method has to be overridden:
 
 .. code-block:: php
     :linenos:
 
     public function configureFields(FieldDescriptionCollection $fieldsCollection)
     {
-        $codeField = new FieldDescription();
-        $codeField->setName('code');
-        $codeField->setOptions(
+        $field = new FieldDescription();
+        $field->setName('code');
+        $field->setOptions(
             array(
                 'type'        => FieldDescriptionInterface::TYPE_TEXT,
-                'label'       => $this->translate("Code"),
+                'label'       => $this->translate('Code'),
                 'field_name'  => 'code',
                 'filter_type' => FilterInterface::TYPE_STRING,
                 'required'    => false,
@@ -240,16 +223,17 @@ In order to do that, the ``ManufacturerGridManager::configureFields`` method has
             )
         );
 
-        $fieldsCollection->add($codeField);
+        $fieldsCollection->add($field);
     }
 
 You should  now see the code column in the grid. You might notice as well that
 a filter for the code is available and the column is sortable too, as defined by the field's options.
 
-Adding a field to the grid is pretty simple and the options are self explanatory.
-Do not hesitate to look at the FilterInterface interface to have a list of available filter types, which are pretty complete.
+Adding a field to the grid is pretty simple and the options are self explanatory. Some more fields are defined inside 
+the _IcecatDemoBundle if you need more examples.
+Do not hesitate to look at the FilterInterface interface to have a list of available filter types, which are pretty 
+complete. 
 
-Adding the name and country fields is left as an exercise for the reader ;)
 
 
 Defining Row Behavior and Buttons
@@ -257,7 +241,7 @@ Defining Row Behavior and Buttons
 
 What if we want to be redirected to the edit form when clicking on the line of a grid item ?
 
-In order to do that, the ``ManufacturerDatagridManager::getRowActions`` method is overridden:
+In order to do that, the ``VendorDatagridManager::getRowActions`` method is overridden:
 
 .. code-block:: php
     :linenos:
@@ -279,7 +263,7 @@ In order to do that, the ``ManufacturerDatagridManager::getRowActions`` method i
         return array($clickAction);
     }
 
-What about a nice delete button on the grid line to quickly delete a manufacturer ?
+What about a nice delete button on the grid line to quickly delete a vendor ?
 
 .. code-block:: php
     :linenos:
@@ -287,7 +271,6 @@ What about a nice delete button on the grid line to quickly delete a manufacture
     $deleteAction = array(
         'name'         => 'delete',
         'type'         => ActionInterface::TYPE_DELETE,
-        'acl_resource' => 'root',
         'options'      => array(
             'label' => $this->translate('Delete'),
             'icon'  => 'trash',
@@ -295,53 +278,6 @@ What about a nice delete button on the grid line to quickly delete a manufacture
         )
     );
 
-We need to provide the identifying field inside the datagridmanager, as well as the route for the edit and delete
-actions.
-
-.. code-block:: php
-    :linenos:
-
-    protected function getProperties()
-    {
-        $fieldId = new FieldDescription();
-        $fieldId->setName('id');
-        $fieldId->setOptions(
-            array(
-                'type'     => FieldDescriptionInterface::TYPE_INTEGER,
-                'required' => true,
-            )
-        );
-
-        return array(
-            new FieldProperty($fieldId),
-            new UrlProperty('edit_link', $this->router, 'acme_customentity_manufacturer_edit', array('id')),
-            new UrlProperty('delete_link', $this->router, 'acme_customentity_manufacturer_delete', array('id'))
-        );
-    }
-
-
-
-Adding a Create Button to the Grid Screen
-.........................................
-Now that the grid can display data from our manufacturers, let's add a create button to add a new manufacturer.
-
-Inside the ``index.html.twig``, we replace the ``<div class="navigation">`` with this one:
-
-.. code-block:: html+jinja
-    :linenos:
-
-    <div class="navigation clearfix navbar-extra navbar-extra-right">
-        {% set buttons %}
-            {{ elements.createBtn(
-                'New manufacturer',
-                path('acme_customentity_manufacturer_create'),
-                'create-manufacturer',
-                null
-            ) }}
-        {% endset %}
-
-        {{ elements.page_header(title, buttons, null) }}
-    </div>
 
 Creating the Form Type for this Entity
 ......................................
@@ -349,236 +285,70 @@ Creating the Form Type for this Entity
 .. code-block:: php
     :linenos:
 
-    namespace Acme\Bundle\CustomEntityBundle\Form\Type;
-
-    use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-    use Symfony\Component\Form\FormBuilderInterface;
-    use Symfony\Component\Form\AbstractType;
-
-    class ManufacturerType extends AbstractType
-    {
+        class VendorType extends AbstractType
+        {
+        /**
+         * {@inheritdoc}
+         */
         public function buildForm(FormBuilderInterface $builder, array $options)
         {
-            $builder->add('code');
-            $builder->add('name', null, array('required' => false));
-            $builder->add('country');
+            $builder->add('code', 'text');
+            $builder->add('label', 'text');
         }
 
+        /**
+         * {@inheritdoc}
+         */
         public function setDefaultOptions(OptionsResolverInterface $resolver)
         {
             $resolver->setDefaults(
                 array(
-                    'data_class' => 'Acme\Bundle\CustomEntityBundle\Entity\Manufacturer'
+                    'data_class' => 'Pim\Bundle\IcecatDemoBundle\Entity\Vendor',
                 )
             );
         }
 
+        /**
+         * {@inheritdoc}
+         */
         public function getName()
         {
-            return 'acme_customentity_manufacturer';
+            return 'pim_icecatdemo_vendor';
         }
     }
 
-The Edit and Create actions
-...........................
-.. code-block:: php
-    :linenos:
-
-    /**
-     * @Route("/create")
-     * @Template("AcmeCustomEntityBundle:Manufacturer:edit.html.twig")
-     */
-    public function createAction()
-    {
-        return $this->editAction(new Manufacturer());
-    }
-
-    /**
-     * @Route(
-     *     "/edit/{id}",
-     *     requirements={"id"="\d+"},
-     *     defaults={"id"=0}
-     * )
-     * @Template("AcmeCustomEntityBundle:Manufacturer:edit.html.twig")
-     */
-    public function editAction(Manufacturer $manufacturer)
-    {
-        $formType = new ManufacturerType();
-        $form = $this->createForm($formType, $manufacturer);
-
-        if ($this->getRequest()->isMethod('POST')) {
-            $form->bind($this->getRequest());
-
-            if ($form->isValid()) {
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($manufacturer);
-                $entityManager->flush();
-
-                $this->get('session')->getFlashBag()->add('success', 'Manufacturer successfully saved');
-
-                return $this->redirect($this->generateUrl('acme_customentity_manufacturer_index'));
-            }
-        }
-
-        return array(
-            'form' => $form->createView()
-        )
-    }
-
-The Edit View
-.............
-
-.. code-block:: html+jinja
-    :linenos:
-
-    {% extends 'PimCatalogBundle::layout.html.twig' %}
-    {% set action = form.vars.value.id ? 'Edit' : 'Add' %}
-
-    {% set title = action|trans ~ ' Manufacturer'|trans %}
-
-    {% block content %}
-    {% if form.vars.value.id %}
-        {% set action = path('acme_customentity_manufacturer_edit', { id: form.vars.value.id }) %}
-    {% else %}
-        {% set action = path('acme_customentity_manufacturer_create') %}
-    {% endif %}
-    {{ form_start(form, { 'action': action }) }}
-        <div class="navigation clearfix navbar-extra navbar-extra-right">
-            <div class="row-fluid">
-                <div class="pull-right">
-                    <div class="pull-right">
-                        <div class="btn-group icons-holder">
-                            <a class="btn"
-                                href="{{ path('acme_customentity_manufacturer_index') }}"
-                                title="{{ 'Back to grid' | trans }}"><i class="icon-chevron-left"></i></a>
-                        </div>
-                        <div class="btn-group">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="hide-text">Save </i> {{ ' Save'|trans }}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="pull-left">
-                    <div class="navbar-content pull-left">
-                        <div class="navbar-title clearfix-oro">
-                            <div class="sub-title">{{ title }}</div>
-                        </div>
-                   </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row-fluid">
-            {% if form.vars.errors|length %}
-                <div class="alert alert-error">
-                    {{ form_errors(form) }}
-                </div>
-            {% endif %}
-
-            <div id="accordion1" class="accordion">
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle"
-                            data-toggle="collapse"
-                            data-parent="#accordion1"
-                            href="#collapseOne">
-                            <i class="icon-collapse-alt"></i>
-                            {{ "Manufacturer Properties"|trans }}
-                        </a>
-                    </div>
-                    <div id="collapseOne" class="accordion-body in">
-                        <div class="accordion-inner">
-                            {{ form_row(form.code) }}
-                            {{ form_row(form.name) }}
-                            {{ form_row(form.country) }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{ form_row(form._token) }}
-    </form>
-    {% endblock %}
 
 
-Adding a Create Button to the Grid Screen
-.........................................
+Creating the CRUD
+.................
 
-Now that we have a working edit screen, let's add a Create button on the grid view !
-So in the ``Resources/Manufacturer/index.html.twig``, let's replace the call to the ``elements.page_header`` macro
-with this one:
+A complete CRUD can be easily obtained by defining a service for its configuration :
 
-.. code-block:: html+jinja
-    :linenos:
+.. configuration-block::
 
-      {% set buttons %}
-          {{ elements.createBtn(
-              'New manufacturer',
-              path('acme_customentity_manufacturer_create'),
-              'create-manufacturer',
-              null
-          ) }}
-      {% endset %}
+    .. code-block:: yaml
+        :linenos:
 
-      {{ elements.page_header(title, buttons, null) }}
+        # src/Acme/Bundle/CustomEntityBundle/Resources/config/custom_entities.yml
+        services:
+            pim_icecat_demo.custom_entity.configuration:
+                class: '%pim_custom_entity.configuration.default.class%'
+                arguments:
+                    - vendor
+                    - '@pim_custom_entity.manager.orm'
+                    - '@pim_custom_entity.controller.strategy.datagrid'
+                    - entity_class:         Pim\Bundle\IcecatDemoBundle\Entity\Vendor
+                      edit_form_type:       pim_icecatdemo_vendor
+                      datagrid_namespace:   pim_icecatdemo
+                tags:
+                    - { name: pim_custom_entity.configuration }
 
 
-Adding a delete action
-......................
+From this point a working grid screen is visible at ``/app_dev.php/enrich/vendor``.
 
-.. code-block:: php
-    :linenos:
+If some vendors are manually added to the database, the pagination will be visible as well.
 
-    /**
-     * @Method({"delete"})
-     * @Route("/remove/{id}", requirements={"id"="\d+"})
-     */
-    public function removeAction(Manufacturer $manufacturer)
-    {
-        $entityManager = $this->get('doctrine')->getManager();
+.. note::
+   Have a look at the Cookbook recipe "How to add an menu entry" to add your own link in the menu to this grid.
 
-        $entityManager->remove($manufacturer);
-        $entityManager->flush();
-
-        $this->get('session')->getFlashBag()->add('success', 'Manufacturer successfully removed');
-
-        if ($this->getRequest()->isXmlHttpRequest()) {
-            return new Response('', 204);
-        } else {
-            return $this->redirect($this->generateUrl('acme_customentity_manufacturer_index'));
-        }
-    }
-
-Adding a CRSF protection by using the ``form.csrf_provider`` is left as an exercise for the reader ;)
-
-Adding a Delete Button in the Grid
-..................................
-
-In the ``ManufacturerGridManager::getRowActions``, let's add the following lines:
-
-.. code-block:: php
-    :linenos:
-
-    $deleteAction = array(
-        'name'         => 'delete',
-        'type'         => ActionInterface::TYPE_DELETE,
-        'acl_resource' => 'root',
-        'options'      => array(
-            'label' => $this->translate('Delete'),
-            'icon'  => 'trash',
-            'link'  => 'delete_link'
-        )
-    );
-
-Do not forget to add it to the return array.
-
-We need to provide what is the delete_link as well, in the ``ManufacturerGridManager::getProperties``,
-in the array that is returned as well:
-
-.. code-block:: php
-    :linenos:
-
-    new UrlProperty('delete_link', $this->router, 'acme_customentity_manufacturer_remove', array('id'))
-
-A grid button should be displayed on each line (symbolized with "...") that allow to delete the line.
+.. _IcecatDemoBundle: https://github.com/akeneo/IcecatDemoBundle
