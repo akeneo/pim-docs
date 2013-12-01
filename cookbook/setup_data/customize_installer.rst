@@ -6,6 +6,7 @@ The Akeneo PIM allows to prepare a data set to use during the installation.
 You can configure the data set in the app/config/parameters.yml file :
 
 .. code-block:: yaml
+
     installer_data:    PimDemoBundle:demo_dev # use PimInstallerBundle:minimal for minimal data set
 
 The following steps allow you to easily define your own basic entities when you install the PIM.
@@ -67,6 +68,7 @@ Install the DB
 Update the  app/config/parameters.yml to use your data set :
 
 .. code-block:: yaml
+
     installer_data:    AcmeMyBundle:mydataset
 
 You can now (re)install your database by running:
