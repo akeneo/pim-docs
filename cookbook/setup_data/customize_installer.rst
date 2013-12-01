@@ -1,19 +1,14 @@
 How to Define my own Data Set with the Installer
 ================================================
 
-By default the PIM is setup with data defined into ``PimInstallerBundle``, and overridden in ``PimDemoBundle``
-(if you use demo data).
+The Akeneo PIM allows to prepare a data set to use during the installation.
 
-The following steps allow you to easily define your own basic entities when you install the PIM.
-
-Disable the Demo Data Loading
------------------------------
+You can configure the data set in the app/config/parameters.yml file :
 
 .. code-block:: yaml
+    installer_data:    PimDemoBundle:demo_dev # use PimInstallerBundle:minimal for minimal data set
 
-    # /app/config/config.yml
-    pim_demo:
-        load_data: false
+The following steps allow you to easily define your own basic entities when you install the PIM.
 
 Create a Bundle
 ---------------
@@ -43,19 +38,11 @@ Register it into ``AppKernel.php``:
 Add your own Data
 -----------------
 
-Add your ``pim_installer_*.yml`` files into the ``Resources/config/`` of your bundle.
+Create a directory Resources/config/installer/mydataset
 
-You can define:
+Copy the ``*.yml`` files from Installer bundle into the ``mydataset`` directory of your bundle.
 
-* ``pim_installer_locales.yml``
-* ``pim_installer_currencies.yml``
-* ``pim_installer_categories.yml``
-* ``pim_installer_channels.yml``
-* ``pim_installer_attributes.yml``
-* ``pim_installer_families.yml``
-* ``pim_installer_groups.yml``
-
-For example, to declare your own channels:
+Then edit the files, for example, to declare your own channels:
 
 .. code-block:: yaml
 
@@ -72,10 +59,15 @@ For example, to declare your own channels:
 
 .. tip::
 
-  Take a look at ``Pim/Bundle/InstallerBundle/Resource/config`` to see what is the expected format.
+  Take a look at ``Pim/Bundle/DemoBundle/Resource/config/installer/minimal`` to see what is the expected format.
 
 Install the DB
 --------------
+
+Update the  app/config/parameters.yml to use your data set :
+
+.. code-block:: yaml
+    installer_data:    AcmeMyBundle:mydataset
 
 You can now (re)install your database by running:
 
