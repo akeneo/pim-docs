@@ -7,7 +7,7 @@ You can configure the data set in the app/config/parameters.yml file :
 
 .. code-block:: yaml
 
-    installer_data:    PimDemoBundle:demo_dev # use PimInstallerBundle:minimal for minimal data set
+    installer_data:    PimInstallerBundle:demo_dev # use PimInstallerBundle:minimal for minimal data set
 
 The following steps allow you to easily define your own basic entities when you install the PIM.
 
@@ -39,7 +39,7 @@ Register it into ``AppKernel.php``:
 Add your own Data
 -----------------
 
-Create a directory Resources/config/installer/mydataset
+Create a directory Resources/fixtures/mydataset
 
 Copy the ``*.yml`` files from Installer bundle into the ``mydataset`` directory of your bundle.
 
@@ -60,7 +60,7 @@ Then edit the files, for example, to declare your own channels:
 
 .. tip::
 
-  Take a look at ``Pim/Bundle/DemoBundle/Resource/config/installer/minimal`` to see what is the expected format.
+  Take a look at ``Pim/Bundle/InstallerBundle/Resources/fixtures/minimal`` to see what is the expected format.
 
 Install the DB
 --------------
