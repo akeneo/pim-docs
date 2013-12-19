@@ -14,7 +14,7 @@ A connector can be packaged as a Symfony bundle.
 
 It contains jobs such as imports and exports.
 
-Each job is composed of steps, each step can contain a reader, a processor and a writer.
+Each job is composed of steps, by default, each step can contain a reader, a processor and a writer.
 
 These items provide their expected configurations to be used.
 
@@ -24,19 +24,11 @@ and the writer then saves the products.
 Create a Bundle
 ---------------
 
-Create a new bundle that extends Connector:
+Create a new bundle :
 
-.. code-block:: php
-    :linenos:
-
-    namespace Acme\Bundle\MyConnectorBundle;
-
-    use Symfony\Component\DependencyInjection\ContainerBuilder;
-    use Oro\Bundle\BatchBundle\Connector\Connector;
-
-    class AcmeMyConnectorBundle extends Connector
-    {
-    }
+.. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/AcmeDemoConnectorBundle.php
+   :language: php
+   :linenos:
 
 Register the bundle in AppKernel:
 
@@ -46,42 +38,49 @@ Register the bundle in AppKernel:
     public function registerBundles()
     {
         // ...
-            new Acme\Bundle\MyConnectorBundle\AcmeMyConnectorBundle(),
+            new Acme\Bundle\DemoConnectorBundle\AcmeDemoConnectorBundle(),
         // ...
     }
 
 Configure your Connector
 ------------------------
 
-Configure a job in ``Resources/config/jobs.yml``:
+Configure a job in ``Resources/config/batch_jobs.yml``:
 
-.. code-block:: yaml
+.. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Resources/config/batch_jobs.yml
+   :language: yaml
+   :linenos:
 
-    connector:
-        name: My Connector
-        jobs:
-           product_export:
-               title: acme_my_connector.jobs.product_export.title
-               type:  export
-               steps:
-                   export:
-                       title:     acme_my_connector.jobs.product_export.step.title
-                       reader:    pim_import_export.reader.product
-                       processor: pim_import_export.processor.heterogeneous_csv_serializer
-                       writer:    pim_import_export.writer.file
+We used here some existing readers, processors and writers from native csv product export.
 
-We used here some existing readers, processors and writers.
+Title keys can be translated in ``messages.en.yml``
 
-Title keys can be translated in ``messages.yml``
+.. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Resources/translations/messages.en.yml
+   :language: yaml
+   :linenos:
 
-.. code-block:: yaml
+Use your Connector
+------------------
 
-    acme_my_connector:
-        jobs:
-            product_export:
-                title: Product export
-                step.title: Export
+Now if you refresh cache, your new export can be found under Spread > Export profiles, create export profile.
 
-Now if you refresh cache, your new export can be found under Spread > Export profiles.
+The configuration you need to fulfill to use it is provided by each step item via the getConfigurationFields method.
 
-You can now create your own reader, processor or writer as services.
+If different items expect the same configuration key, this key will be merge in only one configuration field.
+
+You can run the job from UI or you can use following command :
+
+.. code-block:: bash
+
+    php oro:batch:job app/console my_job_code
+
+Customize your Connector
+------------------------
+
+By default, the used step is Oro\Bundle\BatchBundle\Step\ItemStep.
+
+You can easily create your own reader, processor or writer as services and change the job configuration.
+
+During the development you can use pim_import_export.reader.dummy, pim_import_export.processor.dummy and pim_import_export.writer.dummy.
+
+This practise allow to focus on developing each part, item per item and be able to run the whole process.
