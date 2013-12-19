@@ -1,0 +1,25 @@
+connector:
+    name: Demo Connector
+    jobs:
+        demo_product_export:
+            title: acme_demo_connector.jobs.demo_product_export.title
+            type:  export
+            steps:
+                export:
+                    title:     acme_demo_connector.jobs.demo_product_export.export.title
+                    services:
+                        reader:    pim_import_export.reader.orm.product
+                        processor: pim_import_export.processor.csv_serializer.product
+                        writer:    pim_import_export.writer.product_file
+        demo_custom_step:
+            title: acme_demo_connector.jobs.demo_custom_step.title
+            type:  export
+            steps:
+                export:
+                    title: acme_demo_connector.jobs.demo_custom_step.export.title
+                    class: Acme\Bundle\DemoConnectorBundle\Step\MyStep
+                    services:
+                        serializer: pim_import_export.processor.csv_serializer.heterogeneous
+                    parameters:
+                        my_param: true
+

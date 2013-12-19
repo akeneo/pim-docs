@@ -1,0 +1,11 @@
+acme_demo_connector:
+    jobs:
+        demo_product_export:
+            title: Product Export Job
+            export:
+                title: Product Export Step
+        demo_custom_step:
+            title: Job with custom Step
+            export:
+                title: Custom Step
+
