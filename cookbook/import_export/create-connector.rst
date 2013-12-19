@@ -50,6 +50,7 @@ Configure a job in ``Resources/config/batch_jobs.yml``:
 .. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Resources/config/batch_jobs.yml
    :language: yaml
    :linenos:
+   :lines: 1-13
 
 We used here some existing readers, processors and writers from native csv product export.
 
@@ -84,3 +85,10 @@ You can easily create your own reader, processor or writer as services and chang
 During the development you can use pim_import_export.reader.dummy, pim_import_export.processor.dummy and pim_import_export.writer.dummy.
 
 This practise allow to focus on developing each part, item per item and be able to run the whole process.
+
+Don't hesitate to take a look on existing connectors :
+
+* https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/ImportExportBundle
+* https://github.com/akeneo/MagentoConnectorBundle
+
+And more to come !
