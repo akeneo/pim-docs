@@ -5,10 +5,7 @@ Prerequisites
 -------------
 
 The Akeneo PIM project introduces a service to help you manage your product entities.
-This part of the application extends the `Oro Platform`_ bundle named `FlexibleEntityBundle`_.
-
-.. _FlexibleEntityBundle: https://magecore.atlassian.net/wiki/display/DOC/OroFlexibleEntityBundle
-.. _Oro Platform: http://www.orocrm.com/oro-platform
+This part of the application extends the `FlexibleEntityBundle`_.
 
 As stated above, the product manager is a service you can get from the symfony container:
 
@@ -112,7 +109,7 @@ Create a Product
 .. code-block:: php
 
     // create a product
-    $product = $pm->createFlexible();
+    $product = $pm->createProduct();
 
 Enrich a Product
 ----------------
