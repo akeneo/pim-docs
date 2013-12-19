@@ -89,6 +89,6 @@ This practise allow to focus on developing each part, item per item and be able 
 Don't hesitate to take a look on existing connectors :
 
 * https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/ImportExportBundle
-* https://github.com/akeneo/MagentoConnectorBundle
+* https://github.com/akeneo/MagentoConnectorBundle (work in progress)
 
 And more to come !
