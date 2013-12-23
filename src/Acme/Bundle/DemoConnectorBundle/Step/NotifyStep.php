@@ -6,9 +6,9 @@ use Oro\Bundle\BatchBundle\Step\AbstractStep;
 use Oro\Bundle\BatchBundle\Entity\StepExecution;
 use Pim\Bundle\CatalogBundle\Entity\Association;
 
-class MyStep extends AbstractStep
+class NotifyStep extends AbstractStep
 {
-    protected $config;
+    protected $configuration;
 
     protected $myItem;
 
@@ -29,12 +29,12 @@ class MyStep extends AbstractStep
 
     public function getConfiguration()
     {
-        return $this->config;
+        return $this->configuration;
     }
 
     public function setConfiguration(array $config)
     {
-        $this->config = $config;
+        $this->configuration = $config;
     }
 
     public function getMyItem()

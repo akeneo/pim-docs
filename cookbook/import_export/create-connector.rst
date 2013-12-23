@@ -75,20 +75,62 @@ You can run the job from UI or you can use following command :
 
     php oro:batch:job app/console my_job_code
 
-Customize your Connector
-------------------------
+Customize Items : Reader, Processor and Writer
+----------------------------------------------
 
-By default, the used step is Oro\Bundle\BatchBundle\Step\ItemStep.
+The default used step is ``Oro\Bundle\BatchBundle\Step\ItemStep``.
 
 You can easily create your own reader, processor or writer as services and change the job configuration.
 
-During the development you can use pim_import_export.reader.dummy, pim_import_export.processor.dummy and pim_import_export.writer.dummy.
+During the development you can use following dummy items :
+
+.. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Resources/config/batch_jobs.yml
+   :language: yaml
+   :linenos:
+   :lines: 1-3,14-23
 
 This practise allow to focus on developing each part, item per item and be able to run the whole process.
 
-Don't hesitate to take a look on existing connectors :
+Don't hesitate to take inspiration from existing connectors :
 
 * https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/ImportExportBundle
 * https://github.com/akeneo/MagentoConnectorBundle (work in progress)
 
 And more to come !
+
+How to skip erroneous data ?
+----------------------------
+
+Imagine that your import reads some CSV data, to skip a line and pass to the next, you just need to throw the following exception :
+
+.. code-block:: php
+
+    throw new InvalidItemException($message, $item);
+
+.. note::
+
+    You can use this exception in reader, processor or writer, the ItemStep handles it.
+
+
+How to increment counters ?
+---------------------------
+
+The import / export history page presents a summary and encountered errors during an execution, you can easily use your own counter with following method :
+
+.. code-block:: php
+
+        $this->stepExecution->incrementSummaryInfo('skip');
+        $this->stepExecution->incrementSummaryInfo('mycounter');
+
+
+Create custom Step and Items
+----------------------------
+
+The default step answers to the majority of cases but sometimes you need to create a more custom step.
+
+For instance, at the end of an export, you want send a custom email, copy the result on a FTP or call a specific url to notify.
+
+Let's take this last example, 
+
+
+
