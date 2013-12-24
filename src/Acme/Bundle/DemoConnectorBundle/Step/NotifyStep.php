@@ -4,61 +4,56 @@ namespace Acme\Bundle\DemoConnectorBundle\Step;
 
 use Oro\Bundle\BatchBundle\Step\AbstractStep;
 use Oro\Bundle\BatchBundle\Entity\StepExecution;
-use Pim\Bundle\CatalogBundle\Entity\Association;
+use Oro\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
+use Acme\Bundle\DemoConnectorBundle\Handler\CurlHandler;
 
 class NotifyStep extends AbstractStep
 {
-    protected $configuration;
-
-    protected $myItem;
-
-    public function __construct()
-    {
-        $this->myItem = new MyItem();
-    }
+    protected $handler;
 
     protected function doExecute(StepExecution $stepExecution)
     {
-        $assoc = new Association();
-        $assoc->setCode('My name');
-        $this->serializer->setStepExecution($stepExecution);
-        $output = $this->serializer->process($assoc);
-
-        echo $output;
+        $this->handler->setStepExecution($stepExecution);
+        $this->handler->execute();
     }
 
     public function getConfiguration()
     {
-        return $this->configuration;
+        $configuration = array();
+        foreach ($this->getConfigurableStepElements() as $stepElement) {
+            if ($stepElement instanceof AbstractConfigurableStepElement) {
+                foreach ($stepElement->getConfiguration() as $key => $value) {
+                    if (!isset($configuration[$key]) || $value) {
+                        $configuration[$key] = $value;
+                    }
+                }
+            }
+        }
+
+        return $configuration;
     }
 
     public function setConfiguration(array $config)
     {
-        $this->configuration = $config;
+        foreach ($this->getConfigurableStepElements() as $stepElement) {
+            if ($stepElement instanceof AbstractConfigurableStepElement) {
+                $stepElement->setConfiguration($config);
+            }
+        }
     }
 
-    public function getMyItem()
+    public function getHandler()
     {
-        return $this->myItem;
+        return $this->handler;
     }
 
-    public function setMyItem(MyItem $item)
+    public function setHandler(CurlHandler $handler)
     {
-        $this->myItem = $item;
-    }
-
-    public function setSerializer($serializer)
-    {
-        $this->serializer = $serializer;
-    }
-
-    public function setMyParam($myparam)
-    {
-        $this->myparam = $myparam;
+        $this->handler= $handler;
     }
 
     public function getConfigurableStepElements()
     {
-        return array('myItem' => $this->getMyItem());
+        return array('handler' => $this->getHandler());
     }
 }
