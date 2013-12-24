@@ -75,10 +75,6 @@ You can run the job from UI or you can use following command:
 
     php app/console oro:batch:job my_job_code
 
-.. note::
-
-    You can use the cookbook example directly in your project.
-
 Customize Elements: Reader, Processor and Writer
 -------------------------------------------------
 
