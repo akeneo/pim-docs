@@ -25,8 +25,9 @@ class CurlHandler extends AbstractConfigurableStepElement implements StepExecuti
         curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
         $result = curl_exec($ch);
         if($result === false) {
-            new \Exception('Curl fail');
+            throw new \Exception('Curl fail');
         }
+        $this->stepExecution->addSummaryInfo('notified', 'yes');
         curl_close($ch);
     }
 
