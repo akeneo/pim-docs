@@ -14,15 +14,14 @@ A connector can be packaged as a Symfony bundle.
 
 It contains jobs such as imports and exports.
 
-Each job is composed of steps, by default, each step can contain a reader, a processor and a writer.
+Each job is composed of steps, by default, each step contains a reader, a processor and a writer.
 
-These items provide their expected configurations to be used.
+These elements provide their expected configurations to be used.
 
-For instance, to import a CSV file as products, the reader reads each line, the processor transforms them into products,
-and the writer then saves the products.
+For instance, to import a CSV file as products, the reader reads each line, the processor transforms them into products, and the writer then saves the products.
 
-Create a Bundle
----------------
+Create our Connector
+--------------------
 
 Create a new bundle :
 
@@ -42,8 +41,8 @@ Register the bundle in AppKernel:
         // ...
     }
 
-Configure your Connector
-------------------------
+Configure our Job
+-----------------
 
 Configure a job in ``Resources/config/batch_jobs.yml``:
 
@@ -59,15 +58,16 @@ Title keys can be translated in ``messages.en.yml``
 .. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Resources/translations/messages.en.yml
    :language: yaml
    :linenos:
+   :lines: 1-6
 
-Use your Connector
-------------------
+Use our new Connector
+---------------------
 
 Now if you refresh cache, your new export can be found under Spread > Export profiles, create export profile.
 
-The configuration you need to fulfill to use it is provided by each step item via the getConfigurationFields method.
+The configuration you need to fulfill to use it is provided by each step element via the getConfigurationFields method.
 
-If different items expect the same configuration key, this key will be merge in only one configuration field.
+If different elements expect the same configuration key, this key will be merge in only one configuration field.
 
 You can run the job from UI or you can use following command :
 
@@ -75,21 +75,25 @@ You can run the job from UI or you can use following command :
 
     php oro:batch:job app/console my_job_code
 
-Customize Items : Reader, Processor and Writer
-----------------------------------------------
+.. note::
+
+    You can use the cookbook example directly in your project : 
+
+Customize Elements : Reader, Processor and Writer
+-------------------------------------------------
 
 The default used step is ``Oro\Bundle\BatchBundle\Step\ItemStep``.
 
 You can easily create your own reader, processor or writer as services and change the job configuration.
 
-During the development you can use following dummy items :
+During the development you can use following dummy elements :
 
 .. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Resources/config/batch_jobs.yml
    :language: yaml
    :linenos:
    :lines: 1-3,14-23
 
-This practise allow to focus on developing each part, item per item and be able to run the whole process.
+This practise allow to focus on developing each part, element per element and be able to run the whole process.
 
 Don't hesitate to take inspiration from existing connectors :
 
@@ -98,8 +102,8 @@ Don't hesitate to take inspiration from existing connectors :
 
 And more to come !
 
-How to skip erroneous data ?
-----------------------------
+Skip Erroneous Data
+-------------------
 
 Imagine that your import reads some CSV data, to skip a line and pass to the next, you just need to throw the following exception :
 
@@ -109,28 +113,25 @@ Imagine that your import reads some CSV data, to skip a line and pass to the nex
 
 .. note::
 
-    You can use this exception in reader, processor or writer, the ItemStep handles it.
+    You can use this exception in reader, processor or writer, the ItemStep handles it, others exceptions will stop the whole job.
 
 
-How to increment counters ?
----------------------------
+Add Details in Summary
+----------------------
 
-The import / export history page presents a summary and encountered errors during an execution, you can easily use your own counter with following method :
+The import / export history page presents a summary and encountered errors during an execution, you can easily use your own information or counter with following methods :
 
 .. code-block:: php
 
         $this->stepExecution->incrementSummaryInfo('skip');
         $this->stepExecution->incrementSummaryInfo('mycounter');
+        $this->stepExecution->addSummaryInfo('myinfo', 'my value');
 
+Create a Custom Step
+--------------------
 
-Create custom Step and Items
-----------------------------
-
-The default step answers to the majority of cases but sometimes you need to create a more custom step.
+The default step answers to the majority of cases but sometimes you need to create a more custom logic with no need of reader, processor, writer.
 
 For instance, at the end of an export, you want send a custom email, copy the result on a FTP or call a specific url to notify.
 
-Let's take this last example, 
-
-
-
+Let's take this last example to illustrate :doc:`/cookbook/import_export/create-custom-step`

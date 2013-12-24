@@ -6,6 +6,7 @@ use Oro\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
 use Oro\Bundle\BatchBundle\Step\StepExecutionAwareInterface;
 use Oro\Bundle\BatchBundle\Entity\StepExecution;
 
+// This element is configurable and knows the step execution 
 class CurlHandler extends AbstractConfigurableStepElement implements StepExecutionAwareInterface
 {
     protected $stepExecution;
@@ -14,6 +15,7 @@ class CurlHandler extends AbstractConfigurableStepElement implements StepExecuti
 
     protected $filePath;
 
+    // execute method uses configuration to do a curl exec
     public function execute()
     {
         $filepath = $this->filePath;
@@ -24,9 +26,11 @@ class CurlHandler extends AbstractConfigurableStepElement implements StepExecuti
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
         $result = curl_exec($ch);
-        if($result === false) {
+        if ($result === false) {
+            // we stop the whole job
             throw new \Exception('Curl fail');
         }
+        // we add custom details in summary
         $this->stepExecution->addSummaryInfo('notified', 'yes');
         curl_close($ch);
     }
@@ -36,6 +40,7 @@ class CurlHandler extends AbstractConfigurableStepElement implements StepExecuti
         $this->stepExecution = $stepExecution;
     }
 
+    // Getter and setter are required to be able to configure the Element
     public function setFilePath($filePath)
     {
         $this->filePath = $filePath;
@@ -60,6 +65,7 @@ class CurlHandler extends AbstractConfigurableStepElement implements StepExecuti
         return $this->url;
     }
 
+    // Here, we define the form fields to use
     public function getConfigurationFields()
     {
         return array(

@@ -22,7 +22,7 @@ connector:
                         processor: pim_import_export.processor.dummy
                         writer:    pim_import_export.writer.dummy
         demo_custom_export:
-            title: acme_demo_connector.jobs.demo_custom_step.title
+            title: acme_demo_connector.jobs.demo_custom_export.title
             type:  export
             steps:
                 export:
@@ -33,6 +33,7 @@ connector:
                         writer:    pim_import_export.writer.product_file
                 notify:
                     title:     acme_demo_connector.jobs.demo_custom_export.notify.title
-                    class:     %acme_democonnector.step.notify.class%
+                    class:     "%acme_democonnector.step.notify.class%"
                     services:
                         handler: acme_democonnector.handler.curl
+

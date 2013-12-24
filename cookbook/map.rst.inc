@@ -6,6 +6,7 @@
     * :doc:`/cookbook/mass_edition/register_a_new_mass_edit_action`
 * Import / export
     * :doc:`/cookbook/import_export/create-connector`
+    * :doc:`/cookbook/import_export/create-custom-step`
 * Access Control List
     * :doc:`/cookbook/acl/define-acl`
 * Manipulate product
