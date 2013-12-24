@@ -33,6 +33,6 @@ connector:
                         writer:    pim_import_export.writer.product_file
                 notify:
                     title:     acme_demo_connector.jobs.demo_custom_export.notify.title
-                    class:     Acme\Bundle\DemoConnectorBundle\Step\NotifyStep
+                    class:     %acme_democonnector.step.notify.class%
                     services:
-                        handler: Acme\Bundle\DemoConnectorBundle\Handler\CurlHandler
+                        handler: acme_democonnector.handler.curl
