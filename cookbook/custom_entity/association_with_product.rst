@@ -176,8 +176,8 @@ The following configuration must be loaded by your bundle extension:
                     tags:
                         - { name: oro_flexibleentity.attributetype, alias: pim_icecatdemo_vendor }
 
-In the current version of the PIM the attribute must also be added to the ProductManager. This can be done with a 
-compiler pass :
+In the current version of the PIM the attribute must also be added to the ProductManager. This can be done with a
+compiler pass:
 
 .. code-block: php
     :linenos:
@@ -231,7 +231,7 @@ compiler pass :
 Creating a filter type
 ----------------------
 
-To create a filter, extend the ChoiceFilter class :
+To create a filter, extend the ChoiceFilter class:
 
 .. code-block:: php
     :linenos:

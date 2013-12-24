@@ -193,7 +193,7 @@ This datagrid manager will be declared as a service and configured to link it to
     Your bundle must declare an extension to load this datagrid.yml file
     (see http://symfony.com/doc/current/cookbook/bundles/extension.html for more information)
 
-    The ProductDatagridManager and AssociationProductDatagridManager also have to be overriden by changing the 
+    The ProductDatagridManager and AssociationProductDatagridManager also have to be overriden by changing the
     parameters containing the name of their classes.
 
 Defining the Fields which are Used in the Grid
@@ -227,10 +227,10 @@ In order to do that, the ``VendorGridManager::configureFields`` method has to be
 You should  now see the code column in the grid. You might notice as well that
 a filter for the code is available and the column is sortable too, as defined by the field's options.
 
-Adding a field to the grid is pretty simple and the options are self explanatory. Some more fields are defined inside 
+Adding a field to the grid is pretty simple and the options are self explanatory. Some more fields are defined inside
 the _IcecatDemoBundle if you need more examples.
-Do not hesitate to look at the FilterInterface interface to have a list of available filter types, which are pretty 
-complete. 
+Do not hesitate to look at the FilterInterface interface to have a list of available filter types, which are pretty
+complete.
 
 
 
@@ -320,7 +320,7 @@ Creating the Form Type for this Entity
 Creating the CRUD
 .................
 
-A complete CRUD can be easily obtained by defining a service for its configuration :
+A complete CRUD can be easily obtained by defining a service for its configuration:
 
 .. configuration-block::
 

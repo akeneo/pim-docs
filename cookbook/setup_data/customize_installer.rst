@@ -3,7 +3,7 @@ How to Define my own Data Set with the Installer
 
 The Akeneo PIM allows to prepare a data set to use during the installation.
 
-You can configure the data set in the app/config/parameters.yml file :
+You can configure the data set in the app/config/parameters.yml file:
 
 .. code-block:: yaml
 
@@ -65,7 +65,7 @@ Then edit the files, for example, to declare your own channels:
 Install the DB
 --------------
 
-Update the  app/config/parameters.yml to use your data set :
+Update the  app/config/parameters.yml to use your data set:
 
 .. code-block:: yaml
 
