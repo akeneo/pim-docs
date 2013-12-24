@@ -14,17 +14,16 @@ A connector can be packaged as a Symfony bundle.
 
 It contains jobs such as imports and exports.
 
-Each job is composed of steps, by default, each step can contain a reader, a processor and a writer.
+Each job is composed of steps, by default, each step contains a reader, a processor and a writer.
 
-These items provide their expected configurations to be used.
+These elements provide their expected configurations to be used.
 
-For instance, to import a CSV file as products, the reader reads each line, the processor transforms them into products,
-and the writer then saves the products.
+For instance, to import a CSV file as products, the reader reads each line, the processor transforms them into products, and the writer then saves the products.
 
-Create a Bundle
----------------
+Create our Connector
+--------------------
 
-Create a new bundle :
+Create a new bundle:
 
 .. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/AcmeDemoConnectorBundle.php
    :language: php
@@ -42,8 +41,8 @@ Register the bundle in AppKernel:
         // ...
     }
 
-Configure your Connector
-------------------------
+Configure our Job
+-----------------
 
 Configure a job in ``Resources/config/batch_jobs.yml``:
 
@@ -52,43 +51,87 @@ Configure a job in ``Resources/config/batch_jobs.yml``:
    :linenos:
    :lines: 1-13
 
-We used here some existing readers, processors and writers from native csv product export.
+Here we use some existing readers, processors and writers from native csv product export.
 
 Title keys can be translated in ``messages.en.yml``
 
 .. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Resources/translations/messages.en.yml
    :language: yaml
    :linenos:
+   :lines: 1-6
 
-Use your Connector
-------------------
+Use our new Connector
+---------------------
 
-Now if you refresh cache, your new export can be found under Spread > Export profiles, create export profile.
+Now if you refresh cache, your new export can be found under Spread > Export profiles > Create export profile.
 
-The configuration you need to fulfill to use it is provided by each step item via the getConfigurationFields method.
+Each step element can require some configuration via the ``getConfigurationFields`` method.
 
-If different items expect the same configuration key, this key will be merge in only one configuration field.
+If different elements use the same configuration key, this key will be merged into a single configuration field and data will be passed to all of the elements.
 
-You can run the job from UI or you can use following command :
+You can run the job from UI or you can use following command:
 
 .. code-block:: bash
 
-    php oro:batch:job app/console my_job_code
+    php app/console oro:batch:job my_job_code
 
-Customize your Connector
-------------------------
+.. note::
 
-By default, the used step is Oro\Bundle\BatchBundle\Step\ItemStep.
+    You can use the cookbook example directly in your project.
+
+Customize Elements: Reader, Processor and Writer
+-------------------------------------------------
+
+The default used step is ``Oro\Bundle\BatchBundle\Step\ItemStep``.
 
 You can easily create your own reader, processor or writer as services and change the job configuration.
 
-During the development you can use pim_import_export.reader.dummy, pim_import_export.processor.dummy and pim_import_export.writer.dummy.
+During the development you can use following dummy elements:
 
-This practise allow to focus on developing each part, item per item and be able to run the whole process.
+.. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Resources/config/batch_jobs.yml
+   :language: yaml
+   :linenos:
+   :lines: 1-3,14-23
 
-Don't hesitate to take a look on existing connectors :
+This practice allows to focus on developing each part, element per element, and be able to run the whole process.
+
+Don't hesitate to take inspiration from existing connectors:
 
 * https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/ImportExportBundle
 * https://github.com/akeneo/MagentoConnectorBundle (work in progress)
 
-And more to come !
+And more to come!
+
+Skip Erroneous Data
+-------------------
+
+Imagine that your import encounters an erroneous line in a CSV file - to skip the current line and pass to the next one, you just need to throw the following exception:
+
+.. code-block:: php
+
+    throw new InvalidItemException($message, $item);
+
+.. note::
+
+    You can use this exception in reader, processor or writer, and it will be handled by the ItemStep. Other exceptions will stop the whole job.
+
+
+Add Details in Summary
+----------------------
+
+The import / export history page presents a summary and the errors encountered during the execution. You can easily use your own information or counter with following methods:
+
+.. code-block:: php
+
+        $this->stepExecution->incrementSummaryInfo('skip');
+        $this->stepExecution->incrementSummaryInfo('mycounter');
+        $this->stepExecution->addSummaryInfo('myinfo', 'my value');
+
+Create a Custom Step
+--------------------
+
+The default step answers to the majority of cases but sometimes you need to create more custom logic with no need for a reader, processor or writer.
+
+For instance, at the end of an export you want send a custom email, copy the result to a FTP server or call a specific url to report the result.
+
+Let's take this last example to illustrate :doc:`/cookbook/import_export/create-custom-step`

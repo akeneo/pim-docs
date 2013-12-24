@@ -1,11 +1,25 @@
 acme_demo_connector:
     jobs:
         demo_product_export:
-            title: Product Export Job
+            title: Product Export CSV
             export:
                 title: Product Export Step
-        demo_custom_step:
-            title: Job with custom Step
+        demo_dummy_export:
+            title: Product Dummy Export
             export:
-                title: Custom Step
-
+                title: Product Dummy Step
+        demo_custom_export:
+            title: Job with custom Step
+            export.title: Product Export Step
+            notify.title: Notify Step
+    # fix issue with twin translation
+    export:
+        url:
+            label: Notify url to call
+            help: The url to call at the end of the export
+# fix issue with twin translation
+pim_import_export:
+    export:
+        url:
+            label: Notify url to call
+            help: The url to call at the end of the export
