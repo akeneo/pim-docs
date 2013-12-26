@@ -78,7 +78,7 @@ class CurlHandler extends AbstractConfigurableStepElement implements StepExecuti
             'url' => array(
                 'options' => array(
                     'label' => 'acme_demo_connector.export.url.label',
-                    'help'  => 'acme_demo_commector.export.url.help'
+                    'help'  => 'acme_demo_connector.export.url.help'
                 )
             )
         );
