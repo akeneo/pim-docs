@@ -12,13 +12,6 @@ acme_demo_connector:
             title: Job with custom Step
             export.title: Product Export Step
             notify.title: Notify Step
-    # fix issue with twin translation
-    export:
-        url:
-            label: Notify url to call
-            help: The url to call at the end of the export
-# fix issue with twin translation
-pim_import_export:
     export:
         url:
             label: Notify url to call
