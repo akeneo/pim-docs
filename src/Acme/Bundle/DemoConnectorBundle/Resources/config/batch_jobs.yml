@@ -2,38 +2,37 @@ connector:
     name: Demo Connector
     jobs:
         demo_product_export:
-            title: acme_demo_connector.jobs.demo_product_export.title
+            title: pim_import_export.jobs.demo_product_export.title
             type:  export
             steps:
                 export:
-                    title:     acme_demo_connector.jobs.demo_product_export.export.title
+                    title: pim_import_export.jobs.demo_product_export.export.title
                     services:
                         reader:    pim_import_export.reader.orm.product
                         processor: pim_import_export.processor.csv_serializer.product
                         writer:    pim_import_export.writer.product_file
         demo_dummy_export:
-            title: acme_demo_connector.jobs.demo_dummy_export.title
+            title: pim_import_export.jobs.demo_dummy_export.title
             type:  export
             steps:
                 export:
-                    title:     acme_demo_connector.jobs.demo_dummy_export.export.title
+                    title: pim_import_export.jobs.demo_dummy_export.export.title
                     services:
                         reader:    pim_import_export.reader.dummy
                         processor: pim_import_export.processor.dummy
                         writer:    pim_import_export.writer.dummy
         demo_custom_export:
-            title: acme_demo_connector.jobs.demo_custom_export.title
+            title: pim_import_export.jobs.demo_custom_export.title
             type:  export
             steps:
                 export:
-                    title:     acme_demo_connector.jobs.demo_custom_export.export.title
+                    title: pim_import_export.jobs.demo_custom_export.export.title
                     services:
                         reader:    pim_import_export.reader.orm.product
                         processor: pim_import_export.processor.csv_serializer.product
                         writer:    pim_import_export.writer.product_file
                 notify:
-                    title:     acme_demo_connector.jobs.demo_custom_export.notify.title
-                    class:     "%acme_democonnector.step.notify.class%"
+                    title: pim_import_export.jobs.demo_custom_export.notify.title
+                    class: "%acme_democonnector.step.notify.class%"
                     services:
                         handler: acme_democonnector.handler.curl
-

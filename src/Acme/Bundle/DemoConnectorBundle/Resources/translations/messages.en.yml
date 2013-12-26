@@ -1,4 +1,4 @@
-acme_demo_connector:
+pim_import_export:
     jobs:
         demo_product_export:
             title: Product Export CSV

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Acme\Bundle\DemoConnectorBundle\Handler;
 
@@ -6,7 +6,7 @@ use Oro\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
 use Oro\Bundle\BatchBundle\Step\StepExecutionAwareInterface;
 use Oro\Bundle\BatchBundle\Entity\StepExecution;
 
-// This element is configurable and knows the step execution 
+// This element is configurable and knows the step execution
 class CurlHandler extends AbstractConfigurableStepElement implements StepExecutionAwareInterface
 {
     protected $stepExecution;
@@ -71,14 +71,14 @@ class CurlHandler extends AbstractConfigurableStepElement implements StepExecuti
         return array(
             'filePath' => array(
                 'options' => array(
-                    'label' => 'acme_demo_connector.export.filePath.label',
-                    'help'  => 'acme_demo_connector.export.filePath.help'
+                    'label' => 'pim_import_export.export.filePath.label',
+                    'help'  => 'pim_import_export.export.filePath.help'
                 )
             ),
             'url' => array(
                 'options' => array(
-                    'label' => 'acme_demo_connector.export.url.label',
-                    'help'  => 'acme_demo_connector.export.url.help'
+                    'label' => 'pim_import_export.export.url.label',
+                    'help'  => 'pim_import_export.export.url.help'
                 )
             )
         );
