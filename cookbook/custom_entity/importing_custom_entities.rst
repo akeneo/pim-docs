@@ -45,7 +45,7 @@ The order and the processor for your fixtures is given in the ``fixtures.yml`` c
    :linenos: 
 
 You can now add a ``vendors.csv`` or a ``vendors.yml`` file in your fixtures folder, it will be
-loaded with other fixtures.
+loaded with other fixtures. (see :doc:`../setup_data/customize_installer`)
 
 Create a connector
 ------------------

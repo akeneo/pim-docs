@@ -41,7 +41,7 @@ Add your own Data
 
 Create a directory Resources/fixtures/mydataset
 
-Copy the ``*.yml`` files from Installer bundle into the ``mydataset`` directory of your bundle.
+Copy the ``*.yml`` and ``*.csv`` files from Installer bundle into the ``mydataset`` directory of your bundle.
 
 Then edit the files, for example, to declare your own channels:
 
@@ -61,6 +61,7 @@ Then edit the files, for example, to declare your own channels:
 .. tip::
 
   Take a look at ``Pim/Bundle/InstallerBundle/Resources/fixtures/minimal`` to see what is the expected format.
+  All fixtures can be created in CSV or YAML.
 
 Install the DB
 --------------
@@ -77,3 +78,14 @@ You can now (re)install your database by running:
 
     ./install.sh db
 
+Load individual fixture files
+-----------------------------
+
+Fixture files can be loaded individually by using the ``pim:installer:load-fixtures`` command :
+
+.. code-block:: bash
+
+    php app/console pim:installer:load-fixtures src/Pim/Bundle/InstallerBundle/demo_dev/*
+
+The fixtures files can be loaded multiple times, objects will be updated instead of being created on
+successive calls. This command also takes care of loading the fixtures in the right order.
