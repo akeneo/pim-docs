@@ -22,3 +22,5 @@ specific attribute itself like the manufacturing country.
 * Creating an attribute type linked to this custom entity
     * :doc:`association_with_product`
 
+* Importing your custom entity
+    * :doc:`importing_custom_entities`
