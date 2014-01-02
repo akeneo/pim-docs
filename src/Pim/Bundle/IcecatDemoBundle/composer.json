@@ -1,0 +1,13 @@
+{
+    "name": "akeneo/icecat-demo-bundle",
+    "type": "symfony-bundle",
+    "description": "Akeneo PIM Icecat Demo Bundle (For more information about Icecat, please see http://icecat.biz)",
+    "keywords": ["Demo", "Data", "Generator"],
+    "homepage": "https://github.com/akeneo/IcecatDemoBundle",
+    "license": "OSL",
+    "autoload": {
+        "psr-0": { "Pim\\Bundle\\IcecatDemoBundle": "" }
+    },
+    "target-dir": "Pim/Bundle/IcecatDemoBundle",
+    "minimum-stability": "dev"
+}

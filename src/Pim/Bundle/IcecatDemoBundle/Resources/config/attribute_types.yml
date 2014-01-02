@@ -1,0 +1,11 @@
+services:
+    pim_icecatdemo.attributetype.vendor:
+            class: Pim\Bundle\IcecatDemoBundle\AttributeType\VendorType
+            arguments:
+                - vendor
+                - entity
+                - "@pim_flexibleentity.validator.attribute_constraint_guesser"
+            tags:
+                - name: pim_flexibleentity.attributetype
+                  alias: pim_icecatdemo_vendor
+                  entity: "%pim_catalog.entity.product.class%"

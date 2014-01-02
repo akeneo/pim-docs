@@ -1,0 +1,13 @@
+services:
+    pim_icecatdemo.form.type.vendor:
+        class: Pim\Bundle\IcecatDemoBundle\Form\Type\VendorType
+        tags:
+            - { name: form.type, alias: pim_icecatdemo_vendor }
+
+    pim_icecatdemo.form.type.filter.vendor:
+        class:     Pim\Bundle\IcecatDemoBundle\Form\Type\Filter\VendorFilterType
+        arguments:
+            - @translator
+            - @doctrine.orm.entity_manager
+        tags:
+            - { name: form.type, alias: pim_icecatdemo_filter_vendor }

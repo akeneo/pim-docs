@@ -1,0 +1,3 @@
+vendors:
+    csv:
+        processor: pim_import_export.processor.vendor

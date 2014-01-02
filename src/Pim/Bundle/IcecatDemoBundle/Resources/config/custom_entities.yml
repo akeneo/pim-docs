@@ -1,0 +1,12 @@
+services:
+    pim_icecat_demo.custom_entity.configuration:
+        class: %pim_custom_entity.configuration.default.class%
+        arguments:
+            - vendor
+            - '@pim_custom_entity.manager.orm'
+            - '@pim_custom_entity.controller.strategy.datagrid'
+            - entity_class:         Pim\Bundle\IcecatDemoBundle\Entity\Vendor
+              edit_form_type:       pim_icecatdemo_vendor
+              datagrid_namespace:   pim_icecatdemo
+        tags:
+            - { name: pim_custom_entity.configuration }

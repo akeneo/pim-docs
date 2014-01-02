@@ -1,0 +1,10 @@
+parameters:
+    pim_icecatdemo.orm.filter.type.vendor.class: Pim\Bundle\IcecatDemoBundle\Filter\ORM\VendorFilter
+
+services:
+    pim_icecatdemo.orm.filter.type.vendor:
+            class: "%pim_icecatdemo.orm.filter.type.vendor.class%"
+            arguments:
+                - "@translator"
+            tags:
+                - { name: oro_grid.filter.type, alias: pim_icecatdemo_orm_vendor }
