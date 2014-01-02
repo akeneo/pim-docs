@@ -64,6 +64,7 @@ Creating the Attribute Type
 
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/AttributeType/VendorType.php
    :language: php
+   :lines: 1-6,14-
    :linenos: 
 
 The following configuration must be loaded by your bundle extension:
@@ -82,6 +83,7 @@ To create a filter, extend the ChoiceFilter class:
 
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Filter/ORM/VendorFilter.php
    :language: php
+   :lines: 1-7,15-
    :linenos: 
 
 
@@ -97,6 +99,7 @@ modifications have to be done in both the classes:
 
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Datagrid/ProductDatagridManager.php
    :language: php
+   :lines: 1-7,15-
    :linenos: 
 
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
