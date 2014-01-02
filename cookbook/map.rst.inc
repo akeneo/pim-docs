@@ -7,6 +7,7 @@
 * Import / export
     * :doc:`/cookbook/import_export/create-connector`
     * :doc:`/cookbook/import_export/create-custom-step`
+    * :doc:`/cookbook/import_export/customize-import-behavior`
 * Access Control List
     * :doc:`/cookbook/acl/define-acl`
 * Manipulate product
