@@ -34,7 +34,7 @@ You will also need to copy and adapt the mapping for the entity:
 
 Registering the New Product Value Class
 ---------------------------------------
-Configure the parameter for the ProductValue class, and add your custom entity :
+Configure the parameter for the ProductValue class :
 
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/entities.yml
    :language: yaml

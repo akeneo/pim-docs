@@ -10,117 +10,23 @@ Creating the Entity
 As Akeneo relies heavily on standard tools like Doctrine, creating the entity is
 quite straightforward for any developer with Doctrine experience.
 
-.. code-block:: php
-    :linenos:
+.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Entity/Vendor.php
+   :language: php
+   :lines: 1-8,17-
+   :linenos: 
 
-    namespace Pim\Bundle\IcecatDemoBundle\Entity;
+.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
+   :language: yaml
+   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
+   :linenos: 
 
-    use Doctrine\ORM\Mapping as ORM;
-    use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-    use Symfony\Component\Validator\Constraints as Assert;
+Also add parameters for your entity in the DIC :
 
-    /**
-     * Vendor entity
-     *
-     * @ORM\Entity
-     * @ORM\Table(
-     *     name="pim_icecatdemo_vendor",
-     *     uniqueConstraints={@ORM\UniqueConstraint(name="pim_icecatdemo_vendor_code", columns={"code"})}
-     * )
-     * @UniqueEntity(fields="code", message="This code is already taken")
-     */
-    class Vendor
-    {
-        /**
-         * @var integer $id
-         *
-         * @ORM\Column(name="id", type="integer")
-         * @ORM\Id
-         * @ORM\GeneratedValue(strategy="AUTO")
-         */
-        protected $id;
-
-        /**
-         * @var string $code
-         *
-         * @ORM\Column(name="code", type="string", length=100)
-         * @Assert\Regex(pattern="/^[a-zA-Z0-9_]+$/")
-         * @Assert\Length(max=100, min=1)
-         */
-        protected $code;
-
-        /**
-         * @var string $label
-         *
-         * @ORM\Column(name="label", type="string", length=250, nullable=false)
-         * @Assert\Length(max=250, min=1)
-         */
-        protected $label;
-
-        /**
-         * Get id
-         *
-         * @return int
-         */
-        public function getId()
-        {
-            return $this->id;
-        }
-
-        /**
-         * Get code
-         *
-         * @return string
-         */
-        public function getCode()
-        {
-            return $this->code;
-        }
-
-        /**
-         * Get label
-         *
-         * @return string
-         */
-        public function getLabel()
-        {
-            return $this->label;
-        }
-
-        /**
-         * Set code
-         *
-         * @param  string $code
-         * @return Vendor
-         */
-        public function setCode($code)
-        {
-            $this->code = $code;
-
-            return $this;
-        }
-
-        /**
-         * Set label
-         *
-         * @param  string $label
-         * @return Vendor
-         */
-        public function setLabel($label)
-        {
-            $this->label = $label;
-
-            return $this;
-        }
-
-        /**
-         * {@inheritdoc}
-         */
-        public function __toString()
-        {
-            return $this->code;
-        }
-    }
+.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/entities.yml
+   :language: yaml
+   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/entities.yml
+   :lines: 1-2,4:
+   :linenos: 
 
 .. note::
     We have added a code attribute in order to get a non technical unique key.
@@ -144,48 +50,20 @@ The Grid Class
 To benefit from the grid component (which comes natively with filtering and sorting),
 a datagrid manager must be defined:
 
-.. code-block:: php
-    :linenos:
+.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Datagrid/VendorDatagridManager.php
+   :language: php
+   :lines: 1-11,20-21,136
+   :linenos: 
 
-    namespace Pim\Bundle\IcecatDemoBundle\Datagrid;
-
-    use Oro\Bundle\GridBundle\Action\ActionInterface;
-    use Oro\Bundle\GridBundle\Filter\FilterInterface;
-    use Oro\Bundle\GridBundle\Field\FieldDescription;
-    use Oro\Bundle\GridBundle\Field\FieldDescriptionCollection;
-    use Oro\Bundle\GridBundle\Field\FieldDescriptionInterface;
-    use Pim\Bundle\CustomEntityBundle\Datagrid\DatagridManager;
-
-    /**
-     * Domain datagrid manager
-     *
-     */
-    class VendorDatagridManager extends DatagridManager
-    {
-    }
 
 Defining the Service
 ....................
 This datagrid manager will be declared as a service and configured to link it to our manufacturer entity.
 
-.. configuration-block::
-
-    .. code-block:: yaml
-        :linenos:
-
-        # src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
-        parameters:
-            pim_icecatdemo.datagrid.manager.vendor.class: Pim\Bundle\IcecatDemoBundle\Datagrid\VendorDatagridManager
-
-        services:
-            pim_icecatdemo.datagrid.manager.vendor:
-                    class: '%pim_icecatdemo.datagrid.manager.vendor.class%'
-                    tags:
-                        - name:               oro_grid.datagrid.manager
-                          datagrid_name:      vendors
-                          entity_hint:        vendors
-                          route_name:         pim_customentity_index
-                          custom_entity_name: vendor
+.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
+   :language: yaml
+   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
+   :linenos: 
 
 
 .. note::
@@ -280,41 +158,10 @@ What about a nice delete button on the grid line to quickly delete a vendor ?
 Creating the Form Type for this Entity
 ......................................
 
-.. code-block:: php
-    :linenos:
-
-        class VendorType extends AbstractType
-        {
-        /**
-         * {@inheritdoc}
-         */
-        public function buildForm(FormBuilderInterface $builder, array $options)
-        {
-            $builder->add('code', 'text');
-            $builder->add('label', 'text');
-        }
-
-        /**
-         * {@inheritdoc}
-         */
-        public function setDefaultOptions(OptionsResolverInterface $resolver)
-        {
-            $resolver->setDefaults(
-                array(
-                    'data_class' => 'Pim\Bundle\IcecatDemoBundle\Entity\Vendor',
-                )
-            );
-        }
-
-        /**
-         * {@inheritdoc}
-         */
-        public function getName()
-        {
-            return 'pim_icecatdemo_vendor';
-        }
-    }
-
+.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Form/Type/VendorType.php
+   :language: php
+   :lines: 1-8,17-
+   :linenos: 
 
 
 Creating the CRUD
@@ -322,25 +169,10 @@ Creating the CRUD
 
 A complete CRUD can be easily obtained by defining a service for its configuration:
 
-.. configuration-block::
-
-    .. code-block:: yaml
-        :linenos:
-
-        # src/Pim/Bundle/IcecatDemoBundle/Resources/config/custom_entities.yml
-        services:
-            pim_icecat_demo.custom_entity.configuration:
-                class: '%pim_custom_entity.configuration.default.class%'
-                arguments:
-                    - vendor
-                    - '@pim_custom_entity.manager.orm'
-                    - '@pim_custom_entity.controller.strategy.datagrid'
-                    - entity_class:         Pim\Bundle\IcecatDemoBundle\Entity\Vendor
-                      edit_form_type:       pim_icecatdemo_vendor
-                      datagrid_namespace:   pim_icecatdemo
-                tags:
-                    - { name: pim_custom_entity.configuration }
-
+.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/custom_entities.yml
+   :language: yaml
+   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/custom_entities.yml
+   :linenos: 
 
 From this point a working grid screen is visible at ``/app_dev.php/enrich/vendor``.
 

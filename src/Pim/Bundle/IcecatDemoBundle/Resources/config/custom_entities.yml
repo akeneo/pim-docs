@@ -1,6 +1,6 @@
 services:
     pim_icecat_demo.custom_entity.configuration:
-        class: %pim_custom_entity.configuration.default.class%
+        class: '%pim_custom_entity.configuration.default.class%'
         arguments:
             - vendor
             - '@pim_custom_entity.manager.orm'
