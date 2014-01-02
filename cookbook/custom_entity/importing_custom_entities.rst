@@ -20,7 +20,7 @@ or be a subclass of ``Pim\Bundle\CatalogBundle\Entity\Repository\ReferableEntity
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
    :language: yaml
    :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
-   :lines: 1,5
+   :lines: 1,4
    :linenos: 
 
 Create a processor
