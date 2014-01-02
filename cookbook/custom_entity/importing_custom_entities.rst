@@ -1,5 +1,5 @@
-How to import fixtures for your custom entity :
-===============================================
+How to import fixtures for your custom entity
+=============================================
 
 Implement ReferableInterface
 ----------------------------
