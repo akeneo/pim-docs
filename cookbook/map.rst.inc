@@ -8,6 +8,8 @@
     * :doc:`/cookbook/import_export/create-connector`
     * :doc:`/cookbook/import_export/create-custom-step`
     * :doc:`/cookbook/import_export/customize-import-behavior`
+* Validation
+    * :doc:`/cookbook/validation/customize_validation`
 * Access Control List
     * :doc:`/cookbook/acl/define-acl`
 * Manipulate product
