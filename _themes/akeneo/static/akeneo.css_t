@@ -114,6 +114,7 @@ dt:hover>a.headerlink {
     background: #f3f3f3;
     border: 1px solid #e0e0e0;
     border-radius: 3px;
+    margin: 20px 0;
 }
 
 tt {
@@ -190,6 +191,7 @@ td.linenos {
 }
 div[class^="highlight-"] {
     max-width: 100%;
+    margin-bottom: 40px;
     overflow: auto;
 }
 

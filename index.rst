@@ -61,4 +61,3 @@ BAP bundles documentation:
 * `Oro Platform documentation`_
 
 .. _Oro Platform documentation: https://magecore.atlassian.net/wiki/display/DOC/Oro+Documentaion+Home
-
