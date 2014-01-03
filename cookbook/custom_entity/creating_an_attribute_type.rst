@@ -111,3 +111,4 @@ modifications have to be done in both the classes:
     This last step will not be needed in future versions of the PIM.
 
 .. _IcecatDemoBundle: https://github.com/akeneo/IcecatDemoBundle
+

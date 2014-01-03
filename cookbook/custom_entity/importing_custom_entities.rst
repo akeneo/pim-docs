@@ -1,5 +1,5 @@
-How to import fixtures for your custom entity
-=============================================
+How to import fixtures for your custom entity and attribute
+===========================================================
 
 Implement ReferableInterface
 ----------------------------
@@ -22,6 +22,36 @@ or be a subclass of ``Pim\Bundle\CatalogBundle\Entity\Repository\ReferableEntity
    :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
    :lines: 1,4
    :linenos: 
+
+Attribute value importation
+---------------------------
+
+If your entity implements the ``Pim\Bundle\CatalogBundle\Model\ReferableInterface`` interface and is linked
+to ``ProductValue`` with a direct association of any cardinality, importation of product values requires
+no configuration or coding on your side. Simply provide the reference to the linked entities in your import files,
+and the importation will be done automatically.
+
+If you have indirect associations, or if you cannot implement the interfaces in your entity and your repository,
+you will have to create a specific property transformer for your attribute type. (see :doc:`../import_export/customize-import-behavior` for more explanations)
+
+To use of your property transformer, you will have to configure a guesser service similar to the one used by 
+price collection attributes :
+
+.. code-block:: yaml
+    :linenos:
+
+    # /vendor/akeneo/pim-community-dev/src/Pim/Bundle/ImportExportBundle/Resources/config/guessers.yml
+    services:
+        pim_import_export.transformer.guesser.prices:
+            class: "%pim_import_export.transformer.guesser.attribute.class%"
+            public: false
+            arguments:
+                - "@pim_import_export.transformer.property.prices"
+                - "%pim_catalog.entity.product_value.class%"
+                - prices
+            tags:
+                - { name: pim_import_export.transformer.guesser, priority: 40 }
+
 
 Create a processor
 ------------------
