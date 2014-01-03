@@ -99,8 +99,7 @@ dt:hover>a.headerlink {
 }
 
 .section {
-    padding-top: 40px;
-    margin-top: -40px;
+    margin: 40px 0;
 }
 
 .section>h1 {
