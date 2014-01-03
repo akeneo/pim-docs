@@ -112,3 +112,17 @@ modifications have to be done in both the classes:
 
 .. _IcecatDemoBundle: https://github.com/akeneo/IcecatDemoBundle
 
+Adding validation
+-----------------
+
+For the given example, validation is not really needed, but it might be if your custom attribute includes
+values of its own.
+
+To add validation for a ProductValue, you must create an constraint guesser which will add constraints on the fly
+if the product has values for your attribute :
+
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Validator/ConstraintGuesser/CustomConstraintGuesser.php
+   :language: php
+   :linenos: 
+
+The validator for the created custom constraint will be supplied the value of the attribute.
