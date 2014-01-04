@@ -8,7 +8,7 @@ To override existing validation rules, you will have to copy the existing valida
 
 For example, to allow spaces in option codes, create the following file:
 
-.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/validation/productattribute.yml
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/validation/attribute.yml
    :language: yaml
    :emphasize-lines: 171-
    :linenos: 
