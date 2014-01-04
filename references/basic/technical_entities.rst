@@ -20,7 +20,7 @@ The implementation is based on OroFlexibleEntityBundle an customized in PimCatal
 
 FYI, a document oriented storage is already planned to deal with high data volumes.
 
-Product Attribute
+Attribute
 -----------------
 
 An attribute defines the type and the properties of a value.

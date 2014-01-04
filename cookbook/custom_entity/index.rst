@@ -1,4 +1,4 @@
-How to Create a Custom Entity and Use it as a Product Attribute
+How to Create a Custom Entity and Use it as an attribute
 ===============================================================
 
 Why Create a Custom Entity ?
@@ -9,7 +9,7 @@ provided by Akeneo and link them to the products.
 
 .. note::
 
-    if you do not need to use your custom entity as a product attribute, follow
+    if you do not need to use your custom entity as an attribute, follow
     only the first part of this cookbook's recipe.
 
 For example, let's say we want to create a more advanced manufacturer entity

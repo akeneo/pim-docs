@@ -32,7 +32,7 @@ Create an Attribute
 
 * Create a simple select attribute
 
-In some cases, you will want to restrain values to a list of possibilities for a product attribute.
+In some cases, you will want to restrain values to a list of possibilities for an attribute.
 For instance, this example creates a color attribute with a list of predefined options:
 
 .. code-block:: php

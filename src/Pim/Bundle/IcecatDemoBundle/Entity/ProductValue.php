@@ -12,7 +12,7 @@ Use Pim\Bundle\CatalogBundle\Model\Media;
 use Pim\Bundle\CatalogBundle\Model\ProductPrice;
 
 /**
- * Value for a product attribute
+ * Value for an attribute
  *
  * @author    Nicolas Dupont <nicolas@akeneo.com>
  * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
@@ -307,7 +307,7 @@ class ProductValue extends AbstractEntityFlexibleValue implements ProductValueIn
 
         return $this->entity->isAttributeRemovable($this->attribute);
     }
-    
+
     /**
      * @var Vendor
      */
