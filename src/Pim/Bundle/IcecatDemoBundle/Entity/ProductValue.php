@@ -239,6 +239,8 @@ class ProductValue extends AbstractEntityFlexibleValue implements ProductValueIn
     /**
      * Adds a price for the given currency, or returns the existing price
      *
+     * @param string $currency
+     *
      * @return ProductPrice
      */
     public function addPriceForCurrency($currency)
@@ -326,7 +328,8 @@ class ProductValue extends AbstractEntityFlexibleValue implements ProductValueIn
     /**
      * Set vendor
      *
-     * @param  Vendor       $vendor
+     * @param Vendor $vendor
+     *
      * @return ProductValue
      */
     public function setVendor(Vendor $vendor)

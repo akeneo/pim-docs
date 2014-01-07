@@ -16,7 +16,7 @@ class CommentGuesser implements GuesserInterface
 
     /**
      * Constructor
-     * 
+     *
      * @param PropertyTransformerInterface $transformer
      */
     public function __construct(PropertyTransformerInterface $transformer)
@@ -29,8 +29,7 @@ class CommentGuesser implements GuesserInterface
      */
     public function getTransformerInfo(ColumnInfoInterface $columnInfo, ClassMetadataInfo $metadata)
     {
-        if ('#' !== substr($columnInfo->getLabel(), 0, 1))
-        {
+        if ('#' !== substr($columnInfo->getLabel(), 0, 1)) {
             return;
         }
 

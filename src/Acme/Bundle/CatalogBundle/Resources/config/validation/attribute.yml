@@ -181,5 +181,3 @@ Pim\Bundle\CatalogBundle\Entity\AttributeOption:
             - Valid: ~
         optionValues:
             - Valid: ~
-
-

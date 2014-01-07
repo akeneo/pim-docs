@@ -32,7 +32,7 @@ class VendorDatagridManager extends DatagridManager
 
         $field = $this->createTextField('responsible', 'Responsible');
         $fieldsCollection->add($field);
-        
+
         $field = new FieldDescription();
         $field->setName('created');
         $field->setOptions(

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Acme\Bundle\DemoConnectorBundle\Step;
 
@@ -14,7 +14,7 @@ class NotifyStep extends AbstractStep
 
     protected function doExecute(StepExecution $stepExecution)
     {
-        // inject the step execution in the step item to be able to log summary info during execution 
+        // inject the step execution in the step item to be able to log summary info during execution
         $this->handler->setStepExecution($stepExecution);
         $this->handler->execute();
     }

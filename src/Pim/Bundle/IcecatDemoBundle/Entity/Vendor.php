@@ -109,7 +109,7 @@ class Vendor implements ReferableInterface
 
     /**
      * Get responsible
-     * 
+     *
      * @return string
      */
     public function getResponsible()
@@ -118,7 +118,7 @@ class Vendor implements ReferableInterface
     }
 
     /**
-     * 
+     *
      * @param type $responsibleSet responsible
      */
     public function setResponsible($responsible)
