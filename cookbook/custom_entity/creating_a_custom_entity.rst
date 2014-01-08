@@ -73,6 +73,8 @@ This datagrid manager will be declared as a service and configured to link it to
 
     The ProductDatagridManager and AssociationProductDatagridManager also have to be overriden by changing the
     parameters containing the name of their classes.
+    
+    NB: the grid bundle and related customizations will change with the PIM RC-1
 
 Defining the Fields which are Used in the Grid
 ..............................................
