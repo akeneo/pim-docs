@@ -48,7 +48,6 @@ Then edit the files, for example, to declare your own channels:
 .. code-block:: yaml
 
     my_channel:
-      code:  my_channel
       label: My Channel
       locales:
         - en_US

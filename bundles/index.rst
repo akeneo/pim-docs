@@ -1,6 +1,7 @@
 * `CatalogBundle`_
 * `DashboardBundle`_
 * `FilterBundle`_
+* `FlexibleEntityBundle`_
 * `GridBundle`_
 * `ImportExportBundle`_
 * `InstallerBundle`_
@@ -15,6 +16,7 @@
 .. _CatalogBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/CatalogBundle
 .. _DashboardBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/DashboardBundle
 .. _FilterBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/FilterBundle
+.. _FlexibleEntityBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/FlexibleEntityBundle
 .. _GridBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/GridBundle
 .. _ImportExportBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/ImportExportBundle
 .. _InstallerBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/InstallerBundle

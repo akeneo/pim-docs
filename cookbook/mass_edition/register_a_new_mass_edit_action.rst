@@ -54,7 +54,7 @@ After the class is created, you must register it as a service in the DIC with th
             acme_demo_bundle.mass_edit_action.capitalize_values:-
                 class: Acme\Bundle\DemoBundle\MassEditAction\CapitalizeValues
                 tags:
-                    - { name: 'pim_catalog.mass_edit_action', alias: 'capitalize-values' }
+                    - { name: pim_catalog.mass_edit_action, alias: capitalize-values }
 
     .. code-block:: xml
 

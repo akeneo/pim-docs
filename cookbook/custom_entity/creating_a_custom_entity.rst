@@ -13,12 +13,12 @@ quite straightforward for any developer with Doctrine experience.
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Entity/Vendor.php
    :language: php
    :lines: 1-8,17-
-   :linenos: 
+   :linenos:
 
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
    :language: yaml
    :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
-   :linenos: 
+   :linenos:
 
 Also add parameters for your entity in the DIC :
 
@@ -26,7 +26,7 @@ Also add parameters for your entity in the DIC :
    :language: yaml
    :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/entities.yml
    :lines: 1-2,4:
-   :linenos: 
+   :linenos:
 
 .. note::
     We have added a code attribute in order to get a non technical unique key.
@@ -53,27 +53,27 @@ a datagrid manager must be defined:
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Datagrid/VendorDatagridManager.php
    :language: php
    :lines: 1-11,20-21,136
-   :linenos: 
+   :linenos:
 
 
 Defining the Service
 ....................
 This datagrid manager will be declared as a service and configured to link it to our manufacturer entity.
 
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
+.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/grid.yml
    :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
-   :linenos: 
+   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/grid.yml
+   :linenos:
 
 
 .. note::
 
-    Your bundle must declare an extension to load this datagrid.yml file
+    Your bundle must declare an extension to load this grid.yml file
     (see http://symfony.com/doc/current/cookbook/bundles/extension.html for more information)
 
     The ProductDatagridManager and AssociationProductDatagridManager also have to be overriden by changing the
     parameters containing the name of their classes.
-    
+
     NB: the grid bundle and related customizations will change with the PIM RC-1
 
 Defining the Fields which are Used in the Grid
@@ -163,7 +163,7 @@ Creating the Form Type for this Entity
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Form/Type/VendorType.php
    :language: php
    :lines: 1-8,17-
-   :linenos: 
+   :linenos:
 
 
 Creating the CRUD
@@ -174,7 +174,7 @@ A complete CRUD can be easily obtained by defining a service for its configurati
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/custom_entities.yml
    :language: yaml
    :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/custom_entities.yml
-   :linenos: 
+   :linenos:
 
 From this point a working grid screen is visible at ``/app_dev.php/enrich/vendor``.
 

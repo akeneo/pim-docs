@@ -20,13 +20,13 @@ To override these templates, you need to create 2 new files:
     :linenos:
 
     {# _navbar.html.twig #}
-    {% set form_tabs=["Attributes"] %}
+    {% set form_tabs=['Attributes'] %}
 
-    {% if resource_granted("pim_catalog_product_categories_view") %}
+    {% if resource_granted('pim_catalog_product_categories_view') %}
         {% set form_tabs = form_tabs|merge(['Categories']) %}
     {% endif %}
 
-    {% if associations is not empty and resource_granted("pim_catalog_product_categories_view") %}
+    {% if resource_granted('pim_catalog_associations_view') %}
         {% set form_tabs = form_tabs|merge(['Associations']) %}
     {% endif %}
 
@@ -44,25 +44,21 @@ To override these templates, you need to create 2 new files:
     <div class="tab-pane active" id="attributes">
         {% include 'PimCatalogBundle:Product:_attributes.html.twig' %}
     </div>
-
     {% if resource_granted("pim_catalog_product_categories_view") %}
         <div class="tab-pane" id="categories">
            {% include 'PimCatalogBundle:Product:_associateCategories.html.twig' %}
         </div>
     {% endif %}
 
-    {% if associations is not empty and resource_granted("pim_catalog_product_associations_view") %}
-        <div class="tab-pane" id="associations">
-           {% include 'PimCatalogBundle:Product:_associations.html.twig' %}
+    {% if resource_granted("pim_catalog_associations_view") %}
+        <div class="tab-pane" id="associations" data-url="{{ path('pim_catalog_associations', { id: product.id }) }}">
         </div>
     {% endif %}
 
-    <div class="tab-pane" id="completeness">
-       {% include 'PimCatalogBundle:Product:_completeness.html.twig' %}
+    <div class="tab-pane" id="completeness" data-url="{{ path('pim_catalog_product_completeness', { id: product.id }) }}">
     </div>
 
-    <div class="tab-pane" id="history">
-        <div id="history-grid"></div>
+    <div class="tab-pane" id="history" data-url="{{ path('pim_catalog_product_history', { id: product.id }) }}">
     </div>
 
     <!-- Custom content -->

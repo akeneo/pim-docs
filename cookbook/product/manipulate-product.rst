@@ -7,6 +7,8 @@ Prerequisites
 The Akeneo PIM project introduces a service to help you manage your product entities.
 This part of the application extends the `FlexibleEntityBundle`_.
 
+.. _FlexibleEntityBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/FlexibleEntityBundle
+
 As stated above, the product manager is a service you can get from the symfony container:
 
 .. code-block:: php

@@ -18,7 +18,7 @@ We need to copy and paste the whole class, and add the following lines:
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Entity/ProductValue.php
    :language: php
    :lines: 1-4,23-24,311-337
-   :linenos: 
+   :linenos:
 
 You will also need to copy and adapt the mapping for the entity:
 
@@ -26,7 +26,7 @@ You will also need to copy and adapt the mapping for the entity:
    :language: yaml
    :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/doctrine/ProductValue.orm.yml
    :lines: 1-3,63,86-92
-   :linenos: 
+   :linenos:
 
 .. note::
     We are thinking about ways to avoid the copy paste of the full product value class, but we do not have
@@ -39,7 +39,7 @@ Configure the parameter for the ProductValue class :
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/entities.yml
    :language: yaml
    :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/entities.yml
-   :linenos: 
+   :linenos:
 
 
 Configuring the FlexibleEntity Manager that is responsible for managing product:
@@ -47,7 +47,7 @@ Configuring the FlexibleEntity Manager that is responsible for managing product:
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/flexibleentity.yml
    :language: yaml
    :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/flexibleentity.yml
-   :linenos: 
+   :linenos:
 
 
 
@@ -65,7 +65,7 @@ Creating the Attribute Type
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/AttributeType/VendorType.php
    :language: php
    :lines: 1-6,14-
-   :linenos: 
+   :linenos:
 
 The following configuration must be loaded by your bundle extension:
 
@@ -73,7 +73,7 @@ The following configuration must be loaded by your bundle extension:
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/attribute_types.yml
    :language: yaml
    :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/attribute_types.yml
-   :linenos: 
+   :linenos:
 
 
 Creating a filter type
@@ -84,7 +84,7 @@ To create a filter, extend the ChoiceFilter class:
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Filter/ORM/VendorFilter.php
    :language: php
    :lines: 1-7,15-
-   :linenos: 
+   :linenos:
 
 
 The filter has to be added in your DIC:
@@ -92,7 +92,7 @@ The filter has to be added in your DIC:
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/orm_filter_types.yml
    :language: yaml
    :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/orm_filter_types.yml
-   :linenos: 
+   :linenos:
 
 In the current version, the ProductDatagridManager and AssociationProductDatagridManager have to be overridden. The same
 modifications have to be done in both the classes:
@@ -100,12 +100,12 @@ modifications have to be done in both the classes:
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Datagrid/ProductDatagridManager.php
    :language: php
    :lines: 1-7,15-
-   :linenos: 
+   :linenos:
 
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
+.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/grid.yml
    :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
-   :linenos: 
+   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/grid.yml
+   :linenos:
 
 .. note::
     This last step will not be needed in future versions of the PIM.
@@ -123,6 +123,6 @@ if the product has values for your attribute :
 
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Validator/ConstraintGuesser/CustomConstraintGuesser.php
    :language: php
-   :linenos: 
+   :linenos:
 
 The validator for the created custom constraint will be supplied the value of the attribute.
