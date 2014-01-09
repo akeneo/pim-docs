@@ -12,6 +12,7 @@
 * `UIBundle`_
 * `UserBundle`_
 * `VersioningBundle`_
+* `WebServiceBundle`_
 
 .. _CatalogBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/CatalogBundle
 .. _DashboardBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/DashboardBundle
@@ -27,3 +28,4 @@
 .. _UIBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/UIBundle
 .. _UserBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/UserBundle
 .. _VersioningBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/VersioningBundle
+.. _WebServiceBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/WebServiceBundle

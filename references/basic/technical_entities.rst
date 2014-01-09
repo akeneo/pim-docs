@@ -60,4 +60,3 @@ Note that, except the identifier attribute (usually the SKU), there is no requir
 An attribute is expected for a channel, for instance, description can be required for e-commerce but not for mobile.
 
 The product completeness is calculated for each channel and locale combination.
-

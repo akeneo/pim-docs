@@ -15,7 +15,7 @@ For example, to skip all columns starting by a ``#``, the following guesser coul
 
 .. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Transformer/Guesser/CommentGuesser.php
    :language: php
-   :linenos: 
+   :linenos:
 
 The way the guesser works is simple :
 
@@ -27,7 +27,7 @@ The guesser must be included in the following way in the DIC :
 .. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Resources/config/guessers.yml
    :language: yaml
    :prepend: # /src/Acme/Bundle/DemoConnectorBundle/Resources/config/guessers.yml
-   :linenos: 
+   :linenos:
 
 As you can see, the transformer returned by the guesser will be the ``pim_import_export.transformer.property.skip``
 transformer.
@@ -39,7 +39,7 @@ In the following example, we create a transformer which prepends a string to a s
 
 .. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Transformer/Property/PrependTransformer.php
    :language: php
-   :linenos: 
+   :linenos:
 
 This transformer prepends a string comming to the value, to make it work, you should therefore add
 a custom guesser which returns the value to be prepended in the options.
@@ -49,4 +49,4 @@ To add the transformer to the DIC, proceed in the following way:
 .. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Resources/config/transformers.yml
    :language: yaml
    :prepend: # /src/Acme/Bundle/DemoConnectorBundle/Resources/config/transformers.yml
-   :linenos: 
+   :linenos:
