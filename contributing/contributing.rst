@@ -1,7 +1,7 @@
 Contribute to Akeneo PIM
 ========================
 
-We gladly welcome contributions on Akeneo PIM !
+We gladly welcome contributions on Akeneo PIM!
 
 You can get involved by:
 
@@ -55,7 +55,7 @@ Proposing a Technical Enhancement
 Creating a New Connector
 ------------------------
 
-We're happy to connect the PIM with any third-party system !
+We're happy to connect the PIM with any third-party system!
 
 * Begin by check on the forum that nobody is writing the same connector: http://www.akeneo.com/forum/importexport-connectors/
 * Create your connector :doc:`/cookbook/import_export/create-connector`

@@ -10,7 +10,7 @@ and tab panes (``PimCatalogBundle:Product:_tab-panes.html.twig``).
 In order to do this, you will need to define a bundle that is a child of ``PimCatalogBundle`` (`see here`_).
 
 Overriding the templates
-------------------------------
+------------------------
 To override these templates, you need to create 2 new files:
 
 - ``(AcmeCatalogBundle)/Resources/views/Product/_navbar.html.twig``

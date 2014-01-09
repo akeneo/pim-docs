@@ -76,7 +76,7 @@ You can run the job from UI or you can use following command:
     php app/console oro:batch:job my_job_code
 
 Customize Elements: Reader, Processor and Writer
--------------------------------------------------
+------------------------------------------------
 
 The default used step is ``Oro\Bundle\BatchBundle\Step\ItemStep``.
 
