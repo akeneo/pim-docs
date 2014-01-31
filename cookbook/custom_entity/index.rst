@@ -12,6 +12,9 @@ provided by Akeneo and link them to the products.
     if you do not need to use your custom entity as an attribute, follow
     only the first part of this cookbook's recipe.
 
+    the following code is compatible with beta-4 version, will be deprecated with rc-1 (doc will be updated soon).
+
+
 For example, let's say we want to create a more advanced manufacturer entity
 than using a standard attribute option, because the manufacturer needs
 specific attribute itself like the manufacturing country.
