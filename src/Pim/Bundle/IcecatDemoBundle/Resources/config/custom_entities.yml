@@ -4,7 +4,7 @@ services:
         arguments:
             - vendor
             - '@pim_custom_entity.manager.orm'
-            - '@pim_custom_entity.controller.strategy.datagrid'
+            - '@pim_custom_entity.controller.strategy.crud'
             - entity_class:         Pim\Bundle\IcecatDemoBundle\Entity\Vendor
               edit_form_type:       pim_icecatdemo_vendor
               datagrid_namespace:   pim_icecatdemo
