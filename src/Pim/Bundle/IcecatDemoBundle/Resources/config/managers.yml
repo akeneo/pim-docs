@@ -1,0 +1,8 @@
+parameters:
+    pim_icecatdemo.manager.vendor.class: Pim\Bundle\IcecatDemoBundle\Manager\VendorManager
+
+services:
+    pim_icecatdemo.manager.vendor:
+        class: %pim_icecatdemo.manager.vendor.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
