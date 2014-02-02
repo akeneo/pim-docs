@@ -26,12 +26,13 @@ class PimIcecatDemoExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('attribute_types.yml');
-        $loader->load('grid.yml');
+        $loader->load('grid_attribute_types.yml');
         $loader->load('custom_entities.yml');
         $loader->load('form_types.yml');
         $loader->load('orm_filter_types.yml');
         $loader->load('transformers.yml');
         $loader->load('processors.yml');
         $loader->load('entities.yml');
+        $loader->load('managers.yml');
     }
 }
