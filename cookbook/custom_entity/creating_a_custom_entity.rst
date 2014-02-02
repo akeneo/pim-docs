@@ -2,7 +2,7 @@ How to Create a Custom Entity and the Screens to Manage it
 ==========================================================
 
 .. note::
-    The code inside this cookbook entry is visible in the IcecatDemoBundle_.
+    The code inside this cookbook entry is visible in src directory, you can clone pim-dev then do a symlink and install
 
 Creating the Entity
 -------------------
@@ -44,117 +44,23 @@ Creating the Entity Management Screens
 The Grid
 ********
 
-The Grid Class
-..............
+To benefit from the grid component (which comes natively with filtering and sorting), you can define the vendor grid as following :
 
-To benefit from the grid component (which comes natively with filtering and sorting),
-a datagrid manager must be defined:
-
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Datagrid/VendorDatagridManager.php
-   :language: php
-   :lines: 1-11,20-21,136
-   :linenos:
-
-
-Defining the Service
-....................
-This datagrid manager will be declared as a service and configured to link it to our manufacturer entity.
-
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/grid.yml
+.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
    :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/grid.yml
+   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
    :linenos:
-
 
 .. note::
 
-    Your bundle must declare an extension to load this grid.yml file
-    (see http://symfony.com/doc/current/cookbook/bundles/extension.html for more information)
+    NB: the grid bundle and related customizations has been changed with the PIM RC-1
 
-    The ProductDatagridManager and AssociationProductDatagridManager also have to be overriden by changing the
-    parameters containing the name of their classes.
-
-    NB: the grid bundle and related customizations will change with the PIM RC-1
-
-Defining the Fields which are Used in the Grid
+Use a vendor column and filter in product grid
 ..............................................
-Fields must be specifically configured to be usable in the grid as columns, for filtering or for sorting.
-In order to do that, the ``VendorGridManager::configureFields`` method has to be overridden:
 
-.. code-block:: php
-    :linenos:
+.. note::
 
-    public function configureFields(FieldDescriptionCollection $fieldsCollection)
-    {
-        $field = new FieldDescription();
-        $field->setName('code');
-        $field->setOptions(
-            array(
-                'type'        => FieldDescriptionInterface::TYPE_TEXT,
-                'label'       => $this->translate('Code'),
-                'field_name'  => 'code',
-                'filter_type' => FilterInterface::TYPE_STRING,
-                'required'    => false,
-                'sortable'    => true,
-                'filterable'  => true,
-                'show_filter' => true,
-            )
-        );
-
-        $fieldsCollection->add($field);
-    }
-
-You should  now see the code column in the grid. You might notice as well that
-a filter for the code is available and the column is sortable too, as defined by the field's options.
-
-Adding a field to the grid is pretty simple and the options are self explanatory. Some more fields are defined inside
-the _IcecatDemoBundle if you need more examples.
-Do not hesitate to look at the FilterInterface interface to have a list of available filter types, which are pretty
-complete.
-
-
-
-Defining Row Behavior and Buttons
-..................................
-
-What if we want to be redirected to the edit form when clicking on the line of a grid item ?
-
-In order to do that, the ``VendorDatagridManager::getRowActions`` method is overridden:
-
-.. code-block:: php
-    :linenos:
-
-    public function getRowActions()
-    {
-        $clickAction = array(
-            'name'         => 'rowClick',
-            'type'         => ActionInterface::TYPE_REDIRECT,
-            'options'      => array(
-                'label'         => $this->translate('Edit'),
-                'icon'          => 'edit',
-                'link'          => 'edit_link',
-                'backUrl'       => true,
-                'runOnRowClick' => true
-            )
-        );
-
-        return array($clickAction);
-    }
-
-What about a nice delete button on the grid line to quickly delete a vendor ?
-
-.. code-block:: php
-    :linenos:
-
-    $deleteAction = array(
-        'name'         => 'delete',
-        'type'         => ActionInterface::TYPE_DELETE,
-        'options'      => array(
-            'label' => $this->translate('Delete'),
-            'icon'  => 'trash',
-            'link'  => 'delete_link'
-        )
-    );
+    NB: to complete
 
 
 Creating the Form Type for this Entity
