@@ -1,0 +1,4 @@
+config:
+    paths:
+        oro/datafilter/icecat_vendor-filter: pimicecatdemo/js/datafilter/filter/icecat_vendor-filter
+
