@@ -1,0 +1,7 @@
+parameters:
+    pim_datagrid.flexible.attribute_type.pim_icecatdemo_vendor:
+        column:
+            type: flexible_field
+        filter:
+            type:        icecat_vendor
+            parent_type: choice

@@ -1,8 +1,8 @@
 services:
     pim_icecat_demo.transformer.property.entity:
-        class: '%pim_import_export.transformer.property.entity.class%'
+        class: '%pim_transform.transformer.entity.class%'
         arguments:
-            - '@pim_import_export.entity_cache'
+            - '@pim_transform.entity_cache'
         public: false
         tags:
             - name: pim_import_export.transformer.product.attribute

@@ -3,8 +3,10 @@ parameters:
 
 services:
     pim_icecatdemo.orm.filter.type.vendor:
-            class: "%pim_icecatdemo.orm.filter.type.vendor.class%"
+            class: %pim_icecatdemo.orm.filter.type.vendor.class%
             arguments:
-                - "@translator"
+                - @form.factory
+                - @pim_filter.flexible_utility
+                - @pim_icecatdemo.manager.vendor
             tags:
-                - { name: oro_grid.filter.type, alias: pim_icecatdemo_orm_vendor }
+                - { name: oro_filter.extension.orm_filter.filter, type: icecat_vendor }

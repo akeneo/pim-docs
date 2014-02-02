@@ -2,8 +2,12 @@
 
 namespace Pim\Bundle\IcecatDemoBundle\Filter\ORM;
 
-use Oro\Bundle\GridBundle\Filter\ORM\ChoiceFilter;
+use Oro\Bundle\FilterBundle\Filter\ChoiceFilter;
+use Oro\Bundle\FilterBundle\Datasource\FilterDatasourceAdapterInterface;
+use Pim\Bundle\FilterBundle\Filter\Flexible\FilterUtility;
+use Symfony\Component\Form\FormFactoryInterface;
 use Pim\Bundle\CustomEntityBundle\Form\CustomEntityFilterType;
+use Pim\Bundle\IcecatDemoBundle\Manager\VendorManager;
 
 /**
  * Overriding of Choice filter
@@ -14,14 +18,32 @@ use Pim\Bundle\CustomEntityBundle\Form\CustomEntityFilterType;
  */
 class VendorFilter extends ChoiceFilter
 {
+    /**
+     * @param VendorManager
+     */
+    protected $manager;
 
+    /**
+     * Constructor
+     *
+     * @param FormFactoryInterface $factory
+     * @param FilterUtility        $util
+     * @param VendorManager        $manager
+     */
+    public function __construct(FormFactoryInterface $factory, FilterUtility $util, VendorManager $manager)
+    {
+        $this->formFactory = $factory;
+        $this->util        = $util;
+        $this->manager     = $manager;
+    }
     /**
      * Override apply method to disable filtering apply in query
      *
      * {@inheritdoc}
      */
-    public function apply($queryBuilder, $value)
+    public function apply(FilterDatasourceAdapterInterface $ds, $value)
     {
+        $queryBuilder = $ds->getQueryBuilder();
         if (isset($value['value'])) {
             $alias = current($queryBuilder->getRootAliases());
             $queryBuilder
@@ -33,30 +55,31 @@ class VendorFilter extends ChoiceFilter
     /**
      * {@inheritdoc}
      */
-    public function getDefaultOptions()
+    public function getForm()
     {
-        return array(
-            'form_type' => CustomEntityFilterType::NAME
+        $options = array_merge(
+            $this->getOr('options', []),
+            ['csrf_protection' => false]
         );
+
+        $options['field_options']            = isset($options['field_options']) ? $options['field_options'] : [];
+        $options['field_options']['choices'] = $this->manager->getVendorChoices();
+
+        if (!$this->form) {
+            $this->form = $this->formFactory->create($this->getFormType(), [], $options);
+        }
+
+        return $this->form;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getRenderSettings()
+    public function getMetadata()
     {
-        list($formType, $formOptions) = parent::getRenderSettings();
-        $formOptions['class'] = 'Pim\Bundle\IcecatDemoBundle\Entity\Vendor';
-        $formOptions['sort'] = array('label' => 'asc');
+        $metadata = parent::getMetadata();
+        $metadata['choices'] = $this->manager->getVendorChoices();
 
-        return array($formType, $formOptions);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function parseData($data)
-    {
-        return false;
+        return $metadata;
     }
 }
