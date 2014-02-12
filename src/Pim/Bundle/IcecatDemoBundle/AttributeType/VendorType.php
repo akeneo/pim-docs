@@ -1,6 +1,7 @@
 <?php
 namespace Pim\Bundle\IcecatDemoBundle\AttributeType;
 
+use Pim\Bundle\FlexibleEntityBundle\Model\AbstractAttribute;
 use Pim\Bundle\FlexibleEntityBundle\AttributeType\AbstractAttributeType;
 use Pim\Bundle\FlexibleEntityBundle\Model\FlexibleValueInterface;
 
@@ -22,6 +23,35 @@ class VendorType extends AbstractAttributeType
         $options['class']    = 'Pim\Bundle\IcecatDemoBundle\Entity\Vendor';
 
         return $options;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function defineCustomAttributeProperties(AbstractAttribute $attribute)
+    {
+        return array(
+            array(
+                'name'      => 'localizable',
+                'fieldType' => 'switch',
+                'options'   => array(
+                    'disabled'  => (bool) $attribute->getId(),
+                    'read_only' => (bool) $attribute->getId()
+                )
+            ),
+            array(
+                'name'      => 'availableLocales',
+                'fieldType' => 'pim_enrich_available_locales'
+            ),
+            array(
+                'name'      => 'scopable',
+                'fieldType' => 'pim_enrich_scopable',
+                'options'   => array(
+                    'disabled'  => (bool) $attribute->getId(),
+                    'read_only' => (bool) $attribute->getId()
+                )
+            )
+        );
     }
 
     /**
