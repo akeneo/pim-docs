@@ -2,10 +2,10 @@
 * `CatalogBundle`_
 * `CustomEntityBundle`_
 * `DashboardBundle`_
+* `DataGridBundle`_
 * `EnrichBundle`_
 * `FilterBundle`_
 * `FlexibleEntityBundle`_
-* `GridBundle`_
 * `ImportExportBundle`_
 * `InstallerBundle`_
 * `JsFormValidationBundle`_
@@ -22,10 +22,10 @@
 .. _CatalogBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/CatalogBundle
 .. _CustomEntityBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/CustomEntityBundle
 .. _DashboardBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/DashboardBundle
+.. _DataGridBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/DataGridBundle
 .. _EnrichBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/EnrichBundle
 .. _FilterBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/FilterBundle
 .. _FlexibleEntityBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/FlexibleEntityBundle
-.. _GridBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/GridBundle
 .. _ImportExportBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/ImportExportBundle
 .. _InstallerBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/InstallerBundle
 .. _JsFormValidationBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/JsFormValidationBundle
