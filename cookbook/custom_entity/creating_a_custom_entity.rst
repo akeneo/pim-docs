@@ -51,16 +51,14 @@ To benefit from the grid component (which comes natively with filtering and sort
    :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
    :linenos:
 
-.. note::
-
-    NB: the grid bundle and related customizations has been changed with the PIM RC-1
 
 Use a vendor column and filter in product grid
 ..............................................
 
-.. note::
-
-    NB: to complete
+.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/grid_attribute_types.yml
+   :language: yaml
+   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/grid_attribute_types.yml
+   :linenos:
 
 
 Creating the Form Type for this Entity
