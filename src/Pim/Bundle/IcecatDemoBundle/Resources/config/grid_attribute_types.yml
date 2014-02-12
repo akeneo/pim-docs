@@ -5,3 +5,6 @@ parameters:
         filter:
             type:        icecat_vendor
             parent_type: choice
+            options:
+                field_options:
+                    multiple: true
