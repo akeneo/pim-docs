@@ -4,7 +4,7 @@ services:
             arguments:
                 - vendor
                 - entity
-                - "@pim_flexibleentity.validator.attribute_constraint_guesser"
+                - '@pim_flexibleentity.validator.attribute_constraint_guesser'
             tags:
                 - name: pim_flexibleentity.attributetype
                   alias: pim_icecatdemo_vendor
