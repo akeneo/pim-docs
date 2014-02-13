@@ -10,15 +10,17 @@ The main entity is the product which,
 * belongs to a family,
 * is positioned in many categories.
 
+
 Product value
 -------------
 
 Each product value is linked to a product and an attribute.
 
 The product data model is structured as Entity - Attribute - Value.
-The implementation is based on OroFlexibleEntityBundle an customized in PimCatalogBundle.
+The implementation is based on PimFlexibleEntityBundle an customized in PimCatalogBundle.
 
 FYI, a document oriented storage is already planned to deal with high data volumes.
+
 
 Attribute
 ---------
@@ -49,14 +51,18 @@ A scoped attribute has different value for each channel, eg: e-commerce and mobi
 An attribute can be localized and scoped, and therefore have different values for each combination of locale and
 channel, eg: e-commerce - French, e-commerce English, etc.
 
+
 Family and Completeness
 -----------------------
 
 The family defines the list of attributes of a product, you can also add some optional attributes for a dedicated
 product.
 
-Note that, except the identifier attribute (usually the SKU), there is no required attribute for a product.
+.. note::
+
+  Except the identifier attribute (usually the SKU), there is no required attribute for a product.
 
 An attribute is expected for a channel, for instance, description can be required for e-commerce but not for mobile.
 
 The product completeness is calculated for each channel and locale combination.
+
