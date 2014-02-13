@@ -7,35 +7,21 @@ on selected products.
 
 Creating a MassEditAction
 -------------------------
-The first step is to create a new class that implements ``MassEditAction``:
+The first step is to create a new class that implements ``MassEditActionInterface``:
 
-.. code-block:: php
-    :linenos:
+.. note::
+  To avoid rewriting some lines, our example extends AbstractMassEditAction which inherit from MassEditActionInterface.
 
-    namespace Acme\Bundle\DemoBundle\MassEditAction;
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/MassEditAction/CapitalizeValues.php
+   :language: php
+   :prepend: # /src/Acme/Bundle/EnrichBundle/MassEditAction/CapitalizeValues.php
+   :linenos:
 
-    use Pim\Bundle\CatalogBundle\MassEditAction\MassEditActionInterface;
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Form/Type/MassEditAction/CapitalizeValuesType.php
+  :language: php
+  :prepend: # /src/Acme/Bundle/EnrichBundle/Form/Type/MassEditAction/CapitalizeValuesType.php
+  :linenos:
 
-    class CapitalizeValues implements MassEditActionInterface
-    {
-        protected $attributeNames;
-
-        public function getFormType()
-        {
-            return new CapitalizeValuesType();
-        }
-
-        public function perform(array $products)
-        {
-            foreach ($products as $product) {
-                foreach ($product->getValues() as $value) {
-                    if (in_array($value->getAttribute()->getCode(), $this->attributeNames)) {
-                        $value->setData(ucfirst($value->getData()));
-                    }
-                }
-            }
-        }
-    }
 
 This class will contain all the information about the operation to run and the form type which is used to configure it.
 
@@ -45,25 +31,11 @@ Registering the MassEditAction
 
 After the class is created, you must register it as a service in the DIC with the pim_catalog.mass_edit_action tag:
 
-.. configuration-block::
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/services.yml
+   :language: yaml
+   :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/services.yml
+   :linenos:
 
-    .. code-block:: yaml
-
-        # src/Acme/Bundle/DemoBundle/Resources/config/services.yml
-        services:
-            acme_demo_bundle.mass_edit_action.capitalize_values:-
-                class: Acme\Bundle\DemoBundle\MassEditAction\CapitalizeValues
-                tags:
-                    - { name: pim_catalog.mass_edit_action, alias: capitalize-values }
-
-    .. code-block:: xml
-
-        <!-- src/Acme/Bundle/DemoBundle/Resources/config/services.xml -->
-        <service
-            id="acme_demo_bundle.mass_edit_action.capitalize_values"
-            class="Acme\Bundle\DemoBundle\MassEditAction\CapitalizeValues">
-            <tag name="pim_catalog.mass_edit_action" alias="capitalize-values" />
-        </service>
 
 .. note::
 
@@ -78,3 +50,4 @@ Akeneo will generate for you a translation key following this pattern:
 ``pim_catalog.mass_edit_action.%alias%.label``.
 
 You may now define this translation key in your translation catalog(s).
+
