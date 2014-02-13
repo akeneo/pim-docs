@@ -3,11 +3,13 @@ How to Define my own Data Set with the Installer
 
 The Akeneo PIM allows to prepare a data set to use during the installation.
 
-You can configure the data set in the app/config/parameters.yml file:
+You can configure the data set in the ``app/config/parameters.yml`` file:
 
-.. code-block:: yaml
-
-    installer_data:    PimInstallerBundle:demo_dev # use PimInstallerBundle:minimal for minimal data set
+.. literalinclude:: ../../app/config/parameters.yml.dist
+   :language: yaml
+   :prepend: # /app/config/parameters.yml
+   :lines: 1,28
+   :linenos:
 
 The following steps allow you to easily define your own basic entities when you install the PIM.
 
@@ -23,20 +25,17 @@ Create a new bundle:
 
 Register it into ``AppKernel.php``:
 
-.. code-block:: php
+.. literalinclude:: ../../app/AppKernel.php
+   :language: php
+   :prepend: # /app/AppKernel.php
+   :lines: 1-14,58-62,80
    :linenos:
 
-    # /app/AppKernel.php
-    public function registerBundles()
-    {
-        $bundles = array(
-            // ...
-            new Acme\Bundle\MyBundle\AcmeMyBundle(),
 
 Add your own Data
 -----------------
 
-Create a directory Resources/fixtures/mydataset
+Create a directory ``Resources/fixtures/mydataset`` in your bundle.
 
 Copy the ``*.yml`` and ``*.csv`` files from Installer bundle into the ``mydataset`` directory of your bundle.
 
@@ -60,11 +59,13 @@ Then edit the files, for example, to declare your own channels:
 Install the DB
 --------------
 
-Update the  app/config/parameters.yml to use your data set:
+Update the ``app/config/parameters.yml`` to use your data set:
 
-.. code-block:: yaml
-
-    installer_data: AcmeMyBundle:mydataset
+.. literalinclude:: ../../app/config/parameters.yml
+   :language: yaml
+   :prepend: # /app/config/parameters.yml
+   :lines: 1,20
+   :linenos:
 
 You can now (re)install your database by running:
 
