@@ -78,35 +78,3 @@ If some vendors are manually added to the database, the pagination will be visib
 .. note::
    Have a look at the Cookbook recipe "How to add an menu entry" to add your own link in the menu to this grid.
 
-.. _IcecatDemoBundle: https://github.com/akeneo/IcecatDemoBundle
-
-
-Creating the Attribute Type
-***************************
-
-In order to create a vendor attribute linked to your products, you have to define the vendor attribute type
-and its configuration file:
-
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/AttributeType/VendorType.php
-   :language: php
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/AttributeType/VendorType.php
-   :linenos:
-
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/attribute_types.yml
-   :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/attribute_types.yml
-   :linenos:
-
-
-Use a vendor column and filter in product grid
-..............................................
-
-To add the vendor column in the product grid, you have to define each part (column, filter, sorter)
-in a specific file definition ``grid_attribute_types.yml``:
-
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/grid_attribute_types.yml
-   :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/grid_attribute_types.yml
-   :linenos:
-
-

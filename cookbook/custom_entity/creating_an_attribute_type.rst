@@ -1,12 +1,12 @@
 How to Use a Custom Entity as an Attribute Type
 ===============================================
 
-
 .. note::
-    The code inside this cookbook entry is visible in the IcecatDemoBundle_.
+    The code inside this cookbook entry is visible in src directory, you can clone pim-dev then do a symlink and install
 
 Overriding the Product Value to Link it to the Custom Entity
 ------------------------------------------------------------
+
 We now have a custom attribute type that will allow to select instance of our entity, but we still need to provide a way
 to link the product to the entity we have on the Doctrine side (via its product value).
 
@@ -17,7 +17,7 @@ We need to copy and paste the whole class, and add the following lines:
 
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Entity/ProductValue.php
    :language: php
-   :lines: 1-4,23-24,311-337
+   :lines: 1-4,23-24,313-341
    :linenos:
 
 You will also need to copy and adapt the mapping for the entity:
@@ -34,6 +34,7 @@ You will also need to copy and adapt the mapping for the entity:
 
 Registering the New Product Value Class
 ---------------------------------------
+
 Configure the parameter for the ProductValue class :
 
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/entities.yml
@@ -41,22 +42,8 @@ Configure the parameter for the ProductValue class :
    :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/entities.yml
    :linenos:
 
-
-Configuring the FlexibleEntity Manager that is responsible for managing product:
-
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/flexibleentity.yml
-   :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/flexibleentity.yml
-   :linenos:
-
-
-
 After a Doctrine schema update, you should be able to create a new attribute using this new attribute type,
 and link your manufacturer to your product.
-
-.. note::
-    The last step will not be needed in future versions of the PIM
-
 
 
 Creating the Attribute Type
@@ -64,53 +51,14 @@ Creating the Attribute Type
 
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/AttributeType/VendorType.php
    :language: php
-   :lines: 1-6,14-
    :linenos:
 
 The following configuration must be loaded by your bundle extension:
-
 
 .. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/attribute_types.yml
    :language: yaml
    :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/attribute_types.yml
    :linenos:
-
-
-Creating a filter type
-----------------------
-
-To create a filter, extend the ChoiceFilter class:
-
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Filter/ORM/VendorFilter.php
-   :language: php
-   :lines: 1-7,15-
-   :linenos:
-
-
-The filter has to be added in your DIC:
-
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/orm_filter_types.yml
-   :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/orm_filter_types.yml
-   :linenos:
-
-In the current version, the ProductDatagridManager and AssociationProductDatagridManager have to be overridden. The same
-modifications have to be done in both the classes:
-
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Datagrid/ProductDatagridManager.php
-   :language: php
-   :lines: 1-7,15-
-   :linenos:
-
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/grid.yml
-   :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/grid.yml
-   :linenos:
-
-.. note::
-    This last step will not be needed in future versions of the PIM.
-
-.. _IcecatDemoBundle: https://github.com/akeneo/IcecatDemoBundle
 
 Adding validation
 -----------------
@@ -126,3 +74,4 @@ if the product has values for your attribute :
    :linenos:
 
 The validator for the created custom constraint will be supplied the value of the attribute.
+
