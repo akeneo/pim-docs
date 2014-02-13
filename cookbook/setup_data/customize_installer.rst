@@ -16,25 +16,22 @@ Create a Bundle
 
 Create a new bundle:
 
-.. code-block:: php
-
-    namespace Acme\Bundle\MyBundle;
-
-    use Symfony\Component\HttpKernel\Bundle\Bundle;
-
-    class AcmeMyBundle extends Bundle
-    {
-    }
+.. literalinclude:: ../../src/Acme/Bundle/MyBundle/AcmeMyBundle.php
+   :language: php
+   :prepend: # /src/Acme/Bundle/MyBundle/AcmeMyBundle.php
+   :linenos:
 
 Register it into ``AppKernel.php``:
 
 .. code-block:: php
+   :linenos:
 
+    # /app/AppKernel.php
     public function registerBundles()
     {
         $bundles = array(
             // ...
-            new Acme\Bundle\AcmeBundle\PimAcmeBundle(),
+            new Acme\Bundle\MyBundle\AcmeMyBundle(),
 
 Add your own Data
 -----------------
@@ -45,22 +42,20 @@ Copy the ``*.yml`` and ``*.csv`` files from Installer bundle into the ``mydatase
 
 Then edit the files, for example, to declare your own channels:
 
-.. code-block:: yaml
-
-    my_channel:
-      label: My Channel
-      locales:
-        - en_US
-        - fr_FR
-        - de_DE
-      currencies:
-        - USD
-      tree: default
+.. literalinclude:: ../../src/Acme/Bundle/MyBundle/Resources/fixtures/mydataset/channels.yml
+   :language: yaml
+   :prepend: # /src/Acme/Bundle/MyBundle/Resources/fixtures/mydataset/channels.yml
+   :linenos:
 
 .. tip::
 
-  Take a look at ``Pim/Bundle/InstallerBundle/Resources/fixtures/minimal`` to see what is the expected format.
+  Take a look at `Pim/Bundle/InstallerBundle/Resources/fixtures/minimal`_ to see what is the expected format and which 
+  fixtures are absolutely needed.
   All fixtures can be created in CSV or YAML.
+
+.. _Pim/Bundle/InstallerBundle/Resources/fixtures/minimal: 
+  https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/InstallerBundle/Resources/fixtures/minimal
+
 
 Install the DB
 --------------
@@ -69,13 +64,13 @@ Update the  app/config/parameters.yml to use your data set:
 
 .. code-block:: yaml
 
-    installer_data:    AcmeMyBundle:mydataset
+    installer_data: AcmeMyBundle:mydataset
 
 You can now (re)install your database by running:
 
 .. code-block:: bash
 
-    ./install.sh db
+    > php app/console pim:install --force --env=dev --task=db
 
 Load individual fixture files
 -----------------------------
@@ -84,7 +79,10 @@ Fixture files can be loaded individually by using the ``pim:installer:load-fixtu
 
 .. code-block:: bash
 
-    php app/console pim:installer:load-fixtures src/Pim/Bundle/InstallerBundle/demo_dev/*
+    > php app/console pim:installer:load-fixtures src/Acme/Bundle/MyBundle/Resources/fixtures/mydataset/*
 
-The fixtures files can be loaded multiple times, objects will be updated instead of being created on
-successive calls. This command also takes care of loading the fixtures in the right order.
+.. note::
+
+  The fixtures files can be loaded multiple times, objects will be updated instead of being created on 
+  successive calls. This command also takes care of loading the fixtures in the right order.
+
