@@ -1,10 +1,10 @@
-Setup Behat
-===========
-
 .. image:: /_themes/akeneo/static/behat-logo.png
    :width: 150
    :alt: Behat logo
    :target: http://behat.org/
+
+Setup Behat
+===========
 
 The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-community-dev/tree/master/features
 
@@ -12,6 +12,7 @@ These scenarios allow to:
 
 * describe the PIM features and the expected behavior for a real user
 * ensure there is no regression from functional point of view during the development cycle
+
 
 Install Behat
 -------------
@@ -24,15 +25,17 @@ You can install Behat dependencies with composer (on pim-community-dev).
 
 Install Selenium Server
 -----------------------
-Download Selenium server 2.33 `here`_.
+Download Selenium server 2.38 `here`_.
 
 .. _here: http://docs.seleniumhq.org/download/
 
-Install Firefox 20.0
---------------------
-In order to use Selenium RC, you must actually install `firefox 20.0`_.
 
-.. _firefox 20.0: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/20.0.1/
+Install Firefox 26.0
+--------------------
+In order to use Selenium RC, you must actually install `firefox 26.0`_.
+
+.. _firefox 26.0: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/26.0/
+
 
 Create a VirtualHost
 --------------------
@@ -96,6 +99,7 @@ Then copy behat.yml.dist to behat.yml, edit base_url parameter to match your hos
                 ...
                 base_url: http://akeneo-pim.local/app_behat.php/
 
+
 Run features
 ------------
 
@@ -113,3 +117,4 @@ Feature tests can be run by issuing the following command:
   > ~/git/pim-community-dev$ ./bin/behat
 
 More details and options are available on http://behat.org/
+

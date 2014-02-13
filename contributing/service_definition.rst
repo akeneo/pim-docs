@@ -25,3 +25,4 @@ file.
 The convention used is the same as the one for services, with a ``.class`` suffix
 
 The parameter for the product manager service class is ``pim_catalog.manager.product.class``
+
