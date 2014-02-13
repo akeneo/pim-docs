@@ -311,7 +311,7 @@ class ProductValue extends AbstractEntityFlexibleValue implements ProductValueIn
     }
 
     /**
-     * @var Vendor
+     * @var Vendor $vendor
      */
     protected $vendor;
 
