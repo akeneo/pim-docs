@@ -1,0 +1,10 @@
+attributes:
+    sku:
+        labels:
+            en_US: SKU
+        type:       pim_catalog_identifier
+        required:            true
+        unique:              true
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        sortOrder:           1
