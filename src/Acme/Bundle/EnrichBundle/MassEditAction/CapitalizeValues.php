@@ -8,7 +8,7 @@ use Acme\Bundle\EnrichBundle\Form\Type\MassEditAction\CapitalizeValuesType;
 
 class CapitalizeValues extends AbstractMassEditAction
 {
-    protected $attributeNames = array();
+    protected $attributeNames = array('sku');
 
     public function getFormType()
     {
@@ -22,7 +22,7 @@ class CapitalizeValues extends AbstractMassEditAction
         foreach ($products as $product) {
             foreach ($product->getValues() as $value) {
                 if (in_array($value->getAttribute()->getCode(), $this->attributeNames)) {
-                    $value->setData(strtoupper($value->getData()));
+                    $value->setData(strtolower($value->getData()));
                 }
             }
         }
