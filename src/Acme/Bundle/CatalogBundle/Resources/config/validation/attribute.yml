@@ -1,5 +1,3 @@
-# src/Acme/Bundle/CatalogBundle/Resources/config/validation/attribute.yml
-
 Pim\Bundle\CatalogBundle\Entity\Attribute:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: code
