@@ -10,6 +10,7 @@ For example, to allow spaces in option codes, create the following file:
 
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/validation/attribute.yml
    :language: yaml
+   :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/validation/attribute.yml
    :emphasize-lines: 171-
    :linenos:
 
@@ -28,3 +29,4 @@ Product value validation
 
 Product value validation uses different mechanisms than those described above. For more details about
 implementing your own rules, please read :doc:`../custom_entity/creating_an_attribute_type`.
+
