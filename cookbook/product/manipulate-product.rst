@@ -54,7 +54,7 @@ For instance, this example creates a color attribute with a list of predefined o
    $opt3->setCode('blue');
    $att->addOption($opt3);
 
-* Create a simple select attribute with translatable values
+* Create a simple select attribute with localizable values
 
 Keeping the color example, the value of the option **purple** is "Purple" in English and "Violet" in French.
 
@@ -62,7 +62,7 @@ Keeping the color example, the value of the option **purple** is "Purple" in Eng
 
     $opt1 = $pm->createAttributeOption();
     $opt1->setCode('purple');
-    $opt1->setTranslatable(true);
+    $opt1->setLocalizable(true);
 
     $opt1EN = $pm->createAttributeOptionValue();
     $opt1EN->setLocale('en_US');
@@ -83,7 +83,7 @@ Keeping the color example, the value of the option **purple** is "Purple" in Eng
     // create a localizable attribute
     $attribute = $pm->createAttribute('pim_catalog_text');
     $attribute->setCode('name');
-    $attribute->setTranslatable(true);
+    $attribute->setLocalizable(true);
 
 * Create a scopable attribute
 
@@ -102,7 +102,7 @@ Keeping the color example, the value of the option **purple** is "Purple" in Eng
     $attribute = $pm->createAttribute('pim_catalog_textarea');
     $attribute->setCode('short_description');
     $attribute->setScopable(true);
-    $attribute->setTranslatable(true);
+    $attribute->setLocalizable(true);
 
 
 Create a Product
@@ -185,3 +185,4 @@ Get a Product
 .. code-block:: php
 
     $product = $pm->find($myProductId);
+
