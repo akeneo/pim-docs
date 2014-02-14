@@ -41,6 +41,23 @@ After the class is created, you must register it as a service in the DIC with th
 
     The alias will be used in the url (``/enrich/mass-edit-action/capitalize-values/configure``)
 
+
+Templating the form of Mass Edit Action
+---------------------------------------
+
+You need to create a template to render your Mass Edit Action form.
+
+.. note::
+
+  The template have to be in ``/src/Acme/Bundle/EnrichBundle/Resources/views/MassEditAction/configure/``
+
+.. literalinclude:: 
+   ../../src/Acme/Bundle/EnrichBundle/Resources/views/MassEditAction/configure/capitalize-values.html.twig
+   :language: jinja
+   :prepend: #  /src/Acme/Bundle/EnrichBundle/Resources/views/MassEditAction/configure/capitalize-values.html.twig
+   :linenos:
+
+
 Translating the Mass Edit Action Choice
 ---------------------------------------
 
@@ -49,5 +66,5 @@ a new option on the ``/enrich/mass-edit-action/choose`` page.
 Akeneo will generate for you a translation key following this pattern:
 ``pim_catalog.mass_edit_action.%alias%.label``.
 
-You may now define this translation key in your translation catalog(s).
+You may now define some translation keys (``label, description and success_flash``) in your translation catalog(s).
 
