@@ -9,8 +9,8 @@ Creating a MassEditAction
 -------------------------
 The first step is to create a new class that implements ``MassEditActionInterface``:
 
-.. note::
-  To avoid rewriting some lines, our example extends AbstractMassEditAction which inherit from MassEditActionInterface.
+.. tip::
+  To avoid rewriting some lines, an AbstractMassEditAction class exists.
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/MassEditAction/CapitalizeValues.php
    :language: php

@@ -10,7 +10,6 @@ class CapitalizeValuesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // @TODO: to complete
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
