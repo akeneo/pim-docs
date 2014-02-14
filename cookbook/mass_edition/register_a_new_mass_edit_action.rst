@@ -9,9 +9,6 @@ Creating a MassEditAction
 -------------------------
 The first step is to create a new class that implements ``MassEditActionInterface``:
 
-.. tip::
-  To avoid rewriting some lines, an AbstractMassEditAction class exists.
-
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/MassEditAction/CapitalizeValues.php
    :language: php
    :prepend: # /src/Acme/Bundle/EnrichBundle/MassEditAction/CapitalizeValues.php
@@ -49,7 +46,7 @@ You need to create a template to render your Mass Edit Action form.
 
 .. note::
 
-  The template have to be in ``/src/Acme/Bundle/EnrichBundle/Resources/views/MassEditAction/configure/``
+  The template must be in ``/src/Acme/Bundle/EnrichBundle/Resources/views/MassEditAction/configure/``
 
 .. literalinclude:: 
    ../../src/Acme/Bundle/EnrichBundle/Resources/views/MassEditAction/configure/capitalize-values.html.twig
