@@ -13,7 +13,6 @@ quite straightforward for any developer with Doctrine experience.
 .. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Entity/Vendor.php
    :language: php
    :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Entity/Vendor.php
-   :lines: 1-8,17-
    :linenos:
 
 .. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
@@ -60,7 +59,6 @@ Creating the Form Type for this Entity
 .. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Form/Type/VendorType.php
    :language: php
    :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Form/Type/VendorType.php
-   :lines: 1-8,17-
    :linenos:
 
 
