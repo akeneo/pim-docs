@@ -59,3 +59,4 @@ The mapping of the new category entity must be added inside the ``app/config.yml
                 Pim\Bundle\CatalogBundle\Model\CategoryInterface: MyProject\Bundle\CatalogBundle\Entity\MyCategory
 
 The same procedure can be applied to redefine the product and product value entities.
+
