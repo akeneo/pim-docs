@@ -1,6 +1,6 @@
 <?php
 
-namespace Pim\Bundle\IcecatDemoBundle;
+namespace Acme\Bundle\IcecatDemoBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
