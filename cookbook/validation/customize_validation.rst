@@ -11,7 +11,7 @@ For example, to allow spaces in option codes, create the following file:
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/validation/attribute.yml
    :language: yaml
    :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/validation/attribute.yml
-   :emphasize-lines: 169-182
+   :emphasize-lines: 189-202
    :linenos:
 
 As you can see all the validation rules must be copied back in your file.
