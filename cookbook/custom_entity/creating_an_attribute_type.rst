@@ -18,7 +18,7 @@ We need to copy and paste the whole class, and add the following lines:
 .. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Entity/ProductValue.php
    :language: php
    :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Entity/ProductValue.php
-   :lines: 1-4,23-24,313-341
+   :lines: 1-4,14-18,157-
    :linenos:
 
 You will also need to copy and adapt the mapping for the entity:

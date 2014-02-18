@@ -11,7 +11,7 @@ To ensure your entity is imported correctly, the first step is to implement the 
 .. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Entity/Vendor.php
    :language: php
    :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Entity/Vendor.php
-   :lines: 1-5,8,17-18,183-
+   :lines: 1-4,7-13,101-
    :linenos:
 
 
