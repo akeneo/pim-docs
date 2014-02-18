@@ -10,21 +10,22 @@ Creating the Entity
 As Akeneo relies heavily on standard tools like Doctrine, creating the entity is
 quite straightforward for any developer with Doctrine experience.
 
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Entity/Vendor.php
+.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Entity/Vendor.php
    :language: php
+   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Entity/Vendor.php
    :lines: 1-8,17-
    :linenos:
 
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
+.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
    :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
+   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
    :linenos:
 
 Also add parameters for your entity in the DIC :
 
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/entities.yml
+.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Resources/config/entities.yml
    :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/entities.yml
+   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Resources/config/entities.yml
    :lines: 1,3
    :linenos:
 
@@ -44,19 +45,21 @@ Creating the Entity Management Screens
 The Grid
 ********
 
-To benefit from the grid component (which comes natively with filtering and sorting), you can define the vendor grid as following :
+To benefit from the grid component (which comes natively with filtering and sorting), 
+you can define the vendor grid as following :
 
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
+.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
    :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
+   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Resources/config/datagrid.yml
    :linenos:
 
 
 Creating the Form Type for this Entity
 **************************************
 
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Form/Type/VendorType.php
+.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Form/Type/VendorType.php
    :language: php
+   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Form/Type/VendorType.php
    :lines: 1-8,17-
    :linenos:
 
@@ -66,9 +69,9 @@ Creating the CRUD
 
 A complete CRUD can be easily obtained by defining a service for its configuration:
 
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/custom_entities.yml
+.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Resources/config/custom_entities.yml
    :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/custom_entities.yml
+   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Resources/config/custom_entities.yml
    :linenos:
 
 From this point a working grid screen is visible at ``/app_dev.php/enrich/vendor``.

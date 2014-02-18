@@ -15,16 +15,17 @@ Unfortunately, annotations of a parent class are not transmitted to the child cl
 extend the native ProductValue and add the missing part.
 We need to copy and paste the whole class, and add the following lines:
 
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Entity/ProductValue.php
+.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Entity/ProductValue.php
    :language: php
+   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Entity/ProductValue.php
    :lines: 1-4,23-24,313-341
    :linenos:
 
 You will also need to copy and adapt the mapping for the entity:
 
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/doctrine/ProductValue.orm.yml
+.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Resources/config/doctrine/ProductValue.orm.yml
    :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/doctrine/ProductValue.orm.yml
+   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Resources/config/doctrine/ProductValue.orm.yml
    :lines: 1-3,63,86-92
    :linenos:
 
@@ -37,9 +38,9 @@ Registering the New Product Value Class
 
 Configure the parameter for the ProductValue class :
 
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/entities.yml
+.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Resources/config/entities.yml
    :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/entities.yml
+   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Resources/config/entities.yml
    :linenos:
 
 After a Doctrine schema update, you should be able to create a new attribute using this new attribute type,
@@ -49,15 +50,16 @@ and link your manufacturer to your product.
 Creating the Attribute Type
 ---------------------------
 
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/AttributeType/VendorType.php
+.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/AttributeType/VendorType.php
    :language: php
+   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/AttributeType/VendorType.php
    :linenos:
 
 The following configuration must be loaded by your bundle extension:
 
-.. literalinclude:: ../../src/Pim/Bundle/IcecatDemoBundle/Resources/config/attribute_types.yml
+.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Resources/config/attribute_types.yml
    :language: yaml
-   :prepend: # /src/Pim/Bundle/IcecatDemoBundle/Resources/config/attribute_types.yml
+   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Resources/config/attribute_types.yml
    :linenos:
 
 Adding validation
@@ -66,11 +68,14 @@ Adding validation
 For the given example, validation is not really needed, but it might be if your custom attribute includes
 values of its own.
 
+.. note:: @TODO: Create CustomConstraintGuesser class to have code example
+
 To add validation for a ProductValue, you must create an constraint guesser which will add constraints on the fly
 if the product has values for your attribute :
 
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Validator/ConstraintGuesser/CustomConstraintGuesser.php
    :language: php
+   :prepend: # /src/Acme/Bundle/CatalogBundle/Validator/ConstraintGuesser/CustomConstraintGuesser.php
    :linenos:
 
 The validator for the created custom constraint will be supplied the value of the attribute.
