@@ -1,5 +1,5 @@
 <?php
-namespace Pim\Bundle\IcecatDemoBundle\AttributeType;
+namespace Acme\Bundle\IcecatDemoBundle\AttributeType;
 
 use Pim\Bundle\FlexibleEntityBundle\Model\AbstractAttribute;
 use Pim\Bundle\FlexibleEntityBundle\AttributeType\AbstractAttributeType;
@@ -20,7 +20,7 @@ class VendorType extends AbstractAttributeType
     protected function prepareValueFormOptions(FlexibleValueInterface $value)
     {
         $options = parent::prepareValueFormOptions($value);
-        $options['class']    = 'Pim\Bundle\IcecatDemoBundle\Entity\Vendor';
+        $options['class']    = 'Acme\Bundle\IcecatDemoBundle\Entity\Vendor';
 
         return $options;
     }
