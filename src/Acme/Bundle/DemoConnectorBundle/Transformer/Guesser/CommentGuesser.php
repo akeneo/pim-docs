@@ -9,24 +9,13 @@ use Pim\Bundle\ImportExportBundle\Transformer\Property\PropertyTransformerInterf
 
 class CommentGuesser implements GuesserInterface
 {
-    /**
-     * @var PropertyTransformerInterface
-     */
     protected $transformer;
 
-    /**
-     * Constructor
-     *
-     * @param PropertyTransformerInterface $transformer
-     */
     public function __construct(PropertyTransformerInterface $transformer)
     {
         $this->transformer = $transformer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTransformerInfo(ColumnInfoInterface $columnInfo, ClassMetadataInfo $metadata)
     {
         if ('#' !== substr($columnInfo->getLabel(), 0, 1)) {
