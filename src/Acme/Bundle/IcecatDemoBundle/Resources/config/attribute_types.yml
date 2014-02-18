@@ -1,6 +1,6 @@
 services:
     pim_icecatdemo.attributetype.vendor:
-        class: Pim\Bundle\IcecatDemoBundle\AttributeType\VendorType
+        class: Acme\Bundle\IcecatDemoBundle\AttributeType\VendorType
         arguments:
             - vendor
             - entity

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pim\Bundle\IcecatDemoBundle\DependencyInjection;
+namespace Acme\Bundle\IcecatDemoBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

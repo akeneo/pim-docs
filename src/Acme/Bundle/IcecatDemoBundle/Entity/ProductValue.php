@@ -1,6 +1,6 @@
 <?php
 
-namespace Pim\Bundle\IcecatDemoBundle\Entity;
+namespace Acme\Bundle\IcecatDemoBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation\ExclusionPolicy;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pim\Bundle\IcecatDemoBundle\Form\Type;
+namespace Acme\Bundle\IcecatDemoBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -34,7 +34,7 @@ class VendorType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'Pim\Bundle\IcecatDemoBundle\Entity\Vendor',
+                'data_class' => 'Acme\Bundle\IcecatDemoBundle\Entity\Vendor',
             )
         );
     }

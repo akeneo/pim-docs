@@ -1,3 +1,3 @@
 parameters:
-    pim_catalog.entity.product_value.class: Pim\Bundle\IcecatDemoBundle\Entity\ProductValue
-    pim_catalog.entity.vendor.class:        Pim\Bundle\IcecatDemoBundle\Entity\Vendor
+    pim_catalog.entity.product_value.class: Acme\Bundle\IcecatDemoBundle\Entity\ProductValue
+    pim_catalog.entity.vendor.class:        Acme\Bundle\IcecatDemoBundle\Entity\Vendor

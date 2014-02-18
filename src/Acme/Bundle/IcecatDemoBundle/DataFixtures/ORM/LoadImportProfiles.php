@@ -1,6 +1,6 @@
 <?php
 
-namespace Pim\Bundle\IcecatDemoBundle\DataFixtures\ORM;
+namespace Acme\Bundle\IcecatDemoBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Symfony\Bridge\Doctrine\Tests\Fixtures\ContainerAwareFixture;

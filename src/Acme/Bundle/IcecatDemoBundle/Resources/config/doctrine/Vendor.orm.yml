@@ -1,4 +1,4 @@
-Pim\Bundle\IcecatDemoBundle\Entity\Vendor:
+Acme\Bundle\IcecatDemoBundle\Entity\Vendor:
     type: entity
     table: pim_icecatdemo_vendor
     repositoryClass: Pim\Bundle\CatalogBundle\Entity\Repository\ReferableEntityRepository

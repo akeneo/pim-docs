@@ -1,5 +1,5 @@
 parameters:
-    pim_icecatdemo.orm.filter.type.vendor.class: Pim\Bundle\IcecatDemoBundle\Filter\ORM\VendorFilter
+    pim_icecatdemo.orm.filter.type.vendor.class: Acme\Bundle\IcecatDemoBundle\Filter\ORM\VendorFilter
 
 services:
     pim_icecatdemo.orm.filter.type.vendor:

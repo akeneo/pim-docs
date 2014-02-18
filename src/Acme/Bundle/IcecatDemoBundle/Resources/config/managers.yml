@@ -1,5 +1,5 @@
 parameters:
-    pim_icecatdemo.manager.vendor.class: Pim\Bundle\IcecatDemoBundle\Manager\VendorManager
+    pim_icecatdemo.manager.vendor.class: Acme\Bundle\IcecatDemoBundle\Manager\VendorManager
 
 services:
     pim_icecatdemo.manager.vendor:

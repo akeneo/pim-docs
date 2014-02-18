@@ -1,4 +1,4 @@
-Pim\Bundle\IcecatDemoBundle\Entity\ProductValue:
+Acme\Bundle\IcecatDemoBundle\Entity\ProductValue:
     type: entity
     table: pim_icecat_product_value
     indexes:
@@ -84,7 +84,7 @@ Pim\Bundle\IcecatDemoBundle\Entity\ProductValue:
                 entity_id:
                     referencedColumnName: id
         vendor:
-            targetEntity: Pim\Bundle\IcecatDemoBundle\Entity\Vendor
+            targetEntity: Acme\Bundle\IcecatDemoBundle\Entity\Vendor
             joinColumns:
                 vendor_id:
                     referencedColumnName: id

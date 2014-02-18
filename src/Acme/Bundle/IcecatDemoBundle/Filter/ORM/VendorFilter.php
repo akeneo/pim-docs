@@ -1,13 +1,13 @@
 <?php
 
-namespace Pim\Bundle\IcecatDemoBundle\Filter\ORM;
+namespace Acme\Bundle\IcecatDemoBundle\Filter\ORM;
 
 use Oro\Bundle\FilterBundle\Filter\ChoiceFilter;
 use Oro\Bundle\FilterBundle\Datasource\FilterDatasourceAdapterInterface;
 use Pim\Bundle\FilterBundle\Filter\Flexible\FilterUtility;
 use Symfony\Component\Form\FormFactoryInterface;
 use Pim\Bundle\CustomEntityBundle\Form\CustomEntityFilterType;
-use Pim\Bundle\IcecatDemoBundle\Manager\VendorManager;
+use Acme\Bundle\IcecatDemoBundle\Manager\VendorManager;
 
 /**
  * Overriding of Choice filter

@@ -1,5 +1,5 @@
 <?php
-namespace Pim\Bundle\IcecatDemoBundle\Command;
+namespace Acme\Bundle\IcecatDemoBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 

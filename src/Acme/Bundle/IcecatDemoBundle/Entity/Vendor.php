@@ -1,6 +1,6 @@
 <?php
 
-namespace Pim\Bundle\IcecatDemoBundle\Entity;
+namespace Acme\Bundle\IcecatDemoBundle\Entity;
 
 use Pim\Bundle\CatalogBundle\Model\ReferableInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;

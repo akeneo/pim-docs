@@ -1,6 +1,6 @@
 <?php
 
-namespace Pim\Bundle\IcecatDemoBundle\Manager;
+namespace Acme\Bundle\IcecatDemoBundle\Manager;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -37,7 +37,7 @@ class VendorManager
     {
         $vendors = $this
             ->objectManager
-            ->getRepository('Pim\Bundle\IcecatDemoBundle\Entity\Vendor')
+            ->getRepository('Acme\Bundle\IcecatDemoBundle\Entity\Vendor')
             ->findAll();
 
         $choices = array();
