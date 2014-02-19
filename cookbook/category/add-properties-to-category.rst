@@ -12,51 +12,33 @@ The first step is to create a class that extends PIM ``Category`` class.
     Class inheritance is implemented with a Doctrine discriminator map. Please be sure not to use ``Category`` as
     the name of your class so as to avoid unexpected problems.
 
-For example, we can add an image property with a text field.
+For example, we can add a description property with a text field.
 
-.. code-block:: php
-    :linenos:
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Entity/MyCategory.php
+   :language: php
+   :prepend: # /src/Acme/Bundle/CatalogBundle/Entity/MyCategory.php
+   :linenos:
 
-    namespace MyProject/Bundle/CatalogBundle/Entity;
-
-    use Doctrine\ORM\Mapping as ORM;
-    use Pim\Bundle\CatalogBundle\Entity\Category;
-
-    /**
-     * @ORM\Entity(repositoryClass="Pim\Bundle\CatalogBundle\Entity\Repository\CategoryRepository")
-     */
-    class MyCatalog extends Category
-    {
-        /**
-         * @ORM\Column(name="image")
-         */
-        protected $image;
-
-        public function getImage()
-        {
-            return $this->image;
-        }
-
-        public function setImage($image)
-        {
-            $this->image = $image;
-
-            return $this;
-        }
-    }
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/doctrine/MyCategory.orm.yml
+   :language: yaml
+   :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/doctrine/MyCategory.orm.yml
+   :linenos:
 
 
 Define the Category Class
 -------------------------
 
-The mapping of the new category entity must be added inside the ``app/config.yml`` file:
+You need to update your category entity parameter used in ``entities.yml`` file:
 
-.. code-block:: yaml
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/entities.yml
+   :language: yaml
+   :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/entities.yml
+   :linenos:
 
-    doctrine:
-        orm:
-            resolve_target_entities:
-                Pim\Bundle\CatalogBundle\Model\CategoryInterface: MyProject\Bundle\CatalogBundle\Entity\MyCategory
+.. note::
+   You don't have to add enough code for resolve target entities doctrine configuration.
+   We already have a resolve which inject the new value for your category.
+
 
 The same procedure can be applied to redefine the product and product value entities.
 
