@@ -6,16 +6,16 @@ use Pim\Bundle\CatalogBundle\Entity\Category;
 
 class MyCategory extends Category
 {
-    protected $image;
+    protected $description;
 
-    public function getImage()
+    public function getDescription()
     {
-        return $this->image;
+        return $this->description;
     }
 
-    public function setImage($image)
+    public function setDescription($description)
     {
-        $this->image = $image;
+        $this->description = $description;
 
         return $this;
     }
