@@ -2,7 +2,6 @@ Acme\Bundle\CatalogBundle\Entity\MyCategory:
     type: entity
     repositoryClass: Pim\Bundle\CatalogBundle\Entity\Repository\CategoryRepository
     fields:
-        image:
+        description:
             type: string
-            length: 100
-            nullable: false
+            length: 255
