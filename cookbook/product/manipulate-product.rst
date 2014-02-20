@@ -116,67 +116,77 @@ Create a Product
 Enrich a Product
 ----------------
 
-* Set Text Value
+* Create a new value
 
 .. code-block:: php
 
-    $product->setSku('akeneo-001');
-    $product->setTitle('My product title');
+    $productValue = $pm->createProductValue();
+    $productValue->setAttribute($mySkuAttribute);
+    $product->addValue($productValue);
 
-    $productValue = $product->getSku();
-    $sku = (string) $product->getSku();
-
-* Set Option Value
+* Update a text Value
 
 .. code-block:: php
 
-   $product->setColor($opt1);
-   echo $product->getColor(); // returns [purple]
+    $product->getValue('sku')->setData('akeneo-001');
+    $product->getValue('title')->setData('My product title');
 
-* Set Localized Value
+    $productValue = $product->getValue('sku');
+    $sku = (string) $product->getValue('sku')->getData();
+
+* Update an Option Value
+
+.. code-block:: php
+
+   $product->getValue('color')->setOption($opt1);
+   echo $product->getValue()->getData(); // returns [purple]
+
+* Update a Localized Value
 
 A product can have different values depending of the locale.
-We considers that the locales **en_US** and **fr_FR** are already created and activated.
+With the locales **en_US** and **fr_FR** already existing:
 
 .. code-block:: php
 
-    $product->setName('My name', 'en_US');
-    $product->setName('Mon nom', 'fr_FR');
+    $product->getValue('name', 'en_US')->setData('My name');
+    $product->getValue('name', 'fr_FR')->setData('Mon nom');
 
-    echo $product->getName(); // returns "My name"
+    echo $product->getValue('name')->getData(); // returns "My name"
 
     $product->setLocale('fr_FR');
-    echo $product->getName(); // returns "Mon nom"
+    echo $product->getValue('name')->getData(); // returns "Mon nom"
 
 * Set Scopable Value
 
 Akeneo PIM is a multi-channel application so you can define different scopes to use.
-We consider that channels **ecommerce** and **mobile** are already created.
+We the channels (scope) **ecommerce** and **mobile** already existing:
 
 .. code-block:: php
 
-    $product->setImageHd('my_ecommerce_image', null, 'ecommerce');
-    $product->setImageHd('my_mobile_image', null, 'mobile');
+    $product->getValue('image_hd', null, 'ecommerce')->setData('my_ecommerce_image');
+    $product->getValue('image_hd', null, 'mobile')->setData('my_mobile_image');
 
     $product->setScope('ecommerce');
-    echo $product->getImageHd(); // returns "my_ecommerce_image"
+
+    $product->getValue('image_hd')->getData(); // returns "my_ecommerce_image"
 
     $product->setScope('mobile');
-    echo $product->getImageHd(); // returns "my_mobile_image"
+    $product->getValue('image_hd')->getData(); // returns "my_mobile_image"
 
 
 * Set Localizable and Scopable Value
 
 .. code-block:: php
 
-    $product->setShortDescription('Ecommerce and en_US', 'en_US', 'ecommerce');
-    $product->setShortDescription('Mobile and en_US', 'en_US', 'mobile');
-    $product->setShortDescription('Ecommerce et fr_FR', 'fr_FR', 'ecommerce');
-    $product->setShortDescription('Mobile et fr_FR', 'fr_FR', 'mobile');
+    $product->getValue('short_description', 'en_US', 'ecommerce')->setData('Ecommerce and en_US');
+    $product->getValue('short_description', 'en_US', 'mobile')->setData('Mobile and en_US');
+    $product->getValue('short_description', 'fr_FR', 'ecommerce')->setData('Ecommerce et fr_FR');
+    $product->getValue('short_description', 'fr_FR', 'mobile')->setData('Mobile et fr_FR');
 
     $product->setLocale('en_US');
     $product->setScope('ecommerce');
-    echo $product->getShortDescription(); // returns "Ecommerce and en_US"
+
+    echo $product->getValue('short_description'); // returns "Ecommerce and en_US"
 
 
 Get a Product
