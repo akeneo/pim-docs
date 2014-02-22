@@ -73,12 +73,12 @@ You can run the job from UI or you can use following command:
 
 .. code-block:: bash
 
-    php app/console oro:batch:job my_job_code
+    php app/console akeneo:batch:job my_job_code
 
 Customize Elements: Reader, Processor and Writer
 ------------------------------------------------
 
-The default used step is ``Oro\Bundle\BatchBundle\Step\ItemStep``.
+The default used step is ``Akeneo\Bundle\BatchBundle\Step\ItemStep``.
 
 You can easily create your own reader, processor or writer as services and change the job configuration.
 
@@ -93,8 +93,9 @@ This practice allows to focus on developing each part, element per element, and 
 
 Don't hesitate to take inspiration from existing connectors:
 
-* https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/ImportExportBundle
-* https://github.com/akeneo/MagentoConnectorBundle (work in progress)
+* https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/BaseConnectorBundle
+* https://github.com/akeneo/MagentoConnectorBundle
+* https://github.com/akeneo/ExcelConnectorBundle
 
 And more to come!
 
@@ -105,7 +106,7 @@ Imagine that your import encounters an erroneous line in a CSV file - to skip th
 
 .. code-block:: php
 
-    throw new InvalidItemException($message, $item);
+    throw new /InvalidItemException($message, $item);
 
 .. note::
 

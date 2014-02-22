@@ -2,9 +2,9 @@
 
 namespace Acme\Bundle\DemoConnectorBundle\Step;
 
-use Oro\Bundle\BatchBundle\Step\AbstractStep;
-use Oro\Bundle\BatchBundle\Entity\StepExecution;
-use Oro\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
+use Akeneo\Bundle\BatchBundle\Step\AbstractStep;
+use Akeneo\Bundle\BatchBundle\Entity\StepExecution;
+use Akeneo\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
 use Acme\Bundle\DemoConnectorBundle\Handler\CurlHandler;
 
 class NotifyStep extends AbstractStep

@@ -2,9 +2,9 @@
 
 namespace Acme\Bundle\DemoConnectorBundle\Handler;
 
-use Oro\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
-use Oro\Bundle\BatchBundle\Step\StepExecutionAwareInterface;
-use Oro\Bundle\BatchBundle\Entity\StepExecution;
+use Akeneo\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
+use Akeneo\Bundle\BatchBundle\Step\StepExecutionAwareInterface;
+use Akeneo\Bundle\BatchBundle\Entity\StepExecution;
 
 // This element is configurable and knows the step execution
 class CurlHandler extends AbstractConfigurableStepElement implements StepExecutionAwareInterface

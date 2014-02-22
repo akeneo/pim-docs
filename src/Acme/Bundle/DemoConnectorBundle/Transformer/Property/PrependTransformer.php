@@ -2,7 +2,7 @@
 
 namespace Acme\Bundle\DemoConnectorBundle\Transformer\Property;
 
-use Pim\Bundle\ImportExportBundle\Transformer\Property\PropertyTransformerInterface;
+use Pim\Bundle\TransformBundle\Transformer\Property\PropertyTransformerInterface;
 
 class PrependTransformer implements PropertyTransformerInterface
 {
