@@ -1,4 +1,4 @@
-pim_import_export:
+pim_base_connector:
     jobs:
         demo_product_export:
             title: Product Export CSV
