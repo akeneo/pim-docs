@@ -1,0 +1,6 @@
+pim_base_connector:
+    jobs:
+        specific_product_import:
+            title: Product Import XML
+            import:
+                title: Product Import Step

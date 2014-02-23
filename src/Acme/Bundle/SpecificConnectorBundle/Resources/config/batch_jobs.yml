@@ -1,0 +1,12 @@
+connector:
+    name: Specific Connector
+    jobs:
+        specific_product_import:
+            title: pim_base_connector.jobs.specific_product_import.title
+            type:  import
+            steps:
+                import:
+                    title: pim_base_connector.jobs.specific_product_import.import.title
+                    class: Acme\Bundle\SpecificConnectorBundle\Step\ProductImportStep
+                    services:
+                        product_manager: pim_catalog.manager.product
