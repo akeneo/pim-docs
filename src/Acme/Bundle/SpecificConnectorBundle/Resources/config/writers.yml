@@ -1,0 +1,10 @@
+services: ~
+
+parameters:
+    acme_specific_connector.writer.orm_product.class: Acme\Bundle\SpecificConnectorBundle\Writer\ORM\ProductWriter
+
+services:
+    acme_specific_connector.writer.orm_product:
+        class: '%acme_specific_connector.writer.orm_product.class%'
+        arguments:
+            - '@pim_catalog.manager.product'
