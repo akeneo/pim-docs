@@ -2,11 +2,13 @@ connector:
     name: Specific Connector
     jobs:
         specific_product_import:
-            title: pim_base_connector.jobs.specific_product_import.title
+            title: acme_specific_connector.jobs.specific_product_import.title
             type:  import
             steps:
                 import:
-                    title: pim_base_connector.jobs.specific_product_import.import.title
-                    class: Acme\Bundle\SpecificConnectorBundle\Step\ProductImportStep
-                    services:
-                        product_manager: pim_catalog.manager.product
+                   title: acme_specific_connector.jobs.specific_product_import.import.title
+                   services:
+                       reader:    acme_specific_connector.reader.file.xml_product
+                       processor: acme_specific_connector.processor.product
+                       writer:    acme_specific_connector.writer.orm_product
+
