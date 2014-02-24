@@ -3,7 +3,7 @@ How to Create a Custom Step
 
 Previously we discussed about :doc:`/cookbook/import_export/create-connector`
 
-Let's see how to go further by creating a custom step which sends a notification to an url when a product export is finished.
+Let's see how to go further by creating a custom step which sends a notification to an URL when a product export is finished.
 
 Create our Step
 ---------------

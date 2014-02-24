@@ -76,7 +76,7 @@ You can run the job from UI or you can use following command:
 Create our Specific Connector
 -----------------------------
 
-During this exercice, to explain main concepts, we created a new connector which uses existing parts, at the end, we've cloned the native CSV product export.
+In the previous section, the main concepts behind connectors were explained. We have ecreated a new connector which uses existing parts, until we were able to reproduce the native CSV product export features but on a different connector.
 
 Now, let's code a specific connector :doc:`/cookbook/import_export/create-specific-connector`
 

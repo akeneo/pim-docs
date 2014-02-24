@@ -1,18 +1,18 @@
 How to Create a Specific Connector
 ==================================
 
-In previous part, we've seen basis of connector creation (cf :doc:`/cookbook/import_export/create-connector`), in this exercice, we create our very first specific connector.
+The foundations of connector creation has been covered in the previous chapter (cf :doc:`/cookbook/import_export/create-connector`). With the following hand-on practice, we will create our own specific connector.
 
-To stay focus on the main concepts, we implement the simplest connector as possible by avoiding to use too much existing elements.
+To stay focus on the main concepts, we implement the simplest connector as possible by avoiding to use too many existing elements.
 
-Let's imagine the following use case, I would create new products from the following XML file :
+Our use case is to import new products from the following XML file :
 
 .. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Resources/fixtures/products.xml
    :language: xml
    :linenos:
 
 .. note::
-    The code inside this cookbook entry is visible in src directory, you can clone pim-doc then do a symlink to install the bundle.
+    The code inside this cookbook entry is available in the src directory, you can clone pim-doc then use a symlink to make the Acme bundle available in the `src/`.
 
 Create our Connector
 --------------------
@@ -45,13 +45,13 @@ Configure a job in ``Resources/config/batch_jobs.yml``:
    :linenos:
    :lines: 1-13
 
-Here, we create an import job which contains a single step `import`.
+Here we create an import job which contains a single step `import`.
 
 The default used step is ``Akeneo\Bundle\BatchBundle\Step\ItemStep``.
 
-An item step expects to be configured with 3 elements, a reader, a processor and a writer.
+An item step is configured with 3 elements, a reader, a processor and a writer.
 
-As seen previously, we can use existing elements, for didactic purpose let's create our own elements.
+As seen previously, we can use existing elements, but in this case, we will create our own elements so you will be able to do it by yourself when needed.
 
 During the development, a good practise is to use dummy elements as in this example:
 
@@ -60,7 +60,7 @@ During the development, a good practise is to use dummy elements as in this exam
    :linenos:
    :lines: 1-3,14-23
 
-This practice allows to focus on developing each part, element per element, and be able to run the whole process.
+This practice allows to focus on developing each part, element per element, and always be able to run the whole process during the development.
 
 Create our Reader
 -----------------
@@ -94,7 +94,7 @@ Create our Processor
 
 Our processor receives each item passed by our reader and converts it to product.
 
-If the product is already known, we skip the item.
+If the product is already known, we skip the item. Of course, in the case of production import, we will update the product as well by changing the properties of the loaded product.
 
 We create a minimal product, to go further, you can take a look on :doc:`/cookbook/product/manipulate-product`
 
@@ -107,7 +107,7 @@ This processor needs to know the product manager that is injected in the followi
 Add Details in Summary
 ----------------------
 
-The execution details page presents a summary and the errors encountered during the execution. You can easily use your own information or counter with following methods:
+The execution details page presents a summary and the errors encountered during the execution. Your own information and counter can be easily added with following methods:
 
 .. code-block:: php
 
@@ -118,7 +118,7 @@ The execution details page presents a summary and the errors encountered during 
 Skip Erroneous Data
 -------------------
 
-To skip the current line and pass to the next one, you need to throw the following exception:
+To skip the current line and go to the next one, you need to throw the following exception:
 
 .. code-block:: php
 
@@ -137,9 +137,11 @@ Finaly we define our product writer :
    :language: php
    :linenos:
 
-Our writer receives an array of items, here, some products and persist them.
+The writer element receives an array of items, as a writer can be able to do some mass writing that could be more efficient than writing item one by one.
 
-This writer needs to know the product manager that is injected in the following service definition in `writers.yml` :
+In this example, the items are products and the writer persist them.
+
+In order to do that, this writer needs to know the product manager that is injected in the following service definition in `writers.yml` :
 
 .. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Resources/config/writers.yml
    :language: yaml
@@ -147,12 +149,12 @@ This writer needs to know the product manager that is injected in the following 
 
 .. note::
 
-    Keep in mind that for example purpose, we define by hand our own reader, processor, writer, in fact, we should use existing elements from the base connector. We'll see how to re-use and customize existing elements in following examples.
+    Keep in mind that for example purpose, we define by hand our own reader, processor, writer.  In fact, we should use existing elements from the Base Connector. We'll see how to re-use and customize existing elements in following examples.
 
 Use our new Connector
 ---------------------
 
-Now if you refresh cache, your new export can be found under Extract > Import profiles > Create import profile.
+Now if you refresh the cache, your new export can be found under Extract > Import profiles > Create import profile.
 
 You can run the job from UI or you can use following command:
 
@@ -163,8 +165,8 @@ You can run the job from UI or you can use following command:
 Create a Custom Step
 --------------------
 
-The default step answers to the majority of cases but sometimes you need to create more custom logic with no need for a reader, processor or writer.
+The default ItemStep answers to the majority of cases but sometimes you need to create more custom logic with no need for a reader, processor or writer.
 
-For instance, at the end of an export you want send a custom email, copy the result to a FTP server or call a specific url to report the result.
+For instance, at the end of an export you may want send a custom email, copy the result to a FTP server or call a specific url to report the result.
 
 Let's take this last example to illustrate :doc:`/cookbook/import_export/create-custom-step`
