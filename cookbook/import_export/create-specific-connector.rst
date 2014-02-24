@@ -53,7 +53,7 @@ An item step expects to be configured with 3 elements, a reader, a processor and
 
 As seen previously, we can use existing elements, for didactic purpose let's create our own elements.
 
-During the development, a good practise is to use dummy elements as in this exemple:
+During the development, a good practise is to use dummy elements as in this example:
 
 .. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Resources/config/batch_jobs.yml
    :language: yaml
@@ -147,7 +147,7 @@ This writer needs to know the product manager that is injected in the following 
 
 .. note::
 
-    Keep in mind that for exemple purpose, we define by hand our own reader, processor, writer, in fact, we should use existing elements from the base connector. We'll see how to re-use and customize existing elements in following examples.
+    Keep in mind that for example purpose, we define by hand our own reader, processor, writer, in fact, we should use existing elements from the base connector. We'll see how to re-use and customize existing elements in following examples.
 
 Use our new Connector
 ---------------------
