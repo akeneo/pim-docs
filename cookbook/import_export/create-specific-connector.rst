@@ -3,7 +3,7 @@ How to Create a Specific Connector
 
 In previous part, we've seen basis of connector creation (cf :doc:`/cookbook/import_export/create-connector`), in this exercice, we create our very first specific connector.
 
-To stay focus on the main concepts, we implement the simplest connector as possible by avoiding to use too much existing elements, we'll explain them later.
+To stay focus on the main concepts, we implement the simplest connector as possible by avoiding to use too much existing elements.
 
 Let's imagine the following use case, I would create new products from the following XML file :
 
@@ -45,22 +45,64 @@ Configure a job in ``Resources/config/batch_jobs.yml``:
    :linenos:
    :lines: 1-13
 
-Here, we create an import job which contains a single step, this step is a `ProductImportStep`.
+Here, we create an import job which contains a single step `import`.
 
-In this step, as we need to create some products, we inject the `pim_catalog.manager.product` service, defined in the `PimCatalogBundle`.
+The default used step is ``Akeneo\Bundle\BatchBundle\Step\ItemStep``.
 
-Create our Step
----------------
+An item step expects to be configured with 3 elements, a reader, a processor and a writer.
 
-.. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Step/ProductImportStep.php
+As seen previously, we can use existing elements, for didactic purpose let's create our own elements.
+
+During the development, a good practise is to use dummy elements as in this exemple:
+
+.. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Resources/config/batch_jobs.yml
+   :language: yaml
+   :linenos:
+   :lines: 1-3,14-23
+
+This practice allows to focus on developing each part, element per element, and be able to run the whole process.
+
+Create our Reader
+-----------------
+
+.. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Reader/File/XmlProductReader.php
    :language: php
    :linenos:
 
-We define a product manager setter and to stay as simple as possible, our step doesnt need any configuration (in fact, we should define the path of the xml file we would import). 
+Our element reads the file and iterate to return products line per line.
 
-For the same reason, we don't use any step element (as reader, processor, writer), the step directly contains the custom code in the doExecute method.
+This element must be configured with the path of the xml file.
 
-This method is called during the execution, here, we read XML lines to create products that not exist yet.
+Then we need to define this reader as a service in `readers.yml` :
+
+.. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Resources/config/readers.yml
+   :language: yaml
+   :linenos:
+
+And we introduce the following extension to load the services files in configuration :
+
+.. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/DependencyInjection/AcmeSpecificConnectorExtension.php
+   :language: php
+   :linenos:
+
+Create our Processor
+--------------------
+
+.. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Processor/ProductProcessor.php
+   :language: php
+   :linenos:
+
+Our processor receives each item passed by our reader and converts it to product.
+
+If the product is already known, we skip the item.
+
+We create a minimal product, to go further, you can take a look on :doc:`/cookbook/product/manipulate-product`
+
+This processor needs to know the product manager that is injected in the following service definition in `processors.yml` :
+
+.. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Resources/config/processors.yml
+   :language: yaml
+   :linenos:
 
 Add Details in Summary
 ----------------------
@@ -69,9 +111,43 @@ The execution details page presents a summary and the errors encountered during 
 
 .. code-block:: php
 
-        $stepExecution->incrementSummaryInfo('skip');
-        $stepExecution->incrementSummaryInfo('mycounter');
-        $stepExecution->addSummaryInfo('myinfo', 'my value');
+        $this->stepExecution->incrementSummaryInfo('skip');
+        $this->stepExecution->incrementSummaryInfo('mycounter');
+        $this->stepExecution->addSummaryInfo('myinfo', 'my value');
+
+Skip Erroneous Data
+-------------------
+
+To skip the current line and pass to the next one, you need to throw the following exception:
+
+.. code-block:: php
+
+    throw new InvalidItemException($message, $item);
+
+.. note::
+
+    You can use this exception in reader, processor or writer, it will be handled by the ItemStep. Other exceptions will stop the whole job.
+
+Create our Writer
+-----------------
+
+Finaly we define our product writer :
+
+.. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Writer/ORM/ProductWriter.php
+   :language: php
+   :linenos:
+
+Our writer receives an array of items, here, some products and persist them.
+
+This writer needs to know the product manager that is injected in the following service definition in `writers.yml` :
+
+.. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Resources/config/writers.yml
+   :language: yaml
+   :linenos:
+
+.. note::
+
+    Keep in mind that for exemple purpose, we define by hand our own reader, processor, writer, in fact, we should use existing elements from the base connector. We'll see how to re-use and customize existing elements in following examples.
 
 Use our new Connector
 ---------------------

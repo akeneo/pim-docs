@@ -9,6 +9,7 @@
 
 * Import / export
     * :doc:`/cookbook/import_export/create-connector`
+    * :doc:`/cookbook/import_export/create-specific-connector`
     * :doc:`/cookbook/import_export/create-custom-step`
     * :doc:`/cookbook/import_export/customize-import-behavior`
 
@@ -27,3 +28,5 @@
 * Categories
     * :doc:`/cookbook/category/add-properties-to-category`
 
+* Customize products grid
+     * :doc:`/cookbook/grid/customize_product_grid`
