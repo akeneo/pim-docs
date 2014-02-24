@@ -10,13 +10,10 @@ class XmlProductReader extends FileReader implements ItemReaderInterface
 {
     protected $xml;
 
-    /**
-     * {@inheritdoc}
-     */
     public function read()
     {
         if (null === $this->xml) {
-            // for exemple purpose, we should use XML Parser to save memory
+            // for exemple purpose, we should use XML Parser to read line per line
             $this->xml = simplexml_load_file($this->filePath, 'SimpleXMLIterator');
             $this->xml->rewind();
         }
@@ -30,9 +27,6 @@ class XmlProductReader extends FileReader implements ItemReaderInterface
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getConfigurationFields()
     {
         return array(

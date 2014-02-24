@@ -71,14 +71,14 @@ class CurlHandler extends AbstractConfigurableStepElement implements StepExecuti
         return array(
             'filePath' => array(
                 'options' => array(
-                    'label' => 'pim_import_export.export.filePath.label',
-                    'help'  => 'pim_import_export.export.filePath.help'
+                    'label' => 'pim_base_connector.export.filePath.label',
+                    'help'  => 'pim_base_connector.export.filePath.help'
                 )
             ),
             'url' => array(
                 'options' => array(
-                    'label' => 'pim_import_export.export.url.label',
-                    'help'  => 'pim_import_export.export.url.help'
+                    'label' => 'pim_base_connector.export.url.label',
+                    'help'  => 'pim_base_connector.export.url.help'
                 )
             )
         );

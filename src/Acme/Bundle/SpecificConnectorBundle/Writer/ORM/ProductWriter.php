@@ -17,7 +17,7 @@ class ProductWriter extends AbstractConfigurableStepElement implements
     /** @var StepExecution */
     protected $stepExecution;
 
-    /* @var ProductManager */
+    /** @var ProductManager */
     protected $productManager;
 
     public function __construct($manager)
@@ -25,9 +25,6 @@ class ProductWriter extends AbstractConfigurableStepElement implements
         $this->productManager = $manager;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function write(array $items)
     {
         foreach ($items as $product) {
@@ -36,17 +33,11 @@ class ProductWriter extends AbstractConfigurableStepElement implements
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getConfigurationFields()
     {
         return array();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setStepExecution(StepExecution $stepExecution)
     {
         $this->stepExecution = $stepExecution;
