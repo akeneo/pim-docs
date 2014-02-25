@@ -20,7 +20,7 @@ Installing MySQL
 ****************
 **Ubuntu 12.10 & 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo apt-get install mysql-server
@@ -44,11 +44,20 @@ Installing PHP
     $ sudo apt-get install libapache2-mod-php5 php5-cli
     $ sudo apt-get install php5-mysql php5-intl php5-curl php5-gd php5-mcrypt
 
+**Ubuntu 13.10**
+
+.. code-block:: bash 
+    :linenos:
+
+    $ sudo apt-get install php5-json
+    $ sudo ln -s /etc/php5/conf.d/mcrypt.ini /etc/php5/mods-available/
+    $ sudo php5enmod mcrypt
+
 Installing Java
 ***************
 **Ubuntu 12.10 & 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo apt-get install openjdk-7-jre
@@ -68,7 +77,12 @@ Installing PHP opcode and data cache
 .. code-block:: bash 
     :linenos:
 
-    $ sudo apt-get install php-apcu 
+    $ sudo apt-get install php5-apcu 
+
+.. note::
+    In case of PHP 5.5 on Ubuntu 13.10, the Zend OPcache opcode cache
+    is installed and enabled by default.
+    Only the data cache provided by APCu is needed.
 
 System configuration
 --------------------
@@ -118,7 +132,7 @@ PHP
 Apache
 ******
 To avoid spending too much time on rights problems between the installing user and the Apache user, an easy configuration
-is to use same user for both process.
+is to use same user for both processes.
 
 
 Get your idenfiers
@@ -210,12 +224,12 @@ Enabling Apache mod_rewrite
 
 Creating the vhost file
 ***********************
-**Ubuntu 12.10 & Ubuntu 13.10**
+**Ubuntu 12.10**
 
 .. code-block:: bash 
     :linenos:
 
-    $ sudo gedit /etc/apache2/sites-available/akeneo-pim.local 
+    $ sudo gedit /etc/apache2/sites-available/akeneo-pim.local
 
 **Ubuntu 12.10**
 
@@ -240,6 +254,14 @@ Creating the vhost file
 
 **Ubuntu 13.10**
 
+.. code-block:: bash 
+    :linenos:
+
+    $ sudo gedit /etc/apache2/sites-available/akeneo-pim.local.conf
+
+
+**Ubuntu 13.10**
+
 .. code-block:: apache
     :linenos:
    
@@ -250,14 +272,20 @@ Creating the vhost file
         <Directory /path/to/pim/root/web/>
             Options Indexes FollowSymLinks MultiViews
             AllowOverride All
-            Order allow,deny
-            allow from all
+            Require all granted
         </Directory>
         ErrorLog ${APACHE_LOG_DIR}/akeneo-pim_error.log
 
         LogLevel warn
         CustomLog ${APACHE_LOG_DIR}/akeneo-pim_access.log combined
     </VirtualHost>
+
+.. note::
+
+    The difference in Virtual Host configuration between Ubuntu 12.10
+    and Ubuntu 13.10 is the result of the switch from Apache 2.2 to
+    Apache 2.4. See https://httpd.apache.org/docs/2.4/upgrading.html
+    for more explanation.
 
 Enabling the virtualhost
 ************************

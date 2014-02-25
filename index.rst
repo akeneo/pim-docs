@@ -9,6 +9,7 @@ Step by step installation
 
 Installing Akeneo PIM is not difficult, but the number of system requirements and dependencies can make it quite a daunting task.
 
+For Ubuntu 12.10 and 13.10:
     * :doc:`/installation/installation_workstation`
 
 Cookbook
