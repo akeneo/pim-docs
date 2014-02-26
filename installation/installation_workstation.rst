@@ -82,7 +82,7 @@ Installing PHP opcode and data cache
 .. note::
     In case of PHP 5.5 on Ubuntu 13.10, the Zend OPcache opcode cache
     is installed and enabled by default.
-    Only the data cache provided by APCu is needed.
+    Only the data cache provided by APC is needed.
 
 System configuration
 --------------------
