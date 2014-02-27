@@ -28,5 +28,3 @@
 * Categories
     * :doc:`/cookbook/category/add-properties-to-category`
 
-* Customize products grid
-     * :doc:`/cookbook/grid/customize_product_grid`
