@@ -73,6 +73,12 @@ Our element reads the file and iterate to return products line per line.
 
 This element must be configured with the path of the xml file.
 
+.. note::
+
+    It is recommended to provide a **label** option (otherwise the attribute name will be used, which can lead to translation collision).
+
+    The **help** option allows you to display a hint next to the field in the job edition form.
+
 Then we need to define this reader as a service in `readers.yml` :
 
 .. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Resources/config/readers.yml
