@@ -8,10 +8,8 @@
                             <img class="pull-left" src="{{ pathto('_static/logo.png', 1) }}" alt="Akeneo">
                         </a>
                     </h1>
-                    {%- block rootrellink %}
-                        <a class="brand" href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}
-                        <span class="navbar-text pull-left"><b>{{ version|e|upper }}</b></span>
-                    {%- endblock %}
+                    <a class="brand" href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}
+                    <span class="navbar-text pull-left"><b>{{ version|e|upper }}</b></span>
                 </div>
                 <div class="span4">
                     <ul class="nav">

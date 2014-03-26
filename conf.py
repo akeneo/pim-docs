@@ -56,7 +56,7 @@ copyright = u'2013, Akeneo SAS'
 # built documents.
 #
 # The short X.Y version.
-version = '1.0'
+version = 'unknown'
 # The full version, including alpha/beta/rc tags.
 release = 'beta'
 
