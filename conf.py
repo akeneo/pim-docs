@@ -57,6 +57,9 @@ copyright = u'2013, Akeneo SAS'
 #
 # The short X.Y version.
 version = 'unknown'
+html_context = {
+    'versions': ['unknown']
+}
 # The full version, including alpha/beta/rc tags.
 release = 'beta'
 

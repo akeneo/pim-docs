@@ -9,7 +9,20 @@
                         </a>
                     </h1>
                     <a class="brand" href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}
-                    <span class="navbar-text pull-left"><b>{{ version|e|upper }}</b></span>
+
+                    <!-- Version switcher -->
+                    <div class="btn-group">
+                        <button class="btn dropdown-toggle" data-toggle="dropdown">
+                            {{ version|e }} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            {%- for version in versions %}
+                            <li><a href="/{{ version|e }}/index.html">{{ version|e }}</a></li>
+                            {%- endfor %}
+                        </ul>
+                    </div>
+
+                    <span class="navbar-text pull-left"><b></b></span>
                 </div>
                 <div class="span4">
                     <ul class="nav">
