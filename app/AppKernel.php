@@ -56,7 +56,7 @@ class AppKernel extends OroKernel
         $bundles = array_merge($bundles, $pimBundles);
 
         // Add my own bundles
-        $bundles[] = new Acme\Bundle\MyBundle\AcmeMyBundle();
+        $bundles[] = new Acme\Bundle\InstallerBundle\AcmeInstallerBundle();
 
         return $bundles;
     }

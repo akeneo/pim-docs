@@ -21,9 +21,6 @@ specific attribute itself like the manufacturing country.
 * Creating an attribute type linked to this custom entity
     * :doc:`creating_an_attribute_type`
 
-* Display the entity in the product datagrid
-    * :doc:`display_in_product_grid`
-
 * Importing your custom entity
     * :doc:`importing_custom_entities`
 

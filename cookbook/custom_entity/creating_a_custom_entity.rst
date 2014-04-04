@@ -5,7 +5,7 @@ How to Create a Custom Entity and the Screens to Manage it
     The code inside this cookbook entry is visible in src directory, you can clone pim-dev then do a symlink and install
 
 .. note::
-    The code inside this chapter requires you to install the `akeneo/custom-entity-bundle`_ package.
+    The code inside this cookbook entry requires you to install the `akeneo/custom-entity-bundle`_ package.
 
 Creating the Entity
 -------------------

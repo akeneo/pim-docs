@@ -1,28 +1,23 @@
 How to import fixtures for your custom entity and attribute
 ===========================================================
 
+.. note::
+    The code inside this cookbook entry is visible in src directory, you can clone pim-dev then do a symlink and install
+
+.. note::
+    The code inside this cookbook entry requires you to install the `akeneo/custom-entity-bundle`_ package.
+
 Implement ReferableInterface
 ----------------------------
 
 To ensure your entity is imported correctly, the first step is to implement the following interfaces.
 
- Your entity should implement the ``Pim\Bundle\CatalogBundle\Model\ReferableInterface`` interface
+* Your entity should implement the ``Pim\Bundle\CatalogBundle\Model\ReferableInterface`` interface
+* Your entity repository should implement the ``Pim\Bundle\CatalogBundle\Entity\Repository\ReferableEntityRepositoryInterface`` interface,
+  or be a subclass of ``Pim\Bundle\CatalogBundle\Entity\Repository\ReferableEntityRepository``
 
-.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Entity/Vendor.php
-   :language: php
-   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Entity/Vendor.php
-   :lines: 1-4,7-13,101-
-   :linenos:
-
-
-Your entity repository should implement the ``Pim\Bundle\CatalogBundle\Entity\Repository\ReferableEntityRepositoryInterface`` interface,
-or be a subclass of ``Pim\Bundle\CatalogBundle\Entity\Repository\ReferableEntityRepository``
-
-.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
-   :language: yaml
-   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Resources/config/doctrine/Vendor.orm.yml
-   :lines: 1,4
-   :linenos:
+If you have extended one of the abstract entities and use repository classes from the CustomEntityBundle, 
+these interfaces are already implemented.
 
 Attribute value importation
 ---------------------------
@@ -60,9 +55,9 @@ Create a processor
 If your entity and its associations implement the ``Pim\Bundle\CatalogBundle\Model\ReferableInterface``
 interface, creating the processor is done by simply configuring a new service in your DIC :
 
-.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Resources/config/processors.yml
+.. literalinclude:: ../../src/Acme/Bundle/InstallerBundle/Resources/config/processors.yml
    :language: yaml
-   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Resources/config/processors.yml
+   :prepend: # /src/Acme/Bundle/InstallerBundle/Resources/config/processors.yml
    :linenos:
 
 Configure fixtures
@@ -70,12 +65,12 @@ Configure fixtures
 
 The order and the processor for your fixtures is given in the ``fixtures.yml`` configuration file:
 
-.. literalinclude:: ../../src/Acme/Bundle/IcecatDemoBundle/Resources/config/fixtures.yml
+.. literalinclude:: ../../src/Acme/Bundle/InstallerBundle/Resources/config/fixtures.yml
    :language: yaml
-   :prepend: # /src/Acme/Bundle/IcecatDemoBundle/Resources/config/fixtures.yml
+   :prepend: # /src/Acme/Bundle/InstallerBundle/Resources/config/fixtures.yml
    :linenos:
 
-You can now add a ``vendors.csv`` or a ``vendors.yml`` file in your fixtures folder, it will be
+You can now add a ``colors.csv`` or a ``colors.yml`` file in your fixtures folder, it will be
 loaded with other fixtures. (see :doc:`../setup_data/customize_installer`)
 
 Create a connector

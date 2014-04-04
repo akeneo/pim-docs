@@ -1,0 +1,6 @@
+colors:
+    order: 70
+    csv:
+        processor: acme_installer.processor.color
+    yml:
+        processor: acme_installer.processor.color

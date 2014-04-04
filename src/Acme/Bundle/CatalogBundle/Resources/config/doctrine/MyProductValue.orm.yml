@@ -61,6 +61,15 @@ Acme\Bundle\CatalogBundle\Entity\MyProductValue:
             nullable: true
             column: scope_code
     manyToOne:
+        color:
+            targetEntity: Acme\Bundle\CatalogBundle\Entity\Color
+            cascade:
+                - persist
+                - refresh
+            joinColumns:
+                color_id:
+                    referencedColumnName: id
+                    onDelete: 'SET NULL'
         attribute:
             targetEntity: Pim\Bundle\CatalogBundle\Model\AbstractAttribute
             joinColumns:
@@ -84,15 +93,6 @@ Acme\Bundle\CatalogBundle\Entity\MyProductValue:
                 entity_id:
                     referencedColumnName: id
                     onDelete: CASCADE
-        color:
-            targetEntity: Acme\Bundle\CatalogBundle\Entity\Color
-            cascade:
-                - persist
-                - refresh
-            joinColumns:
-                color_id:
-                    referencedColumnName: id
-                    onDelete: 'SET NULL'
     manyToMany:
         options:
             targetEntity: Pim\Bundle\CatalogBundle\Entity\AttributeOption

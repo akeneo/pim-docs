@@ -14,7 +14,7 @@ class CustomConstraintGuesser implements ConstraintGuesserInterface
         return in_array(
             $attribute->getAttributeType(),
             array(
-                'acme_catalog_custom_attribute',
+                'acme_catalog_color',
             )
         );
     }

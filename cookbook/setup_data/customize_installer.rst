@@ -18,9 +18,9 @@ Create a Bundle
 
 Create a new bundle:
 
-.. literalinclude:: ../../src/Acme/Bundle/MyBundle/AcmeMyBundle.php
+.. literalinclude:: ../../src/Acme/Bundle/InstallerBundle/AcmeInstallerBundle.php
    :language: php
-   :prepend: # /src/Acme/Bundle/MyBundle/AcmeMyBundle.php
+   :prepend: # /src/Acme/Bundle/InstallerBundle/AcmeInstallerBundle.php
    :linenos:
 
 Register it into ``AppKernel.php``:
@@ -41,9 +41,9 @@ Copy the ``*.yml`` and ``*.csv`` files from Installer bundle into the ``mydatase
 
 Then edit the files, for example, to declare your own channels:
 
-.. literalinclude:: ../../src/Acme/Bundle/MyBundle/Resources/fixtures/mydataset/channels.yml
+.. literalinclude:: ../../src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/channels.yml
    :language: yaml
-   :prepend: # /src/Acme/Bundle/MyBundle/Resources/fixtures/mydataset/channels.yml
+   :prepend: # /src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/channels.yml
    :linenos:
 
 .. tip::
@@ -80,7 +80,7 @@ Fixture files can be loaded individually by using the ``pim:installer:load-fixtu
 
 .. code-block:: bash
 
-    > php app/console pim:installer:load-fixtures src/Acme/Bundle/MyBundle/Resources/fixtures/mydataset/*
+    > php app/console pim:installer:load-fixtures src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/*
 
 .. note::
 

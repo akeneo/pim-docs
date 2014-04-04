@@ -13,7 +13,7 @@ parameters:
 
 services:
     acme_catalog.attributetype.color:
-        class: %pim_custom_entity.attribute_type.custom_option_simple_select.class%
+        class: '%pim_custom_entity.attribute_type.custom_option_simple_select.class%'
         arguments:
             - color
             - pim_ajax_entity
@@ -21,5 +21,5 @@ services:
             - acme_catalog_color
             - Acme\Bundle\CatalogBundle\Entity\Color
         tags:
-            - { name: pim_catalog.attribute_type, alias: acme_catalog_color, entity: %pim_catalog.entity.product.class% }
+            - { name: pim_catalog.attribute_type, alias: acme_catalog_color, entity: '%pim_catalog.entity.product.class%' }
 
