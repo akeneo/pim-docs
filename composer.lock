@@ -11,24 +11,34 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/sphinx-php.git",
-                "reference": "fd08dec4e6efedfa406eb2631e654cacb366e96b"
+                "reference": "8481c930294ee29e0faeef7b506b8a6d46e46d0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/sphinx-php/zipball/fd08dec4e6efedfa406eb2631e654cacb366e96b",
-                "reference": "fd08dec4e6efedfa406eb2631e654cacb366e96b",
+                "url": "https://api.github.com/repos/fabpot/sphinx-php/zipball/8481c930294ee29e0faeef7b506b8a6d46e46d0b",
+                "reference": "8481c930294ee29e0faeef7b506b8a6d46e46d0b",
                 "shasum": ""
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 }
             ],
-            "description": "Extension of Sphinx for PHP projects",
-            "time": "2013-08-27 16:27:47"
+            "description": "Sphinx extension for PHP projects",
+            "time": "2014-03-14 13:08:43"
         }
     ],
     "packages-dev": [
