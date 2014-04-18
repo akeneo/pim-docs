@@ -25,6 +25,18 @@ Installing MySQL
 
     $ sudo apt-get install mysql-server
 
+Installing MongoDB
+******************
+**Following is optional, to execute only if you want use the MongoDB storage**
+
+.. code-block:: bash
+    :linenos:
+
+    $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+    $ sudo echo deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen \> /etc/apt/sources.list.d/mongodb-10gen.list
+    $ sudo apt-get update
+    $ sudo apt-get install mongodb-10gen
+
 Installing Apache
 *****************
 **Ubuntu 12.10 & 13.10**
@@ -52,6 +64,15 @@ Installing PHP
     $ sudo apt-get install php5-json
     $ sudo ln -s /etc/php5/conf.d/mcrypt.ini /etc/php5/mods-available/
     $ sudo php5enmod mcrypt
+
+**Following is optional, to execute only if you want use the MongoDB storage**
+
+.. code-block:: bash
+    :linenos:
+
+    sudo apt-get install php-pear build-essential php5-dev
+    sudo pecl install mongo
+    sudo echo "extension=mongo.so" > /etc/php5/conf.d/mongo.ini
 
 Installing Java
 ***************
@@ -210,6 +231,26 @@ Installing Akeneo
     $ cd /path/to/pim/root
     $ php app/console pim:install --env=prod
     $ php app/console cache:clear --env=prod
+
+**Following is optional, to execute only if you want use the MongoDB storage, must be run before the pim:install command**
+
+Copy and uncomment the mongodb_* parameters from app/config/parameters.dist.yml to app/config/parameters.yml
+
+In app/config/config.yml, switch 'pim_catalog.storage_driver' to "doctrine/mongodb-odm"
+
+Install the require dependency:
+
+.. code-block:: bash
+    :linenos:
+
+    $ php composer.phar require "doctrine/mongodb-odm-bundle: 3.0.*@dev"
+
+In app/AppKernel.php, uncomment the following line (this will enable DoctrineMongoDBBundle and will load and enable the MongoDB configuration):
+
+.. code-block:: bash
+    :linenos:
+
+    new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
 
 Configuring the virtualhost
 ---------------------------
