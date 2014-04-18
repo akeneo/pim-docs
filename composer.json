@@ -3,7 +3,7 @@
     "description": "Technical documentation of the Akeneo PIM",
     "minimal-stability": "dev",
     "require": {
-        "fabpot/sphinx-php": "dev-master"
+        "fabpot/sphinx-php": "1.0.1"
     },
     "config": {
         "vendor-dir": "_exts"
