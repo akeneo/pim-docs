@@ -3,10 +3,10 @@
 namespace Acme\Bundle\EnrichBundle\MassEditAction;
 
 use Doctrine\ORM\QueryBuilder;
-use Pim\Bundle\EnrichBundle\MassEditAction\MassEditActionInterface;
+use Pim\Bundle\EnrichBundle\MassEditAction\AbstractMassEditAction;
 use Acme\Bundle\EnrichBundle\Form\Type\MassEditAction\CapitalizeValuesType;
 
-class CapitalizeValues implements MassEditActionInterface
+class CapitalizeValues extends AbstractMassEditAction
 {
     protected $attributeNames = array('sku');
 
@@ -15,20 +15,9 @@ class CapitalizeValues implements MassEditActionInterface
         return new CapitalizeValuesType();
     }
 
-    public function getFormOptions()
+    public function perform()
     {
-        return array();
-    }
-
-    public function initialize(QueryBuilder $qb)
-    {
-    }
-
-    public function perform(QueryBuilder $qb)
-    {
-        $products = $qb->getQuery()->getResult();
-
-        foreach ($products as $product) {
+        foreach ($this->products as $product) {
             foreach ($product->getValues() as $value) {
                 if (in_array($value->getAttribute()->getCode(), $this->attributeNames)) {
                     $value->setData(strtoupper($value->getData()));
