@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "9844a5c6d59af2062f7e4c8bb7c7470e",
+    "hash": "011830c17003210dc4df904fe2cd5f35",
     "packages": [
         {
             "name": "fabpot/sphinx-php",
-            "version": "dev-master",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/sphinx-php.git",
-                "reference": "8481c930294ee29e0faeef7b506b8a6d46e46d0b"
+                "reference": "70c200deb4b5d54cced34da263dccafdf41965eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/sphinx-php/zipball/8481c930294ee29e0faeef7b506b8a6d46e46d0b",
-                "reference": "8481c930294ee29e0faeef7b506b8a6d46e46d0b",
+                "url": "https://api.github.com/repos/fabpot/sphinx-php/zipball/70c200deb4b5d54cced34da263dccafdf41965eb",
+                "reference": "70c200deb4b5d54cced34da263dccafdf41965eb",
                 "shasum": ""
             },
             "type": "library",
@@ -38,7 +38,7 @@
                 }
             ],
             "description": "Sphinx extension for PHP projects",
-            "time": "2014-03-14 13:08:43"
+            "time": "2013-12-19 08:24:24"
         }
     ],
     "packages-dev": [
@@ -48,9 +48,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "fabpot/sphinx-php": 20
-    },
+    "stability-flags": [
+
+    ],
     "platform": [
 
     ],
