@@ -24,6 +24,8 @@ import sys, os
 #needs_sphinx = '1.0'
 
 sys.path.append(os.path.abspath('_exts/fabpot/sphinx-php'))
+print sys.path
+
 from sphinx.highlighting import lexers
 from pygments.lexers.web import PhpLexer
 
