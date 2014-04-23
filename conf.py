@@ -23,9 +23,7 @@ import sys, os
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
 
-sys.path.append(os.path.abspath('_exts/fabpot/sphinx-php'))
-print sys.path
-
+sys.path.insert(0, os.path.abspath('_exts/fabpot/sphinx-php'))
 from sphinx.highlighting import lexers
 from pygments.lexers.web import PhpLexer
 
