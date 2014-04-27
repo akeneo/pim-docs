@@ -1,6 +1,5 @@
 * `BaseConnectorBundle`_
 * `CatalogBundle`_
-* `CustomEntityBundle`_
 * `DashboardBundle`_
 * `DataGridBundle`_
 * `EnrichBundle`_
@@ -17,10 +16,10 @@
 * `UserBundle`_
 * `VersioningBundle`_
 * `WebServiceBundle`_
+* `CustomEntityBundle`_
 
 .. _BaseConnectorBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/BaseConnectorBundle
 .. _CatalogBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/CatalogBundle
-.. _CustomEntityBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/CustomEntityBundle
 .. _DashboardBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/DashboardBundle
 .. _DataGridBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/DataGridBundle
 .. _EnrichBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/EnrichBundle
@@ -37,3 +36,4 @@
 .. _UserBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/UserBundle
 .. _VersioningBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/VersioningBundle
 .. _WebServiceBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/WebServiceBundle
+.. _CustomEntityBundle: https://github.com/akeneo/CustomEntityBundle
