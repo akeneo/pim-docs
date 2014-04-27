@@ -25,7 +25,6 @@
 .. _DataGridBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/DataGridBundle
 .. _EnrichBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/EnrichBundle
 .. _FilterBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/FilterBundle
-.. _FlexibleEntityBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/FlexibleEntityBundle
 .. _ImportExportBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/ImportExportBundle
 .. _InstallerBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/InstallerBundle
 .. _JsFormValidationBundle: 
