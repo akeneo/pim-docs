@@ -7,11 +7,11 @@ on selected products.
 
 Creating a MassEditAction
 -------------------------
-The first step is to create a new class that implements ``MassEditActionInterface``:
+The first step is to create a new class that implements ``MassEditActionInterface`` or extends ``ProductMassEditOperation`` or ``FamilyMassEditOperation`` (given on which grid you want to apply the operation):
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/MassEditAction/CapitalizeValues.php
    :language: php
-   :prepend: # /src/Acme/Bundle/EnrichBundle/MassEditAction/CapitalizeValues.php
+   :prepend: # /src/Acme/Bundle/EnrichBundle/MassEditAction/Operation/CapitalizeValues.php
    :linenos:
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Form/Type/MassEditAction/CapitalizeValuesType.php
@@ -27,6 +27,9 @@ Registering the MassEditAction
 ------------------------------
 
 After the class is created, you must register it as a service in the DIC with the pim_catalog.mass_edit_action tag:
+
+By default, the operation will be available for the product grid.
+It is possible to apply the operation on the family grid though.
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/services.yml
    :language: yaml
@@ -48,7 +51,7 @@ You need to create a template to render your Mass Edit Action form.
 
   The template must be in ``/src/Acme/Bundle/EnrichBundle/Resources/views/MassEditAction/configure/``
 
-.. literalinclude:: 
+.. literalinclude::
    ../../src/Acme/Bundle/EnrichBundle/Resources/views/MassEditAction/configure/capitalize-values.html.twig
    :language: jinja
    :prepend: #  /src/Acme/Bundle/EnrichBundle/Resources/views/MassEditAction/configure/capitalize-values.html.twig
