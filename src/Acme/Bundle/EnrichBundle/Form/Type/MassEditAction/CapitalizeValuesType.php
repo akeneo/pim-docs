@@ -16,7 +16,7 @@ class CapitalizeValuesType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'Acme\\Bundle\\EnrichBundle\\MassEditAction\\CapitalizeValues'
+                'data_class' => 'Acme\\Bundle\\EnrichBundle\\MassEditAction\\Operation\\CapitalizeValues'
             )
         );
     }
