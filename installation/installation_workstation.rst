@@ -8,6 +8,14 @@ The following instructions has been tested on fresh installations of Ubuntu 12.1
 .. note::
     Even if the instructions apply to Ubuntu 12.10 and 13.10, the same process and requirements can be used for any PHP 5.4 or PHP 5.5 bases Linux distribution
 
+.. note::
+    Support of MongoDB, introduced in Akeneo 1.1, still require you to have a working MySQL database.
+
+    The choice of using an hybrid ORM/ODM solution has been made for several reasons.
+    First of all, we do not believe it makes sense to store everything (users, categories, families, attributes, products, etc.) as documents.
+    Those data will always have strong associations between them, it would not make sense to denormalize (compare to the performance drawback of synchronizing denormalized data) or use document references in those cases.
+    Furthermore, complex SQL requests are performed to calculate completeness for example. Maintaining two identical versions of this requests (in SQL and Mongo) would require extra effort that we don't consider necessary for now.
+    That's why we chose to only store products as documents when you activate the MongoDB support.
 
 Prerequisite
 -------------
