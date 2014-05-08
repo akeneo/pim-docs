@@ -28,3 +28,6 @@
 * Categories
     * :doc:`/cookbook/category/add-properties-to-category`
 
+* REST API
+    * :doc:`/cookbook/rest_api/get-product`
+
