@@ -5,8 +5,8 @@ The Akeneo PIM comes with a REST API which allows to fetch product data in JSON 
 
 We're still working on to add new methods to fetch and update other entities.
 
-Configuration
--------------
+Configure a user
+----------------
 
 We first need to generate an API key for a PIM user as shown on following screenshot :
 
