@@ -4,7 +4,6 @@
 * `DataGridBundle`_
 * `EnrichBundle`_
 * `FilterBundle`_
-* `FlexibleEntityBundle`_
 * `ImportExportBundle`_
 * `InstallerBundle`_
 * `JsFormValidationBundle`_
