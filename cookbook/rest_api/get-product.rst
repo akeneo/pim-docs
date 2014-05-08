@@ -52,4 +52,3 @@ The response has the following format :
         },
         "resource":"http:\/\/pim-dev.local\/api\/rest\/products\/sku-000"
     }
-
