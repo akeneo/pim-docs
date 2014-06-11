@@ -4,16 +4,20 @@ How to Programmatically Manipulate Products
 Prerequisites
 -------------
 
-The Akeneo PIM project introduces a service to help you manage your product entities.
+The Akeneo PIM project introduces services to help you manage your product entities.
 
-As stated above, the product manager is a service you can get from the symfony container:
+As stated above, the product and attribute managers are services you can get from the symfony container:
 
 .. code-block:: php
 
+    // product manager
     $this->container->get('pim_catalog.manager.product');
 
+    // attribute manager
+    $this->container->get('pim_catalog.manager.attribute');
 
-In the following examples, we will use ``$pm`` as the product manager object.
+
+In the following examples, we will use ``$pm`` as the product manager object, ``$am`` - attribute manager object.
 
 Create an Attribute
 -------------------
@@ -23,7 +27,7 @@ Create an Attribute
 .. code-block:: php
 
     // create an attribute
-    $attribute = $pm->createAttribute('pim_catalog_text');
+    $attribute = $am->createAttribute('pim_catalog_text');
     $attribute->setCode('title');
 
     $pm->getObjectManager()->persist($attribute);
@@ -36,18 +40,18 @@ For instance, this example creates a color attribute with a list of predefined o
 
 .. code-block:: php
 
-   $att = $pm->createAttribute('pim_catalog_simpleselect');
+   $att = $am->createAttribute('pim_catalog_simpleselect');
    $att->setCode('color');
 
-   $opt1 = $pm->createAttributeOption();
+   $opt1 = $am->createAttributeOption();
    $opt1->setCode('purple');
    $att->addOption($opt1);
 
-   $opt2 = $pm->createAttributeOption();
+   $opt2 = $am->createAttributeOption();
    $opt2->setCode('yellow');
    $att->addOption($opt2);
 
-   $opt3 = $pm->createAttributeOption();
+   $opt3 = $am->createAttributeOption();
    $opt3->setCode('blue');
    $att->addOption($opt3);
 
@@ -57,16 +61,16 @@ Keeping the color example, the value of the option **purple** is "Purple" in Eng
 
 .. code-block:: php
 
-    $opt1 = $pm->createAttributeOption();
+    $opt1 = $am->createAttributeOption();
     $opt1->setCode('purple');
     $opt1->setLocalizable(true);
 
-    $opt1EN = $pm->createAttributeOptionValue();
+    $opt1EN = $am->createAttributeOptionValue();
     $opt1EN->setLocale('en_US');
     $opt1EN->setValue('Purple');
     $opt1->addOptionValue($opt1EN);
 
-    $opt1FR = $pm->createAttributeOptionValue();
+    $opt1FR = $am->createAttributeOptionValue();
     $opt1FR->setLocale('fr_FR');
     $opt1FR->setValue('Violet');
     $opt1->addOptionValue($opt1FR);
@@ -78,7 +82,7 @@ Keeping the color example, the value of the option **purple** is "Purple" in Eng
 .. code-block:: php
 
     // create a localizable attribute
-    $attribute = $pm->createAttribute('pim_catalog_text');
+    $attribute = $am->createAttribute('pim_catalog_text');
     $attribute->setCode('name');
     $attribute->setLocalizable(true);
 
@@ -87,7 +91,7 @@ Keeping the color example, the value of the option **purple** is "Purple" in Eng
 .. code-block:: php
 
     // create a scopable attribute
-    $attribute = $pm->createAttribute('pim_catalog_text');
+    $attribute = $am->createAttribute('pim_catalog_text');
     $attribute->setCode('image_hd');
     $attribute->setScopable(true);
 
@@ -96,7 +100,7 @@ Keeping the color example, the value of the option **purple** is "Purple" in Eng
 .. code-block:: php
 
     // create a localizable and scopable attribute
-    $attribute = $pm->createAttribute('pim_catalog_textarea');
+    $attribute = $am->createAttribute('pim_catalog_textarea');
     $attribute->setCode('short_description');
     $attribute->setScopable(true);
     $attribute->setLocalizable(true);
@@ -193,3 +197,10 @@ Get a Product
 
     $product = $pm->find($myProductId);
 
+
+Save a Product
+--------------
+
+.. code-block:: php
+
+    $pm->save($product);
