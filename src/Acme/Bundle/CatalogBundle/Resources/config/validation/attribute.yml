@@ -133,6 +133,7 @@ Pim\Bundle\CatalogBundle\Entity\Attribute:
                 groups: [pim_catalog_file, pim_catalog_image, pim_catalog_identifier]
             - Length:
                 max: 65535
+                groups: [pim_catalog_textarea]
             - Length:
                 max: 255
                 groups: [pim_catalog_text]
@@ -177,6 +178,9 @@ Pim\Bundle\CatalogBundle\Entity\Attribute:
                 message: This value should not be blank
         translations:
             - Valid: ~
+        group:
+            - NotBlank: ~
+            - Valid: ~
 
 Pim\Bundle\CatalogBundle\Entity\AttributeTranslation:
     properties:
@@ -185,6 +189,10 @@ Pim\Bundle\CatalogBundle\Entity\AttributeTranslation:
                 max: 100
 
 Pim\Bundle\CatalogBundle\Entity\AttributeOption:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            - code
+            - attribute
     properties:
         code:
             - NotBlank: ~
@@ -194,6 +202,4 @@ Pim\Bundle\CatalogBundle\Entity\AttributeOption:
             - Length:
                 max: 255
         attribute:
-            - Valid: ~
-        optionValues:
             - Valid: ~
