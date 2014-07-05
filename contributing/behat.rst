@@ -47,11 +47,11 @@ included in the URL):
 .. code-block:: apache
 
     <VirtualHost *:80>
-        ServerName akeneo-pim-behat.local
+        ServerName pim-behat.local
 
         RewriteEngine On
 
-        DocumentRoot /home/akeneo/pim//web
+        DocumentRoot /home/akeneo/pim/web
         <Directory /home/akeneo/pim/web>
             Options Indexes FollowSymLinks MultiViews
             AllowOverride None
@@ -76,17 +76,23 @@ included in the URL):
 
 .. code-block:: bash
 
-    127.0.0.1   akeneo-pim-behat.local
+    127.0.0.1   pim-behat.local
 
 
 Configure Behat
 ---------------
 
-Setup the test environment, begin by copy and update the app/config/parameters_test.yml, then run:
+Setup the test environment, begin by copy and update the app/config/parameters_test.yml to use the minimal dataset and a dedicated database :
+
+.. code-block:: yaml
+    database_name:     pim_behat
+    installer_data:    PimInstallerBundle:minimal
+
+Then install the database for this environment.
 
 .. code-block:: bash
 
-    $ ./install.sh all test
+    $ php app/console pim:install --env=behat --force
 
 Then copy behat.yml.dist to behat.yml, edit base_url parameter to match your host:
 
@@ -94,11 +100,15 @@ Then copy behat.yml.dist to behat.yml, edit base_url parameter to match your hos
 
     default:
         ...
+        context:
+            ...
+            parameters:
+                base_url: http://pim-behat.local/
+        ...
         extensions:
             Behat\MinkExtension\Extension:
                 ...
-                base_url: http://akeneo-pim.local/app_behat.php/
-
+                base_url: http://pim-behat.local/
 
 Run features
 ------------
@@ -110,11 +120,16 @@ You can now launch Selenium by issuing the following command:
   $ java -jar selenium-server-standalone-2.33.0.jar
 
 
-Feature tests can be run by issuing the following command:
+All the feature tests can be run by issuing the following command:
 
 .. code-block:: bash
 
   > ~/git/pim-community-dev$ ./bin/behat
 
-More details and options are available on http://behat.org/
+You can also define which feature to run :
 
+.. code-block:: bash
+
+  > ~/git/pim-community-dev$ ./bin/behat features/product/edit_product.feature
+
+More details and options are available on http://behat.org/
