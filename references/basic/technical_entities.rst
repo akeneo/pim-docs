@@ -17,9 +17,6 @@ Product value
 Each product value is linked to a product and an attribute.
 
 The product data model is structured as Entity - Attribute - Value.
-The implementation is based on PimFlexibleEntityBundle an customized in PimCatalogBundle.
-
-FYI, a document oriented storage is already planned to deal with high data volumes.
 
 
 Attribute
