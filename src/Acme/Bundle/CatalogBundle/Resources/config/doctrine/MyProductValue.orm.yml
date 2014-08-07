@@ -112,7 +112,7 @@ Acme\Bundle\CatalogBundle\Entity\MyProductValue:
                         onDelete: CASCADE
     oneToOne:
         media:
-            targetEntity: Pim\Bundle\CatalogBundle\Model\Media
+            targetEntity: Pim\Bundle\CatalogBundle\Model\ProductMedia
             cascade:
                 - persist
                 - refresh

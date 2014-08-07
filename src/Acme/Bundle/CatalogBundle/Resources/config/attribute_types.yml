@@ -17,7 +17,7 @@ services:
         arguments:
             - color
             - pim_ajax_entity
-            - '@pim_catalog.validator.attribute_constraint_guesser'
+            - '@pim_catalog.validator.constraint_guesser.chained_attribute'
             - acme_catalog_color
             - Acme\Bundle\CatalogBundle\Entity\Color
         tags:
