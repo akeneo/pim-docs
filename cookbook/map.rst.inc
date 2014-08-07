@@ -9,6 +9,7 @@
     * :doc:`/cookbook/import_export/create-specific-connector`
     * :doc:`/cookbook/import_export/create-custom-step`
     * :doc:`/cookbook/import_export/customize-import-behavior`
+    * :doc:`/cookbook/import_export/mongodb-fast-writer`
 
 * Creating custom entities
     * :doc:`/cookbook/custom_entity/index`
