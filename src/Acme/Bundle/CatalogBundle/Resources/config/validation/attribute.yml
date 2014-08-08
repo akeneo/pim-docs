@@ -44,7 +44,7 @@ Pim\Bundle\CatalogBundle\Entity\Attribute:
             - Length:
                 max: 255
             - Regex:
-                pattern: /^(?!(associationTypes|categories|categoryId|completeness|enabled|family|groups|associations|products|scope|treeId|values|(.)*_(products|groups))$)/
+                pattern: /^(?!(id|associationTypes|categories|categoryId|completeness|enabled|family|groups|associations|products|scope|treeId|values|(.)*_(products|groups))$)/
                 message: This code is not available
         localizable:
             - Type: bool
@@ -197,8 +197,8 @@ Pim\Bundle\CatalogBundle\Entity\AttributeOption:
         code:
             - NotBlank: ~
             - Regex:
-                pattern: /^[a-zA-Z0-9_ ]+$/
-                message: Option code "{{ value }}" contains illegal character
+                pattern: /^[a-zA-Z0-9_]+$/
+                message: Option code may contain only letters, numbers and underscores
             - Length:
                 max: 255
         attribute:
