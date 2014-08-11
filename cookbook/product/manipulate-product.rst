@@ -30,9 +30,6 @@ Create an Attribute
     $attribute = $am->createAttribute('pim_catalog_text');
     $attribute->setCode('title');
 
-    $pm->getObjectManager()->persist($attribute);
-    $pm->getObjectManager()->flush();
-
 * Create a simple select attribute
 
 In some cases, you will want to restrain values to a list of possibilities for an attribute.
