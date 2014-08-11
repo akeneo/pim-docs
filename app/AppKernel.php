@@ -41,7 +41,6 @@ class AppKernel extends OroKernel
             new Pim\Bundle\DashboardBundle\PimDashboardBundle(),
             new Pim\Bundle\InstallerBundle\PimInstallerBundle(),
             new Pim\Bundle\UIBundle\PimUIBundle(),
-            new Pim\Bundle\FlexibleEntityBundle\PimFlexibleEntityBundle(),
             new Pim\Bundle\CatalogBundle\PimCatalogBundle(),
             new Pim\Bundle\TranslationBundle\PimTranslationBundle(),
             new Pim\Bundle\ImportExportBundle\PimImportExportBundle(),
