@@ -41,7 +41,7 @@ Installing Apache
 *****************
 **Ubuntu 12.10 & 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo apt-get install apache2
@@ -50,7 +50,7 @@ Installing PHP
 **************
 **Ubuntu 12.10 & 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo apt-get install libapache2-mod-php5 php5-cli
@@ -58,7 +58,7 @@ Installing PHP
 
 **Ubuntu 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo apt-get install php5-json
@@ -88,17 +88,17 @@ Installing PHP opcode and data cache
 ************************************
 **Ubuntu 12.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo apt-get install php-apc
 
 **Ubuntu 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
-    $ sudo apt-get install php5-apcu 
+    $ sudo apt-get install php5-apcu
 
 .. note::
     In case of PHP 5.5 on Ubuntu 13.10, the Zend OPcache opcode cache
@@ -114,7 +114,7 @@ MySQL
 
 **Ubuntu 12.10 & 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ mysql -u root -p
@@ -128,7 +128,7 @@ PHP
 
 **Ubuntu 12.10 & 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo gedit /etc/php5/apache2/php.ini
@@ -139,7 +139,7 @@ PHP
 
 **Ubuntu 12.10 & 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo gedit /etc/php5/cli/php.ini
@@ -160,7 +160,7 @@ Get your idenfiers
 ^^^^^^^^^^^^^^^^^^
 **Ubuntu 12.10 & 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ id
@@ -172,7 +172,7 @@ Use your identifiers for Apache
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Ubuntu 12.10 & 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo service apache2 stop
@@ -184,7 +184,7 @@ Update owner on Apache directories
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Ubuntu 12.10 & 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo chown -R my_user /var/lock/apache2
@@ -193,7 +193,7 @@ Start Apache
 ^^^^^^^^^^^^
 **Ubuntu 12.10 & 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo service apache2 start
@@ -204,7 +204,7 @@ Installing Akeneo PIM
 
 Extracting the archive
 **********************
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ cd /path/to/installation
@@ -225,7 +225,7 @@ Extracting the archive
 
 Installing Akeneo
 *****************
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ cd /path/to/pim/root
@@ -234,9 +234,9 @@ Installing Akeneo
 
 **Following is optional, to execute only if you want use the MongoDB storage, must be run before the pim:install command**
 
-Copy and uncomment the mongodb_* parameters from app/config/parameters.dist.yml to app/config/parameters.yml
+Copy and uncomment the mongodb_* and pim_catalog_storage_driver parameters from app/config/pim_parameters.yml to app/config/parameters.yml
 
-In app/config/config.yml, switch 'pim_catalog.storage_driver' to "doctrine/mongodb-odm"
+Switch 'pim_catalog.storage_driver' to "doctrine/mongodb-odm"
 
 Install the require dependency:
 
@@ -258,7 +258,7 @@ Enabling Apache mod_rewrite
 ***************************
 **Ubuntu 12.10 & Ubuntu 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo a2enmod rewrite
@@ -267,7 +267,7 @@ Creating the vhost file
 ***********************
 **Ubuntu 12.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo gedit /etc/apache2/sites-available/akeneo-pim.local
@@ -276,7 +276,7 @@ Creating the vhost file
 
 .. code-block:: apache
     :linenos:
-   
+
     <VirtualHost *:80>
         ServerName akeneo-pim.local
 
@@ -295,7 +295,7 @@ Creating the vhost file
 
 **Ubuntu 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo gedit /etc/apache2/sites-available/akeneo-pim.local.conf
@@ -305,7 +305,7 @@ Creating the vhost file
 
 .. code-block:: apache
     :linenos:
-   
+
     <VirtualHost *:80>
         ServerName akeneo-pim.local
 
@@ -344,7 +344,7 @@ Adding the vhost name
 *********************
 **Ubuntu 12.10 & 13.10**
 
-.. code-block:: bash 
+.. code-block:: bash
     :linenos:
 
     $ sudo gedit /etc/hosts

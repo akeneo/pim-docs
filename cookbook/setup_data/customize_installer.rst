@@ -25,11 +25,24 @@ Create a new bundle:
 
 Register it into ``AppKernel.php``:
 
-.. literalinclude:: ../../app/AppKernel.php
-   :language: php
-   :prepend: # /app/AppKernel.php
-   :lines: 1-14,57-61,79
+.. code-block:: php
    :linenos:
+
+   class AppKernel extends OroKernel
+    {
+        /**
+         * {@inheritdoc}
+         */
+        public function registerBundles()
+        {
+            $bundles = array();
+
+            // Add my own bundles
+            $bundles[] = new Acme\Bundle\InstallerBundle\AcmeInstallerBundle();
+
+            return $bundles;
+        }
+    }
 
 
 Add your own Data
