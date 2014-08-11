@@ -85,6 +85,7 @@ Configure Behat
 Setup the test environment, begin by copy and update the app/config/parameters_test.yml to use the minimal dataset and a dedicated database :
 
 .. code-block:: yaml
+
     database_name:     pim_behat
     installer_data:    PimInstallerBundle:minimal
 

@@ -7,9 +7,10 @@ on selected products.
 
 Creating a MassEditAction
 -------------------------
-The first step is to create a new class that implements ``MassEditActionInterface`` or extends ``ProductMassEditOperation`` or ``FamilyMassEditOperation`` (given on which grid you want to apply the operation):
+The first step is to create a new class that implements ``MassEditActionInterface`` or extends
+``ProductMassEditOperation`` or ``FamilyMassEditOperation`` (given on which grid you want to apply the operation):
 
-.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/MassEditAction/CapitalizeValues.php
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/MassEditAction/Operation/CapitalizeValues.php
    :language: php
    :prepend: # /src/Acme/Bundle/EnrichBundle/MassEditAction/Operation/CapitalizeValues.php
    :linenos:

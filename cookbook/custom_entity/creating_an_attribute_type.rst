@@ -15,12 +15,12 @@ to link the product to the entity we have on the Doctrine side (via its product 
 
 For this, we need to extend and replace to the native Akeneo ProductValue :
 
-.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Entity/ProductValue.php
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Model/MyProductValue.php
    :language: php
-   :prepend: # /src/Acme/Bundle/CatalogBundle/Entity/ProductValue.php
+   :prepend: # /src/Acme/Bundle/CatalogBundle/Model/MyProductValue.php
    :linenos:
 
-You will also need to add the mapping for the entity. To do this, copy the 
+You will also need to add the mapping for the entity. To do this, copy the
 ``src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.orm.yml`` file of the PIM
 inside the ``Resources/config/doctrine`` folder of one of your bundles.
 
