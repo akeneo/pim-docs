@@ -28,7 +28,7 @@ Register it into ``AppKernel.php``:
 .. literalinclude:: ../../app/AppKernel.php
    :language: php
    :prepend: # /app/AppKernel.php
-   :lines: 1-14,58-62,80
+   :lines: 1-14,57-61,79
    :linenos:
 
 
@@ -48,11 +48,11 @@ Then edit the files, for example, to declare your own channels:
 
 .. tip::
 
-  Take a look at `Pim/Bundle/InstallerBundle/Resources/fixtures/minimal`_ to see what is the expected format and which 
+  Take a look at `Pim/Bundle/InstallerBundle/Resources/fixtures/minimal`_ to see what is the expected format and which
   fixtures are absolutely needed.
   All fixtures can be created in CSV or YAML.
 
-.. _Pim/Bundle/InstallerBundle/Resources/fixtures/minimal: 
+.. _Pim/Bundle/InstallerBundle/Resources/fixtures/minimal:
   https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/InstallerBundle/Resources/fixtures/minimal
 
 
@@ -84,6 +84,6 @@ Fixture files can be loaded individually by using the ``pim:installer:load-fixtu
 
 .. note::
 
-  The fixtures files can be loaded multiple times, objects will be updated instead of being created on 
+  The fixtures files can be loaded multiple times, objects will be updated instead of being created on
   successive calls. This command also takes care of loading the fixtures in the right order.
 
