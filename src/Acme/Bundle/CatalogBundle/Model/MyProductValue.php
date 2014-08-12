@@ -1,13 +1,13 @@
 <?php
 
-namespace Acme\Bundle\CatalogBundle\Entity;
+namespace Acme\Bundle\CatalogBundle\Model;
 
 use Pim\Bundle\CatalogBundle\Model\AbstractProductValue;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 
 /**
  * Overrides ProductValue to add the color backend type
- * 
+ *
  * @ExclusionPolicy("all")
  */
 class MyProductValue extends AbstractProductValue
@@ -19,7 +19,7 @@ class MyProductValue extends AbstractProductValue
 
     /**
      * Returns the color
-     * 
+     *
      * @return Color
      */
     public function getColor()
@@ -29,9 +29,9 @@ class MyProductValue extends AbstractProductValue
 
     /**
      * Sets the color
-     * 
+     *
      * @param Color $color
-     * 
+     *
      * @return MyProductValue
      */
     public function setColor(Color $color)
