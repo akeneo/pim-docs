@@ -84,7 +84,7 @@ You can now (re)install your database by running:
 
 .. code-block:: bash
 
-    > php app/console pim:install --force --env=dev --task=db
+    > php app/console pim:installer:db --force --env=dev
 
 Load individual fixture files
 -----------------------------
