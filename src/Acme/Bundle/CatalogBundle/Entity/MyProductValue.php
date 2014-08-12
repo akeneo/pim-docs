@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Bundle\CatalogBundle\Model;
+namespace Acme\Bundle\CatalogBundle\Entity;
 
 use Pim\Bundle\CatalogBundle\Model\AbstractProductValue;
 use JMS\Serializer\Annotation\ExclusionPolicy;

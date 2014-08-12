@@ -1,4 +1,4 @@
-Acme\Bundle\CatalogBundle\Model\MyProductValue:
+Acme\Bundle\CatalogBundle\Entity\MyProductValue:
     type: entity
     table: acme_catalog_product_value
     indexes:
