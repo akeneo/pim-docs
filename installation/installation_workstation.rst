@@ -1,13 +1,15 @@
 Step by step installation on developement workstation
 =====================================================
 
-This document provides a step by step instruction to install the PIM on development workstations based on Ubuntu 12.10 or Ubuntu 13.10.
+This document provides a step by step instruction to install the PIM on development workstations based on Ubuntu 12.10, 13.10 or 14.04.
 
-The following instructions has been tested on fresh installations of Ubuntu 12.10 and Ubuntu 13.10. The main difference between the distribution is the PHP version used (PHP 5.4 for Ubuntu 12.10 and PHP 5.5 for Ubuntu 13.10).
+The following instructions has been tested on fresh installations of Ubuntu 12.10, 13.10 and 14.04. The main difference between the distribution is the PHP version used (PHP 5.4 for Ubuntu 12.10 and PHP 5.5 for Ubuntu 13.10 and 14.04).
 
 .. note::
-    Even if the instructions apply to Ubuntu 12.10 and 13.10, the same process and requirements can be used for any PHP 5.4 or PHP 5.5 bases Linux distribution
+    Even if the instructions apply to Ubuntu 12.10, 13.10 and 14.04, the same process and requirements can be used for any PHP 5.4 or PHP 5.5 based Linux distribution.
 
+.. note::
+    The instructions below applies on all the aforementioned Ubuntu versions, except otherwise specified.
 
 Prerequisite
 -------------
@@ -16,30 +18,25 @@ In order to install Akeneo, you will have to download the Akeneo PIM Standard Ed
 
 System installation
 -------------------
+
+Before installing all the requirements, it's a good idea to update the repositories information:
+
+.. code-block:: bash
+    :linenos:
+
+    $ sudo apt-get update
+
+
 Installing MySQL
 ****************
-**Ubuntu 12.10 & 13.10**
 
 .. code-block:: bash
     :linenos:
 
     $ sudo apt-get install mysql-server
 
-Installing MongoDB
-******************
-**Following is optional, to execute only if you want use the MongoDB storage**
-
-.. code-block:: bash
-    :linenos:
-
-    $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
-    $ sudo echo deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen > /etc/apt/sources.list.d/mongodb-10gen.list
-    $ sudo apt-get update
-    $ sudo apt-get install mongodb-10gen
-
 Installing Apache
 *****************
-**Ubuntu 12.10 & 13.10**
 
 .. code-block:: bash
     :linenos:
@@ -48,7 +45,6 @@ Installing Apache
 
 Installing PHP
 **************
-**Ubuntu 12.10 & 13.10**
 
 .. code-block:: bash
     :linenos:
@@ -56,44 +52,31 @@ Installing PHP
     $ sudo apt-get install libapache2-mod-php5 php5-cli
     $ sudo apt-get install php5-mysql php5-intl php5-curl php5-gd php5-mcrypt
 
-**Ubuntu 13.10**
+**Ubuntu 13.10 only**
 
 .. code-block:: bash
     :linenos:
 
     $ sudo apt-get install php5-json
     $ sudo ln -s /etc/php5/conf.d/mcrypt.ini /etc/php5/mods-available/
+
+**Ubuntu 13.10 and 14.04 only**
+
+.. code-block:: bash
+    :linenos:
+
     $ sudo php5enmod mcrypt
-
-**Following is optional, to execute only if you want use the MongoDB storage**
-
-.. code-block:: bash
-    :linenos:
-
-    sudo apt-get install php-pear build-essential php5-dev
-    sudo pecl install mongo
-    sudo echo "extension=mongo.so" > /etc/php5/conf.d/mongo.ini
-
-Installing Java
-***************
-**Ubuntu 12.10 & 13.10**
-
-.. code-block:: bash
-    :linenos:
-
-    $ sudo apt-get install openjdk-7-jre
-
 
 Installing PHP opcode and data cache
 ************************************
-**Ubuntu 12.10**
+**Ubuntu 12.10 only**
 
 .. code-block:: bash
     :linenos:
 
     $ sudo apt-get install php-apc
 
-**Ubuntu 13.10**
+**Ubuntu 13.10 and 14.04 only**
 
 .. code-block:: bash
     :linenos:
@@ -101,8 +84,8 @@ Installing PHP opcode and data cache
     $ sudo apt-get install php5-apcu
 
 .. note::
-    In case of PHP 5.5 on Ubuntu 13.10, the Zend OPcache opcode cache
-    is installed and enabled by default.
+    PHP 5.5 provided in Ubuntu 13.10 and 14.04 comes with the Zend OPcache
+    opcode cache.
     Only the data cache provided by APCu is needed.
 
 System configuration
@@ -111,8 +94,6 @@ MySQL
 *****
 
 * Creating a MySQL database and user for the application
-
-**Ubuntu 12.10 & 13.10**
 
 .. code-block:: bash
     :linenos:
@@ -126,18 +107,15 @@ PHP
 ***
 * Setting up PHP Apache configuration
 
-**Ubuntu 12.10 & 13.10**
-
 .. code-block:: bash
     :linenos:
 
     $ sudo gedit /etc/php5/apache2/php.ini
-    memory_limit = 256M
+    memory_limit = 512M
     date.timezone = Etc/UTC
 
-* Setting up PHP CLI configuration
 
-**Ubuntu 12.10 & 13.10**
+* Setting up PHP CLI configuration
 
 .. code-block:: bash
     :linenos:
@@ -147,18 +125,17 @@ PHP
     date.timezone = Etc/UTC
 
 .. note::
-    Use the time zone corresponding to our location, for example *America/Los_Angeles*, *Europe/Berlin*.
-    See http://www.php.net/timezones for the list of available timezones.
+    Use the time zone matching your location, for example *America/Los_Angeles*, *Europe/Berlin*.
+    See http://www.php.net/timezones for a list of available timezones.
 
 Apache
 ******
-To avoid spending too much time on rights problems between the installing user and the Apache user, an easy configuration
+To avoid spending too much time on permissions problems between the CLI user and the Apache user, an easy configuration
 is to use same user for both processes.
 
 
 Get your idenfiers
 ^^^^^^^^^^^^^^^^^^
-**Ubuntu 12.10 & 13.10**
 
 .. code-block:: bash
     :linenos:
@@ -170,7 +147,6 @@ In this example, the user is *my_user* and the group is *my_group*.
 
 Use your identifiers for Apache
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-**Ubuntu 12.10 & 13.10**
 
 .. code-block:: bash
     :linenos:
@@ -179,19 +155,10 @@ Use your identifiers for Apache
     $ sudo gedit /etc/apache2/envvars
     export APACHE_RUN_USER=my_user
     export APACHE_RUN_GROUP=my_group
-
-Update owner on Apache directories
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-**Ubuntu 12.10 & 13.10**
-
-.. code-block:: bash
-    :linenos:
-
     $ sudo chown -R my_user /var/lock/apache2
 
-Start Apache
-^^^^^^^^^^^^
-**Ubuntu 12.10 & 13.10**
+Restart Apache
+^^^^^^^^^^^^^^
 
 .. code-block:: bash
     :linenos:
@@ -223,40 +190,93 @@ Extracting the archive
 
     It will be our PIM root directory and will be refered as */path/to/pim/root* in the following instructions.
 
-Installing Akeneo
-*****************
+Installing MongoDB and enabling it is as catalog storage
+--------------------------------------------------------
+**The following steps are optional.
+Follow them only if you want use the MongoDB catalog storage**
+
+Installing MongoDB
+******************
+
+**Ubuntu 12.10 & 13.10 only**
+
+.. code-block:: bash
+    :linenos:
+
+    $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+    $ sudo echo deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen | sudo tee /etc/apt/sources.list.d/mongodb-10gen.list > /dev/null
+    $ sudo apt-get update
+    $ sudo apt-get install mongodb-10gen
+
+**Ubuntu 14.04 only**
+
+.. code-block:: bash
+    :linenos:
+
+    $ sudo apt-get install mongodb-server
+
+Installing MongoDB PHP driver
+*****************************
+
+**Ubuntu 12.10 & 13.10 only**
+
+.. code-block:: bash
+    :linenos:
+
+    sudo apt-get install php-pear build-essential php5-dev
+    sudo pecl install mongo
+    sudo echo "extension=mongo.so" | sudo tee /etc/php5/conf.d/mongo.ini > /dev/null
+
+**Ubuntu 14.04 only**
+
+.. code-block:: bash
+    :linenos:
+
+    $ sudo apt-get install php5-mongo
+
+Installing and enabling MongoDB support in Akeneo
+*************************************************
+
+* Install the require dependency:
+
 .. code-block:: bash
     :linenos:
 
     $ cd /path/to/pim/root
-    $ php app/console pim:install --env=prod
-    $ php app/console cache:clear --env=prod
+    $ php ../composer.phar --prefer-dist require "doctrine/mongodb-odm-bundle: 3.0.*@dev"
 
-**Following is optional, to execute only if you want use the MongoDB storage, must be run before the pim:install command**
-
-Copy and uncomment the mongodb_* and pim_catalog_storage_driver parameters from app/config/pim_parameters.yml to app/config/parameters.yml
-
-Switch 'pim_catalog.storage_driver' to "doctrine/mongodb-odm"
-
-Install the require dependency:
+* In app/AppKernel.php, uncomment the following line (this will enable DoctrineMongoDBBundle and will load and enable the MongoDB configuration):
 
 .. code-block:: bash
     :linenos:
 
-    $ php composer.phar require "doctrine/mongodb-odm-bundle: 3.0.*@dev"
-
-In app/AppKernel.php, uncomment the following line (this will enable DoctrineMongoDBBundle and will load and enable the MongoDB configuration):
-
-.. code-block:: bash
-    :linenos:
-
+    $ gedit app/AppKernel.php
     new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
 
-Configuring the virtualhost
----------------------------
+* Set MongoDB server configuration at the end of the configuration file
+
+.. code-block:: bash
+    :linenos:
+
+    $ gedit app/config/parameters.yml
+        pim_catalog_storage_driver: doctrine/mongodb-odm
+        mongodb_server: 'mongodb://localhost:27017'
+        mongodb_database: akeneo_pim
+
+Initializing Akeneo
+-------------------
+.. code-block:: bash
+    :linenos:
+
+    $ cd /path/to/pim/root
+    $ php app/console cache:clear --env=prod
+    $ php app/console pim:install --env=prod
+
+
+Configuring the virtual host
+----------------------------
 Enabling Apache mod_rewrite
 ***************************
-**Ubuntu 12.10 & Ubuntu 13.10**
 
 .. code-block:: bash
     :linenos:
@@ -265,14 +285,13 @@ Enabling Apache mod_rewrite
 
 Creating the vhost file
 ***********************
-**Ubuntu 12.10**
 
 .. code-block:: bash
     :linenos:
 
-    $ sudo gedit /etc/apache2/sites-available/akeneo-pim.local
+    $ sudo gedit /etc/apache2/sites-available/akeneo-pim.local.conf
 
-**Ubuntu 12.10**
+**Ubuntu 12.10 only**
 
 .. code-block:: apache
     :linenos:
@@ -293,15 +312,7 @@ Creating the vhost file
         CustomLog ${APACHE_LOG_DIR}/akeneo-pim_access.log combined
     </VirtualHost>
 
-**Ubuntu 13.10**
-
-.. code-block:: bash
-    :linenos:
-
-    $ sudo gedit /etc/apache2/sites-available/akeneo-pim.local.conf
-
-
-**Ubuntu 13.10**
+**Ubuntu 13.10 and 14.04 only**
 
 .. code-block:: apache
     :linenos:
@@ -323,14 +334,13 @@ Creating the vhost file
 
 .. note::
 
-    The difference in Virtual Host configuration between Ubuntu 12.10
-    and Ubuntu 13.10 is the result of the switch from Apache 2.2 to
+    The differences in Virtual Host configuration between Ubuntu 12.10
+    and Ubuntu 13.10/14.04 are the result of the switch from Apache 2.2 to
     Apache 2.4. See https://httpd.apache.org/docs/2.4/upgrading.html
     for more explanation.
 
 Enabling the virtualhost
 ************************
-**Ubuntu 12.10 & Ubuntu 13.10**
 
 .. code-block:: bash
     :linenos:
@@ -342,7 +352,6 @@ Enabling the virtualhost
 
 Adding the vhost name
 *********************
-**Ubuntu 12.10 & 13.10**
 
 .. code-block:: bash
     :linenos:
@@ -350,12 +359,16 @@ Adding the vhost name
     $ sudo gedit /etc/hosts
     127.0.0.1    akeneo-pim.local
 
+
+System requirements
+*******************
+
 Testing your installation
 -------------------------
-Go to http://akeneo-pim.local/ and log in with admin/admin.
+Go to http://akeneo-pim.local/ and log in with *admin/admin*.
 
 If you can see the dashboard, congratulations, you have successfully installed Akeneo PIM !
 
 You can as well access the dev environment on http://akeneo-pim.local/app_dev.php
 
-If you have an error, it means that something went wrong in a previous step. So please check all error output of all instructions.
+If you have an error, it means that something went wrong in a previous step. So please check all error output of all steps.
