@@ -32,3 +32,5 @@
 * REST API
     * :doc:`/cookbook/rest_api/get-product`
 
+* Notification
+    * :doc:`/cookbook/notification/how_to_add_a_notification`
