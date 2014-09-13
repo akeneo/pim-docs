@@ -201,3 +201,10 @@ Save a Product
 .. code-block:: php
 
     $pm->save($product);
+
+Querying products
+-----------------
+
+Products can be stored and accessed through Doctine ORM or Doctrine MongoBDODM.
+
+Product repository and product query builder allow to abstact the storage and provide same operations.
