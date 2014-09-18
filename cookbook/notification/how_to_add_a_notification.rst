@@ -3,7 +3,7 @@ How to Add a Notification
 
 The Akeneo PIM comes with a notification system.
 
-In a simple way, you can add your notifications to the notifier icon on any action.
+In a simple way, you can add your notifications to the notifier widget.
 
 Prerequisites
 -------------
@@ -12,7 +12,7 @@ The Akeneo PIM project introduces services to help you manage your notifications
 
 * Inject the manager service
 
-The service is called : @pim_notification.manager.user_notification
+The service is called: ``@pim_notification.manager.notification``
 
 .. code-block:: php
 
@@ -20,7 +20,7 @@ The service is called : @pim_notification.manager.user_notification
         pim_notification.event_subscriber.job_execution_notifier:
             class: %pim_notification.event_subscriber.job_execution_notifier.class%
             arguments:
-                - '@pim_notification.manager.user_notification'
+                - '@pim_notification.manager.notification'
             tags:
                 - { name: kernel.event_subscriber }
 
@@ -31,13 +31,13 @@ Then, add it in your constructor
 
 .. code-block:: php
 
-    /** @var UserNotificationManager */
+    /** @var NotificationManager */
     protected $manager;
 
     /**
-     * @param UserNotificationManager $manager
+     * @param NotificationManager $manager
      */
-    public function __construct(UserNotificationManager $manager)
+    public function __construct(NotificationManager $manager)
     {
         $this->manager = $manager;
     }
@@ -50,15 +50,13 @@ Notify Users
 .. code-block:: php
 
     $this->manager->notify(
-        [$user1, $user2],
-        'Your awesome message to users',
-        'success',
-        $options
+        [$user1, $user2],       // An array of users (UserInterface or just the username)
+        'Your awesome message', // The message translation key
+        'success',              // The notification type ('success', 'warning' or 'error')
+        $options                // Additional options
     );
 
-Three states are compatibles with our icons : 'success', 'warning' and 'error'.
-
-You can add options to your notification, by default options are :
+The default options are:
 
 .. code-block:: php
 
@@ -69,11 +67,11 @@ You can add options to your notification, by default options are :
         'context => ''
     ]
 
-Adding a route allows users to navigate somewhere you want by clicking on the notification.
+Adding a route will redirect users to this route when the notification is clicked.
 
-For example, routing of the show export profile is :
+For example, the route of the show export profile page is:
 
-.. code-block:: php
+.. code-block:: yaml
 
     pim_importexport_export_profile_show:
         path: /{id}
@@ -81,7 +79,7 @@ For example, routing of the show export profile is :
         requirements:
             id: \d+
 
-The optional route parameter will be :
+The optional route parameter will be:
 
 .. code-block:: php
 
@@ -91,3 +89,7 @@ The optional route parameter will be :
             'id' => $jobExecutionId
         ]
     ];
+
+If the messageParams option is provided, it will be passed to the message when translating it.
+
+The context allows to store some extra data in the notification, it is not displayed on the UI by default.
