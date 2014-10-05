@@ -25,16 +25,16 @@ You can install Behat dependencies with composer (on pim-community-dev).
 
 Install Selenium Server
 -----------------------
-Download Selenium server 2.38 `here`_.
+Download Selenium server 2.43.1 `here`_.
 
 .. _here: http://docs.seleniumhq.org/download/
 
 
-Install Firefox 26.0
---------------------
-In order to use Selenium RC, you must actually install `firefox 26.0`_.
+Install Firefox
+---------------
+In order to use Selenium RC, you must actually install `firefox 32.0`_.
 
-.. _firefox 26.0: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/26.0/
+.. _firefox : http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/32.0/
 
 
 Create a VirtualHost
