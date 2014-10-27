@@ -37,11 +37,11 @@ Add filters :
         ->addFilter('family', 'IN', [1, 2])
         ->addFilter('category', 'IN', [3])
         // filter on sku which is not localizable/ not scopable
-        ->addFilter('sku', 'LIKE', '%akeneo%')
+        ->addFilter('sku', 'CONTAINS', 'akeneo')
         // filter on name which is localizable, the default locale is used, here 'en_US'
         ->addFilter('name', '=', 'My product name')
         // filter on description which is localizable and scopable by using 'fr_FR' locale and 'mobile' scope
-        ->addFilter('description', 'LIKE', 'My desc%', ['locale' => 'fr_FR', 'scope' => 'mobile'])
+        ->addFilter('description', 'STARTS WITH', 'My desc', ['locale' => 'fr_FR', 'scope' => 'mobile'])
         // filter on price
         ->addFilter('price', '>', '70 EUR')
         // filter on metric
@@ -85,7 +85,7 @@ To add your own filter, you need to implement a class implementing FieldFilterIn
 .. code-block:: yaml
 
     pim_catalog.doctrine.query.filter.boolean:
-        class: %pim_catalog.doctrine.query.filter.base.class%
+        class: %my_filter_class%
         arguments:
             - ['pim_catalog_boolean']
             - ['enabled']
