@@ -12,9 +12,6 @@ In Akeneo PIM, products can be stored and accessed through Doctine ORM (EAV like
 
 The PQB aims to abstact the used persistence storage to provide the same operations in both cases.
 
-.. note::
-    The PQB service is used by the product grid for filtering and sorting, we plan to use it too in the furture version of the REST API
-
 Instanciate a new product query builder
 ---------------------------------------
 
@@ -62,7 +59,10 @@ Execute the query
 
 .. code-block:: php
 
-    $pqb->execute();
+    $pqb->getQueryBuilder()->getQuery()->execute();
+
+.. note::
+    A execute() method will be provided in the future to wrap this part
 
 Know the useable filters
 ------------------------
@@ -104,7 +104,5 @@ Sorter implementation mechanism is very close to the filter one, another registr
 
     pim_catalog.doctrine.query.sorter.completeness:
         class: %pim_catalog.doctrine.query.sorter.completeness.class%
-        arguments:
-            - @pim_catalog.context.catalog
         tags:
             - { name: 'pim_catalog.doctrine.query.sorter', priority: 30 }
