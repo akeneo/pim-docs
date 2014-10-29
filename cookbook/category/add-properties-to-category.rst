@@ -3,6 +3,10 @@ How to Add New Properties to a Category
 
 The Akeneo PIM allows the classification of products inside a customizable category tree.
 
+.. note::
+
+    Before to realize this task you have to be comfortable with symfony bundle overriding and symfony services
+
 Add Properties to your own Category
 -----------------------------------
 The first step is to create a class that extends PIM ``Category`` class.
@@ -33,12 +37,48 @@ You need to update your category entity parameter used in ``entities.yml`` file:
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/entities.yml
    :language: yaml
    :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/entities.yml
+   :lines: 1-2
    :linenos:
 
 .. note::
-   You don't have to add enough code for resolve target entities doctrine configuration.
+   You don't have to add a lot of code to resolve target entities doctrine configuration.
    We already have a resolve which inject the new value for your category.
 
 
 The same procedure can be applied to redefine the product and product value entities.
 
+Define the Category Form
+------------------------
+
+Firstly you will have to create your custom type by inheriting the CategoryType class and then add your custom fields:
+
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Form/Type/CategoryType.php
+    :language: php
+    :prepend: # /src/Acme/Bundle/EnrichBundle/Form/Type/CategoryType.php
+    :linenos:
+
+Then you have to override the service definition of your form:
+
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
+    :language: yaml
+    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
+    :lines: 1-2
+    :linenos:
+
+.. note::
+
+    Don't forget to add this new file in your dependency injection extension
+
+Then don't forget to add your new field in twig template:
+
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/views/CategoryTree/_tab-panes.html.twig
+    :language: twig
+    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/views/CategoryTree/_tab-panes.html.twig
+    :linenos:
+
+For the form validation you will have to add a new validation file:
+
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/validation.yml
+    :language: yml
+    :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/validation.yml
+    :linenos:
