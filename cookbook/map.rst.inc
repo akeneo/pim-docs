@@ -2,6 +2,7 @@
     * :doc:`/cookbook/setup_data/customize_installer`
 
 * Manipulate product
+    * :doc:`/cookbook/product/define-structure`
     * :doc:`/cookbook/product/manipulate-product`
     * :doc:`/cookbook/product/query-products`
 
