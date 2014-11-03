@@ -36,3 +36,8 @@ Then go on Akeneo PIM `src/` directory and create a symlink `Acme` pointing on `
 
 Add all Acme bundles in `app/AppKernel.php` file.
 
+
+Contribution
+------------
+
+Don't hesitate to propose cookbook entries via the https://github.com/akeneo/pim-docs/issues

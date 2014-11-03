@@ -3,6 +3,7 @@
 
 * Manipulate product
     * :doc:`/cookbook/product/manipulate-product`
+    * :doc:`/cookbook/product/query-products`
 
 * Import / export
     * :doc:`/cookbook/import_export/create-connector`
@@ -32,3 +33,5 @@
 * REST API
     * :doc:`/cookbook/rest_api/get-product`
 
+* Notifications
+    * :doc:`/cookbook/notification/how_to_add_a_notification`
