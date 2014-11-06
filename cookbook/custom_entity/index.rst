@@ -11,6 +11,9 @@ provided by Akeneo and link them to the products.
     if you do not need to use your custom entity as an attribute, follow
     only the first part of this cookbook's recipe.
 
+.. note::
+    API documentation of the Custom Entity Bundle : https://github.com/akeneo/CustomEntityBundle/blob/master/Resources/doc/index.rst
+
 For example, let's say we want to create a more advanced manufacturer entity
 than using a standard attribute option, because the manufacturer needs
 specific attribute itself like the manufacturing country.
