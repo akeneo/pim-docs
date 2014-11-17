@@ -79,6 +79,6 @@ Then don't forget to add your new field in twig template:
 For the form validation you will have to add a new validation file:
 
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/validation.yml
-    :language: yml
+    :language: yaml
     :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/validation.yml
     :linenos:
