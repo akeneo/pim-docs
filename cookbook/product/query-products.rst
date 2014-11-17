@@ -39,7 +39,7 @@ Add filters :
         // filter on name which is localizable, the default locale is used, here 'en_US'
         ->addFilter('name', '=', 'My product name')
         // filter on description which is localizable and scopable by using 'fr_FR' locale and 'mobile' scope
-        ->addFilter('description', 'STARTS WITH', 'My desc', ['locale' => 'fr_FR', 'scope' => 'mobile'])
+        ->addFilter('description', 'STARTS WITH', 'My desc', 'fr_FR', 'mobile')
         // filter on price
         ->addFilter('price', '>', '70 EUR')
         // filter on metric
@@ -53,7 +53,7 @@ Add sorters :
         ->addSorter('family', 'ASC')
         ->addSorter('price', 'DESC')
         // sort by completeness, the locale and scope is expected, if not provided, the default one are used
-        ->addSorter('completeness', 'DESC', ['locale' => 'fr_FR', 'scope' => 'mobile']);
+        ->addSorter('completeness', 'DESC', 'fr_FR', 'mobile');
 
 Execute the query
 -----------------
