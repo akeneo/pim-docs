@@ -2,7 +2,7 @@ How to use the new fast MongoDB writer
 ======================================
 
 Why ?
-----
+-----
 MongoDB storage in Akeneo has been implemented to support large catalog. So it 
 means as well large volume of data to import.
 

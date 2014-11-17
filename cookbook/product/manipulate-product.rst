@@ -1,5 +1,5 @@
-How to Programmatically Manipulate Products
-===========================================
+How to Pragmatically Manipulate Products
+========================================
 
 Prerequisites
 -------------
