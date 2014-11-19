@@ -4,6 +4,7 @@
 * Manipulate product
     * :doc:`/cookbook/product/manipulate-product`
     * :doc:`/cookbook/product/query-products`
+    * :doc:`/cookbook/updaters/product-updater`
 
 * Import / export
     * :doc:`/cookbook/import_export/create-connector`

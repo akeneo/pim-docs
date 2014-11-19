@@ -1,5 +1,5 @@
-How to use product updater
-==========================
+How to Update Products
+======================
 
 Prerequisites
 -------------
