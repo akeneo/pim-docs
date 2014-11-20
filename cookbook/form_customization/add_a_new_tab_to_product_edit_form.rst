@@ -1,48 +1,63 @@
-How to Add a New Tab on the Product Edit Form
+How to Add a New Tab on Akeneo entities forms
 =============================================
 
-To add a new tab on the product edit form, you will need to override the
-templates for the navbar form ``PimEnrichBundle:Product:_navbar.html.twig``
-and tab panes ``PimEnrichBundle:Product:_tab-panes.html.twig``.
+To add or override a tab on an Akeneo PIM edit form, you can use our tab system based on tagged services.
+For each tab of our entities' form we have a tagged service to handle its rendering. You can find them on the
+``src/Pim/Bundle/EnrichBundle/Resources/config/view`` folder.
 
-In order to do this, you will need to define a bundle that is a child of ``PimEnrichBundle`` (`see here`_).
+How to overriding a tab template
+--------------------------------
 
-.. _see here: http://symfony.com/doc/current/cookbook/bundles/inheritance.html
+If you don't need to add custom logic, you can override only the template parameter.
 
-.. tip::
-  You can look at ``src/Acme/Bundle/EnrichBundle`` and ``app/AppKernel`` files.
+For example to use your own template for the product category tab you can override this parameter in your ``services.yml`` file:
 
-Overriding the templates
-------------------------
-To override these templates, you need to create 2 new files:
-
-- ``AcmeEnrichBundle/Resources/views/Product/_navbar.html.twig``
-
-.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/views/Product/_navbar.html.twig
-   :language: jinja
-   :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/views/Product/_navbar.html.twig
-   :emphasize-lines: 11-12
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/view/product.yml
+   :language: yaml
+   :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/view/product.yml
    :linenos:
 
-
-- ``AcmeEnrichBundle/Resources/views/Product/_tab-panes.html.twig``
-
-.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/views/Product/_tab-panes.html.twig
-   :language: html+jinja
-   :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/views/Product/_tab-panes.html.twig
-   :emphasize-lines: 22-28
-   :linenos:
-
+This way you can replace the original template or extend it. As you have access to the context of the parent page,
+you can even have access to the form, the user, etc.
 
 .. note::
+    As we add an HTML comment at the beginning of each tab content, you can easily find the original location of the template by inspecting the HTML code in your browser web tools.
 
-    Make sure you clear the cache to enable your templates to be loaded.
+How to overriding the tab logic
+-------------------------------
 
-.. warning::
+If you need to override the tab logic you can override the related tagged service in your bundle:
 
-    For the created tab pane to work, its ``id`` attribute must match the navbar title for this tab pane
-    (transformed to lowercase and spaces replaced with dashes)
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/view/attribute.yml
+   :language: yaml
+   :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/view/attribute.yml
+   :emphasize-lines: 4
+   :linenos:
 
-If you would like to have a different order in the tab panes, simply reorder the arguments passed to
-``elements.form_navbar``.
 
+You have to implement the ``Pim\Bundle\EnrichBundle\ViewElement\ViewElementInterface`` in order to register it.
+
+How to add a visibility checker
+-------------------------------
+
+Each view can register visibility checker to check if the view should visible. You can add yours by creating a service implementing the ``Pim\Bundle\EnrichBundle\ViewElement\Checker\VisibilityCheckerInterface``. To register a visibility checker you have to register it in the container as a service and add a call to your tab:
+
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/view/category.yml
+   :language: yaml
+   :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/view/category.yml
+   :emphasize-lines: 9
+   :lines: 1-11
+   :linenos:
+
+
+How to add your own tab to a form
+---------------------------------
+
+You can also register a new tab on a form. To do so, you need to register a tab service and set the position of this tab:
+
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/view/category.yml
+   :language: yaml
+   :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/view/category.yml
+   :emphasize-lines: 4,11
+   :lines: 1,13-
+   :linenos:
