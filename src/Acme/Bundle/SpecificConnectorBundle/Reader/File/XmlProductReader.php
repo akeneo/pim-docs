@@ -2,7 +2,6 @@
 
 namespace Acme\Bundle\SpecificConnectorBundle\Reader\File;
 
-use Symfony\Component\Yaml\Yaml;
 use Akeneo\Bundle\BatchBundle\Item\ItemReaderInterface;
 use Pim\Bundle\BaseConnectorBundle\Reader\File\FileReader;
 
