@@ -18,7 +18,7 @@ class ProductWriter extends AbstractConfigurableStepElement implements
     /** @var ProductManager */
     protected $productManager;
 
-    public function __construct($manager)
+    public function __construct(ProductManager $manager)
     {
         $this->productManager = $manager;
     }
