@@ -1,10 +1,14 @@
+Behat
+=====
+
 .. image:: /_themes/akeneo_rtd/static/behat-logo.png
    :width: 150
    :alt: Behat logo
    :target: http://behat.org/
 
+
 Setup Behat
-===========
+-----------
 
 The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-community-dev/tree/master/features
 
@@ -25,23 +29,23 @@ You can install Behat dependencies with composer (on pim-community-dev).
 
 Install Selenium Server
 -----------------------
-Download Selenium server 2.43.1 `here`_.
+Download Selenium server 2.38 `here`_.
 
 .. _here: http://docs.seleniumhq.org/download/
 
 
-Install Firefox
----------------
-In order to use Selenium RC, you must actually install `firefox 32.0`_.
+Install Firefox 26.0
+--------------------
+In order to use Selenium RC, you must actually install `firefox 26.0`_.
 
-.. _firefox : http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/32.0/
+.. _firefox 26.0: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/26.0/
 
 
 Create a VirtualHost
 --------------------
 To be sure to test in an environment as close as possible to a production environment,
 we need to define a specific VirtualHost with production RewriteRule (some limitations
-of Oro Platform does not allow to have production environment with the bootstrap file
+of Oro Platform does not allow to have production environment with the boostrap file
 included in the URL):
 
 .. code-block:: apache

@@ -1,16 +1,17 @@
-Akeneo PIM technical documentation
-==================================
+Akeneo PIM Documentation
+========================
 
 Akeneo is an open source Product Information Management system based on Symfony 2 and designed for retailers looking for
 efficient answers to their multichannel needs.
 
-Step by step installation
--------------------------
+User Guide
+----------
 
-Installing Akeneo PIM is not difficult, but the number of system requirements and dependencies can make it quite a daunting task.
+In this user guide you will find some informations on how tu use the PIM in terms of functionalities.
 
-For Ubuntu 12.10, 13.10 and 14.04:
-    * :doc:`/installation/installation_workstation`
+.. toctree::
+
+   userguide/index
 
 Cookbook
 --------
@@ -23,41 +24,19 @@ Cookbook
 Customize the PIM to fit your needs:
 
 .. toctree::
-   :hidden:
 
-.. include:: /cookbook/map.rst.inc
+    cookbook/index
 
-References
-----------
-
-Understand some core concepts:
+Developper Guide
+----------------
 
 .. toctree::
-   :hidden:
 
-.. include:: /references/map.rst.inc
-
+    developperguide/index
 
 Contributing
 ------------
 
-Contribute to Akeneo PIM:
-
 .. toctree::
-   :hidden:
 
-.. include:: /contributing/map.rst.inc
-
-Bundles
--------
-
-PIM bundles:
-
-.. include:: /bundles/index.rst
-
-BAP bundles documentation:
-
-* `Oro Platform documentation`_
-
-.. _Oro Platform documentation: https://github.com/orocrm/documentation
-
+    contributing/index
