@@ -8,7 +8,6 @@ You can configure the data set in the ``app/config/parameters.yml`` file:
 .. literalinclude:: ../../app/config/parameters.yml.dist
    :language: yaml
    :prepend: # /app/config/parameters.yml
-   :lines: 1,28
    :linenos:
 
 The following steps allow you to easily define your own basic entities when you install the PIM.
@@ -77,14 +76,13 @@ Update the ``app/config/parameters.yml`` to use your data set:
 .. literalinclude:: ../../app/config/parameters.yml
    :language: yaml
    :prepend: # /app/config/parameters.yml
-   :lines: 1,20
    :linenos:
 
 You can now (re)install your database by running:
 
 .. code-block:: bash
 
-    > php app/console pim:installer:db --force --env=dev
+    > php app/console pim:installer:db --env=dev
 
 Load individual fixture files
 -----------------------------
