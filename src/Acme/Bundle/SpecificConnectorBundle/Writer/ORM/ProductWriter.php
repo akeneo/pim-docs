@@ -2,8 +2,6 @@
 
 namespace Acme\Bundle\SpecificConnectorBundle\Writer\ORM;
 
-use Doctrine\ORM\EntityManager;
-
 use Akeneo\Bundle\BatchBundle\Entity\StepExecution;
 use Akeneo\Bundle\BatchBundle\Item\ItemWriterInterface;
 use Akeneo\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
@@ -20,7 +18,7 @@ class ProductWriter extends AbstractConfigurableStepElement implements
     /** @var ProductManager */
     protected $productManager;
 
-    public function __construct($manager)
+    public function __construct(ProductManager $manager)
     {
         $this->productManager = $manager;
     }
