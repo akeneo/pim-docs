@@ -69,7 +69,7 @@ Some of the most important properties are described as below.
 
 Code
 """"
-All attributes have an unique code which identifies them for import and export operations. [/accordion]
+All attributes have an unique code which identifies them for import and export operations.
 
 Type
 """"
