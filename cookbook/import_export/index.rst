@@ -1,11 +1,6 @@
 Import/Export
 =============
 
-.. note::
-
-   @TODO: add a header for import/export chapter
-
-
 .. toctree::
 
    create-connector

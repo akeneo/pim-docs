@@ -1,5 +1,5 @@
-Step by step installation on developement workstation
-=====================================================
+Installation
+============
 
 This document provides a step by step instruction to install the PIM on development workstations based on Ubuntu 12.10, 13.10 or 14.04.
 

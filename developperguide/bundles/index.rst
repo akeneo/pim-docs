@@ -1,13 +1,12 @@
 Bundles
 =======
 
+Akeneo bundles
+--------------
 
-PIM bundles:
+.. include:: akeneo_bundles.rst.inc
 
-.. include:: map.rst.inc
+PIM bundles
+-----------
 
-BAP bundles documentation:
-
-* `Oro Platform documentation`_
-
-.. _Oro Platform documentation: https://github.com/orocrm/documentation
+.. include:: pim_bundles.rst.inc

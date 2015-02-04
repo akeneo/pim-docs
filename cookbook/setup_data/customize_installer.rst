@@ -1,7 +1,7 @@
-How to Define my own Data Set with the Installer
-================================================
+Customize the Installation
+==========================
 
-The Akeneo PIM allows to prepare a data set to use during the installation.
+The Akeneo PIM allows to prepare a custom data set to use during the installation.
 
 You can configure the data set in the ``app/config/parameters.yml`` file:
 
