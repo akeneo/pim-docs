@@ -112,8 +112,6 @@ Naming Conventions
 
 * Suffix interfaces with ``Interface``;
 
-* Suffix traits with ``Trait``;
-
 * Suffix exceptions with ``Exception``;
 
 * Use alphanumeric characters and underscores for file names;

@@ -3,12 +3,15 @@ Code Conventions
 
 When contributing code to Akeneo PIM, you must follow its code conventions (very close to Symfony Code conventions).
 
-This is part of our Developer Xperience effort, these conventions allow us to share the path we want to follow to make codebase more consistent and predictable.
+This is part of our Developer Xperience effort, write these conventions allow us to share the path we want to follow to continuoulsy improve our codebase.
 
-There are still inconsistencies in the codebase that we'll fix in coming releases, we'll continue to enhance this page to give clear best practises on:
+There are still inconsistencies in the codebase that we'll fix in coming releases.
 
-* how to contribute on Akeneo PIM
-* how to write custom code for Akeneo PIM Projects
+We'll continue to enhance the Best Practises section to give clear hints on:
+
+* how to contribute code on Akeneo PIM
+* how to customize Akeneo PIM in projects
+* how to create your own third party extension
 
 Bundle Organization
 -------------------
