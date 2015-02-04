@@ -1309,7 +1309,7 @@ a .fa, a .rst-content .admonition-title, .rst-content a .admonition-title, a .rs
     transition: all 0.3s ease-in;
 }
 .wy-tray-container li.wy-tray-item-success {
-    background: #27ae60;
+    background: #9665b1;
 }
 .wy-tray-container li.wy-tray-item-info {
     background: #9665b1;
@@ -1359,7 +1359,7 @@ button[disabled] {
     padding: 6px 12px 8px 12px;
     color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: #27ae60;
+    background-color: #9665b1;
     text-decoration: none;
     font-weight: normal;
     font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif;
@@ -1444,7 +1444,7 @@ button[disabled] {
     color: #404040 !important;
 }
 .btn-success {
-    background-color: #27ae60 !important;
+    background-color: #9665b1 !important;
 }
 .btn-success:hover {
     background-color: #295 !important;
@@ -1881,7 +1881,7 @@ select[disabled], textarea[disabled], input[readonly], select[readonly], textare
     display: inline-block;
     font-size: 80%}
 .wy-inline-validate.wy-inline-validate-success .wy-input-context {
-    color: #27ae60;
+    color: #9665b1;
 }
 .wy-inline-validate.wy-inline-validate-danger .wy-input-context {
     color: #e74c3c;
@@ -3117,7 +3117,7 @@ overflow: hidden;
 transition: all 0.3s ease-in;
 }
 .wy-tray-container li.wy-tray-item-success {
-background: #27ae60;
+background: #9665b1;
 }
 .wy-tray-container li.wy-tray-item-info {
 background: #9665b1;
@@ -3167,7 +3167,7 @@ font-size: 100%;
 padding: 6px 12px 8px 12px;
 color: #fff;
 border: 1px solid rgba(0, 0, 0, 0.1);
-background-color: #27ae60;
+background-color: #9665b1;
 text-decoration: none;
 font-weight: normal;
 font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif;
@@ -3252,7 +3252,7 @@ color: #404040;
 color: #404040 !important;
 }
 .btn-success {
-background-color: #27ae60 !important;
+background-color: #9665b1 !important;
 }
 .btn-success:hover {
 background-color: #295 !important;
@@ -3689,7 +3689,7 @@ padding: 0.5em 0.625em;
 display: inline-block;
 font-size: 80%}
 .wy-inline-validate.wy-inline-validate-success .wy-input-context {
-color: #27ae60;
+color: #9665b1;
 }
 .wy-inline-validate.wy-inline-validate-danger .wy-input-context {
 color: #e74c3c;
@@ -3944,7 +3944,7 @@ a.wy-text-info:hover {
 color: #409ad5 !important;
 }
 .wy-text-success {
-color: #27ae60 !important;
+color: #9665b1 !important;
 }
 a.wy-text-success:hover {
 color: #36d278 !important;
@@ -4686,7 +4686,7 @@ display: block;
 text-align: right;
 font-size: 90%;
 cursor: pointer;
-color: #27ae60;
+color: #9665b1;
 *zoom: 1;
 }
 .rst-versions .rst-current-version:before, .rst-versions .rst-current-version:after {
@@ -5008,7 +5008,7 @@ padding-right: 8px;
 }
 .rst-content .viewcode-link, .rst-content .viewcode-back {
 display: inline-block;
-color: #27ae60;
+color: #9665b1;
 font-size: 80%;
 padding-left: 24px;
 }
@@ -5071,7 +5071,7 @@ a.wy-text-info:hover {
     color: #409ad5 !important;
 }
 .wy-text-success {
-    color: #27ae60 !important;
+    color: #9665b1 !important;
 }
 a.wy-text-success:hover {
     color: #36d278 !important;
@@ -5813,7 +5813,7 @@ footer p {
     text-align: right;
     font-size: 90%;
     cursor: pointer;
-    color: #27ae60;
+    color: #9665b1;
     *zoom: 1;
 }
 .rst-versions .rst-current-version:before, .rst-versions .rst-current-version:after {
@@ -6135,7 +6135,7 @@ footer p {
 }
 .rst-content .viewcode-link, .rst-content .viewcode-back {
     display: inline-block;
-    color: #27ae60;
+    color: #9665b1;
     font-size: 80%;
     padding-left: 24px;
 }
