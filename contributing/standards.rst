@@ -91,7 +91,7 @@ Structure
 
 * Declare class properties before methods;
 
-* Declare public methods first, then protected ones and finally protected ones;
+* Declare public methods first, then protected ones;
 
 * Use parentheses when instantiating classes regardless of the number of
   arguments the constructor has;
