@@ -12,7 +12,10 @@ Customize the PIM to fit your needs:
     :maxdepth: 2
 
    setup_data/customize_installer
-   catalog
+   catalog/index
+   catalog/manipulate-catalog
+   product/manipulate-product
+   product/query-products
    import_export/index
    ui
    acl/define-acl

@@ -4,6 +4,7 @@ Contributing
 We gladly welcome contributions on Akeneo PIM!
 
 You can get involved by:
+
 * translating the application ;
 * contributing to the documentation ;
 * reporting a bug on github ;
