@@ -32,9 +32,11 @@ Add filters :
 .. code-block:: php
 
     $pqb
-        ->addFilter('family', 'IN', [1, 2])
-        ->addFilter('category', 'IN', [3])
-        // filter on sku which is not localizable/ not scopable
+        // You can filter on a field by id
+        ->addFilter('category.id', 'IN', [1, 2])
+        // Or filter using codes by adding the '.code' suffix
+        ->addFilter('groups.code', 'IN', ['camcorder', 'shirt'])
+        // filter on sku which is not localizable and not scopable
         ->addFilter('sku', 'CONTAINS', 'akeneo')
         // filter on name which is localizable, the default locale is used, here 'en_US'
         ->addFilter('name', '=', 'My product name')
@@ -60,13 +62,12 @@ Execute the query
 
 .. code-block:: php
 
-    $pqb->getQueryBuilder()->getQuery()->execute();
-
-.. note::
-    A execute() method will be provided in the future to wrap this part
+    $products = $pqb->getQueryBuilder()->execute();
 
 Know the usable filters
 ------------------------
+
+To help you know which filters are available for your installation, you can run the following command:
 
 .. code-block:: bash
 
@@ -81,7 +82,7 @@ The PQB uses the registry to resolve the filter to use.
 
 A filter can be used on field (means on doctrine fields of product mapping as id, family, etc) or on attribute (means on product value, as a sku, a name, etc).
 
-To add your own filter, you need to implement a class implementing FieldFilterInterface and/or AttributeFilterInterface and declare a service as :
+To add your own filter, you need to create a class implementing ``FieldFilterInterface`` and/or ``AttributeFilterInterface`` and declare a service as :
 
 .. code-block:: yaml
 
