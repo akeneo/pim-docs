@@ -1,5 +1,5 @@
-How to Create a Custom Entity and Use it as an attribute
-========================================================
+Create a Custom Entity
+======================
 
 Why Create a Custom Entity ?
 ----------------------------
