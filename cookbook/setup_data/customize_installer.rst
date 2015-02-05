@@ -1,5 +1,5 @@
-Customize the Installation
-==========================
+How to Customize the Installation
+=================================
 
 The Akeneo PIM allows to prepare a custom data set to use during the installation.
 

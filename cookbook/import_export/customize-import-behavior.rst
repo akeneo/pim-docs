@@ -1,5 +1,5 @@
-Customizing the Import Behavior
-===============================
+How to Customize the Import Behavior
+====================================
 
 Importations in the PIM are largely automatized by using the Doctrine metadata, through a set of
 guessers and property transformers. Import behavior is customizable for all entities by adding

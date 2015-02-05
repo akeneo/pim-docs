@@ -1,5 +1,5 @@
-Create a Custom Entity
-======================
+How to Create a Custom Entity
+=============================
 
 Why Create a Custom Entity ?
 ----------------------------
