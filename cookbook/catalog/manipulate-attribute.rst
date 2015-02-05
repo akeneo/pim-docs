@@ -1,5 +1,5 @@
-How to Programmatically Manipulate attributes
-===========================================
+How to Manipulate Attributes
+============================
 
 Prerequisites
 -------------

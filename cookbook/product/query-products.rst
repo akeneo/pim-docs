@@ -4,7 +4,7 @@ How to Query Products
 Prerequisites
 -------------
 
-The Akeneo PIM project introduces services to help you manage your product entities.
+The Akeneo PIM project introduces services to help you manage your product objects.
 
 The ProductQueryBuilder (PQB) allows you to build and execute complex queries with a simple API.
 
@@ -16,10 +16,12 @@ The PQB aims to abstract the used persistence storage to provide the same operat
 Instantiate a new product query builder
 ---------------------------------------
 
+The product query builder factory is a service, you can fetch it from the container.
+
 .. code-block:: php
 
-    // product query factory
-    $pqbFactory = $this->container->get('pim_catalog.doctrine.query.product_query_factory');
+    // product query builder factory
+    $pqbFactory = $this->container->get('pim_catalog.query.product_query_builder_factory');
     // returns a new instance of product query builder
     $pqb = $pqbFactory->create(['default_locale' => 'en_US', 'default_scope' => 'ecommerce']);
 
@@ -61,8 +63,8 @@ Execute the query
 -----------------
 
 .. code-block:: php
-
-    $products = $pqb->getQueryBuilder()->execute();
+    // will return a `Cursor` on the products collection
+    $products = $pqb->execute();
 
 Know the usable filters
 ------------------------
