@@ -1,5 +1,5 @@
-Customize the UI
-================
+How to Customize the UI
+=======================
 
 .. toctree::
 

@@ -1,9 +1,11 @@
-How to Use REST API ?
-=====================
+How to Use REST API
+===================
 
 The Akeneo PIM comes with a REST API which allows to fetch product data in JSON format.
 
-We're still working on to add new methods to fetch and update other entities.
+.. note::
+
+   The REST API is very minimalist for now, we plan to enrich it to add new methods to fetch and update other entities.
 
 Configure a user
 ----------------

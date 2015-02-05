@@ -1,5 +1,5 @@
-Customizing validation
-======================
+How to Customize Validation
+===========================
 
 Overriding existing validation
 ------------------------------
