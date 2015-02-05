@@ -1,8 +1,8 @@
 .wy-nav-content-wrap {
     background-image: url("../img/logo_bg.png");
     background-position: -20px bottom;
-    background-size: 20% auto;
-    background-repeat: no-repeat;
+    background-size: 21% auto;
+    background-repeat: repeat-x;
 }
 
 .wy-menu-vertical li.current a:hover {

@@ -8,6 +8,7 @@ Developper Guide
 ----------------
 
 .. toctree::
+    :maxdepth: 2
 
     developperguide/index
 
@@ -20,6 +21,7 @@ Cookbook
    https://github.com/akeneo/pim-docs, add a symlink to src/Acme then register demo bundles in your AppKernel
 
 .. toctree::
+    :maxdepth: 2
 
     cookbook/index
 
@@ -30,5 +32,6 @@ Contributing
 ------------
 
 .. toctree::
+    :maxdepth: 2
 
     contributing/index
