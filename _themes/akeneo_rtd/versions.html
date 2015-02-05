@@ -1,0 +1,17 @@
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Akeneo PIM</span>
+      v: {{ version|e }}
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        {% for version in versions %}
+          <li><a href="/{{ version|e }}/index.html">{{ version|e }}</a></li>
+        {% endfor %}
+      </dl>
+    </div>
+  </div>
+
+
