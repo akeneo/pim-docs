@@ -1,5 +1,7 @@
-How To Customize Import / Export
+How to Customize Import / Export
 ================================
+
+This chapter gives details on how to create and customize connectors.
 
 .. toctree::
 
