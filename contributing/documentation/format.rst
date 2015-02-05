@@ -1,5 +1,5 @@
-Contributing Documentation
-==========================
+Enhance the Documentation
+=========================
 
 Get documentation from GitHub
 -----------------------------
@@ -10,7 +10,7 @@ Install GitHub for Windows
 Add this project (akeneo/pim-docs) using SSH/HTTP link
 Change to branch X.X version
 Make your changes directly from your local filesystem (including images)
-Comit & Push your changes
+Commit & Push your changes
 
 Using Linux
 ~~~~~~~~~~~
