@@ -58,9 +58,10 @@ Doctrine
 
 .. code-block:: php
 
-    // To flush the changes you need to use the product object manager
-    $om = $this->getContainer()->get('pim_catalog.object_manager.product');
-    $om->flush();
+    // To save the changes, save them with the product saver
+    $saver = $this->getContainer()->get('pim_catalog.saver.product');
+    $saver->save($product); //To save one product
+    $saver->saveAll($products); //To save a collection of product
 
 Add a custom setter
 -------------------

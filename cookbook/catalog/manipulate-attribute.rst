@@ -1,4 +1,4 @@
-How to Programmatically Manipulate the catalog structure
+How to Programmatically Manipulate attributes
 ===========================================
 
 Prerequisites
