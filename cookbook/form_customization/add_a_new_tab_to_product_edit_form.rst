@@ -96,3 +96,86 @@ You can also register a new tab on a form. To do so, you need to register a tab 
                 - [ addVisibilityChecker, ['@pim_enrich.view_element.visibility_checker.edit_form'] ]
             tags:
                 - { name: pim_enrich.view_element, type: pim_category.form_tab, position: 120 }
+
+Example
+-------
+
+Let say that we would like to add a tab on the product edit form to manage shipping package sizes for our client. This tab will be visible only if the user have the right to see it and we would like to put it between the attribute tab and the category tab.
+
+First of all, we need to register this tab in our ``service.yml`` file:
+
+.. code-block:: yaml
+    :linenos:
+
+    # /src/Acme/Bundle/EnrichBundle/Resources/config/service.yml
+    services:
+        # You can name your service as you want but it's always better to follow conventions
+        acme_enrich.view_element.product.tab.package_management:
+            parent: pim_enrich.view_element.base
+            arguments:
+                - 'package_management' # this is the translation key for our tab title
+                - 'AcmeEnrichBundle:Product:Tab/package_management.html.twig' # The location of your template
+            tags:
+                # The attribute tab is at the 90 position and the category one is at position 100.
+                - { name: pim_enrich.view_element, type: pim_product_edit.form_tab, position: 95 }
+
+You can now create your template at ``/src/Acme/Bundle/EnrichBundle/Resources/views/Product/package_management.html.twig``
+
+.. code-block:: twig
+    :linenos:
+
+    {# /src/Acme/Bundle/EnrichBundle/Resources/views/Product/package_management.html.twig #}
+    <h1>Hello world !</h1>
+
+    {{ dump(form) }}
+
+After a cache clear (``app/console cache:clear``)
+
+You should se that on a product edit form :
+
+.. image:: product.png
+
+As you can see, you will have to translate the tab title in your translation file (see http://symfony.com/doc/current/book/translation.html)
+
+As shown in the screenshot above we have total access over the product edit form and we can now render our package section in this tab.
+
+* Apply right on our tab
+
+To apply right on our tab we can add a visibility checker to it:
+
+.. code-block:: yaml
+    :linenos:
+
+    # /src/Acme/Bundle/EnrichBundle/Resources/config/service.yml
+    services:
+        acme_enrich.view_element.product.tab.package_management:
+            parent: pim_enrich.view_element.base
+            arguments:
+                - 'package_management'
+                - 'AcmeEnrichBundle:Product:Tab/package_management.html.twig'
+            calls:
+                - [ addVisibilityChecker, ['@pim_enrich.view_element.visibility_checker.acl', {acl: 'acme_enrich_product_package_management'}] ]
+            tags:
+                - { name: pim_enrich.view_element, type: pim_product_edit.form_tab, position: 95 }
+
+To add the ``acme_enrich_product_package_management`` you can refer to :doc:`/cookbook/acl/define-acl`
+
+* Display the tab only on edit
+
+.. code-block:: yaml
+    :linenos:
+
+    # /src/Acme/Bundle/EnrichBundle/Resources/config/service.yml
+    services:
+        acme_enrich.view_element.product.tab.package_management:
+            parent: pim_enrich.view_element.base
+            arguments:
+                - 'package_management'
+                - 'AcmeEnrichBundle:Product:Tab/package_management.html.twig'
+            calls:
+                - [ addVisibilityChecker, ['@pim_enrich.view_element.visibility_checker.acl', {acl: 'acme_enrich_product_package_management'}] ]
+                - [ addVisibilityChecker, ['@pim_enrich.view_element.visibility_checker.edit_form'] ]
+            tags:
+                - { name: pim_enrich.view_element, type: pim_product_edit.form_tab, position: 95 }
+
+And that's it ! You can now add everything you want in your tab.
