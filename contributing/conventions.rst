@@ -51,38 +51,6 @@ The implementations of Repositories (Doctrine ORM or MongoDBODM) are located in:
 
 Except Doctrine/Common, we should never use a Doctrine classes in a classe not located in /Doctrine.
 
-Base Connector
---------------
-
-In case of BaseConnectorBundle,  we follow this organization,
-
-For Reader, [WIP]
-
-For Processors:
-
-* Processor/Denormalization/AbstractProcessor
-* Processor/Denormalization/BaseProcessor
-* Processor/Denormalization/ProductProcessor
-* Processor/Normalization/AbstractProcessor
-* Processor/Normalization/BaseProcessor
-* Processor/Normalization/ProductProcessor
-
-For Writers, [WIP]
-
-Third Party Connector
----------------------
-
-In third party Connectors, we follow this organization,
-
-For Reader, [WIP]
-
-For Processors:
-
-* Processor/RuleDenormalizationProcessor
-* Processor/RuleNormalizationProcessor
-
-For Writers, [WIP]
-
 Services Definition
 -------------------
 

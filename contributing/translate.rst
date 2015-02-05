@@ -1,5 +1,5 @@
-Translating the PIM
-===================
+Translate the PIM
+=================
 
 We use `Crowdin`_ to translate the PIM.
 
