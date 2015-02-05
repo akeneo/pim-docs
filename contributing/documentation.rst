@@ -1,53 +1,26 @@
-Contributing Documentation
-==========================
+Enhance the Documentation
+=========================
 
-Get documentation from GitHub
------------------------------
+Want help to enhance the `Documentation`_ ?
 
-Using Windows
-~~~~~~~~~~~~~
-Install GitHub for Windows
-Add this project (akeneo/pim-docs) using SSH/HTTP link
-Change to branch X.X version
-Make your changes directly from your local filesystem (including images)
-Comit & Push your changes
-
-Using Linux
-~~~~~~~~~~~
-
-Considering you want to update documentation for version x.y :
-
-git clone git@github.com:akeneo/pim-docs.git
-git checkout x.y
-
-// Make your changes, using whatever text editor
-
-// See what files you have changed using :
-git status
-
-// Get a more detailed view using :
-git diff
-
-// Add the files you've just edited in your commit stack :
-git add /path/to/your/file.rst
-
-Note : you can using joker * like this :
-git add /path/to/your/file/*.rst
-
-if you want to add all of your rst files.
-
-git commit -m "Description of what you added/removed/changed"
-git pull origin x.y
-
-Test it
--------
-
-
-Lorem ipsum dolor sit amet
-
+.. _Documentation: http://docs.akeneo.com/latest/index.html
 
 The Akeneo PIM documentation uses `reStructuredText`_ as its markup language and
 `Sphinx`_ for building the output (HTML, PDF, ...).
+
+We're very interested by tutorials or cookbook to explain how to customize the PIM to your project's needs.
+
+Before to contribute a new entry, thank you to begin by create an `Issue`_ on Github to explain your idea.
+
+.. _Issue: https://github.com/akeneo/pim-docs/issues
+
+For typo / quick fixes you can directly propose a `PullRequest`_.
+
+.. _PullRequest: https://help.github.com/articles/using-pull-requests/
+
+To test the rendering of the documentation you can follow this `HowTo`_.
+
+.. _HowTo: https://github.com/akeneo/pim-docs/blob/master/README.md
 
 reStructuredText
 ----------------
@@ -194,19 +167,6 @@ You can also add links to the PHP documentation:
     :phpmethod:`DateTime::createFromFormat`
 
     :phpfunction:`iterator_to_array`
-
-Testing Documentation
-~~~~~~~~~~~~~~~~~~~~~
-
-To test documentation before a commit:
-
-* Install `Sphinx`_;
-
-* Run the `Sphinx quick setup`_;
-
-* Install the Sphinx extensions (see below);
-
-* Run ``make html`` and view the generated HTML in the ``build`` directory.
 
 .. _reStructuredText:        http://docutils.sourceforge.net/rst.html
 .. _Sphinx:                  http://sphinx-doc.org/

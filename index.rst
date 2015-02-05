@@ -25,9 +25,6 @@ Cookbook
 
     cookbook/index
 
-Best Practises
---------------
-
 Contributing
 ------------
 

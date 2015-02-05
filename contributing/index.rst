@@ -1,27 +1,16 @@
 Contributing
 ============
 
-We gladly welcome contributions on Akeneo PIM!
-
-You can get involved by:
-
-* translating the application ;
-* contributing to the documentation ;
-* reporting a bug on github ;
-* fixing bugs ;
-* proposing a technical enhancement ;
-* creating a new connector ;
-* submitting a feature request.
+We gladly welcome many kind of contributions on Akeneo PIM!
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   code/index
-   documentation/format
-
-
-
-Translating
------------
-
-Create an account and begin to translate on: http://crowdin.net/project/akeneo
+   translate
+   documentation
+   report_bug
+   fix_bug
+   tech_enhancement
+   feature_request
+   create_connector
+   best_practises
