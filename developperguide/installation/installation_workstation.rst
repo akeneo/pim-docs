@@ -168,6 +168,15 @@ Restart Apache
 
 Installing Akeneo PIM
 ---------------------
+Downloading the archive
+***********************
+.. code-block:: bash
+    :lineos:
+
+    $ wget -N http://www.akeneo.com/pim-community-standard-version.tar.gz
+
+.. note::
+    Replace the *http://www.akeneo.com/pim-community-standard-version.tar.gz* by the url of current version.
 
 Extracting the archive
 **********************
