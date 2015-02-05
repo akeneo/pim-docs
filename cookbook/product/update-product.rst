@@ -12,12 +12,17 @@ In the following examples, we will assume that we have a collection of one or ma
 ``$products``. The collection can be fetched from the database or newly created with the
 ``pim_catalog.builder.product`` service.
 
+.. note::
+
+   The updater does not validate and persist the products in the database, these operations are detailed in specific chapters
+
 Instantiate a new updater
 -------------------------
 
+The product updater is a service, you can fetch it from the container.
+
 .. code-block:: php
 
-    // The product updater is a service, you can fetch it from the container
     $updater = $this->getContainer()->get('pim_catalog.updater.product');
 
 Use setters and copiers
@@ -50,18 +55,6 @@ both of them have to be compliant and have to be supported by the copier).
 
     $updater
         ->copyValue($products, 'description', 'description', 'en_US', 'en_US', 'ecommerce', 'mobile')
-
-Doctrine
---------
-
-.. note:: Don't forget to flush the changes:
-
-.. code-block:: php
-
-    // To save the changes, save them with the product saver
-    $saver = $this->getContainer()->get('pim_catalog.saver.product');
-    $saver->save($product); //To save one product
-    $saver->saveAll($products); //To save a collection of product
 
 Add a custom setter
 -------------------

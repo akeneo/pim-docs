@@ -1,5 +1,5 @@
-How to Programmatically Manipulate families
-===========================================
+How to Manipulate Families
+==========================
 
 Prerequisites
 -------------
