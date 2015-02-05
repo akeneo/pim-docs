@@ -1,3 +1,6 @@
+Bundles
+=======
+
 * `BaseConnectorBundle`_
 * `CatalogBundle`_
 * `DashboardBundle`_

@@ -10,7 +10,10 @@ Step by step installation
 Installing Akeneo PIM is not difficult, but the number of system requirements and dependencies can make it quite a daunting task.
 
 For Ubuntu 12.10, 13.10 and 14.04:
-    * :doc:`/installation/installation_workstation`
+
+.. toctree::
+
+    /installation/installation_workstation
 
 Cookbook
 --------
@@ -23,9 +26,8 @@ Cookbook
 Customize the PIM to fit your needs:
 
 .. toctree::
-   :hidden:
 
-.. include:: /cookbook/map.rst.inc
+    /cookbook/index.rst
 
 References
 ----------
@@ -33,9 +35,8 @@ References
 Understand some core concepts:
 
 .. toctree::
-   :hidden:
 
-.. include:: /references/map.rst.inc
+    /references/index.rst
 
 
 Contributing
@@ -44,16 +45,17 @@ Contributing
 Contribute to Akeneo PIM:
 
 .. toctree::
-   :hidden:
 
-.. include:: /contributing/map.rst.inc
+    /contributing/index.rst
 
 Bundles
 -------
 
 PIM bundles:
 
-.. include:: /bundles/index.rst
+.. toctree::
+
+    /bundles/index.rst
 
 BAP bundles documentation:
 
