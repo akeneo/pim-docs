@@ -1,7 +1,7 @@
 Enhance the Documentation
 =========================
 
-Want help to enhance the `Documentation`_ ?
+Want to help to enhance the `Documentation`_?
 
 .. _Documentation: http://docs.akeneo.com/latest/index.html
 
@@ -10,7 +10,7 @@ The Akeneo PIM documentation uses `reStructuredText`_ as its markup language and
 
 We're very interested by tutorials or cookbook to explain how to customize the PIM to your project's needs.
 
-Before to contribute a new entry, thank you to begin by create an `Issue`_ on Github to explain your idea.
+Before contributing on a new entry, please begin by creating an `Issue`_ on GitHub to explain your idea.
 
 .. _Issue: https://github.com/akeneo/pim-docs/issues
 

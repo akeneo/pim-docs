@@ -2,24 +2,24 @@ Key concepts
 ============
 
 .. _channel-label:
-What is a channel ?
+What is a channel?
 -------------------
 
 A channel in Akeneo allows to select products and some of their information to be exported with a connector.
 
 For example, a channel for e-commerce website, another one for the iPad application.
 
-A channel works as a filter with the following properties :
+A channel works as a filter with the following properties:
 
 - A classification tree — it defines products to export
-- one or several :ref:`locales <locale-label>` —  it defines which values the channel requests : product information in french but not in italian, even if it exists.
-- one or several currencies — it defines which values the channel requests for prices : prices in Euro and Dollar.
+- one or several :ref:`locales <locale-label>` —  it defines which values the channel requests: product information in french but not in italian, even if it exists.
+- one or several currencies — it defines which values the channel requests for prices: prices in Euro and Dollar.
 - metric conversion — it defines for each attribute typed ‘Metric’ if the values must be converted or not.
 - :ref:`Completeness <completeness-label>` — it defines which information are required or optional to select a product, depending on products family.
 - Disabled products are ignored by channels.
 
 .. _locale-label:
-What is a locale ?
+What is a locale?
 ------------------
 
 **A locale** is the association between a language code (en, de , fr) and a country code (us, ca, uk). Each product in Akeneo can have different values per locale (for instance my product can have different values for en_us and en_ca).
@@ -40,23 +40,23 @@ Only attributes with the property “localizable” set to True can have a diffe
     See Defining attributes to know how to set this property for an attribute.
 
 .. _completeness-label:
-What is completeness ?
+What is completeness?
 ----------------------
 
 In Akeneo, a product is considered as complete when we have enough information to export this product to a channel.
 
-The definition of completeness can vary :
+The definition of completeness can vary:
 
-- from a family to another : a TV will not require the same kind of data than a book or a shirt
-- from a locale to another : you can have a complete product for your english catalog but still in a translation process for your german one
-- from a channel to another : maybe your iPad application doesn’t need the same amount of data than your e-commerce website
+- from a family to another: a TV will not require the same kind of data than a book or a shirt
+- from a locale to another: you can have a complete product for your english catalog but still in a translation process for your german one
+- from a channel to another: maybe your iPad application doesn’t need the same amount of data than your e-commerce website
 
 Example
 ^^^^^^^
 
 .. image:: images/product-completeness2.png
 
-What is an attribute ?
+What is an attribute?
 ----------------------
 Attribute is the smallest entity in Akeneo, which allow to manage information about products.
 
@@ -73,7 +73,7 @@ All attributes have an unique code which identifies them for import and export o
 
 Type
 """"
-Akeneo can be used to manage many different types of attributes, by defining the kind of data that this attribute can handle (see attribute type below) :
+Akeneo can be used to manage many different types of attributes, by defining the kind of data that this attribute can handle (see attribute type below):
 
 - Yes/No
 - Text
@@ -99,7 +99,7 @@ This identifier can be used for one attribute only (mostly the attribute “SKU�
 
 Scope
 """""
-An attribute can have different values, depending on the :ref:`channel <channel-label>` : a description of the product for the mobile app, and another one for the E-commerce website.
+An attribute can have different values, depending on the :ref:`channel <channel-label>`: a description of the product for the mobile app, and another one for the E-commerce website.
 
 .. image:: images/scopable-attribute.png
 
@@ -138,9 +138,9 @@ Akeneo can guarantee the unicity of values of an attribute, if it should be uniq
 Back-end properties
 ^^^^^^^^^^^^^^^^^^^
 
-An attribute can be used for some features in Akeneo :
-- Searchable : Define if the search engine should index / use this attribute value
-- Usable as a filter : The attribute can be used as a filter into the products grid
+An attribute can be used for some features in Akeneo:
+- Searchable: Define if the search engine should index / use this attribute value
+- Usable as a filter: The attribute can be used as a filter into the products grid
 - Usable as a column: The attribute can be used as a column into the products grid
 
 Attribute group

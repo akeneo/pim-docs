@@ -32,9 +32,9 @@ Download Selenium server 2.43.1 `here`_.
 
 Install Firefox
 ---------------
-In order to use Selenium RC, you must actually install `firefox 32.0`_.
+In order to use Selenium RC, you must actually install `firefox`_.
 
-.. _firefox : http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/32.0/
+.. _firefox: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/32.0/
 
 
 Create a VirtualHost
@@ -82,7 +82,7 @@ included in the URL):
 Configure Behat
 ---------------
 
-Setup the test environment, begin by copy and update the app/config/parameters_test.yml to use the minimal dataset and a dedicated database :
+Setup the test environment, begin by copying and updating the app/config/parameters_test.yml to use the minimal dataset and a dedicated database:
 
 .. code-block:: yaml
 
@@ -127,7 +127,7 @@ All the feature tests can be run by issuing the following command:
 
   > ~/git/pim-community-dev$ ./bin/behat
 
-You can also define which feature to run :
+You can also define which feature to run:
 
 .. code-block:: bash
 

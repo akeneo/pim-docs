@@ -1,7 +1,7 @@
 How to Create a Custom Entity
 =============================
 
-Why Create a Custom Entity ?
+Why Create a Custom Entity?
 ----------------------------
 
 In some cases, you may need to manage different entities than the one natively
@@ -12,7 +12,7 @@ provided by Akeneo and link them to the products.
     only the first part of this cookbook's recipe.
 
 .. note::
-    API documentation of the Custom Entity Bundle : https://github.com/akeneo/CustomEntityBundle/blob/master/Resources/doc/index.rst
+    API documentation of the Custom Entity Bundle: https://github.com/akeneo/CustomEntityBundle/blob/master/Resources/doc/index.rst
 
 For example, let's say we want to create a more advanced manufacturer entity
 than using a standard attribute option, because the manufacturer needs

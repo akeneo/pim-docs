@@ -87,7 +87,7 @@ You can now (re)install your database by running:
 Load individual fixture files
 -----------------------------
 
-Fixture files can be loaded individually by using the ``pim:installer:load-fixtures`` command :
+Fixture files can be loaded individually by using the ``pim:installer:load-fixtures`` command:
 
 .. code-block:: bash
 

@@ -40,7 +40,7 @@ It is possible to apply the operation on the family grid though.
 
 .. note::
 
-    The alias will be used in the url (``/enrich/mass-edit-action/capitalize-values/configure``)
+    The alias will be used in the URL (``/enrich/mass-edit-action/capitalize-values/configure``)
 
 
 Templating the form of Mass Edit Action

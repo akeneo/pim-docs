@@ -6,7 +6,7 @@ Prerequisites
 
 The Akeneo PIM project introduces services to help you manage your catalog entities.
 
-As stated above, the attribute manager is one of them that you can get from the symfony container:
+As stated above, the attribute manager is one of the services that you can get from the Symfony container:
 
 .. code-block:: php
 

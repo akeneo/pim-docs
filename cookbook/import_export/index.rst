@@ -6,6 +6,6 @@ This chapter gives details on how to create and customize connectors.
 .. toctree::
 
    create-connector
-   create-custom-step
    create-specific-connector
+   create-custom-step
    customize-import-behavior

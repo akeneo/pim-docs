@@ -7,13 +7,15 @@ How to Use a Custom Entity as an Attribute Type
 .. note::
     The code inside this cookbook entry requires you to install the `akeneo/custom-entity-bundle`_ package.
 
+.. _`akeneo/custom-entity-bundle`: https://packagist.org/packages/akeneo/custom-entity-bundle
+
 Overriding the Product Value to Link it to the Custom Entity
 ------------------------------------------------------------
 
 We now have a custom attribute type that will allow to select instance of our entity, but we still need to provide a way
 to link the product to the entity we have on the Doctrine side (via its product value).
 
-For this, we need to extend and replace to the native Akeneo ProductValue :
+For this, we need to extend and replace to the native Akeneo ProductValue:
 
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Entity/MyProductValue.php
    :language: php
@@ -32,7 +34,7 @@ First, replace the name of the class by your own class, and change the name of t
    :lines: 1-3
    :linenos:
 
-The name of the join tables for all ManyToMany associations must also be changed :
+The name of the join tables for all ManyToMany associations must also be changed:
 
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/doctrine/MyProductValue.orm.yml
    :language: yaml
@@ -40,7 +42,7 @@ The name of the join tables for all ManyToMany associations must also be changed
    :lines: 96-112
    :linenos:
 
-Finally, add your custom relations to the mapping :
+Finally, add your custom relations to the mapping:
 
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/doctrine/MyProductValue.orm.yml
    :language: yaml
@@ -52,7 +54,7 @@ Finally, add your custom relations to the mapping :
 Registering the New Product Value Class
 ---------------------------------------
 
-Configure the parameter for the ProductValue class :
+Configure the parameter for the ProductValue class:
 
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/entities.yml
    :language: yaml
@@ -81,7 +83,7 @@ For the given example, validation is not really needed, but it might be if your 
 values of its own.
 
 To add validation for a ProductValue, you must create an constraint guesser which will add constraints on the fly
-if the product has values for your attribute :
+if the product has values for your attribute:
 
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Validator/ConstraintGuesser/CustomConstraintGuesser.php
    :language: php
