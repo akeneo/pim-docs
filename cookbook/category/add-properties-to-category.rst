@@ -5,7 +5,7 @@ The Akeneo PIM allows the classification of products inside a customizable categ
 
 .. note::
 
-    Before to realize this task you have to be comfortable with symfony bundle overriding and symfony services
+    To implement this task you have to be comfortable with Symfony bundle overriding and Symfony services
 
 Add Properties to your own Category
 -----------------------------------
@@ -72,7 +72,7 @@ Then you have to override the service definition of your form:
 Then don't forget to add your new field in twig template:
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/views/CategoryTree/_tab-panes.html.twig
-    :language: twig
+    :language: jinja
     :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/views/CategoryTree/_tab-panes.html.twig
     :linenos:
 

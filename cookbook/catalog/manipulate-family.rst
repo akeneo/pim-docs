@@ -6,7 +6,7 @@ Prerequisites
 
 The Akeneo PIM project introduces services to help you manage your catalog entities.
 
-As stated above, the family factory and the attribute requirement factory are one of them that you can get from the symfony container:
+As stated above, the family factory and the attribute requirement factory are some of the services that you can get from the Symfony container:
 
 .. code-block:: php
 
@@ -33,7 +33,7 @@ Create a family
 * Add some requirements to this family
 
 .. note::
-    For this example, we will assume that we allready have some attributes (to learn more about attribute creation, you can read the :doc:`/cookbook/catalog/manipulate-attribute` cookbook) and some channels
+    For this example, we will assume that we already have some attributes (to learn more about attribute creation, you can read the :doc:`/cookbook/catalog/manipulate-attribute` cookbook) and some channels
 
 .. code-block:: php
 

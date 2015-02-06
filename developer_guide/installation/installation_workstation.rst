@@ -1,7 +1,7 @@
 Installation
 ============
 
-This document provides a step by step instruction to install the PIM on development workstations based on Ubuntu 12.10, 13.10 or 14.04.
+This document provides a step by step instructions to install the PIM on development workstations based on Ubuntu 12.10, 13.10 or 14.04.
 
 The following instructions has been tested on fresh installations of Ubuntu 12.10, 13.10 and 14.04. The main difference between the distribution is the PHP version used (PHP 5.4 for Ubuntu 12.10 and PHP 5.5 for Ubuntu 13.10 and 14.04).
 
@@ -11,7 +11,7 @@ The following instructions has been tested on fresh installations of Ubuntu 12.1
 .. note::
     The instructions below applies on all the aforementioned Ubuntu versions, except otherwise specified.
 
-Prerequisite
+Prerequisites
 -------------
 In order to install Akeneo, you will have to download the Akeneo PIM Standard Edition archive file from http://www.akeneo.com/download/
 
@@ -134,8 +134,8 @@ To avoid spending too much time on permissions problems between the CLI user and
 is to use same user for both processes.
 
 
-Get your idenfiers
-^^^^^^^^^^^^^^^^^^
+Get your identifiers
+^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
     :linenos:
@@ -185,10 +185,10 @@ Extracting the archive
 
 .. warning::
 
-    After the extraction, a new directory usually called *pim-commuity-standard-version* is created
+    After the extraction, a new directory usually called *pim-community-standard-version* is created
     inside the */path/to/installation* directory.
 
-    It will be our PIM root directory and will be refered as */path/to/pim/root* in the following instructions.
+    It will be our PIM root directory and will be referred to as */path/to/pim/root* in the following instructions.
 
 Installing MongoDB and enabling it is as catalog storage
 --------------------------------------------------------
@@ -368,7 +368,7 @@ Testing your installation
 -------------------------
 Go to http://akeneo-pim.local/ and log in with *admin/admin*.
 
-If you can see the dashboard, congratulations, you have successfully installed Akeneo PIM !
+If you can see the dashboard, congratulations, you have successfully installed Akeneo PIM!
 
 You can as well access the dev environment on http://akeneo-pim.local/app_dev.php
 

@@ -7,6 +7,8 @@ How to import fixtures for your custom entity and attribute
 .. note::
     The code inside this cookbook entry requires you to install the `akeneo/custom-entity-bundle`_ package.
 
+.. _`akeneo/custom-entity-bundle`: https://packagist.org/packages/akeneo/custom-entity-bundle
+
 Implement ReferableInterface
 ----------------------------
 
@@ -16,7 +18,7 @@ To ensure your entity is imported correctly, the first step is to implement the 
 * Your entity repository should implement the ``Pim\Bundle\CatalogBundle\Entity\Repository\ReferableEntityRepositoryInterface`` interface,
   or be a subclass of ``Pim\Bundle\CatalogBundle\Entity\Repository\ReferableEntityRepository``
 
-If you have extended one of the abstract entities and use repository classes from the CustomEntityBundle, 
+If you have extended one of the abstract entities and use repository classes from the CustomEntityBundle,
 these interfaces are already implemented.
 
 Attribute value importation
@@ -31,7 +33,7 @@ If you have indirect associations, or if you cannot implement the interfaces in 
 you will have to create a specific property transformer for your attribute type. (see :doc:`../import_export/customize-import-behavior` for more explanations)
 
 To use of your property transformer, you will have to configure a guesser service similar to the one used by
-price collection attributes :
+price collection attributes:
 
 .. code-block:: yaml
     :linenos:
@@ -53,7 +55,7 @@ Create a processor
 ------------------
 
 If your entity and its associations implement the ``Pim\Bundle\CatalogBundle\Model\ReferableInterface``
-interface, creating the processor is done by simply configuring a new service in your DIC :
+interface, creating the processor is done by simply configuring a new service in your DIC:
 
 .. literalinclude:: ../../src/Acme/Bundle/InstallerBundle/Resources/config/processors.yml
    :language: yaml

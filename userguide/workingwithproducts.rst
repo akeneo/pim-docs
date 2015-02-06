@@ -22,7 +22,7 @@ Import products
 
 Importing products is useful especially if you want to update your products  from third party systems.
 
-The Akeneo CSV connector allows you to import product information from a CSV file in two ways :
+The Akeneo CSV connector allows you to import product information from a CSV file in two ways:
 
 - Directly from Akeneo user interfaces
 - From a path given in the configuration of the import profile.
@@ -47,7 +47,7 @@ A CSV (comma-separated values) file stores tabular data (numbers and text) in pl
 
 .. warning::
 
-    The Akeneo CSV connector assumes that your CSV file is based on the configuration of the import profile you will use : Separation of fields, enclosures, etc…
+    The Akeneo CSV connector assumes that your CSV file is based on the configuration of the import profile you will use: Separation of fields, enclosures, etc…
 
 The first line of your product CSV has to include the field headers described below, with each separated by a delimiter.
 
@@ -111,7 +111,7 @@ Categories must exist in Akeneo. Use codes of categories in CSV file.
 Enabled
 -------
 
-The header of the field enabled is optional. It allows to change the status of products : 0 = disabled, 1 = enabled.
+The header of the field enabled is optional. It allows to change the status of products: 0 = disabled, 1 = enabled.
 
 You can also define the value of enabled for all product you will import in the configuration of the import profile. In this case, you don’t need to add the column ‘enabled’ in the CSV file.
 Example
@@ -169,7 +169,7 @@ You can upload an archive (zip) with files and images for different products in 
 Running the CSV file import
 ---------------------------
 
-To upload and run an import profile with CSV file :
+To upload and run an import profile with CSV file:
 
 Go to ‘Extract > Import profiles’ to display the import profiles grid.
 Select the import profile you want to use to import products with your CSV file by clicking the row.
@@ -177,7 +177,7 @@ The configuration page of the import profile opens. If the option is available, 
 A space appears to drop a file. You can also click the area to open your device’s directory.
 Click ‘upload and import now‘.
 Akeneo displays a message to inform if the import is successful or failed. An email is sent to your mail box to give you details about the import process.
-To run an import profile with a path to retrieve the CSV file :
+To run an import profile with a path to retrieve the CSV file:
 
 Go to ‘Extract > Import profiles’ to display the import profiles grid.
 Select the import profile you want to use to import products with your CSV file by clicking the row.

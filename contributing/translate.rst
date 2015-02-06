@@ -9,7 +9,7 @@ Keys are translated by contributors, then validated by proof readers.
 
 Each week, we download validated translations from Crowdin to update the PIM.
 
-We deliver the new translations in the next patch for each versions.
+We deliver the new translations in the next patch for each version.
 
 Don't hesitate to create an account and begin to translate on: http://crowdin.net/project/akeneo
 

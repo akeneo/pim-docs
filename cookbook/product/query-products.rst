@@ -29,7 +29,7 @@ The product query builder factory is a service, you can fetch it from the contai
 Build a query
 -------------
 
-Add filters :
+Add filters:
 
 .. code-block:: php
 
@@ -49,7 +49,7 @@ Add filters :
         // filter on metric
         ->addFilter('weight', '<', '1 KILOGRAM');
 
-Add sorters :
+Add sorters:
 
 .. code-block:: php
 
@@ -63,6 +63,7 @@ Execute the query
 -----------------
 
 .. code-block:: php
+
     // will return a `Cursor` on the products collection
     $products = $pqb->execute();
 
@@ -84,7 +85,7 @@ The PQB uses the registry to resolve the filter to use.
 
 A filter can be used on field (means on doctrine fields of product mapping as id, family, etc) or on attribute (means on product value, as a sku, a name, etc).
 
-To add your own filter, you need to create a class implementing ``FieldFilterInterface`` and/or ``AttributeFilterInterface`` and declare a service as :
+To add your own filter, you need to create a class implementing ``FieldFilterInterface`` and/or ``AttributeFilterInterface`` and declare a service as:
 
 .. code-block:: yaml
 
@@ -102,7 +103,7 @@ Here we define a boolean filter which supports '=' operator and can be applied o
 Add a custom sorter
 -------------------
 
-Sorter implementation mechanism is very close to the filter one, another registry, other interfaces to implement and a tagged service to declare as :
+Sorter implementation mechanism is very close to the filter one, another registry, other interfaces to implement and a tagged service to declare as:
 
 .. code-block:: yaml
 

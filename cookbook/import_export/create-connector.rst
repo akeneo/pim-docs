@@ -16,7 +16,7 @@ It contains jobs such as imports and exports.
 
 Each job is composed of steps, by default, each step contains a reader, a processor and a writer.
 
-These elements provide their expected configurations to be used.
+These elements provide their expected configuration to be used.
 
 For instance, to import a CSV file as products, the reader reads each line, the processor transforms them into products, and the writer then saves the products.
 
@@ -53,7 +53,7 @@ Configure a job in ``Resources/config/batch_jobs.yml``:
    :linenos:
    :lines: 1-13
 
-Here we use some existing readers, processors and writers from native csv product export, they are defined as services in config files of the PimBaseConnectorBundle, we'll see later how to create your owns elements.
+Here we use some existing readers, processors and writers from native csv product export, they are defined as services in config files of the PimBaseConnectorBundle, we'll see later how to create your own elements.
 
 Title keys can be translated in ``messages.en.yml``
 

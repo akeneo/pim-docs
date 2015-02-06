@@ -34,8 +34,8 @@ Creating the Entity Management Screens
 The Grid
 ********
 
-To benefit from the grid component (which comes natively with filtering and sorting), 
-you can define the vendor grid as following :
+To benefit from the grid component (which comes natively with filtering and sorting),
+you can define the vendor grid as following:
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/datagrid.yml
    :language: yaml

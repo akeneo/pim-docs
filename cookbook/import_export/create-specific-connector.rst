@@ -1,18 +1,18 @@
 How to Create a Specific Connector
 ==================================
 
-The foundations of connector creation has been covered in the previous chapter (cf :doc:`/cookbook/import_export/create-connector`). With the following hand-on practice, we will create our own specific connector.
+The foundations of connector creation has been covered in the previous chapter (cf :doc:`/cookbook/import_export/create-connector`). With the following hands-on practice, we will create our own specific connector.
 
-To stay focus on the main concepts, we implement the simplest connector as possible by avoiding to use too many existing elements.
+To stay focused on the main concepts, we will implement the simplest connector as possible by avoiding to use too many existing elements.
 
-Our use case is to import new products from the following XML file :
+Our use case is to import new products from the following XML file:
 
 .. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Resources/fixtures/products.xml
    :language: xml
    :linenos:
 
 .. note::
-    The code inside this cookbook entry is available in the src directory, you can clone pim-doc then use a symlink to make the Acme bundle available in the `src/`.
+    The code inside this cookbook entry is available in the src directory, you can clone pim-docs (https://github.com/akeneo/pim-docs) and use a symlink to make the Acme bundle available in the `src/`.
 
 Create our Connector
 --------------------
@@ -45,7 +45,7 @@ Configure a job in ``Resources/config/batch_jobs.yml``:
    :linenos:
    :lines: 1-13
 
-Here we create an import job which contains a single step `import`.
+Here we create an import job which contains a single step: `import`.
 
 The default used step is ``Akeneo\Bundle\BatchBundle\Step\ItemStep``.
 
@@ -79,13 +79,13 @@ This element must be configured with the path of the xml file.
 
     The **help** option allows you to display a hint next to the field in the job edition form.
 
-Then we need to define this reader as a service in `readers.yml` :
+Then we need to define this reader as a service in `readers.yml`:
 
 .. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Resources/config/readers.yml
    :language: yaml
    :linenos:
 
-And we introduce the following extension to load the services files in configuration :
+And we introduce the following extension to load the services files in configuration:
 
 .. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/DependencyInjection/AcmeSpecificConnectorExtension.php
    :language: php
@@ -102,9 +102,9 @@ Our processor receives each item passed by our reader and converts it to product
 
 If the product is already known, we skip the item. Of course, in the case of production import, we will update the product as well by changing the properties of the loaded product.
 
-We create a minimal product, to go further, you can take a look on :doc:`/cookbook/product/manipulate-product`
+We create a minimal product, to go further, you can take a look on :doc:`/cookbook/product/update-product`
 
-This processor needs to know the product manager that is injected in the following service definition in `processors.yml` :
+This processor needs to know the product manager that is injected in the following service definition in `processors.yml`:
 
 .. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Resources/config/processors.yml
    :language: yaml
@@ -137,7 +137,7 @@ To skip the current line and go to the next one, you need to throw the following
 Create our Writer
 -----------------
 
-Finaly we define our product writer :
+Finally we define our product writer:
 
 .. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Writer/ORM/ProductWriter.php
    :language: php
@@ -147,7 +147,7 @@ The writer element receives an array of items, as a writer can be able to do som
 
 In this example, the items are products and the writer persist them.
 
-In order to do that, this writer needs to know the product manager that is injected in the following service definition in `writers.yml` :
+In order to do that, this writer needs to know the product manager that is injected in the following service definition in `writers.yml`:
 
 .. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Resources/config/writers.yml
    :language: yaml
@@ -173,6 +173,6 @@ Create a Custom Step
 
 The default ItemStep answers to the majority of cases but sometimes you need to create more custom logic with no need for a reader, processor or writer.
 
-For instance, at the end of an export you may want send a custom email, copy the result to a FTP server or call a specific url to report the result.
+For instance, at the end of an export you may want send a custom email, copy the result to a FTP server or call a specific URL to report the result.
 
 Let's take this last example to illustrate :doc:`/cookbook/import_export/create-custom-step`

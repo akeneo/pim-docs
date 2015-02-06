@@ -23,7 +23,7 @@ Cannot remember either your username or password
 
 Click Forgot you passowrd?
 Enter your username or email specified in your Akeneo user profile.
-Click Request. An url will emailed to the email address specified in your user profile.
+Click Request. A URL will be emailed to the email address specified in your user profile.
 If you have forgotten the email address specified in your user profile, you will need to contact your Akeneo administrator for help.
 
 Exploring the workspace
