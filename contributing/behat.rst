@@ -1,4 +1,4 @@
-.. image:: /_themes/akeneo/static/behat-logo.png
+.. image:: /_themes/akeneo_rtd/static/behat-logo.png
    :width: 150
    :alt: Behat logo
    :target: http://behat.org/
