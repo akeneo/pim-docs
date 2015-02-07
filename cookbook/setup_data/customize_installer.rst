@@ -62,7 +62,6 @@ Then edit the files, for example, to declare your own channels:
 
   Take a look at `Pim/Bundle/InstallerBundle/Resources/fixtures/minimal`_ to see what is the expected format and which
   fixtures are absolutely needed.
-  All fixtures can be created in CSV or YAML.
 
 .. _Pim/Bundle/InstallerBundle/Resources/fixtures/minimal:
   https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/InstallerBundle/Resources/fixtures/minimal
