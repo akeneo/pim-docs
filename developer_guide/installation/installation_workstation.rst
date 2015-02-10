@@ -259,10 +259,12 @@ Installing and enabling MongoDB support in Akeneo
 .. code-block:: bash
     :linenos:
 
-    $ gedit app/config/parameters.yml
-        pim_catalog_storage_driver: doctrine/mongodb-odm
-        mongodb_server: 'mongodb://localhost:27017'
-        mongodb_database: akeneo_pim
+    $ gedit app/config/pim_parameters.yml
+
+    pim_catalog_product_storage_driver: doctrine/mongodb-odm
+
+    mongodb_server: 'mongodb://localhost:27017'
+    mongodb_database: your_mongo_database
 
 Initializing Akeneo
 -------------------
