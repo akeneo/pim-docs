@@ -85,7 +85,7 @@ The PQB uses the registry to resolve the filter to use.
 
 A filter can be used on field (means on doctrine fields of product mapping as id, family, etc) or on attribute (means on product value, as a sku, a name, etc).
 
-To add your own filter, you need to create a class implementing ``FieldFilterInterface`` and/or ``AttributeFilterInterface`` and declare a service as:
+To add your own filter, you need to create a class implementing ``Pim\Bundle\CatalogBundle\Query\Filter\FieldFilterInterface`` and/or ``Pim\Bundle\CatalogBundle\Query\Filter\AttributeFilterInterface`` and declare a service as:
 
 .. code-block:: yaml
 
@@ -103,7 +103,7 @@ Here we define a boolean filter which supports '=' operator and can be applied o
 Add a custom sorter
 -------------------
 
-Sorter implementation mechanism is very close to the filter one, another registry, other interfaces to implement and a tagged service to declare as:
+Sorter implementation mechanism is very close to the filter one, another registry, the interface `Pim\Bundle\CatalogBundle\Query\Sorter\SorterInterface` to implement and a tagged service to declare as:
 
 .. code-block:: yaml
 

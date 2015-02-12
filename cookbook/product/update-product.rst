@@ -60,7 +60,7 @@ Add a custom setter
 -------------------
 
 In order to use a custom setter you will need to implement
-``Pim\Bundle\CatalogBundle\Updater\Setter\ValueSetterInterface`` and create you custom logic in the setValue() method.
+``Pim\Bundle\CatalogBundle\Updater\Setter\SetterInterface`` and create you custom logic in the setValue() method.
 
 For example, if you want to implement your own number setter, you will need to declare this setter as a service:
 
@@ -81,7 +81,7 @@ Add a custom copier
 -------------------
 
 In order to use a custom copier you will need to implement
-``Pim\Bundle\CatalogBundle\Updater\Copier\ValueSetterInterface`` and implement you custom logic in the copyValue() method.
+``Pim\Bundle\CatalogBundle\Updater\Copier\CopierInterface`` and implement you custom logic in the copyValue() method.
 
 For example, if you want to implement your own number setter, you will need to declare your copier as a service:
 
