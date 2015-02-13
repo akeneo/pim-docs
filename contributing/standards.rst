@@ -125,7 +125,7 @@ Visibility
 
 Protected by default and public when necessary.
 
-Useage of protected is forbidden in the Core Components and Bundles.
+Useage of private is forbidden in the Core Components and Bundles.
 
 We understand the advantages and know the drawbacks, we strictly follow this rule for now.
 
