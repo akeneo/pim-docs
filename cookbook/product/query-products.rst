@@ -35,19 +35,19 @@ Add filters:
 
     $pqb
         // You can filter on a field by id
-        ->addFilter('category.id', 'IN', [1, 2])
+        ->addFilter('categories.id', 'IN', [1, 2])
         // Or filter using codes by adding the '.code' suffix
-        ->addFilter('groups.code', 'IN', ['camcorder', 'shirt'])
+        ->addFilter('groups.code', 'IN', ['shirts'])
         // filter on sku which is not localizable and not scopable
         ->addFilter('sku', 'CONTAINS', 'akeneo')
         // filter on name which is localizable, the default locale is used, here 'en_US'
         ->addFilter('name', '=', 'My product name')
         // filter on description which is localizable and scopable by using 'fr_FR' locale and 'mobile' scope
-        ->addFilter('description', 'STARTS WITH', 'My desc', 'fr_FR', 'mobile')
+        ->addFilter('description', 'STARTS WITH', 'My desc', ['locale' => 'fr_FR', 'scope' => 'mobile'])
         // filter on price
-        ->addFilter('price', '>', '70 EUR')
+        ->addFilter('price', '>', ['data' => 70, 'currency' => 'EUR'])
         // filter on metric
-        ->addFilter('weight', '<', '1 KILOGRAM');
+        ->addFilter('weight', '<', ['data' => 1, 'unit' => 'KILOGRAM']);
 
 Add sorters:
 
@@ -57,7 +57,7 @@ Add sorters:
         ->addSorter('family', 'ASC')
         ->addSorter('price', 'DESC')
         // sort by completeness, the locale and scope is expected, if not provided, the default one are used
-        ->addSorter('completeness', 'DESC', 'fr_FR', 'mobile');
+        ->addSorter('completeness', 'DESC', ['locale' => 'fr_FR', 'scope' => 'mobile']);
 
 Execute the query
 -----------------
@@ -68,7 +68,7 @@ Execute the query
     $products = $pqb->execute();
 
 Know the usable filters
-------------------------
+-----------------------
 
 To help you know which filters are available for your installation, you can run the following command:
 
