@@ -43,7 +43,7 @@ Here is a short example containing most features described below:
          *
          * @throws \RuntimeException
          */
-        protected function transformText($dummy, array $options = array())
+        protected function transformText($dummy, array $options = [])
         {
             $mergedOptions = array_merge(
                 array(
