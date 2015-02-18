@@ -46,10 +46,10 @@ Here is a short example containing most features described below:
         protected function transformText($dummy, array $options = [])
         {
             $mergedOptions = array_merge(
-                array(
+                [
                     'some_default'    => 'values',
                     'another_default' => 'more values',
-                ),
+                ],
                 $options
             );
 
