@@ -8,7 +8,7 @@ The product saver is a service, you can fetch it from the container.
 
 .. code-block:: php
 
-    $updater = $this->getContainer()->get('pim_catalog.saver.product');
+    $saver = $this->getContainer()->get('pim_catalog.saver.product');
 
 Save the products
 -----------------
