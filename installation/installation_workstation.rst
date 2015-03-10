@@ -190,6 +190,23 @@ Extracting the archive
 
     It will be our PIM root directory and will be refered as */path/to/pim/root* in the following instructions.
 
+Installing the vendors
+**********************
+
+* You first need to get composer. Install it in */path/to/pim/root*:
+
+.. code-block:: bash
+    :linenos:
+
+    $ curl -sS https://getcomposer.org/installer | php
+
+* Then install the vendors:
+
+.. code-block:: bash
+    :linenos:
+
+    $ php composer.phar install
+
 Installing MongoDB and enabling it is as catalog storage
 --------------------------------------------------------
 **The following steps are optional.
