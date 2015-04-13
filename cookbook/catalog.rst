@@ -13,5 +13,4 @@ This chapter gives details on how to programmatically manipulate catalog objects
    product/save-product
    validation/customize_validation
    category/add-properties-to-category
-   custom_entity/index
 
