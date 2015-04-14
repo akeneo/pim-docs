@@ -1,7 +1,7 @@
 How to Override the MongoDB Product Value
 =========================================
 
-In some cases, you may need to extend and replace the `AkeneoProductValue` to be able to link some objects with it.
+In some cases, you may need to extend and replace the `Pim:Catalog:ProductValue` to be able to link some objects with it.
 
 For example, let’s say we want to link the product values with a `Color` model.
 Depending on your needs, a product value can be linked to several colors or just to one.
@@ -17,7 +17,7 @@ Linking the ProductValue to a Simple Object
 Overriding the class
 ********************
 
-First, we need to extend and replace to the native `AkeneoProductValue` class:
+First, we need to extend and replace to the native `Pim:Catalog:ProductValue` class:
 
 .. code-block:: php
 
@@ -27,12 +27,12 @@ First, we need to extend and replace to the native `AkeneoProductValue` class:
     namespace Acme\Bundle\AppBundle\Model;
 
     use Acme\Bundle\AppBundle\Entity\Color;
-    use Pim\Bundle\CatalogBundle\Model\AbstractProductValue as PimProductValue;
+    use Pim\Bundle\CatalogBundle\Model\AbstractProductValue;
 
     /**
      * Acme override of the product value to link a simple object
      */
-    class ProductValue extends PimProductValue
+    class ProductValue extends AbstractProductValue
     {
         /** @var Color */
         protected $color;
@@ -95,7 +95,7 @@ Linking the ProductValue to a Collection of Objects
 Overriding the class
 ********************
 
-First, we need to extend and replace to the native `AkeneoProductValue` class:
+First, we need to extend and replace to the native `Pim:Catalog:ProductValue` class:
 
 .. code-block:: php
 
@@ -106,12 +106,12 @@ First, we need to extend and replace to the native `AkeneoProductValue` class:
 
     use Acme\Bundle\AppBundle\Entity\Color;
     use Doctrine\Common\Collections\ArrayCollection;
-    use Pim\Bundle\CatalogBundle\Model\AbstractProductValue as PimProductValue;
+    use Pim\Bundle\CatalogBundle\Model\AbstractProductValue;
 
     /**
      * Acme override of the product value to link a multiple object
      */
-    class ProductValue extends PimProductValue
+    class ProductValue extends AbstractProductValue
     {
         /** @var ArrayCollection */
         protected $colors;

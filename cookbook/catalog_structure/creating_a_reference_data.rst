@@ -10,6 +10,10 @@ quite straightforward for any developer with Doctrine experience.
 .. note::
     At the moment, Reference Data can only be stored in ORM. No MongoDB support is provided.
 
+.. note::
+    At the moment, there is no native CRUD functionality for the Reference Data.
+    You'll need to use AkeneoLabsCustomEntityBundle for that.
+
 In order to create your reference data, you have to respect the following rules:
 
  * your entity has to implement `Pim\\Component\\ReferenceData\\Model\\ReferenceDataInterface`
@@ -186,7 +190,7 @@ Depending on your needs, a product can be linked to several colors or just to on
 The first case will be called *simple reference data* while the second will be referred as *multiple reference data*.
 
 To link your reference data to the product, you need to override the `ProductValue` object.
-This task is documented here `How to Override the ORM Product Value`_ or here `How to Override the MongoDB Product Value`_ depending on your product storage.
+This task is documented here :doc:`overriding_the_orm_product_value` or here :doc:`overriding_the_mongodb_product_value` depending on your product storage.
 
 Don't forget to check the mapping of your product value and to register your custom class in the container.
 
