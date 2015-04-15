@@ -260,7 +260,7 @@ Installing and enabling MongoDB support in Akeneo
     :linenos:
 
     $ cd /path/to/pim/root
-    $ php ../composer.phar --prefer-dist require doctrine/mongodb-odm v1.0.0-beta10@dev
+    $ php ../composer.phar --prefer-dist require doctrine/mongodb-odm v1.0.0-beta12@dev
     $ php ../composer.phar --prefer-dist require doctrine/mongodb-odm-bundle v3.0.0-BETA6@dev
 
 * In app/AppKernel.php, uncomment the following line (this will enable DoctrineMongoDBBundle and will load and enable the MongoDB configuration):
