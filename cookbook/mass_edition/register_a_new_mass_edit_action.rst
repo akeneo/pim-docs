@@ -5,6 +5,35 @@ The Akeneo PIM comes with a number of mass edit actions.
 It also comes with a simple method to define your own mass edit action
 on selected products.
 
+Work with a custom Acme bundle
+------------------------------
+Your custom Mass Edit actions have to be in a custom Acme bundle which inherit our ``EnrichBundle``.
+We advise you to create this custom bundle with the Symfony command:
+
+.. code-block:: bash
+
+  php app/console generate:bundle
+
+Once your bundle is created, we must inform Symfony it inherits our Bundle:
+
+.. code-block:: php
+
+    # src/Acme/Bundle/EnrichBundle/AcmeEnrichBundle.php
+    <?php
+
+    namespace Acme\Bundle\EnrichBundle;
+
+    use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+    class AcmeEnrichBundle extends Bundle
+    {
+        public function getParent()
+        {
+            return 'PimEnrichBundle';
+        }
+    }
+
+
 Creating a MassEditAction
 -------------------------
 The first step is to create a new class that implements ``MassEditActionInterface`` or extends
@@ -27,10 +56,7 @@ This class will contain all the information about the operation to run and the f
 Registering the MassEditAction
 ------------------------------
 
-After the class is created, you must register it as a service in the DIC with the pim_catalog.mass_edit_action tag:
-
-By default, the operation will be available for the product grid.
-It is possible to apply the operation on the family grid though.
+After the class is created, you must register it as a service in the DIC with the ``pim_catalog.mass_edit_action`` tag:
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/services.yml
    :language: yaml
@@ -47,10 +73,6 @@ Templating the form of Mass Edit Action
 ---------------------------------------
 
 You need to create a template to render your Mass Edit Action form.
-
-.. note::
-
-  The template must be in ``/src/Acme/Bundle/EnrichBundle/Resources/views/MassEditAction/configure/``
 
 .. literalinclude::
    ../../src/Acme/Bundle/EnrichBundle/Resources/views/MassEditAction/configure/capitalize-values.html.twig
