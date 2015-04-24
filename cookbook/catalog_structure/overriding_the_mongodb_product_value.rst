@@ -62,13 +62,13 @@ Overriding the mapping
 **********************
 
 Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.mongodb.yml` of the PIM inside
-the `Resources/config/doctrine` folder of one of your bundles.
+the `Resources/config/model/doctrine` folder of one of your bundles.
 
 First, replace the name of the class by your own class:
 
 .. code-block:: yaml
 
-    # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/ProductValue.mongodb.yml
+    # /src/Acme/Bundle/AppBundle/Resources/config/model/doctrine/ProductValue.mongodb.yml
     Acme\Bundle\AppBundle\Model\ProductValue:
         type: embeddedDocument
 
@@ -78,7 +78,7 @@ If your `Color` data are stored in ORM, you should use the following mapping:
 
 .. code-block:: yaml
 
-    # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/ProductValue.mongodb.yml
+    # /src/Acme/Bundle/AppBundle/Resources/config/model/doctrine/ProductValue.mongodb.yml
     # if Color data is stored in ORM
     fields:
         color:
@@ -169,13 +169,13 @@ Overriding the mapping
 **********************
 
 Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.mongodb.yml` of the PIM inside
-the `Resources/config/doctrine` folder of one of your bundles.
+the `Resources/config/model/doctrine` folder of one of your bundles.
 
 First, replace the name of the class by your own class:
 
 .. code-block:: yaml
 
-    # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/ProductValue.mongodb.yml
+    # /src/Acme/Bundle/AppBundle/Resources/config/model/doctrine/ProductValue.mongodb.yml
     Acme\Bundle\AppBundle\Model\ProductValue:
         type: embeddedDocument
 
@@ -185,7 +185,7 @@ If your `Color` data are stored in ORM, you should use the following mapping:
 
 .. code-block:: yaml
 
-    # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/ProductValue.mongodb.yml
+    # /src/Acme/Bundle/AppBundle/Resources/config/model/doctrine/ProductValue.mongodb.yml
     # if Color data is stored in ORM
     fields:
         colors:
@@ -203,13 +203,7 @@ If your `Color` data are stored in ORM, you should use the following mapping:
 Registering the Custom Product Value Class
 ------------------------------------------
 
-First, check that your mapping override is correct by launching the following command:
-
-.. code-block:: bash
-
-    php app/console doctrine:mongodb:mapping:info
-
-Then, configure the parameter for your `ProductValue` class:
+First, configure the parameter for your `ProductValue` class:
 
 .. code-block:: yaml
 
@@ -218,5 +212,52 @@ Then, configure the parameter for your `ProductValue` class:
         pim_catalog.entity.product_value.class: Acme\Bundle\AppBundle\Model\ProductValue
 
 Don't forget to register your `entities.yml` file in your bundle's extension.
+
+
+Then, you have to tell Doctrine that your MongoDB classes' mappings are located in the folder
+`Resources/config/model/doctrine` of your bundle. To do that, you have to edit the `build` method of
+your `AcmeAppBundle` class like the following:
+
+.. code-block:: php
+
+    <?php
+
+    //src/Acme/Bundle/AppBundle/AcmeAppBundle.php
+    namespace Acme\Bundle\AppBundle;
+
+    use Akeneo\Bundle\StorageUtilsBundle\AkeneoStorageUtilsBundle;
+    use Symfony\Component\DependencyInjection\ContainerBuilder;
+    use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+    class AcmeAppBundle extends Bundle
+    {
+        /**
+         * {@inheritdoc}
+         */
+        public function build(ContainerBuilder $container)
+        {
+            $productMappings = array(
+                realpath(__DIR__ . '/Resources/config/model/doctrine') => 'Acme\Bundle\AppBundle\Model'
+            );
+
+            $mongoDBClass = AkeneoStorageUtilsBundle::DOCTRINE_MONGODB;
+            $container->addCompilerPass(
+                $mongoDBClass::createYamlMappingDriver(
+                    $productMappings,
+                    ['doctrine.odm.mongodb.document_manager'],
+                    'akeneo_storage_utils.storage_driver.doctrine/mongodb-odm'
+                )
+            );
+        }
+    }
+
+
+
+Finally, check that your mapping override is correct by launching the following command:
+(you should see your `Acme\\Bundle\\AppBundle\\Model\\ProductValue` class):
+
+.. code-block:: bash
+
+    php app/console doctrine:mongodb:mapping:info
 
 Now you are ready to perform a Doctrine schema update and use your own `ProductValue` class.
