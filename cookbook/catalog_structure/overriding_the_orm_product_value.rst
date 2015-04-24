@@ -22,7 +22,7 @@ First, we need to extend and replace to the native `Pim:Catalog:ProductValue` cl
 .. code-block:: php
 
     <?php
-    # /src/Acme/Bundle/AppBundle/Model/ProductValue.php
+    # /src/Acme/Bundle/AppBundle/Entity/ProductValue.php
 
     namespace Acme\Bundle\AppBundle\Model;
 
@@ -69,7 +69,7 @@ First, replace the name of the class by your own class, and change the name of t
 .. code-block:: yaml
 
     # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/ProductValue.orm.yml
-    Acme\Bundle\AppBundle\Model\ProductValue:
+    Acme\Bundle\AppBundle\Entity\ProductValue:
         type: entity
         table: acme_catalog_product_value
 
@@ -124,7 +124,7 @@ First, we need to extend and replace to the native `Pim:Catalog:ProductValue` cl
 .. code-block:: php
 
     <?php
-    # /src/Acme/Bundle/AppBundle/Model/ProductValue.php
+    # /src/Acme/Bundle/AppBundle/Entity/ProductValue.php
 
     namespace Acme\Bundle\AppBundle\Model;
 
@@ -139,9 +139,6 @@ First, we need to extend and replace to the native `Pim:Catalog:ProductValue` cl
     {
         /** @var ArrayCollection */
         protected $colors;
-
-        /** @var array (used only in MongoDB implementation) */
-        protected $colorIds;
 
         /**
          * constructor
@@ -200,7 +197,7 @@ First, replace the name of the class by your own class, and change the name of t
 .. code-block:: yaml
 
     # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/ProductValue.orm.yml
-    Acme\Bundle\AppBundle\Model\ProductValue:
+    Acme\Bundle\AppBundle\Entity\ProductValue:
         type: entity
         table: acme_catalog_product_value
 
@@ -234,6 +231,7 @@ Finally, add your custom relations to the mapping:
 
     # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/ProductValue.orm.yml
     manyToMany:
+        # the link to the collection of Color objects
         colors:
             targetEntity: Acme\Bundle\AppBundle\Entity\Color
             cascade:
@@ -258,20 +256,21 @@ Finally, add your custom relations to the mapping:
 Registering the Custom Product Value Class
 ------------------------------------------
 
-First, check that your mapping override is correct by launching the following command:
-
-.. code-block:: bash
-
-    php app/console doctrine:mapping:info
-
-Then, configure the parameter for your `ProductValue` class:
+First, configure the parameter for your `ProductValue` class:
 
 .. code-block:: yaml
 
     # /src/Acme/Bundle/AppBundle/Resources/config/entities.yml
     parameters:
-        pim_catalog.entity.product_value.class: Acme\Bundle\AppBundle\Model\ProductValue
+        pim_catalog.entity.product_value.class: Acme\Bundle\AppBundle\Entity\ProductValue
 
 Don't forget to register your `entities.yml` file in your bundle's extension.
+
+Then, check that your mapping override is correct by launching the following command:
+(you should see your `Acme\\Bundle\\AppBundle\\Entity\\ProductValue` class):
+
+.. code-block:: bash
+
+    php app/console doctrine:mapping:info
 
 Now you are ready to perform a Doctrine schema update and use your own `ProductValue` class.
