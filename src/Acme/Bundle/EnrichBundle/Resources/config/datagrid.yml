@@ -1,11 +1,17 @@
 datagrid:
-    color:
+    supplier:
         extends: custom_entity
         options:
-            entityHint: color
+            entityHint: supplier
         columns:
             code:
                 label: Code
+            name:
+                label: Name
+            phone:
+                label: Phone
+            email:
+                label: Email
             label:
                 label: Label
             created:
@@ -20,6 +26,18 @@ datagrid:
                     type:      string
                     label:     Code
                     data_name: o.code
+                name:
+                    label: Name
+                    type: string
+                    data_name: o.name
+                phone:
+                    label: Phone
+                    type: string
+                    data_name: o.phone
+                email:
+                    label: Email
+                    type: string
+                    data_name: o.email
                 label:
                     type:      string
                     label:     Label
@@ -38,6 +56,12 @@ datagrid:
             columns:
                 code:
                     data_name: o.code
+                name:
+                    data_name: o.name
+                phone:
+                    data_name: o.phone
+                email:
+                    data_name: o.email
                 label:
                     data_name: translation.label
                 created:

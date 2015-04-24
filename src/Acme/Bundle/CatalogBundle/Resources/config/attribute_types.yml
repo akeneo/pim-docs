@@ -1,5 +1,5 @@
 parameters:
-    pim_datagrid.product.attribute_type.acme_color:
+    pim_datagrid.product.attribute_type.acme_supplier:
         column:
             type:        flexible_option
             selector:    flexible_option
@@ -12,14 +12,13 @@ parameters:
         sorter:          flexible_field
 
 services:
-    acme_catalog.attributetype.color:
+    acme_catalog.attributetype.supplier:
         class: '%pim_custom_entity.attribute_type.custom_option_simple_select.class%'
         arguments:
-            - color
+            - supplier
             - pim_ajax_entity
             - '@pim_catalog.validator.constraint_guesser.chained_attribute'
-            - acme_catalog_color
-            - Acme\Bundle\CatalogBundle\Entity\Color
+            - acme_catalog_supplier
+            - Acme\Bundle\CatalogBundle\Entity\Supplier
         tags:
-            - { name: pim_catalog.attribute_type, alias: acme_catalog_color, entity: '%pim_catalog.entity.product.class%' }
-
+            - { name: pim_catalog.attribute_type, alias: acme_catalog_supplier, entity: '%pim_catalog.entity.product.class%' }
