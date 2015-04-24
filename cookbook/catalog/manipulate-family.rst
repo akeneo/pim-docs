@@ -11,18 +11,23 @@ As stated above, the family factory and the attribute requirement factory are so
 .. code-block:: php
 
     // family factory
-    $this->container->get('pim_catalog.factory.family');
+    $ff = $this->container->get('pim_catalog.factory.family');
 
     // family manager
-    $this->container->get('pim_catalog.manager.family');
+    $fm = $this->container->get('pim_catalog.manager.family');
 
     // attribute requirement factory
-    $this->container->get('pim_catalog.factory.attribute_requirement');
+    $arf = $this->container->get('pim_catalog.factory.attribute_requirement');
 
-In the following examples, we will use ``$ff`` as the family factory service and ``$arf`` as the attribute requirements factory.
+    // entity manager
+    $em = $this->container->get('doctrine.orm.entity_manager');
+
 
 Create a family
 ---------------
+
+* Instanciate a family
+
 .. code-block:: php
 
     // create a family
@@ -46,10 +51,37 @@ Create a family
         )
     );
 
-* And don't forget to save everything to the database
+.. note::
+    At this time, the family does not exist in the database
+
+
+Persist a family in the database
+--------------------------------
 
 .. code-block:: php
 
     // save the family in database
-    $fm->save($family);
+    $em->persist($family);
+    $em->flush();
+
+
+Retrieve the family from the database
+-------------------------------------
+
+.. code-block:: php
+
+    // get the family repository
+    $familyRepo = $fm->getRepository('Pim\Bundle\CatalogBundle\Entity\Family');
+
+    // get the family from its code
+    $family = $familyRepo->findOneBy(['code' => 'shirt']);
+
+
+Remove the family from the database
+-----------------------------------
+
+.. code-block:: php
+
+    $em->remove($family);
+    $em->flush();
 
