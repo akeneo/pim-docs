@@ -2,25 +2,58 @@
 
 namespace Acme\Bundle\EnrichBundle\MassEditAction\Operation;
 
-use Pim\Bundle\EnrichBundle\MassEditAction\Operation\ProductMassEditOperation;
-use Pim\Bundle\CatalogBundle\Model\ProductInterface;
-use Acme\Bundle\EnrichBundle\Form\Type\MassEditAction\CapitalizeValuesType;
-
-class CapitalizeValues extends ProductMassEditOperation
+class CapitalizeValues extends AbstractMassEditOperation
 {
-    protected $attributeNames = array('sku');
-
-    public function getFormType()
+    /**
+     * {@inheritdoc}
+     */
+    public function getOperationAlias()
     {
-        return new CapitalizeValuesType();
+        return 'capitalize-values';
     }
 
-    public function doPerform(ProductInterface $product)
+    /**
+     * {@inheritdoc}
+     */
+    public function getFormType()
     {
-        foreach ($product->getValues() as $value) {
-            if (in_array($value->getAttribute()->getCode(), $this->attributeNames)) {
-                $value->setData(strtoupper($value->getData()));
-            }
-        }
+        return 'pim_enrich_operation_capitalize_values';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFormOptions()
+    {
+        return [];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getItemsName()
+    {
+        return 'product';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getActions()
+    {
+        return [
+            [
+                'field'   => 'name',
+                'options' => ['locale' => null, 'scope' => null]
+            ]
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBatchJobCode()
+    {
+        return 'capitalize_values';
     }
 }

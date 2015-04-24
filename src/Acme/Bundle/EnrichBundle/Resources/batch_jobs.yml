@@ -1,0 +1,13 @@
+connector:
+    name: Akeneo Mass Edit Connector
+    jobs:
+        capitalize_values:
+            title: capitalize_values
+            type:  mass_edit
+            steps:
+                perform:
+                    title: capitalize_values
+                    services:
+                        reader:    pim_enrich.mass_edit.filtered.reader
+                        processor: pim_enrich.mass_edit.capitalize_values.processor
+                        writer:    pim_base_connector.writer.doctrine.product

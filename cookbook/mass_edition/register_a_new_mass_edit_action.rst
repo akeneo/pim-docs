@@ -5,10 +5,24 @@ The Akeneo PIM comes with a number of mass edit actions.
 It also comes with a simple method to define your own mass edit action
 on selected products.
 
+
+Prerequisite
+------------
+The mass edit action uses the batch bundle in order to run mass edit in background. Readers and Writers are already
+created so in this cookbook we will focus on how to create a Mass Edit Action and create a Processor.
+For more information on how to create a Job, Reader, Processor, or Writer please see 'create-specific-connector'
+
+
 Creating a MassEditAction
 -------------------------
-The first step is to create a new class that implements ``MassEditActionInterface`` or extends
-``ProductMassEditOperation`` or ``FamilyMassEditOperation`` (given on which grid you want to apply the operation):
+The first step is to create a new class in the Operation folder that extends ``AbstractMassEditOperation`` and declare
+this new class as a service in the mass_action.yml file
+
+The method ``getBatchJobCode()`` is very important as it determine which job process to use. in our example we will use
+the capitalize_values job
+
+You also have to set which item will be used by the mass edit action. In our examples we will mass edit products. So we
+have to set 'product' in the ``getItemsName`` method
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/MassEditAction/Operation/CapitalizeValues.php
    :language: php
@@ -32,15 +46,59 @@ After the class is created, you must register it as a service in the DIC with th
 By default, the operation will be available for the product grid.
 It is possible to apply the operation on the family grid though.
 
-.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/services.yml
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/mass_actions.yml
    :language: yaml
-   :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/services.yml
+   :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/mass_actions.yml
    :linenos:
 
 
 .. note::
 
     The alias will be used in the URL (``/enrich/mass-edit-action/capitalize-values/configure``)
+
+
+Create a new processor
+----------------------
+
+In order to capitalize values during the mass edit you have to create a processor that will receive a product.
+
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Processor/MassEdit/CapitalizeValuesProcessor.php
+    :language: php
+    :prepend: # /src/Acme/Bundle/EnrichBundle/MassEditAction/MassEdit/CapitalizeValuesProcessor.php
+    :linenos:
+
+
+Register the Processor
+----------------------
+
+After the class is created, you must register it as a service in the DI
+
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/processors.yml
+    :language: yaml
+    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/processors.yml
+    :linenos:
+
+
+Create a new Job
+----------------
+
+As the mass edit use the batch bundle you have to use a Reader a Processor and a Writer
+
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/batch_jobs.yml
+    :language: yaml
+    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/batch_jobs.yml
+    :linenos:
+
+
+Add the new job to the fixtures
+-------------------------------
+
+Jobs are created
+
+.. literalinclude:: ../../src/Acme/Bundle/InstallBundle/Resources/fixtures/icecat_demo_dev/jobs.yml
+    :language: yaml
+    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/fixtures/icecat_demo_dev/jobs.yml
+    :linenos:
 
 
 Templating the form of Mass Edit Action
@@ -57,15 +115,3 @@ You need to create a template to render your Mass Edit Action form.
    :language: jinja
    :prepend: #  /src/Acme/Bundle/EnrichBundle/Resources/views/MassEditAction/configure/capitalize-values.html.twig
    :linenos:
-
-
-Translating the Mass Edit Action Choice
----------------------------------------
-
-Once you have realized the previous operations (and eventually cleared your cache), you should see
-a new option on the ``/enrich/mass-edit-action/choose`` page.
-Akeneo will generate for you a translation key following this pattern:
-``pim_catalog.mass_edit_action.%alias%.label``.
-
-You may now define some translation keys (``label, description and success_flash``) in your translation catalog(s).
-
