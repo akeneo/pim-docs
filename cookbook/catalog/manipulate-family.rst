@@ -71,7 +71,7 @@ Retrieve the family from the database
 .. code-block:: php
 
     // get the family repository
-    $familyRepo = $fm->getRepository('Pim\Bundle\CatalogBundle\Entity\Family');
+    $familyRepo = $em->getRepository('Pim\Bundle\CatalogBundle\Entity\Family');
 
     // get the family from its code
     $family = $familyRepo->findOneBy(['code' => 'shirt']);
@@ -82,6 +82,7 @@ Remove the family from the database
 
 .. code-block:: php
 
-    $em->remove($family);
-    $em->flush();
+    // remove a family entity from the family manager
+    $fm->remove($family);
+
 
