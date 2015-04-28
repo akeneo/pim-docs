@@ -4,9 +4,9 @@ namespace Acme\Bundle\EnrichBundle\Processor\MassEdit;
 
 use Pim\Bundle\CatalogBundle\Exception\InvalidArgumentException;
 use Pim\Bundle\CatalogBundle\Model\ProductInterface;
-use Pim\Bundle\CatalogBundle\Repository\AttributeRepositoryInterface;
 use Pim\Bundle\CatalogBundle\Updater\ProductUpdaterInterface;
 use Pim\Bundle\EnrichBundle\Entity\Repository\MassEditRepositoryInterface;
+use Pim\Bundle\EnrichBundle\Processor\MassEdit\AbstractMassEditProcessor;
 use Symfony\Component\Validator\ValidatorInterface;
 
 class CapitalizeValuesProcessor extends AbstractMassEditProcessor
@@ -37,6 +37,10 @@ class CapitalizeValuesProcessor extends AbstractMassEditProcessor
      */
     public function process($product)
     {
+        // This is where you put your custom logic. Here we work on a
+        // $product the Reader gave us.
+
+        // This is the configuration we receive from our Operation
         $configuration = $this->getJobConfiguration();
 
         if (!array_key_exists('actions', $configuration)) {
@@ -45,23 +49,37 @@ class CapitalizeValuesProcessor extends AbstractMassEditProcessor
 
         $actions = $configuration['actions'];
 
-        //Put your custom logic here
-        $capitalizedValue = strtoupper($product->getValue($actions[0]['field'], $localeCode = null, $scopeCode = null)->getData());
-        $actions[0]['value'] = $capitalizedValue;
+        // Retrieve custom config from the action
+        $field   = $actions[0]['field'];
+        $options = $actions[0]['options'];
 
+        // Capitalize the attribute value of the product
+        $originalValue = $product->getValue($field, $options['locale'], $options['scope'])->getData();
+        $capitalizedValue = strtoupper($originalValue);
 
-        $this->setData($product, $actions);
+        // Use the updater to update the product
+        $this->setData(
+            $product,
+            [
+                [
+                    'field'   => $field,
+                    'options' => $options,
+                    'value'   => $capitalizedValue
+                ]
+            ]
+        );
 
+        // Validate the product
         if (null === $product || (null !== $product && !$this->isProductValid($product))) {
             $this->stepExecution->incrementSummaryInfo('skipped_products');
 
-            return null;
+            return null; // By returning null, the product won't be saved by the Writer
         }
 
+        // Used on the Reporting Screen to have a summary on the Mass Edit execution
         $this->stepExecution->incrementSummaryInfo('mass_edited');
 
-
-        return $product;
+        return $product; // Send the product to the Writer to be saved
     }
 
     /**
@@ -85,7 +103,7 @@ class CapitalizeValuesProcessor extends AbstractMassEditProcessor
      * @param ProductInterface $product
      * @param array            $actions
      *
-     * @return UpdateProductValueProcessor
+     * @return CapitalizeValuesProcessor
      */
     protected function setData(ProductInterface $product, array $actions)
     {

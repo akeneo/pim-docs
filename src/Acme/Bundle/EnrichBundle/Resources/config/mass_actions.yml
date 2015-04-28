@@ -1,5 +1,5 @@
 parameters:
-    pim_enrich.mass_edit_action.capitalize_values.class: Pim\Bundle\EnrichBundle\MassEditAction\Operation\CapitalizeValues
+    pim_enrich.mass_edit_action.capitalize_values.class: Acme\Bundle\EnrichBundle\MassEditAction\Operation\CapitalizeValues
 
 services:
     pim_enrich.mass_edit_action.capitalize_values:

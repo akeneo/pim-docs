@@ -2,6 +2,8 @@
 
 namespace Acme\Bundle\EnrichBundle\MassEditAction\Operation;
 
+use Pim\Bundle\EnrichBundle\MassEditAction\Operation\AbstractMassEditOperation;
+
 class CapitalizeValues extends AbstractMassEditOperation
 {
     /**
@@ -17,7 +19,7 @@ class CapitalizeValues extends AbstractMassEditOperation
      */
     public function getFormType()
     {
-        return 'pim_enrich_operation_capitalize_values';
+        return 'acme_enrich_operation_capitalize_values';
     }
 
     /**
