@@ -44,10 +44,8 @@ class CapitalizeValues extends AbstractMassEditOperation
     public function getActions()
     {
         return [
-            [
-                'field'   => 'name',
-                'options' => ['locale' => null, 'scope' => null]
-            ]
+            'field'   => 'name',
+            'options' => ['locale' => null, 'scope' => null]
         ];
     }
 

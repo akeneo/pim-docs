@@ -1,13 +1,10 @@
-parameters:
-    pim_enrich.mass_edit_action.capitalize_values.class: Acme\Bundle\EnrichBundle\MassEditAction\Operation\CapitalizeValues
-
 services:
-    pim_enrich.mass_edit_action.capitalize_values:
+    acme_enrich.mass_edit_action.capitalize_values:
         public: false
-        class: %pim_enrich.mass_edit_action.capitalize_values.class%
+        class: Acme\Bundle\EnrichBundle\MassEditAction\Operation\CapitalizeValues
         tags:
             -
-                name: pim_enrich.mass_edit_action
+                name: acme_enrich.mass_edit_action
                 alias: capitalize-values
-                acl: pim_enrich_product_capitalize_values
+                acl: acme_enrich_product_capitalize_values
                 datagrid: product-grid

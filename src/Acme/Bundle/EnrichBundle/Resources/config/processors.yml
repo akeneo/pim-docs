@@ -1,10 +1,7 @@
-parameters:
-    pim_enrich.mass_edit.capitalize_values.processor.class: Acme\Bundle\EnrichBundle\Processor\MassEdit\CapitalizeValuesProcessor
-
 services:
-    pim_enrich.mass_edit.capitalize_values.processor:
-        class: %pim_enrich.mass_edit.capitalize_values.processor.class%
+    acme_enrich.mass_edit.capitalize_values.processor:
+        class: Acme\Bundle\EnrichBundle\Processor\MassEdit\CapitalizeValuesProcessor
         arguments:
+            - '@pim_enrich.repository.mass_edit'
             - '@pim_catalog.updater.product'
             - '@pim_validator'
-            - '@pim_enrich.repository.mass_edit'

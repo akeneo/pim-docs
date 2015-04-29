@@ -18,16 +18,17 @@ class CapitalizeValuesProcessor extends AbstractMassEditProcessor
     protected $validator;
 
     /**
+     * @param MassEditRepositoryInterface  $massEditRepository
      * @param ProductUpdaterInterface      $productUpdater
      * @param ValidatorInterface           $validator
-     * @param MassEditRepositoryInterface  $massEditRepository
      */
     public function __construct(
+        MassEditRepositoryInterface $massEditRepository,
         ProductUpdaterInterface $productUpdater,
-        ValidatorInterface $validator,
-        MassEditRepositoryInterface $massEditRepository
+        ValidatorInterface $validator
     ) {
         parent::__construct($massEditRepository);
+
         $this->productUpdater = $productUpdater;
         $this->validator      = $validator;
     }
@@ -50,8 +51,8 @@ class CapitalizeValuesProcessor extends AbstractMassEditProcessor
         $actions = $configuration['actions'];
 
         // Retrieve custom config from the action
-        $field   = $actions[0]['field'];
-        $options = $actions[0]['options'];
+        $field   = $actions['field'];
+        $options = $actions['options'];
 
         // Capitalize the attribute value of the product
         $originalValue = $product->getValue($field, $options['locale'], $options['scope'])->getData();
