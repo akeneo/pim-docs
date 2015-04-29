@@ -18,7 +18,7 @@ We will begin by creating a NotifyStep with its configuration and a doExecute me
 Create our Step Element
 -----------------------
 
-Then we implement a Step Element, in our case, a handler responsible to send a ping request:
+Then we implement a Step Element, in our case, a handler responsible for sending a ping request:
 
 .. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Handler/CurlHandler.php
    :language: php

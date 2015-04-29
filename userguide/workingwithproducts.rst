@@ -9,7 +9,7 @@ Create a new product
 .. image:: images/quick-create-product.jpeg
 
 2 - Type the Identifier (in the screenshot, it is the SKU) of the product, and optionally, choose a family to initiate a template and apply completeness.The identifier is the only required attribute to create a product. It is defined during the installation and configuration of Akeneo.
-Apply a family is optional, a product without family will have no attributes. You will have to add them manually. Fore more details, please refer to Adding attributes for a product.
+Applying a family is optional, a product without family will have no attributes. You will have to add them manually. Fore more details, please refer to Adding attributes for a product.
 
 3 - Click Create button so that Akeneo creates the product and opens the product edit form.
 
@@ -78,7 +78,7 @@ Sku-103;shoe;
 Family
 ------
 
-The header of the field family should be define in the import profile. See Managing import profiles to know the name of the field for family.
+The header of the field family should be defined in the import profile. See Managing import profiles to know the name of the field for family.
 
 If there is no family defined for a product, it will be considered without family. That means all imported attributes will be added without using a family’s template, and the product will not have completeness calculated.
 You can import products with different families in the same CSV file.
@@ -113,7 +113,7 @@ Enabled
 
 The header of the field enabled is optional. It allows to change the status of products: 0 = disabled, 1 = enabled.
 
-You can also define the value of enabled for all product you will import in the configuration of the import profile. In this case, you don’t need to add the column ‘enabled’ in the CSV file.
+You can also define the value of enabled for all products you will import in the configuration of the import profile. In this case, you don’t need to add the column ‘enabled’ in the CSV file.
 Example
 sku;family;categories;enabled
 Sku-101;shoe;shoes,clothes;0;
@@ -123,8 +123,8 @@ Sku-103;;;1;
 Attributes
 ----------
 
-The product information are linked to attributes. The header of fields for attributes are composed of the code of the attribute, and, if the attribute is localized, the code of the locale.
-Attributes must exist in Akeneo for importing product’s values. Akeneo CSV connector will not create attributes when importing products information.
+The product information is linked to attributes. The header of fields for attributes are composed of the code of the attribute, and, if the attribute is localized, the code of the locale.
+Attributes must exist in Akeneo for importing product’s values. Akeneo CSV connector will not create attributes when importing product information.
 If the product doesn’t exist in Akeneo, it will be created. If the product already exists in Akeneo, it will be updated with values in CSV file only. Other attributes existing in Akeneo will not be updated.
 
 If you want to add multiple values for an attribute to a product, you should use commas for the same attribute. See example with categories.

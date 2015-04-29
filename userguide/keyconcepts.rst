@@ -7,7 +7,7 @@ What is a channel?
 
 A channel in Akeneo allows to select products and some of their information to be exported with a connector.
 
-For example, a channel for e-commerce website, another one for the iPad application.
+For example, a channel for an e-commerce website, another one for the iPad application.
 
 A channel works as a filter with the following properties:
 
@@ -58,7 +58,7 @@ Example
 
 What is an attribute?
 ----------------------
-Attribute is the smallest entity in Akeneo, which allow to manage information about products.
+Attribute is the smallest entity in Akeneo, which allows to manage information about products.
 
 Note that the settings below can be defined and customized by your Akeneo administrator to suit your needs.
 
@@ -115,7 +115,7 @@ Akeneo manages the process of translating a product in different languages and a
 
 That means attributes can be localized if needed.
 
-Local specific
+Locale specific
 
 An attribute can be shown only for specific locales. It is useful for specific taxes for example.
 
@@ -140,15 +140,15 @@ Back-end properties
 
 An attribute can be used for some features in Akeneo:
 - Searchable: Define if the search engine should index / use this attribute value
-- Usable as a filter: The attribute can be used as a filter into the products grid
-- Usable as a column: The attribute can be used as a column into the products grid
+- Usable as a filter: The attribute can be used as a filter in the products grid
+- Usable as a column: The attribute can be used as a column in the products grid
 
 Attribute group
 """""""""""""""
 
-Each attributes can belong to an attribute group.
+Each attribute can belong to an attribute group.
 
-An attribute group allow to organize the product form by theme (SEO, Marketing, General) so that the product form is more understandable.
+An attribute group allows to organize the product form by theme (SEO, Marketing, General) so that the product form is more understandable.
 
 
 .. image:: images/attribute-group.png
