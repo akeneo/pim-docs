@@ -41,7 +41,7 @@ Create a VirtualHost
 --------------------
 To be sure to test in an environment as close as possible to a production environment,
 we need to define a specific VirtualHost with production RewriteRule (some limitations
-of Oro Platform does not allow to have production environment with the bootstrap file
+of Oro Platform do not allow to have production environment with the bootstrap file
 included in the URL):
 
 .. code-block:: apache

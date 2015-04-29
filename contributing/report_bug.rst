@@ -7,6 +7,6 @@ Report a Bug
 * Reproduce the bug
 * Create a new github issue that:
 
-  * clearly describe the issue in its title
+  * clearly describes the issue in its title
   * describes the steps to reproduce the bug
   * gives information on your environment (OS, PHP version, browser)
