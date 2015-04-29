@@ -1,3 +1,5 @@
+.. _create-specific-connector:
+
 How to Create a Specific Connector
 ==================================
 
