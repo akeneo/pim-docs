@@ -140,6 +140,30 @@ Documentation
 
 * Omit the ``@return`` tag if the method does not return anything;
 
+* If your function returns an array of entity, use
+
+    .. code-block:: php
+
+        /**
+         * @return string[]
+         */
+
+        /**
+         * @return MyClass[]
+         */
+
+* If your function returns an ``ArrayCollection`` of entity, use
+
+    .. code-block:: php
+
+        /**
+         * @return ArrayCollection of string
+         */
+
+        /**
+         * @return ArrayCollection of MyClass
+         */
+
 * The ``@package`` and ``@subpackage`` annotations are not used.
 
 License
