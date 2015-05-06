@@ -39,9 +39,9 @@ Here is a short example containing most features described below:
          * @param string $dummy Some argument description
          * @param array  $options
          *
-         * @return string|null Transformed input
-         *
          * @throws \RuntimeException
+         *
+         * @return string|null Transformed input
          */
         protected function transformText($dummy, array $options = [])
         {
