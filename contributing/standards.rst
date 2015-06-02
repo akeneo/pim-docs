@@ -165,6 +165,7 @@ Documentation
          */
 
 * The ``@package`` and ``@subpackage`` annotations are not used.
+* Write an ``use`` statement if the PHPdoc needs it, instead of writing the FQCN.
 
 License
 -------
