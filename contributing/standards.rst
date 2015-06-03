@@ -76,6 +76,8 @@ Structure
 
 * Add a single space around operators (``==``, ``&&``, ...);
 
+* Put immutable entities on the left of comparison statements (``null === $var``, ``'string' === $this->test()``)
+
 * Add a comma after each array item in a multi-line array, even after the
   last one;
 
