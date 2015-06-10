@@ -39,9 +39,9 @@ Here is a short example containing most features described below:
          * @param string $dummy Some argument description
          * @param array  $options
          *
-         * @return string|null Transformed input
-         *
          * @throws \RuntimeException
+         *
+         * @return string|null Transformed input
          */
         protected function transformText($dummy, array $options = [])
         {
@@ -75,6 +75,8 @@ Structure
 * Add a single space after each comma delimiter;
 
 * Add a single space around operators (``==``, ``&&``, ...);
+
+* Put immutable entities on the left of comparison statements (``null === $var``, ``'string' === $this->test()``)
 
 * Add a comma after each array item in a multi-line array, even after the
   last one;
@@ -140,7 +142,32 @@ Documentation
 
 * Omit the ``@return`` tag if the method does not return anything;
 
+* If your function returns an array of entity, use
+
+    .. code-block:: php
+
+        /**
+         * @return string[]
+         */
+
+        /**
+         * @return MyClass[]
+         */
+
+* If your function returns an ``ArrayCollection`` of entity, use
+
+    .. code-block:: php
+
+        /**
+         * @return ArrayCollection of string
+         */
+
+        /**
+         * @return ArrayCollection of MyClass
+         */
+
 * The ``@package`` and ``@subpackage`` annotations are not used.
+* Write an ``use`` statement if the PHPdoc needs it, instead of writing the FQCN.
 
 License
 -------

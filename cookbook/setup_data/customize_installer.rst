@@ -43,6 +43,7 @@ Register it into ``AppKernel.php``:
         }
     }
 
+.. _add-your-own-data:
 
 Add your own Data
 -----------------

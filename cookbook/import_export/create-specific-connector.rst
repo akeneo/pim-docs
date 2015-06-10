@@ -1,3 +1,5 @@
+.. _create-specific-connector:
+
 How to Create a Specific Connector
 ==================================
 
@@ -69,7 +71,7 @@ Create our Reader
    :language: php
    :linenos:
 
-Our element reads the file and iterate to return products line per line.
+Our element reads the file and iterates to return products line per line.
 
 This element must be configured with the path of the xml file.
 
@@ -98,7 +100,7 @@ Create our Processor
    :language: php
    :linenos:
 
-Our processor receives each item passed by our reader and converts it to product.
+Our processor receives each item passed by our reader and converts it to a product.
 
 If the product is already known, we skip the item. Of course, in the case of production import, we will update the product as well by changing the properties of the loaded product.
 
@@ -145,7 +147,7 @@ Finally we define our product writer:
 
 The writer element receives an array of items, as a writer can be able to do some mass writing that could be more efficient than writing item one by one.
 
-In this example, the items are products and the writer persist them.
+In this example, the items are products and the writer persists them.
 
 In order to do that, this writer needs to know the product manager that is injected in the following service definition in `writers.yml`:
 

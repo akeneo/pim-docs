@@ -11,6 +11,7 @@ Cookbook
 
     setup_data/customize_installer
     catalog
+    catalog_structure/index
     import_export/index
     ui
     acl/define-acl

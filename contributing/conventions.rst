@@ -3,7 +3,7 @@ Code Conventions
 
 When contributing code to Akeneo PIM, you must follow its code conventions (very close to Symfony Code conventions).
 
-This is part of our Developer Xperience effort, write these conventions allow us to share the path we want to follow to continuoulsy improve our codebase.
+This is part of our Developer Xperience effort, writing these conventions allows us to share the path we want to follow to continuoulsy improve our codebase.
 
 There are still inconsistencies in the codebase that we'll fix in coming releases.
 
@@ -49,12 +49,12 @@ The implementations of Repositories (Doctrine ORM or MongoDBODM) are located in:
 * /Doctrine/ORM/Repository or
 * /Doctrine/MongoDBODM/Repository
 
-Except Doctrine/Common, we should never use a Doctrine classes in a classe not located in /Doctrine.
+Except Doctrine/Common, we should never use Doctrine classes in a class not located in /Doctrine.
 
 Services Definition
 -------------------
 
-We defined the services in several files depending of the service purpose (form type, manager, etc.).
+We define the services in several files depending on the service purpose (form type, manager, etc.).
 
 In each of these, a service is named with the following convention:
 
@@ -64,7 +64,7 @@ In each of these, a service is named with the following convention:
 
 For example, the product saver service is ``pim_catalog.saver.product``.
 
-You can have several directories separated by dot like ``pim_catalog.form.type.product``.
+You can have several directories separated by a dot like ``pim_catalog.form.type.product``.
 
 Parameters are defined in the same file, the convention used is the same as the one for services, with a ``.class`` suffix
 

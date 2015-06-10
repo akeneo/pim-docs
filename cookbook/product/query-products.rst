@@ -74,7 +74,7 @@ To help you know which filters are available for your installation, you can run 
 
 .. code-block:: bash
 
-    php app/console pim:debug:product-query-help
+    php app/console pim:product:query-help
 
 Add a custom filter
 -------------------

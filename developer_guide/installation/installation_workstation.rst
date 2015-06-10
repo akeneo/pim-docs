@@ -3,7 +3,7 @@ Installation
 
 This document provides a step by step instructions to install the PIM on development workstations based on Ubuntu 12.10, 13.10 or 14.04.
 
-The following instructions has been tested on fresh installations of Ubuntu 12.10, 13.10 and 14.04. The main difference between the distribution is the PHP version used (PHP 5.4 for Ubuntu 12.10 and PHP 5.5 for Ubuntu 13.10 and 14.04).
+The following instructions have been tested on fresh installations of Ubuntu 12.10, 13.10 and 14.04. The main difference between the distribution is the PHP version used (PHP 5.4 for Ubuntu 12.10 and PHP 5.5 for Ubuntu 13.10 and 14.04).
 
 .. note::
     Even if the instructions apply to Ubuntu 12.10, 13.10 and 14.04, the same process and requirements can be used for any PHP 5.4 or PHP 5.5 based Linux distribution.
@@ -130,7 +130,7 @@ PHP
 
 Apache
 ******
-To avoid spending too much time on permissions problems between the CLI user and the Apache user, an easy configuration
+To avoid spending too much time on permission problems between the CLI user and the Apache user, an easy configuration
 is to use same user for both processes.
 
 
@@ -260,7 +260,7 @@ Installing and enabling MongoDB support in Akeneo
     :linenos:
 
     $ cd /path/to/pim/root
-    $ php ../composer.phar --prefer-dist require doctrine/mongodb-odm v1.0.0-beta10@dev
+    $ php ../composer.phar --prefer-dist require doctrine/mongodb-odm v1.0.0-beta12@dev
     $ php ../composer.phar --prefer-dist require doctrine/mongodb-odm-bundle v3.0.0-BETA6@dev
 
 * In app/AppKernel.php, uncomment the following line (this will enable DoctrineMongoDBBundle and will load and enable the MongoDB configuration):
