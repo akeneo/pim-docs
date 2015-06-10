@@ -11,7 +11,7 @@ As stated above, the attribute manager is one of the services that you can get f
 .. code-block:: php
 
     // attribute manager
-    $this->container->get('pim_catalog.manager.attribute');
+    $am = $this->container->get('pim_catalog.manager.attribute');
 
 In the following examples, we will use ``$am`` as the attribute manager service.
 
@@ -36,15 +36,17 @@ For instance, this example creates a color attribute with a list of predefined o
    $att = $am->createAttribute('pim_catalog_simpleselect');
    $att->setCode('color');
 
-   $opt1 = $am->createAttributeOption();
+   $aom = $this->container->get('pim_catalog.manager.attributeoption');
+
+   $opt1 = $aom->createAttributeOption();
    $opt1->setCode('purple');
    $att->addOption($opt1);
 
-   $opt2 = $am->createAttributeOption();
+   $opt2 = $aom->createAttributeOption();
    $opt2->setCode('yellow');
    $att->addOption($opt2);
 
-   $opt3 = $am->createAttributeOption();
+   $opt3 = $aom->createAttributeOption();
    $opt3->setCode('blue');
    $att->addOption($opt3);
 
@@ -54,16 +56,16 @@ Keeping the color example, the value of the option **purple** is "Purple" in Eng
 
 .. code-block:: php
 
-    $opt1 = $am->createAttributeOption();
+    $opt1 = $aom->createAttributeOption();
     $opt1->setCode('purple');
     $opt1->setLocalizable(true);
 
-    $opt1EN = $am->createAttributeOptionValue();
+    $opt1EN = $aom->createAttributeOptionValue();
     $opt1EN->setLocale('en_US');
     $opt1EN->setValue('Purple');
     $opt1->addOptionValue($opt1EN);
 
-    $opt1FR = $am->createAttributeOptionValue();
+    $opt1FR = $aom->createAttributeOptionValue();
     $opt1FR->setLocale('fr_FR');
     $opt1FR->setValue('Violet');
     $opt1->addOptionValue($opt1FR);
@@ -97,4 +99,3 @@ Keeping the color example, the value of the option **purple** is "Purple" in Eng
     $attribute->setCode('short_description');
     $attribute->setScopable(true);
     $attribute->setLocalizable(true);
-
