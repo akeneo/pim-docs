@@ -42,6 +42,8 @@ Here is a short example containing most features described below:
          * @throws \RuntimeException
          *
          * @return string|null Transformed input
+         *
+         * @deprecated Will be removed in x.y
          */
         protected function transformText($dummy, array $options = [])
         {
