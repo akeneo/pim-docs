@@ -10,7 +10,7 @@ The Akeneo PIM comes with a REST API which allows to fetch product data in JSON 
 Configure a user
 ----------------
 
-We first need to generate an API key for a PIM user as shown on following screenshot:
+We first need to generate an API key for a PIM user by clicking on "Generate key" on any profile page. Then we got the three informations needed for an API call:
 
 .. image:: ./configure-rest.png
 
