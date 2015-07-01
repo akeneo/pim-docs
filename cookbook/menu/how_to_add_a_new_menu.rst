@@ -21,9 +21,9 @@ In ``Pim\Bundle\EnrichBundle\Resources\config\navigation.yml`` :
                     position: 35   # Position of your tab in the menu
 
         tree:
-        application_menu:
-            children:
-                pim_structure_tab: ~  # Add your new tab in the menu
+            application_menu:
+                children:
+                    pim_structure_tab: ~  # Add your new tab in the menu
 
 Now, we remove our Symfony cache and refresh our Akeneo page to see the new menu tab.
 
