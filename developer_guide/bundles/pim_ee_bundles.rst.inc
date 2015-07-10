@@ -1,0 +1,4 @@
+* CatalogRuleBundle
+* RuleEngineBundle
+* SecurityBundle
+* WorkflowBundle
