@@ -10,6 +10,7 @@ Cookbook
     :maxdepth: 2
 
     setup_data/customize_installer
+    product/manipulate-product
     catalog
     catalog_structure/index
     import_export/index
