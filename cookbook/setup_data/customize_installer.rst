@@ -3,6 +3,8 @@ How to Customize the Installation
 
 The Akeneo PIM allows to prepare a custom data set to use during the installation.
 
+The idea is to allow you to setup your own catalog structure or your own demo data.
+
 You can configure the data set in the ``app/config/parameters.yml`` file:
 
 .. literalinclude:: ../../app/config/parameters.yml.dist
@@ -52,6 +54,10 @@ Create a directory ``Resources/fixtures/mydataset`` in your bundle.
 
 Copy the ``*.yml`` and ``*.csv`` files from Installer bundle into the ``mydataset`` directory of your bundle.
 
+.. note::
+
+  Since 1.4 we tend to use only csv format in installer to make easier to export data from the PIM and put them in installer to be able to deploy on other envs.
+
 Then edit the files, for example, to declare your own channels:
 
 .. literalinclude:: ../../src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/channels.yml
@@ -61,12 +67,8 @@ Then edit the files, for example, to declare your own channels:
 
 .. tip::
 
-  Take a look at `Pim/Bundle/InstallerBundle/Resources/fixtures/minimal`_ to see what is the expected format and which
-  fixtures are absolutely needed.
-
-.. _Pim/Bundle/InstallerBundle/Resources/fixtures/minimal:
-  https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/InstallerBundle/Resources/fixtures/minimal
-
+  You can take a look at `Pim/Bundle/InstallerBundle/Resources/fixtures/minimal` to see what is the expected format and which
+  fixtures are absolutely needed, then you can take inspiration from `Pim/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev` to add optional objects.
 
 Install the DB
 --------------
@@ -83,18 +85,3 @@ You can now (re)install your database by running:
 .. code-block:: bash
 
     > php app/console pim:installer:db --env=dev
-
-Load individual fixture files
------------------------------
-
-Fixture files can be loaded individually by using the ``pim:installer:load-fixtures`` command:
-
-.. code-block:: bash
-
-    > php app/console pim:installer:load-fixtures src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/*
-
-.. note::
-
-  The fixtures files can be loaded multiple times, objects will be updated instead of being created on
-  successive calls. This command also takes care of loading the fixtures in the right order.
-
