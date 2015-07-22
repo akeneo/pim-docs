@@ -13,7 +13,7 @@ In Akeneo PIM, products can be stored and accessed through Doctrine ORM (EAV lik
 
 The PQB aims to abstract the used persistence storage to provide the same operations in both cases.
 
-Instantiate a new product query builder
+Instantiate a New Product Query Builder
 ---------------------------------------
 
 The product query builder factory is a service, you can fetch it from the container.
@@ -26,7 +26,7 @@ The product query builder factory is a service, you can fetch it from the contai
     $pqb = $pqbFactory->create(['default_locale' => 'en_US', 'default_scope' => 'ecommerce']);
 
 
-Build a query
+Build a Query
 -------------
 
 Add filters:
@@ -59,16 +59,80 @@ Add sorters:
         // sort by completeness, the locale and scope is expected, if not provided, the default one are used
         ->addSorter('completeness', 'DESC', ['locale' => 'fr_FR', 'scope' => 'mobile']);
 
-Execute the query
------------------
+Execute the Query to Get a Cursor
+---------------------------------
+
+It will return a `Akeneo\Component\StorageUtils\CursorInterface` on the products collection, this interface is "storage agnostic".
 
 .. code-block:: php
 
-    // will return a `Cursor` on the products collection
-    $products = $pqb->execute();
+    $productsCursor = $pqb->execute();
+    foreach ($productsCursor as $product) {
+        // your custom logic
+    }
 
-Know the usable filters
------------------------
+We strongly advise to use this way to execute queries on products, the next one should be deserved to special cases. For instance, when you want to use capabilities only available on the real storage (ex: MongoDB aggregate).
+
+Execute the Query ("classic" Doctrine mode)
+-------------------------------------------
+
+Once filters and sorters applied, you can still access the internal QueryBuilder to manipulate it before to execute the query.
+
+Then you can use a "classic" Doctrine execute (with custom hydration, etc),
+
+.. code-block:: php
+
+    // can be a `Doctrine\ORM\QueryBuilder` or `Doctrine\ODM\MongoDB\Query\Builder`
+    $queryBuilder = $pqb->getQueryBuilder();
+    $queryBuilder->getQuery()->execute();
+
+Use the Paginator
+-----------------
+
+You can also use a paginator to fetch pages of products from the `Cursor`.
+
+.. code-block:: php
+
+    $paginatorFactory = $this->container->get('pim_catalog.query.product_query_builder_factory');
+    $pageSize = 100;
+    $paginator = $paginatorFactory->createPaginator($productsCursor, $pageSize);
+    foreach ($paginator as $productsPage) {
+        foreach ($productsPage as $product) {
+            // your custom logic
+        }
+    }
+
+Use the Query Command
+---------------------
+
+We introduced a new Command to execute a query through the Product Query Builder.
+
+.. code-block:: bash
+
+    php app/console pim:product:query '[{"field":"completeness","operator":"=","value":"100","locale":"en_US","scope":"print"}]' --page-size=20
+
+By default this command returns the list of products with a table formating on the standard output.
+
+.. code-block:: bash
+
+    +-----+-------------+
+    | id  | identifier  |
+    +-----+-------------+
+    | 1   | AKNTS_BPXS  |
+    | 2   | AKNTS_BPS   |
+    | 3   | AKNTS_BPM   |
+    | ... | ...         |
+    +-----+-------------+
+    20 first products on 112 matching these criterias
+
+You can use the option `json-output` to obtain a json result.
+
+.. code-block:: bash
+
+    ["AKNTS_BPXS","AKNTS_BPS","AKNTS_BPM"]
+
+Use the Query Help Command
+--------------------------
 
 To help you know which filters are available for your installation, you can run the following command:
 
@@ -76,7 +140,7 @@ To help you know which filters are available for your installation, you can run 
 
     php app/console pim:product:query-help
 
-Add a custom filter
+Add a Custom Filter
 -------------------
 
 Filters are tagged services (implementing FilterInterface), they are registered in a registry (QueryFilterRegistryInterface).
@@ -100,7 +164,7 @@ To add your own filter, you need to create a class implementing ``Pim\Bundle\Cat
 
 Here we define a boolean filter which supports '=' operator and can be applied on 'enabled' field or on an attribute with 'pim_catalog_boolean' type.
 
-Add a custom sorter
+Add a Custom Sorter
 -------------------
 
 Sorter implementation mechanism is very close to the filter one, another registry, the interface `Pim\Bundle\CatalogBundle\Query\Sorter\SorterInterface` to implement and a tagged service to declare as:
