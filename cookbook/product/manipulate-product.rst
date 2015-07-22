@@ -6,6 +6,7 @@ This chapter gives details on how to programmatically manipulate products, the p
 .. toctree::
 
    query-products
+   create-product
    update-product
    validate-product
    save-product
