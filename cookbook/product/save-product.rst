@@ -1,23 +1,96 @@
 How to Save Products
 ====================
 
-Instantiate the saver
+Instantiate the Saver
 ---------------------
 
 The product saver is a service, you can fetch it from the container.
 
 .. code-block:: php
 
-    $updater = $this->getContainer()->get('pim_catalog.saver.product');
+    $saver = $this->getContainer()->get('pim_catalog.saver.product');
 
-Save the products
+Save the Products
 -----------------
+
+It implements SaverInterface and BulkSaverInterface so you can save one or many products.
 
 .. code-block:: php
 
-    $saver->save($product); //To save one product
-    $saver->saveAll($products); //To save a collection of products
+    $saver->save($product); // To save one product
+    $saver->saveAll($products); // To save a collection of products
+
+Save the Products with Options
+------------------------------
+
+You can use following extra boolean options as second parameter when you save products.
+
+If the 'flush' option is passed with 'true', the object will be saved in database.
+
+If the 'recalculate' option is passed with 'true', the product completeness will be directly computed.
+
+If the 'schedule' option is passed with 'true', the product completeness will be scheduled and computed later.
+
+.. code-block:: php
+
+    $saver->save($product, ['flush' => true, 'recalculate' => true, 'schedule' => true]);
 
 .. note::
 
-   Some options can be used as second argument of the save() or saveAll(), for instance, to re-compute the completeness
+    The 'schedule' is more efficient than the 'recalculate', the computation is done later with a cron on the command 'pim:completeness:calculate'.
+
+Dive into the Save
+------------------
+
+Internally, the Saver uses a persist() and flush() from Doctrine ObjectManager.
+
+You should never use directly persist() and flush() in other services, if you have do so please put these classes in the Doctrine folder of your bundle.
+
+Avoid the use of persist() and flush() in your other classes will also ease your future migrations.
+
+This change is part of our effort to decouple the Doctrine logic from the Business logic.
+
+
+Since the 1.4, we use the changeTrackingPolicy DEFERRED_EXPLICIT in the mapping of almost every objects (except the Version model).
+
+It avoids Doctrine to check all the objects to know which one have been really updated. Now only objects that are explicitely persisted are computed by the unit of work. This is much more faster and secure.
+
+Before 1.4,
+
+.. code-block:: php
+
+    $object = $repository->find(12);
+    $object->setFoo('bar');
+    $em->flush();
+    // the property foo of the object has been set to bar without telling the entity manager to
+    // persist the product, Doctrine has to guess this change by checking the Unit Of Work.
+
+Since 1.4,
+
+.. code-block:: php
+
+    $object = $repository->find(12);
+    $object->setFoo('bar');
+    // now we explicitly need to tell Doctrine to persist the object so that the changes are
+    // saved into database (the persist follow the cascade persist defined in the model mapping)
+    $em->persist($object);
+    $em->flush();
+
+Extra in Enterprise Edition
+---------------------------
+
+In Enterprise Edition, with the WorkflowBundle features, the behavior is a bit more complex and you can use different Savers.
+
+The classic product saver with the same behaviour than in Community Edition.
+
+.. code-block:: php
+
+    $saver = $this->getContainer()->get('pim_catalog.saver.product');
+    $saver->save($product);
+
+The delegating product saver, which checks the permissions of the current user to save the working copy (the community product) or to save a product draft.
+
+.. code-block:: php
+
+    $saver = $this->getContainer()->get('pimee_workflow.saver.product_delegating');
+    $saver->save($product);
