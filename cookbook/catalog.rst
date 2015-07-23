@@ -1,5 +1,5 @@
-How to Manipulate the Other Data
-================================
+How to Manipulate the Non-Product Objects
+=========================================
 
 This chapter gives details on how to programmatically manipulate other catalog objects.
 

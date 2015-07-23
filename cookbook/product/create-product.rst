@@ -4,16 +4,14 @@ How to Create Products
 Instantiate a New ProductBuilder
 --------------------------------
 
-The product builder is available has a service, you can fetch it from the container.
+The product builder is available as a service, you can fetch it from the container.
 
 .. code-block:: php
 
     $productBuilder = $this->getContainer()->get('pim_catalog.builder.product');
 
-Use the ProductBuilder
-----------------------
-
-Then you can create a new product.
+Use the ProductBuilder to Create a new Product
+----------------------------------------------
 
 .. code-block:: php
 

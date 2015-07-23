@@ -25,7 +25,6 @@ The product query builder factory is a service, you can fetch it from the contai
     // returns a new instance of product query builder
     $pqb = $pqbFactory->create(['default_locale' => 'en_US', 'default_scope' => 'ecommerce']);
 
-
 Build a Query
 -------------
 
@@ -62,7 +61,15 @@ Add sorters:
 Execute the Query to Get a Cursor
 ---------------------------------
 
-It will return a `Akeneo\Component\StorageUtils\CursorInterface` on the products collection, this interface is "storage agnostic".
+It will return a `Akeneo\Component\StorageUtils\CursorInterface` on the products collection.
+
+This interface is "storage agnostic" and allows to iterate over the products in the same way for Doctrine ORM and MongoDBODM.
+
+As it implements a Cursor it avoid to load all the products in memory, it uses an internal pagination TODO???
+
+TODO: detach???
+
+We strongly advise to use this way to execute queries on products.
 
 .. code-block:: php
 
@@ -71,12 +78,10 @@ It will return a `Akeneo\Component\StorageUtils\CursorInterface` on the products
         // your custom logic
     }
 
-We strongly advise to use this way to execute queries on products, the next one should be deserved to special cases. For instance, when you want to use capabilities only available on the real storage (ex: MongoDB aggregate).
-
 Execute the Query ("classic" Doctrine mode)
 -------------------------------------------
 
-Once filters and sorters applied, you can still access the internal QueryBuilder to manipulate it before to execute the query.
+Once filters and sorters applied, you can still access the internal QueryBuilder to manipulate it before executing the query.
 
 Then you can use a "classic" Doctrine execute (with custom hydration, etc),
 
@@ -84,23 +89,14 @@ Then you can use a "classic" Doctrine execute (with custom hydration, etc),
 
     // can be a `Doctrine\ORM\QueryBuilder` or `Doctrine\ODM\MongoDB\Query\Builder`
     $queryBuilder = $pqb->getQueryBuilder();
+    // ...
+    // my custom code which manipulate the query builder
+    // ...
     $queryBuilder->getQuery()->execute();
 
-Use the Paginator
------------------
+.. warning::
 
-You can also use a paginator to fetch pages of products from the `Cursor`.
-
-.. code-block:: php
-
-    $paginatorFactory = $this->container->get('pim_catalog.query.product_query_builder_factory');
-    $pageSize = 100;
-    $paginator = $paginatorFactory->createPaginator($productsCursor, $pageSize);
-    foreach ($paginator as $productsPage) {
-        foreach ($productsPage as $product) {
-            // your custom logic
-        }
-    }
+    This way should be deserved to special cases, when you want to use capabilities only available on the real storage (ex: MongoDB aggregate) or to use expressions not supported by the PQB.
 
 Use the Query Command
 ---------------------
@@ -111,7 +107,7 @@ We introduced a new Command to execute a query through the Product Query Builder
 
     php app/console pim:product:query '[{"field":"completeness","operator":"=","value":"100","locale":"en_US","scope":"print"}]' --page-size=20
 
-By default this command returns the list of products with a table formating on the standard output.
+By default this command returns a table formatted list of products on the standard output.
 
 .. code-block:: bash
 

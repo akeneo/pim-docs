@@ -1,7 +1,7 @@
 How to Save Products
 ====================
 
-Instantiate the saver
+Instantiate the Saver
 ---------------------
 
 The product saver is a service, you can fetch it from the container.
@@ -10,7 +10,7 @@ The product saver is a service, you can fetch it from the container.
 
     $saver = $this->getContainer()->get('pim_catalog.saver.product');
 
-Save the products
+Save the Products
 -----------------
 
 It implements SaverInterface and BulkSaverInterface so you can save one or many products.
@@ -20,20 +20,61 @@ It implements SaverInterface and BulkSaverInterface so you can save one or many 
     $saver->save($product); // To save one product
     $saver->saveAll($products); // To save a collection of products
 
-You can use following extra options as second parameter when you save products.
+Save the Products with Options
+------------------------------
+
+You can use following extra boolean options as second parameter when you save products.
+
+If the 'flush' option is passed with 'true', the object will be saved in database.
+
+If the 'recalculate' option is passed with 'true', the product completeness will be directly computed.
+
+If the 'schedule' option is passed with 'true', the product completeness will be scheduled and computed later.
 
 .. code-block:: php
 
-    //'flush'       => be able to persist (Doctrine meaning) without flush
-    //'recalculate' => compute the completeness for the product (more greedy)
-    //'schedule'    => schedule the compute of the completeness for the product (more efficient)
     $saver->save($product, ['flush' => true, 'recalculate' => true, 'schedule' => true]);
 
-.. warning::
+.. note::
 
-  Internaly, the Saver uses a persist() and flush() from Doctrine ObjectManager.
+    The 'schedule' is more efficient than the 'recalculate', the computation is done later with a cron on the command 'pim:completeness:calculate'.
 
-  Since the 1.4 we use the changeTrackingPolicy: DEFERRED_EXPLICIT in the mapping of almost every objects, means that you need to do an explicit persist to see an object updated in database during a flush (no more dirty checking in the unit of work).
+Dive into the Save
+------------------
+
+Internally, the Saver uses a persist() and flush() from Doctrine ObjectManager.
+
+You should never use directly persist() and flush() in other services, if you have do so please put these classes in the Doctrine folder of your bundle.
+
+Avoid the use of persist() and flush() in your other classes will also ease your future migrations.
+
+This change is part of our effort to decouple the Doctrine logic from the Business logic.
+
+
+Since the 1.4, we use the changeTrackingPolicy DEFERRED_EXPLICIT in the mapping of almost every objects (except the Version model).
+
+It avoids Doctrine to check all the objects to know which one have been really updated. Now only objects that are explicitely persisted are computed by the unit of work. This is much more faster and secure.
+
+Before 1.4,
+
+.. code-block:: php
+
+    $object = $repository->find(12);
+    $object->setFoo('bar');
+    $em->flush();
+    // the property foo of the object has been set to bar without telling the entity manager to
+    // persist the product, Doctrine has to guess this change by checking the Unit Of Work.
+
+Since 1.4,
+
+.. code-block:: php
+
+    $object = $repository->find(12);
+    $object->setFoo('bar');
+    // now we explicitly need to tell Doctrine to persist the object so that the changes are
+    // saved into database (the persist follow the cascade persist defined in the model mapping)
+    $em->persist($object);
+    $em->flush();
 
 Extra in Enterprise Edition
 ---------------------------
@@ -47,7 +88,7 @@ The classic product saver with the same behaviour than in Community Edition.
     $saver = $this->getContainer()->get('pim_catalog.saver.product');
     $saver->save($product);
 
-The delegating product saver, which check the permissions of the current user to save the working copy (the community product) or save a product draft.
+The delegating product saver, which checks the permissions of the current user to save the working copy (the community product) or to save a product draft.
 
 .. code-block:: php
 

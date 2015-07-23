@@ -15,18 +15,23 @@ As the product model is the main object of the application, the use cases are mo
 
 We provide different services to allow you to assemble your custom "update logic".
 
-The default case is covered by the use of an ObjectUpdaterInterface to apply a set of property updates on a product.
+The default case is covered by a ``Akeneo\Component\StorageUtils\Updater\ObjectUpdaterInterface`` to apply a set of property updates on a product.
 
 You'll find also some services to update a single doctrine field data or an attribute data of a product (we hide this implementation detail, attribute vs doctrine field, under the term 'property').
 
-There are four services to handle this, a PropertySetterInterface, a PropertyAdderInterface, a PropertyRemoverInterface and a PropertyCopierInterface.
+There are four services to handle this case,
+
+* ``Akeneo\Component\StorageUtils\Updater\PropertySetterInterface``
+* ``Akeneo\Component\StorageUtils\Updater\PropertyAdderInterface``
+* ``Akeneo\Component\StorageUtils\Updater\PropertyRemoverInterface``
+* ``Akeneo\Component\StorageUtils\Updater\PropertyCopierInterface``
 
 Instantiate a New ObjectUpdaterInterface
 ----------------------------------------
 
 The product updater ``Pim\Component\Catalog\Updater\ProductUpdater`` implements the ``Akeneo\Component\StorageUtils\Updater\ObjectUpdaterInterface``.
 
-The product updater is available has a service, you can fetch it from the container.
+The product updater is available as a service, you can fetch it from the container.
 
 .. code-block:: php
 
@@ -34,7 +39,7 @@ The product updater is available has a service, you can fetch it from the contai
 
 .. note::
 
-    We provide several services which implements `ObjectUpdaterInterface` to manipulate other business models (family, attribute, etc).
+    We provide several services which implements the same interface to update other business models (family, attribute, etc).
 
 .. warning::
 
@@ -42,17 +47,17 @@ The product updater is available has a service, you can fetch it from the contai
 
    We target to respect the Single Responsibility Principle (SRP) in our classes, feel free to use these different services through a `Facade` if it ease your developments.
 
-Use the Object Updater
-----------------------
+Use the ObjectUpdaterInterface
+------------------------------
 
 Then we can apply many property updates on a product.
 
 .. code-block:: php
 
     $fieldUpdates = [
-        "sku": [["locale": null, "scope":  null, "data":  "MySku"]],
-        "description": [["locale": "en_US", "scope": "mobile", "data": "My description"]]
-        "categories": ["tshirt", "promo"],
+        "sku"         => [["locale": null, "scope":  null, "data":  "MySku"]],
+        "description" => [["locale": "en_US", "scope": "mobile", "data": "My description"]]
+        "categories"  => ["tshirt", "promo"],
     ];
     $this->updater->update($product, $fieldUpdates);
 
@@ -61,12 +66,12 @@ Then we can apply many property updates on a product.
     The standard array format used for property updates can be obtained by normalizing product values like this,
     "$container->get('pim_serializer')->normalize($values, 'json', ['entity' => 'product'])".
 
-Instanciate a New PropertySetterInterface
+Instantiate a New PropertySetterInterface
 -----------------------------------------
 
 The product property setter implements the ``Akeneo\Component\StorageUtils\Updater\PropertySetterInterface``.
 
-It's available has a service, you can fetch it from the container.
+It's available as a service, you can fetch it from the container.
 
 .. code-block:: php
 
@@ -81,27 +86,27 @@ The property setter replace the data if it already exists.
 
 .. code-block:: php
 
-    // sets a data in the product name (an attribute)
+    // sets data in the product name (an attribute)
     $propertySetter->setData($product, 'name', 'my name');
 
-    // sets a data in the product name (a field)
+    // sets data in the product name (a field)
     $propertySetter->setData($product, 'categories', ['category_code1', 'category_code2']);
 
-    // sets a localizable and scopable product attribute data
+    // sets localizable and scopable product attribute data
     $propertySetter->setData($product, 'description', 'my description', ['locale' => 'en_US', 'scope' => 'mobile']);
 
 .. note::
 
-    This service has been reworked since the 1.3 to add the support of doctrine fields, become more complete and consistent with other property updaters.
+    This service has been reworked in the 1.4 to add the support of doctrine fields (before the 1.4, it was available only for attribute values).
 
-    The method 'ProductUpdater::setValue()' is now deprecated, you should use the `PropertySetterInterface::setData()`.
+    The method ``Pim\Bundle\CatalogBundle\Updater\ProductUpdater::setValue()`` is now deprecated, you should use the ``Akeneo\Component\StorageUtils\Updater\PropertySetterInterface::setData()``.
 
-Instanciate a New PropertyAdderInterface
+Instantiate a New PropertyAdderInterface
 -----------------------------------------
 
 The product property adder implements the ``Akeneo\Component\StorageUtils\Updater\PropertyAdderInterface``.
 
-It's available has a service, you can fetch it from the container.
+It's available as a service, you can fetch it from the container.
 
 .. code-block:: php
 
@@ -110,26 +115,26 @@ It's available has a service, you can fetch it from the container.
 Use the PropertyAdderInterface
 ------------------------------
 
-The property adder allows to add an item in a single property (doctrine field data or attribute data) which contain a collection.
+The property adder allows to add an item in a single property (doctrine field data or attribute data) which contains a collection.
 
-This one is only available for properties that contains many items (as categories, options, prices).
+This one is only available for properties that contains several items (as categories, options, prices).
 
 The property adder keep the existing items and add a new item inside.
 
 .. code-block:: php
 
-    // adds a data in the product color (a multiselect attribute)
+    // adds data in the product color (a multiselect attribute)
     $propertyAdder->addData($product, 'color', ['red']);
 
-    // adds a data in the product categories (a field)
+    // adds data in the product categories (a field)
     $propertyAdder->addData($product, 'category', ['tshirt', 'promo']);
 
-Instanciate a New PropertyRemoverInterface
+Instantiate a New PropertyRemoverInterface
 ------------------------------------------
 
 The product property remover implements the ``Akeneo\Component\StorageUtils\Updater\PropertyRemoverInterface``.
 
-It's available has a service, you can fetch it from the container.
+It's available as a service, you can fetch it from the container.
 
 .. code-block:: php
 
@@ -138,11 +143,11 @@ It's available has a service, you can fetch it from the container.
 Use the PropertyRemoverInterface
 --------------------------------
 
-The property remover allows to remove an item from a single property (doctrine field data or attribute data) which contain a collection.
+The property remover allows to remove an item from a single property (doctrine field data or attribute data) which contains a collection.
 
-This one is only available for properties that contains many items (as categories, options, prices).
+This one is only available for properties that contains several items (as categories, options, prices).
 
-The property remover keep the existing items and remove only the provided items.
+The property remover keeps the existing items and remove only the provided items.
 
 .. code-block:: php
 
@@ -152,12 +157,12 @@ The property remover keep the existing items and remove only the provided items.
     // removes the product from the category "promo" (a field)
     $propertyRemover->removeData($product, 'category', ['promo']);
 
-Instanciate a New PropertyCopierInterface
+Instantiate a New PropertyCopierInterface
 -----------------------------------------
 
 The product property copier implements the ``Akeneo\Component\StorageUtils\Updater\PropertyCopierInterface``.
 
-It's available has a service, you can fetch it from the container.
+It's available as a service, you can fetch it from the container.
 
 .. code-block:: php
 
@@ -170,7 +175,7 @@ The property remover allows to copy a data from a property to another property (
 
 .. code-block:: php
 
-    // copy the english name of the $fromProduct to the english description of the $toProduct
+    // copy the English name of the $fromProduct to the English description of the $toProduct
     // note that from_scope and to_scope are also available for scopable attributes
     $propertyCopier->copyData(
         $fromProduct,
@@ -182,9 +187,9 @@ The property remover allows to copy a data from a property to another property (
 
 .. note::
 
-    This service has been reworked since the 1.3 to add the support of doctrine fields, become more complete and consistent with other property updaters.
+    This service has been reworked in the 1.4 to add the support of doctrine fields (before the 1.4, it was available only for attribute values).
 
-    The method 'ProductUpdater::copyValue()' is now deprecated, you should use the `PropertyCopierInterface::copyData()`.
+    The method ``Pim\Bundle\CatalogBundle\Updater\ProductUpdater::copyValue()`` is now deprecated, you should use the ``Akeneo\Component\StorageUtils\Updater\PropertyCopierInterface::copyData()``.
 
 Add a Custom FieldSetterInterface
 ---------------------------------
@@ -195,7 +200,7 @@ If you add a doctrine field in the Product model, you need to implement the rela
 
 Both of these interfaces extends ``Pim\Component\Catalog\Updater\Setter\SetterInterface``.
 
-A setter must implement this interface and be declared as a tagged service.
+A setter must implement this interface and be declared as a tagged service with the tag 'pim_catalog.updater.setter'.
 
 Through a compiler pass, this service is finaly registered in the setter registry ``Pim\Component\Catalog\Updater\Setter\SetterRegistry``.
 
@@ -215,7 +220,7 @@ For example, assuming that you have your own 'acme_catalog_number' attribute typ
 
 .. note::
 
-    The best way to create you own is to take on look on existing implementation and try to find one close to the case you want achieve.
+    The best way to achieve your own is to take a look on existing implementation and try to find one close to the case you want achieve.
 
 Add a Custom FieldAdderInterface
 --------------------------------
