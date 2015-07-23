@@ -10,3 +10,4 @@ This chapter gives details on how using the internal API to manipulate products,
    update-product
    validate-product
    save-product
+   remove-product
