@@ -65,9 +65,7 @@ It will return a `Akeneo\Component\StorageUtils\CursorInterface` on the products
 
 This interface is "storage agnostic" and allows to iterate over the products in the same way for Doctrine ORM and MongoDBODM.
 
-As it implements a Cursor it avoid to load all the products in memory, it uses an internal pagination TODO???
-
-TODO: detach???
+As it implements a Cursor it avoid to load all the products in memory, it uses an internal pagination, to load them page per page.
 
 We strongly advise to use this way to execute queries on products.
 
