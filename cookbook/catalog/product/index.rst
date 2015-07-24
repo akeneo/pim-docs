@@ -5,9 +5,9 @@ This chapter gives details on how using the internal API to manipulate products,
 
 .. toctree::
 
-   query-products
-   create-product
-   update-product
-   validate-product
-   save-product
-   remove-product
+   query
+   create
+   update
+   validate
+   save
+   remove
