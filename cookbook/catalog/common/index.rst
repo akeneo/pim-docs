@@ -5,8 +5,9 @@ This chapter gives details on how to programmatically manipulate other catalog o
 
 .. toctree::
 
-   catalog/manipulate-attribute
-   catalog/manipulate-family
-   validation/customize_validation
-   category/add-properties-to-category
-
+   query
+   create
+   update
+   validate
+   save
+   remove
