@@ -1,20 +1,24 @@
 Cookbook
 ========
 
-.. note::
+.. tip::
 
-   Provided examples are packed as bundles and are usable in your PIM project, clone
-   https://github.com/akeneo/pim-docs, add a symlink to src/Acme then register demo bundles in your AppKernel
+    Akeneo PIM is an OOP application, based on the framework Symfony 2, it also widely uses Doctrine ORM.
+    If you don't know one of these, the best move you can do is begin by read the `Symfony documentation`_ and `Doctrine documentation`_
+
+.. _Symfony documentation: https://symfony.com/doc/current/index.html
+.. _Doctrine documentation: http://doctrine-orm.readthedocs.org/en/latest/
 
 .. toctree::
     :maxdepth: 2
 
     setup_data/customize_installer
-    product/manipulate-product
-    catalog
+    catalog/product/index
+    catalog/common/index
     catalog_structure/index
     import_export/index
     ui
     acl/define-acl
     notification/how_to_add_a_notification
     rest_api/get-product
+    validation/customize_validation
