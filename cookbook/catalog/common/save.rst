@@ -8,7 +8,7 @@ Use the Saver to Save a Single Object
 
 You can save one or many objects of a kind with a dedicated service, the saver checks that the used object is supported (for instance, you can't use the attribute saver to save a family).
 
-We define these different services to ease the future changes and allow you to override only one of them to add a specific business logic.
+We define these different services to ease the future changes and allow you to override only one of them to add specific business logic.
 
 Some services already use specific classes but most of these services use the class ``Akeneo\Bundle\StorageUtilsBundle\Doctrine\Common\Saver\BaseSaver``.
 
@@ -42,7 +42,7 @@ Use the Saver with Options
 
 You can use the following extra boolean options as second parameter when you save objects.
 
-If the 'flush' option is passed with 'true', the object will be saved in database.
+If the 'flush' option is passed with 'true', the object will be saved in database (the default 'flush' value is 'true').
 
 .. code-block:: php
 

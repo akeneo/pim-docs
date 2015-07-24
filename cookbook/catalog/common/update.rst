@@ -12,7 +12,7 @@ The version 1.4 introduces a new internal API to ease these updates, it especial
 
 These updaters implements a ``Akeneo\Component\StorageUtils\Updater\ObjectUpdaterInterface`` to apply a set of property updates on an object.
 
-We strongly advise to use this internal API for your developments and there is few examples on how to use these dedicated updaters.
+We strongly advise to use this internal API for your developments and there are few examples on how to use these dedicated updaters.
 
 .. warning::
 
@@ -29,8 +29,8 @@ Here we can apply many property updates on any fields of an attribute.
 
     $updater = $this->getContainer()->get('pim_catalog.updater.attribute');
     $fieldUpdates = [
-        'labels' => ['en_US' => 'Test1', 'fr_FR' => 'Test2'],
-        'group' => 'marketing',
+        'labels'        => ['en_US' => 'Test1', 'fr_FR' => 'Test2'],
+        'group'         => 'marketing',
         'attributeType' => 'pim_catalog_text'
     ];
     $this->updater->update($attribute, $fieldUpdates);

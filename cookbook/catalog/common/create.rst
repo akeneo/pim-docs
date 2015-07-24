@@ -1,11 +1,11 @@
 How to Create Non-Product Objects
 =================================
 
-To create common objects, we rely on different methods depending on the complexity of the object, there is few examples on how to use these services.
+To create common objects, we rely on different methods depending on the complexity of the object, there are few examples on how to use these services.
 
 .. note::
 
-    To ease the override of any object in your projects, we avoid any direct use of 'new MyObject()' in our code. We rely on services which implement a "creational pattern" and where we inject a config parameter, for instance, 'pim_catalog.entity.family.class'.
+    To ease the override of any object in your projects, we avoid any direct use of 'new MyObject()' in our code. We rely on services which implement a "creational pattern" where we inject a config parameter, for instance, 'pim_catalog.entity.family.class'.
 
 Use the AttributeFactory to Create a New Attribute
 --------------------------------------------------

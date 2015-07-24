@@ -12,7 +12,7 @@ The validator is a service, you can fetch it from the container
 
     $validator = $this->getContainer()->get('validator');
 
-When you can validate an attribute, a family or another object, all business validation are applied.
+When you can validate an attribute, a family or another object, all business validations are applied.
 
 .. code-block:: php
 

@@ -6,14 +6,14 @@ Prerequisites
 
 The Akeneo PIM project introduces services to help you manage your objects.
 
-Product is the main object of the application and had a large set of services to build and execute queries.
+Product is the main object of the application and has a large set of services to build and execute queries.
 
 For all other simpler objects (as Attribute, Family, Category, Channel, Locale etc), we use quite common Doctrine repositories.
 
 Instantiate an ObjectRepository
 -------------------------------
 
-Doctrine is very used in the application for persisting and reading information to and from a database.
+Doctrine is widely used in the application for persisting and reading information to and from a database.
 
 For each object, a repository which implements ``Doctrine\Common\Persistence\ObjectRepository`` is provided.
 
@@ -22,8 +22,8 @@ These classes embed the logic to build and execute queries and are defined as se
 .. code-block:: php
 
     $attributeRepository = $this->container->get('pim_catalog.repository.attribute');
-    $categoryRepository = $this->container->get('pim_catalog.repository.category');
-    $localeRepository = $this->container->get('pim_catalog.repository.locale');
+    $categoryRepository  = $this->container->get('pim_catalog.repository.category');
+    $localeRepository    = $this->container->get('pim_catalog.repository.locale');
     // ...
 
 Use an ObjectRepository
@@ -49,7 +49,7 @@ The following methods are available.
 
 .. note::
 
-    Don't hesitate to take a look on Doctrine documentation for further information
+    Don't hesitate to take a look on Doctrine documentation for further information.
 
 Each dedicated repository also implements its own business interface, for instance, ``Pim\Bundle\CatalogBundle\Repository\AttributeRepositoryInterface``.
 
@@ -58,8 +58,8 @@ This business interface provides several dedicated methods and we strongly advis
 .. code-block:: php
 
     $attributeCode = $attributeRepository->getIdentifierCode();
-    $categories = $categoryRepository->getAllChildrenIds($myCategory);
-    $locales = $localeRepository->getActivatedLocales();
+    $categories    = $categoryRepository->getAllChildrenIds($myCategory);
+    $locales       = $localeRepository->getActivatedLocales();
     // ...
 
 .. tip::
