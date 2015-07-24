@@ -35,7 +35,7 @@ The ``Pim\Bundle\CatalogBundle\Factory\FamilyFactory`` is available as a service
     // fetch the factory from the container
     $factory = $this->getContainer()->get('pim_catalog.factory.family');
 
-    // create an family, internally, the attribute requirement for the identifier attribute is directly added
+    // create a family, internally, the attribute requirement for the identifier attribute is directly added
     $family = $factory->createFamily();
     $family->setCode('mynewfamilycode');
 
@@ -49,7 +49,7 @@ The ``Pim\Bundle\CatalogBundle\Factory\CategoryFactory`` is available as a servi
     // fetch the factory from the container
     $factory = $this->getContainer()->get('pim_catalog.factory.category');
 
-    // create an category
+    // create a category
     $category = $factory->createCategory();
     $category->setCode('mynewcategorycode');
 

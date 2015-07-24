@@ -4,7 +4,7 @@ How to Update Non-Product Objects
 Prerequisites
 -------------
 
-The Akeneo PIM project introduces services to help you to manage your business objects.
+The Akeneo PIM project introduces services to help you manage your business objects.
 
 The update of an object can be done through the use of classic setters directly on the model.
 
@@ -23,7 +23,7 @@ We strongly advise to use this internal API for your developments and there are 
 Use the AttributeUpdater to Update an Attribute
 -----------------------------------------------
 
-Here we can apply many property updates on any fields of an attribute.
+Here we can apply several property updates on any fields of an attribute.
 
 .. code-block:: php
 
@@ -61,7 +61,7 @@ Here we can apply many property updates on any fields of a family.
 Use the CategoryUpdater to Update a Category
 --------------------------------------------
 
-Here we can apply many property updates on any fields of a category.
+Here we can apply several property updates on any fields of a category.
 
 .. code-block:: php
 
@@ -73,8 +73,8 @@ Here we can apply many property updates on any fields of a category.
             'fr_FR' => 'Ma superbe catégorie',
         ],
     ];
-    $this->updater->update(category, $fieldUpdates);
+    $this->updater->update($category, $fieldUpdates);
 
 .. tip::
 
-    The same approach is used for other business objects, to know all the updatable fields you can take a look on our Specs, for instance, ``spec\Pim\Component\Catalog\Updater\\CategoryUpdaterSpec``
+    The same approach is used for other business objects, to know all the updatable fields you can take a look on our Specs, for instance, ``spec\Pim\Component\Catalog\Updater\CategoryUpdaterSpec``

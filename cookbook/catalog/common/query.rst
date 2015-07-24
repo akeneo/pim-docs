@@ -64,4 +64,4 @@ This business interface provides several dedicated methods and we strongly advis
 
 .. tip::
 
-    In your own developments, you should always put the code which build and execute queries in your own repositories.
+    In your own developments, you should always put the code which builds and executes queries in your own repositories.

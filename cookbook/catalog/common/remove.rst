@@ -8,7 +8,7 @@ Use the Remover to Remove a Single Object
 
 You can remove one or many objects of a kind with a dedicated service, the remover checks that the used object is supported (for instance, you can't use the attribute remover to remove a family).
 
-We define these different services to ease the future changes and allow you to override only one of them to add a specific business logic.
+We define these different services to ease the future changes and allow you to override only one of them to add a specific business logic (for instance, override only attribute remover but not the family remover).
 
 Some services already use specific classes but most of these services use the class ``Akeneo\Bundle\StorageUtilsBundle\Doctrine\Common\Remover\BaseRemover``.
 

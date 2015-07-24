@@ -20,7 +20,7 @@ When you can validate an attribute, a family or another object, all business val
     $violations = $validator->validate($attribute);
     // ...
 
-It returns here a list of violation errors, a 'Symfony\Component\Validator\ConstraintViolationList'.
+It returns here a list of violation errors, a ``Symfony\Component\Validator\ConstraintViolationList``.
 
 .. warning::
 
