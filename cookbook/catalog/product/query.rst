@@ -96,6 +96,23 @@ Then you can use a "classic" Doctrine execute (with custom hydration, etc),
 
     This way should be deserved to special cases, when you want to use capabilities only available on the real storage (ex: MongoDB aggregate) or to use expressions not supported by the PQB.
 
+Use the Product Repositories
+----------------------------
+
+You can also use different Product Repositories, which provide business queries.
+
+.. code-block:: php
+
+    /** implements Pim\Bundle\CatalogBundle\Repository\ProductRepositoryInterface */
+    $repository = $this->container->get('pim_catalog.repository.product');
+
+    /** implements Pim\Bundle\CatalogBundle\Repository\ProductCategoryRepositoryInterface */
+    $repository = $this->container->get('pim_catalog.repository.product_category');
+
+.. note::
+
+    You can take a look on related interfaces to see the list of available methods
+
 Use the Query Command
 ---------------------
 
