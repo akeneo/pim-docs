@@ -1,24 +1,7 @@
 How to Create a New Connector
 =============================
 
-Like your catalog, your data sources, channels and business rules are unique.
-
-This is why a common task is to work on connectors to import and export the PIM data as expected.
-
-Akeneo PIM comes with a set of configurable connectors based on re-usable classes and services.
-
-Main Concepts
--------------
-
-A connector can be packaged as a Symfony bundle.
-
-It contains jobs such as imports and exports.
-
-Each job is composed of steps, by default, each step contains a reader, a processor and a writer.
-
-These elements provide their expected configuration to be used.
-
-For instance, to import a CSV file as products, the reader reads each line, the processor transforms them into products, and the writer then saves the products.
+We'll implement here a very minimalist Connector.
 
 Create our Connector
 --------------------
@@ -76,7 +59,9 @@ You can run the job from UI or you can use following command:
 Create our Specific Connector
 -----------------------------
 
-In the previous section, the main concepts behind connectors were explained. We have created a new connector which uses existing parts, until we were able to reproduce the native CSV product export features but on a different connector.
+In the previous section, the main concepts behind connectors were explained.
+
+We have created a new connector which uses existing parts, until we were able to reproduce the native CSV product export features but on a different connector.
 
 Now, let's code a specific connector :doc:`/cookbook/import_export/create-specific-connector`
 
