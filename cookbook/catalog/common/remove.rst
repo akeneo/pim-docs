@@ -24,7 +24,7 @@ Some services already use specific classes but most of these services use the cl
     $categoryRemover->remove($category);
 
 Use the Remover to Remove many Objects
-----------------------------------
+--------------------------------------
 
 .. code-block:: php
 
