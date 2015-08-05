@@ -1,7 +1,7 @@
 How to Create a New Connector
 =============================
 
-We'll implement here a very minimalist Connector.
+We'll implement here a very minimalist Connector, it will do nothing but allow us to understand main concepts.
 
 Create our Connector
 --------------------
@@ -10,14 +10,21 @@ Here, we'll create a new simple connector which uses existing services.
 
 Create a new Symfony bundle:
 
-.. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/AcmeDemoConnectorBundle.php
-   :language: php
-   :linenos:
+.. code-block:: php
+
+    <?php
+
+    namespace Acme\Bundle\DemoConnectorBundle;
+
+    use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+    class AcmeDemoConnectorBundle extends Bundle
+    {
+    }
 
 Register the bundle in AppKernel:
 
 .. code-block:: php
-    :linenos:
 
     public function registerBundles()
     {
