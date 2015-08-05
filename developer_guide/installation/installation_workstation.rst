@@ -215,22 +215,18 @@ Follow them only if you want use the MongoDB catalog storage**
 Installing MongoDB
 ******************
 
-**Ubuntu 12.10 & 13.10 only**
-
 .. code-block:: bash
     :linenos:
 
     $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
     $ sudo echo deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen | sudo tee /etc/apt/sources.list.d/mongodb-10gen.list > /dev/null
     $ sudo apt-get update
-    $ sudo apt-get install mongodb-10gen
+    $ sudo apt-get install mongodb-10gen=2.4.14
 
-**Ubuntu 14.04 only**
+.. note::
 
-.. code-block:: bash
-    :linenos:
-
-    $ sudo apt-get install mongodb-server
+    Akeneo PIM may works with more recent versions of MongoDB, but we strongly advise you to use this one.
+    To avoid updates, you can freeze the version with, for apt/dpkg: ``sudo echo "mongodb-10gen hold" | sudo dpkg --set-selections`` or for aptitude: ``sudo aptitude hold mongodb-10gen``
 
 Installing MongoDB PHP driver
 *****************************
