@@ -46,4 +46,4 @@ In ``Resources/config/batch_jobs.yml``, we use a first step to export products i
 
 You may have noticed that we use a custom class for the notification step and we define the handler as a step element.
 
-That's it, you can now connect to the PIM and begin to configure and use your new export!
+That's it, you can now connect to the PIM and begin configuring and using your new export!

@@ -23,9 +23,9 @@ It implements ``Akeneo\Component\StorageUtils\Saver\SaverInterface`` and ``Akene
 Save the Products with Options
 ------------------------------
 
-You can use following extra boolean options as second parameter when you save products.
+You can use an array of the following extra options (booleans) as a second parameter when you save products.
 
-If the 'flush' option is passed with 'true', the object will be saved in database.
+If the 'flush' option is passed with 'true', the object will be saved to the database.
 
 If the 'recalculate' option is passed with 'true', the product completeness will be directly computed.
 
@@ -37,23 +37,23 @@ If the 'schedule' option is passed with 'true', the product completeness will be
 
 .. note::
 
-    The 'schedule' is more efficient than the 'recalculate', the computation is done later with a cron on the command 'pim:completeness:calculate'.
+    The 'schedule' option is more efficient than 'recalculate', the computation is made later with a cron task on the command 'pim:completeness:calculate'.
 
-Dive into the Save
+Dive into the Saver
 ------------------
 
-Internally, the Saver uses a persist() and flush() from Doctrine ObjectManager.
+Internally, the Saver uses persist() and flush() methods from Doctrine ObjectManager.
 
-You should never use directly persist() and flush() in other services, if you have do so please put these classes in the Doctrine folder of your bundle.
+You should never use persist() and flush() directly in other services, if you have do so please put these classes in the Doctrine folder of your bundle.
 
-Avoid the use of persist() and flush() in your other classes will also ease your future migrations.
+Avoiding the use of persist() and flush() in your other classes will also facilitate your future migrations.
 
 This change is part of our effort to decouple the Doctrine logic from the Business logic.
 
 
-Since the 1.4, we use the changeTrackingPolicy DEFERRED_EXPLICIT in the mapping of almost every objects (except the Version model).
+Since the 1.4, we use the changeTrackingPolicy DEFERRED_EXPLICIT value in the mapping of almost every object (except for the Version model).
 
-It avoids Doctrine to check all the objects to know which one have been really updated. Now only objects that are explicitely persisted are computed by the unit of work. This is much more faster and secure.
+It avoids Doctrine to check all the objects to know which one has really been updated. Now only objects that are explicitly persisted are computed by the unit of work. This is much faster and more secure.
 
 Before 1.4,
 
@@ -81,14 +81,14 @@ Extra in Enterprise Edition
 
 In Enterprise Edition, with the WorkflowBundle features, the behavior is a bit more complex and you can use different Savers.
 
-The classic product saver with the same behaviour than in Community Edition.
+The classic product saver has the same behaviour as the Community Edition.
 
 .. code-block:: php
 
     $saver = $this->getContainer()->get('pim_catalog.saver.product');
     $saver->save($product);
 
-The delegating product saver, which checks the permissions of the current user to save the working copy (the community product) or to save a product draft.
+The delegating product saver checks the permissions of the current user to save the working copy (the community product) or to save a product draft.
 
 .. code-block:: php
 

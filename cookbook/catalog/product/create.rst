@@ -21,5 +21,5 @@ Use the ProductBuilder to Create a new Product
     // create a product with a sku (default identifier attribute) and no family
     $product = $productBuilder->createProduct($identifier);
 
-    // create a product without identifier and family
+    // create a product without identifier or family
     $product = $productBuilder->createProduct();

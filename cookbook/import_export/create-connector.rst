@@ -107,6 +107,9 @@ You can run the job with the following command:
 
     php app/console akeneo:batch:job myJobInstance
 
+
 .. note::
 
-    This job is not configurable through the PIM UI, we'll see in next chapters how to write configurable jobs.
+    This job is not configurable through the PIM UI, we'll see in the next chapters how to write configurable jobs.
+
+Now, let's code a specific connector :doc:`/cookbook/import_export/create-specific-connector`

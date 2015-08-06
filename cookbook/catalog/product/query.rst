@@ -45,7 +45,7 @@ Add filters:
         ->addFilter('description', 'STARTS WITH', 'My desc', ['locale' => 'fr_FR', 'scope' => 'mobile'])
         // filter on price
         ->addFilter('price', '>', ['data' => 70, 'currency' => 'EUR'])
-        // filter on metric
+        // filter on a metric
         ->addFilter('weight', '<', ['data' => 1, 'unit' => 'KILOGRAM']);
 
 Add sorters:
@@ -55,19 +55,19 @@ Add sorters:
     $pqb
         ->addSorter('family', 'ASC')
         ->addSorter('price', 'DESC')
-        // sort by completeness, the locale and scope is expected, if not provided, the default one are used
+        // to sort by completeness, the locale and the scope are expected, if not provided, the default ones are used
         ->addSorter('completeness', 'DESC', ['locale' => 'fr_FR', 'scope' => 'mobile']);
 
 Execute the Query to Get a Cursor
 ---------------------------------
 
-It will return a `Akeneo\Component\StorageUtils\CursorInterface` on the products collection.
+It will return an `Akeneo\Component\StorageUtils\CursorInterface` on the products collection.
 
 This interface is "storage agnostic" and allows to iterate over the products in the same way for Doctrine ORM and MongoDBODM.
 
-As it implements a Cursor it avoid to load all the products in memory, it uses an internal pagination, to load them page per page.
+As it implements a Cursor, it avoids to load all the products in memory and uses an internal pagination to load them page per page.
 
-We strongly advise to use this way to execute queries on products.
+We strongly advise to use this method to execute queries on products.
 
 .. code-block:: php
 
@@ -88,13 +88,13 @@ Then you can use a "classic" Doctrine execute (with custom hydration, etc),
     // can be a `Doctrine\ORM\QueryBuilder` or `Doctrine\ODM\MongoDB\Query\Builder`
     $queryBuilder = $pqb->getQueryBuilder();
     // ...
-    // my custom code which manipulate the query builder
+    // my custom code which manipulates the query builder
     // ...
     $queryBuilder->getQuery()->execute();
 
 .. warning::
 
-    This way should be deserved to special cases, when you want to use capabilities only available on the real storage (ex: MongoDB aggregate) or to use expressions not supported by the PQB.
+    This should be reserved for special cases, when you want to use operations only available in the real storage mechanism (ex: MongoDB aggregate) or expressions not supported by the PQB.
 
 Use the Product Repositories
 ----------------------------
@@ -134,7 +134,7 @@ By default this command returns a table formatted list of products on the standa
     | 3   | AKNTS_BPM   |
     | ... | ...         |
     +-----+-------------+
-    20 first products on 112 matching these criterias
+    20 first products on 112 matching these criteria
 
 You can use the option `json-output` to obtain a json result.
 
@@ -158,9 +158,9 @@ Filters are tagged services (implementing FilterInterface), they are registered 
 
 The PQB uses the registry to resolve the filter to use.
 
-A filter can be used on field (means on doctrine fields of product mapping as id, family, etc) or on attribute (means on product value, as a sku, a name, etc).
+A filter can be used on a field (meaning on doctrine fields of product mapping, such as id, family, etc), or on an attribute (meaning on a product value, such as a sku, a name, etc).
 
-To add your own filter, you need to create a class implementing ``Pim\Bundle\CatalogBundle\Query\Filter\FieldFilterInterface`` and/or ``Pim\Bundle\CatalogBundle\Query\Filter\AttributeFilterInterface`` and declare a service as:
+To add your own filter, you need to create a class implementing ``Pim\Bundle\CatalogBundle\Query\Filter\FieldFilterInterface`` and/or ``Pim\Bundle\CatalogBundle\Query\Filter\AttributeFilterInterface`` and declare it as a service:
 
 .. code-block:: yaml
 
@@ -173,12 +173,12 @@ To add your own filter, you need to create a class implementing ``Pim\Bundle\Cat
         tags:
             - { name: 'pim_catalog.doctrine.query.filter', priority: 30 }
 
-Here we define a boolean filter which supports '=' operator and can be applied on 'enabled' field or on an attribute with 'pim_catalog_boolean' type.
+Here we define a boolean filter which supports '=' operator and can be applied on the 'enabled' field or on an attribute with 'pim_catalog_boolean' type.
 
 Add a Custom Sorter
 -------------------
 
-Sorter implementation mechanism is very close to the filter one, another registry, the interface `Pim\Bundle\CatalogBundle\Query\Sorter\SorterInterface` to implement and a tagged service to declare as:
+Sorter implementation mechanism is very similar to the filter one: a registry, the interface `Pim\Bundle\CatalogBundle\Query\Sorter\SorterInterface` to implement and a tagged service to declare as follows:
 
 .. code-block:: yaml
 
