@@ -46,7 +46,7 @@ Charset Validation Step
 
 The purpose of this step it to validate that the input file has the expected encoding (UTF-8 by default).
 
-This step is a custom step, no a default ``ItemStep``, so we need to define here the class to use ``%pim_connector.step.validator.class%``.
+This step is a custom step, not a default ``ItemStep``, so we need to define the custom class to use with the parameter ``class`` and the value ``%pim_connector.step.validator.class%``.
 
 .. code-block:: yaml
 
@@ -58,16 +58,16 @@ This step is a custom step, no a default ``ItemStep``, so we need to define here
             charsetValidator: pim_connector.validator.item.charset_validator
     [...]
 
-This parameter is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\steps.yml``.
+This parameter ``pim_connector.step.validator.class`` is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\steps.yml``.
 
 .. code-block:: yaml
 
     parameters:
         pim_connector.step.validator.class: Pim\Component\Connector\Step\ValidatorStep
 
-We can also see that we inject a service ``pim_connector.validator.item.charset_validator`` in the step.
+We can also see that we inject a service ``pim_connector.validator.item.charset_validator`` in this step.
 
-This service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\steps.yml``.
+This service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\items.yml``.
 
 .. code-block:: yaml
 
@@ -79,7 +79,7 @@ This service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\ste
             class: %pim_connector.validator.item.charset_validator.class%
 
 
-The constructor of the ``CharsetValidator`` show that it's configured to check only file which match some extensions and that it checks the 'UTF-8' encoding.
+The constructor of the ``CharsetValidator`` show that it's configured to check only a file which match some extensions and to check the 'UTF-8' encoding.
 
 .. code-block:: php
 
@@ -118,7 +118,7 @@ The ``Akeneo\Bundle\BatchBundle\Entity\StepExecution`` allows to add information
 
 .. code-block:: php
 
-    // add a info message when the check is not performed
+    // for instance, add a info message when the check is not performed
     $this->stepExecution->addSummaryInfo(
         'charset_validator.title',
         'job_execution.summary.charset_validator.skipped'
@@ -126,7 +126,7 @@ The ``Akeneo\Bundle\BatchBundle\Entity\StepExecution`` allows to add information
 
 .. note::
 
-    This charset validator step can be re-used in any import jobs which deal with files.
+    This charset validator step can be re-used in other jobs (we use it in all file imports).
 
 .. note::
 
@@ -135,7 +135,7 @@ The ``Akeneo\Bundle\BatchBundle\Entity\StepExecution`` allows to add information
 Product Import Step
 -------------------
 
-The purpose of this step it to read input file, to transform lines to product objects, to validate and save them in the PIM.
+The purpose of this step it to read input CSV file, to transform lines to product objects, to validate and save them in the PIM.
 
 This step is a default step, an ``Akeneo\Bundle\BatchBundle\Step\ItemStep`` is instanciated and injected.
 
@@ -157,7 +157,7 @@ We provides here specific implementations for these elements, the services are d
 Product Reader
 --------------
 
-This element reads a CSV file and returns item by item with the following format (only index each CSV line with field names).
+This element reads a CSV file and returns item one by one with the following format (it indexes each CSV line with field names).
 
 .. code-block:: php
 
@@ -185,12 +185,12 @@ The class ``Pim\Component\Connector\Reader\File\CsvProductReader`` extends a bas
 
 .. note::
 
-    This step is able to extract a Zip archive which contains a CSV and a folder which contains images. The CSV file has to reference the files as relative path.
+    This step is able to extract a Zip archive which contains a CSV file and a folder for related images or files. The CSV file has to reference the files as relative path.
 
 Product Processor - Overview
 ----------------------------
 
-This element receives item one by one, fetches or creates the related product, updates it and validates it.
+This element receives item one by one, fetches or creates the related product, updates and validates it.
 
 The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\processors.yml``.
 
@@ -266,6 +266,12 @@ The class ``Pim\Component\Connector\ArrayConverter\Flat\ProductStandardConverter
 
     If you read another kind of file, xls, xml, json, etc, if you manage to convert the input array data to this format, all the other parts of the import will be reusable.
 
+.. note:
+
+    We tend to use this standard array format everywhere in the PIM, for imports, backend process, product edit form, variant group values, proposals, etc.
+
+    The versionning will be reworked in a future version to use it too.
+
 Product Processor - IdentifiableObjectRepositoryInterface
 ---------------------------------------------------------
 
@@ -281,7 +287,7 @@ The ``Pim\Bundle\CatalogBundle\Doctrine\ORM\Repository\ProductRepository`` imple
 Product Processor - ProductBuilderInterface
 -------------------------------------------
 
-If the product doesn't exist yet, this service allows to create it with its identifier and family code.
+If the product doesn't exist yet, we use this service to create it with its identifier and family code.
 
 .. code-block:: php
 
@@ -308,9 +314,11 @@ The service uses the class ``Pim\Component\Catalog\Comparator\Filter\ProductFilt
 
     This parameter can have a large impact on the performance.
 
-    When your import handles a file of existing products with a lot of columns but few updated values, it may divides the execution time by 2.
+    When your import handles a file of existing products with a lot of columns but few updated values, it may divides the execution time by ~2.
 
-    When your import handles a file of existing products when all values are changed, it may causes an overhead of 15%.
+    When your import handles a file of existing products when all values are changed, it may causes an overhead of ~15%.
+
+    Don't hesitate to test and use different configurations for different product imports.
 
 Product Processor - ObjectUpdaterInterface
 ------------------------------------------
@@ -319,7 +327,7 @@ Once fetched or created, this service allows to apply updates on the product.
 
 The format used by the update method is the Standard Format array.
 
-Note that the updates are applied in memory, nothing is yet saved in database.
+An important point to understand is that the updates are applied only in memory, nothing is yet saved in database.
 
 .. code-block:: php
 
@@ -340,7 +348,7 @@ This services uses a ``Symfony\Component\Validator\Validator\ValidatorInterface`
 
 If violations are encountered, the product is skipped and the violation message is added in the execution report.
 
-When an item is skipped, or nor returned by the processor, the writer doesn't receive it and it's not saved.
+When an item is skipped, or not returned by the processor, the writer doesn't receive it and it's not saved.
 
 .. code-block:: php
 
@@ -351,8 +359,92 @@ When an item is skipped, or nor returned by the processor, the writer doesn't re
 
 .. note::
 
-    You can notice here a very specific use of the ``ObjectDetacherInterface``, it allows to detach the product from the Doctrine UOW to avoid issues with skipped product and the ProductAssociation step.
+    You can notice here a very specific use of the ``ObjectDetacherInterface``, it allows to detach the product from the Doctrine Unit Of Work to avoid issues with skipped product and the ProductAssociation Step.
 
-    This detach operation is not the responsibility of the processor and is a kind of workaround.
+    This detach operation is not the responsibility of the processor and the use here is a kind of workaround.
 
+Product Writer - Overview
+-------------------------
 
+This element receives the validated products and save them to the database.
+
+The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\writers.yml``.
+
+.. code-block:: yaml
+
+    parameters:
+        pim_connector.writer.doctrine.product.class:             Pim\Component\Connector\Writer\Doctrine\ProductWriter
+
+    services:
+        pim_connector.writer.doctrine.product:
+            class: %pim_connector.writer.doctrine.product.class%
+            arguments:
+                - '@pim_catalog.manager.media'
+                - '@pim_versioning.manager.version'
+                - '@pim_catalog.saver.product'
+                - '@akeneo_storage_utils.doctrine.object_detacher'
+
+The class ``Pim\Component\Connector\Writer\Doctrine\ProductWriter`` mainly delegates the operations to different technical and business services.
+
+.. code-block:: php
+
+    /**
+     * Constructor
+     *
+     * @param MediaManager                $mediaManager
+     * @param VersionManager              $versionManager
+     * @param BulkSaverInterface          $productSaver
+     * @param BulkObjectDetacherInterface $detacher
+     */
+    public function __construct(
+        MediaManager $mediaManager,
+        VersionManager $versionManager,
+        BulkSaverInterface $productSaver,
+        BulkObjectDetacherInterface $detacher
+    ) {
+        // ...
+    }
+
+Product Writer - BulkSaverInterface
+-----------------------------------
+
+This service allows to save many objects in the database.
+
+For the products, the implementation ``Pim\Bundle\CatalogBundle\Doctrine\Common\Saver\ProductSaver`` is used.
+
+A dedicated chapter explain how it works.
+
+Product Writer - BulkObjectDetacherInterface
+--------------------------------------------
+
+This service allows to detach many objects from the Doctrine Unit Of Work to avoid to keep them in memory.
+
+In other terms, it avoids to keep all the processed objects in memory.
+
+A dedicated chapter explain how it works.
+
+Product Association Import Step
+-------------------------------
+
+Once the products are imported, this step allows to handle associations between products.
+
+We use a dedicated step to be sure that all valid products have already been saved when we link them.
+
+The purpose of this step it to read input file, to transform lines to product association objects, to validate and save them in the PIM.
+
+This step is a default step, an ``Akeneo\Bundle\BatchBundle\Step\ItemStep`` is instanciated and injected.
+
+.. code-block:: yaml
+
+    [...]
+    import_associations:
+        title:         pim_connector.jobs.csv_product_import.import_associations.title
+        services:
+            reader:    pim_connector.reader.file.csv_association
+            processor: pim_connector.processor.denormalization.product_association.flat
+            writer:    pim_connector.writer.doctrine.product_association
+    [...]
+
+We provides here specific implementations for these elements, the services are declared with aliases ``pim_connector.reader.file.csv_association``, ``pim_connector.processor.denormalization.product_association.flat``, ``pim_connector.writer.doctrine.product_association``.
+
+This step is composed of quite similar parts of the product import step but relatively more simple because it handles fewer use cases.

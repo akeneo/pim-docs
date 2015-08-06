@@ -1,12 +1,10 @@
 How to Create a New Connector
 =============================
 
-We'll implement here a very minimalist Connector, it will do nothing but allow us to understand main concepts.
+We'll implement here a very minimalist Connector, it will do nothing but allow us to understand the main concepts and overall architecture.
 
 Create our Connector
 --------------------
-
-Here, we'll create a new simple connector which uses existing services.
 
 Create a new Symfony bundle:
 
@@ -54,9 +52,7 @@ Create a file ``Resources/config/batch_jobs.yml`` in our Bundle to configure a n
                             processor: pim_connector.processor.dummy_item
                             writer:    pim_connector.writer.dummy_item
 
-Here we use some existing dummy reader, processor and writer.
-
-Nothing will happen with this job but it's a good way to discover different concepts.
+Here we use some existing dummy reader, processor and writer (they implement relevant interfaces and are useable but they do nothing with data).
 
 The reader is implemented in the class ``Pim\Component\Connector\Reader\DummyItemReader``, it's defined as a service in the ConnectorBundle with the alias ``pim_connector.reader.dummy_item`` in the file ``Resources\config\readers.yml``.
 
@@ -64,7 +60,7 @@ The processor is implemented in the class ``Pim\Component\Connector\Processor\Du
 
 The writer is implemented in the class ``Pim\Component\Connector\Writer\DummyItemWriter``, it's defined as a service in the ConnectorBundle with the alias ``pim_connector.writer.dummy_item`` in the file ``Resources\config\writers.yml``.
 
-We'll see in next cookbook chapters on how to create your own elements.
+We'll explain in next cookbook chapters how to create your own elements with real logic inside.
 
 Translate Job and Step titles
 -----------------------------
@@ -94,7 +90,7 @@ Our demo job does not take any configuration, we can create an instance with the
     # akeneo:batch:create-job <connector> <job> <type> <code> <config> [<label>]
     php app/console akeneo:batch:create-job 'Demo Connector' demo_job export myJobInstance '[]'
 
-You can also list the existing job instance with the following command:
+You can also list the existing job instances with the following command:
 
 .. code-block:: bash
 
