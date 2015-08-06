@@ -262,6 +262,10 @@ This service allows to transform the CSV array of items to the Standard Format a
 
 The class ``Pim\Component\Connector\ArrayConverter\Flat\ProductStandardConverter`` provides a specific implementation to handle product data.
 
+.. note:
+
+    If you read another kind of file, xls, xml, json, etc, if you manage to convert the input array data to this format, all the other parts of the import will be reusable.
+
 Product Processor - IdentifiableObjectRepositoryInterface
 ---------------------------------------------------------
 
@@ -277,23 +281,78 @@ The ``Pim\Bundle\CatalogBundle\Doctrine\ORM\Repository\ProductRepository`` imple
 Product Processor - ProductBuilderInterface
 -------------------------------------------
 
-TODO
+If the product doesn't exist yet, this service allows to create it with its identifier and family code.
 
-Product Processor - ObjectUpdaterInterface
-------------------------------------------
+.. code-block:: php
 
-TODO
+    $product = $this->builder->createProduct($identifier, $familyCode);
 
-.. note:
-
-    We tend to use this Standard Format everywhere,
-
-Product Processor - ValidatorInterface
---------------------------------------
-
-TODO
+The service uses the class ``̀Pim\Bundle\CatalogBundle\Builder\ProductBuilder``.
 
 Product Processor - ProductFilterInterface
 ------------------------------------------
 
-TODO
+When a product already exists, this service allows to normalize the current product data to the Standard Format array.
+
+Then it compares the current data against the update data provided by the StandardArrayConverterInterface to provide only new or changed values.
+
+This comparison mode can be enabled or disabled with the configuration parameter ``enabledComparison`` of the product import.
+
+.. code-block:: php
+
+    $filteredItem = $this->filterIdenticalData($product, $convertedItem);
+
+The service uses the class ``Pim\Component\Catalog\Comparator\Filter\ProductFilter``.
+
+.. note::
+
+    This parameter can have a large impact on the performance.
+
+    When your import handles a file of existing products with a lot of columns but few updated values, it may divides the execution time by 2.
+
+    When your import handles a file of existing products when all values are changed, it may causes an overhead of 15%.
+
+Product Processor - ObjectUpdaterInterface
+------------------------------------------
+
+Once fetched or created, this service allows to apply updates on the product.
+
+The format used by the update method is the Standard Format array.
+
+Note that the updates are applied in memory, nothing is yet saved in database.
+
+.. code-block:: php
+
+    $this->updater->update($product, $filteredItem);
+
+The service uses the class ``Pim\Component\Catalog\Updater\ProductUpdater``.
+
+Product Processor - ValidatorInterface
+--------------------------------------
+
+Once updated, the product is validated by this service.
+
+This services uses a ``Symfony\Component\Validator\Validator\ValidatorInterface``.
+
+.. code-block:: php
+
+    $violations = $this->validator->validate($product);
+
+If violations are encountered, the product is skipped and the violation message is added in the execution report.
+
+When an item is skipped, or nor returned by the processor, the writer doesn't receive it and it's not saved.
+
+.. code-block:: php
+
+    if ($violations->count() > 0) {
+        $this->detachProduct($product);
+        $this->skipItemWithConstraintViolations($item, $violations);
+    }
+
+.. note::
+
+    You can notice here a very specific use of the ``ObjectDetacherInterface``, it allows to detach the product from the Doctrine UOW to avoid issues with skipped product and the ProductAssociation step.
+
+    This detach operation is not the responsibility of the processor and is a kind of workaround.
+
+
