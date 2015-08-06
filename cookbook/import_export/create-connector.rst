@@ -52,7 +52,7 @@ Create a file ``Resources/config/batch_jobs.yml`` in our Bundle to configure a n
                             processor: pim_connector.processor.dummy_item
                             writer:    pim_connector.writer.dummy_item
 
-Here we use some existing dummy reader, processor and writer (they implement relevant interfaces and are useable but they do nothing with data).
+Here we use an existing dummy reader, a processor and a writer (they implement relevant interfaces and are useable but they do nothing with data).
 
 The reader is implemented in the class ``Pim\Component\Connector\Reader\DummyItemReader``, it's defined as a service in the ConnectorBundle with the alias ``pim_connector.reader.dummy_item`` in the file ``Resources\config\readers.yml``.
 
@@ -81,9 +81,11 @@ Create a Job Instance
 
 Each Job can be configured through a JobInstance, an instance of the Job.
 
-Means that we can define a job and many instances of this one, with different configurations.
+It means we can define a job and several instances of it, with different configurations.
 
-Our demo job does not take any configuration, we can create an instance with the following command:
+Please note that this job instance does not take any configuration.
+
+We can create an instance with the following command:
 
 .. code-block:: bash
 
@@ -107,4 +109,4 @@ You can run the job with the following command:
 
 .. note::
 
-    This job is not configurable and runnable from the UI (it doesn't contain expected configuration).
+    This job is not configurable through the PIM UI, we'll see in next chapters how to write configurable jobs.

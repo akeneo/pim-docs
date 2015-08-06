@@ -34,11 +34,11 @@ It contains classes, services and configurations to register new Jobs in Akeneo 
 Job
 ---
 
-The main batch domain object, it represents an explicit abstraction representing the configuration of a job specified by a developer.
+Being the main batch domain object, a job is an explicit abstraction representing its configuration specified by a developer
 
-``Akeneo\Bundle\BatchBundle\Job\JobRepositoryInterface`` handles how job are stored, updated and retrieved.
+``Akeneo\Bundle\BatchBundle\Job\JobRepositoryInterface`` handles how jobs are stored, updated and retrieved.
 
-``Akeneo\Bundle\BatchBundle\Launcher\JobLauncherInterface``` allows to run a Job.
+``Akeneo\Bundle\BatchBundle\Launcher\JobLauncherInterface`` allows to run a Job.
 
 Each Job can be composed of different Steps.
 
@@ -51,11 +51,11 @@ It contains a ``Akeneo\Bundle\BatchBundle\Item\ItemReaderInterface``, a ``Akeneo
 
 .. image:: ./batch-item-step.png
 
-For instance, when we import a CSV file as products,
+For instance, when we import a CSV file of products,
 
-* Reader, reads all CSV lines and provides them as an array item, one by one
-* Processor, transforms an array item to a product object and returns it
-* Writer, writes a chunk of objects in database
+* Reader reads all CSV lines and provides them as an array item, one by one
+* Processor transforms an array item to a product object and returns it
+* Writer writes a chunk of objects in database
 
 .. note::
 

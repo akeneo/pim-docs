@@ -44,7 +44,7 @@ We can also count 3 defined steps, ``validation``, ``import`` and ``import_assoc
 Charset Validation Step
 -----------------------
 
-The purpose of this step it to validate that the input file has the expected encoding (UTF-8 by default).
+The purpose of this step is to validate that the input file has the expected encoding (UTF-8 by default).
 
 This step is a custom step, not a default ``ItemStep``, so we need to define the custom class to use with the parameter ``class`` and the value ``%pim_connector.step.validator.class%``.
 
@@ -78,8 +78,7 @@ This service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\ite
         pim_connector.validator.item.charset_validator:
             class: %pim_connector.validator.item.charset_validator.class%
 
-
-The constructor of the ``CharsetValidator`` show that it's configured to check only a file which match some extensions and to check the 'UTF-8' encoding.
+The constructor of the ``CharsetValidator`` shows that it's configured to check only a file which matches some extensions and to check the 'UTF-8' encoding.
 
 .. code-block:: php
 
@@ -91,9 +90,9 @@ The constructor of the ``CharsetValidator`` show that it's configured to check o
     public function __construct(array $whiteListExtension = ['xls', 'xslx', 'zip'], $charset = 'UTF-8', $maxErrors = 10)
     // ...
 
-You can define your own service with the same class to validate other kind of files or change the encoding.
+You can define your own service with the same class to validate other kinds of files or encodings.
 
-The ``getConfigurationFields()`` methods indicates that this service needs to be configured with a ``filePath``.
+The ``getConfigurationFields()`` method indicates that this service needs to be configured with a ``filePath``.
 
 .. code-block:: php
 
@@ -112,13 +111,13 @@ The ``getConfigurationFields()`` methods indicates that this service needs to be
         ];
     }
 
-As it implements the ``Akeneo\Bundle\BatchBundle\Step\StepExecutionAwareInterface``, the step execution will be injected and useable during the execution.
+As it implements ``Akeneo\Bundle\BatchBundle\Step\StepExecutionAwareInterface``, the step execution will be injected and useable during the execution.
 
 The ``Akeneo\Bundle\BatchBundle\Entity\StepExecution`` allows to add information, messages and counters during the execution.
 
 .. code-block:: php
 
-    // for instance, add a info message when the check is not performed
+    // for instance, add an info message when the check is not performed
     $this->stepExecution->addSummaryInfo(
         'charset_validator.title',
         'job_execution.summary.charset_validator.skipped'
@@ -130,12 +129,12 @@ The ``Akeneo\Bundle\BatchBundle\Entity\StepExecution`` allows to add information
 
 .. note::
 
-    The parsing of the bath_jobs.yml is quite `specific`, you can take a look on this class to understand it ``Akeneo\Bundle\BatchBundle\DependencyInjection\Compiler\RegisterJobsPass``.
+    The parsing of the bath_jobs.yml is quite `specific`, you can take a look at this class to understand it ``Akeneo\Bundle\BatchBundle\DependencyInjection\Compiler\RegisterJobsPass``.
 
 Product Import Step
 -------------------
 
-The purpose of this step it to read input CSV file, to transform lines to product objects, to validate and save them in the PIM.
+The purpose of this step is to read input CSV file, to transform lines to product objects, to validate and save them in the PIM.
 
 This step is a default step, an ``Akeneo\Bundle\BatchBundle\Step\ItemStep`` is instanciated and injected.
 
@@ -152,19 +151,19 @@ This step is a default step, an ``Akeneo\Bundle\BatchBundle\Step\ItemStep`` is i
 
 An ``ItemStep`` always contains 3 elements, a ``Akeneo\Bundle\BatchBundle\Item\ItemReaderInterface``, a ``Akeneo\Bundle\BatchBundle\Item\ItemProcessorInterface`` and a ``Akeneo\Bundle\BatchBundle\Item\ItemWriterInterface``.
 
-We provides here specific implementations for these elements, the services are declared with aliases ``pim_connector.reader.file.csv_product``, ``pim_connector.processor.denormalization.product.flat``, ``pim_connector.writer.doctrine.product``.
+We provide here specific implementations for these elements, the services are declared with aliases ``pim_connector.reader.file.csv_product``, ``pim_connector.processor.denormalization.product.flat``, ``pim_connector.writer.doctrine.product``.
 
 Product Reader
 --------------
 
-This element reads a CSV file and returns item one by one with the following format (it indexes each CSV line with field names).
+This element reads a CSV file and returns items one by one with the following format (it indexes each CSV line with field names).
 
 .. code-block:: php
 
     [
-      'sku' => "AKNTS_BPXS"
-      'categories' => "goodies,tshirts"
-      'clothing_size' => "xs",
+      'sku'                      => "AKNTS_BPXS"
+      'categories'               => "goodies,tshirts"
+      'clothing_size'            => "xs",
       'description-en_US-mobile' => "Akeneo T-Shirt",
     ]
 
@@ -185,12 +184,12 @@ The class ``Pim\Component\Connector\Reader\File\CsvProductReader`` extends a bas
 
 .. note::
 
-    This step is able to extract a Zip archive which contains a CSV file and a folder for related images or files. The CSV file has to reference the files as relative path.
+    This step is able to extract a Zip archive which contains a CSV file and a folder for related images or files. The CSV file has to reference the files with relative paths.
 
 Product Processor - Overview
 ----------------------------
 
-This element receives item one by one, fetches or creates the related product, updates and validates it.
+This element receives items one by one, fetches or creates the related product, updates and validates it.
 
 The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\processors.yml``.
 
@@ -245,19 +244,28 @@ This service allows to transform the CSV array of items to the Standard Format a
 
     // CSV Format
     $csvItem = [
-      'sku'                      => "AKNTS_BPXS"
-      'categories'               => "goodies,tshirts"
-      'clothing_size'            => "xs",
-      'description-en_US-mobile' => "Akeneo T-Shirt",
+      'sku'                         => 'AKNTS_BPXS'
+      'categories'                  => 'goodies,tshirts'
+      'clothing_size'               => 'xs',
+      'description-en_US-mobile'    => 'Akeneo T-Shirt',
+      'description-en_US-ecommerce' => 'Very Nice Akeneo T-Shirt',
     ];
 
     $standardItem = $this->arrayConverter->convert($csvItem);
 
     // Standard Format
     [
-        'sku'           => [ 'data' => "AKNTS_BPXS", 'locale' => null, 'scope' => null ],
-        'categories'    => [ "goodies", "tshirts" ],
-        'clothing_size' => [ 'data' => "xs", 'locale' => null, 'scope' => null ]
+        'sku'           => [
+            ['data' => 'AKNTS_BPXS', 'locale' => null, 'scope' => null]
+        ],
+        'categories'    => [ 'goodies', 'tshirts' ],
+        'clothing_size' => [
+            ['data' => 'xs', 'locale' => null, 'scope' => null]
+        ]
+        'description'   => [
+            ['data' => 'Akeneo T-Shirt', 'locale' => 'en_US', 'scope' => 'mobile'],
+            ['data' => 'Very Nice Akeneo T-Shirt', 'locale' => 'en_US', 'scope' => 'ecommerce'],
+        ]
     ]
 
 The class ``Pim\Component\Connector\ArrayConverter\Flat\ProductStandardConverter`` provides a specific implementation to handle product data.
@@ -281,8 +289,7 @@ This service allows to fetch a product by its identifier (sku by default).
 
     $product = $this->repository->findOneByIdentifier($identifier);
 
-
-The ``Pim\Bundle\CatalogBundle\Doctrine\ORM\Repository\ProductRepository`` implements ``Akeneo\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface``
+This is possible because the ``Pim\Bundle\CatalogBundle\Doctrine\ORM\Repository\ProductRepository`` implements ``Akeneo\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface``
 
 Product Processor - ProductBuilderInterface
 -------------------------------------------
@@ -300,7 +307,7 @@ Product Processor - ProductFilterInterface
 
 When a product already exists, this service allows to normalize the current product data to the Standard Format array.
 
-Then it compares the current data against the update data provided by the StandardArrayConverterInterface to provide only new or changed values.
+Then it compares the current data against the update data provided by the StandardArrayConverterInterface to present only new or changed value.
 
 This comparison mode can be enabled or disabled with the configuration parameter ``enabledComparison`` of the product import.
 
@@ -312,11 +319,11 @@ The service uses the class ``Pim\Component\Catalog\Comparator\Filter\ProductFilt
 
 .. note::
 
-    This parameter can have a large impact on the performance.
+    This parameter can have a large impact on the performance when it's enabled.
 
-    When your import handles a file of existing products with a lot of columns but few updated values, it may divides the execution time by ~2.
+    When your import handles a file of existing products with a lot of columns but few updated values, it may divide the execution time by ~2.
 
-    When your import handles a file of existing products when all values are changed, it may causes an overhead of ~15%.
+    When your import handles a file of existing products when all values are changed, it may cause an overhead of ~15%.
 
     Don't hesitate to test and use different configurations for different product imports.
 
@@ -327,7 +334,7 @@ Once fetched or created, this service allows to apply updates on the product.
 
 The format used by the update method is the Standard Format array.
 
-An important point to understand is that the updates are applied only in memory, nothing is yet saved in database.
+An important point to understand is that the updates are applied only in memory, nothing is saved in database yet.
 
 .. code-block:: php
 
@@ -340,15 +347,15 @@ Product Processor - ValidatorInterface
 
 Once updated, the product is validated by this service.
 
-This services uses a ``Symfony\Component\Validator\Validator\ValidatorInterface``.
+This service uses ``Symfony\Component\Validator\Validator\ValidatorInterface``.
 
 .. code-block:: php
 
     $violations = $this->validator->validate($product);
 
-If violations are encountered, the product is skipped and the violation message is added in the execution report.
+If violations are encountered, the product is skipped and the violation message is added to the execution report.
 
-When an item is skipped, or not returned by the processor, the writer doesn't receive it and it's not saved.
+When an item is skipped, or not returned by the processor, the writer doesn't receive it and the item is not saved.
 
 .. code-block:: php
 
@@ -361,12 +368,12 @@ When an item is skipped, or not returned by the processor, the writer doesn't re
 
     You can notice here a very specific use of the ``ObjectDetacherInterface``, it allows to detach the product from the Doctrine Unit Of Work to avoid issues with skipped product and the ProductAssociation Step.
 
-    This detach operation is not the responsibility of the processor and the use here is a kind of workaround.
+    This detach operation is not the responsibility of the processor and the use here is a workaround.
 
 Product Writer - Overview
 -------------------------
 
-This element receives the validated products and save them to the database.
+This element receives the validated products and saves them to the database.
 
 The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\writers.yml``.
 
@@ -408,20 +415,18 @@ The class ``Pim\Component\Connector\Writer\Doctrine\ProductWriter`` mainly deleg
 Product Writer - BulkSaverInterface
 -----------------------------------
 
-This service allows to save many objects in the database.
+This service allows to save several objects in the database.
 
 For the products, the implementation ``Pim\Bundle\CatalogBundle\Doctrine\Common\Saver\ProductSaver`` is used.
 
-A dedicated chapter explain how it works.
+A dedicated chapter explains how it works :doc:`/cookbook/catalog/product/save`.
 
 Product Writer - BulkObjectDetacherInterface
 --------------------------------------------
 
-This service allows to detach many objects from the Doctrine Unit Of Work to avoid to keep them in memory.
+This service allows to detach several objects from the Doctrine Unit Of Work to avoid keeping them in memory.
 
-In other terms, it avoids to keep all the processed objects in memory.
-
-A dedicated chapter explain how it works.
+In other terms, it avoids keeping all the processed objects in memory.
 
 Product Association Import Step
 -------------------------------
@@ -430,7 +435,7 @@ Once the products are imported, this step allows to handle associations between 
 
 We use a dedicated step to be sure that all valid products have already been saved when we link them.
 
-The purpose of this step it to read input file, to transform lines to product association objects, to validate and save them in the PIM.
+The purpose of this step is to read input file, to transform lines to product association objects, to validate and save them in the PIM.
 
 This step is a default step, an ``Akeneo\Bundle\BatchBundle\Step\ItemStep`` is instanciated and injected.
 
@@ -445,6 +450,6 @@ This step is a default step, an ``Akeneo\Bundle\BatchBundle\Step\ItemStep`` is i
             writer:    pim_connector.writer.doctrine.product_association
     [...]
 
-We provides here specific implementations for these elements, the services are declared with aliases ``pim_connector.reader.file.csv_association``, ``pim_connector.processor.denormalization.product_association.flat``, ``pim_connector.writer.doctrine.product_association``.
+We provide here specific implementations for these elements, the services are declared with aliases ``pim_connector.reader.file.csv_association``, ``pim_connector.processor.denormalization.product_association.flat``, ``pim_connector.writer.doctrine.product_association``.
 
 This step is composed of quite similar parts of the product import step but relatively more simple because it handles fewer use cases.
