@@ -102,7 +102,7 @@ Structure
 
 * Exception message strings should be concatenated using :phpfunction:`sprintf`.
 
-* If we expect something from a method/function (ie the returned value of the method/function is used by the caller) we should always do an explicit return (not ``return;``). 
+* If we expect something from a method/function (i.e. the returned value of the method/function is used by the caller) we should always do an explicit return (not ``return;``). 
 
 Naming Conventions
 ------------------
