@@ -97,7 +97,7 @@ The property setter replaces the data if it already exists.
 
 .. note::
 
-    This service has been reviewed in the 1.4 ans now supports doctrine fields (before the 1.4, it was only available for attribute values).
+    This service has been reviewed in the 1.4 and now supports doctrine fields (before the 1.4, it was only available for attribute values).
 
     The method ``Pim\Bundle\CatalogBundle\Updater\ProductUpdater::setValue()`` is now deprecated, you should use ``Akeneo\Component\StorageUtils\Updater\PropertySetterInterface::setData()`` instead.
 
