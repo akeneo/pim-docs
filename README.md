@@ -28,7 +28,7 @@ The documentation will be generated inside `../pim-docs-build`.
 
 
 Make documentation code work with pim-community-dev or standard
-----------------------------------------------------------------
+---------------------------------------------------------------
 
 Install pim-community
 
