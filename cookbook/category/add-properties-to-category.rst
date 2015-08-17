@@ -5,7 +5,7 @@ The Akeneo PIM allows the classification of products inside a customizable categ
 
 .. note::
 
-    To implement this task you have to be comfortable with Symfony bundle overriding and Symfony services
+    To implement this task you have to be comfortable with Symfony bundle overriding and Symfony services.
 
 Add Properties to your own Category
 -----------------------------------
@@ -41,8 +41,8 @@ You need to update your category entity parameter used in ``entities.yml`` file:
    :linenos:
 
 .. note::
-   You don't have to add a lot of code to resolve target entities doctrine configuration.
-   We already have a resolve which inject the new value for your category.
+   You don't have to add a lot of code to the doctrine configuration to resolve target entities.
+   We already have a resolver which injects the new category class name.
 
 
 The same procedure can be applied to redefine the product and product value entities.
@@ -50,14 +50,14 @@ The same procedure can be applied to redefine the product and product value enti
 Define the Category Form
 ------------------------
 
-Firstly you will have to create your custom type by inheriting the CategoryType class and then add your custom fields:
+Firstly, you have to create your custom type by inheriting the CategoryType class and then add your custom fields:
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Form/Type/CategoryType.php
     :language: php
     :prepend: # /src/Acme/Bundle/EnrichBundle/Form/Type/CategoryType.php
     :linenos:
 
-Then you have to override the service definition of your form:
+Then, you have to override the service definition of your form:
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
     :language: yaml
@@ -67,9 +67,9 @@ Then you have to override the service definition of your form:
 
 .. note::
 
-    Don't forget to add this new file in your dependency injection extension
+    Don't forget to add this new file to your dependency injection extension
 
-Then don't forget to add your new field in twig template:
+Then, don't forget to add your new field to the twig template:
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/views/CategoryTree/_tab-panes.html.twig
     :language: jinja

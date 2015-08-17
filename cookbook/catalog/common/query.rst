@@ -8,7 +8,7 @@ The Akeneo PIM project introduces services to help you manage your objects.
 
 Product is the main object of the application and has a large set of services to build and execute queries.
 
-For all other simpler objects (as Attribute, Family, Category, Channel, Locale etc), we use quite common Doctrine repositories.
+For all other simpler objects (such as Attribute, Family, Category, Channel, Locale etc), we use quite common Doctrine repositories.
 
 Instantiate an ObjectRepository
 -------------------------------
@@ -29,7 +29,7 @@ These classes embed the logic to build and execute queries and are defined as se
 Use an ObjectRepository
 -----------------------
 
-Each repository dedicated to a commnon object provides methods from the interface ``Doctrine\Common\Persistence\ObjectRepository``.
+Each repository dedicated to a common object provides methods from the interface ``Doctrine\Common\Persistence\ObjectRepository``.
 
 The following methods are available.
 
@@ -49,7 +49,7 @@ The following methods are available.
 
 .. note::
 
-    Don't hesitate to take a look on Doctrine documentation for further information.
+    Don't hesitate to have a look at Doctrine documentation for further information.
 
 Each dedicated repository also implements its own business interface, for instance, ``Pim\Bundle\CatalogBundle\Repository\AttributeRepositoryInterface``.
 

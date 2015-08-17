@@ -1,9 +1,9 @@
 How to Create a Custom Step
 ===========================
 
-Previously we discussed about :doc:`/cookbook/import_export/create-connector`
+Previously we discussed :doc:`/cookbook/import_export/create-connector`
 
-Let's see how to go further by creating a custom step which sends a notification to an URL when a product export is finished.
+Let's see how to go further by creating a custom step which sends a notification to a URL when a product export is finished.
 
 Create our Step
 ---------------
@@ -18,7 +18,7 @@ We will begin by creating a NotifyStep with its configuration and a doExecute me
 Create our Step Element
 -----------------------
 
-Then we implement a Step Element, in our case, a handler responsible for sending a ping request:
+Then, we implement a Step Element, in our case, a handler responsible for sending a ping request:
 
 .. literalinclude:: ../../src/Acme/Bundle/DemoConnectorBundle/Handler/CurlHandler.php
    :language: php

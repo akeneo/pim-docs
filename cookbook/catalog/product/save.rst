@@ -46,7 +46,7 @@ Internally, the Saver uses persist() and flush() methods from Doctrine ObjectMan
 
 You should never use persist() and flush() directly in other services, if you have do so please put these classes in the Doctrine folder of your bundle.
 
-Avoiding the use of persist() and flush() in your other classes will also facilitate your future migrations.
+Avoiding the usage of persist() and flush() in your other classes will also facilitate your future migrations.
 
 This change is part of our effort to decouple the Doctrine logic from the Business logic.
 

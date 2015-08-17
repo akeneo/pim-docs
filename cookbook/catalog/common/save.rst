@@ -1,14 +1,14 @@
 How to Save Non-Product Objects
 ===============================
 
-To save one or several objects, we provide a dedicated service which provides methods 'save' and 'saveAll' through the implementation of ``Akeneo\Component\StorageUtils\Saver\SaverInterface`` and ``Akeneo\Component\StorageUtils\Saver\BulkSaverInterface``.
+To save one or several objects, we provide a service which provides methods 'save' and 'saveAll' through the implementation of ``Akeneo\Component\StorageUtils\Saver\SaverInterface`` and ``Akeneo\Component\StorageUtils\Saver\BulkSaverInterface``.
 
 Use the Saver to Save a Single Object
 -------------------------------------
 
-You can save one or many objects of a kind with a dedicated service, the saver checks that the used object is supported (for instance, you can't use the attribute saver to save a family).
+You can save one or several objects of a kind with a dedicated service, the saver checks that the used object is supported (for instance, you can't use the attribute saver to save a family).
 
-We define these different services to ease the future changes and allow you to override only one of them to add specific business logic (for instance, override only attribute saver but not the family saver).
+We define these different services to facilitate the future changes and allow you to override only one of them to add custom business logic (for instance, override only attribute saver but not the family saver).
 
 Some services already use specific classes but most of these services use the class ``Akeneo\Bundle\StorageUtilsBundle\Doctrine\Common\Saver\BaseSaver``.
 
@@ -40,9 +40,9 @@ Use the Saver to Save many Objects
 Use the Saver with Options
 --------------------------
 
-You can use the following extra boolean options as second parameter when you save objects.
+You can use an array of the following boolean options as the second parameter when you save objects.
 
-If the 'flush' option is passed with 'true', the object will be saved in database (the default 'flush' value is 'true').
+If the 'flush' option is passed with 'true', the object will be saved to the database (the default 'flush' value is 'true').
 
 .. code-block:: php
 

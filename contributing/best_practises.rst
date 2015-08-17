@@ -1,7 +1,7 @@
 Best Practises
 ==============
 
-When contributing code on Akeneo PIM, please take into account the following guidelines
+When contributing code to Akeneo PIM, please take into account the following guidelines
 
 .. toctree::
     :maxdepth: 1

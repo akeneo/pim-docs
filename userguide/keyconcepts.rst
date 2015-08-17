@@ -7,16 +7,16 @@ What is a channel?
 
 A channel in Akeneo allows to select products and some of their information to be exported with a connector.
 
-For example, a channel for an e-commerce website, another one for the iPad application.
+For example, you can have a channel for an e-commerce website, another one for an iPad application.
 
 A channel works as a filter with the following properties:
 
 - A classification tree — it defines products to export
-- one or several :ref:`locales <locale-label>` —  it defines which values the channel requests: product information in french but not in italian, even if it exists.
-- one or several currencies — it defines which values the channel requests for prices: prices in Euro and Dollar.
-- metric conversion — it defines for each attribute typed ‘Metric’ if the values must be converted or not.
-- :ref:`Completeness <completeness-label>` — it defines which information are required or optional to select a product, depending on products family.
-- Disabled products are ignored by channels.
+- one or several :ref:`locales <locale-label>` —  it defines which values the channel requests: product information in french but not in italian, even if it exists
+- one or several currencies — it defines which values the channel requests for prices: prices in Euro and Dollar
+- metric conversion — it defines for each attribute typed ‘Metric’ if the values must be converted or not
+- :ref:`Completeness <completeness-label>` — it defines which information is required or optional to select a product, depending on products family
+- Disabled products are ignored by channels
 
 .. _locale-label:
 What is a locale?
@@ -25,7 +25,7 @@ What is a locale?
 **A locale** is the association between a language code (en, de , fr) and a country code (us, ca, uk). Each product in Akeneo can have different values per locale (for instance my product can have different values for en_us and en_ca).
 Each locale of a product has its own lifecycle.
 
-A locale is activated or deactivated. It is activated when it is requested at least by one channel. If a locale is not requested by any channel, the locale is deactivated. That means products cannot be localized for this locale.
+A locale is enabled or disabled. It is enabled when it is requested at least by one channel. If a locale is not requested by any channel, the locale is disabled. That means products cannot be localized for this locale.
 
 Akeneo supports about 250 locales.
 
@@ -49,7 +49,7 @@ The definition of completeness can vary:
 
 - from a family to another: a TV will not require the same kind of data than a book or a shirt
 - from a locale to another: you can have a complete product for your english catalog but still in a translation process for your german one
-- from a channel to another: maybe your iPad application doesn’t need the same amount of data than your e-commerce website
+- from a channel to another: maybe your iPad application doesn’t need the same amount of data as your e-commerce website
 
 Example
 ^^^^^^^
@@ -58,18 +58,18 @@ Example
 
 What is an attribute?
 ----------------------
-Attribute is the smallest entity in Akeneo, which allows to manage information about products.
+An attribute is the smallest entity in Akeneo, which allows to manage information about products.
 
 Note that the settings below can be defined and customized by your Akeneo administrator to suit your needs.
 
 General properties
 ^^^^^^^^^^^^^^^^^^
 
-Some of the most important properties are described as below.
+Some of the most important properties are described below.
 
 Code
 """"
-All attributes have an unique code which identifies them for import and export operations.
+All attributes have a unique code which identifies them for import and export operations.
 
 Type
 """"
@@ -119,9 +119,9 @@ Locale specific
 
 An attribute can be shown only for specific locales. It is useful for specific taxes for example.
 
-Unicity
+Uniqueness
 
-Akeneo can guarantee the unicity of values of an attribute, if it should be unique (mostly used for SKU attribute).
+Akeneo can guarantee the uniqueness of values of an attribute, should it be unique (mostly used for the SKU attribute).
 
 .. warning::
 
@@ -139,7 +139,7 @@ Back-end properties
 ^^^^^^^^^^^^^^^^^^^
 
 An attribute can be used for some features in Akeneo:
-- Searchable: Define if the search engine should index / use this attribute value
+- Searchable: Defines if the search engine should index / use this attribute value
 - Usable as a filter: The attribute can be used as a filter in the products grid
 - Usable as a column: The attribute can be used as a column in the products grid
 
@@ -148,7 +148,7 @@ Attribute group
 
 Each attribute can belong to an attribute group.
 
-An attribute group allows to organize the product form by theme (SEO, Marketing, General) so that the product form is more understandable.
+An attribute group allows to organize the product form by themes (SEO, Marketing, General) so that the product form is more understandable.
 
 
 .. image:: images/attribute-group.png
@@ -160,4 +160,4 @@ By default, the attribute belongs to the Akeneo’s attribute group, named “Ot
 
 .. note::
 
-    See the Akeneo Administrator’s Guide to learn how creating new attributes or attributes groups channels.
+    See the Akeneo Administrator’s Guide to learn how to create new attributes or attribute groups channels.

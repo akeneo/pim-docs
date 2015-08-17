@@ -14,7 +14,7 @@ Overview
 
 The Import/Export system is based on Akeneo BatchBundle.
 
-It helps to define "high level" jobs such as imports, exports and bulk actions.
+It helps to define "high level" jobs such as imports, exports and mass actions.
 
 There are the main objects of the architecture.
 
@@ -22,7 +22,7 @@ There are the main objects of the architecture.
 
 .. note::
 
-    Akeneo BatchBundle is very inspired by Spring Batch http://spring.io/docs, it implements a very small part of the original work, and mainly provides reusable functions to process large volumes of records.
+    Akeneo BatchBundle is drawn heavily on Spring Batch http://spring.io/docs, it implements a very small part of the original work, and mainly provides reusable functions to process large volumes of records.
 
 Connector
 ---------
@@ -34,7 +34,7 @@ It contains classes, services and configurations to register new Jobs in Akeneo 
 Job
 ---
 
-Being the main batch domain object, a job is an explicit abstraction representing its configuration specified by a developer
+Being the main batch domain object, a job is an explicit abstraction representing its configuration specified by a developer.
 
 ``Akeneo\Bundle\BatchBundle\Job\JobRepositoryInterface`` handles how jobs are stored, updated and retrieved.
 
@@ -55,7 +55,7 @@ For instance, when we import a CSV file of products,
 
 * Reader reads all CSV lines and provides them as an array item, one by one
 * Processor transforms an array item to a product object and returns it
-* Writer writes a chunk of objects in database
+* Writer writes a chunk of objects into the database
 
 .. note::
 

@@ -24,7 +24,7 @@ Create a new bundle:
    :prepend: # /src/Acme/Bundle/InstallerBundle/AcmeInstallerBundle.php
    :linenos:
 
-Register it into ``AppKernel.php``:
+Register it in ``AppKernel.php``:
 
 .. code-block:: php
    :linenos:
@@ -50,15 +50,15 @@ Register it into ``AppKernel.php``:
 Add your own Data
 -----------------
 
-Create a directory ``Resources/fixtures/mydataset`` in your bundle.
+Create the directory ``Resources/fixtures/mydataset`` in your bundle.
 
-Copy the ``*.yml`` and ``*.csv`` files from Installer bundle into the ``mydataset`` directory of your bundle.
+Copy all ``*.yml`` and ``*.csv`` files from Installer bundle into the ``mydataset`` directory of your bundle.
 
 .. note::
 
-  Since 1.4 we tend to use only csv format in installer to make easier to export data from the PIM and put them in installer to be able to deploy on other envs.
+  Since 1.4, we aim to use only csv format in the installer in order to make it easier to export data from the PIM and to put it back into the installer fixtures to be able to deploy on other environments.
 
-Then edit the files, for example, to declare your own channels:
+Then, edit the files, for example, to declare your own channels:
 
 .. literalinclude:: ../../src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/channels.yml
    :language: yaml
@@ -67,13 +67,13 @@ Then edit the files, for example, to declare your own channels:
 
 .. tip::
 
-  You can take a look at `Pim/Bundle/InstallerBundle/Resources/fixtures/minimal` to see what is the expected format and which
-  fixtures are absolutely needed, then you can take inspiration from `Pim/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev` to add optional objects.
+  You can take a look at `Pim/Bundle/InstallerBundle/Resources/fixtures/minimal` to see what the expected format is and which
+  fixtures are absolutely needed, then you can draw heavily on `Pim/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev` to add optional objects.
 
 Install the DB
 --------------
 
-Update the ``app/config/parameters.yml`` to use your data set:
+Update ``app/config/parameters.yml`` to use your data set:
 
 .. literalinclude:: ../../app/config/parameters.yml
    :language: yaml

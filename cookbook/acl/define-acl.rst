@@ -1,7 +1,7 @@
 How to Define Access Control List
 =================================
 
-Access control consists of two steps:
+Access control is composed of two steps:
 
 - Creating ACL resources
 - Enforcing the rights
@@ -94,7 +94,7 @@ Enforcing the rights
 
 Controller actions with @Acl or @AclAncestor annotations are already protected.
 To allow conditional access to other resources, you can either use the ``SecurityFacade`` component
-or enforce rights directly in templates.
+or enforce permissions directly in templates.
 
 - Using ``SecurityFacade``:
     .. code-block:: yaml

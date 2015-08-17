@@ -1,7 +1,7 @@
 How to Customize the Catalog Structure
 ======================================
 
-This chapter gives details on how customizing the catalog structure to add your own models or update existing ones.
+This chapter describes how to customize the catalog structure to add your own models or update the existing ones.
 
 .. toctree::
 

@@ -2,20 +2,20 @@ How to Register a New Mass Edit Action on Products
 ==================================================
 
 The Akeneo PIM comes with a number of mass edit actions.
-It also comes with a flexible way to define your own mass edit action
+It also comes with a flexible way to define your own mass edit actions
 on selected products.
 
 
 Prerequisite
 ------------
 The mass edit action uses the `BatchBundle
-<https://github.com/akeneo/BatchBundle/>`_ in order to run mass edit in background. Readers and Writers are already
+<https://github.com/akeneo/BatchBundle/>`_ in order to run mass edit in the background. Readers and Writers are already
 created so in this cookbook we will focus on how to create a Mass Edit Action and create a Processor.
 For more information on how to create Jobs, Readers, Processors, or Writers please see :ref:`create-specific-connector`.
 
 Work with a custom Acme bundle
 ------------------------------
-Your custom Mass Edit actions have to be in a custom Acme bundle which inherit our ``EnrichBundle``.
+Your custom Mass Edit actions have to be in a custom Acme bundle which inherits from our ``EnrichBundle``.
 Once your bundle is created, we must inform Symfony it inherits our Bundle:
 
 .. code-block:: php
@@ -43,11 +43,11 @@ Phase 1: Create the Operation
     **Operations** are designed to build and transport the configuration (*eventually via a form*) that will be sent to the background job.
     No item is updated from here!
 
-The first step is to create a new class in the Operation folder that extends ``AbstractMassEditOperation`` and declare this new class as a service in the mass_actions.yml file
+The first step is to create a new class in the Operation folder that extends ``AbstractMassEditOperation`` and declare this new class as a service in the mass_actions.yml file.
 
 The method ``getBatchJobCode()`` is very important as it determines which job process to use. In our example we will use the ``capitalize_values`` job.
 
-The ``getItemsName()`` method is used for the UI, in order to properly show with which items the user is working on. For this one, we are working on 'product' type.
+The ``getItemsName()`` method is used for the UI, in order to properly show with which items the user is working. In our example, we are working on 'product' type.
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/MassEditAction/Operation/CapitalizeValues.php
    :language: php
@@ -74,7 +74,7 @@ Phase 2: Create the FormType
 
 .. tip::
 
-    As the **Operation** is used to build configuration, we could need a ``FormType`` that will be shown during the configuration step on the UI. Use it to show whatever is usefull to you: Select, Input...
+    As the **Operation** is used to build configuration, we could need a ``FormType`` that will be shown during the configuration step in the UI. Use it to show whatever is useful to you: Select, Input...
 
 For this cookbook, we do not need the user to configure this action, so we'll use an empty ``FormType``:
 
@@ -162,4 +162,4 @@ Once you have realized the previous operations (and eventually cleared your cach
 Akeneo will generate for you a translation key following this pattern:
 ``pim_enrich.mass_edit_action.%alias%.label``.
 
-You may now define some translation keys (``label, description and success_flash``) in your translation catalog(s).
+You may now define some translation keys (``label, description and success_flash``) in your translations catalog(s).

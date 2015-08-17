@@ -24,10 +24,10 @@ The service is called: ``@pim_notification.manager.notification``
             tags:
                 - { name: kernel.event_subscriber }
 
-Here, we inject the service in an event subscriber but you can inject it wherever
-you have an action to notify to a user.
+Here, we inject the service in an event subscriber, but you can inject it wherever
+you have an action to notify a user.
 
-Then, add it in your constructor
+Then, add it to your constructor as follows:
 
 .. code-block:: php
 
@@ -92,4 +92,4 @@ The optional route parameter will be:
 
 If the messageParams option is provided, it will be passed to the message when translating it.
 
-The context allows to store some extra data in the notification, it is not displayed on the UI by default.
+The context allows to store some extra data in the notification, it is not displayed in the UI by default.

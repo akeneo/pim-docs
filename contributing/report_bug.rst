@@ -1,7 +1,7 @@
 Report a Bug
 ============
 
-* Check if the issue is reproductible on http://demo.akeneo.com/user/login
+* Check if the issue is reproducible on http://demo.akeneo.com/user/login
 * Check if this issue is already known: https://github.com/akeneo/pim-community-dev/issues
 * Install https://github.com/akeneo/pim-community-dev master
 * Reproduce the bug
