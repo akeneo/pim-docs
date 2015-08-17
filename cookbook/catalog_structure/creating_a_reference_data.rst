@@ -138,8 +138,8 @@ In order to create your reference data, you have to respect the following rules:
     }
 
 .. note::
-    To ease the integration of the entity in the PIM, we extended the abstract class
-    `Pim\\Component\\ReferenceData\\Model\\AbstractReferenceData`. This is the recommended way to do but you can simply
+    To facilitate the integration of the entity in the PIM, we extended the abstract class
+    `Pim\\Component\\ReferenceData\\Model\\AbstractReferenceData`. This is the recommended way to do, but you can simply
     implement the interface `Pim\\Component\\ReferenceData\\Model\\ReferenceDataInterface` if you want.
 
 .. code-block:: yaml
@@ -186,8 +186,8 @@ You can check that you have correctly mapped your `Color` entity by using the fo
 Overriding the ProductValue
 ---------------------------
 
-Depending on your needs, a product can be linked to several colors or just to one.
-The first case will be called *simple reference data* while the second will be referred as *multiple reference data*.
+Depending on your needs, a product can be linked to several colors or just one.
+The first case will be called *simple reference data* while the second will be referred to as *multiple reference data*.
 
 To link your reference data to the product, you need to override the `ProductValue` object.
 This task is documented here :doc:`overriding_the_orm_product_value` or here :doc:`overriding_the_mongodb_product_value` depending on your product storage.
@@ -233,4 +233,3 @@ You can now check the setup and the configuration of your reference data with th
     php app/console pim:reference-data:check
 
 If everything is green, your reference data are correctly configured and you can now link them to products with the PIM.
-

@@ -1,10 +1,10 @@
 How to Override the ORM Product Value
 =====================================
 
-In some cases, you may need to extend and replace the `Pim:Catalog:ProductValue` to be able to link some objects with it.
+In some cases, you may need to extend and replace the `Pim:Catalog:ProductValue` to be able to link some objects to it.
 
-For example, let’s say we want to link the product values with a `Color` model.
-Depending on your needs, a product value can be linked to several colors or just to one.
+For example, let’s say we want to link the product values to a `Color` model.
+Depending on your needs, a product value can be linked to several colors or just one.
 The first case will be detailed in `Linking the ProductValue to a Simple Object`_
 while the second is documented in `Linking the ProductValue to a Collection of Objects`_.
 
@@ -17,7 +17,7 @@ Linking the ProductValue to a Simple Object
 Overriding the class
 ********************
 
-First, we need to extend and replace to the native `Pim:Catalog:ProductValue` class:
+First, we need to extend and replace the native `Pim:Catalog:ProductValue` class:
 
 .. code-block:: php
 
@@ -61,7 +61,7 @@ First, we need to extend and replace to the native `Pim:Catalog:ProductValue` cl
 Overriding the mapping
 **********************
 
-Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.orm.yml` of the PIM inside
+Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.orm.yml` of the PIM to
 the `Resources/config/doctrine` folder of one of your bundles.
 
 First, replace the name of the class by your own class, and change the name of the table:
@@ -73,7 +73,7 @@ First, replace the name of the class by your own class, and change the name of t
         type: entity
         table: acme_catalog_product_value
 
-The name of the join tables for all `ManyToMany` associations must also be changed:
+The names of the join tables for all `ManyToMany` associations must also be changed:
 
 .. code-block:: yaml
 
@@ -119,7 +119,7 @@ Linking the ProductValue to a Collection of Objects
 Overriding the class
 ********************
 
-First, we need to extend and replace to the native `Pim:Catalog:ProductValue` class:
+First, we need to extend and replace the native `Pim:Catalog:ProductValue` class:
 
 .. code-block:: php
 
@@ -189,7 +189,7 @@ First, we need to extend and replace to the native `Pim:Catalog:ProductValue` cl
 Overriding the mapping
 **********************
 
-Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.orm.yml` of the PIM inside
+Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.orm.yml` of the PIM to
 the `Resources/config/doctrine` folder of one of your bundles.
 
 First, replace the name of the class by your own class, and change the name of the table:
@@ -202,7 +202,7 @@ First, replace the name of the class by your own class, and change the name of t
         table: acme_catalog_product_value
 
 
-The name of the join tables for all `ManyToMany` associations must also be changed:
+The names of the join tables for all `ManyToMany` associations must also be changed:
 
 .. code-block:: yaml
 

@@ -6,13 +6,13 @@ To validate an object, we use a classic Symfony Validator with Constraints defin
 Use the Validator
 -----------------
 
-The validator is a service, you can fetch it from the container
+The validator is a service, you can fetch it from the container.
 
 .. code-block:: php
 
     $validator = $this->getContainer()->get('validator');
 
-When you can validate an attribute, a family or another object, all business validations are applied.
+When you validate an attribute, a family or another object, all business validations are applied.
 
 .. code-block:: php
 

@@ -1,10 +1,10 @@
 How to Override the MongoDB Product Value
 =========================================
 
-In some cases, you may need to extend and replace the `Pim:Catalog:ProductValue` to be able to link some objects with it.
+In some cases, you may need to extend and replace the `Pim:Catalog:ProductValue` to be able to link some objects to it.
 
-For example, let’s say we want to link the product values with a `Color` model.
-Depending on your needs, a product value can be linked to several colors or just to one.
+For example, let’s say we want to link the product values to a `Color` model.
+Depending on your needs, a product value can be linked to several colors or just one.
 The first case will be detailed in `Linking the ProductValue to a Simple Object`_
 while the second is documented in `Linking the ProductValue to a Collection of Objects`_.
 
@@ -17,7 +17,7 @@ Linking the ProductValue to a Simple Object
 Overriding the class
 ********************
 
-First, we need to extend and replace to the native `Pim:Catalog:ProductValue` class:
+First, we need to extend and replace the native `Pim:Catalog:ProductValue` class:
 
 .. code-block:: php
 
@@ -61,7 +61,7 @@ First, we need to extend and replace to the native `Pim:Catalog:ProductValue` cl
 Overriding the mapping
 **********************
 
-Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.mongodb.yml` of the PIM inside
+Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.mongodb.yml` of the PIM to
 the `Resources/config/model/doctrine` folder of one of your bundles.
 
 First, replace the name of the class by your own class:
@@ -74,7 +74,7 @@ First, replace the name of the class by your own class:
 
 Then, add your custom relations to the mapping.
 
-If your `Color` data are stored in ORM, you should use the following mapping:
+If your `Color` data is stored in ORM, you should use the following mapping:
 
 .. code-block:: yaml
 
@@ -95,7 +95,7 @@ Linking the ProductValue to a Collection of Objects
 Overriding the class
 ********************
 
-First, we need to extend and replace to the native `Pim:Catalog:ProductValue` class:
+First, we need to extend and replace the native `Pim:Catalog:ProductValue` class:
 
 .. code-block:: php
 
@@ -168,7 +168,7 @@ First, we need to extend and replace to the native `Pim:Catalog:ProductValue` cl
 Overriding the mapping
 **********************
 
-Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.mongodb.yml` of the PIM inside
+Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.mongodb.yml` of the PIM to
 the `Resources/config/model/doctrine` folder of one of your bundles.
 
 First, replace the name of the class by your own class:
@@ -181,7 +181,7 @@ First, replace the name of the class by your own class:
 
 Then, add your custom relations to the mapping.
 
-If your `Color` data are stored in ORM, you should use the following mapping:
+If your `Color` data is stored in ORM, you should use the following mapping:
 
 .. code-block:: yaml
 
@@ -216,7 +216,7 @@ Don't forget to register your `entities.yml` file in your bundle's extension.
 
 Then, you have to tell Doctrine that your MongoDB classes' mappings are located in the folder
 `Resources/config/model/doctrine` of your bundle. To do that, you have to edit the `build` method of
-your `AcmeAppBundle` class like the following:
+your `AcmeAppBundle` class as follows:
 
 .. code-block:: php
 

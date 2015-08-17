@@ -102,7 +102,7 @@ Structure
 
 * Exception message strings should be concatenated using :phpfunction:`sprintf`.
 
-* If we expect something from a method/function (i.e. the returned value of the method/function is used by the caller) we should always do an explicit return (not ``return;``). 
+* If we expect something from a method/function (i.e. the returned value of the method/function is used by the caller) we should always do an explicit return (not ``return;``).
 
 Naming Conventions
 ------------------
@@ -131,7 +131,7 @@ Visibility
 
 Protected by default and public when necessary.
 
-Useage of private is forbidden in the Core Components and Bundles.
+Usage of private is forbidden in the Core Components and Bundles.
 
 We understand the advantages and know the drawbacks, we strictly follow this rule for now.
 
@@ -171,7 +171,7 @@ Documentation
          */
 
 * The ``@package`` and ``@subpackage`` annotations are not used.
-* Write an ``use`` statement if the PHPdoc needs it, instead of writing the FQCN.
+* Write a ``use`` statement if the PHPdoc needs it, instead of writing the FQCN.
 
 License
 -------
@@ -179,9 +179,8 @@ License
 * Akeneo PIM is released under the OSL license, and the license reference has to be
   present at the top of every PHP file, in the class PHPDoc.
 
-* Some bundles as BatchBundle are released under the MIT licence, for these one, please follow the repository convention.
+* Some bundles as BatchBundle are released under the MIT license, for these ones, please follow the repository convention.
 
 .. _`PSR-0`: http://www.php-fig.org/psr/psr-0/
 .. _`PSR-1`: http://www.php-fig.org/psr/psr-1/
 .. _`PSR-2`: http://www.php-fig.org/psr/psr-2/
-

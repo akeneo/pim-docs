@@ -2,7 +2,7 @@ Getting started
 ===============
 
 .. _logging-label:
-Logging in Akeneo
+Logging in to Akeneo
 -----------------
 
 The login panel will be displayed if you have not logged in to Akeneo:
@@ -21,7 +21,7 @@ Selecting the Remember me on this computer check box will prevent you from being
 Cannot remember either your username or password
 ------------------------------------------------
 
-Click Forgot you passowrd?
+Click Forgot you password?
 Enter your username or email specified in your Akeneo user profile.
 Click Request. A URL will be emailed to the email address specified in your user profile.
 If you have forgotten the email address specified in your user profile, you will need to contact your Akeneo administrator for help.

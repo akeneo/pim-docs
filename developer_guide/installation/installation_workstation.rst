@@ -1,7 +1,7 @@
 Installation
 ============
 
-This document provides a step by step instructions to install the PIM on development workstations based on Ubuntu 12.10, 13.10 or 14.04.
+This document provides step by step instructions to install the PIM on development workstations based on Ubuntu 12.10, 13.10 or 14.04.
 
 The following instructions have been tested on fresh installations of Ubuntu 12.10, 13.10 and 14.04. The main difference between the distribution is the PHP version used (PHP 5.4 for Ubuntu 12.10 and PHP 5.5 for Ubuntu 13.10 and 14.04).
 
@@ -9,17 +9,17 @@ The following instructions have been tested on fresh installations of Ubuntu 12.
     Even if the instructions apply to Ubuntu 12.10, 13.10 and 14.04, the same process and requirements can be used for any PHP 5.4 or PHP 5.5 based Linux distribution.
 
 .. note::
-    The instructions below applies on all the aforementioned Ubuntu versions, except otherwise specified.
+    The instructions below apply on all the aforementioned Ubuntu versions, except if specified otherwise.
 
 Prerequisites
 -------------
-In order to install Akeneo, you will have to download the Akeneo PIM Standard Edition archive file from http://www.akeneo.com/download/
+In order to install Akeneo PIM, you will have to download the Akeneo PIM Standard Edition archive file from http://www.akeneo.com/download/
 
 
 System installation
 -------------------
 
-Before installing all the requirements, it's a good idea to update the repositories information:
+Before installing requirements, update repositories information:
 
 .. code-block:: bash
     :linenos:
@@ -93,7 +93,7 @@ System configuration
 MySQL
 *****
 
-* Creating a MySQL database and user for the application
+* Creating a MySQL database and a user for the application
 
 .. code-block:: bash
     :linenos:
@@ -126,12 +126,12 @@ PHP
 
 .. note::
     Use the time zone matching your location, for example *America/Los_Angeles*, *Europe/Berlin*.
-    See http://www.php.net/timezones for a list of available timezones.
+    See http://www.php.net/timezones for the list of all available timezones.
 
 Apache
 ******
 To avoid spending too much time on permission problems between the CLI user and the Apache user, an easy configuration
-is to use same user for both processes.
+is to use the same user for both processes.
 
 
 Get your identifiers
@@ -178,9 +178,9 @@ Extracting the archive
     $ tar -xvzf /path/to/pim-community-standard-version.tar.gz
 
 .. note::
-    Replace the */path/to/installation* by the path to directory where you want to install the PIM.
+    Replace */path/to/installation* by the path to the directory where you want to install the PIM.
 
-    Replace the */path/to/pim-community-standard-version.tar.gz* by the location and name of the archive
+    Replace */path/to/pim-community-standard-version.tar.gz* by the location and the name of the archive
     you have downloaded from http://www.akeneo.com/download.
 
 .. warning::
@@ -188,19 +188,19 @@ Extracting the archive
     After the extraction, a new directory usually called *pim-community-standard-version* is created
     inside the */path/to/installation* directory.
 
-    It will be our PIM root directory and will be referred to as */path/to/pim/root* in the following instructions.
+    This will be our PIM root directory and will be referred to as */path/to/pim/root* in the following instructions.
 
 Installing the vendors
 **********************
 
-* You first need to get composer. Install it in */path/to/pim/root*:
+* First, you need to get composer. Install it in */path/to/pim/root*:
 
 .. code-block:: bash
     :linenos:
 
     $ curl -sS https://getcomposer.org/installer | php
 
-* Then install the vendors:
+* Then, install the vendors:
 
 .. code-block:: bash
     :linenos:
@@ -225,7 +225,7 @@ Installing MongoDB
 
 .. note::
 
-    Akeneo PIM may works with more recent versions of MongoDB, but we strongly advise you to use this one.
+    Akeneo PIM may work with more recent versions of MongoDB, but we strongly advise you to use this one.
     To avoid updates, you can freeze the version with, for apt/dpkg: ``sudo echo "mongodb-10gen hold" | sudo dpkg --set-selections`` or for aptitude: ``sudo aptitude hold mongodb-10gen``
 
 Installing MongoDB PHP driver
@@ -250,7 +250,7 @@ Installing MongoDB PHP driver
 Installing and enabling MongoDB support in Akeneo
 *************************************************
 
-* Install the require dependency:
+* Install the required dependency:
 
 .. code-block:: bash
     :linenos:
@@ -353,7 +353,7 @@ Creating the vhost file
     The differences in Virtual Host configuration between Ubuntu 12.10
     and Ubuntu 13.10/14.04 are the result of the switch from Apache 2.2 to
     Apache 2.4. See https://httpd.apache.org/docs/2.4/upgrading.html
-    for more explanation.
+    for more details.
 
 Enabling the virtualhost
 ************************
@@ -383,8 +383,8 @@ Testing your installation
 -------------------------
 Go to http://akeneo-pim.local/ and log in with *admin/admin*.
 
-If you can see the dashboard, congratulations, you have successfully installed Akeneo PIM!
+If you see the dashboard, congratulations, you have successfully installed Akeneo PIM!
 
-You can as well access the dev environment on http://akeneo-pim.local/app_dev.php
+You can also access the dev environment on http://akeneo-pim.local/app_dev.php
 
-If you have an error, it means that something went wrong in a previous step. So please check all error output of all steps.
+If you have an error, it means that something went wrong in one of the previous steps. Please check error outputs of all the steps.

@@ -1,7 +1,7 @@
 How to Create a New Connector
 =============================
 
-We'll implement here a very minimalist Connector, it will do nothing but allow us to understand the main concepts and overall architecture.
+We'll implement here a very minimalist Connector, it will do nothing but allow us to understand the main concepts and the overall architecture.
 
 Create our Connector
 --------------------

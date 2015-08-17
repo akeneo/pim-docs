@@ -2,10 +2,10 @@ Components & Bundles
 ====================
 
 .. note::
-  Since the 1.3, Akeneo PIM introduced components, they contain business logic or technical logic not coupled to Symfony Framework or Doctrine ORM / MongoDBODM, in other hand, Bundles contain the glue to assemble components together.
+  Since the 1.3, Akeneo PIM introduced components, they contain business logic or technical logic not coupled with Symfony Framework or Doctrine ORM / MongoDBODM, although Bundles contain the glue to assemble components together.
 
 .. note::
-  We use different namespaces, Akeneo for the technical parts not coupled to the PIM, Pim for the Community Edition parts and PimEnterprise for the Enterprise Edition parts.
+  We use different namespaces, Akeneo for the technical parts not coupled with the PIM, Pim for the Community Edition parts and PimEnterprise for the Enterprise Edition parts.
 
 Akeneo components
 --------------

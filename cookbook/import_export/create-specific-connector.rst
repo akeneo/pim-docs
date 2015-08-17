@@ -3,7 +3,7 @@
 How to Create a Specific Connector
 ==================================
 
-The foundations of connector creation has been covered in the previous chapter (cf :doc:`/cookbook/import_export/create-connector`). With the following hands-on practice, we will create our own specific connector.
+The foundations of connector creation have been covered in the previous chapter (cf :doc:`/cookbook/import_export/create-connector`). With the following hands-on practice, we will create our own specific connector.
 
 To stay focused on the main concepts, we will implement the simplest connector possible by avoiding to use too many existing elements.
 
@@ -53,7 +53,7 @@ The default step is ``Akeneo\Bundle\BatchBundle\Step\ItemStep``.
 
 An item step is configured with 3 elements, a reader, a processor and a writer.
 
-As seen previously, we can use existing elements, but in this case, we will create our own elements so that you are be able to do so by yourself when needed.
+As seen previously, we can use existing elements, but in this case, we will create our own elements so that you are able to do so by yourself when needed.
 
 During the development, a good practice is to use dummy elements as in this example:
 
@@ -81,7 +81,7 @@ This element must be configured with the path of the xml file.
 
     The **help** option allows you to display a hint next to the field in the job edition form.
 
-Then we need to define this reader as a service in `readers.yml`:
+Then, we need to define this reader as a service in `readers.yml`:
 
 .. literalinclude:: ../../src/Acme/Bundle/SpecificConnectorBundle/Resources/config/readers.yml
    :language: yaml
@@ -112,7 +112,7 @@ This processor needs access the product manager which is injected in the service
    :language: yaml
    :linenos:
 
-Add Details in Summary
+Add Details to Summary
 ----------------------
 
 The execution details page presents a summary and the errors encountered during the execution. Your own information and counter can be easily added with following methods:

@@ -3,13 +3,13 @@ Code Conventions
 
 When contributing code to Akeneo PIM, you must follow its code conventions (very close to Symfony Code conventions).
 
-This is part of our Developer Xperience effort, writing these conventions allows us to share the path we want to follow to continuoulsy improve our codebase.
+This is part of our Developer Xperience effort, writing these conventions allows us to share the path we want to follow to continuously improve our codebase.
 
-There are still inconsistencies in the codebase that we'll fix in coming releases.
+There are still inconsistencies in the codebase that we'll fix in the upcoming releases.
 
-We'll continue to enhance the Best Practises section to give clear hints on:
+We'll continue to enhance the Best Practices section to give clear hints on:
 
-* how to contribute code on Akeneo PIM
+* how to contribute code to Akeneo PIM
 * how to customize Akeneo PIM in projects
 * how to create your own third party extension
 
@@ -139,4 +139,3 @@ must be used instead (where ``XXX`` is the name of the related thing):
     difference: "setXXX" may replace, or add new elements to the relation.
     "replaceXXX", on the other hand, cannot add new elements. If an unrecognized
     key is passed to "replaceXXX" it must throw an exception.
-

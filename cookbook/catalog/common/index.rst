@@ -1,4 +1,4 @@
-How to Manipulate the Non-Product Objects
+How to Manipulate Non-Product Objects
 =========================================
 
 This chapter gives details on how to programmatically manipulate other catalog objects.

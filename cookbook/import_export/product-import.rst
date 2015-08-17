@@ -58,7 +58,7 @@ This step is a custom step, not a default ``ItemStep``, so we need to define the
             charsetValidator: pim_connector.validator.item.charset_validator
     [...]
 
-This parameter ``pim_connector.step.validator.class`` is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\steps.yml``.
+The parameter ``pim_connector.step.validator.class`` is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\steps.yml``.
 
 .. code-block:: yaml
 
@@ -184,7 +184,7 @@ The class ``Pim\Component\Connector\Reader\File\CsvProductReader`` extends a bas
 
 .. note::
 
-    This step is able to extract a Zip archive which contains a CSV file and a folder for related images or files. The CSV file has to reference the files with relative paths.
+    This step is able to extract a Zip archive which contains a CSV file and a folder for related images or files. The CSV file has to use relative paths to reference the files.
 
 Product Processor - Overview
 ----------------------------
@@ -276,7 +276,7 @@ The class ``Pim\Component\Connector\ArrayConverter\Flat\ProductStandardConverter
 
 .. note:
 
-    We tend to use this standard array format everywhere in the PIM, for imports, backend process, product edit form, variant group values, proposals, etc.
+    We aim to use this standard array format everywhere in the PIM, for imports, backend processes, product edit form, variant group values, proposals, etc.
 
     The versionning will be reworked in a future version to use it too.
 
@@ -307,7 +307,7 @@ Product Processor - ProductFilterInterface
 
 When a product already exists, this service allows to normalize the current product data to the Standard Format array.
 
-Then it compares the current data against the update data provided by the StandardArrayConverterInterface to present only new or changed value.
+Then, it compares the current data against the updated data provided by the StandardArrayConverterInterface to present only new or changed value.
 
 This comparison mode can be enabled or disabled with the configuration parameter ``enabledComparison`` of the product import.
 
@@ -334,7 +334,7 @@ Once fetched or created, this service allows to apply updates on the product.
 
 The format used by the update method is the Standard Format array.
 
-An important point to understand is that the updates are applied only in memory, nothing is saved in database yet.
+An important point to understand is that the updates are applied only in memory, nothing is saved to the database yet.
 
 .. code-block:: php
 
@@ -366,9 +366,9 @@ When an item is skipped, or not returned by the processor, the writer doesn't re
 
 .. note::
 
-    You can notice here a very specific use of the ``ObjectDetacherInterface``, it allows to detach the product from the Doctrine Unit Of Work to avoid issues with skipped product and the ProductAssociation Step.
+    You can notice here a very specific usage of the ``ObjectDetacherInterface``, it allows to detach the product from the Doctrine Unit Of Work to avoid issues with skipped product and the ProductAssociation Step.
 
-    This detach operation is not the responsibility of the processor and the use here is a workaround.
+    This detach operation is not the responsibility of the processor and the usage here is a workaround.
 
 Product Writer - Overview
 -------------------------
@@ -415,9 +415,9 @@ The class ``Pim\Component\Connector\Writer\Doctrine\ProductWriter`` mainly deleg
 Product Writer - BulkSaverInterface
 -----------------------------------
 
-This service allows to save several objects in the database.
+This service allows to save several objects to the database.
 
-For the products, the implementation ``Pim\Bundle\CatalogBundle\Doctrine\Common\Saver\ProductSaver`` is used.
+For products, the implementation of ``Pim\Bundle\CatalogBundle\Doctrine\Common\Saver\ProductSaver`` is used.
 
 A dedicated chapter explains how it works :doc:`/cookbook/catalog/product/save`.
 
