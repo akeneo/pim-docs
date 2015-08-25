@@ -2,7 +2,7 @@ How to Remove Products
 ======================
 
 Instantiate the Remover
----------------------
+-----------------------
 
 The product remover is a service, you can fetch it from the container.
 
