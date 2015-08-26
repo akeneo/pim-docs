@@ -1,4 +1,6 @@
 services:
+    pim_enrich.view_element.category.tab.property.template: 'AcmeEnrichBundle:Category:Tab/my_property.html.twig'
+
     pim_enrich.view_element.category.tab.history:
         parent: pim_enrich.view_element.base
         arguments:
