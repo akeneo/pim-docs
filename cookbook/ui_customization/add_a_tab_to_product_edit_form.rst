@@ -23,7 +23,6 @@ First, we need to create a Form extension in our bundle:
     /*
      * /src/Acme/Bundle/EnrichBundle/Resources/public/js/product/form/packages.js
      */
-
     define(['pim/form'],
         function (BaseForm) {
             return BaseForm.extend({
@@ -68,12 +67,13 @@ Now that our file is registred into `requirejs` configuration, we can add this e
 
     # /src/Acme/Bundle/EnrichBundle/Resources/config/form_extensions/product_edit.yml
 
-    pim-product-edit-form-packages:                        # The form extension code (can be whatever you want)
-        module: pim/product-edit-form/packages             # The requirejs module we just created
-        parent: pim-product-edit-form-form-tabs            # The parent in the form where we wnat to be registred
-        targetZone: container
-        aclResourceId: pim_enrich_product_categories_view  # If you want to display this extension only under certain rights
-        position: 90                                       # The extension position
+    extensions:
+        pim-product-edit-form-packages:                        # The form extension code (can be whatever you want)
+            module: pim/product-edit-form/packages             # The requirejs module we just created
+            parent: pim-product-edit-form-form-tabs            # The parent extension in the form where we want to be registred
+            targetZone: container
+            aclResourceId: pim_enrich_product_categories_view  # If you want to display this extension only under certain rights
+            position: 90                                       # The extension position
 
 After a cache clear, you should the your new tab in the product edit form. If not, be sure to have run the `app/console assets:install --symlink web`
 
@@ -86,7 +86,6 @@ Now that we have our extension loaded in our form, we can add some logic into it
     /*
      * /src/Acme/Bundle/EnrichBundle/Resources/public/js/product/form/packages.js
      */
-
     define(['underscore', 'pim/form', 'text!pim/template/product/tab/packages'],
         function (_, BaseForm, template) {
             return BaseForm.extend({
@@ -152,7 +151,6 @@ Lets start by creating a form extension:
     /*
      * /src/Acme/Bundle/EnrichBundle/Resources/public/js/product/form/panel/warehouse.js
      */
-
     define(['jquery', 'underscore', 'pim/form', 'text!pim/template/product/panel/warehouse'],
         function ($, _, BaseForm, template) {
             return BaseForm.extend({
@@ -198,11 +196,12 @@ Again, we need to register it and create the template:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/config/form_extensions/product_edit.yml
 
-    pim-product-edit-form-warehouse:                  # The form extension code (can be whatever you want)
-        module: pim/product-edit-form/panel/warehouse # The requirejs module we just created
-        parent: pim-product-edit-form-panels          # The parent in the form where we wnat to be registred
-        targetZone: container
-        position: 90                                  # The extension position
+    extensions:
+        pim-product-edit-form-warehouse:                  # The form extension code (can be whatever you want)
+            module: pim/product-edit-form/panel/warehouse # The requirejs module we just created
+            parent: pim-product-edit-form-panels          # The parent extension in the form where we want to be registred
+            targetZone: container
+            position: 90                                  # The extension position
 
 .. code-block:: html
     :linenos:
