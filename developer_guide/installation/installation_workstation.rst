@@ -88,6 +88,14 @@ Installing PHP opcode and data cache
     opcode cache.
     Only the data cache provided by APCu is needed.
 
+Installing ImageMagick
+**********************
+
+.. code-block:: bash
+    :linenos:
+
+        $ sudo apt-get install imagemagick
+
 System configuration
 --------------------
 MySQL
