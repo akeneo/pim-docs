@@ -1,7 +1,7 @@
 How to add a action button or meta data to the product edit form
 ================================================================
 
-You often need to add a button to the product edit form to perform custom actions. In this cookbook, we will go through each steps needed to achieve this task. Our scenario will be pretty simple: we need to add a button to download our product in csv (like an extra small quick export on the grid). We will assume that we can call a backend action performing this action for us.
+You often need to add a button to the product edit form to perform custom actions. In this cookbook, we will go through each step needed to achieve this task. Our scenario will be pretty simple: we need to add a button to download our product in csv (like an extra small quick export on the grid). We will assume that we can call a backend action performing this action for us.
 
 Ok ? Let's go !
 
@@ -89,7 +89,7 @@ And add it to our product form:
             targetZone: buttons
             position: 90                             # The extension position
 
-You can now clear your cache and to admire your brand new button !
+You can now clear your cache and admire your brand new button !
 
 How to add a meta section
 -------------------------

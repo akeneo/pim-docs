@@ -19,7 +19,7 @@ Install [Sphinx](http://sphinx-doc.org/).
 Mac OS
 ++++++
 
-```bach
+```bash
     $ brew install python
     $ pip install sphinx
     $ pip install git+https://github.com/fabpot/sphinx-php.git

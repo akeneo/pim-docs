@@ -4,10 +4,10 @@ How to add a tab or a panel to the product edit form
 .. note::
     #Add a note to the "How to work with the front in the PIM"
 
-The most common UI customization on the Akeneo PIM is to add a tab to the product edit form. With the new product edit form introduced in 1.4 (more details here#TODO add link) we splitted tabs in two concept:
+The most common UI customization on the Akeneo PIM is to add a tab to the product edit form. With the new product edit form introduced in 1.4 (more details here#TODO add link) we splitted tabs in two concepts:
 
- - Tabs hold all edit fonctionnalities on the entity (attributes edit, classification, associations)
- - Panels hold all meta informations about the entity (history, completeness, comments)
+ - Tabs hold all edit features on the entity (attributes edit, classification, associations)
+ - Panels hold all meta information about the entity (history, completeness, comments)
 
 Add a tab to the product edit form
 ----------------------------------
@@ -47,7 +47,7 @@ First, we need to create a Form extension in our bundle:
         }
     );
 
-For now this is a pretty dummy extension, but this is a good start !
+For now this is a pretty dumb extension, but this is a good start !
 
 Let's register this file in the `requirejs` configuration
 
@@ -75,7 +75,7 @@ Now that our file is registred into `requirejs` configuration, we can add this e
             aclResourceId: pim_enrich_product_categories_view  # If you want to display this extension only under certain rights
             position: 90                                       # The extension position
 
-After a cache clear, you should the your new tab in the product edit form. If not, be sure to have run the `app/console assets:install --symlink web`
+After a cache clear, you should see your new tab in the product edit form. If not, be sure to have run the `app/console assets:install --symlink web`
 
 Now that we have our extension loaded in our form, we can add some logic into it
 
@@ -107,7 +107,7 @@ Now that we have our extension loaded in our form, we can add some logic into it
                     return this;
                 },
                 isVisible: function () {
-                    return true; //You can defined visibility of the tab at runtime with the return of this method
+                    return true; //You can define visibility of the tab at runtime with the return of this method
                 }
             });
         }

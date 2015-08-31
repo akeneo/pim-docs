@@ -10,7 +10,7 @@ How to override a view element template
 
 If you don't need to add custom logic, you can override only the template parameter.
 
-For example, to use your own template for the é property tab you can override this parameter in your ``services.yml`` file:
+For example, to use your own template for the property tab you can override this parameter in your ``services.yml`` file:
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/view_elements/category.yml
     :language: yaml
@@ -100,7 +100,7 @@ You can also register a new tab on a form. To do so, you need to register a new 
 Example
 -------
 
-Let's say that we would like to add a tab to the category edit form to manage custom attributes for our client. This tab will be visible only if the user has the right to see it and we would like to put it between the property tab and the history tab.
+Let's say that we would like to add a tab to the category edit form to manage custom attributes for our client. This tab will be visible only if the user has the permission to see it and we would like to put it between the property tab and the history tab.
 
 First of all, we need to register this tab in our ``service.yml`` file:
 
@@ -116,7 +116,7 @@ First of all, we need to register this tab in our ``service.yml`` file:
                 - 'attribute' # this is the translation key for our tab title
                 - 'AcmeEnrichBundle:Category:Tab/attribute.html.twig' # The location of your template
             tags:
-                # The proerty tab is at the 90th position and the history's one is at position 100.
+                # The property tab is at the 90th position and the history's one is at position 100.
                 - { name: pim_enrich.view_element, type: pim_category_edit.form_tab, position: 95 }
 
 You can now create your template ``/src/Acme/Bundle/EnrichBundle/Resources/views/Category/Tab/attribute.html.twig``
