@@ -1,7 +1,7 @@
 How to add custom informations to a field
 =========================================
 
-Natively we add a lot of related informations to product edit fields: data coming from a variant group, validation errors, etc. As an integrator, you can also add custom informations for your own needs and we will go through each steps in this cookbook.
+Natively we add a lot of related informations to product edit fields: data coming from a variant group, validation errors, etc. As an integrator, you can also add custom informations for your own needs and we will go through each steps in this cookbook to acheave this.
 
 Let's say that we want to display the minimum and maximum values allowed for a number field, for that we need to create a form extension listening on the `pim_enrich:form:field:extension:add` event:
 
@@ -25,8 +25,8 @@ Let's say that we want to display the minimum and maximum values allowed for a n
                     return BaseForm.prototype.configure.apply(this, arguments);
                 },
                 addFieldExtension: function (event) {
-                    //The event contains the field and an array of promises
-                    //You can add your to be sure that the field will wait for you before rendering itself
+                    //The event contains the field and an array of promises. The fiel field will wait for all the promises to be resolve before rendering.
+                    //You can add a promise to this array to be sure that the field will wait for you before rendering itself
                     event.promises.push($.Deferred().resolve().then(function () {
                         var field = event.field;
 

@@ -1,9 +1,9 @@
 How to add a new field type
 ===========================
 
-If you want a custom rendering for one of your attributes, attribute type or reference data you need to create a new field type. In this cookbook, we will got through each step needed to create a custom field type.
+If you want a custom rendering for one of your attributes, attribute type or reference data you need to create a new field type. In this cookbook, we will go through each step needed to create a custom field type.
 
-Let's say that we want to have a slider to represent each number attributes that have a minimum and a maximum value limit.
+Let's say that we want to have a slider to represent each "number attribute" that have a minimum and a maximum value limit.
 
 Before diving into code, we need to understand what's going on under the hood:
 
@@ -71,7 +71,7 @@ Next you need to register it in your service.yml file:
                 - { name: pim_enrich.provider.field, priority: 90 }
 
 
-Your field provider is now registered congrats !
+Your field provider is now registered congrats!
 
 Create the form field
 +++++++++++++++++++++
@@ -112,7 +112,7 @@ Now that we have a field provider, we can create the field itself:
         }
     );
 
-And it's template:
+And its template:
 
 .. code-block:: html
     :linenos:
@@ -143,4 +143,4 @@ Then, last opperation, match the field type (`acme-range-field`) with the requir
     attribute_fields:
         acme-range-field: acme/range-field
 
-After a cache clear, you can set the min and max value of any number attribute to start to use this new custom field !
+After a cache clear, you can set the min and max value of any number attribute to start to use this new custom field!

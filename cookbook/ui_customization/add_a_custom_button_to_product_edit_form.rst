@@ -1,9 +1,9 @@
-How to add a action button or meta data to the product edit form
-================================================================
+How to add an action button or meta data to the product edit form
+=================================================================
 
 You often need to add a button to the product edit form to perform custom actions. In this cookbook, we will go through each step needed to achieve this task. Our scenario will be pretty simple: we need to add a button to download our product in csv (like an extra small quick export on the grid). We will assume that we can call a backend action performing this action for us.
 
-Ok ? Let's go !
+Ok? Let's go!
 
 How to add a button
 -------------------
@@ -51,7 +51,7 @@ First, we need to create our button:
         }
     );
 
-With it's attached template:
+With its attached template:
 
 .. code-block:: html
     :linenos:
@@ -85,11 +85,11 @@ And add it to our product form:
     extensions:
         pim-product-edit-form-export-csv:            # The form extension code (can be whatever you want)
             module: pim/product-edit-form/export-csv # The requirejs module we just created
-            parent: pim-product-edit-form            # The parent extension in the form where we want to be registred
+            parent: pim-product-edit-form            # The parent extension in the form where we want to be registered
             targetZone: buttons
-            position: 90                             # The extension position
+            position: 90                             # The extension position (lower will be first)
 
-You can now clear your cache and admire your brand new button !
+You can now clear your cache and admire your brand new button!
 
 How to add a meta section
 -------------------------
@@ -152,8 +152,8 @@ And add it to our product form:
     extensions:
         pim-product-edit-form-meta/export-status:            # The form extension code (can be whatever you want)
             module: pim/product-edit-form/meta/export-status # The requirejs module we just created
-            parent: pim-product-edit-form                    # The parent extension in the form where we want to be registred
+            parent: pim-product-edit-form                    # The parent extension in the form where we want to be regisetred
             targetZone: meta
             position: 90                                     # The extension position
 
-As always, don't forget to clear your cache to see your new metadata !
+As always, don't forget to clear your cache to see your new metadata!
