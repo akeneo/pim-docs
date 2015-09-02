@@ -1,32 +1,33 @@
 How to add custom informations to a field
 =========================================
 
-Natively we add a lot of related informations to product edit fields: data coming from a variant group, validation errors, etc. As an integrator, you can also add custom informations for your own needs and we will go through each steps in this cookbook to acheave this.
+Natively we add a lot of related informations to product edit fields: data coming from a variant group, validation errors, etc. As an integrator, you can also add custom informations for your own needs and we will go through each steps in this cookbook to achieve this.
 
-Let's say that we want to display the minimum and maximum values allowed for a number field, for that we need to create a form extension listening on the `pim_enrich:form:field:extension:add` event:
+Let's say that we want to display the minimum and maximum values allowed for a number field, for that we need to create a form extension listening to the `pim_enrich:form:field:extension:add` event:
 
 .. code-block:: javascript
     :linenos:
 
     'use strict';
-
+    /**
+     * src/Acme/Bundle/CustomBundle/Resources/public/js/product/form/attributes/number-min-max.js
+     */
     define(
         [
             'jquery',
             'underscore',
-            'pim/form',
-            'oro/mediator'
+            'pim/form'
         ],
-        function ($, _, BaseForm, mediator) {
+        function ($, _, BaseForm) {
             return BaseForm.extend({
                 configure: function () {
-                    this.listenTo(mediator, 'pim_enrich:form:field:extension:add', this.addFieldExtension);
+                    this.listenTo(this.getRoot(), 'pim_enrich:form:field:extension:add', this.addFieldExtension);
 
                     return BaseForm.prototype.configure.apply(this, arguments);
                 },
                 addFieldExtension: function (event) {
-                    //The event contains the field and an array of promises. The fiel field will wait for all the promises to be resolve before rendering.
-                    //You can add a promise to this array to be sure that the field will wait for you before rendering itself
+                    //The event contains the field and an array of promises. The field will wait for all the promises to be resolved before rendering.
+                    //You can add a promise to this array to be sure that the field will wait for it before rendering itself
                     event.promises.push($.Deferred().resolve().then(function () {
                         var field = event.field;
 
@@ -52,7 +53,7 @@ Let's say that we want to display the minimum and maximum values allowed for a n
                             }
 
                             //You can also disable the field with the setEditable method of the field
-                            //field->setEditable(false);
+                            //field.setEditable(false);
                         }
                     }.bind(this)).promise());
 
@@ -82,7 +83,7 @@ And register your extension to the product edit form:
 
     extensions:
         pim-product-edit-form-number-min-max:
-            module: pim/product-edit-form/attributes/number-min-max
+            module: acme/product-edit-form/attributes/number-min-max
             parent: pim-product-edit-form-attributes
             targetZone: self
             position: 100

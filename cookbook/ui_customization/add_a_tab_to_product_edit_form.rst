@@ -1,10 +1,7 @@
 How to add a tab or a panel to the product edit form
 ====================================================
 
-.. note::
-    #Add a note to the "How to work with the front in the PIM"
-
-The most common UI customization on the Akeneo PIM is to add a tab to the product edit form. With the new product edit form introduced in 1.4 (more details here#TODO add link) we splitted tabs in distinct elements:
+The most common UI customization on the Akeneo PIM is to add a tab to the product edit form. With the new product edit form introduced in 1.4 we splitted tabs in distinct elements:
 
  - Tabs hold all edit features on the entity (attributes edit, classification, associations)
  - Panels hold all meta information about the entity (history, completeness, comments)
@@ -56,7 +53,7 @@ Let's register this file in the `requirejs` configuration
 
     # /src/Acme/Bundle/EnrichBundle/Resources/config/requirejs.yml
 
-    require:
+    config:
         paths:
             pim/product-edit-form/packages: pimacme/js/product/form/packages
 
@@ -72,10 +69,10 @@ Now that our file is registered into `requirejs` configuration, we can add this 
             module: pim/product-edit-form/packages             # The requirejs module we just created
             parent: pim-product-edit-form-form-tabs            # The parent extension in the form where we want to be regisetred
             targetZone: container
-            aclResourceId: pim_enrich_product_categories_view  # If you want to register this extension if the user have access to this acl
+            aclResourceId: pim_enrich_product_categories_view  # The user will need this ACL for this extension to be registered
             position: 90                                       # The extension position
 
-After a cache clear (`app/console cache:clear`), you should see your new tab in the product edit form. If not, be sure to have run the `app/console assets:install --symlink web` command
+After a cache clear (`app/console cache:clear`), you should see your new tab in the product edit form. If not, make sure that you ran the `app/console assets:install --symlink web` command
 
 Now that we have our extension loaded in our form, we can add some logic into it
 
@@ -119,7 +116,7 @@ Remember to register your template in your requirejs file:
     :linenos:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/config/requirejs.yml
-    require:
+    config:
         paths:
             pim/product-edit-form/packages: pimacme/js/product/form/packages
 
@@ -184,7 +181,7 @@ Again, we need to register it and create the template:
     :linenos:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/config/requirejs.yml
-    require:
+    config:
         paths:
             pim/product-edit-form/panel/warehouse: pimacme/js/product/form/panel/warehouse
 

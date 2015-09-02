@@ -1,7 +1,7 @@
 How to add an action button or meta data to the product edit form
 =================================================================
 
-You often need to add a button to the product edit form to perform custom actions. In this cookbook, we will go through each step needed to achieve this task. Our scenario will be pretty simple: we need to add a button to download our product in csv (like an extra small quick export on the grid). We will assume that we can call a backend action performing this action for us.
+In this cookbook, we will go through each step needed to achieve this task. Our scenario will be pretty simple: we need to add a button to download our product in csv (like an extra small quick export on the grid). We will assume that we can call a backend action performing this action for us.
 
 Ok? Let's go!
 
@@ -36,12 +36,7 @@ First, we need to create our button:
                 render: function () {
                     this.$el.html(
                         this.template({
-                            path: Routing.generate(
-                                'acme_csv_product_export',
-                                {
-                                    id: this.getFormData().meta.id
-                                }
-                            )
+                            path: Routing.generate('acme_csv_product_export', {id: this.getFormData().meta.id})
                         })
                     );
 
@@ -68,7 +63,7 @@ Now we need to register it in the requirejs configuration:
     :linenos:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/config/requirejs.yml
-    require:
+    config:
         paths:
             pim/product-edit-form/export-csv: pimacme/js/product/form/export-csv
 
@@ -137,7 +132,7 @@ Now, we need to register it in the requirejs configuration:
     :linenos:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/config/requirejs.yml
-    require:
+    config:
         paths:
             pim/product-edit-form/meta/export-status: pimacme/js/product/form/meta/export-status
 

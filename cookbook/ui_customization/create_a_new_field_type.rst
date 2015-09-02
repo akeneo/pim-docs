@@ -1,19 +1,19 @@
 How to add a new field type
 ===========================
 
-If you want a custom rendering for one of your attributes, attribute type or reference data you need to create a new field type. In this cookbook, we will go through each step needed to create a custom field type.
+If you want a custom rendering for one of your attributes, attribute types or reference data you need to create a new field type. In this cookbook, we will go through each step needed to create a custom field type.
 
-Let's say that we want to have a slider to represent each "number attribute" that have a minimum and a maximum value limit.
+Let's say we want to have a slider to represent each "number attribute" having a minimum and a maximum value limit.
 
 Before diving into code, we need to understand what's going on under the hood:
 
- - In akeneo, we have attributes with properties and an attribute type. In 1.3 the rendering of an attribute was driven by it's attribute type. In 1.4 we introduced a field provider.
+ - In akeneo, we have attributes with properties and an attribute type. In 1.3 the rendering of an attribute was driven by its attribute type. In 1.4 we introduced a field provider.
  - This field provider gets an attribute and returns a field type
  - In the `form_extensions.yml` or in the `form_extensions` folder of your `Ressources/config` bundle's folder you can map this field to the actual requirejs module
  - The requirejs module contains the field's logic
 
 
-Here is a representation of this process:
+Here is a representation of this architecture:
 
 .. image:: field_process.png
 
@@ -71,7 +71,7 @@ Next you need to register it in your service.yml file:
                 - { name: pim_enrich.provider.field, priority: 90 }
 
 
-Your field provider is now registered congrats!
+Your field provider is now registered, congrats!
 
 Create the form field
 +++++++++++++++++++++
@@ -120,7 +120,7 @@ And its template:
     <!-- src/Acme/Bundle/CustomBundle/Resources/public/templates/product/field/range.html -->
     <input type="range" data-locale="<%= value.locale %>" data-scope="<%= value.scope %>" value="<%= value.data %>" <%= editMode === 'view' ? 'disabled' : '' %> min="<%= attribute.number_min %>" max="<%= attribute.number_max %>"/>
 
-You can now register this requirejs module into your requirejs configuration:
+You can now register this module into your requirejs configuration:
 
 .. code-block:: yaml
     :linenos:
