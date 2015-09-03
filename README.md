@@ -8,9 +8,21 @@ Installation
 
 Clone this repository.
 
+Linux
++++++
+
 Install [Sphinx](http://sphinx-doc.org/).
 ```bash
     $ sudo apt-get install python-sphinx
+```
+
+Mac OS
+++++++
+
+```bash
+    $ brew install python
+    $ pip install sphinx
+    $ pip install git+https://github.com/fabpot/sphinx-php.git
 ```
 
 Download composer `curl -s https://getcomposer.org/installer | php` and run `php composer.phar install`.

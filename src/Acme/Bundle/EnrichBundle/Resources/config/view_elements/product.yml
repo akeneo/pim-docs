@@ -1,3 +1,0 @@
-parameters:
-    pim_enrich.view_element.product.tab.category.template: 'AcmeEnrichBundle:Product:Tab/my_category.html.twig'
-
