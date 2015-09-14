@@ -16,12 +16,23 @@ class ProductProcessor extends AbstractConfigurableStepElement implements
     /** @var StepExecution */
     protected $stepExecution;
 
-    /** @var ProductManager */
-    protected $productManager;
+    /** @var ProductBuilderInterface */
+    protected $productBuilder;
 
-    public function __construct($manager)
-    {
-        $this->productManager = $manager;
+    /** @var ProductRepositoryInterface */
+    protected $productRepository;
+
+    /** @var AttributeRepositoryInterface */
+    protected $attributeRepository;
+
+    public function __construct(
+        ProductBuilderInterface $productBuilder,
+        ProductRepositoryInterface $productRepository,
+        AttributeRepositoryInterface $attributeRepository
+    ) {
+        $this->productBuilder = $productBuilder;
+        $this->productRepository = $productRepository;
+        $this->attributeRepository = $attributeRepository;
     }
 
     public function process($item)
