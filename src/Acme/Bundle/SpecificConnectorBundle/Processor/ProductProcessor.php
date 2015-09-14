@@ -27,13 +27,13 @@ class ProductProcessor extends AbstractConfigurableStepElement implements
     public function process($item)
     {
         $sku       = $item['sku'];
-        $attribute = $this->productManager->getIdentifierAttribute();
-        $product   = $this->productManager->findByIdentifier($sku);
+        $attribute = $this->attributeRepository->getIdentifier();
+        $product   = $this->productRepository->findOneByIdentifier($sku);
 
         if (!$product) {
-            $product = $this->productManager->createProduct();
-            $value   = $this->productManager->createProductValue();
-            $value->setAttribute($attribute);
+            $product = $this->productBuilder->createProduct();
+            $value   = $this->productBuilder->createProductValue($attribute);
+
             $value->setData($sku);
             $product->addValue($value);
             $this->stepExecution->incrementSummaryInfo('create');
