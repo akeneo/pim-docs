@@ -10,20 +10,10 @@ efficient answers to their multichannel needs.
 
 .. toctree::
     :maxdepth: 2
+    :titlesonly:
 
-    developer_guide/index
-
-.. toctree::
-    :maxdepth: 2
-
+    developer_guide/installation/installation_workstation
+    developer_guide/migration/index
     reference/index
-
-.. toctree::
-    :maxdepth: 2
-
     cookbook/index
-
-.. toctree::
-    :maxdepth: 2
-
     contributing/index
