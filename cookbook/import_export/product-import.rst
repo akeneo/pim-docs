@@ -5,6 +5,14 @@ We'll discuss here how the csv product import works.
 
 It's a good start to understand the overall architecture and how to re-use or replace some parts.
 
+.. note::
+
+  The import part has been widely re-worked in 1.4.
+
+  A new system has been introduced, the old system has been deprecated however is kept, both systems are useable in 1.4 but we strongly recommend using the new system.
+
+  The following documentation is related to this new system.
+
 Definition of the Job
 ---------------------
 

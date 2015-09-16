@@ -17,7 +17,7 @@ This chapter describes how to create and customize connectors to handle imports 
    main-concepts
    create-connector
    product-import
+   product-export
    create-specific-connector
    create-custom-step
-   customize-import-behavior
    mongodb-fast-writer
