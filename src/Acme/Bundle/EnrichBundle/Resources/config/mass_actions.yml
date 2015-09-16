@@ -4,7 +4,8 @@ services:
         class: Acme\Bundle\EnrichBundle\MassEditAction\Operation\CapitalizeValues
         tags:
             -
-                name: acme_enrich.mass_edit_action
+                name: pim_enrich.mass_edit_action
                 alias: capitalize-values
                 acl: acme_enrich_product_capitalize_values
                 datagrid: product-grid
+                form_type: acme_enrich.form.type.capitalize_values

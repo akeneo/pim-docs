@@ -8,6 +8,6 @@ connector:
                 perform:
                     title: capitalize_values
                     services:
-                        reader:    pim_enrich.mass_edit.filtered.reader
+                        reader:    pim_enrich.connector.reader.mass_edit.product
                         processor: acme_enrich.mass_edit.capitalize_values.processor
-                        writer:    pim_base_connector.writer.doctrine.product
+                        writer:    pim_connector.writer.doctrine.product

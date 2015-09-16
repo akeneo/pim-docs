@@ -89,7 +89,7 @@ Don't forget to register it as a service in the DI:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
     services:
-        acme.form.type.capitalize_values:
+        acme_enrich.form.type.capitalize_values:
             class: Acme\Bundle\EnrichBundle\Form\Type\MassEditAction\CapitalizeValuesType
             arguments:
                 - Acme\Bundle\EnrichBundle\MassEditAction\Operation\CapitalizeValues
@@ -116,9 +116,9 @@ Well! Now the user can select the Operation to launch it. The Operation will sen
 
 The ``Processor`` receives products one by one, given by the ``Reader``:
 
-.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Processor/MassEdit/CapitalizeValuesProcessor.php
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Connector/Processor/MassEdit/Product/CapitalizeValuesProcessor.php
     :language: php
-    :prepend: // /src/Acme/Bundle/EnrichBundle/Processor/MassEdit/CapitalizeValuesProcessor.php
+    :prepend: // /src/Acme/Bundle/EnrichBundle/Connector/Processor/MassEdit/Product/CapitalizeValuesProcessor.php
     :linenos:
 
 Again, register the newly created class:
