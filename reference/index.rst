@@ -14,4 +14,5 @@ Reference
 
     components/index
     bundles/index
+    events/index
     import_export/index
