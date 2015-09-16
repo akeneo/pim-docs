@@ -1,7 +1,7 @@
-How to Customize Import / Export
-================================
+Import / Export
+===============
 
-This chapter describes how to create and customize connectors to handle imports and exports in your Akeneo PIM project.
+This chapter describes the architecture and behaviour of imports and exports in your Akeneo PIM project.
 
 .. note::
 
@@ -13,8 +13,8 @@ This chapter describes how to create and customize connectors to handle imports 
   The deprecated system consists of parts of the BaseConnector Bundle and parts of the Transform Bundle (we aim to depreciate entirely these bundles).
 
 .. toctree::
+    :maxdepth: 2
 
-   create-connector
-   create-specific-connector
-   create-custom-step
-   mongodb-fast-writer
+    main-concepts
+    product-import
+    product-export
