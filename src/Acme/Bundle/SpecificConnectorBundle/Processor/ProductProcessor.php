@@ -7,7 +7,9 @@ use Akeneo\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
 use Akeneo\Bundle\BatchBundle\Item\InvalidItemException;
 use Akeneo\Bundle\BatchBundle\Item\ItemProcessorInterface;
 use Akeneo\Bundle\BatchBundle\Step\StepExecutionAwareInterface;
-use Pim\Bundle\CatalogBundle\Manager\ProductManager;
+use Pim\Bundle\CatalogBundle\Builder\ProductBuilderInterface;
+use Pim\Bundle\CatalogBundle\Repository\AttributeRepositoryInterface;
+use Pim\Bundle\CatalogBundle\Repository\ProductRepositoryInterface;
 
 class ProductProcessor extends AbstractConfigurableStepElement implements
     ItemProcessorInterface,
@@ -16,24 +18,35 @@ class ProductProcessor extends AbstractConfigurableStepElement implements
     /** @var StepExecution */
     protected $stepExecution;
 
-    /** @var ProductManager */
-    protected $productManager;
+    /** @var ProductBuilderInterface */
+    protected $productBuilder;
 
-    public function __construct($manager)
-    {
-        $this->productManager = $manager;
+    /** @var ProductRepositoryInterface */
+    protected $productRepository;
+
+    /** @var AttributeRepositoryInterface */
+    protected $attributeRepository;
+
+    public function __construct(
+        ProductBuilderInterface $productBuilder,
+        ProductRepositoryInterface $productRepository,
+        AttributeRepositoryInterface $attributeRepository
+    ) {
+        $this->productBuilder = $productBuilder;
+        $this->productRepository = $productRepository;
+        $this->attributeRepository = $attributeRepository;
     }
 
     public function process($item)
     {
         $sku       = $item['sku'];
-        $attribute = $this->productManager->getIdentifierAttribute();
-        $product   = $this->productManager->findByIdentifier($sku);
+        $attribute = $this->attributeRepository->getIdentifier();
+        $product   = $this->productRepository->findOneByIdentifier($sku);
 
         if (!$product) {
-            $product = $this->productManager->createProduct();
-            $value   = $this->productManager->createProductValue();
-            $value->setAttribute($attribute);
+            $product = $this->productBuilder->createProduct();
+            $value   = $this->productBuilder->createProductValue($attribute);
+
             $value->setData($sku);
             $product->addValue($value);
             $this->stepExecution->incrementSummaryInfo('create');
