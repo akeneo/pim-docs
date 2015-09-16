@@ -103,8 +103,8 @@ The reader will only return products that are complete for the selected channel,
 
     To know more about how we load different configuration depending on the storage driver you can take a look on ``Pim\Bundle\CatalogBundle\DependencyInjection\PimCatalogExtension``
 
-Product Processor - Overview
-----------------------------
+Product Processor
+-----------------
 
 This element receives product objects one by one, transforms each product object into an array and returns the array
 
@@ -135,7 +135,7 @@ This service ``pim_serializer`` is declared in ``src\Pim\Bundle\TransformerBundl
 
 We register several normalizers to normalize any kind of objects into a flat array, these normalizers are defined in ``src\Pim\Bundle\TransformerBundle\Resources\config\serializer\flat.yml``.
 
-As a product may no have values for all attributes, depending on the product, the normalized array will contain differents keys, for instance,
+As a product may not have values for all attributes, depending on the product, the normalized array will contain different keys, for instance,
 
 .. code-block:: php
 
@@ -156,10 +156,10 @@ As a product may no have values for all attributes, depending on the product, th
 
     You can find extra information about the Serializer component in the official Symfony documentation http://symfony.com/doc/2.7/components/serializer.html
 
-Product Writer - Overview
--------------------------
+Product Writer
+--------------
 
-This element receives the products as arrays and write the lines in a csv file.
+This element receives the products as arrays and writes the lines in a csv file.
 
 The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\writers.yml``.
 
@@ -174,7 +174,7 @@ The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\writ
             arguments:
                 - '@pim_connector.writer.file.file_exporter'
 
-This service first merges all used columns in different rows and add missing cells for the rows, then it writes the csv file.
+This service first merges all used columns in different rows and adds missing cells for the rows, then it writes the csv file.
 
 .. code-block:: php
 
@@ -199,6 +199,6 @@ This service first merges all used columns in different rows and add missing cel
 
 .. warning::
 
-    As this writer will load all lines in memory, it may consumes a lot of memory when exporting a very large number of lines (500k for instance).
+    As this writer will load all lines in memory, it may consume a lot of memory when exporting a very large number of lines (500k for instance).
 
     If you encounter this kind of issue, please consider writing several smaller files.
