@@ -6,4 +6,3 @@ Developer Guide
 
     installation/installation_workstation
     migration/index
-    bundles/index

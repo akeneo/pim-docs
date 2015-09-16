@@ -103,8 +103,8 @@ The reader will only return products that are complete for the selected channel,
 
     To know more about how we load different configuration depending on the storage driver you can take a look on ``Pim\Bundle\CatalogBundle\DependencyInjection\PimCatalogExtension``
 
-Product Processor - Overview
-----------------------------
+Product Processor
+-----------------
 
 This element receives product objects one by one, transforms each product object into an array and returns the array
 
@@ -156,8 +156,8 @@ As a product may no have values for all attributes, depending on the product, th
 
     You can find extra information about the Serializer component in the official Symfony documentation http://symfony.com/doc/2.7/components/serializer.html
 
-Product Writer - Overview
--------------------------
+Product Writer
+--------------
 
 This element receives the products as arrays and write the lines in a csv file.
 

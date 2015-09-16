@@ -1,3 +1,4 @@
+.. _AnalyticsBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/AnalyticsBundle
 .. _BaseConnectorBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/BaseConnectorBundle
 .. _CatalogBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/CatalogBundle
 .. _CommentBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/CommentBundle
@@ -21,6 +22,7 @@
 .. _VersioningBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/VersioningBundle
 .. _WebServiceBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/WebServiceBundle
 
+* `AnalyticsBundle`_
 * `BaseConnectorBundle`_
 * `CatalogBundle`_
 * `CommentBundle`_

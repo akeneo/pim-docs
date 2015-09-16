@@ -16,6 +16,11 @@ efficient answers to their multichannel needs.
 .. toctree::
     :maxdepth: 2
 
+    reference/index
+
+.. toctree::
+    :maxdepth: 2
+
     cookbook/index
 
 .. toctree::

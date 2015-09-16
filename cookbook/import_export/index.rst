@@ -15,9 +15,9 @@ This chapter describes how to create and customize connectors to handle imports 
 .. toctree::
 
    main-concepts
-   create-connector
    product-import
    product-export
+   create-connector
    create-specific-connector
    create-custom-step
    mongodb-fast-writer
