@@ -12,6 +12,10 @@ This chapter describes the architecture and behaviour of imports and exports in 
   The new system is composed of a new Connector Bundle, a new Connector Component and some new Catalog APIs.
   The deprecated system consists of parts of the BaseConnector Bundle and parts of the Transform Bundle (we aim to depreciate entirely these bundles).
 
+.. note::
+
+  You can take a look at the cookbook section to practise through examples :doc:`/cookbook/import_export/index`
+
 .. toctree::
     :maxdepth: 2
 
