@@ -1,35 +1,35 @@
 <?php
 
-namespace Acme\Bundle\EnrichBundle\Processor\MassEdit;
+namespace Acme\Bundle\EnrichBundle\Connector\Processor\MassEdit\Product;
 
+use Akeneo\Component\StorageUtils\Updater\PropertySetterInterface;
 use Pim\Bundle\CatalogBundle\Exception\InvalidArgumentException;
 use Pim\Bundle\CatalogBundle\Model\ProductInterface;
-use Pim\Bundle\CatalogBundle\Updater\ProductUpdaterInterface;
-use Pim\Bundle\EnrichBundle\Entity\Repository\MassEditRepositoryInterface;
-use Pim\Bundle\EnrichBundle\Processor\MassEdit\AbstractMassEditProcessor;
-use Symfony\Component\Validator\ValidatorInterface;
+use Pim\Bundle\EnrichBundle\Connector\Processor\AbstractProcessor;
+use Pim\Component\Connector\Repository\JobConfigurationRepositoryInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class CapitalizeValuesProcessor extends AbstractMassEditProcessor
+class CapitalizeValuesProcessor extends AbstractProcessor
 {
-    /** @var ProductUpdaterInterface */
-    protected $productUpdater;
+    /** @var PropertySetterInterface */
+    protected $propertySetter;
 
     /** @var ValidatorInterface */
     protected $validator;
 
     /**
-     * @param MassEditRepositoryInterface  $massEditRepository
-     * @param ProductUpdaterInterface      $productUpdater
-     * @param ValidatorInterface           $validator
+     * @param JobConfigurationRepositoryInterface $jobConfigRepository
+     * @param PropertySetterInterface             $propertySetter
+     * @param ValidatorInterface                  $validator
      */
     public function __construct(
-        MassEditRepositoryInterface $massEditRepository,
-        ProductUpdaterInterface $productUpdater,
+        JobConfigurationRepositoryInterface $jobConfigRepository,
+        PropertySetterInterface $propertySetter,
         ValidatorInterface $validator
     ) {
-        parent::__construct($massEditRepository);
+        parent::__construct($jobConfigRepository);
 
-        $this->productUpdater = $productUpdater;
+        $this->propertySetter = $propertySetter;
         $this->validator      = $validator;
     }
 
@@ -38,6 +38,8 @@ class CapitalizeValuesProcessor extends AbstractMassEditProcessor
      */
     public function process($product)
     {
+        /** @var ProductInterface $product */
+
         // This is where you put your custom logic. Here we work on a
         // $product the Reader gave us.
 
@@ -51,24 +53,16 @@ class CapitalizeValuesProcessor extends AbstractMassEditProcessor
         $actions = $configuration['actions'];
 
         // Retrieve custom config from the action
-        $field   = $actions['field'];
+        $field = $actions['field'];
         $options = $actions['options'];
 
         // Capitalize the attribute value of the product
-        $originalValue = $product->getValue($field, $options['locale'], $options['scope'])->getData();
+        $originalValue    = $product->getValue($field)->getData();
         $capitalizedValue = strtoupper($originalValue);
 
-        // Use the updater to update the product
-        $this->setData(
-            $product,
-            [
-                [
-                    'field'   => $field,
-                    'options' => $options,
-                    'value'   => $capitalizedValue
-                ]
-            ]
-        );
+        // Use the property setter to update the product
+        $newData = ['field' => $field, 'value' => $capitalizedValue, 'options' => $options];
+        $this->setData($product, [$newData]);
 
         // Validate the product
         if (null === $product || (null !== $product && !$this->isProductValid($product))) {
@@ -84,7 +78,7 @@ class CapitalizeValuesProcessor extends AbstractMassEditProcessor
     }
 
     /**
-     * Validate the product
+     * Validate the product and raise a warning if not
      *
      * @param ProductInterface $product
      *
@@ -109,7 +103,7 @@ class CapitalizeValuesProcessor extends AbstractMassEditProcessor
     protected function setData(ProductInterface $product, array $actions)
     {
         foreach ($actions as $action) {
-            $this->productUpdater->setData($product, $action['field'], $action['value'], $action['options']);
+            $this->propertySetter->setData($product, $action['field'], $action['value'], $action['options']);
         }
 
         return $this;
