@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Bundle\DemoConnectorBundle\Handler;
+namespace Acme\Bundle\NotifyConnectorBundle\Handler;
 
 use Akeneo\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
 use Akeneo\Bundle\BatchBundle\Step\StepExecutionAwareInterface;
@@ -71,14 +71,14 @@ class CurlHandler extends AbstractConfigurableStepElement implements StepExecuti
         return array(
             'filePath' => array(
                 'options' => array(
-                    'label' => 'pim_base_connector.export.filePath.label',
-                    'help'  => 'pim_base_connector.export.filePath.help'
+                    'label' => 'pim_connector.export.filePath.label',
+                    'help'  => 'pim_connector.export.filePath.help'
                 )
             ),
             'url' => array(
                 'options' => array(
-                    'label' => 'pim_base_connector.export.url.label',
-                    'help'  => 'pim_base_connector.export.url.help'
+                    'label' => 'acme_notify_connector.url.label',
+                    'help'  => 'acme_notify_connector.url.help'
                 )
             )
         );

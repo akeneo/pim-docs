@@ -1,11 +1,11 @@
 <?php
 
-namespace Acme\Bundle\DemoConnectorBundle\Step;
+namespace Acme\Bundle\NotifyConnectorBundle\Step;
 
 use Akeneo\Bundle\BatchBundle\Step\AbstractStep;
 use Akeneo\Bundle\BatchBundle\Entity\StepExecution;
 use Akeneo\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
-use Acme\Bundle\DemoConnectorBundle\Handler\CurlHandler;
+use Acme\Bundle\NotifyConnectorBundle\Handler\CurlHandler;
 
 class NotifyStep extends AbstractStep
 {

@@ -82,7 +82,6 @@ You can run the job with the following command:
 
     php app/console akeneo:batch:job my_job_instance
 
-
 .. note::
 
     This job is not configurable through the PIM UI, we'll see in the next chapters how to write configurable jobs.
