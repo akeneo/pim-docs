@@ -15,6 +15,7 @@ Cookbook
     setup_data/customize_installer
     catalog/product/index
     catalog/common/index
+    event/index
     catalog_structure/index
     import_export/index
     ui
