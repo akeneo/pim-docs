@@ -1,7 +1,7 @@
 How to Import Products from a XML File
 ======================================
 
-The foundations of connector creation have been covered in the previous chapter (cf :doc:`/cookbook/import_export/create-connector`). With the following hands-on practice, we will create our own specific connector.
+Foundations of connector creation have been covered in the previous chapter (cf :doc:`/cookbook/import_export/create-connector`). With the following hands-on practice, we will create our own specific connector.
 
 To stay focused on the main concepts, we will implement the simplest connector possible by avoiding to use too many existing elements.
 
