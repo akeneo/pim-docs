@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<products>
-    <product sku="sku-1" name="my title 1" family="camcorders"/>
-    <product sku="sku-2" name="my title 2"/>
-    <product sku="sku-3" name="my title 3"/>
-</products>

@@ -11,7 +11,7 @@ Prerequisite
 The mass edit action uses the `BatchBundle
 <https://github.com/akeneo/BatchBundle/>`_ in order to run mass edit in the background. Readers and Writers are already
 created so in this cookbook we will focus on how to create a Mass Edit Action and create a Processor.
-For more information on how to create Jobs, Readers, Processors, or Writers please see :ref:`create-specific-connector`.
+For more information on how to create Jobs, Readers, Processors, or Writers please see :doc:`/cookbook/import_export/index`.
 
 Work with a custom Acme bundle
 ------------------------------

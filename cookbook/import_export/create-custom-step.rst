@@ -1,7 +1,9 @@
 How to Create a Custom Step
 ===========================
 
-Previously we discussed :doc:`/cookbook/import_export/create-connector`
+The default ItemStep covers the majority of cases but sometimes you need to create more custom logic with no need for a reader, processor or writer.
+
+For instance, at the end of an export you may want to send a custom email, copy the result to a FTP server or call a specific URL to report the result.
 
 Let's see how to go further by creating a custom step which sends a notification to a URL when a product export is finished.
 
