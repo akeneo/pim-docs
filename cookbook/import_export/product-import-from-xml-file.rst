@@ -1,5 +1,5 @@
-How to Create an XML Product Import Connector
-=============================================
+How to Import Products from a XML File
+======================================
 
 The foundations of connector creation have been covered in the previous chapter (cf :doc:`/cookbook/import_export/create-connector`). With the following hands-on practice, we will create our own specific connector.
 
@@ -11,7 +11,7 @@ Our use case is to import new products from the following XML file:
    :language: xml
    :linenos:
 
-We assume that we're using a standard edition with the ``icecat_demo_dev`` data set, `sku` and `name` already exist as real attributes of the PIM.
+We assume that we're using a standard edition with the ``icecat_demo_dev`` data set, `sku` and `name` already exist as real attributes of the PIM, family is also an existing property.
 
 .. note::
 
@@ -58,7 +58,7 @@ Here, we'll use a custom reader ``acme_xml_connector.reader.file.xml_product`` b
 
 .. important::
 
-    We strongly advise to always try to re-use most of existing pieces, especially processor and writer, it ensures that all business rules and validation will be applied.
+    We strongly advise to always try to re-use most of existing pieces, especially processor and writer, it ensures that all business rules and validation will be properly applied.
 
 Create our Reader
 -----------------
@@ -73,7 +73,7 @@ The purpose of the reader is to return each item as an array, in the case of XML
 
 Our element reads the file and iterates to return products line by line.
 
-This element must be configured with the path of the xml file (an example file is provided in the demo bundle).
+This element must be configured with the path of the xml file (an example file is provided in ``XmlConnectorBundle\Resources\fixtures\products.xml``).
 
 .. note::
 

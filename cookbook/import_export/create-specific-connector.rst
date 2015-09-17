@@ -1,7 +1,7 @@
 .. _create-specific-connector:
 
-How to Create a Specific Connector
-==================================
+How to Create a Specific Connector DEPRECATED
+=============================================
 
 The foundations of connector creation have been covered in the previous chapter (cf :doc:`/cookbook/import_export/create-connector`). With the following hands-on practice, we will create our own specific connector.
 

@@ -1,0 +1,13 @@
+connector:
+    name: Cleaned Csv Connector
+    jobs:
+        cleaner_product_import:
+            title: acme_fixed_with_connector.jobs.product_import.title
+            type:  import
+            steps:
+                import:
+                   title: acme_fixed_width_connector.jobs.product_import.import.title
+                   services:
+                        reader:    pim_connector.reader.file.csv_product
+                        processor: acme_csvcleanerconnector.processor.denormalization.product.flat
+                        writer:    pim_connector.writer.doctrine.product
