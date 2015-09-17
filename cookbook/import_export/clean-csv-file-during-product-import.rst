@@ -1,11 +1,11 @@
-How to Clean a CSV File During a Products Import
-================================================
+How to Clean a CSV File During a Product Import
+===============================================
 
 The foundations of connector creation have been covered in the previous chapter (cf :doc:`/cookbook/import_export/create-connector`). With the following hands-on practice, we will create our own specific connector.
 
 To stay focused on the main concepts, we will implement the simplest connector possible by avoiding to use too many existing elements.
 
-Our use case is to clean the following CSV file when importing products:
+The use case is to clean the following CSV file when importing products:
 
 .. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/Resources/fixtures/products.csv
    :language: xml
@@ -19,7 +19,7 @@ We assume that we're using a standard edition with the ``icecat_demo_dev`` data 
 
     The code inside this cookbook entry is available in the src directory, you can clone pim-docs (https://github.com/akeneo/pim-docs) and use a symlink to make the Acme bundle available in the `src/`.
 
-Create our Connector
+Create the Connector
 --------------------
 
 Create a new bundle:
@@ -40,7 +40,7 @@ Register the bundle in AppKernel:
         // ...
     }
 
-Configure our Job
+Configure the Job
 -----------------
 
 Configure a job in ``Resources/config/batch_jobs.yml``:
@@ -56,22 +56,22 @@ The default step is ``Akeneo\Bundle\BatchBundle\Step\ItemStep``.
 
 An item step is configured with 3 elements, a reader, a processor and a writer.
 
-Here, we'll use a custom processor service, named ``acme_csvcleanerconnector.processor.denormalization.product.flat`` but we'll continue to use default reader and writer.
+Here, we'll use a custom processor service, named ``acme_csvcleanerconnector.processor.denormalization.product.flat``, but we'll continue to use default reader and writer.
 
 .. important::
 
-    We strongly advise to always try to re-use most of existing pieces, it ensures that all business rules and validation will be applied.
+    We strongly advise to always try to re-use most of the existing pieces, it ensures that all business rules and validation will be applied.
 
-Configure our Processor
+Configure the Processor
 -----------------------
 
-In fact, we're using the default processor class but we create a new service to change the injected array converter (replace ``pim_connector.array_converter.flat.product`` by ``acme_csvcleanerconnector.array_converter.flat.product``), all the other services remain the same.
+In fact, we're using the default processor class but we create a new service to change the injected array converter (replace ``pim_connector.array_converter.flat.product`` by ``acme_csvcleanerconnector.array_converter.flat.product``), all other services remain the same.
 
 .. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/Resources/config/processors.yml
    :language: yaml
    :linenos:
 
-Create our ArrayConverter
+Create the ArrayConverter
 -------------------------
 
 The purpose of the array converter is to transform the array provided by the reader to the standard array format, cf :doc:`/reference/import_export/product-import`
@@ -100,10 +100,10 @@ Finally, we introduce the following extension to load the services files in conf
    :language: php
    :linenos:
 
-Use our new Connector
+Use the new Connector
 ---------------------
 
-Now if you refresh the cache, your new export can be found under Extract > Import profiles > Create import profile.
+Now if you refresh the cache, the new export can be found under Extract > Import profiles > Create import profile.
 
 You can run the job from the UI or you can use following command:
 

@@ -17,7 +17,7 @@ We assume that we're using a standard edition with the ``icecat_demo_dev`` data 
 
     The code inside this cookbook entry is available in the src directory, you can clone pim-docs (https://github.com/akeneo/pim-docs) and use a symlink to make the Acme bundle available in the `src/`.
 
-Create our Connector
+Create the Connector
 --------------------
 
 Create a new bundle:
@@ -38,7 +38,7 @@ Register the bundle in AppKernel:
         // ...
     }
 
-Configure our Job
+Configure the Job
 -----------------
 
 Configure a job in ``Resources/config/batch_jobs.yml``:
@@ -58,12 +58,12 @@ Here, we'll use a custom reader ``acme_xml_connector.reader.file.xml_product`` b
 
 .. important::
 
-    We strongly advise to always try to re-use most of existing pieces, especially processor and writer, it ensures that all business rules and validation will be properly applied.
+    We strongly advise to always try to re-use most of the existing pieces, especially processor and writer, it ensures that all business rules and validation will be properly applied.
 
-Create our Reader
+Create the Reader
 -----------------
 
-As we don't have existing reader which allows to read this kind of file, we'll write a new reader.
+As we don't have an existing reader which allows to read this kind of file, we'll write a new one.
 
 The purpose of the reader is to return each item as an array, in the case of XML file, we can have more work to define what is the item.
 
@@ -71,9 +71,9 @@ The purpose of the reader is to return each item as an array, in the case of XML
    :language: php
    :linenos:
 
-Our element reads the file and iterates to return products line by line.
+Our reader reads the file and iterates to return products line by line.
 
-This element must be configured with the path of the xml file (an example file is provided in ``XmlConnectorBundle\Resources\fixtures\products.xml``).
+This element must be configured with the path of the XML file (an example file is provided in ``XmlConnectorBundle\Resources\fixtures\products.xml``).
 
 .. note::
 
@@ -93,10 +93,10 @@ And we introduce the following extension to load the services files in configura
    :language: php
    :linenos:
 
-Use our new Connector
+Use the new Connector
 ---------------------
 
-Now if you refresh the cache, your new export can be found under Extract > Import profiles > Create import profile.
+Now if you refresh the cache, the new export can be found under Extract > Import profiles > Create import profile.
 
 You can run the job from the UI or you can use following command:
 
