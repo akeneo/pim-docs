@@ -47,23 +47,22 @@ Then, configure your job ``Resources/config/batch_jobs.yml``:
    :linenos:
 
         fast_csv_product_import:
-            title: pim_base_connector.jobs.csv_product_import.title
+            title: pim_connector.jobs.csv_product_import.title
             type:  import
             steps:
+                validation:
+                    title: pim_connector.jobs.csv_product_import.validation.title
+                    class: %pim_connector.step.validator.class%
+                    services:
+                        charsetValidator: pim_connector.validator.item.charset_validator
                 import:
-                    title:     pim_base_connector.jobs.csv_product_import.import.title
+                    title:         pim_connector.jobs.csv_product_import.import.title
                     services:
-                        reader:    pim_base_connector.reader.file.csv_product
-                        processor: pim_base_connector.processor.product
+                        reader:    pim_connector.reader.file.csv_product
+                        processor: pim_connector.processor.denormalization.product.flat
                         writer:    pim_base_connector.writer.direct_to_db.mongodb.product
-                import_associations:
-                    title:     pim_base_connector.jobs.csv_product_import.import_associations.title
-                    services:
-                        reader:    pim_base_connector.reader.cached_association
-                        processor: pim_base_connector.processor.association
-                        writer:    pim_base_connector.writer.doctrine.association
 
-As you can see, we change only the writer at line 10.
+As you can see, we change only the writer at line 15.
 
 You can now use your new ``fast_csv_product_import`` from your own connector to create
 a new import profile.
