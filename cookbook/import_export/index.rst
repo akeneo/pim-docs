@@ -10,6 +10,7 @@ This chapter describes how to create and customize connectors to handle imports 
 .. toctree::
 
    create-connector
-   create-specific-connector
-   create-custom-step
+   product-import-from-xml-file
+   clean-csv-file-during-product-import
    mongodb-fast-writer
+   create-custom-step

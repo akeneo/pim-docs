@@ -1,4 +1,0 @@
-services:
-    acme_democonnector.transformer.property.prepend:
-        class: Acme\Bundle\DemoConnectorBundle\Transformer\Property\PrependTransformer
-        public: false
