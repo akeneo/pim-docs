@@ -8,17 +8,9 @@ Create our Connector
 
 Create a new Symfony bundle:
 
-.. code-block:: php
-
-    <?php
-
-    namespace Acme\Bundle\DemoConnectorBundle;
-
-    use Symfony\Component\HttpKernel\Bundle\Bundle;
-
-    class AcmeDemoConnectorBundle extends Bundle
-    {
-    }
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/AcmeDummyConnectorBundle.php
+   :language: php
+   :linenos:
 
 Register the bundle in AppKernel:
 
@@ -27,7 +19,7 @@ Register the bundle in AppKernel:
     public function registerBundles()
     {
         // ...
-            new Acme\Bundle\DemoConnectorBundle\AcmeDemoConnectorBundle(),
+            new Acme\Bundle\DummyConnectorBundle\AcmeDummyConnectorBundle(),
         // ...
     }
 
@@ -36,21 +28,9 @@ Create our Job
 
 Create a file ``Resources/config/batch_jobs.yml`` in our Bundle to configure a new job:
 
-.. code-block:: yaml
-
-    connector:
-        name: Demo Connector
-        jobs:
-            demo_job:
-                title: acme_connector.jobs.demo_job.title
-                type:  export
-                steps:
-                    stepOne:
-                        title:         acme_connector.jobs.demo_job.export.title
-                        services:
-                            reader:    pim_connector.reader.dummy_item
-                            processor: pim_connector.processor.dummy_item
-                            writer:    pim_connector.writer.dummy_item
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/batch_jobs.yml
+    :language: yaml
+    :linenos:
 
 Here we use an existing dummy reader, a processor and a writer (they implement relevant interfaces and are useable but they do nothing with data).
 
@@ -67,14 +47,9 @@ Translate Job and Step titles
 
 Create a file ``Resources/config/messages.en.yml`` in our Bundle to translate title keys.
 
-.. code-block:: yaml
-
-    acme_connector:
-        jobs:
-            demo_job:
-                title: Demo Job
-                stepOne:
-                    title: First Step
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/translations/messages.en.yml
+    :language: yaml
+    :linenos:
 
 Create a Job Instance
 ---------------------
@@ -90,7 +65,7 @@ We can create an instance with the following command:
 .. code-block:: bash
 
     # akeneo:batch:create-job <connector> <job> <type> <code> <config> [<label>]
-    php app/console akeneo:batch:create-job 'Demo Connector' demo_job export myJobInstance '[]'
+    php app/console akeneo:batch:create-job 'Dummy Connector' dummy_job export my_job_instance '[]'
 
 You can also list the existing job instances with the following command:
 
@@ -105,7 +80,7 @@ You can run the job with the following command:
 
 .. code-block:: bash
 
-    php app/console akeneo:batch:job myJobInstance
+    php app/console akeneo:batch:job my_job_instance
 
 
 .. note::
