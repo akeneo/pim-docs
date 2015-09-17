@@ -1,4 +1,4 @@
-acme_fixed_with_connector:
+acme_cleaner_connector:
     jobs:
         cleaner_product_import:
             title: Product Import Cleaned Csv
