@@ -198,7 +198,7 @@ Don't forget to check the mapping of your product value and to register your cus
 Configuring the Reference Data
 ------------------------------
 
-Now that the reference data is linked to the ProductValue, we have to configure it in your `app/config.yml` file.
+Now that the reference data is linked to the ProductValue, we have to configure it in your `app/config/config.yml` file.
 
 For a simple reference data:
 
