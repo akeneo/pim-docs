@@ -22,7 +22,7 @@ Then, compiler pass will inject your tagged Transformation in the registry which
 .. note::
     Learn more about registry_ pattern.
 
-This cookbook assumes that you already created a new bundle to add your new Transformation. Its namespace will be `Acme\CustomBundle`.
+This cookbook assumes that you already created a new bundle to add your new Transformation. Let's assume its namespace is `Acme\\CustomBundle`.
 
 Create a New Transformation
 ---------------------------
