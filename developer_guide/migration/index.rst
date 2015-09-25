@@ -7,10 +7,12 @@ We assume that you're using a project installed from a community standard (:doc:
 
 Community Edition
 -----------------
+* `From v1.3 to v1.4`_
 * `From v1.2 to v1.3`_
 * `From v1.1 to v1.2`_
 * `From v1.0 to v1.1`_
 
+.. _From v1.3 to v1.4: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.4.md
 .. _From v1.2 to v1.3: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.3.md
 .. _From v1.1 to v1.2: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.2.md
 .. _From v1.0 to v1.1: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.1.md
