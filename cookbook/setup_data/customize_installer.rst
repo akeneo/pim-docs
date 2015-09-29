@@ -29,17 +29,18 @@ Register it in ``AppKernel.php``:
 .. code-block:: php
    :linenos:
 
-   class AppKernel extends OroKernel
+   class AppKernel extends Kernel
     {
         /**
          * {@inheritdoc}
          */
         public function registerBundles()
         {
-            $bundles = array();
+            $bundles = [
+                new Acme\Bundle\InstallerBundle\AcmeInstallerBundle(),
+            ];
 
-            // Add my own bundles
-            $bundles[] = new Acme\Bundle\InstallerBundle\AcmeInstallerBundle();
+            ...
 
             return $bundles;
         }
