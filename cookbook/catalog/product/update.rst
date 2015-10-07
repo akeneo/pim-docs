@@ -55,8 +55,8 @@ Now we can apply many property updates on a product.
 .. code-block:: php
 
     $fieldUpdates = [
-        "sku"         => [["locale": null, "scope":  null, "data":  "MySku"]],
-        "description" => [["locale": "en_US", "scope": "mobile", "data": "My description"]]
+        "sku"         => [["locale" => null, "scope" => null, "data" => "MySku"]],
+        "description" => [["locale" => "en_US", "scope" => "mobile", "data" => "My description"]]
         "categories"  => ["tshirt", "promo"],
     ];
     $this->updater->update($product, $fieldUpdates);

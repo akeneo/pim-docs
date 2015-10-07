@@ -1,7 +1,7 @@
 How to Override the ORM Product Value
 =====================================
 
-In some cases, you may need to extend and replace the `Pim:Catalog:ProductValue` to be able to link some objects to it.
+In some cases, you may need to extend and replace the `PimCatalogBundle:ProductValue` to be able to link some objects to it.
 
 For example, let’s say we want to link the product values to a `Color` model.
 Depending on your needs, a product value can be linked to several colors or just one.
@@ -11,13 +11,16 @@ while the second is documented in `Linking the ProductValue to a Collection of O
 Once the link between your custom model and the product value has been set up,
 please continue to `Registering the Custom Product Value Class`_.
 
+.. tip::
+    You can take a look at https://github.com/akeneo/pim-community-dev/tree/1.4/src/Acme/Bundle/AppBundle to see an example of `ProductValue` override.
+
 Linking the ProductValue to a Simple Object
 -------------------------------------------
 
 Overriding the class
 ********************
 
-First, we need to extend and replace the native `Pim:Catalog:ProductValue` class:
+First, we need to extend and replace the native `PimCatalogBundle:ProductValue` class:
 
 .. code-block:: php
 
@@ -61,40 +64,29 @@ First, we need to extend and replace the native `Pim:Catalog:ProductValue` class
 Overriding the mapping
 **********************
 
-Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.orm.yml` of the PIM to
-the `Resources/config/doctrine` folder of one of your bundles.
+Create the mapping file `Resources/config/model/doctrine/ProductValue.orm.yml` into your your bundle.
 
-First, replace the name of the class by your own class, and change the name of the table:
+First, copy the table name, the tracking policy and the indexes of the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.orm.yml`.
 
 .. code-block:: yaml
 
     # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/ProductValue.orm.yml
     Acme\Bundle\AppBundle\Entity\ProductValue:
         type: entity
-        table: acme_catalog_product_value
-
-The names of the join tables for all `ManyToMany` associations must also be changed:
-
-.. code-block:: yaml
-
-    # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/ProductValue.orm.yml
-    manyToMany:
-        options:
-            targetEntity: Pim\Bundle\CatalogBundle\Entity\AttributeOption
-            cascade:
-                - refresh
-            joinTable:
-                name: acme_catalog_product_value_option
-                joinColumns:
-                    value_id:
-                        referencedColumnName: id
-                        nullable: true
-                        onDelete: CASCADE
-                inverseJoinColumns:
-                    option_id:
-                        referencedColumnName: id
-                        nullable: true
-                        onDelete: CASCADE
+        table: pim_catalog_product_value
+        changeTrackingPolicy: DEFERRED_EXPLICIT
+        indexes:
+            value_idx:
+                columns:
+                    - attribute_id
+                    - locale_code
+                    - scope_code
+            varchar_idx:
+                columns:
+                    - value_string
+            integer_idx:
+                columns:
+                    - value_integer
 
 Finally, add your custom relations to the mapping:
 
@@ -119,7 +111,7 @@ Linking the ProductValue to a Collection of Objects
 Overriding the class
 ********************
 
-First, we need to extend and replace the native `Pim:Catalog:ProductValue` class:
+First, we need to extend and replace the native `PimCatalogBundle:ProductValue` class:
 
 .. code-block:: php
 
@@ -189,41 +181,29 @@ First, we need to extend and replace the native `Pim:Catalog:ProductValue` class
 Overriding the mapping
 **********************
 
-Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.orm.yml` of the PIM to
-the `Resources/config/doctrine` folder of one of your bundles.
+Create the mapping file `Resources/config/model/doctrine/ProductValue.orm.yml` into your your bundle.
 
-First, replace the name of the class by your own class, and change the name of the table:
+First, copy the table name, the tracking policy and the indexes of the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.orm.yml`.
 
 .. code-block:: yaml
 
     # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/ProductValue.orm.yml
     Acme\Bundle\AppBundle\Entity\ProductValue:
         type: entity
-        table: acme_catalog_product_value
-
-
-The names of the join tables for all `ManyToMany` associations must also be changed:
-
-.. code-block:: yaml
-
-    # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/ProductValue.orm.yml
-    manyToMany:
-        options:
-            targetEntity: Pim\Bundle\CatalogBundle\Entity\AttributeOption
-            cascade:
-                - refresh
-            joinTable:
-                name: acme_catalog_product_value_option
-                joinColumns:
-                    value_id:
-                        referencedColumnName: id
-                        nullable: true
-                        onDelete: CASCADE
-                inverseJoinColumns:
-                    option_id:
-                        referencedColumnName: id
-                        nullable: true
-                        onDelete: CASCADE
+        table: pim_catalog_product_value
+        changeTrackingPolicy: DEFERRED_EXPLICIT
+        indexes:
+            value_idx:
+                columns:
+                    - attribute_id
+                    - locale_code
+                    - scope_code
+            varchar_idx:
+                columns:
+                    - value_string
+            integer_idx:
+                columns:
+                    - value_integer
 
 Finally, add your custom relations to the mapping:
 
@@ -248,10 +228,8 @@ Finally, add your custom relations to the mapping:
                         referencedColumnName: id
                         nullable: false
 
-
 .. note::
     The link between a product value and a collection of objects is defined by a *many-to-many* relationship.
-
 
 Registering the Custom Product Value Class
 ------------------------------------------
@@ -266,7 +244,25 @@ First, configure the parameter for your `ProductValue` class:
 
 Don't forget to register your `entities.yml` file in your bundle's extension.
 
-Then, check that your mapping override is correct by launching the following command:
+
+Then, configure the mapping override in your application configuration:
+
+.. code-block:: yaml
+
+    # app/config/config.yml
+    akeneo_storage_utils:
+        mapping_overrides:
+            -
+                original: Pim\Bundle\CatalogBundle\Model\ProductValue
+                override: Acme\Bundle\AppBundle\Model\ProductValue
+
+.. note::
+    The `akeneo_storage_utils.mapping_overrides` configuration avoids to have to copy/paste the full
+    `Pim\\Bundle\\CatalogBundle\\Model\\ProductValue` mapping into your `Acme\\Bundle\\AppBundle\\Entity\\ProductValue`
+    mapping.
+
+
+Finally, check that your mapping override is correct by launching the following command:
 (you should see your `Acme\\Bundle\\AppBundle\\Entity\\ProductValue` class):
 
 .. code-block:: bash
