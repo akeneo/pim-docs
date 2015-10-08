@@ -5,7 +5,7 @@ How to change the validation rule to match a reference file to an asset
 
 To add files to assets in Akeneo we use a simple mapping strategy to match a filename to a product asset. As an integrator you can customize this rule to fit your own needs.
 
-Let's say that we only have non localizable assets and want to add a suffix to every file we import and remove the 3 first letters of their names.
+Let's say that we only have localizable assets in US english and want to add a suffix to every file we import and remove the 3 first letters of their names.
 
 Override the UploadChecker
 --------------------------
