@@ -24,3 +24,4 @@ Cookbook
     rest_api/get-product
     validation/customize_validation
     product_asset/index
+    localization/index
