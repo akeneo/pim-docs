@@ -217,6 +217,7 @@ The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\proc
                 - '@pim_catalog.validator.product'
                 - '@akeneo_storage_utils.doctrine.object_detacher'
                 - '@pim_catalog.comparator.filter.product'
+                - '@pim_localization.localizer.converter'
 
 The class ``Pim\Component\Connector\Processor\Denormalization\ProductProcessor`` mainly delegates the operations to different technical and business services.
 
@@ -230,6 +231,7 @@ The class ``Pim\Component\Connector\Processor\Denormalization\ProductProcessor``
      * @param ValidatorInterface                    $validator      product validator
      * @param ObjectDetacherInterface               $detacher       detacher to remove it from UOW when skip
      * @param ProductFilterInterface                $productFilter  product filter
+     * @param AttributeLocalizedConverterInterface  $localizedConverter attributes localized converter
      */
     public function __construct(
         StandardArrayConverterInterface $arrayConverter,
@@ -238,7 +240,8 @@ The class ``Pim\Component\Connector\Processor\Denormalization\ProductProcessor``
         ObjectUpdaterInterface $updater,
         ValidatorInterface $validator,
         ObjectDetacherInterface $detacher,
-        ProductFilterInterface $productFilter
+        ProductFilterInterface $productFilter,
+        AttributeLocalizedConverterInterface $localizedConverter
     ) {
         // ...
     }
@@ -287,6 +290,22 @@ The class ``Pim\Component\Connector\ArrayConverter\Flat\ProductStandardConverter
     We aim to use this standard array format everywhere in the PIM, for imports, backend processes, product edit form, variant group values, proposals, etc.
 
     The versionning will be reworked in a future version to use it too.
+
+Product Processor - AttributeLocalizedConverterInterface
+--------------------------------------------------------
+
+When you import a product with localized attributes (e.g. prices with comma as decimal separator),
+data will be converted to transform comma to dot.
+
+.. code-block:: php
+
+    $convertedItem = $this->convertLocalizedAttributes($convertedItem);
+
+The service uses the class ``Pim\Component\Localization\Localize\AttributeLocalizedConverter``.
+
+.. note::
+
+    Read the cookbook to add your own localizer  :doc:`/cookbook/localization/index`
 
 Product Processor - IdentifiableObjectRepositoryInterface
 ---------------------------------------------------------
