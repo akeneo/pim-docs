@@ -16,3 +16,7 @@ Community Edition
 .. _From v1.2 to v1.3: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.3.md
 .. _From v1.1 to v1.2: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.2.md
 .. _From v1.0 to v1.1: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.1.md
+
+Enterprise Edition
+------------------
+From CE v1.4 to EE v1.4 the file is named: UPGRADE-CE-1.4-EE-1.4.md
