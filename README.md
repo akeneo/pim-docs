@@ -1,23 +1,19 @@
-Akeneo PIM Documentation
-========================
+# Akeneo PIM Documentation
 
 The Akeneo PIM documentation
 
-Installation
-------------
+## Installation
 
 Clone this repository.
 
-Linux
-+++++
+### Linux
 
 Install [Sphinx](http://sphinx-doc.org/).
 ```bash
     $ sudo apt-get install python-sphinx
 ```
 
-Mac OS
-++++++
+### Mac OS
 
 ```bash
     $ brew install python
@@ -27,8 +23,7 @@ Mac OS
 
 Download composer `curl -s https://getcomposer.org/installer | php` and run `php composer.phar install`.
 
-Build the documention
----------------------
+## Build the documention
 
 From the `./pim-docs` directory, run:
 
@@ -38,9 +33,7 @@ From the `./pim-docs` directory, run:
 
 The documentation will be generated inside `../pim-docs-build`.
 
-
-Make documentation code work with pim-community-dev or standard
----------------------------------------------------------------
+## Make documentation code work with pim-community-dev or standard
 
 Install pim-community
 
@@ -49,7 +42,6 @@ Then, go to Akeneo PIM `src/` directory and create a symlink `Acme` pointing to 
 Add all Acme bundles in `app/AppKernel.php` file.
 
 
-Contribution
-------------
+## Contribution
 
 Don't hesitate to propose cookbook entries via https://github.com/akeneo/pim-docs/issues
