@@ -22,16 +22,16 @@ To add your own localizer, you need to create a class implementing ``Pim\Compone
 
 The only argument of the service is the list of attribute types you want to convert.
 
-How to Convert Attributes in my Own Import
-------------------------------------------
+How to Convert Attributes in my Own Import/Export
+-------------------------------------------------
 
 .. _import: ../../reference/import_export/product-import.html#product-processor-attributelocalizedconverterinterface
 To convert your localized attribute in your own import, see import_.
 
-How to Add a Decimal Separator in Import
-----------------------------------------
+How to Add a Decimal Separator in Import/Export
+-----------------------------------------------
 
-By default, only comma and dot are allowed as the decimal separator in import.
+By default, only comma and dot are allowed as the decimal separator in import/export.
 If you want to add your own separator, you have to configure it in your `app/config/config.yml` file.
 
 .. code-block:: yaml
@@ -43,8 +43,8 @@ If you want to add your own separator, you have to configure it in your `app/con
             - { value: ',', label: 'comma (,)' }
             - { value: '⎖', label: 'apostrophe (⎖)' }
 
-How to Add a Date Format in Import
-----------------------------------
+How to Add a Date Format in Import/Export
+-----------------------------------------
 
 Some basic formats have been added in configuration.
 If you want to add your own format, you have to configure it in your `app/config/config.yml` file.
