@@ -17,3 +17,4 @@ Cookbook
     acl/define-acl
     notification/how_to_add_a_notification
     rest_api/get-product
+    rule/add_custom_action_rule_engine
