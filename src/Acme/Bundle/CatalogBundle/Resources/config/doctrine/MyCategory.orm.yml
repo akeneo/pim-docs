@@ -1,6 +1,6 @@
 Acme\Bundle\CatalogBundle\Entity\MyCategory:
     type: entity
-    repositoryClass: Pim\Bundle\CatalogBundle\Entity\Repository\CategoryRepository
+    repositoryClass: Akeneo\Bundle\ClassificationBundle\Doctrine\ORM\Repository\CategoryRepository
     fields:
         description:
             type: string
