@@ -16,3 +16,4 @@ Reference
     bundles/index
     events/index
     import_export/index
+    best_practises/index
