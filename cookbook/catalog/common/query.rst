@@ -21,9 +21,9 @@ These classes embed the logic to build and execute queries and are defined as se
 
 .. code-block:: php
 
-    $attributeRepository = $this->container->get('pim_catalog.repository.attribute');
-    $categoryRepository  = $this->container->get('pim_catalog.repository.category');
-    $localeRepository    = $this->container->get('pim_catalog.repository.locale');
+    $attributeRepository = $this->getContainer()->get('pim_catalog.repository.attribute');
+    $categoryRepository  = $this->getContainer()->get('pim_catalog.repository.category');
+    $localeRepository    = $this->getContainer()->get('pim_catalog.repository.locale');
     // ...
 
 Use an ObjectRepository
