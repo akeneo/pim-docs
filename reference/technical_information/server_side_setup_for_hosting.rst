@@ -155,6 +155,10 @@ and the following php modules:
 | php5-mongo | Required |
 +------------+----------+
 
+.. warning::
+
+    In order to prevent any  performance issue, you have to use DirectToDBWriter which has been done in MongoDB. Here the documentation to use it: :doc:`/cookbook/import_export/mongodb-fast-writer`
+
 **Network**
 
 The following ports should be opened on the server host for PIM to work properly:
@@ -188,5 +192,3 @@ Akeneo PIM application uses an abstraction layer called Gaufrette to store media
 The app/uploads folder could be located elsewhere depending on the configuration you defined in the parameters.yml of your Akeneo PIM application instance.
 
 Please note that neither the Apache user or the CLI should be the root user of the system.
-
-

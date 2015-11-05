@@ -90,5 +90,3 @@ As mentioned in the Symfony bundles dependencies above, we use LESS stylesheets 
 +-----------+-----------------------------------+
 | jQuery UI | jQuery UI CSS stylesheets         |
 +-----------+-----------------------------------+
-
-
