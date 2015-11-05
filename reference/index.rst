@@ -12,6 +12,7 @@ Reference
 .. toctree::
     :maxdepth: 2
 
+    technical_information/index
     components/index
     bundles/index
     events/index
