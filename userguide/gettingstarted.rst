@@ -3,7 +3,7 @@ Getting started
 
 .. _logging-label:
 Logging in to Akeneo
------------------
+--------------------
 
 The login panel will be displayed if you have not logged in to Akeneo:
 

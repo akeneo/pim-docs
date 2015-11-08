@@ -8,7 +8,7 @@ Components
   We use different namespaces, Akeneo for the technical parts not coupled with the PIM, Pim for the Community Edition parts and Enterprise postfix for the Enterprise Edition parts.
 
 Akeneo components
---------------
+-----------------
 
 .. include:: akeneo_components.rst.inc
 
