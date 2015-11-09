@@ -1,7 +1,7 @@
 Application Technical Information
 =================================
 
-The following document is designed for both clients and partners and provides all technical information required to:
+The following chapter is designed for both clients and partners and provides all technical information required to:
 
   * Buy/rent and provision required server(s) to run Akeneo PIM application
   * Check that end users workstation is compatible with Akeneo PIM application
