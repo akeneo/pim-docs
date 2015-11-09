@@ -34,4 +34,5 @@ Here is the complete formula to check if you have, by far, more indexes than the
     + ( N scopable attributes useable as filters * N existing channels )
     + ( N scopable AND localizable attributes useable as filters * N enabled locales * N existing channels )
     + N enabled locales * N enabled channels (for the completeness filters)
+    + 3 for family, groups and categories
     > 64
