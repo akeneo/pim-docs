@@ -21,7 +21,7 @@ The product query builder factory is a service, you can fetch it from the contai
 .. code-block:: php
 
     // product query builder factory
-    $pqbFactory = $this->container->get('pim_catalog.query.product_query_builder_factory');
+    $pqbFactory = $this->getContainer()->get('pim_catalog.query.product_query_builder_factory');
     // returns a new instance of product query builder
     $pqb = $pqbFactory->create(['default_locale' => 'en_US', 'default_scope' => 'ecommerce']);
 
@@ -104,10 +104,10 @@ You can also use different Product Repositories, which provide business queries.
 .. code-block:: php
 
     /** implements Pim\Bundle\CatalogBundle\Repository\ProductRepositoryInterface */
-    $repository = $this->container->get('pim_catalog.repository.product');
+    $repository = $this->getContainer()->get('pim_catalog.repository.product');
 
     /** implements Pim\Bundle\CatalogBundle\Repository\ProductCategoryRepositoryInterface */
-    $repository = $this->container->get('pim_catalog.repository.product_category');
+    $repository = $this->getContainer()->get('pim_catalog.repository.product_category');
 
 .. note::
 
