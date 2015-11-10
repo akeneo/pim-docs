@@ -25,5 +25,4 @@ Cookbook
     validation/customize_validation
     product_asset/index
     localization/index
-    apply_patch/how_to_apply_a_patch
     rule/add_custom_action_rule_engine
