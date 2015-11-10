@@ -14,10 +14,7 @@ Install [Sphinx](http://sphinx-doc.org/).
 ```
 
 ### Mac OS
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 
 ```bash
     $ brew install python
@@ -27,11 +24,7 @@ Install [Sphinx](http://sphinx-doc.org/).
 
 Download composer `curl -s https://getcomposer.org/installer | php` and run `php composer.phar install`.
 
-<<<<<<< HEAD
 ## Build the documentation
-=======
-## Build the documention
->>>>>>> master
 
 From the `./pim-docs` directory, run:
 
@@ -41,10 +34,7 @@ From the `./pim-docs` directory, run:
 
 The documentation will be generated inside `../pim-docs-build`.
 
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 ## Make documentation code work with pim-community-dev or standard
 
 Install pim-community
