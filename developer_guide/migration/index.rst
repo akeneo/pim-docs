@@ -1,51 +1,45 @@
 Migration
 =========
 
-There are upgrade documentations from a patch or minor version to the next one.
+This chapter describes how to upgrade from a patch or minor version to a more recent one.
 
-We assume that you're using a project installed from a community standard (:doc:`/developer_guide/installation/installation_workstation`).
+As a prerequisite, we assume that you are using a project installed from a Community Standard (:doc:`/developer_guide/installation/installation_workstation`).
 
 Patch Version
 -------------
 
-We release regularly patch versions, these versions provide bug fixes.
+We frequently release patch versions, in order to provides security and bug fixess.
 
-We take an extreme care when fixing these issues to avoid any backward compatibility break.
+When fixing these issues, we take an extreme care to avoid any backward compatibility break.
 
-Let's assume you're using a Akeneo PIM version 1.4.7 and the version 1.4.8 has been released.
+In the following example, Akeneo PIM version 1.4.8 has just been released and we are using an Akeneo PIM version 1.4.7.
 
 You can check the CHANGELOG-1.4.md which list the changes provided by each version.
 
 **Community Edition**
 
-In your community standard project, your composer.json is containing:
-
-.. code-block:: yaml
-
-    "akeneo/pim-community-dev": "~1.4.7",
-
-Then run the composer update command:
+Run the composer update command:
 
 .. code-block:: bash
 
     php composer.phar --prefer-dist update
 
-Double check in the output that the 1.4.8 version has been fetched, you can also check in the composer.lock.
+Double check in the output of this command that the 1.4.8 version has been fetched, you can also check in the composer.lock.
 
 Then clean the cache, re-install assets and warmup the cache:
 
 .. code-block:: bash
 
-    rm app/cache/* -rf
-    app/console pim:installer:assets --env=prod
-    php app/console cache:warmup --env=prod --no-debug
+    rm -rf app/cache/*
+    app/console --env=prod pim:installer:assets
+    app/console --env=prod cache:warmup
 
-If the patch is a javascript fix, please clear your browser cache before to test.
+If the patch is a javascript fix, please clear your browser cache before testing.
 
 .. note::
 
-    We fix any other dependencies to the exact patch version to avoid any issues.
-    We strongly advise to add the composer.lock in your versioning system.
+    We set any other dependencies to their exact patch versions to avoid compatibility issues.
+    We strongly advise you to add the composer.lock in your versioning system.
 
 **Enterprise Edition**
 
@@ -60,9 +54,16 @@ To upgrade, please change the composer.json to:
 
 We always tag both community and enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 1.4.8 fix may depend on CE 1.4.8.
 
-We prefer advise to use the exact patch version to avoid any local composer cache issue.
+Using the exact patch version will avoid any local composer cache issue.
 
-Then follow the same process than for the community edition.
+Then follow the same process than for the community edition:
+
+.. code-block:: bash
+
+    rm -rf app/cache/*
+    app/console --env=prod pim:installer:assets
+    app/console --env=prod cache:warmup
+
 
 Minor Version
 -------------
@@ -71,11 +72,11 @@ We release minor versions every 6 months, these versions bring new features.
 
 Depending on these features and on the custom code you've added in your project, the migration can be more or less straightforward.
 
-Each release is provided with a migration guide and a set of scripts to automatize it the most as possible.
+Each release is provided with a migration guide and a set of scripts to automatize it as most as possible.
 
-We're continuing to improve this process to make every new migration easier than the previous one.
+We are continuing to improve this process to make every new migration easier than the previous one.
 
-There are the migration guides:
+Here are the migration guides:
 
 **Community Edition**
 
