@@ -40,7 +40,7 @@ If the 'schedule' option is passed with 'true', the product completeness will be
     The 'schedule' option is more efficient than 'recalculate', the computation is made later with a cron task on the command 'pim:completeness:calculate'.
 
 Dive into the Saver
-------------------
+-------------------
 
 Internally, the Saver uses persist() and flush() methods from Doctrine ObjectManager.
 

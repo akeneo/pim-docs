@@ -374,10 +374,6 @@ Adding the vhost name
     $ sudo gedit /etc/hosts
     127.0.0.1    akeneo-pim.local
 
-
-System requirements
-*******************
-
 Testing your installation
 -------------------------
 Go to http://akeneo-pim.local/ and log in with *admin/admin*.
@@ -387,3 +383,53 @@ If you see the dashboard, congratulations, you have successfully installed Akene
 You can also access the dev environment on http://akeneo-pim.local/app_dev.php
 
 If you have an error, it means that something went wrong in one of the previous steps. Please check error outputs of all the steps.
+
+Known issues
+------------
+
+ * with XDebug on, the default value of max_nesting_level (100) is too low and can make the ACL loading fail (which causes 403 HTTP response code on every application screen, even the login screen). A working value is 500: `xdebug.max_nesting_level=500`
+
+ * not enough memory can cause the JS routing bundle to fail with a segmentation fault. Please check with `php -i | grep memory` that you have enough memory according to the requirements
+
+ * some segmentation fault and `zend_mm_heap corrupted` error can be caused as well by the circular references collector. You can disable it with the following setting in your php.ini files: `zend.enable_gc = 0`
+
+ * When installing with `php composer.phar create-project...` command, error about `Unable to parse file "<path>/Resources/config/web.xml".`. It seems an external issue related to libxml, you can downgrade to `libxml2.x86_64 0:2.6.26-2.1.21.el5_9.1`. Look at: http://www.akeneo.com/topic/erreur-with-php-composer-phar-beta4/ for more informations.
+
+Generating a clean database (optional)
+--------------------------------------
+
+By default, when you install the PIM, the database is pre-configured with demo data.
+
+If you want to get only the bare minimum of data to have a clean but functional PIM,
+just change the following config line in app/config/parameters.yml:
+
+.. code-block:: bash
+
+    installer_data: PimInstallerBundle:minimal
+
+Then clean the cache and relaunch the install with the db option:
+
+.. code-block:: bash
+
+    php app/console pim:installer:db --env=prod
+
+Add translation packs (optional)
+--------------------------------
+
+Akeneo PIM UI is translated through Crowdin http://crowdin.net/project/akeneo (feel free to contribute!).
+
+Each week, new translation keys are pushed to Crowdin, and new validated translations are pulled to our Github repository.
+
+Akeneo PIM contains translation packs for all languages with more than 80% of translated keys.
+
+When we tag a new minor or patch version, the new translations are available.
+
+You can directly download translation packs from Crowdin.
+
+The Akeneo PIM archive will contain a 'Community' and 'Enterprise' directories.
+
+To add a pack you have to :
+
+ * rename the directories by following the rule 'src/Pim/Bundle/EnrichBundle' to 'PimEnrichBundle'
+ * move this directory to app/Resources/
+ * run php app/console oro:translation:dump fr de en (if you use en, fr and de locales)
