@@ -24,7 +24,11 @@ Run the composer update command:
 
     php composer.phar --prefer-dist update
 
-Double check in the output of this command that the 1.4.8 version has been fetched, you can also check in the composer.lock.
+Double check in the output of this command that the 1.4.8 version has been fetched, you can also check it by using the following command:
+
+.. code-block:: bash
+
+    php composer.phar licenses
 
 Then clean the cache, re-install assets and warmup the cache:
 
