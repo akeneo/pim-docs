@@ -199,6 +199,7 @@ This service first merges all used columns in different rows and adds missing ce
 
 .. warning::
 
-    As this writer will load all lines in memory, it may consume a lot of memory when exporting a very large number of lines (500k for instance).
+    In versions prior to 1.4.9, this writer used to load all products in memory. This can lead to performance and/or stability issues when exporting a very large number of lines (500k for instance).
+    Since 1.4.9 the writer uses a buffer on the disk to avoid overloading the memory, so the only limit is the free space on your server's disk, which is much less likely to be reached.
 
-    If you encounter this kind of issue, please consider writing several smaller files.
+    If you encounter this kind of memory issue, please consider upgrading to the latest 1.4 version.
