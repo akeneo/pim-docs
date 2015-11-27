@@ -5,6 +5,8 @@ When contributing code to Akeneo PIM, you must follow its coding standards (very
 
 Akeneo follows the standards defined in the `PSR-0`_, `PSR-1`_ and `PSR-2`_ documents.
 
+We use few extra rules defined in our configuration of php-cs-fixer https://github.com/akeneo/pim-community-dev/blob/master/.php_cs.php.
+
 Example
 -------
 
