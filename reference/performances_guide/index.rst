@@ -5,6 +5,8 @@ Your product catalog is unique, with different amount of attributes, families, l
 
 The following chapter explains the different performances bottlenecks you can encounter by using Akeneo PIM and list known issues and related best practices you should implement to ensure the success of your project.
 
+The amount of data the PIM handles can evolve for each new minor version, thank you to contact us when your use case is not covered, we can handle it in next minor version or provide you an alternative solution for your project.
+
 .. warning::
 
     There is an early version of this chapter, we'll continue to complete it with more use cases.
@@ -23,8 +25,6 @@ The product documents are stored in a single collection and can be impacted by t
 
 Once that the 64 indexes have been generated and used, the 65th will not be created and the search on this missing index will be slow.
 
-If your collection of products requires more than 64 indexes, please contact us, we're working on a Elastic Search implementation.
-
 Here is the complete formula to check if you have, by far, more indexes than the limited threshold that MongoDB can manage alone:
 
 .. code-block:: yaml
@@ -36,3 +36,34 @@ Here is the complete formula to check if you have, by far, more indexes than the
     + N enabled locales * N enabled channels (for the completeness filters)
     + 3 for family, groups and categories
     > 64
+
+.. warning::
+
+    If your collection of products requires more than 64 indexes, please contact us (we've an Elastic Search implementation).
+
+More than 10k attributes?
+-------------------------
+
+The number of attributes has impacts on different screens and processes of the PIM we've tested performances with a set of 10k attributes in total (not 10k attributes per product).
+
+.. warning::
+
+    We still have different issues with 10k attributes, we're releasing performances fixes as 1.4 patches. If you've more than this amount, please contact us.
+
+More than 10k families?
+-----------------------
+
+The number of families has impact on different screens and processes of the PIM, we've tested performances with a set of 10k families in total.
+
+.. warning::
+
+    We still have different issues with 10k families, we're releasing performances fixes as 1.4 patches. If you've more than this amount, please contact us.
+
+More than 10k categories?
+-------------------------
+
+The number of categories has impact on different screens and processes of the PIM, we've tested performances with a set of 10k categories in total.
+
+.. warning::
+
+    We still have different issues with 10k categories, we're releasing performances fixes as 1.4 patches. If you've more than this amount, please contact us.

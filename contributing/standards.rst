@@ -5,6 +5,8 @@ When contributing code to Akeneo PIM, you must follow its coding standards (very
 
 Akeneo follows the standards defined in the `PSR-0`_, `PSR-1`_ and `PSR-2`_ documents.
 
+We use few extra rules defined in our configuration of php-cs-fixer https://github.com/akeneo/pim-community-dev/blob/master/.php_cs.php.
+
 Example
 -------
 
@@ -125,6 +127,7 @@ Naming Conventions
 * Don't forget to look at the more verbose :doc:`conventions` document for
   more subjective naming considerations.
 
+* The use of Manager or Helper in a class is strictly forbidden because they quickly tend to contain a lot of not related methods
 
 Visibility
 ----------
@@ -134,6 +137,8 @@ Protected by default and public when necessary.
 Usage of private is forbidden in the Core Components and Bundles.
 
 We understand the advantages and know the drawbacks, we strictly follow this rule for now.
+
+We still have a lot of discussions related to this point regarding the Open/Close principle.
 
 An interesting resource on this topic `private vs protected`_
 
