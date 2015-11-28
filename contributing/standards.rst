@@ -127,6 +127,7 @@ Naming Conventions
 * Don't forget to look at the more verbose :doc:`conventions` document for
   more subjective naming considerations.
 
+* The use of Manager or Helper in a class is strictly forbidden because they quickly tend to contain a lot of not related methods
 
 Visibility
 ----------
@@ -136,6 +137,8 @@ Protected by default and public when necessary.
 Usage of private is forbidden in the Core Components and Bundles.
 
 We understand the advantages and know the drawbacks, we strictly follow this rule for now.
+
+We still have a lot of discussions related to this point regarding the Open/Close principle.
 
 An interesting resource on this topic `private vs protected`_
 
