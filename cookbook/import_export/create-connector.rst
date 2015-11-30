@@ -32,7 +32,7 @@ Create a file ``Resources/config/batch_jobs.yml`` in our Bundle to configure a n
     :language: yaml
     :linenos:
 
-Here we use an existing dummy reader, a processor and a writer (they implement relevant interfaces and are useable but they do nothing with data).
+Here we use an existing dummy reader, a processor and a writer (they implement relevant interfaces and are usable but they do nothing with data).
 
 The reader is implemented in the class ``Pim\Component\Connector\Reader\DummyItemReader``, it's defined as a service in the ConnectorBundle with the alias ``pim_connector.reader.dummy_item`` in the file ``Resources\config\readers.yml``.
 
