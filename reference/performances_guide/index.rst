@@ -40,30 +40,3 @@ Here is the complete formula to check if you have, by far, more indexes than the
 .. warning::
 
     If your collection of products requires more than 64 indexes, please contact us (we've an Elastic Search implementation).
-
-More than 10k attributes?
--------------------------
-
-The number of attributes has impacts on different screens and processes of the PIM we've tested performances with a set of 10k attributes in total (not 10k attributes per product).
-
-.. warning::
-
-    We still have different issues with 10k attributes, we're releasing performances fixes as 1.4 patches. If you've more than this amount, please contact us.
-
-More than 10k families?
------------------------
-
-The number of families has impact on different screens and processes of the PIM, we've tested performances with a set of 10k families in total.
-
-.. warning::
-
-    We still have different issues with 10k families, we're releasing performances fixes as 1.4 patches. If you've more than this amount, please contact us.
-
-More than 10k categories?
--------------------------
-
-The number of categories has impact on different screens and processes of the PIM, we've tested performances with a set of 10k categories in total.
-
-.. warning::
-
-    We still have different issues with 10k categories, we're releasing performances fixes as 1.4 patches. If you've more than this amount, please contact us.
