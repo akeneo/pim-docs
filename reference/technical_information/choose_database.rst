@@ -23,4 +23,6 @@ Here is the complete formula to check if you have, by far, more product values t
 
 .. warning::
 
-    In order to prevent any  performance issue, you have to use DirectToDBWriter which has been done in MongoDB. Here the documentation to use it: :doc:`/cookbook/import_export/mongodb-fast-writer`
+    In order to prevent any performance issue, you should use the hybrid storage.
+    In version 1.4.0 to 1.4.12 it is strongly recommended to use it together with the `DirectToMongoDBBundle<https://github.com/akeneo-labs/DirectToMongoDBBundle>`_, which offers a way faster saving strategy.
+    In 1.4.13 the behavior implemented in this bundle became the native one, so no extra bundle is needed to improve your hybrid storage installation.
