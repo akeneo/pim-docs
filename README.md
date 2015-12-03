@@ -11,6 +11,7 @@ Clone this repository.
 Install [Sphinx](http://sphinx-doc.org/).
 ```bash
     $ sudo apt-get install python-sphinx
+    $ sudo pip install git+https://github.com/fabpot/sphinx-php.git
 ```
 
 ### Mac OS
