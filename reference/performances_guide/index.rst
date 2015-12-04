@@ -9,7 +9,7 @@ The amount of data the PIM handles can evolve for each new minor version, thank 
 
 .. warning::
 
-    There is an early version of this chapter, we'll continue to complete it with more use cases.
+    This is an early version of this chapter, we'll continue to complete it with more use cases.
 
 .. _changelog: https://github.com/akeneo/pim-community-dev/blob/1.4/CHANGELOG-1.4.md
 
@@ -33,7 +33,7 @@ Please read the following guide:
 More than 64 indexes with MongoDB ?
 -----------------------------------
 
-A known limit of MongoDB is the number of indexes per collection https://docs.mongodb.org/manual/reference/limits
+A known limit of MongoDB is the number of indexes per collection https://docs.mongodb.org/manual/reference/limits/#Number-of-Indexes-per-Collection
 
 The product documents are stored in a single collection and can be impacted by this limit.
 
@@ -53,12 +53,12 @@ Here is the complete formula to check if you have, by far, more indexes than the
 
 .. warning::
 
-    If your collection of products requires more than 64 indexes, please contact us (we've an Elastic Search implementation).
+    If your collection of products requires more than 64 indexes, please contact us (we are working on an Elastic Search implementation to get rid of this limit).
 
 More than 10k attributes?
 -------------------------
 
-The number of attributes will impact performances of the PIM in several ways.
+The number of attributes may impact performances in Akeneo PIM in several ways.
 We've tested performances with a set of 10k attributes in total (not 10k attributes per product).
 
 .. warning::
