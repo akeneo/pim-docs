@@ -11,7 +11,7 @@ The amount of data the PIM handles can evolve for each new minor version, thank 
 
     This is an early version of this chapter, we'll continue to complete it with more use cases.
 
-.. _changelog: https://github.com/akeneo/pim-community-dev/blob/1.4/CHANGELOG-1.4.md
+.. _changelog: https://github.com/akeneo/pim-community-dev/blob/master/CHANGELOG-1.4.md
 
 .. note::
 
