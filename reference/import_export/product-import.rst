@@ -9,7 +9,7 @@ It's a good start to understand the overall architecture and how to re-use or re
 
   The import part has been widely re-worked in 1.4.
 
-  A new system has been introduced, the old system has been deprecated however is kept, both systems are useable in 1.4 but we strongly recommend using the new system.
+  A new system has been introduced, the old system has been deprecated however is kept, both systems are usable in 1.4 but we strongly recommend using the new system.
 
   The following documentation is related to this new system.
 
@@ -119,7 +119,7 @@ The ``getConfigurationFields()`` method indicates that this service needs to be 
         ];
     }
 
-As it implements ``Akeneo\Bundle\BatchBundle\Step\StepExecutionAwareInterface``, the step execution will be injected and useable during the execution.
+As it implements ``Akeneo\Bundle\BatchBundle\Step\StepExecutionAwareInterface``, the step execution will be injected and usable during the execution.
 
 The ``Akeneo\Bundle\BatchBundle\Entity\StepExecution`` allows to add information, messages and counters during the execution.
 

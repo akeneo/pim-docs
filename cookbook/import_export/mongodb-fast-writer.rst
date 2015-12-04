@@ -1,5 +1,11 @@
-How to use the new fast MongoDB writer
-======================================
+How to use the new fast MongoDB writer [Deprecated]
+===================================================
+
+.. warning::
+
+    This fast MongoDB writer is now deprecated.
+
+    This performance boost is now natively supported by Akeneo PIM, please take a look at :doc:`/reference/performances_guide/index`
 
 Why?
 -----

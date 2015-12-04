@@ -20,7 +20,7 @@ For typo / quick fixes you can directly propose a `PullRequest`_.
 
 To test the rendering of the documentation you can follow this `HowTo`_.
 
-.. _HowTo: https://github.com/akeneo/pim-docs/blob/master/README.md
+.. _HowTo: https://github.com/akeneo/pim-docs/blob/1.4/README.md
 
 reStructuredText
 ----------------
