@@ -12,7 +12,7 @@ Once the link between your custom model and the product value has been set up,
 please continue to `Registering the Custom Product Value Class`_.
 
 .. tip::
-    You can take a look at https://github.com/akeneo/pim-community-dev/tree/1.4/src/Acme/Bundle/AppBundle to see an example of `ProductValue` override.
+    You can take a look at https://github.com/akeneo/pim-community-dev/tree/master/src/Acme/Bundle/AppBundle to see an example of `ProductValue` override.
 
 Linking the ProductValue to a Simple Object
 -------------------------------------------
