@@ -7,7 +7,7 @@ This is part of our Developer eXperience effort, writing these conventions allow
 
 There are still inconsistencies in the codebase that we're fixing in the upcoming minor releases.
 
-We'll continue to enhance this section.
+We'll keep on enhancing this section.
 
 .. include:: /reference/component-or-bundle.rst.inc
 
