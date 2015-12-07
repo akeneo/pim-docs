@@ -9,7 +9,7 @@ It's a good start to understand the overall architecture and how to re-use or re
 
   The import part has been widely re-worked in 1.4.
 
-  A new system has been introduced, the old system has been deprecated however is kept, both systems are usable in 1.4 but we strongly recommend using the new system.
+  A new system has been introduced, the old system has been deprecated however is kept, both systems are usable in 1.4 but we strongly recommend using the new one.
 
   The following documentation is related to this new system.
 
