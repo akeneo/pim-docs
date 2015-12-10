@@ -2,7 +2,7 @@ Storage events
 ==============
 
 Storage events are dispatched in the PIM when you manipulate data using the savers and removers services.
-They are basicly usefull if you want to add your business logic before or after an object is saved or removed.
+They are basically useful if you want to add your business logic before or after an object is saved or removed.
 
 Here is a list of all the events:
 
