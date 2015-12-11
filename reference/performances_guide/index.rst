@@ -112,8 +112,8 @@ We've tested performances with a set of 10k families in total.
 
     Screens impacted are the following and we're releasing performances fixes as 1.4 patches:
       - **[fixed in 1.4.12]** (PIM-5194) edition of a product and change its family (Community Edition)
-      - **[WIP]** (PIM-5232) product grid loading due to the synchronous loading of the family filter (Community Edition)
-      - **[WIP]** (PIM-5231) creation of a product (Community Edition)
+      - **[fixed in upcoming 1.4.14]** (PIM-5232) product grid loading due to the synchronous loading of the family filter (Community Edition)
+      - **[fixed in upcoming 1.4.14]** (PIM-5231) creation of a product (Community Edition)
       - configure step of the product / mass edit / change family (Community Edition)
       - creation of a channel due to the creation of families requirements (Community Edition)
 
@@ -166,7 +166,7 @@ With our tests, this writer performs **10x faster on average** than the standard
 
 With 1.4 version, we had different use cases for customers where mass edit or rules executions were too slow for the exact same reason : the bulk save of the default product saver.
 
-As of 1.4.13 (tag is coming soon), we introduced a new MongoDB product saver, this one is used by default and does not require special configuration.
+As of 1.4.13, we introduced a new MongoDB product saver, this one is used by default and does not require special configuration.
 
 It allows to apply this performance boost on any bulk product saving, for instance : product import, mass edit and rules execution.
 
@@ -178,7 +178,7 @@ It allows to apply this performance boost on any bulk product saving, for instan
 
     This library has been fixed in "v1.0.0-beta13" but, for backward compatibility reason, we can't upgrade the version of this library in a v1.4 patch.
 
-    We're working on our own patch for the v1.4 (PIM-5170), we'll release it soon and we'll upgrade the library in our v1.5.
+    Our own patch has been released in the 1.4.13 (PIM-5170), we plan to upgrade the library in our upcoming v1.5.
 
 Memory usage of rules execution (Enterprise Edition)
 ----------------------------------------------------
