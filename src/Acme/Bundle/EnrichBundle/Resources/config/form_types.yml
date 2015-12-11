@@ -2,7 +2,8 @@ parameters:
     pim_enrich.form.type.category.class: Acme\Bundle\EnrichBundle\Form\Type\CategoryType
 
 services:
-    acme_enrich.form.type.color:
-        class: Acme\Bundle\EnrichBundle\Form\Type\ColorType
+    acme_enrich.form.type.supplier:
+        class: Acme\Bundle\EnrichBundle\Form\Type\SupplierType
         tags:
-            - { name: form.type, alias: acme_enrich_color }
+            - { name: form.type, alias: acme_enrich_supplier }
+

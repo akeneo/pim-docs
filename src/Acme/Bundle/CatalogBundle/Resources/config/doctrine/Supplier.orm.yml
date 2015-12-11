@@ -1,6 +1,6 @@
-Acme\Bundle\CatalogBundle\Entity\Color:
+Acme\Bundle\CatalogBundle\Entity\Supplier:
     type: entity
-    table: acme_catalog_color
+    table: acme_catalog_supplier
     repositoryClass: Pim\Bundle\CustomEntityBundle\Entity\Repository\TranslatableCustomOptionRepository
     fields:
         id:
@@ -12,6 +12,15 @@ Acme\Bundle\CatalogBundle\Entity\Color:
             type: string
             length: 100
             unique: true
+        name:
+            type: string
+            length: 255
+        phone:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
         created:
             type: datetime
             gedmo:
@@ -24,7 +33,7 @@ Acme\Bundle\CatalogBundle\Entity\Color:
                     on: update
     oneToMany:
         translations:
-            targetEntity: Acme\Bundle\CatalogBundle\Entity\ColorTranslation
+            targetEntity: Acme\Bundle\CatalogBundle\Entity\SupplierTranslation
             mappedBy: foreignKey
             cascade:
                 - persist

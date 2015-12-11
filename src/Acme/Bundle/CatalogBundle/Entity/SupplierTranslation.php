@@ -5,9 +5,9 @@ namespace Acme\Bundle\CatalogBundle\Entity;
 use Pim\Bundle\CustomEntityBundle\Entity\AbstractCustomOptionTranslation;
 
 /**
- * Pim Color Translation entity
+ * Pim Supplier Translation entity
  */
-class ColorTranslation extends AbstractCustomOptionTranslation
+class SupplierTranslation extends AbstractCustomOptionTranslation
 {
     
 }

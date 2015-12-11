@@ -1,6 +1,6 @@
-Acme\Bundle\CatalogBundle\Entity\ColorTranslation:
+Acme\Bundle\CatalogBundle\Entity\SupplierTranslation:
     type: entity
-    table: acme_catalog_color_translation
+    table: acme_catalog_supplier_translation
     uniqueConstraints:
         locale_foreign_key_idx:
             columns:
@@ -21,7 +21,7 @@ Acme\Bundle\CatalogBundle\Entity\ColorTranslation:
             length: 20
     manyToOne:
         foreignKey:
-            targetEntity: Acme\Bundle\CatalogBundle\Entity\Color
+            targetEntity: Acme\Bundle\CatalogBundle\Entity\Supplier
             inversedBy: translations
             joinColumns:
                 foreign_key:
