@@ -1,3 +1,6 @@
+Choose Database
+===============
+
 Depending on your data volume (number of products, number of attributes per product, number of basic, localized or scopable attributes, number of locales, number of scopes, etc.) you will have to choose between the following database server configurations:
 
  * Full SQL database with MySQL
