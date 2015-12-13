@@ -42,7 +42,7 @@ Product Export Step
 
 The purpose of this step is to read products from database, to transform product objects to array and write lines in a csv file.
 
-This step is a default step, an ``Akeneo\Bundle\BatchBundle\Step\ItemStep`` is instanciated and injected.
+This step is a default step, an ``Akeneo\Component\Batch\Step\ItemStep`` is instanciated and injected.
 
 .. code-block:: yaml
 
