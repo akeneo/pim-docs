@@ -2,9 +2,9 @@
 
 namespace Acme\Bundle\NotifyConnectorBundle\Handler;
 
-use Akeneo\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
-use Akeneo\Bundle\BatchBundle\Step\StepExecutionAwareInterface;
-use Akeneo\Bundle\BatchBundle\Entity\StepExecution;
+use Akeneo\Component\Batch\Item\AbstractConfigurableStepElement;
+use Akeneo\Component\Batch\Step\StepExecutionAwareInterface;
+use Akeneo\Component\Batch\Model\StepExecution;
 
 // This element is configurable and knows the step execution
 class CurlHandler extends AbstractConfigurableStepElement implements StepExecutionAwareInterface
