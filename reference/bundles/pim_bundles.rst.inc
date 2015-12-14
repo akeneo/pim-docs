@@ -11,6 +11,7 @@
 .. _ImportExportBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/ImportExportBundle
 .. _InstallerBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/InstallerBundle
 .. _JsFormValidationBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/JsFormValidationBundle
+.. _LocalizationBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/LocalizationBundle
 .. _NavigationBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/NavigationBundle
 .. _NotificationBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/NotificationBundle
 .. _PdfGeneratorBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Bundle/PdfGeneratorBundle
@@ -35,6 +36,7 @@
 * `ImportExportBundle`_
 * `InstallerBundle`_
 * `JsFormValidationBundle`_
+* `LocalizationBundle`_
 * `NavigationBundle`_
 * `NotificationBundle`_
 * `PdfGeneratorBundle`_
