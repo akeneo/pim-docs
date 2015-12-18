@@ -25,4 +25,4 @@ Cookbook
     validation/customize_validation
     product_asset/index
     localization/index
-    rule/add_custom_action_rule_engine
+    rule/index
