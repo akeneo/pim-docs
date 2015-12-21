@@ -69,9 +69,9 @@ We've tested performances with a set of 10k attributes in total (not 10k attribu
      - **[fixed in 1.4.11]** (PIM-5209) the loading of the route /configuration/attribute-group/rest (Community Edition)
      - **[fixed in 1.4.12] see following chapter** (PIM-5208) the product grid loading due to manage filters design (Community Edition)
      - **[fixed in 1.4.12] see following chapter** (PIM-5208) the variant product grid loading due to manage filters design (Community Edition)
-     - **[WIP]** (PIM-5210) the configure step of the product / mass edit / common attributes (Community Edition)
-     - **[WIP]** (PIM-5211) the edition of a variant group due to large amount of attributes usable as axis (Community Edition)
-     - the optional attribute popin in the product edit form (Community Edition)
+     - **[fixed in 1.4.14]** (PIM-5210) the configure step of the product / mass edit / common attributes (Community Edition)
+     - **[fixed in 1.4.14]** (PIM-5211) the edition of a variant group due to large amount of attributes usable as axis (Community Edition)
+     - **[WIP]** (PIM-5213) the optional attribute popin in the product edit form (Community Edition)
      - the configure step of the family / mass edit / requirements (Community Edition)
 
     **If you plan to use the PIM with more than 10k attributes, please contact us.**
@@ -112,8 +112,8 @@ We've tested performances with a set of 10k families in total.
 
     Screens impacted are the following and we're releasing performances fixes as 1.4 patches:
       - **[fixed in 1.4.12]** (PIM-5194) edition of a product and change its family (Community Edition)
-      - **[fixed in upcoming 1.4.14]** (PIM-5232) product grid loading due to the synchronous loading of the family filter (Community Edition)
-      - **[fixed in upcoming 1.4.14]** (PIM-5231) creation of a product (Community Edition)
+      - **[fixed in 1.4.14]** (PIM-5232) product grid loading due to the synchronous loading of the family filter (Community Edition)
+      - **[fixed in 1.4.14]** (PIM-5231) creation of a product (Community Edition)
       - configure step of the product / mass edit / change family (Community Edition)
       - creation of a channel due to the creation of families requirements (Community Edition)
 
@@ -178,7 +178,7 @@ It allows to apply this performance boost on any bulk product saving, for instan
 
     This library has been fixed in "v1.0.0-beta13" but, for backward compatibility reason, we can't upgrade the version of this library in a v1.4 patch.
 
-    Our own patch has been released in the 1.4.13 (PIM-5170), we plan to upgrade the library in our upcoming v1.5.
+    Our own patch has been released in the 1.4.13 (PIM-5170), the library has been upgraded in our upcoming v1.5.
 
 Memory usage of rules execution (Enterprise Edition)
 ----------------------------------------------------
