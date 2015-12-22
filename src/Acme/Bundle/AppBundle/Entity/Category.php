@@ -1,10 +1,10 @@
 <?php
 
-namespace Acme\Bundle\CatalogBundle\Entity;
+namespace Acme\Bundle\AppBundle\Entity;
 
-use Pim\Bundle\CatalogBundle\Entity\Category;
+use Pim\Bundle\CatalogBundle\Entity\Category as BaseCategory;
 
-class MyCategory extends Category
+class Category extends BaseCategory
 {
     protected $description;
 
