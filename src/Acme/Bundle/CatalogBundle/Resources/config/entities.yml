@@ -1,3 +1,2 @@
 parameters:
-    pim_catalog.entity.category.class:      Acme\Bundle\CatalogBundle\Entity\MyCategory
     pim_catalog.entity.product_value.class: Acme\Bundle\CatalogBundle\Entity\MyProductValue
