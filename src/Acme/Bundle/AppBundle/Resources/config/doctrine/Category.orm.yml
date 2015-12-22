@@ -1,7 +1,8 @@
-Acme\Bundle\CatalogBundle\Entity\MyCategory:
+Acme\Bundle\AppBundle\Entity\Category:
     type: entity
     repositoryClass: Akeneo\Bundle\ClassificationBundle\Doctrine\ORM\Repository\CategoryRepository
     fields:
         description:
             type: string
             length: 255
+            nullable: true
