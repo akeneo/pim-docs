@@ -30,12 +30,12 @@ First, we need to extend and replace the native `PimCatalogBundle:ProductValue` 
     namespace Acme\Bundle\AppBundle\Model;
 
     use Acme\Bundle\AppBundle\Entity\Color;
-    use Pim\Bundle\CatalogBundle\Model\AbstractProductValue;
+    use Pim\Bundle\CatalogBundle\Model\ProductValue as PimProductValue;
 
     /**
      * Acme override of the product value to link a simple object
      */
-    class ProductValue extends AbstractProductValue
+    class ProductValue extends PimProductValue
     {
         /** @var Color */
         protected $color;
@@ -122,12 +122,12 @@ First, we need to extend and replace the native `PimCatalogBundle:ProductValue` 
 
     use Acme\Bundle\AppBundle\Entity\Color;
     use Doctrine\Common\Collections\ArrayCollection;
-    use Pim\Bundle\CatalogBundle\Model\AbstractProductValue;
+    use Pim\Bundle\CatalogBundle\Model\ProductValue as PimProductValue;
 
     /**
      * Acme override of the product value to link a multiple object
      */
-    class ProductValue extends AbstractProductValue
+    class ProductValue extends PimProductValue
     {
         /** @var ArrayCollection */
         protected $colors;
