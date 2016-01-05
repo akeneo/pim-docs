@@ -27,15 +27,15 @@ First, we need to extend and replace the native `PimCatalogBundle:ProductValue` 
     <?php
     # /src/Acme/Bundle/AppBundle/Entity/ProductValue.php
 
-    namespace Acme\Bundle\AppBundle\Model;
+    namespace Acme\Bundle\AppBundle\Entity;
 
     use Acme\Bundle\AppBundle\Entity\Color;
-    use Pim\Bundle\CatalogBundle\Model\AbstractProductValue;
+    use Pim\Bundle\CatalogBundle\Model\ProductValue as PimProductValue;
 
     /**
      * Acme override of the product value to link a simple object
      */
-    class ProductValue extends AbstractProductValue
+    class ProductValue extends PimProductValue
     {
         /** @var Color */
         protected $color;
@@ -64,9 +64,9 @@ First, we need to extend and replace the native `PimCatalogBundle:ProductValue` 
 Overriding the mapping
 **********************
 
-Create the mapping file `Resources/config/model/doctrine/ProductValue.orm.yml` into your your bundle.
+Create the mapping file `Resources/config/doctrine/ProductValue.orm.yml` into your your bundle.
 
-First, copy the table name, the tracking policy and the indexes of the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.orm.yml`.
+First, copy the table name, the tracking policy and the indexes of the file `src/Pim/Bundle/CatalogBundle/Resources/config/doctrine/ProductValue.orm.yml`.
 
 .. code-block:: yaml
 
@@ -118,16 +118,16 @@ First, we need to extend and replace the native `PimCatalogBundle:ProductValue` 
     <?php
     # /src/Acme/Bundle/AppBundle/Entity/ProductValue.php
 
-    namespace Acme\Bundle\AppBundle\Model;
+    namespace Acme\Bundle\AppBundle\Entity;
 
     use Acme\Bundle\AppBundle\Entity\Color;
     use Doctrine\Common\Collections\ArrayCollection;
-    use Pim\Bundle\CatalogBundle\Model\AbstractProductValue;
+    use Pim\Bundle\CatalogBundle\Model\ProductValue as PimProductValue;
 
     /**
      * Acme override of the product value to link a multiple object
      */
-    class ProductValue extends AbstractProductValue
+    class ProductValue extends PimProductValue
     {
         /** @var ArrayCollection */
         protected $colors;
