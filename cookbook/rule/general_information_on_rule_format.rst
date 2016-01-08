@@ -1,19 +1,19 @@
-General information on rule format
-==================================
+General information about rule format
+=====================================
 
 Quick Overview
 --------------
 
 **This cookbook is about a feature only provided in the Enterprise Edition.**
 
-Enrichment rules enable calculating the value of an attribute according to specific conditions. Those rules are regularly
+Enrichment rules allow to set values for products given specific conditions. These rules are regularly
 applied, as a user who would regularly edit product.
 
 File Structure
 --------------
 
 Enrichment rules are defined in YAML. The file extension has to be ".yml". Indentation is mandatory within the
-file and has to follow the YAML format strictly. To use a rule it has to be imported in the PIM.
+file and has to strictly follow the YAML format. You have to import a rule so it can be used in the PIM.
 
 This file starts with "rules" root element, which contains the list of enrichment rules. This document is about this
 list. Each rule is referred to by a code and can contain a list of conditions and actions.
@@ -104,12 +104,12 @@ Elements with * are optionals.
 
 .. warning::
 
-    Rules code choice is up to you, however it has to contain only alphanumeric characters, underscores and dashes and 255
-    characters maximum.
+    Rules code choice is up to you, however it has to contain only alphanumeric characters, underscores, dashes and be
+    less than 255 characters.
 
 A priority can be given to a rule. Priority will be considered for rules execution order. Without any given
 priority, rule has a zero-priority. The higher the priority, the sooner the rule will be executed.
-Therefore, a rule with 90 priority will be executed before rules with a 0 priority. If no rule has defined priority,
+Therefore, a rule with 90-priority will be executed before rules with a 0-priority. If no rule has defined priority,
 they will be executed in a "technical" order. (database reading order)
 
 Action’s conditions can be applied on localizable and scopable values. In this case, it has
@@ -131,7 +131,7 @@ This action copies an attribute value into another.
     Source and target should share the same type. If source attribute is empty, the value "empty" will also
     be copied.
 
-Two parameters are required and four other are optional:
+Two parameters are required and four others are optional:
  - from_field: code of the attribute to be copied
  - from_locale : locale code of the value to be copied (optional).
  - from_scope : channel code of the value to be copied (optional).
@@ -142,12 +142,12 @@ Two parameters are required and four other are optional:
 .. tip::
 
     For instance, to copy description from en_US print channel to the en_US description e-commerce channel, action will
-    be defined as follows:
+    be defined as follow:
 
         .. code-block:: yaml
 
             actions:
-                - type:        copy
+                - type:        copy_value
                   from_field:  description
                   from_locale: en_US
                   from_scope:  print
@@ -160,7 +160,7 @@ ___
 
 This action assigns values to an attribute.
 
-Two parameters are required, two other are optional.
+Two parameters are required, two others are optional.
  - field : attribute code.
  - locale : local code for which value is assigned (optional).
  - scope : channel code for which value is assigned (optional).
@@ -174,85 +174,60 @@ Two parameters are required, two other are optional.
     .. code-block:: yaml
 
         actions:
-            ­ type:   set
+            ­ type:   set_value
               field:  description
               locale: en_US
               scope:  ecommerce
-              value:  My very new description for purple tshirt
-
-Add
-___
-
-This action adds values to a multiselect, a category or a collection.
-
-Two parameters are required, two other are optional.
- - field : attribute code.
- - locale : local code for which value is assigned (optional).
- - scope : channel code for which value is assigned (optional).
- - value : attribute value
-
-.. tip::
-
-    For instance, adding category "t-shirts" action will be as follows:
-
-    .. code-block:: yaml
-
-        actions:
-            - type: add
-              field: category
-              value:
-                - t-shirts
+              value:  "My very new description for purple tshirt"
 
 Fields
 ++++++
 
 Created
 _______
-+--------------+----------------------+
-| Operator     | - =                  |
-|              | - >                  |
-|              | - <                  |
-|              | - BETWEEN            |
-|              | - NOT BETWEEN        |
-|              | - EMPTY              |
-+--------------+----------------------+
-| Value        | dates format :       |
-|              | yyyy-mm-dd. If       |
-|              | operator is EMPTY,   |
-|              | values information   |
-|              | are ignored          |
-+--------------+----------------------+
-| Example      | .. code-block:: yaml |
-|              |                      |
-|              |   field: created     |
-|              |   operator: =        |
-|              |   value: 01/23/2015  |
-+--------------+----------------------+
++--------------+-----------------------+
+| Operator     | - =                   |
+|              | - ">"                 |
+|              | - <                   |
+|              | - BETWEEN             |
+|              | - NOT BETWEEN         |
+|              | - EMPTY               |
++--------------+-----------------------+
+| Value        | dates format :        |
+|              | yyyy-mm-dd. If        |
+|              | operator is EMPTY,    |
+|              | values information    |
+|              | are ignored           |
++--------------+-----------------------+
+| Example      | .. code-block:: yaml  |
+|              |                       |
+|              |   field: created      |
+|              |   operator: =         |
+|              |   value: "2015-01-23" |
++--------------+-----------------------+
 
 Updated
 _______
-+--------------+----------------------+
-| Operator     | - =                  |
-|              | - >                  |
-|              | - <                  |
-|              | - BETWEEN            |
-|              | - NOT BETWEEN        |
-|              | - EMPTY              |
-+--------------+----------------------+
-| Value        | dates format :       |
-|              | yyyy-mm-dd. If       |
-|              | operator is EMPTY,   |
-|              | values information   |
-|              | are ignored          |
-|              |                      |
-|              |                      |
-+--------------+----------------------+
-| Example      | .. code-block:: yaml |
-|              |                      |
-|              |   field: updated     |
-|              |   operator: =        |
-|              |   value: 01/23/2015  |
-+--------------+----------------------+
++--------------+-----------------------+
+| Operator     | - =                   |
+|              | - ">"                 |
+|              | - <                   |
+|              | - BETWEEN             |
+|              | - NOT BETWEEN         |
+|              | - EMPTY               |
++--------------+-----------------------+
+| Value        | dates format :        |
+|              | yyyy-mm-dd. If        |
+|              | operator is EMPTY,    |
+|              | values information    |
+|              | are ignored           |
++--------------+-----------------------+
+| Example      | .. code-block:: yaml  |
+|              |                       |
+|              |   field: updated      |
+|              |   operator: =         |
+|              |   value: "2015-01-23" |
++--------------+-----------------------+
 
 Enabled
 _______
@@ -273,7 +248,7 @@ Completeness
 ____________
 +--------------+-----------------------+
 | Operator     | - =                   |
-|              | - >                   |
+|              | - ">"                 |
 |              | - <                   |
 +--------------+-----------------------+
 | Value        | Percentage.           |
@@ -286,7 +261,7 @@ ____________
 |              |   locale: fr_FR       |
 |              |   scope: print        |
 |              |   operator: =         |
-|              |   value: 100%         |
+|              |   value: "100"        |
 +--------------+-----------------------+
 
 Family
@@ -307,7 +282,7 @@ ______
 |              |   field: family.code   |
 |              |   operator: IN         |
 |              |   value:               |
-|              |    -­ camcorders       |
+|              |    - camcorders        |
 |              |    - digital_cameras   |
 +--------------+------------------------+
 
@@ -330,7 +305,7 @@ ______
 |              |   field: groups.code  |
 |              |   operator: IN        |
 |              |   value:              |
-|              |    -­ oro_tshirts     |
+|              |    - oro_tshirts      |
 |              |    - akeneo_tshirts   |
 +--------------+-----------------------+
 
@@ -352,7 +327,7 @@ __________
 |              |   field: categories.code |
 |              |   operator: IN           |
 |              |   value:                 |
-|              |    -­ C0056              |
+|              |    - C0056               |
 |              |    - F677                |
 +--------------+--------------------------+
 
@@ -372,7 +347,7 @@ _______________
 | Value        | Text, with or without      |
 |              | quotation marks. if        |
 |              | operator is empty,         |
-|              | Values information         |
+|              | values information         |
 |              | are ignored.               |
 +--------------+----------------------------+
 | Example      | .. code-block:: yaml       |
@@ -388,7 +363,7 @@ ______
 | Operator     | - <                    |
 |              | - <=                   |
 |              | - =                    |
-|              | - >                    |
+|              | - ">"                  |
 |              | - >=                   |
 |              | - EMPTY                |
 +--------------+------------------------+
@@ -406,8 +381,8 @@ ______
 |              |   field: weight        |
 |              |   operator: =          |
 |              |   value:               |
-|              |    -­ data: 0.5        |
-|              |    - unit: KILOGRAM    |
+|              |    data: 0.5           |
+|              |    unit: KILOGRAM      |
 +--------------+------------------------+
 
 
@@ -441,7 +416,7 @@ _____________
 |              |   field: size.code     |
 |              |   operator: IN         |
 |              |   value:               |
-|              |    -­ xxl              |
+|              |    - xxl               |
 +--------------+------------------------+
 
 
@@ -461,7 +436,7 @@ ________________
 |              |   field: material.code |
 |              |   operator: IN         |
 |              |   value:               |
-|              |    -­ GOLD             |
+|              |    - GOLD              |
 |              |    - LEATHER           |
 +--------------+------------------------+
 
@@ -471,7 +446,7 @@ ______
 | Operator     | - <                    |
 |              | - <=                   |
 |              | - =                    |
-|              | - >                    |
+|              | - ">"                  |
 |              | - >=                   |
 |              | - EMPTY                |
 +--------------+------------------------+
@@ -492,7 +467,7 @@ ____
 +--------------+------------------------+
 | Operator     | - <                    |
 |              | - =                    |
-|              | - >                    |
+|              | - ">"                  |
 |              | - BETWEEN              |
 |              | - NOT BETWEEN          |
 |              | - EMPTY                |
@@ -500,14 +475,14 @@ ____
 | Value        | Format date :          |
 |              | yyyy-mm-dd. If         |
 |              | operator is empty,     |
-|              | Values information     |
+|              | values information     |
 |              | are ignored.           |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
 |              |   field: fix_date      |
-|              |   operator: >          |
-|              |   value: 12/05/2016    |
+|              |   operator: ">"        |
+|              |   value: "2016-05-12"  |
 +--------------+------------------------+
 
 Price
@@ -516,7 +491,7 @@ _____
 | Operator     | - <                    |
 |              | - <=                   |
 |              | - =                    |
-|              | - >                    |
+|              | - ">"                  |
 |              | - >=                   |
 |              | - EMPTY                |
 +--------------+------------------------+
@@ -533,7 +508,9 @@ _____
 |              |                        |
 |              |   field: basic_price   |
 |              |   operator: <=         |
-|              |   value: 12 EUR        |
+|              |   value:               |
+|              |     data: 12           |
+|              |     currency: EUR      |
 +--------------+------------------------+
 
 Picture or file
