@@ -96,4 +96,9 @@ Here are the migration guides:
 
 **Enterprise Edition**
 
-From CE v1.4 to EE v1.4, in the archive, you'll find a file named: UPGRADE-CE-1.4-EE-1.4.md
+For the Enterprise Edition, the migration guides are located in the archive you've received.
+
+From EE v1.0 to EE v1.3: UPGRADE-1.3.md
+From EE v1.3 to EE v1.4: UPGRADE-1.4.md
+
+From CE v1.4 to EE v1.4: UPGRADE-CE-1.4-EE-1.4.md
