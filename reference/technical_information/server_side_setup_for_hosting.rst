@@ -88,11 +88,15 @@ The timezone defined should match your location.
 
 .. include:: choose_database.rst
 
-+-----------------+-------+
-| MySQL (SQL)     | ≥ 5.1 |
-+-----------------+-------+
-| MongoDB (NoSQL) |  2.4  |
-+-----------------+-------+
++-----------------+------------+
+| MySQL (SQL)     | ≥ 5.1      |
++-----------------+------------+
+| MongoDB (NoSQL) | 2.4 or 2.6 |
++-----------------+------------+
+
+.. warning::
+
+  Due to changes in API MongoDB 3.0 is not supported.
 
 Depending on the configuration you will pick, you will need to respect part or all of the following requirements:
 
