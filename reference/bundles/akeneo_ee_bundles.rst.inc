@@ -1,0 +1,3 @@
+* FileMetadataBundle
+* FileTransformerBundle
+* RuleEngineBundle

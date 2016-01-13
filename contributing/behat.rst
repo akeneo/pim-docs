@@ -6,7 +6,7 @@
 Setup Behat
 ===========
 
-The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-community-dev/tree/master/features
+The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-community-dev/tree/1.4/features
 
 These scenarios allow to:
 
@@ -41,7 +41,7 @@ Create a VirtualHost
 --------------------
 To be sure to test in an environment as close as possible to a production environment,
 we need to define a specific VirtualHost with production RewriteRule (some limitations
-of Oro Platform does not allow to have production environment with the bootstrap file
+of Oro Platform do not allow to have production environment with the bootstrap file
 included in the URL):
 
 .. code-block:: apache
@@ -89,13 +89,13 @@ Setup the test environment, begin by copying and updating the app/config/paramet
     database_name:     pim_behat
     installer_data:    PimInstallerBundle:minimal
 
-Then install the database for this environment.
+Then, install the database for this environment.
 
 .. code-block:: bash
 
     $ php app/console pim:install --env=behat --force
 
-Then copy behat.yml.dist to behat.yml, edit base_url parameter to match your host:
+Then, copy behat.yml.dist to behat.yml, edit base_url parameter to match your host:
 
 .. code-block:: yaml
 

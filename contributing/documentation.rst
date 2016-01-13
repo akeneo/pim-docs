@@ -1,14 +1,14 @@
 Enhance the Documentation
 =========================
 
-Want to help to enhance the `Documentation`_?
+Want to help enhance the `Documentation`_?
 
 .. _Documentation: http://docs.akeneo.com/latest/index.html
 
 The Akeneo PIM documentation uses `reStructuredText`_ as its markup language and
 `Sphinx`_ for building the output (HTML, PDF, ...).
 
-We're very interested by tutorials or cookbook to explain how to customize the PIM to your project's needs.
+We're very interested in tutorials or cookbooks to explain how to customize the PIM to your project's needs.
 
 Before contributing on a new entry, please begin by creating an `Issue`_ on GitHub to explain your idea.
 
@@ -20,7 +20,7 @@ For typo / quick fixes you can directly propose a `PullRequest`_.
 
 To test the rendering of the documentation you can follow this `HowTo`_.
 
-.. _HowTo: https://github.com/akeneo/pim-docs/blob/master/README.md
+.. _HowTo: https://github.com/akeneo/pim-docs/blob/1.4/README.md
 
 reStructuredText
 ----------------
@@ -34,7 +34,7 @@ or by reading the `reStructuredText Primer`_ on the Sphinx website.
 If you are familiar with Markdown, be careful as things are sometimes very
 similar but different:
 
-* Lists starts at the beginning of a line (no indentation is allowed);
+* Lists start at the beginning of a line (no indentation is allowed);
 * Inline code blocks use double-ticks (````like this````).
 
 Sphinx
@@ -47,7 +47,7 @@ interpreted text roles to standard reST `markup`_.
 Syntax Highlighting
 ~~~~~~~~~~~~~~~~~~~
 
-All code examples uses PHP as the default highlighted language. You can change
+All code examples use PHP as the default highlighted language. You can change
 it with the ``code-block`` directive:
 
 .. code-block:: rst
@@ -110,7 +110,7 @@ The previous reST snippet renders as follow:
 
     // Configuration in PHP
 
-The current list of supported formats are the following:
+The current list of supported formats is the following:
 
 +-----------------+-------------+
 | Markup format   | Displayed   |
@@ -176,4 +176,3 @@ You can also add links to the PHP documentation:
 .. _Pygments website:        http://pygments.org/languages/
 .. _source:                  https://github.com/fabpot/sphinx-php
 .. _Sphinx quick setup:      http://sphinx-doc.org/tutorial.html#setting-up-the-documentation-sources
-

@@ -1,0 +1,5 @@
+acme_dummy_connector:
+    jobs:
+        dummy_job:
+            title: Dummy Job
+            dummy.title: Dummy Step

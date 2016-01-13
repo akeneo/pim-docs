@@ -1,7 +1,0 @@
-Acme\Bundle\CatalogBundle\Entity\MyCategory:
-    type: entity
-    repositoryClass: Pim\Bundle\CatalogBundle\Entity\Repository\CategoryRepository
-    fields:
-        description:
-            type: string
-            length: 255

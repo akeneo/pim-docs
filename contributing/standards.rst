@@ -5,6 +5,8 @@ When contributing code to Akeneo PIM, you must follow its coding standards (very
 
 Akeneo follows the standards defined in the `PSR-0`_, `PSR-1`_ and `PSR-2`_ documents.
 
+We use few extra rules defined in our configuration of php-cs-fixer https://github.com/akeneo/pim-community-dev/blob/1.4/.php_cs.php.
+
 Example
 -------
 
@@ -39,9 +41,11 @@ Here is a short example containing most features described below:
          * @param string $dummy Some argument description
          * @param array  $options
          *
+         * @throws \RuntimeException
+         *
          * @return string|null Transformed input
          *
-         * @throws \RuntimeException
+         * @deprecated Will be removed in x.y
          */
         protected function transformText($dummy, array $options = [])
         {
@@ -76,6 +80,8 @@ Structure
 
 * Add a single space around operators (``==``, ``&&``, ...);
 
+* Put immutable entities on the left of comparison statements (``null === $var``, ``'string' === $this->test()``)
+
 * Add a comma after each array item in a multi-line array, even after the
   last one;
 
@@ -98,6 +104,8 @@ Structure
 
 * Exception message strings should be concatenated using :phpfunction:`sprintf`.
 
+* If we expect something from a method/function (i.e. the returned value of the method/function is used by the caller) we should always do an explicit return (not ``return;``).
+
 Naming Conventions
 ------------------
 
@@ -119,15 +127,18 @@ Naming Conventions
 * Don't forget to look at the more verbose :doc:`conventions` document for
   more subjective naming considerations.
 
+* The use of Manager or Helper in a class is strictly forbidden because they quickly tend to contain a lot of not related methods
 
 Visibility
 ----------
 
 Protected by default and public when necessary.
 
-Useage of private is forbidden in the Core Components and Bundles.
+Usage of private is forbidden in the Core Components and Bundles.
 
 We understand the advantages and know the drawbacks, we strictly follow this rule for now.
+
+We still have a lot of discussions related to this point regarding the Open/Close principle.
 
 An interesting resource on this topic `private vs protected`_
 
@@ -140,7 +151,32 @@ Documentation
 
 * Omit the ``@return`` tag if the method does not return anything;
 
+* If your function returns an array of entity, use
+
+    .. code-block:: php
+
+        /**
+         * @return string[]
+         */
+
+        /**
+         * @return MyClass[]
+         */
+
+* If your function returns an ``ArrayCollection`` of entity, use
+
+    .. code-block:: php
+
+        /**
+         * @return ArrayCollection of string
+         */
+
+        /**
+         * @return ArrayCollection of MyClass
+         */
+
 * The ``@package`` and ``@subpackage`` annotations are not used.
+* Write a ``use`` statement if the PHPdoc needs it, instead of writing the FQCN.
 
 License
 -------
@@ -148,9 +184,8 @@ License
 * Akeneo PIM is released under the OSL license, and the license reference has to be
   present at the top of every PHP file, in the class PHPDoc.
 
-* Some bundles as BatchBundle are released under the MIT licence, for these one, please follow the repository convention.
+* Some bundles as BatchBundle are released under the MIT license, for these ones, please follow the repository convention.
 
 .. _`PSR-0`: http://www.php-fig.org/psr/psr-0/
 .. _`PSR-1`: http://www.php-fig.org/psr/psr-1/
 .. _`PSR-2`: http://www.php-fig.org/psr/psr-2/
-

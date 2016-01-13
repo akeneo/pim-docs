@@ -1,0 +1,13 @@
+acme_notify_connector:
+    jobs:
+        notify_product_import:
+            title: Product Import With Notification
+            export:
+                title: Product Export Step
+            notify:
+                title: Notification Step
+    url:
+        label: Notify url to call
+        help: The url to call at the end of the export
+
+job_execution.summary.notified: Notification sent

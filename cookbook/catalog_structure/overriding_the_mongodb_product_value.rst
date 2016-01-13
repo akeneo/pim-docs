@@ -1,15 +1,18 @@
 How to Override the MongoDB Product Value
 =========================================
 
-In some cases, you may need to extend and replace the `Pim:Catalog:ProductValue` to be able to link some objects with it.
+In some cases, you may need to extend and replace the `PimCatalogBundle:ProductValue` to be able to link some objects to it.
 
-For example, let’s say we want to link the product values with a `Color` model.
-Depending on your needs, a product value can be linked to several colors or just to one.
+For example, let’s say we want to link the product values to a `Color` model.
+Depending on your needs, a product value can be linked to several colors or just one.
 The first case will be detailed in `Linking the ProductValue to a Simple Object`_
 while the second is documented in `Linking the ProductValue to a Collection of Objects`_.
 
 Once the link between your custom model and the product value has been set up,
 please continue to `Registering the Custom Product Value Class`_.
+
+.. tip::
+    You can take a look at https://github.com/akeneo/pim-community-dev/tree/1.4/src/Acme/Bundle/AppBundle to see an example of `ProductValue` override.
 
 Linking the ProductValue to a Simple Object
 -------------------------------------------
@@ -17,7 +20,7 @@ Linking the ProductValue to a Simple Object
 Overriding the class
 ********************
 
-First, we need to extend and replace to the native `Pim:Catalog:ProductValue` class:
+First, we need to extend and replace the native `PimCatalogBundle:ProductValue` class:
 
 .. code-block:: php
 
@@ -27,12 +30,12 @@ First, we need to extend and replace to the native `Pim:Catalog:ProductValue` cl
     namespace Acme\Bundle\AppBundle\Model;
 
     use Acme\Bundle\AppBundle\Entity\Color;
-    use Pim\Bundle\CatalogBundle\Model\AbstractProductValue;
+    use Pim\Bundle\CatalogBundle\Model\ProductValue as PimProductValue;
 
     /**
      * Acme override of the product value to link a simple object
      */
-    class ProductValue extends AbstractProductValue
+    class ProductValue extends PimProductValue
     {
         /** @var Color */
         protected $color;
@@ -61,10 +64,7 @@ First, we need to extend and replace to the native `Pim:Catalog:ProductValue` cl
 Overriding the mapping
 **********************
 
-Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.mongodb.yml` of the PIM inside
-the `Resources/config/model/doctrine` folder of one of your bundles.
-
-First, replace the name of the class by your own class:
+Create the mapping file `Resources/config/model/doctrine/ProductValue.mongodb.yml` into your your bundle.
 
 .. code-block:: yaml
 
@@ -74,7 +74,7 @@ First, replace the name of the class by your own class:
 
 Then, add your custom relations to the mapping.
 
-If your `Color` data are stored in ORM, you should use the following mapping:
+If your `Color` data is stored in ORM, you should use the following mapping:
 
 .. code-block:: yaml
 
@@ -95,7 +95,7 @@ Linking the ProductValue to a Collection of Objects
 Overriding the class
 ********************
 
-First, we need to extend and replace to the native `Pim:Catalog:ProductValue` class:
+First, we need to extend and replace the native `PimCatalogBundle:ProductValue` class:
 
 .. code-block:: php
 
@@ -106,12 +106,12 @@ First, we need to extend and replace to the native `Pim:Catalog:ProductValue` cl
 
     use Acme\Bundle\AppBundle\Entity\Color;
     use Doctrine\Common\Collections\ArrayCollection;
-    use Pim\Bundle\CatalogBundle\Model\AbstractProductValue;
+    use Pim\Bundle\CatalogBundle\Model\ProductValue as PimProductValue;
 
     /**
      * Acme override of the product value to link a multiple object
      */
-    class ProductValue extends AbstractProductValue
+    class ProductValue extends PimProductValue
     {
         /** @var ArrayCollection */
         protected $colors;
@@ -168,10 +168,7 @@ First, we need to extend and replace to the native `Pim:Catalog:ProductValue` cl
 Overriding the mapping
 **********************
 
-Copy the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.mongodb.yml` of the PIM inside
-the `Resources/config/model/doctrine` folder of one of your bundles.
-
-First, replace the name of the class by your own class:
+Create the mapping file `Resources/config/model/doctrine/ProductValue.mongodb.yml` into your your bundle.
 
 .. code-block:: yaml
 
@@ -181,7 +178,7 @@ First, replace the name of the class by your own class:
 
 Then, add your custom relations to the mapping.
 
-If your `Color` data are stored in ORM, you should use the following mapping:
+If your `Color` data is stored in ORM, you should use the following mapping:
 
 .. code-block:: yaml
 
@@ -214,9 +211,26 @@ First, configure the parameter for your `ProductValue` class:
 Don't forget to register your `entities.yml` file in your bundle's extension.
 
 
+Then, configure the mapping override in your application configuration:
+
+.. code-block:: yaml
+
+    # app/config/config.yml
+    akeneo_storage_utils:
+        mapping_overrides:
+            -
+                original: Pim\Bundle\CatalogBundle\Model\ProductValue
+                override: Acme\Bundle\AppBundle\Model\ProductValue
+
+.. note::
+    The `akeneo_storage_utils.mapping_overrides` configuration avoids to have to copy/paste the full
+    `Pim\\Bundle\\CatalogBundle\\Model\\ProductValue` mapping into your `Acme\\Bundle\\AppBundle\\Entity\\ProductValue`
+    mapping.
+
+
 Then, you have to tell Doctrine that your MongoDB classes' mappings are located in the folder
 `Resources/config/model/doctrine` of your bundle. To do that, you have to edit the `build` method of
-your `AcmeAppBundle` class like the following:
+your `AcmeAppBundle` class as follows:
 
 .. code-block:: php
 
@@ -250,7 +264,6 @@ your `AcmeAppBundle` class like the following:
             );
         }
     }
-
 
 
 Finally, check that your mapping override is correct by launching the following command:

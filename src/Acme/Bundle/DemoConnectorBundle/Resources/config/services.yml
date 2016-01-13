@@ -1,6 +1,0 @@
-parameters:
-    acme_democonnector.step.notify.class:  Acme\Bundle\DemoConnectorBundle\Step\NotifyStep
-    acme_democonnector.handler.curl.class: Acme\Bundle\DemoConnectorBundle\Handler\CurlHandler
-services:
-    acme_democonnector.handler.curl:
-        class: "%acme_democonnector.handler.curl.class%"
