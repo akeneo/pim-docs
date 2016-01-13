@@ -5,7 +5,6 @@ The Akeneo PIM comes with a number of mass edit actions.
 It also comes with a flexible way to define your own mass edit actions
 on selected products.
 
-
 Prerequisite
 ------------
 The mass edit action uses the `BatchBundle
