@@ -14,7 +14,7 @@ Create a custom action
 In this cookbook we are going to see how to add a custom action in the rule engine.
 For this example, the goal of this rule is to concatenate attributes name, price and total megapixels into the description field.
 
-First let's see how to add the action. You need to override `PimEnterprise\Bundle\CatalogRuleBundle\Engine\ProductRuleApplier` service that will contain the logic:
+-First let's see how to create the action. You need to create an ActionApplier object that will contain the logic:		
 
 .. code-block:: php
 
