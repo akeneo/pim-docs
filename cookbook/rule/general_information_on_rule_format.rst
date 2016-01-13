@@ -147,7 +147,7 @@ Two parameters are required and four others are optional:
         .. code-block:: yaml
 
             actions:
-                - type:        copy_value
+                - type:        copy
                   from_field:  description
                   from_locale: en_US
                   from_scope:  print
@@ -174,11 +174,34 @@ Two parameters are required, two others are optional.
     .. code-block:: yaml
 
         actions:
-            ­ type:   set_value
+            ­ type:   set
               field:  description
               locale: en_US
               scope:  ecommerce
               value:  "My very new description for purple tshirt"
+
+Add
+___
+
+This action adds values to a multiselect, a category or a collection.
+
+Two parameters are required, two other are optional.
+ - field : attribute code.
+ - locale : local code for which value is assigned (optional).
+ - scope : channel code for which value is assigned (optional).
+ - value : attribute value
+
+.. tip::
+
+    For instance, adding category "t-shirts" action will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: add
+              field: category
+              value:
+                - t-shirts
 
 Fields
 ++++++

@@ -139,7 +139,7 @@ In order to create your reference data, you have to respect the following rules:
 
 .. note::
     To facilitate the integration of the entity in the PIM, we extended the abstract class
-    `Pim\\Component\\ReferenceData\\Model\\AbstractReferenceData`. This is the recommended way to do, but you can simply
+    `Pim\\Component\\ReferenceData\\Model\\AbstractReferenceData`. This is the recommended way to do so, but you can simply
     implement the interface `Pim\\Component\\ReferenceData\\Model\\ReferenceDataInterface` if you want.
 
 .. code-block:: yaml
@@ -232,4 +232,4 @@ You can now check the setup and the configuration of your reference data with th
 
     php app/console pim:reference-data:check
 
-If everything is green, your reference data are correctly configured and you can now link them to products with the PIM.
+If everything is green, your reference data is correctly configured and you can now link them to products within the PIM.

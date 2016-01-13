@@ -25,3 +25,5 @@ Cookbook
     rule/index
     validation/customize_validation
     product_asset/index
+    localization/index
+    rule/index

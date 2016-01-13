@@ -119,9 +119,9 @@ The ``getConfigurationFields()`` method indicates that this service needs to be 
         ];
     }
 
-As it implements ``Akeneo\Bundle\BatchBundle\Step\StepExecutionAwareInterface``, the step execution will be injected and usable during the execution.
+As it implements ``Akeneo\Component\Batch\Step\StepExecutionAwareInterface``, the step execution will be injected and usable during the execution.
 
-The ``Akeneo\Bundle\BatchBundle\Entity\StepExecution`` allows to add information, messages and counters during the execution.
+The ``Akeneo\Component\Batch\Model\StepExecution`` allows to add information, messages and counters during the execution.
 
 .. code-block:: php
 
@@ -144,7 +144,7 @@ Product Import Step
 
 The purpose of this step is to read input CSV file, to transform lines to product objects, to validate and save them in the PIM.
 
-This step is a default step, an ``Akeneo\Bundle\BatchBundle\Step\ItemStep`` is instanciated and injected.
+This step is a default step, an ``Akeneo\Component\Batch\Step\ItemStep`` is instanciated and injected.
 
 .. code-block:: yaml
 
@@ -157,7 +157,7 @@ This step is a default step, an ``Akeneo\Bundle\BatchBundle\Step\ItemStep`` is i
             writer:    pim_connector.writer.doctrine.product
     [...]
 
-An ``ItemStep`` always contains 3 elements, a ``Akeneo\Bundle\BatchBundle\Item\ItemReaderInterface``, a ``Akeneo\Bundle\BatchBundle\Item\ItemProcessorInterface`` and a ``Akeneo\Bundle\BatchBundle\Item\ItemWriterInterface``.
+An ``ItemStep`` always contains 3 elements, a ``Akeneo\Component\Batch\Item\ItemReaderInterface``, a ``Akeneo\Component\Batch\Item\ItemProcessorInterface`` and a ``Akeneo\Component\Batch\Item\ItemWriterInterface``.
 
 We provide here specific implementations for these elements, the services are declared with aliases ``pim_connector.reader.file.csv_product``, ``pim_connector.processor.denormalization.product.flat``, ``pim_connector.writer.doctrine.product``.
 
@@ -217,6 +217,7 @@ The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\proc
                 - '@pim_catalog.validator.product'
                 - '@akeneo_storage_utils.doctrine.object_detacher'
                 - '@pim_catalog.comparator.filter.product'
+                - '@pim_localization.localizer.converter'
 
 The class ``Pim\Component\Connector\Processor\Denormalization\ProductProcessor`` mainly delegates the operations to different technical and business services.
 
@@ -230,6 +231,7 @@ The class ``Pim\Component\Connector\Processor\Denormalization\ProductProcessor``
      * @param ValidatorInterface                    $validator      product validator
      * @param ObjectDetacherInterface               $detacher       detacher to remove it from UOW when skip
      * @param ProductFilterInterface                $productFilter  product filter
+     * @param AttributeLocalizedConverterInterface  $localizedConverter attributes localized converter
      */
     public function __construct(
         StandardArrayConverterInterface $arrayConverter,
@@ -238,7 +240,8 @@ The class ``Pim\Component\Connector\Processor\Denormalization\ProductProcessor``
         ObjectUpdaterInterface $updater,
         ValidatorInterface $validator,
         ObjectDetacherInterface $detacher,
-        ProductFilterInterface $productFilter
+        ProductFilterInterface $productFilter,
+        AttributeLocalizedConverterInterface $localizedConverter
     ) {
         // ...
     }
@@ -287,6 +290,22 @@ The class ``Pim\Component\Connector\ArrayConverter\Flat\ProductStandardConverter
     We aim to use this standard array format everywhere in the PIM, for imports, backend processes, product edit form, variant group values, proposals, etc.
 
     The versionning will be reworked in a future version to use it too.
+
+Product Processor - AttributeLocalizedConverterInterface
+--------------------------------------------------------
+
+When you import a product with localized attributes (e.g. prices with comma as decimal separator),
+data will be converted to transform comma to dot.
+
+.. code-block:: php
+
+    $convertedItem = $this->convertLocalizedAttributes($convertedItem);
+
+The service uses the class ``Pim\Component\Localization\Localize\AttributeLocalizedConverter``.
+
+.. note::
+
+    Read the cookbook to add your own localizer  :doc:`/cookbook/localization/index`
 
 Product Processor - IdentifiableObjectRepositoryInterface
 ---------------------------------------------------------
@@ -445,7 +464,7 @@ We use a dedicated step to be sure that all valid products have already been sav
 
 The purpose of this step is to read input file, to transform lines to product association objects, to validate and save them in the PIM.
 
-This step is a default step, an ``Akeneo\Bundle\BatchBundle\Step\ItemStep`` is instanciated and injected.
+This step is a default step, an ``Akeneo\Component\Batch\Step\ItemStep`` is instanciated and injected.
 
 .. code-block:: yaml
 
