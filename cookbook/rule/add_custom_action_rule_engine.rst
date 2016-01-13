@@ -1,5 +1,5 @@
-How to add a custom action in rule engine
-=========================================
+How to add a custom action in the rule engine
+=============================================
 
 Quick Overview
 --------------
@@ -11,9 +11,10 @@ This cookbook assumes that you already created a new bundle to add your custom r
 Create a custom action
 ----------------------
 
-In this cookbook we are going to see how to add a custom action in the rule engine that allows to concatenate attribute value following a pattern
+In this cookbook we are going to see how to add a custom action in the rule engine.
+For this example, the goal of this rule is to concatenate attributes name, price and total megapixels into the description field.
 
-First let's see how to create the action. You need to create an ActionApplier object that will contain the logic:
+-First let's see how to create the action. You need to create an ActionApplier object that will contain the logic:		
 
 .. code-block:: php
 
@@ -180,7 +181,7 @@ Then we need to create the object that will handle the data.
         }
     }
 
-We also need to create a denormalizer that will return our previous object that handles the data. It will convert the array into an object.
+We also need to create a denormalizer that will return our previous object that handles the data. It will convert the array into an object (needed for the import).
 
 .. code-block:: php
 
@@ -211,7 +212,7 @@ We also need to create a denormalizer that will return our previous object that 
         }
     }
 
-For our example we need to create an `ExistingAttributeValidator` that will check if the attributes provided in the rule file exist. It will raise a violation and skip the item in the case the attribute does not exist.
+For our example we need to create an `ExistingAttributeValidator` that will check if the attributes provided in the rule file exist. It will raise a violation and skip this item if not.
 
 .. code-block:: php
 
@@ -250,7 +251,7 @@ For our example we need to create an `ExistingAttributeValidator` that will chec
         }
     }
 
-Here the constraint message and the validation file:
+Here is the constraint message and its associated validation file:
 
 .. code-block:: php
 
@@ -264,7 +265,7 @@ Here the constraint message and the validation file:
     class ExistingAttributes extends Constraint
     {
         /** @var string */
-        public $message = 'The code "%attribute%" does not exist.';
+        public $message = 'There are no attributes with such code: "%attribute%"';
 
         /**
          * {@inheritdoc}
@@ -302,7 +303,7 @@ Here the constraint message and the validation file:
                - Length:
                    max: 255
 
-Don't forget to add theses classes in you service definition and tag them with the proper tag
+Don't forget to add these classes in your service definition and to tag them with the proper tag
 
 .. code-block:: yml
 
@@ -325,7 +326,7 @@ Don't forget to add theses classes in you service definition and tag them with t
             arguments:
                 - '@pim_catalog.repository.attribute'
             tags:
-                    - { name: validator.constraint_validator, alias: pimee_constraint_attributes_validator }
+                - { name: validator.constraint_validator, alias: pimee_constraint_attributes_validator }
 
 Here is an example on how you could write a rule.
 

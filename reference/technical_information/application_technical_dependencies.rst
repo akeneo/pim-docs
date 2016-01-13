@@ -26,9 +26,7 @@ This means that Akeneo PIM  installation process will use composer to install or
 +------------------------+-------------------------------------------------------------+
 | KNP Menu               | Manages menus and navigation more easily                    |
 +------------------------+-------------------------------------------------------------+
-| KNP Paginator          | Manages data pagination                                     |
-+------------------------+-------------------------------------------------------------+
-| KNP Gaufrette          | Filesystem abstraction layer                                |
+| League Flysystem       | Filesystem abstraction layer                                |
 +------------------------+-------------------------------------------------------------+
 | Liip Imagine           | Manages image manipulation and caching                      |
 +------------------------+-------------------------------------------------------------+
@@ -39,8 +37,6 @@ This means that Akeneo PIM  installation process will use composer to install or
 | FOS REST               | Manages REST interactions                                   |
 +------------------------+-------------------------------------------------------------+
 | Genemu Form            | Adds more complex form widgets                              |
-+------------------------+-------------------------------------------------------------+
-| A2lix Translation Form | Allows better translations management in forms              |
 +------------------------+-------------------------------------------------------------+
 | FOS JS Routing         | Allows to expose application routing on the JavaScript side |
 +------------------------+-------------------------------------------------------------+
