@@ -1,5 +1,5 @@
 parameters:
-    pim_datagrid.product.attribute_type.acme_catalog_color:
+    pim_datagrid.product.attribute_type.acme_color:
         column:
             type:        flexible_option
             selector:    flexible_option

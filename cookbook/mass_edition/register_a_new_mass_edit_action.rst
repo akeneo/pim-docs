@@ -5,40 +5,6 @@ The Akeneo PIM comes with a number of mass edit actions.
 It also comes with a flexible way to define your own mass edit actions
 on selected products.
 
-Work with a custom Acme bundle
-------------------------------
-Your custom Mass Edit actions have to be in a custom Acme bundle which inherit our ``EnrichBundle``.
-We advise you to create this custom bundle with the Symfony command:
-
-.. code-block:: bash
-
-  php app/console generate:bundle
-
-Once your bundle is created, we must inform Symfony it inherits our Bundle:
-
-.. code-block:: php
-
-    # src/Acme/Bundle/EnrichBundle/AcmeEnrichBundle.php
-    <?php
-
-    namespace Acme\Bundle\EnrichBundle;
-
-    use Symfony\Component\HttpKernel\Bundle\Bundle;
-
-    class AcmeEnrichBundle extends Bundle
-    {
-        public function getParent()
-        {
-            return 'PimEnrichBundle';
-        }
-    }
-
-
-Creating a MassEditAction
--------------------------
-The first step is to create a new class that implements ``MassEditActionInterface`` or extends
-``ProductMassEditOperation`` or ``FamilyMassEditOperation`` (given on which grid you want to apply the operation):
-
 Prerequisite
 ------------
 The mass edit action uses the `BatchBundle
@@ -70,8 +36,6 @@ Once your bundle is created, we must inform Symfony it inherits our Bundle:
 
 Phase 1: Create the Operation
 ------------------------------
-
-After the class is created, you must register it as a service in the DIC with the ``pim_catalog.mass_edit_action`` tag:
 
 .. tip::
 

@@ -1,10 +1,11 @@
 services:
     acme_enrich_bundle.mass_edit_action.capitalize_values:
         class: Acme\Bundle\EnrichBundle\MassEditAction\Operation\CapitalizeValues
-        arguments:
-            - '@pim_catalog.saver.product'
         tags:
-            -
-              name: pim_enrich.mass_edit_action
-              alias: capitalize-values
-              operator: pim_enrich.mass_edit_action.operator.product
+            - { name: pim_enrich.mass_edit_action, alias: capitalize-values }
+
+          # To enable the operation on the family grid, use the following tag:
+          # -
+          #     name: pim_enrich.mass_edit_action
+          #     alias: capitalize_values
+          #     operator: pim_enrich.mass_edit_action.operator.family
