@@ -7,7 +7,7 @@ Quick Overview
 **This cookbook is about a feature only provided in the Enterprise Edition.**
 
 Enrichment rules allow to set values for products given specific conditions. These rules are regularly
-applied, as a user who would regularly edit product.
+applied, as a user who would regularly edit a product.
 
 File Structure
 --------------
@@ -142,7 +142,7 @@ Two parameters are required and four others are optional:
 .. tip::
 
     For instance, to copy description from en_US print channel to the en_US description e-commerce channel, action will
-    be defined as follow:
+    be defined as follows:
 
         .. code-block:: yaml
 

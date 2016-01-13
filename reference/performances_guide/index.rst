@@ -168,7 +168,7 @@ With our tests, this writer performs **10x faster on average** than the standard
 
 With 1.4 version, we had different use cases for customers where mass edit or rules executions were too slow for the exact same reason : the bulk save of the default product saver.
 
-As of 1.4.13, we introduced a new MongoDB product saver, this one is used by default and does not require special configuration.
+As of 1.4.13, we introduced a new MongoDB product saver, which is used by default and does not require special configuration.
 
 It allows to apply this performance boost on any bulk product saving, for instance : product import, mass edit and rules execution.
 

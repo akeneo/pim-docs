@@ -265,7 +265,7 @@ Here is the constraint message and its associated validation file:
     class ExistingAttributes extends Constraint
     {
         /** @var string */
-        public $message = 'There are no attributes with such code : "%attribute%"';
+        public $message = 'There are no attributes with such code: "%attribute%"';
 
         /**
          * {@inheritdoc}
