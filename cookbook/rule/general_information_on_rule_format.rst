@@ -13,7 +13,7 @@ File Structure
 --------------
 
 Enrichment rules are defined in YAML. The file extension has to be ".yml". Indentation is mandatory within the
-file and has to strictly follow the YAML format. You have to import a rule so it can be used in the PIM.
+file and has to strictly follow the YAML format. You have to import a rule so that it can be used in the PIM.
 
 This file starts with "rules" root element, which contains the list of enrichment rules. This document is about this
 list. Each rule is referred to by a code and can contain a list of conditions and actions.
