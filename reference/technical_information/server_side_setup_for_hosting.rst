@@ -78,12 +78,6 @@ For CLI php.ini file:  ("/etc/php5/cli/php.ini")
 
 The timezone defined should match your location.
 
-**Required binaries**
-
-+-------------+---------------------------+
-| imagemagick | No specific configuration |
-+-------------+---------------------------+
-
 **Database servers**
 
 .. include:: choose_database.rst
