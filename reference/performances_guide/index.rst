@@ -1,17 +1,11 @@
-Performances Guide
-==================
+Scalability & Performances Guide
+================================
 
-Your product catalog is unique, with different amount of attributes, families, locales, channels, products, etc all those different combinations may cause different performance issues.
+Your product catalog is unique, with different amount of attributes, families, locales, channels, products, etc all those different combinations may cause different scalability or performance issues.
 
-The following chapter explains the different performances bottlenecks you can encounter by using *Akeneo PIM* and lists known issues. It also explains best practices you should implement to ensure the success of your project.
+The following chapter explains the different scalability or performances bottlenecks you can encounter by using *Akeneo PIM* and lists known issues. It also explains best practices you should implement to ensure the success of your project.
 
 The amount of data the PIM handles can evolve for each new minor version, thank you to contact us when your use case is not covered, we can handle it in next minor version or provide you an alternative solution for your project.
-
-.. warning::
-
-    This is an early version of this chapter, we'll continue to complete it with more use cases.
-
-.. _changelog: https://github.com/akeneo/pim-community-dev/blob/1.4/CHANGELOG-1.4.md
 
 .. note::
 
@@ -21,6 +15,16 @@ The amount of data the PIM handles can evolve for each new minor version, thank 
     You'll find below bottlenecks that we have encountered. *All the problems listed below will be fixed in the upcoming 1.4.x patches.*
     If you encounter one of these problems, don't hesitate to take regularly a look at our `changelog`_. If you encounter another problem, please contact us.
 
+.. _changelog: https://github.com/akeneo/pim-community-dev/blob/1.4/CHANGELOG-1.4.md
+
+.. warning::
+
+    This is an early version of this chapter, we'll continue to complete it with more use cases.
+
+Representative Data Volume
+--------------------------
+
+We define 3 representative catalogs to do our performances tests :doc:`/reference/performances_guide/representative_data_volume`.
 
 More than 5 millions of product values?
 ---------------------------------------
