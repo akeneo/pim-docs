@@ -7,24 +7,36 @@ The following chapter explains the different scalability or performances bottlen
 
 The amount of data the PIM handles can evolve for each new minor version, thank you to contact us when your use case is not covered, we can handle it in next minor version or provide you an alternative solution for your project.
 
-.. note::
-
-    *Akeneo PIM* has grown and evolved quickly. We added a lot of useful and cool features since the first release.
-    At this time, *Akeneo PIM* was mostly used with a catalog of maybe some hundreds of attributes and some tens of families. It has completely changed, our standard catalog target switched to a far higher number of attributes and families, whereas *Akeneo PIM* was not benched with such catalogs.
-    Performance is a feature, and we know it. That's why we have performed an audit of the whole 1.4 application, axis by axis, for both versions (Community and Enterprise).
-    You'll find below bottlenecks that we have encountered. *All the problems listed below will be fixed in the upcoming 1.4.x patches.*
-    If you encounter one of these problems, don't hesitate to take regularly a look at our `changelog`_. If you encounter another problem, please contact us.
-
-.. _changelog: https://github.com/akeneo/pim-community-dev/blob/1.4/CHANGELOG-1.4.md
-
 .. warning::
 
     This is an early version of this chapter, we'll continue to complete it with more use cases.
 
-Representative Data Volume
---------------------------
+Audit with 3 Representative Catalogs
+------------------------------------
 
-We define 3 representative catalogs to do our performances tests :doc:`/reference/performances_guide/representative_data_volume`.
+We run our scalability tests with the following :doc:`/reference/performances_guide/representative_catalogs`.
+
+.. note::
+
+    *Akeneo PIM* has grown and evolved quickly. We added a lot of useful and cool features since the first release.
+    At this time, *Akeneo PIM* was mostly used with a catalog of maybe some hundreds of attributes and some tens of families. It has completely changed, our standard catalog target switched to a far higher number of attributes and families, whereas *Akeneo PIM* was not benched with such catalogs.
+    Performance is a feature, and we know it. That's why we have performed following audits of the whole 1.4 application, axis by axis, for both versions (Community and Enterprise).
+    You'll find bottlenecks that we have encountered and related improvements.
+
+Audit with 10k Attributes
+-------------------------
+
+:doc:`/reference/performances_guide/more_than_10k_attributes` you'll be interested by this audit and related improvements.
+
+Audit with 10k Families
+-----------------------
+
+:doc:`/reference/performances_guide/more_than_10k_families` you'll be interested by this audit and related improvements.
+
+Audit with 10k Categories
+-------------------------
+
+:doc:`/reference/performances_guide/more_than_10k_categories` you'll be interested by this audit and related improvements.
 
 More than 5 millions of product values?
 ---------------------------------------
@@ -57,30 +69,8 @@ Here is the complete formula to check if you have, by far, more indexes than the
 
 .. warning::
 
-    If your collection of products requires more than 64 indexes, please contact us (we are working on an Elastic Search implementation to get rid of this limit).
+    If your collection of products requires more than 64 indexes, please contact us (we've developed a Elastic Search implementation to get rid of this limit).
 
-More than 10k attributes?
--------------------------
-
-The number of attributes may impact performances in Akeneo PIM in several ways.
-We've tested performances with a set of 10k attributes in total (not 10k attributes per product).
-
-.. warning::
-
-    On this axis, we still have different issues. We've tested with 10k attributes with a low amount of families and categories.
-
-    Screens impacted are the following, we're releasing performances fixes as 1.4 patches:
-     - **[fixed in 1.4.11]** (PIM-5209) the loading of the route /configuration/attribute-group/rest (Community Edition)
-     - **[fixed in 1.4.12] see following chapter** (PIM-5208) the product grid loading due to manage filters design (Community Edition)
-     - **[fixed in 1.4.12] see following chapter** (PIM-5208) the variant product grid loading due to manage filters design (Community Edition)
-     - **[fixed in 1.4.14]** (PIM-5210) the configure step of the product / mass edit / common attributes (Community Edition)
-     - **[fixed in 1.4.14]** (PIM-5211) the edition of a variant group due to large amount of attributes usable as axis (Community Edition)
-     - **[WIP]** (PIM-5213) the optional attributes popin in the product edit form (Community Edition)
-     - **[WIP]** (PIM-5213) the attributes popin in the mass edit attributes (Community Edition)
-     - (PIM-5401) the attributes popin in family edit page, attribute group page, variant group page (Community Edition)
-     - (PIM-5212) the configure step of the family / mass edit / requirements (Community Edition)
-
-    **If you plan to use the PIM with more than 10k attributes, please contact us.**
 
 More than 500 attributes usable in the product grids?
 -----------------------------------------------------
@@ -105,40 +95,6 @@ We've tested performances with a set of 10k attributes, including 500 attributes
       - **[fixed in 1.4.12]** (PIM-5208) the variant product grid loading due to manage filters design (Community Edition)
 
     **If you plan to use the PIM with more than 500 attributes usable in the grids, please contact us.**
-
-More than 10k families?
------------------------
-
-The number of families will impact performances of the PIM in several ways.
-We've tested performances with a set of 10k families in total.
-
-.. warning::
-
-    On this axis, we still have different issues. We've tested with 10k families and a low amount of attributes and categories.
-
-    Screens impacted are the following and we're releasing performances fixes as 1.4 patches:
-      - **[fixed in 1.4.12]** (PIM-5194) edition of a product and change its family (Community Edition)
-      - **[fixed in 1.4.14]** (PIM-5232) product grid loading due to the synchronous loading of the family filter (Community Edition)
-      - **[fixed in 1.4.14]** (PIM-5231) creation of a product (Community Edition)
-      - **[WIP]** (PIM-5233) configure step of the product / mass edit / change family (Community Edition)
-      - (PIM-5234) creation of a channel due to the creation of families requirements (Community Edition)
-
-    **If you plan to use the PIM with more than 10k families, please contact us.**
-
-More than 10k categories?
--------------------------
-
-The number of categories will impact performances of the PIM in several ways.
-We've tested performances with a set of 10k categories in total.
-
-.. warning::
-
-    On this axis, we still have different issues. We've tested with 10k categories and a low amount of families and attributes.
-
-    Screens impacted are the following and we're releasing performances fixes as 1.4 patches:
-      - change and save permissions on the root category of a large tree (Enterprise Edition)
-
-    **If you plan to use the PIM with more than 10k categories, please contact us.**
 
 Exporting more than 100k products?
 ----------------------------------
