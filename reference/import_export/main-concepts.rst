@@ -36,7 +36,7 @@ Job
 
 Being the main batch domain object, a job is an explicit abstraction representing its configuration specified by a developer.
 
-``Akeneo\Bundle\BatchBundle\Job\JobRepositoryInterface`` handles how jobs are stored, updated and retrieved.
+``Akeneo\Component\Batch\Job\JobRepositoryInterface`` handles how jobs are stored, updated and retrieved.
 
 ``Akeneo\Bundle\BatchBundle\Launcher\JobLauncherInterface`` allows to run a Job.
 
@@ -45,9 +45,9 @@ Each Job can be composed of different Steps.
 Step
 ----
 
-The default class used for a Step is the ``Akeneo\Bundle\BatchBundle\Step\ItemStep``.
+The default class used for a Step is the ``Akeneo\Component\Batch\Step\ItemStep``.
 
-It contains a ``Akeneo\Bundle\BatchBundle\Item\ItemReaderInterface``, a ``Akeneo\Bundle\BatchBundle\Item\ItemProcessorInterface`` and a ``Akeneo\Bundle\BatchBundle\Item\ItemWriterInterface``.
+It contains a ``Akeneo\Component\Batch\Item\ItemReaderInterface``, a ``Akeneo\Component\Batch\Item\ItemProcessorInterface`` and a ``Akeneo\Component\Batch\Item\ItemWriterInterface``.
 
 .. image:: ./batch-item-step.png
 
@@ -59,4 +59,4 @@ For instance, when we import a CSV file of products,
 
 .. note::
 
-  You can use your own Step by implementing ``Akeneo\Bundle\BatchBundle\Step\StepInterface``.
+  You can use your own Step by implementing ``Akeneo\Component\Batch\Step\StepInterface``.
