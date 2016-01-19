@@ -1,7 +1,7 @@
-3 representative catalogs
--------------------------
+Audit with 3 Representative Catalogs
+====================================
 
-We've audited the application with 3 different catalogs, the data sets are available here https://github.com/akeneo/catalogs/tree/1.4
+We've audited the application with 3 different catalogs, data sets are available here https://github.com/akeneo/catalogs/tree/1.4
 
 +------------------------------------+-----------+------------+-------------+
 | **Catalog**                        | **Small** | **Medium** | **Large**   |
@@ -36,7 +36,7 @@ We've audited the application with 3 different catalogs, the data sets are avail
 .. note::
 
     Several of our customers use the PIM with more data on different axes, 10k attributes, 14k categories, etc.
-    If it's the case for your project, you'll be interested by other audits an related improvements :doc:`/reference/performances_guide/index`.
+    If it's the case for your project, you'll be interested by other audits an related improvements :doc:`/reference/scalability_guide/index`.
 
 Installation
 ------------
@@ -67,17 +67,14 @@ With lot of data, processes may run for a quite long time but does not consume m
 Audits Results
 --------------
 
-+--------+-------------------+--------------------+
-|        | Community Edition | Enterprise Edition |
-+--------+-------------------+--------------------+
-| Small  | Ok                | WIP                |
-+--------+-------------------+--------------------+
-| Medium | WIP               | WIP                |
-+--------+-------------------+--------------------+
-| Large  | WIP               | WIP                |
-+--------+-------------------+--------------------+
-
-Known issues
-------------
-
- * WIP
++----------------+-------------------+--------------------+
+|                | Community Edition | Enterprise Edition |
++----------------+-------------------+--------------------+
+| Small MySQL    | Ok                | WIP                |
++----------------+-------------------+--------------------+
+| Medium MySQL   | WIP               | WIP                |
++----------------+-------------------+--------------------+
+| Medium MongoDB | Ok                | WIP                |
++----------------+-------------------+--------------------+
+| Large MongoDB  | WIP               | WIP                |
++----------------+-------------------+--------------------+
