@@ -10,7 +10,7 @@ Transformations are classes which allow to transform a file from state A to stat
 For example, in the Product Asset specific case, they transform a file coming from a Reference (A) to a Variation file (B).
 Each Variation is a transformation of a Reference.
 
-Php5-imagemagick is used in Akeneo PIM but you can add you own library to transform your file.
+Php5-gd is used in Akeneo PIM but you can add you own library to transform your file. The supported file formats are jpg, png and gif.
 
 As Transformations are not specific PIM elements, they are located in `\\Akeneo` and not `\\PimEnterprise`.
 Then, you can find in ``Akeneo\Component\FileTransformer`` all business code and in ``Akeneo\Bundle\FileTransformerBundle`` all Symfony2 specific implementation.
@@ -65,7 +65,7 @@ In order to create your transformation, you have to follow these rules:
         public function __construct(
             TransformationOptionsResolverInterface $optionsResolver,
             ImageMagickLauncher $launcher,
-            array $supportedMimeTypes = ['image/jpeg', 'image/tiff', 'image/png']
+            array $supportedMimeTypes = ['image/jpeg', 'image/png']
         ) {
             $this->optionsResolver    = $optionsResolver;
             $this->supportedMimeTypes = $supportedMimeTypes;
