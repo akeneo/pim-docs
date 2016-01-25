@@ -37,7 +37,7 @@ Let's assume that you already have a fully functional SFTP server ready to recei
     If you want to change the way your product media are stored, you have to configure the key `catalog_storage_adapter` instead of `asset_storage_adapter`.
 
 For further information about SFTP adapter check this `link
-<https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/adapter_SFTP.md/>`_.
+<https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/adapter_sftp.md>`_.
 
 Connect to an Amazon AwsS3v3 server
 -----------------------------------
