@@ -27,7 +27,7 @@ Listener Class Name               Priority
 
 Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
-This event is dispatched after a product draft has been sent for review.
+This event is dispatched after a product draft has been sent for approval.
 
 These are the built-in PIM subscribers registered to this event:
 
