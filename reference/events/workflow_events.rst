@@ -90,3 +90,43 @@ Listener Class Name                    Priority
 =====================================  ===============
 
 .. _DetachProductPostPublishSubscriber: https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/EventSubscriber/PublishedProduct/DetachProductPostPublishSubscriber.php
+
+
+``pimee_workflow.product_draft.pre_ready``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
+
+This event is dispatched after a product is published.
+
+
+``pimee_workflow.product_draft.pre_apply``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
+
+This event is dispatched after a product is published.
+
+
+``pimee_workflow.product_draft.pre_approve``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
+
+This event is dispatched after a product is published.
+
+
+``pimee_workflow.product_draft.pre_refuse``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
+
+This event is dispatched after a product is published.
+
+
+``pimee_workflow.product_draft.pre_remove``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
+
+This event is dispatched after a product is published.
