@@ -8,6 +8,8 @@ They are basically useful if you want to add your business logic before or after
 ``pimee_workflow.product_draft.post_approve``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
+
 This event is dispatched after a product draft proposal is approved.
 
 These are the built-in PIM subscribers registered to this event:
@@ -22,6 +24,8 @@ Listener Class Name               Priority
 
 ``pimee_workflow.product_draft.post_ready``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
 This event is dispatched after a product draft has been sent for review.
 
@@ -38,6 +42,8 @@ Listener Class Name           Priority
 ``pimee_workflow.product_draft.post_refuse``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
+
 This event is dispatched after a product draft proposal has been rejected.
 
 These are the built-in PIM subscribers registered to this event:
@@ -53,5 +59,34 @@ Listener Class Name              Priority
 ``pimee_workflow.product_draft.post_remove``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Event Class: `PublishedProductEvent <https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/Event/PublishedProductEvent.php>`_
+
+This event is dispatched after a product draft proposal is removed.
+
+These are the built-in PIM subscribers registered to this event:
+
+================================  ===============
+Listener Class Name               Priority
+================================  ===============
+`RemoveNotificationSubscriber`_   0
+================================  ===============
+
+.. _RemoveNotificationSubscriber: https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/EventSubscriber/ProductDraft/RemoveNotificationSubscriber.php
+
+
 ``pimee_workflow.published_product.post_publish``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Event Class: `PublishedProductEvent <https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/Event/PublishedProductEvent.php>`_
+
+This event is dispatched after a product is published.
+
+These are the built-in PIM subscribers registered to this event:
+
+=====================================  ===============
+Listener Class Name                    Priority
+=====================================  ===============
+`DetachProductPostPublishSubscriber`_  0
+=====================================  ===============
+
+.. _DetachProductPostPublishSubscriber: https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/EventSubscriber/PublishedProduct/DetachProductPostPublishSubscriber.php
