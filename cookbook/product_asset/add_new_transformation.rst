@@ -22,7 +22,7 @@ Then, compiler pass will inject your tagged Transformation in the registry which
 .. note::
     Learn more about registry_ pattern.
 
-This cookbook assumes that you already created a new bundle to add your new Transformation. Its namespace will be `Acme\CustomBundle`.
+This cookbook assumes that you already created a new bundle to add your new Transformation. Let's assume its namespace is `Acme\\CustomBundle`.
 
 Create a New Transformation
 ---------------------------
@@ -104,7 +104,7 @@ In order to create your transformation, you have to follow these rules:
         }
     }
 
-.. _ImageMagickLauncher: https://github.com/akeneo/pim-enterprise-dev/blob/1.4/src/Akeneo/Component/FileTransformer/Transformation/Image/ImageMagickLauncher.php
+.. _ImageMagickLauncher: https://github.com/akeneo/pim-enterprise-dev/blob/master/src/Akeneo/Component/FileTransformer/Transformation/Image/ImageMagickLauncher.php
 .. note::
     To see how the imagemagick command is launched, you can take a look at the ImageMagickLauncher_.
 

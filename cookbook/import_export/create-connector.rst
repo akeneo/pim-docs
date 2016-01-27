@@ -45,7 +45,7 @@ We'll explain in next cookbook chapters how to create your own elements with rea
 Translate Job and Step titles
 -----------------------------
 
-Create a file ``Resources/config/messages.en.yml`` in our Bundle to translate title keys.
+Create a file ``Resources/translations/messages.en.yml`` in our Bundle to translate title keys.
 
 .. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/translations/messages.en.yml
     :language: yaml

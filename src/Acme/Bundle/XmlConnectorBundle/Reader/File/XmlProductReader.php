@@ -2,8 +2,8 @@
 
 namespace Acme\Bundle\XmlConnectorBundle\Reader\File;
 
-use Akeneo\Bundle\BatchBundle\Item\AbstractConfigurableStepElement;
-use Akeneo\Bundle\BatchBundle\Item\ItemReaderInterface;
+use Akeneo\Component\Batch\Item\AbstractConfigurableStepElement;
+use Akeneo\Component\Batch\Item\ItemReaderInterface;
 
 class XmlProductReader extends AbstractConfigurableStepElement implements ItemReaderInterface
 {

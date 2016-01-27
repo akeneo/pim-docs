@@ -6,7 +6,7 @@
 Setup Behat
 ===========
 
-The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-community-dev/tree/1.4/features
+The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-community-dev/tree/master/features
 
 These scenarios allow to:
 

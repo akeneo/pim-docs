@@ -14,3 +14,4 @@ This chapter describes how to create and customize connectors to handle imports 
    clean-csv-file-during-product-import
    mongodb-fast-writer
    create-custom-step
+   automate-import-exports
