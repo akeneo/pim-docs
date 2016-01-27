@@ -22,36 +22,36 @@ When a product is unpublished:
 
 This event is dispatched **before** a product has been published.
 
-**Event Class**: `PublishedProductEvent <https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/Event/PublishedProductEvent.php>`_
+**Event Class**: ``PimEnterprise\Bundle\WorkflowBundle\Event\PublishedProductEvent``
 
 ``pimee_workflow.published_product.post_publish``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This event is dispatched **after** a product has been published.
 
-**Event Class**: `PublishedProductEvent <https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/Event/PublishedProductEvent.php>`_
+**Event Class**: ``PimEnterprise\Bundle\WorkflowBundle\Event\PublishedProductEvent``
 
 **Built-in PIM subscribers registered to this event**
 
-=====================================  ===============
-Listener Class Name                    Priority
-=====================================  ===============
-`DetachProductPostPublishSubscriber`_  0
-=====================================  ===============
+===========================================================================================================  ===============
+Listener Class Name                                                                                          Priority
+===========================================================================================================  ===============
+``PimEnterprise\Bundle\WorkflowBundle\EventSubscriber\PublishedProduct\DetachProductPostPublishSubscriber``  0
+===========================================================================================================  ===============
 
 ``pimee_workflow.published_product.pre_unpublish``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This event is dispatched **before** a product has been unpublished.
 
-**Event Class**: `PublishedProductEvent <https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/Event/PublishedProductEvent.php>`_
+**Event Class**: ``PimEnterprise\Bundle\WorkflowBundle\Event\PublishedProductEvent``
 
 ``pimee_workflow.published_product.post_unpublish``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This event is dispatched **after** a product has been unpublished.
 
-**Event Class**: `PublishedProductEvent <https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/Event/PublishedProductEvent.php>`_
+**Event Class**: ``PimEnterprise\Bundle\WorkflowBundle\Event\PublishedProductEvent``
 
 Draft/Proposal Workflow Event Actions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -97,11 +97,11 @@ The product draft now becomes a proposal, **ready to be reviewed**.
 
 **Built-in PIM subscribers registered to this event**
 
-============================  ===============
-Listener Class Name           Priority
-============================  ===============
-`SendForApprovalSubscriber`_  0
-============================  ===============
+==============================================================================================  ===============
+Listener Class Name                                                                             Priority
+==============================================================================================  ===============
+``PimEnterprise\Bundle\WorkflowBundle\EventSubscriber\ProductDraft\SendForApprovalSubscriber``  0
+==============================================================================================  ===============
 
 ``pimee_workflow.product_draft.pre_approve``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -120,11 +120,11 @@ The product **has been updated and saved** with the new values, and the product 
 
 **Built-in PIM subscribers registered to this event**
 
-================================  ===============
-Listener Class Name               Priority
-================================  ===============
-`ApproveNotificationSubscriber`_  0
-================================  ===============
+==================================================================================================  ===============
+Listener Class Name                                                                                 Priority
+==================================================================================================  ===============
+``PimEnterprise\Bundle\WorkflowBundle\EventSubscriber\ProductDraft\ApproveNotificationSubscriber``  0
+==================================================================================================  ===============
 
 ``pimee_workflow.product_draft.pre_partial_approve``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -145,11 +145,11 @@ A partial approve could be about a specific attributes/locale/channel of the pro
 
 **Built-in PIM subscribers registered to this event**
 
-================================  ===============
-Listener Class Name               Priority
-================================  ===============
-`ApproveNotificationSubscriber`_  0
-================================  ===============
+==================================================================================================  ===============
+Listener Class Name                                                                                 Priority
+==================================================================================================  ===============
+``PimEnterprise\Bundle\WorkflowBundle\EventSubscriber\ProductDraft\ApproveNotificationSubscriber``  0
+==================================================================================================  ===============
 
 ``pimee_workflow.product_draft.pre_apply``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -183,11 +183,11 @@ The product draft has been updated in the DB.
 
 **Built-in PIM subscribers registered to this event**
 
-===============================  ===============
-Listener Class Name              Priority
-===============================  ===============
-`RefuseNotificationSubscriber`_  0
-===============================  ===============
+=================================================================================================  ===============
+Listener Class Name                                                                                Priority
+=================================================================================================  ===============
+``PimEnterprise\Bundle\WorkflowBundle\EventSubscriber\ProductDraft\RefuseNotificationSubscriber``  0
+=================================================================================================  ===============
 
 ``pimee_workflow.product_draft.pre_partial_refuse``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -208,11 +208,11 @@ A partial refuse could be about a specific attributes/locale/channel of the prod
 
 **Built-in PIM subscribers registered to this event**
 
-===============================  ===============
-Listener Class Name              Priority
-===============================  ===============
-`RefuseNotificationSubscriber`_  0
-===============================  ===============
+=================================================================================================  ===============
+Listener Class Name                                                                                Priority
+=================================================================================================  ===============
+``PimEnterprise\Bundle\WorkflowBundle\EventSubscriber\ProductDraft\RefuseNotificationSubscriber``  0
+=================================================================================================  ===============
 
 ``pimee_workflow.product_draft.pre_remove``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -230,14 +230,8 @@ This event is dispatched **after** a product draft has been removed.
 
 **Built-in PIM subscribers registered to this event**
 
-================================  ===============
-Listener Class Name               Priority
-================================  ===============
-`RemoveNotificationSubscriber`_   0
-================================  ===============
-
-.. _SendForApprovalSubscriber: https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/EventSubscriber/ProductDraft/SendForApprovalSubscriber.php
-.. _ApproveNotificationSubscriber: https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/EventSubscriber/ProductDraft/ApproveNotificationSubscriber.php
-.. _RefuseNotificationSubscriber: https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/EventSubscriber/ProductDraft/RefuseNotificationSubscriber.php
-.. _RemoveNotificationSubscriber: https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/EventSubscriber/ProductDraft/RemoveNotificationSubscriber.php
-.. _DetachProductPostPublishSubscriber: https://github.com/akeneo/pim-enterprise-dev/blob/master/src/PimEnterprise/Bundle/WorkflowBundle/EventSubscriber/PublishedProduct/DetachProductPostPublishSubscriber.php
+=================================================================================================  ===============
+Listener Class Name                                                                                Priority
+=================================================================================================  ===============
+``PimEnterprise\Bundle\WorkflowBundle\EventSubscriber\ProductDraft\RemoveNotificationSubscriber``  0
+=================================================================================================  ===============
