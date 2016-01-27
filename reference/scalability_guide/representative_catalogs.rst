@@ -12,7 +12,7 @@ We've audited the application with 3 different catalogs, data sets are available
 +------------------------------------+-----------+------------+-------------+
 | Categories / product               | 2         | 2          | 4           |
 +------------------------------------+-----------+------------+-------------+
-| Attributes                         | 100       | 400        | 5000        |
+| Attributes                         | 100       | 400        | 1000        |
 +------------------------------------+-----------+------------+-------------+
 | Attributes Groups                  | 8         | 15         | 20          |
 +------------------------------------+-----------+------------+-------------+
@@ -33,10 +33,20 @@ We've audited the application with 3 different catalogs, data sets are available
 | Locales                            | 1         | 4          | 8           |
 +------------------------------------+-----------+------------+-------------+
 
+There are the amount of product values generated in each catalog used to realize the audit:
+
++------------------------------------+-----------+------------+-------------+
+| **Catalog**                        | **Small** | **Medium** | **Large**   |
++------------------------------------+-----------+------------+-------------+
+| Product values                     | 257.010   | ...        | ...         |
++------------------------------------+-----------+------------+-------------+
+
 .. note::
 
-    Several of our customers use the PIM with more data on different axes, 10k attributes, 14k categories, etc.
-    If it's the case for your project, you'll be interested by other audits an related improvements :doc:`/reference/scalability_guide/index`.
+    Several of our customers use the PIM with far more data on different axes, 10k attributes, 14k categories, etc.
+    If your data set challenges these limits, you may be interested by other audits and related improvements in :doc:`/reference/scalability_guide/index`.
+    If you don't find relevant information for your targeted data set, don't hesitate to contact us to explain your use case.
+    We improve the product scalability from one minor version to another and are always interested by new use cases to cover.
 
 Installation
 ------------
@@ -46,11 +56,14 @@ The application is installed on a server following the recommended architecture 
 Depending on the catalog, we use a different database storage:
 
  * Small catalog is installed with the MySQL storage.
- * Medium catalog is installed with the MySQL storage.
  * Medium catalog is installed with the MongoDB storage.
  * Large catalog is installed with MongoDB storage.
 
 Then, we install the `fixtures` via the installer before to import the products through the default product csv import.
+
+.. note::
+
+    You want to know more about how we choose the relevant storage :doc:`/reference/scalability_guide/more_than_5M_product_values`.
 
 Audit User Interface
 --------------------
