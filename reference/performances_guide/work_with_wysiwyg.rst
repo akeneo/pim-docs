@@ -1,5 +1,5 @@
-Work with WYSIWYG :
--------------------
+More than 100 WYSIWYG editor in a page?
+---------------------------------------
 
 WYSIWYG are javascript components and so are executed on the client side. Hardware performances of the client can affect the speed of pages with WYSIWYG.
 
