@@ -72,9 +72,16 @@ Then, you have to override the service definition of your form:
     :lines: 1-2
     :linenos:
 
-.. note::
+Then, add this new file to your dependency injection extension:
 
-    Don't forget to add this new file to your dependency injection extension
+.. code-block:: php
+
+    # /src/Acme/Bundle/EnrichBundle/DependencyInjection/AcmeAppExtension.php
+    public function load(array $configs, ContainerBuilder $container)
+    {
+        /** ... **/
+        $loader->load('form_types.yml');
+    }
 
 Then, don't forget to add your new field to the twig template:
 
@@ -85,7 +92,7 @@ Then, don't forget to add your new field to the twig template:
 
 For the form validation you will have to add a new validation file:
 
-.. literalinclude:: ../../src/Acme/Bundle/AppBundle/Resources/config/validation.yml
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/validation/category.yml
     :language: yaml
-    :prepend: # /src/Acme/Bundle/AppBundle/Resources/config/validation.yml
+    :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/validation/category.yml
     :linenos:
