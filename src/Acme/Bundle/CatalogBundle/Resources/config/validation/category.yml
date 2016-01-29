@@ -1,4 +1,4 @@
-Acme\CatalogBundle\Entity\MyCategory:
+Acme\CatalogBundle\Entity\Category:
     properties:
         description:
             - NotBlank: ~
