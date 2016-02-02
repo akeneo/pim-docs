@@ -6,7 +6,6 @@ We've tested performances with a set of 10k families in total.
 
 .. note::
 
-    *All the problems listed below will be fixed in the upcoming 1.4.x patches.*
     If you encounter one of these problems, don't hesitate to take regularly a look at our `changelog`_. If you encounter another problem, please contact us.
 
 .. _changelog: https://github.com/akeneo/pim-community-dev/blob/1.4/CHANGELOG-1.4.md
@@ -15,11 +14,11 @@ We've tested performances with a set of 10k families in total.
 
     On this axis, we still have different issues. We've tested with 10k families and a low amount of attributes and categories.
 
-    Screens impacted are the following and we're releasing performances fixes as 1.4 patches:
-      - **[fixed in 1.4.12]** (PIM-5194) edition of a product and change its family (Community Edition)
-      - **[fixed in 1.4.14]** (PIM-5232) product grid loading due to the synchronous loading of the family filter (Community Edition)
-      - **[fixed in 1.4.14]** (PIM-5231) creation of a product (Community Edition)
-      - **[fixed in 1.4.16]** (PIM-5233) configure step of the product / mass edit / change family (Community Edition)
-      - (PIM-5234) creation of a channel due to the creation of families requirements (Community Edition)
+    Screens impacted are the following:
+      - **[improved in 1.4.12]** (PIM-5194) edition of a product and change its family (Community Edition)
+      - **[improved in 1.4.14]** (PIM-5232) product grid loading due to the synchronous loading of the family filter (Community Edition)
+      - **[improved in 1.4.14]** (PIM-5231) creation of a product (Community Edition)
+      - **[improved in 1.4.16]** (PIM-5233) configure step of the product / mass edit / change family (Community Edition)
+      - **[TODO]** (PIM-5234) creation of a channel due to the creation of families requirements (Community Edition)
 
     **If you plan to use the PIM with more than 10k families, please contact us.**
