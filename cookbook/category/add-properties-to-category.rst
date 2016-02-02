@@ -5,7 +5,7 @@ The Akeneo PIM allows the classification of products inside a customizable categ
 
 .. note::
 
-    To implement this task you have to be comfortable with Symfony bundle overriding and Symfony services. This cookbook can be used to override other entities as attribute.
+    To implement this task you have to be comfortable with Symfony bundle overriding and Symfony services. This cookbook can be used to override other entities such as an attribute.
 
 Add Properties to your own Category
 -----------------------------------

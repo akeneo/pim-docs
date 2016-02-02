@@ -12,7 +12,7 @@ Once the link between your custom model and the product value has been set up,
 please continue to `Registering the Custom Product Value Class`_.
 
 .. tip::
-    You can take a look at https://github.com/akeneo/pim-community-dev/tree/1.4/src/Acme/Bundle/AppBundle to see an example of `ProductValue` override.
+    You can take a look at https://github.com/akeneo/pim-community-dev/tree/master/src/Acme/Bundle/AppBundle to see an example of `ProductValue` override.
 
 Linking the ProductValue to a Simple Object
 -------------------------------------------
@@ -181,9 +181,9 @@ First, we need to extend and replace the native `PimCatalogBundle:ProductValue` 
 Overriding the mapping
 **********************
 
-Create the mapping file `Resources/config/model/doctrine/ProductValue.orm.yml` into your your bundle.
+Create the mapping file `Resources/config/doctrine/ProductValue.orm.yml` into your your bundle.
 
-First, copy the table name, the tracking policy and the indexes of the file `src/Pim/Bundle/CatalogBundle/Resources/config/model/doctrine/ProductValue.orm.yml`.
+First, copy the table name, the tracking policy and the indexes of the file `src/Pim/Bundle/CatalogBundle/Resources/config/doctrine/ProductValue.orm.yml`.
 
 .. code-block:: yaml
 
@@ -254,7 +254,7 @@ Then, configure the mapping override in your application configuration:
         mapping_overrides:
             -
                 original: Pim\Bundle\CatalogBundle\Model\ProductValue
-                override: Acme\Bundle\AppBundle\Model\ProductValue
+                override: Acme\Bundle\AppBundle\Entity\ProductValue
 
 .. note::
     The `akeneo_storage_utils.mapping_overrides` configuration avoids to have to copy/paste the full

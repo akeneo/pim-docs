@@ -2,14 +2,14 @@ Storage events
 ==============
 
 Storage events are dispatched in the PIM when you manipulate data using the savers and removers services.
-They are basicly usefull if you want to add your business logic before or after an object is saved or removed.
+They are basically useful if you want to add your business logic before or after an object is saved or removed.
 
 Here is a list of all the events:
 
 ``akeneo.storage.pre_remove``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Event Class: `RemoveEvent <https://github.com/akeneo/pim-community-dev/blob/1.4/src/Akeneo/Component/StorageUtils/Event/RemoveEvent.php>`_
+Event Class: `RemoveEvent <https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Component/StorageUtils/Event/RemoveEvent.php>`_
 
 This event is dispatched before we remove an object using a remover.
 
@@ -25,13 +25,13 @@ RemoveChannelSubscriber (Enterprise edition)                      0
 CheckPublishedProductOnRemovalSubscriber (Enterprise edition)     0
 ================================================================  ===============
 
-.. _CheckChannelsOnDeletionSubscriber: https://github.com/akeneo/pim-community-dev/blob/1.4/src/Pim/Bundle/CatalogBundle/EventSubscriber/Category/CheckChannelsOnDeletionSubscriber.php
-.. _ProductTemplateAttributeSubscriber: https://github.com/akeneo/pim-community-dev/blob/1.4/src/Pim/Bundle/CatalogBundle/EventSubscriber/ProductTemplateAttributeSubscriber.php
+.. _CheckChannelsOnDeletionSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/Category/CheckChannelsOnDeletionSubscriber.php
+.. _ProductTemplateAttributeSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/ProductTemplateAttributeSubscriber.php
 
 ``akeneo.storage.post_remove``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Event Class: `RemoveEvent <https://github.com/akeneo/pim-community-dev/blob/1.4/src/Akeneo/Component/StorageUtils/Event/RemoveEvent.php>`_
+Event Class: `RemoveEvent <https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Component/StorageUtils/Event/RemoveEvent.php>`_
 
 This event is dispatched after we remove an object using a remover.
 
@@ -45,9 +45,9 @@ Listener Class Name                                  Priority
 `ProductCategorySubscriber`_                         0
 ===================================================  ===============
 
-.. _AddRemoveVersionSubscriber: https://github.com/akeneo/pim-community-dev/blob/1.4/src/Pim/Bundle/VersioningBundle/EventSubscriber/AddRemoveVersionSubscriber.php
-.. _RemoveOutdatedProductsFromAssociationsSubscriber: https://github.com/akeneo/pim-community-dev/blob/1.4/src/Pim/Bundle/CatalogBundle/EventSubscriber/MongoDBODM/RemoveOutdatedProductsFromAssociationsSubscriber.php
-.. _ProductCategorySubscriber: https://github.com/akeneo/pim-community-dev/blob/1.4/src/Pim/Bundle/CatalogBundle/EventSubscriber/ProductCategorySubscriber.php
+.. _AddRemoveVersionSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/VersioningBundle/EventSubscriber/AddRemoveVersionSubscriber.php
+.. _RemoveOutdatedProductsFromAssociationsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/MongoDBODM/RemoveOutdatedProductsFromAssociationsSubscriber.php
+.. _ProductCategorySubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/ProductCategorySubscriber.php
 
 ``akeneo.storage.pre_save``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,7 +64,7 @@ Listener Class Name             Priority
 `CurrencyDisablingSubscriber`_  0
 ==============================  ===============
 
-.. _CurrencyDisablingSubscriber: https://github.com/akeneo/pim-community-dev/blob/1.4/src/Pim/Bundle/CatalogBundle/EventSubscriber/CurrencyDisablingSubscriber.php
+.. _CurrencyDisablingSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/CurrencyDisablingSubscriber.php
 
 ``akeneo.storage.post_save``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
