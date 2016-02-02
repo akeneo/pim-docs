@@ -1,69 +1,70 @@
 Audit with 3 Representative Catalogs
 ====================================
 
-We've audited the application with 3 different catalogs, data sets are available here https://github.com/akeneo/catalogs/tree/1.4
+.. warning::
 
-+------------------------------------+-----------+------------+-------------+
-| **Catalog**                        | **Small** | **Medium** | **Large**   |
-+------------------------------------+-----------+------------+-------------+
-| Products                           | 5000      | 50000      | 2000000     |
-+------------------------------------+-----------+------------+-------------+
-| Categories                         | 500       | 2000       | 4000        |
-+------------------------------------+-----------+------------+-------------+
-| Categories / product               | 2         | 2          | 4           |
-+------------------------------------+-----------+------------+-------------+
-| Attributes                         | 100       | 400        | 1000        |
-+------------------------------------+-----------+------------+-------------+
-| Attributes Groups                  | 8         | 15         | 20          |
-+------------------------------------+-----------+------------+-------------+
-| Attributes / Families              | 50        | 100        | 150         |
-+------------------------------------+-----------+------------+-------------+
-| % filled attributes                | 75%       | 75%        | 75%         |
-+------------------------------------+-----------+------------+-------------+
-| %localisable attributes            | 10%       | 5%         | 2%          |
-+------------------------------------+-----------+------------+-------------+
-| %scopable attributes               | 5%        | 2%         | 1%          |
-+------------------------------------+-----------+------------+-------------+
-| %scopable + localisable attributes | 2%        | 1%         | < 1%        |
-+------------------------------------+-----------+------------+-------------+
-| Families                           | 20        | 50         | 400         |
-+------------------------------------+-----------+------------+-------------+
-| Channels                           | 2         | 2          | 4           |
-+------------------------------------+-----------+------------+-------------+
-| Locales                            | 1         | 4          | 8           |
-+------------------------------------+-----------+------------+-------------+
+    This is an early version of this page, we'll continue to complete it with more use cases.
 
-There are the amount of product values generated in each catalog used to realize the audit:
+We've audited the application with 3 different representative catalogs:
 
-+------------------------------------+-----------+------------+-------------+
-| **Catalog**                        | **Small** | **Medium** | **Large**   |
-+------------------------------------+-----------+------------+-------------+
-| Product values                     | 257.010   | ...        | ...         |
-+------------------------------------+-----------+------------+-------------+
++-----------------------------------------+-----------+------------+-------------+
+| **Catalog**                             | **Small** | **Medium** | **Large**   |
++-----------------------------------------+-----------+------------+-------------+
+| Products                                | 5.000     | 50.000     | 2.000.000   |
++-----------------------------------------+-----------+------------+-------------+
+| Categories                              | 500       | 2.000      | 4.000       |
++-----------------------------------------+-----------+------------+-------------+
+| Categories / product                    | 2         | 2          | 4           |
++-----------------------------------------+-----------+------------+-------------+
+| Attributes                              | 100       | 400        | 1.000       |
++-----------------------------------------+-----------+------------+-------------+
+| Attributes Groups                       | 8         | 15         | 20          |
++-----------------------------------------+-----------+------------+-------------+
+| Attributes / Families                   | 50        | 100        | 150         |
++-----------------------------------------+-----------+------------+-------------+
+| % filled attributes                     | 75%       | 75%        | 75%         |
++-----------------------------------------+-----------+------------+-------------+
+| %localisable attributes                 | 10%       | 5%         | 2%          |
++-----------------------------------------+-----------+------------+-------------+
+| %scopable attributes                    | 5%        | 2%         | 1%          |
++-----------------------------------------+-----------+------------+-------------+
+| %scopable + localisable attributes      | 2%        | 1%         | < 1%        |
++-----------------------------------------+-----------+------------+-------------+
+| Families                                | 20        | 50         | 400         |
++-----------------------------------------+-----------+------------+-------------+
+| Channels                                | 2         | 2          | 4           |
++-----------------------------------------+-----------+------------+-------------+
+| Enabled Locales                         | 1         | 4          | 8           |
++-----------------------------------------+-----------+------------+-------------+
+| **Audit Status for Community Edition**  | **DONE**  | **DONE**   | **WIP**     |
++-----------------------------------------+-----------+------------+-------------+
+| **Audit Status for Enterprise Edition** | **WIP**   | **WIP**    | **WIP**     |
++-----------------------------------------+-----------+------------+-------------+
 
-.. note::
+These catalogs are available here https://github.com/akeneo/catalogs/tree/1.4.
 
-    Several of our customers use the PIM with far more data on different axes, 10k attributes, 14k categories, etc.
-    If your data set challenges these limits, you may be interested by other audits and related improvements in :doc:`/reference/scalability_guide/index`.
-    If you don't find relevant information for your targeted data set, don't hesitate to contact us to explain your use case.
-    We improve the product scalability from one minor version to another and are always interested by new use cases to cover.
+You can also use our data generator https://github.com/akeneo-labs/DataGeneratorBundle.
 
 Installation
 ------------
 
 The application is installed on a server following the recommended architecture :doc:`/reference/technical_information/index`.
 
-Depending on the catalog, we use a different database storage:
+Depending on the catalog, we use a different database storage. We install the data `fixtures` via the installer before to import the products through the default product csv import.
 
- * Small catalog is installed with the MySQL storage.
- * Medium catalog is installed with the MongoDB storage.
- * Large catalog is installed with MongoDB storage.
-
-Then, we install the `fixtures` via the installer before to import the products through the default product csv import.
++---------+---------+----------------+
+|         | Storage | Product values |
++---------+---------+----------------+
+| Small   | MySQL   | 159.676        |
++---------+---------+----------------+
+| Medium  | MySQL   | 3.661.981      |
++---------+---------+----------------+
+| Large   | MongoDB | [WIP]          |
++---------+---------+----------------+
 
 .. note::
 
-    You want to know more about how we choose the relevant storage :doc:`/reference/scalability_guide/more_than_5M_product_values`.
+    If you want to know more about how we choose the relevant storage, please read :doc:`/reference/scalability_guide/more_than_5M_product_values`
 
 Audit User Interface
 --------------------
@@ -73,21 +74,86 @@ We use the application in production mode, with xdebug disabled, and we expect a
 Audit Backend Processes
 -----------------------
 
-We run backend processes (bulk actions, imports, exports, rules execution, etc) in production mode, with xdebug disabled.
+We run backend processes (bulk actions, imports, exports, rules execution, etc) in production mode, with xdebug disabled. Depending on the amount of data, processes may run for quite a long time but does not consume more memory than what we advise in :doc:`/reference/technical_information/index`. Please note that for some project data set, several extra configurations are required (for instance, change the size of a bulk of products for the rules execution).
 
-With lot of data, processes may run for a quite long time but does not consume more memory than what we advise in :doc:`/reference/technical_information/index`.
+Known limitations on representative catalogs
+--------------------------------------------
 
-Audits Results
---------------
+ - Memory leaks (when a process consumes more memory than recommended) are qualified as bugs and are released in patches versions.
+ - Scalability limitations (when we try to support larger data volume for an axis) are qualified as improvements and are released in minor versions.
 
-+----------------+-------------------+--------------------+
-|                | Community Edition | Enterprise Edition |
-+----------------+-------------------+--------------------+
-| Small MySQL    | Ok                | WIP                |
-+----------------+-------------------+--------------------+
-| Medium MySQL   | WIP               | WIP                |
-+----------------+-------------------+--------------------+
-| Medium MongoDB | Ok                | WIP                |
-+----------------+-------------------+--------------------+
-| Large MongoDB  | WIP               | WIP                |
-+----------------+-------------------+--------------------+
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **Type** | **Catalog** | **Edition** | **Released** | **Note**                                                                                                                                                       |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| memleak  | All         | All         | WIP          | (PIM-5507) Memory leak when executing mass edit or mass publish on several thousands of products                                                               |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| improv.  | All         | All         | v1.4.19      | (PIM-5476) Creation of useless empty product values when importing new products (may divide by 2 the exec time)                                                |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| improv.  | Medium      | All         |              | (PIM-5467) First load of the completeness widget is too long (ORM)                                                                                             |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| improv.  | Large       | All         |              | (PIM-5518) Timeout with synchronous update of products when remove 'AssociationType', 'Attribute', 'AttributeOption', 'Category', 'Family', 'Group', 'Channel' |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Examples of customers instance
+------------------------------
+
+Several customers challenge the limitations in custom projects, it sometimes requires dedicated optimizations. We continuously improve the product scalability in each minor version and we are always interested by new use cases to cover. Don't hesitate to contact us if you need help to scale your instance.
+
+**On standard axes:**
+
++-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
+| **Catalog**                             | **Customer 1** | **Customer 2** | **Customer 3** | **Customer 4** | **Details about limitations**                                |
++-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
+| Products                                | **3.100.000**  | 240.000        | 80.000         | 10.000         |                                                              |
++-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
+| Attributes                              | 1.900          | **8.000**      | 240            | 355            | :doc:`/reference/scalability_guide/more_than_10k_attributes` |
++-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
+| Families                                | 140            | **3.500**      | 44             | 3              | :doc:`/reference/scalability_guide/more_than_10k_families`   |
++-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
+| Categories                              |                | **14.000**     | 740            | 60             | :doc:`/reference/scalability_guide/more_than_10k_categories` |
++-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
+| Channels                                | 1              | 2              | 2              | **14**         |                                                              |
++-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
+| Enabled Locales                         | 1              | 1              | **36**         | 1              |                                                              |
++-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
+
+**On other axes or combinations:**
+
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+|                                    | **Tested** | **In custom project** | **Details about limitations**                                     |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+| Attribute options                  | 95.000     |                       |                                                                   |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+| Reference data                     | [WIP]      |                       |                                                                   |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+| Product groups                     | [WIP]      |                       |                                                                   |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+| Product variant groups             | [WIP]      | 10.000                |                                                                   |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+| Attributes per family              | 150        |                       |                                                                   |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+| Attributes per attribute group     | 150        | 1.500                 |                                                                   |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+| Attribute options per attribute    | 500        |                       |                                                                   |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+| Product values per product         | [WIP]      |                       |                                                                   |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+| Products per product group         | [WIP]      |                       |                                                                   |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+| Products per product variant group | [WIP]      |                       |                                                                   |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+| Product values per variant group   | 50         |                       |                                                                   |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+| Rules                              | 150        | 3.000                 | :doc:`/reference/performances_guide/rules_execution_memory_usage` |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+| Product assets                     | [WIP]      |                       |                                                                   |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------+
+
+Other known limitations [WIP]
+-----------------------------
+
+Audit product groups, product variant groups:
+ - mass edit product, when add to a group, use an ajaxified select2 list (and not checkbox)
+ - mass edit product, when add to a variant group (double check the select2 pagination)
+ - **[TODO]** (PIM-5467) When saving a variant group, variant group values are synchronously copied in products, it may cause timeout issue
+ - **[TODO]** (PIM-5463) When associating a lot of products to a group, variant group or association, you may encounter "The requested URL's length exceeds the capacity"
