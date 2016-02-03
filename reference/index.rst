@@ -13,6 +13,7 @@ Reference
     :maxdepth: 2
 
     technical_information/index
+    technical_vision/index
     scalability_guide/index
     performances_guide/index
     components/index
