@@ -24,6 +24,7 @@ We've tested performances with a set of 10k attributes in total (not 10k attribu
      - **[improved in 1.4.16]** (PIM-5213) the attributes popin in the mass edit attributes (Community Edition)
      - **[TODO]** (PIM-5401) the attributes popin in family edit page, attribute group page, variant group page (Community Edition)
      - **[TODO]** (PIM-5212) the configure step of the family / mass edit / requirements (Community Edition)
+     - **[TODO]** (PIM-5283) use the same edit form system than product for the variant group edit
 
     **If you plan to use the PIM with more than 10k attributes, please contact us.**
 
