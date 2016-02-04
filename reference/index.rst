@@ -19,3 +19,4 @@ Reference
     bundles/index
     events/index
     import_export/index
+    workflow/index

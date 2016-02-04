@@ -7,13 +7,13 @@ Quick Overview
 **This cookbook is about a feature only provided in the Enterprise Edition.**
 
 Enrichment rules allow to set values for products given specific conditions. These rules are regularly
-applied, as a user who would regularly edit product.
+applied, as a user who would regularly edit a product.
 
 File Structure
 --------------
 
 Enrichment rules are defined in YAML. The file extension has to be ".yml". Indentation is mandatory within the
-file and has to strictly follow the YAML format. You have to import a rule so it can be used in the PIM.
+file and has to strictly follow the YAML format. You have to import a rule so that it can be used in the PIM.
 
 This file starts with "rules" root element, which contains the list of enrichment rules. This document is about this
 list. Each rule is referred to by a code and can contain a list of conditions and actions.
@@ -142,12 +142,12 @@ Two parameters are required and four others are optional:
 .. tip::
 
     For instance, to copy description from en_US print channel to the en_US description e-commerce channel, action will
-    be defined as follow:
+    be defined as follows:
 
         .. code-block:: yaml
 
             actions:
-                - type:        copy_value
+                - type:        copy
                   from_field:  description
                   from_locale: en_US
                   from_scope:  print
@@ -174,11 +174,34 @@ Two parameters are required, two others are optional.
     .. code-block:: yaml
 
         actions:
-            ­ type:   set_value
+            ­ type:   set
               field:  description
               locale: en_US
               scope:  ecommerce
               value:  "My very new description for purple tshirt"
+
+Add
+___
+
+This action adds values to a multiselect, a category or a collection.
+
+Two parameters are required, two other are optional.
+ - field : attribute code.
+ - locale : local code for which value is assigned (optional).
+ - scope : channel code for which value is assigned (optional).
+ - value : attribute value
+
+.. tip::
+
+    For instance, adding category "t-shirts" action will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: add
+              field: category
+              value:
+                - t-shirts
 
 Fields
 ++++++

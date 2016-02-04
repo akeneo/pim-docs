@@ -52,7 +52,7 @@ Configure a job in ``Resources/config/batch_jobs.yml``:
 
 Here we create an import job which contains a single step: `import`.
 
-The default step is ``Akeneo\Bundle\BatchBundle\Step\ItemStep``.
+The default step is ``Akeneo\Component\Batch\Step\ItemStep``.
 
 An item step is configured with 3 elements, a reader, a processor and a writer.
 
