@@ -5,7 +5,7 @@ Your product catalog is unique, with different amount of products, attributes, f
 
 This page explains how we audit the application scalability, what are the bottlenecks already encountered and lists known issues and improvements. It also explains best practices you should implement to ensure the success of your project.
 
-We improve the scalability in each new minor versions. If you encounter any new limitation, does not hesitate to contact us through our forum http://www.akeneo.com/forums/. We'll be able to give you details about the roadmap for this specific improvement and we'll help you to find an alternative solution for your project.
+We improve the scalability in each new minor versions. If you encounter any new limitation, please does not hesitate to contact us. We'll be able to give you details about the roadmap for this specific improvement and we'll help you to find an alternative solution for your project.
 
 .. warning::
 
