@@ -21,4 +21,4 @@ Here is the complete formula to check if you have, by far, more indexes than the
 
 .. warning::
 
-    If your collection of products requires more than 64 indexes, please contact us (we've developed an Elastic Search implementation to get rid of this limit).
+    If your collection of products requires more than 64 indexes, please contact us, we've developed an ElasticSearch Bundle to get rid of this limit.
