@@ -10,7 +10,7 @@ We've audited the application with 3 different representative catalogs:
 +-----------------------------------------+-----------+------------+-------------+
 | **Catalog**                             | **Small** | **Medium** | **Large**   |
 +-----------------------------------------+-----------+------------+-------------+
-| Products                                | 5.000     | 50.000     | 2.000.000   |
+| Products                                | 5.000     | 50.000     | 1.000.000   |
 +-----------------------------------------+-----------+------------+-------------+
 | Categories                              | 500       | 2.000      | 4.000       |
 +-----------------------------------------+-----------+------------+-------------+
@@ -20,9 +20,9 @@ We've audited the application with 3 different representative catalogs:
 +-----------------------------------------+-----------+------------+-------------+
 | Attributes Groups                       | 8         | 15         | 20          |
 +-----------------------------------------+-----------+------------+-------------+
-| Attributes / Families                   | 50        | 100        | **WIP**     |
+| Attributes / Families                   | 50        | 100        | 100         |
 +-----------------------------------------+-----------+------------+-------------+
-| % filled attributes                     | 75%       | 75%        | 75%         |
+| % filled attributes                     | 75%       | 75%        | 50%         |
 +-----------------------------------------+-----------+------------+-------------+
 | %localisable attributes                 | 10%       | 5%         | 2%          |
 +-----------------------------------------+-----------+------------+-------------+
@@ -32,55 +32,64 @@ We've audited the application with 3 different representative catalogs:
 +-----------------------------------------+-----------+------------+-------------+
 | Families                                | 20        | 50         | 400         |
 +-----------------------------------------+-----------+------------+-------------+
-| Channels                                | 2         | 2          | **WIP**     |
+| Channels                                | 2         | 2          | 2           |
 +-----------------------------------------+-----------+------------+-------------+
-| Enabled Locales                         | 1         | 4          | **WIP**     |
+| Enabled Locales                         | 1         | 4          | 4           |
 +-----------------------------------------+-----------+------------+-------------+
 | **Audit Status for Community Edition**  | **DONE**  | **DONE**   | **WIP**     |
 +-----------------------------------------+-----------+------------+-------------+
 | **Audit Status for Enterprise Edition** | **WIP**   | **WIP**    | **WIP**     |
 +-----------------------------------------+-----------+------------+-------------+
 
-These catalogs are available here https://github.com/akeneo/catalogs/tree/1.4.
+These catalogs are available here https://github.com/akeneo/catalogs, you can also use our data generator https://github.com/akeneo-labs/DataGeneratorBundle to build your own test catalog.
 
-You can also use our data generator https://github.com/akeneo-labs/DataGeneratorBundle.
+Several of our customers strongly push these limitations in their custom projects, you can consult different use cases a bit further in this page. We make evolve these representative catalogs between minor versions when we improve the application scalability, don't hesitate to consult this page for other versions.
 
-Installation
-------------
+How we tested?
+--------------
+
+**Installation**
 
 The application is installed on a server following the recommended architecture :doc:`/reference/technical_information/index`.
 
-Depending on the catalog, we use a different database storage. We install the data `fixtures` via the installer before to import the products through the default product csv import.
+Depending on the catalog, we use a different database storage. We install the data `fixtures` via the installer before to import the products through the default product csv import (for large product import, we split into 10 files + parallel imports + custom optimisations).
 
-+---------+---------+----------------+
-|         | Storage | Product values |
-+---------+---------+----------------+
-| Small   | MySQL   | 159.676        |
-+---------+---------+----------------+
-| Medium  | MySQL   | 3.661.981      |
-+---------+---------+----------------+
-| Large   | MongoDB | **WIP**        |
-+---------+---------+----------------+
+The targeted amount of product values imply to choose a relevant database storage, if you want to know more about how we choose the storage, please read :doc:`/reference/scalability_guide/more_than_5M_product_values`.
 
-.. note::
+Depending on the data volume, the number of indexes fields in MongoDB also impact the performance, please read :doc:`/reference/scalability_guide/more_than_64_indexes_with_mongodb`.
 
-    If you want to know more about how we choose the relevant storage, please read :doc:`/reference/scalability_guide/more_than_5M_product_values`
++---------+---------+----------------+----------------------------------------------------------------------------------------------------------+
+|         | Storage | Product values | Note                                                                                                     |
++---------+---------+----------------+----------------------------------------------------------------------------------------------------------+
+| Small   | MySQL   | 159.676        |                                                                                                          |
++---------+---------+----------------+----------------------------------------------------------------------------------------------------------+
+| Medium  | MySQL   | 3.661.981      |                                                                                                          |
++---------+---------+----------------+----------------------------------------------------------------------------------------------------------+
+| Large   | MongoDB | 52.699.463     | With more than ~300k products, you can use the ElasticSearchBundle to improve querying perf (contact us) |
++---------+---------+----------------+----------------------------------------------------------------------------------------------------------+
 
-Audit User Interface
---------------------
+**Audit User Interface**
 
 We use the application in production mode, with xdebug disabled, and we expect an optimal user experience for each page and action.
 
-Audit Backend Processes
------------------------
+**Audit Backend Processes**
 
 We run backend processes (bulk actions, imports, exports, rules execution, etc) in production mode, with xdebug disabled. Depending on the amount of data, processes may run for quite a long time but does not consume more memory than what we advise in :doc:`/reference/technical_information/index`. Please note that for some project data set, several extra configurations are required (for instance, change the size of a bulk of products for the rules execution).
+
+**Automation**
+
+We have built several tools to automate these performance and scalability tests. Basically, our continuous integration loads a target catalog, run different scenario and the build fail when thresholds on time execution and memory usage are reached. These tools are not open sourced for now.
 
 Known limitations on representative catalogs
 --------------------------------------------
 
- - Memory leaks (when a process consumes more memory than recommended) are qualified as bugs and are released in patches versions.
- - Scalability limitations (when we try to support larger data volume for an axis) are qualified as improvements and are released in minor versions.
+We encountered two kind of limitations during the audit: memory leaks and scalability limitations.
+
+Memory leaks, when a process consumes more memory than recommended. These issues are qualified as bugs and are released in patches versions.
+
+Scalability limitations, when we try to support larger data volume for an axis. These issues are qualified as improvements and are released in minor versions.
+
+Following limitations have been encountered with standard installations without any custom code:
 
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **Type** | **Catalog** | **Edition** | **Released** | **Note**                                                                                                                                                       |
@@ -93,7 +102,11 @@ Known limitations on representative catalogs
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | improv.  | Large       | All         |              | (PIM-5518) Timeout with synchronous update of products when remove 'AssociationType', 'Attribute', 'AttributeOption', 'Category', 'Family', 'Group', 'Channel' |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| improv.  | Large       | All         |              | (PIM-xxxx) MongoDB timeout when filter and sort by date, on product grid (cf Elastic Search Bundle)                                                            |
+| improv.  | Large       | All         |              | (PIM-5542) the request /configuration/family/rest slow down the UI (dashboard, grid, pef)                                                                      |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| improv.  | Large       | Enterprise  |              | (PIM-5544) the request /enrich/product-category-tree/list-tree.json allowing to load the tree on the grid is very slow                                         |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| improv.  | Large       | All         |              | Slow filtering and sorting on product grid when using not indexed fields (cf Elastic Search Bundle)                                                            |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Examples of customers instance
@@ -103,23 +116,25 @@ Several customers challenge the limitations in custom projects, it sometimes req
 
 **On standard axes:**
 
-+-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
-| **Catalog**                             | **Customer 1** | **Customer 2** | **Customer 3** | **Customer 4** | **Details about limitations**                                |
-+-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
-| Products                                | **2.000.000**  | 1.000.000      | 80.000         | 10.000         |                                                              |
-+-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
-| Products values                         | **43.398.847** | **78.606.501** | ?              | ?              | These customers use Elastic Search Bundle                    |
-+-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
-| Attributes                              | 1.800          | **8.000**      | 240            | 355            | :doc:`/reference/scalability_guide/more_than_10k_attributes` |
-+-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
-| Families                                | 131            | **3.500**      | 44             | 3              | :doc:`/reference/scalability_guide/more_than_10k_families`   |
-+-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
-| Categories                              | 2613           | **14.000**     | 740            | 60             | :doc:`/reference/scalability_guide/more_than_10k_categories` |
-+-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
-| Channels                                | 1              | 2              | 2              | **14**         |                                                              |
-+-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
-| Enabled Locales                         | 1              | 1              | **36**         | 1              |                                                              |
-+-----------------------------------------+----------------+----------------+----------------+----------------+--------------------------------------------------------------+
++-----------------------------------------+-----------------+-----------------+----------------+----------------+--------------------------------------------------------------+
+| **Catalog**                             | **Customer 1**  | **Customer 2**  | **Customer 3** | **Customer 4** | **Details about limitations**                                |
++-----------------------------------------+-----------------+-----------------+----------------+----------------+--------------------------------------------------------------+
+| Storage                                 | MongoDB + ES    | MongoDB + ES    | MySQL          | MySQL          | ES: ElasticSearch Bundle                                     |
++-----------------------------------------+-----------------+-----------------+----------------+----------------+--------------------------------------------------------------+
+| Products                                | **2.000.000**   | 1.100.041       | **80.000**     | 10.000         |                                                              |
++-----------------------------------------+-----------------+-----------------+----------------+----------------+--------------------------------------------------------------+
+| Products values                         | 43.398.847      | **78.606.501**  | **6.000.000**  | 70.000         | 6 millions product values is a high limit for MySQL storage  |
++-----------------------------------------+-----------------+-----------------+----------------+----------------+--------------------------------------------------------------+
+| Attributes                              | 1.800           | **8.272**       | 240            | 355            | :doc:`/reference/scalability_guide/more_than_10k_attributes` |
++-----------------------------------------+-----------------+-----------------+----------------+----------------+--------------------------------------------------------------+
+| Families                                | 131             | **3.546**       | 44             | 3              | :doc:`/reference/scalability_guide/more_than_10k_families`   |
++-----------------------------------------+-----------------+-----------------+----------------+----------------+--------------------------------------------------------------+
+| Categories                              | 2613            | **14.238**      | 740            | 60             | :doc:`/reference/scalability_guide/more_than_10k_categories` |
++-----------------------------------------+-----------------+-----------------+----------------+----------------+--------------------------------------------------------------+
+| Channels                                | 1               | 2               | 2              | **14**         |                                                              |
++-----------------------------------------+-----------------+-----------------+----------------+----------------+--------------------------------------------------------------+
+| Enabled Locales                         | 1               | 1               | **36**         | 1              |                                                              |
++-----------------------------------------+-----------------+-----------------+----------------+----------------+--------------------------------------------------------------+
 
 **On other axes or combinations:**
 
@@ -159,8 +174,8 @@ Several customers challenge the limitations in custom projects, it sometimes req
 | Product drafts                     | [WIP]      |                       |                                                                         |
 +------------------------------------+------------+-----------------------+-------------------------------------------------------------------------+
 
-Other known limitations [WIP]
------------------------------
+Other known limitations
+-----------------------
 
  - **[TODO]** (PIM-5519) Mass edit products, display the add to a group configuration is too long with a lot of product groups (use a paginated select2 and not checkboxes)
  - **[TODO]** (PIM-5520) Mass edit products, display the add to a variant group configuration is too long with a lot of product groups (use a paginated select2)
