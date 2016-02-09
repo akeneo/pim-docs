@@ -142,7 +142,7 @@ We still have a lot of discussions related to this point regarding the Open/Clos
 
 An interesting resource on this topic `private vs protected`_
 
-.. _private vs protected: http://fabien.potencier.org/article/47/pragmatism-over-theory-protected-vs-protected
+.. _private vs protected: http://fabien.potencier.org/pragmatism-over-theory-protected-vs-private.html
 
 Documentation
 -------------
