@@ -6,13 +6,13 @@ We've tested performances with a set of 10k families in total.
 
 .. note::
 
-    If you encounter one of these problems, don't hesitate to take regularly a look at our `changelog`_. If you encounter another problem, please contact us.
+    If you encounter any of these problems, don't hesitate to regularly take a look at our `changelog`_. If you encounter another problem, please contact us.
 
 .. _changelog: https://github.com/akeneo/pim-community-dev/blob/1.4/CHANGELOG-1.4.md
 
 .. warning::
 
-    On this axis, we still have different issues. We've tested with 10k families and a low amount of attributes and categories.
+    We are still experiencing different issues with 10k families and a low amount of families and categories.
 
     Screens impacted are the following:
       - **[improved in 1.4.12]** (PIM-5194) edition of a product and change its family (Community Edition)
