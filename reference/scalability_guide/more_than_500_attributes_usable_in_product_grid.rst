@@ -3,16 +3,14 @@ More than 500 attributes usable in the product grids?
 
 The number of attributes usable in the product grids will impact performances of the PIM in several ways.
 
-Prior to 1.4.12, all attributes could be displayed in the grid columns and only *attributes usable as grid filter*
-could be used to filter data in the grids. During the loading of the product grids, we had a significant performance problem
-for catalogs with a large number of attributes. As we couldn't rework the way the grids are configured in a patch,
-we decided to change this behavior and we'll improve it in a coming minor version.
+Prior to 1.4.12, all attributes could be displayed in the grid columns and only *attributes usable as grid filter* could be used to filter data in the grids. We observed a significant performance problem during the loading of the product grids for catalogs with a large number of attributes.
+
+As we couldn't rework the way the grids are configured in a patch, we decided to change this behavior and we'll improve it in an upcoming minor version.
 
 From 1.4.12 and upper versions, the attribute option *attributes usable as grid filter* became *usable in grid*.
-This option states whether or not the attribute can be displayed as a column or used as a filter in products grids.
+This option states whether or not the attribute can be displayed as a column or used as a filter in product grids.
 
-We've tested performances with a set of 10k attributes, including 500 attributes usable in the grids
-(10k attributes in total not 10k attributes per product).
+We've tested performances with a set of 10k attributes, including 500 attributes usable in the grids (meaning 10k attributes in total not 10k attributes per product). #TAG: I would have put this earlier in the chapter as it is a clear limit stated here ?
 
 .. warning::
 

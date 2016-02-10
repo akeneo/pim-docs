@@ -1,11 +1,11 @@
 Scalability Guide
 =================
 
-Your product catalog is unique, with different amount of products, attributes, families, locales, channels, etc all. Those different combinations may affect the application performances.
+A product catalog is unique to one's need. It is configured with a custom number of products, attributes, families, locales, channels, etc. Those different combinations may affect the application performances.
 
-This page explains how we audit the application scalability, what are the bottlenecks already encountered and lists known issues and improvements. It also explains best practices you should implement to ensure the success of your project.
+This chapter explains how we audit the application's scalability, it lists the known issues and possible improvements as well as the bottlenecks already encountered by our partners with the PIM. It also shows best practices you should implement to ensure the success of your project.
 
-We improve the scalability in each new minor versions. If you encounter any new limitation, please does not hesitate to contact us. We'll be able to give you details about the roadmap for this specific improvement and we'll help you to find an alternative solution for your project.
+We improve the scalability in each new minor versions. If you encounter any new limitation, please do not hesitate to contact us through the forum http://akeneo.com/forums. We'll give you details about the roadmap for specific improvements and help you to find a suitable solution for your project.
 
 .. warning::
 
