@@ -98,15 +98,15 @@ The following limitations has been encountered with standard installations witho
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | improv.  | All         | All         | v1.4.19      | (PIM-5476) Creation of useless empty product values when importing new products (may divide by 2 the execution time)                                           |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| improv.  | Medium      | All         |              | (PIM-5467) First load of the completeness widget is too long (ORM)                                                                                             |
+| improv.  | Medium      | All         | TODO         | (PIM-5467) First load of the completeness widget is too long (ORM)                                                                                             |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| improv.  | Large       | All         |              | (PIM-5518) Timeout with synchronous update of products when remove 'AssociationType', 'Attribute', 'AttributeOption', 'Category', 'Family', 'Group', 'Channel' |
+| improv.  | Large       | All         | TODO         | (PIM-5518) Timeout with synchronous update of products when remove 'AssociationType', 'Attribute', 'AttributeOption', 'Category', 'Family', 'Group', 'Channel' |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| improv.  | Large       | All         |              | (PIM-5542) the request /configuration/family/rest slow down the UI (dashboard, grid, pef)                                                                      |
+| improv.  | Large       | All         | TODO         | (PIM-5542) the request /configuration/family/rest slow down the UI (dashboard, grid, pef)                                                                      |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| improv.  | Large       | Enterprise  |              | (PIM-5544) the request /enrich/product-category-tree/list-tree.json allowing to load the tree on the grid is very slow                                         |
+| improv.  | Large       | Enterprise  | TODO         | (PIM-5544) the request /enrich/product-category-tree/list-tree.json allowing to load the tree on the grid is very slow (improved with Elastic Search Bundle)   |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| improv.  | Large       | All         |              | Slow filtering and sorting on product grid when using not indexed fields (cf Elastic Search Bundle)                                                            |
+| improv.  | Large       | All         | TODO         | Slow filtering and sorting on product grid when using not indexed fields (improved with Elastic Search Bundle)                                                 |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Examples of customers instance
@@ -174,10 +174,16 @@ Several customers challenge the limitations even more in their custom projects a
 | Product drafts                     | [WIP]      |                       |                                                                         |
 +------------------------------------+------------+-----------------------+-------------------------------------------------------------------------+
 
-Other known limitations
------------------------
+**Known limitations on other axes or combinations**
 
- - **[TODO]** (PIM-5519) Mass edit products, display the add to a group configuration is too long with a lot of product groups (use a paginated select2 and not checkboxes)
- - **[TODO]** (PIM-5520) Mass edit products, display the add to a variant group configuration is too long with a lot of product groups (use a paginated select2)
- - **[TODO]** (PIM-5467) When saving a variant group, variant group values are synchronously copied in products, it may cause timeout issue
- - **[TODO]** (PIM-5463) When associating a lot of products to a group, variant group or association, you may encounter "The requested URL's length exceeds the capacity"
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **Type** | **Catalog** | **Edition** | **Released** | **Note**                                                                                                                                                       |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| improv.  | All         | All         | TODO         | (PIM-5519) Mass edit products, display the add to a group configuration is too long with a lot of product groups (use a paginated select2 and not checkboxes)  |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| improv.  | All         | All         | TODO         | (PIM-5520) Mass edit products, display the add to a variant group configuration is too long with a lot of product groups (use a paginated select2)             |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| improv.  | All         | All         | TODO         | (PIM-5467) When saving a variant group, variant group values are synchronously copied in products, it may cause timeout issue                                  |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| improv.  | All         | All         | TODO         | (PIM-5463) When associating a lot of products to a group, variant group or association, you may encounter "The requested URL's length exceeds the capacity"    |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
