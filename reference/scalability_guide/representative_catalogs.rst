@@ -18,7 +18,7 @@ We've audited the application with 3 different representative catalogs:
 +-----------------------------------------+-----------+------------+-------------+
 | Attributes                              | 100       | 400        | 1.000       |
 +-----------------------------------------+-----------+------------+-------------+
-| Attribute Groups                       | 8         | 15         | 20           |
+| Attribute Groups                        | 8         | 15         | 20          |
 +-----------------------------------------+-----------+------------+-------------+
 | Attributes / Families                   | 50        | 100        | 100         |
 +-----------------------------------------+-----------+------------+-------------+
@@ -36,9 +36,9 @@ We've audited the application with 3 different representative catalogs:
 +-----------------------------------------+-----------+------------+-------------+
 | Enabled Locales                         | 1         | 4          | 4           |
 +-----------------------------------------+-----------+------------+-------------+
-| **Audit Status for Community Edition**  | **DONE**  | **DONE**   | **WIP**     |
+| **Audit Status for Community Edition**  | **Ok**    | **Ok**     | **Ok**      |
 +-----------------------------------------+-----------+------------+-------------+
-| **Audit Status for Enterprise Edition** | **WIP**   | **WIP**    | **WIP**     |
+| **Audit Status for Enterprise Edition** | **Ok**    | **Ok**     | **Ok**      |
 +-----------------------------------------+-----------+------------+-------------+
 
 These catalogs are available in our dedicated repository https://github.com/akeneo/catalogs, you can also use our data generator to build your own test catalog https://github.com/akeneo-labs/DataGeneratorBundle.
@@ -58,15 +58,15 @@ The targeted amount of product values imply to choose a relevant database storag
 
 Depending on the data volume, the number of field indexes in MongoDB also impacts the performances, please read :doc:`/reference/scalability_guide/more_than_64_indexes_with_mongodb` for more information.
 
-+---------+---------+----------------+--------------------------------------------------------------------------------------------------------------+
-|         | Storage | Product values | Note                                                                                                         |
-+---------+---------+----------------+--------------------------------------------------------------------------------------------------------------+
-| Small   | MySQL   | 159.676        |                                                                                                              |
-+---------+---------+----------------+--------------------------------------------------------------------------------------------------------------+
-| Medium  | MySQL   | 3.661.981      |                                                                                                              |
-+---------+---------+----------------+--------------------------------------------------------------------------------------------------------------+
-| Large   | MongoDB | 52.699.463     | With more than ~300k products, you can use the ElasticSearchBundle to improve the querying perf (contact us) |
-+---------+---------+----------------+--------------------------------------------------------------------------------------------------------------+
++---------+---------+----------------+--------------------------------------------------------------------------------------------------------------------------+
+|         | Storage | Product values | Note                                                                                                                     |
++---------+---------+----------------+--------------------------------------------------------------------------------------------------------------------------+
+| Small   | MySQL   | 159.676        |                                                                                                                          |
++---------+---------+----------------+--------------------------------------------------------------------------------------------------------------------------+
+| Medium  | MySQL   | 3.661.981      |                                                                                                                          |
++---------+---------+----------------+--------------------------------------------------------------------------------------------------------------------------+
+| Large   | MongoDB | 52.699.463     | **With more than ~300k products or ~15M product values, you should use the additional ElasticSearchBundle (contact us)** |
++---------+---------+----------------+--------------------------------------------------------------------------------------------------------------------------+
 
 **Audit User Interface**
 
@@ -106,7 +106,7 @@ The following limitations has been encountered with standard installations witho
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | improv.  | Large       | Enterprise  | TODO         | (PIM-5544) the request /enrich/product-category-tree/list-tree.json allowing to load the tree on the grid is very slow (improved with Elastic Search Bundle)   |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| improv.  | Large       | All         | TODO         | Slow filtering and sorting on product grid when using not indexed fields (improved with Elastic Search Bundle)                                                 |
+| improv.  | Large       | All         | TODO         | MongoDB timeout when filtering and sorting on product grid when using not indexed fields (improved with Elastic Search Bundle)                                 |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Examples of customers instance
@@ -149,6 +149,8 @@ Several customers challenge the limitations even more in their custom projects a
 +------------------------------------+------------+-----------------------+-------------------------------------------------------------------------+
 | Reference data per attribute       | [WIP]      |                       |                                                                         |
 +------------------------------------+------------+-----------------------+-------------------------------------------------------------------------+
+| Products per family                | [WIP]      | 1.000.000             | cf following PIM-5563                                                   |
++------------------------------------+------------+-----------------------+-------------------------------------------------------------------------+
 | Product groups                     | 10.000     |                       | cf following PIM-5519, PIM-5363                                         |
 +------------------------------------+------------+-----------------------+-------------------------------------------------------------------------+
 | Products per product group         | 50         |                       |                                                                         |
@@ -159,7 +161,7 @@ Several customers challenge the limitations even more in their custom projects a
 +------------------------------------+------------+-----------------------+-------------------------------------------------------------------------+
 | Product values per variant group   | 50         |                       |                                                                         |
 +------------------------------------+------------+-----------------------+-------------------------------------------------------------------------+
-| Product associations               | [WIP]      |                       | cf following PIM-5363                                                   |
+| Product associations               | [WIP]      |                       | cf following PIM-5363, PIM-5562                                         |
 +------------------------------------+------------+-----------------------+-------------------------------------------------------------------------+
 | Attributes per family              | 150        |                       |                                                                         |
 +------------------------------------+------------+-----------------------+-------------------------------------------------------------------------+
@@ -186,4 +188,8 @@ Several customers challenge the limitations even more in their custom projects a
 | improv.  | All         | All         | TODO         | (PIM-5467) When saving a variant group, variant group values are synchronously copied in products, it may cause timeout issue                                  |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | improv.  | All         | All         | TODO         | (PIM-5463) When associating a lot of products to a group, variant group or association, you may encounter "The requested URL's length exceeds the capacity"    |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| improv.  | All         | All         | TODO         | (PIM-5562) When delete a product associated to other products, run a backend process to cleanup all associations                                               |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| improv.  | All         | All         | TODO         | (PIM-5563) Query for completeness rescheduling when saving a family with 50k products inside is too long to execute, exec as backend process                   |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
