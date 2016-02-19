@@ -10,7 +10,6 @@ You can find lot of information about our vision of the application and architec
 
     1.5/architecture
     1.5/components_and_bundles
-    1.5/php7_hhvm
     1.5/catalog_bundle
     1.5/oro_platform_bundles
     1.5/doctrine_events.rst

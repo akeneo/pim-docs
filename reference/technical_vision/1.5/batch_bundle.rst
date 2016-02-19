@@ -43,6 +43,7 @@ As usual, we provide upgrade commands (cf last chapter) to easily update project
 
 During upgrade, you also have to remove the following line from your project composer.json:
 
-```
+.. code-block:: json
+
     "akeneo/batch-bundle": "0.4.5",
-```
+
