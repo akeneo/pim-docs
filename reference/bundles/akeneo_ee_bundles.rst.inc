@@ -1,3 +1,9 @@
-* FileMetadataBundle
-* FileTransformerBundle
-* RuleEngineBundle
++-----------------------+-------------------------------------------------------------------------------------------------+
+| **Bundle**            | **Scope**                                                                                       |
++-----------------------+-------------------------------------------------------------------------------------------------+
+| FileMetadataBundle    | Generic file metadata extractor (used by ProductAssetBundle)                                    |
++-----------------------+-------------------------------------------------------------------------------------------------+
+| FileTransformerBundle | Generic file transformation system (used by ProductAssetBundle)                                 |
++-----------------------+-------------------------------------------------------------------------------------------------+
+| RuleEngineBundle      | Generic rule engine (implemented for products in CatalogRuleBundlebut usable for others models) |
++-----------------------+-------------------------------------------------------------------------------------------------+

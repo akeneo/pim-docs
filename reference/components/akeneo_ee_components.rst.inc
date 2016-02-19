@@ -1,2 +1,9 @@
-* FileMetadata
-* FileTransformer
++------------------+---------------------------------------------+
+| **Component**    | **Scope**                                   |
++------------------+---------------------------------------------+
+| FileMetadata     | File metadata readers                       |
++------------------+---------------------------------------------+
+| FileTransformer  | File transformer and native transformations |
++------------------+---------------------------------------------+
+| RuleEngine       | Generic action applier system               |
++------------------+---------------------------------------------+
