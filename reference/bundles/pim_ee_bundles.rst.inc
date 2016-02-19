@@ -1,11 +1,11 @@
 +--------------------+------------------------------------------------------------------------------------------+
 | **Bundle**         | **Scope**                                                                                |
 +--------------------+------------------------------------------------------------------------------------------+
-| CatalogRuleBundle  | Implementation of the base rule engine to products                                       |
+| CatalogRuleBundle  | (introduced v1.3) Implementation of the base rule engine to products                     |
 +--------------------+------------------------------------------------------------------------------------------+
-| ProductAssetBundle | Product assets management                                                                |
+| ProductAssetBundle | (introduced v1.4) Product assets management                                              |
 +--------------------+------------------------------------------------------------------------------------------+
-| SecurityBundle     | Delivers advanced permissions system                                                     |
+| SecurityBundle     | (introduced v1.0) Delivers advanced permissions system                                   |
 +--------------------+------------------------------------------------------------------------------------------+
-| WorkflowBundle     | Provides workflow capabilities                                                           |
+| WorkflowBundle     | (introduced v1.0) Provides workflow capabilities                                         |
 +--------------------+------------------------------------------------------------------------------------------+
