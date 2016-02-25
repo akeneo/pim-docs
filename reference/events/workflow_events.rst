@@ -1,7 +1,7 @@
 Workflow events (Enterprise Edition only)
 =========================================
 
-Workflow events are dispatched in the PIM on some workflow actions, mainly about product draft steps (*sent for approval, rejected, deleted, approved...*) and publish feature.
+Workflow events are dispatched in the PIM on some workflow actions, mainly in product draft steps (*sent for approval, rejected, deleted, approved...*) and publication feature.
 They are basically useful if you want to add your business logic before or after those specific actions.
 
 Publish Workflow Event Actions
@@ -20,14 +20,14 @@ When a product is unpublished:
 ``pimee_workflow.published_product.pre_publish``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **before** a product has been published.
+This event is dispatched **before** a product is published.
 
 **Event Class**: ``PimEnterprise\Bundle\WorkflowBundle\Event\PublishedProductEvent``
 
 ``pimee_workflow.published_product.post_publish``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product has been published.
+This event is dispatched **after** a product is published.
 
 **Event Class**: ``PimEnterprise\Bundle\WorkflowBundle\Event\PublishedProductEvent``
 
@@ -42,14 +42,14 @@ Listener Class Name                                                             
 ``pimee_workflow.published_product.pre_unpublish``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **before** a product has been unpublished.
+This event is dispatched **before** a product is unpublished.
 
 **Event Class**: ``PimEnterprise\Bundle\WorkflowBundle\Event\PublishedProductEvent``
 
 ``pimee_workflow.published_product.post_unpublish``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product has been unpublished.
+This event is dispatched **after** a product is unpublished.
 
 **Event Class**: ``PimEnterprise\Bundle\WorkflowBundle\Event\PublishedProductEvent``
 
@@ -83,14 +83,14 @@ When a product draft is deleted:
 ``pimee_workflow.product_draft.pre_ready``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **before** a product draft status has been set to "ready".
+This event is dispatched **before** a product draft status is set to "ready".
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
 ``pimee_workflow.product_draft.post_ready``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product draft status has been set to "ready" and saved to DB.
+This event is dispatched **after** a product draft status is set to "ready" and saved to DB.
 The product draft now becomes a proposal, **ready to be reviewed**.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
@@ -106,15 +106,15 @@ Listener Class Name                                                             
 ``pimee_workflow.product_draft.pre_approve``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **before** a product draft has been approved.
+This event is dispatched **before** a product draft is approved.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
 ``pimee_workflow.product_draft.post_approve``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product draft has been approved.
-The product **has been updated and saved** with the new values, and the product draft has been removed or updated.
+This event is dispatched **after** a product draft is approved.
+The product **is updated and saved** with the new values, and the product draft is removed or updated.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
@@ -129,7 +129,7 @@ Listener Class Name                                                             
 ``pimee_workflow.product_draft.pre_partial_approve``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **before** a product draft has been **partially** approved.
+This event is dispatched **before** a product draft is **partially** approved.
 A partial approve could be about a specific attributes/locale/channel of the product draft.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
@@ -137,8 +137,8 @@ A partial approve could be about a specific attributes/locale/channel of the pro
 ``pimee_workflow.product_draft.post_partial_approve``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **before** a product draft has been **partially** approved.
-The product **has been updated and saved** with the new values, and the product draft has been removed or updated.
+This event is dispatched **before** a product draft is **partially** approved.
+The product **is updated and saved** with the new values, and the product draft is removed or updated.
 A partial approve could be about a specific attributes/locale/channel of the product draft.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
@@ -154,30 +154,30 @@ Listener Class Name                                                             
 ``pimee_workflow.product_draft.pre_apply``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **before** a product object has been updated from draft values.
+This event is dispatched **before** a product object is updated from draft values.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
 ``pimee_workflow.product_draft.post_apply``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product object has been updated from draft values.
-Note that **the product has not been saved yet**, only the product object has been updated.
+This event is dispatched **after** a product object is updated from draft values.
+Note that **the product is not saved yet**, only the product object is updated.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
 ``pimee_workflow.product_draft.pre_refuse``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **before** a product draft has been refused.
+This event is dispatched **before** a product draft is refused.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
 ``pimee_workflow.product_draft.post_refuse``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product draft has been refused.
-The product draft has been updated in the DB.
+This event is dispatched **after** a product draft is refused.
+The product draft is updated in the DB.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
@@ -192,7 +192,7 @@ Listener Class Name                                                             
 ``pimee_workflow.product_draft.pre_partial_refuse``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **before** a product draft has been **partially** refused.
+This event is dispatched **before** a product draft is **partially** refused.
 A partial refuse could be about a specific attributes/locale/channel of the product draft.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
@@ -200,8 +200,8 @@ A partial refuse could be about a specific attributes/locale/channel of the prod
 ``pimee_workflow.product_draft.post_partial_refuse``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **before** a product draft has been **partially** refused.
-The product draft has been removed or updated.
+This event is dispatched **before** a product draft is **partially** refused.
+The product draft is removed or updated.
 A partial refuse could be about a specific attributes/locale/channel of the product draft.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
@@ -217,14 +217,14 @@ Listener Class Name                                                             
 ``pimee_workflow.product_draft.pre_remove``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **before** a product draft has been removed.
+This event is dispatched **before** a product draft is removed.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
 ``pimee_workflow.product_draft.post_remove``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product draft has been removed.
+This event is dispatched **after** a product draft is removed.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
