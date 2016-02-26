@@ -291,8 +291,8 @@ The class ``Pim\Component\Connector\ArrayConverter\Flat\ProductStandardConverter
 
     The versionning will be reworked in a future version to use it too.
 
-Product Processor - AttributeLocalizedConverterInterface
---------------------------------------------------------
+Product Processor - AttributeConverterInterface
+-----------------------------------------------
 
 When you import a product with localized attributes (e.g. prices with comma as decimal separator),
 data will be converted to transform comma to dot.
@@ -301,7 +301,7 @@ data will be converted to transform comma to dot.
 
     $convertedItem = $this->convertLocalizedAttributes($convertedItem);
 
-The service uses the class ``Akeneo\Component\Localization\Localize\AttributeLocalizedConverter``.
+The service uses the class ``Akeneo\Component\Localization\Localize\AttributeConverter``.
 
 .. note::
 
