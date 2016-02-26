@@ -61,16 +61,30 @@ When a product draft is sent for approval:
     2) The product draft **status is updated** to be reviewed
     3) ``pimee_workflow.product_draft.post_ready``
 
-When a product draft is (partially) approved:
-    1) ``pimee_workflow.product_draft.pre_approve`` (or ``pimee_workflow.product_draft.pre_partial_approve``)
+When a product draft change is approved (partial approval):
+    1) ``pimee_workflow.product_draft.pre_partial_approve``
     2) The product is **fetched from the product draft**
     3) ``pimee_workflow.product_draft.pre_apply``
     4) The **product object is updated** with product draft values (**but not saved yet**)
     5) ``pimee_workflow.product_draft.post_apply``
     6) The **product is saved** with the new values, and the **draft is updated/removed**
-    7) ``pimee_workflow.product_draft.post_approve`` (or ``pimee_workflow.product_draft.post_partial_approve``)
+    7) ``pimee_workflow.product_draft.post_partial_approve``
 
-When a product draft is refused:
+When a product draft change is rejected (partial reject):
+    1) ``pimee_workflow.product_draft.pre_partial_refuse``
+    2) The **product draft change is updated** and is set to "in progress"
+    3) ``pimee_workflow.product_draft.post_partial_refuse``
+
+When a product draft is approved:
+    1) ``pimee_workflow.product_draft.pre_approve``
+    2) The product is **fetched from the product draft**
+    3) ``pimee_workflow.product_draft.pre_apply``
+    4) The **product object is updated** with product draft values (**but not saved yet**)
+    5) ``pimee_workflow.product_draft.post_apply``
+    6) The **product is saved** with the new values, and the **draft is updated/removed**
+    7) ``pimee_workflow.product_draft.post_approve``
+
+When a product draft is rejected:
     1) ``pimee_workflow.product_draft.pre_refuse``
     2) The product **draft status is updated**
     3) ``pimee_workflow.product_draft.post_refuse``
@@ -130,7 +144,7 @@ Listener Class Name                                                             
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This event is dispatched **before** a product draft is **partially** approved.
-A partial approve could be about a specific attributes/locale/channel of the product draft.
+A partial approve is about a specific single change of the product draft.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
@@ -139,7 +153,7 @@ A partial approve could be about a specific attributes/locale/channel of the pro
 
 This event is dispatched **before** a product draft is **partially** approved.
 The product **is updated and saved** with the new values, and the product draft is removed or updated.
-A partial approve could be about a specific attributes/locale/channel of the product draft.
+A partial approve is about a specific single change of the product draft.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
@@ -193,7 +207,7 @@ Listener Class Name                                                             
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This event is dispatched **before** a product draft is **partially** refused.
-A partial refuse could be about a specific attributes/locale/channel of the product draft.
+A partial refuse is about a specific single change of the product draft.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
@@ -202,7 +216,7 @@ A partial refuse could be about a specific attributes/locale/channel of the prod
 
 This event is dispatched **before** a product draft is **partially** refused.
 The product draft is removed or updated.
-A partial refuse could be about a specific attributes/locale/channel of the product draft.
+A partial refuse is about a specific single change of the product draft.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
