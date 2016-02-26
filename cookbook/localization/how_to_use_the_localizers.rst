@@ -25,7 +25,7 @@ The only argument of the service is the list of attribute types supported by you
 How to Convert Attributes in my Own Import/Export
 -------------------------------------------------
 
-.. _import: ../../reference/import_export/product-import.html#product-processor-attributelocalizedconverterinterface
+.. _import: ../../reference/import_export/product-import.html#product-processor-attributeconverterinterface
 
 To convert your localized attribute in your own import, see import_.
 
