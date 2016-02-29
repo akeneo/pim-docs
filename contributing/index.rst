@@ -13,4 +13,5 @@ We gladly welcome many kind of contributions on Akeneo PIM!
     tech_enhancement
     feature_request
     create_connector
+    behat
     best_practises
