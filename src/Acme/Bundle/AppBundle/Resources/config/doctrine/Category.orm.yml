@@ -1,5 +1,6 @@
 Acme\Bundle\AppBundle\Entity\Category:
     type: entity
+    table: pim_catalog_category
     repositoryClass: Akeneo\Bundle\ClassificationBundle\Doctrine\ORM\Repository\CategoryRepository
     fields:
         description:
