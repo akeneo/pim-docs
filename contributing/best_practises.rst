@@ -8,4 +8,3 @@ When contributing code to Akeneo PIM, please take into account the following gui
 
     standards
     conventions
-    behat
