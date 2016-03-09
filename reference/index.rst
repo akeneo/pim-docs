@@ -20,3 +20,4 @@ Reference
     events/index
     import_export/index
     workflow/index
+    best_practices/index
