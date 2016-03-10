@@ -1,7 +1,7 @@
 Common Best Practices
 =====================
 
-The Akeneo PIM standard project comes with a default configuration to help you during the development of your project.
+The Akeneo PIM standard project comes with a default configuration to help you during the development.
 
 
 What about versioning?
@@ -12,11 +12,11 @@ You have to follow this file if you want to use another versioning system.
 Here are some explanations of the most important points:
 
 * Do **NOT** modify the code in the vendors
-The next time you will update them with composer, your modifications will be lost.
+The next time you will update them with composer, your modifications would be lost.
 
 * Do **NOT** version vendors
 * Do **NOT** fork your vendors
-You will not benefit of dependencies patches otherwise.
+You would not benefit of dependencies patches otherwise.
 
 
 What about your dependencies?
