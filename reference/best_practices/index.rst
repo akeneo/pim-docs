@@ -1,7 +1,7 @@
 Best Practices
 ==============
 
-Here is our recommendations as developers and integrators.
+Here are our recommendations as developers and integrators.
 It results from our experience in the realisation of Akeneo PIM projects.
 
 .. toctree::

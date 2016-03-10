@@ -16,7 +16,7 @@ The next time you will update them with composer, your modifications would be lo
 
 * Do **NOT** version vendors
 * Do **NOT** fork your vendors
-You would not benefit of dependencies patches otherwise.
+You would not benefit from dependencies patches otherwise.
 
 
 What about your dependencies?
