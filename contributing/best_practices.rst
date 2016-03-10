@@ -1,4 +1,4 @@
-Best Practises
+Best Practices
 ==============
 
 When contributing code to Akeneo PIM, please take into account the following guidelines
