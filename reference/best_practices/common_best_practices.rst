@@ -12,10 +12,12 @@ You have to follow this file if you want to use another versioning system.
 Here are some explanations of the most important points:
 
 * Do **NOT** modify the code in the vendors
-The next time you will update them with composer, your modifications would be lost.
+
+The next time you update them with composer, your modifications would be lost.
 
 * Do **NOT** version vendors
 * Do **NOT** fork your vendors
+
 You would not benefit from dependencies patches otherwise.
 
 
