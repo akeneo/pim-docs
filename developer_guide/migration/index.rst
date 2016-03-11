@@ -34,7 +34,7 @@ Then clean the cache, re-install assets and warmup the cache:
 
 .. code-block:: bash
 
-    rm -rf app/cache/*
+    rm -rf app/cache/* ./web/bundles/* ./web/css/* ./web/js/*
     app/console --env=prod pim:installer:assets
     app/console --env=prod cache:warmup
 
