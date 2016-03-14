@@ -38,7 +38,7 @@ You can use our `data generator bundle`_ to generate a catalog with random data.
 Maintainability
 ---------------
 
-First, keep in mind the `Single Responsibility`_ from the five `SOLID principles`_ of Object Oriented Programming.
+Keep in mind the `Single Responsibility`_ from the five `SOLID principles`_ of Object Oriented Programming.
 It seems simple but we often forget to explode your code in multiple classes to make it more readable and testable.
 
 You can use `PMD`_ to help make your code simple, flexible and easily testable.
@@ -62,18 +62,40 @@ You can find some examples on our `Akeneo-Labs`_ projects (`scrutinizer.yml`_ an
 .. _travis.yml: https://github.com/akeneo-labs/CustomEntityBundle/blob/master/.travis.yml
 
 
+Another important point about maintainability is to try to rely on interfaces not on concrete classes.
+An interface is a contract you will inject in a method. It will ease you the migration on future Akeneo PIM versions.
+
+Don't forget you can use composition instead of inheritance.
+Decorate a class will allow you to benefit of inheritance avoiding migration problems.
+Indeed, class constructors can changed from a version to another. On the other side, an interface do not change.
+
+To give to integrator a clean way to rely on your code, you can alse create interfaces.
+
+
 Extensibility
 -------------
 
-**Respect Akeneo PIM dependencies**
+Respect Akeneo PIM dependencies
+"""""""""""""""""""""""""""""""
 You **MUST** follow Akeneo PIM dependencies at tall cost. Don't try to change version of existing ones.
 You may add new dependencies needed for your customisations.
 
-**Rely on interfaces not concrete classes**
-An interface is a contract you will inject in a method. It will ease you the migration on future Akeneo PIM versions.
-And create some for yours classes to give to integrator a clean way to rely on your code.
 
-**Plug on events (datagrid, savers, remover, etc.)**
+Use registries
+""""""""""""""
+Registries are also a good extension point when you have to manage with many cases (different attribute types, entities, etc.).
+It consists in creating a registry class and then tag services which will be add to this registry.
+
+.. note::
+Learn more about `registry`_ pattern.
+
+You can also take example on the localizers' cookbook: :doc:`/cookbook/localization/how_to_use_the_localizers`
+
+.. _registry: http://martinfowler.com/eaaCatalog/registry.html
+
+
+Plug on events (datagrid, savers, remover, etc.)
+""""""""""""""""""""""""""""""""""""""""""""""""
 It is the best extensibility point you have.
 Unfortunately, it is not always possible as Akeneo PIM can't know where you want to plug your code.
 If you can not, it does not matter, you can decorate or extend your class and add the extension point you need.
@@ -83,41 +105,48 @@ or let us know your need on our `forum`_. It is important for us to improve ours
 .. _github repository: https://github.com/akeneo/pim-community-dev
 .. _forum: https://www.akeneo.com/fr/forums/
 
-**Use registries**
-Registries are also a good extension point when you have to manage with many cases (different attribute types, entities, etc.).
-It consists in creating a registry class and then tag services which will be add to this registry.
 
-.. note::
-    Learn more about `registry`_ pattern.
+Avoid to override Akeneo PIM classes/services
+"""""""""""""""""""""""""""""""""""""""""""""
+The easiest way to add a new behavior on your services is to override it.. But wait! That's not a good thing!
+First, each override leads to potential compatibility problems.
+Let's imagine that you override the `pim_catalog.saver.product` because you want to add a specific action when you save a product.
+Now, a final customer wants to use your bundle and another one which override the same service (Tough luck!).
+The last bundle defined in the `app/AppKernel.php` will defined the service used..
+And in both cases, one of the actions will not be applied.
 
-You can also take example on the localizers: :doc:`/cookbook/localization/how_to_use_the_localizers`
-
-.. _registry: http://martinfowler.com/eaaCatalog/registry.html
-
-
-**Models and Repositories**
-TargetResolvers
-No hardcoded classes
-    -> don't add properties to entities (extend model)
-
-    -> Don't extend an entity but document how to use it
-
-    -> Don't override repositories but create and inject your own service
+The second effect of overriding a parameter or a service is that it will have a side effect on the whole application.
+If you need to impact transversely Akeneo PIM and you can't plug on events, that's a way to do but keep in mind
+you can use create your own service with your own class.
 
 
-- Avoid to override Akeneo PIM classes/services
+Models and Repositories
+"""""""""""""""""""""""
+You should avoid to extends the models (entities and documents) and repositories.
+The problem is the same than when you override classes/services.
 
-    -> don't override class parameter or service
+There is unfortunately no perfect solution for these cases.
 
-    --> create your own service (with your own class if you have to add specific code) for your use case.
-    It won't impact the whole Akeneo PIM application
+Don't extend an entity adding it properties.
+Two possibilities here:
+* There is not a lot of changes on the entity you overrode. Document what is missing and let's the integrators do it.
+* Do a `oneToOne unidirectional association`_. Here is an example with the `Category` entity. I want to add the description on it.
+A way to do that avoiding to extend is to create a new entity named `MyExtendedCategory` with an id, a description and a relation to the `Category` entity.
+The bad side of this solution is you won't have access to the description from the Category object (the reverse is possible).
+It's sometimes frustrating to access it by a non-natural way.
 
 
-    --> Use composition instead of extension. Decorate your service
+For your own model classes, create your class and its interface.
+Then you can rely on your interface and use the `Akeneo target resolver`_ which is based on the `Doctrine target entity resolver`_.
 
 
+About repositories, you can create and inject your own service. Doctrine does not allow to have many repositories.
+Don't tint it as a doctrine one, just inject the `ObjectManager` (Entity or Document) and the class you want to rely on.
+Then you will have access to the query builder as in a doctrine repository and you can prepare the query you want.
 
-
+.. _oneToOne unidirectional association: http://doctrine-orm.readthedocs.org/projects/doctrine-orm/en/latest/reference/association-mapping.html#one-to-one-unidirectional
+.. _Akeneo target resolver: https://github.com/akeneo/pim-community-dev/blob/1.5/src/Pim/Bundle/CatalogBundle/DependencyInjection/Compiler/ResolveDoctrineTargetModelPass.php
+.. _Doctrine target entity resolver: http://symfony.com/doc/2.7/cookbook/doctrine/resolve_target_entity.html
 
 
 Scalability
