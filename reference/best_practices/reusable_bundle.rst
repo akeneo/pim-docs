@@ -1,5 +1,5 @@
-Reusable Bundles for Akeneo PIM community
-=========================================
+Create a reusable bundle
+========================
 
 You are an integrator and you want to share reusable parts of your project with the awesome Akeneo PIM community?
 Let's read our pieces of advice to write a great and documented bundle!

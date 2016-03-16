@@ -1,15 +1,14 @@
 Best Practices
 ==============
 
-Here are our recommendations as developers and integrators.
-It results from our experience in the realisation of Akeneo PIM projects.
+.. warning::
+
+    Here is a very early version of this section, we'll keep enriching it in coming weeks.
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :titlesonly:
 
-    common_best_practices
-    reusable_bundles
-    integrators
-
-If you wish to know more about coding style standards, you can have a look at: :doc:`/contributing/standards`.
+    project
+    reusable_bundle
+    core
