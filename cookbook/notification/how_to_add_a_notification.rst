@@ -64,7 +64,7 @@ The default options are:
         'route' => '',
         'routeParams' => [],
         'messageParams' => [],
-        'context => ''
+        'context' => ''
     ]
 
 Adding a route will redirect users to this route when the notification is clicked.
