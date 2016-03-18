@@ -1,6 +1,10 @@
 Create a project
 ================
 
+.. warning::
+
+    Here is a very early version of this section, we'll keep enriching it in coming weeks.
+
 Setup the project
 -----------------
 

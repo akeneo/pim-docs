@@ -1,6 +1,10 @@
 Create a reusable bundle
 ========================
 
+.. warning::
+
+    Here is a very early version of this section, we'll keep enriching it in coming weeks.
+
 You are an integrator and you want to share reusable parts of your project with the awesome Akeneo PIM community?
 Let's read our pieces of advice to write a great and documented bundle!
 
