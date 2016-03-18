@@ -22,3 +22,4 @@ This chapter describes the architecture and behaviour of imports and exports in 
     main-concepts
     product-import
     product-export
+    connectors
