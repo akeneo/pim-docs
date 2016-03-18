@@ -374,6 +374,41 @@ Adding the vhost name
     $ sudo gedit /etc/hosts
     127.0.0.1    akeneo-pim.local
 
+Configuring tasks via crontab
+*****************************
+
+The application needs the following tasks to be executed in background on a regular basis:
+
+.. code-block:: bash
+    :linenos:
+
+    # for CE & EE
+    /path/to/php /path/to/pim/root/app/console pim:completeness:calculate
+    /path/to/php /path/to/pim/root/app/console pim:versioning:refresh
+
+    # for EE only
+    /path/to/php /path/to/pim/root/app/console akeneo:rule:run
+
+Edit your crontab with ``crontab -e`` and configure each task. For example, the following line will run the completeness calculation every 15 minutes:
+
+.. code-block:: bash
+    :linenos:
+
+    # m  h  dom  mon  dow  command
+    */15 *  *    *    *    /path/to/php /path/to/pim/root/app/console pim:completeness:calculate --env=prod > /path/to/pim/root/app/logs/calculate_completeness.log 2>&1
+
+.. note::
+
+    ``> /path/to/pim/root/app/logs/calculate_completeness.log 2>&1`` is to redirct both stdout and stderr to your log file.
+
+.. note::
+
+    Remember that ``dev`` is the default environment when you launch a Symfony command, so always add ``--env=prod`` in prod environment to avoid useless logging and profiling.
+
+.. warning::
+
+    Adapt the frequency according to your needs, your server capabilities and your catalog size as some tasks may have a long execution time.
+
 Testing your installation
 -------------------------
 Go to http://akeneo-pim.local/ and log in with *admin/admin*.
