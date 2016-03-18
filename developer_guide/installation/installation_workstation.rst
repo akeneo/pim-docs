@@ -383,11 +383,11 @@ The application needs the following tasks to be executed in background on a regu
     :linenos:
 
     # for CE & EE
-    /path/to/php /path/to/pim/root/app/console pim:completeness:calculate
-    /path/to/php /path/to/pim/root/app/console pim:versioning:refresh
+    /path/to/php /path/to/pim/root/app/console pim:completeness:calculate --env=prod    # recalculates the products completeness
+    /path/to/php /path/to/pim/root/app/console pim:versioning:refresh --env=prod        # processes pending versions
 
     # for EE only
-    /path/to/php /path/to/pim/root/app/console akeneo:rule:run
+    /path/to/php /path/to/pim/root/app/console akeneo:rule:run --env=prod               # executes rules on products
 
 Edit your crontab with ``crontab -e`` and configure each task. For example, the following line will run the completeness calculation every 15 minutes:
 
@@ -399,7 +399,7 @@ Edit your crontab with ``crontab -e`` and configure each task. For example, the 
 
 .. note::
 
-    ``> /path/to/pim/root/app/logs/calculate_completeness.log 2>&1`` is to redirct both stdout and stderr to your log file.
+    ``> /path/to/pim/root/app/logs/calculate_completeness.log 2>&1`` is to redirect both stdout and stderr to your log file.
 
 .. note::
 
