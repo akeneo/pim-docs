@@ -7,11 +7,7 @@ It's a good start to understand the overall architecture and how to re-use or re
 
 .. note::
 
-  The import part has been widely re-worked in 1.4.
-
-  A new system has been introduced, the old system has been deprecated however is kept, both systems are usable in 1.4 but we strongly recommend using the new one.
-
-  The following documentation is related to this new system.
+  The import part has been widely re-worked in 1.4. Since 1.6, the old import system is deleted; the following documentation is related to this new system.
 
 Definition of the Job
 ---------------------
@@ -194,8 +190,8 @@ The class ``Pim\Component\Connector\Reader\File\CsvProductReader`` extends a bas
 
     This step is able to extract a Zip archive which contains a CSV file and a folder for related images or files. The CSV file has to use relative paths to reference the files.
 
-Product Processor - Overview
-----------------------------
+Product Processor
+-----------------
 
 This element receives items one by one, fetches or creates the related product, updates and validates it.
 
@@ -246,8 +242,8 @@ The class ``Pim\Component\Connector\Processor\Denormalization\ProductProcessor``
         // ...
     }
 
-Product Processor - StandardArrayConverterInterface
----------------------------------------------------
+StandardArrayConverterInterface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This service allows to transform the CSV array of items to the Standard Format array.
 
@@ -291,8 +287,8 @@ The class ``Pim\Component\Connector\ArrayConverter\Flat\ProductStandardConverter
 
     The versionning will be reworked in a future version to use it too.
 
-Product Processor - AttributeLocalizedConverterInterface
---------------------------------------------------------
+AttributeLocalizedConverterInterface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When you import a product with localized attributes (e.g. prices with comma as decimal separator),
 data will be converted to transform comma to dot.
@@ -307,8 +303,8 @@ The service uses the class ``Pim\Component\Localization\Localize\AttributeLocali
 
     Read the cookbook to add your own localizer  :doc:`/cookbook/localization/index`
 
-Product Processor - IdentifiableObjectRepositoryInterface
----------------------------------------------------------
+IdentifiableObjectRepositoryInterface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This service allows to fetch a product by its identifier (sku by default).
 
@@ -318,8 +314,8 @@ This service allows to fetch a product by its identifier (sku by default).
 
 This is possible because the ``Pim\Bundle\CatalogBundle\Doctrine\ORM\Repository\ProductRepository`` implements ``Akeneo\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface``
 
-Product Processor - ProductBuilderInterface
--------------------------------------------
+ProductBuilderInterface
+^^^^^^^^^^^^^^^^^^^^^^^
 
 If the product doesn't exist yet, we use this service to create it with its identifier and family code.
 
@@ -329,8 +325,8 @@ If the product doesn't exist yet, we use this service to create it with its iden
 
 The service uses the class ``̀Pim\Bundle\CatalogBundle\Builder\ProductBuilder``.
 
-Product Processor - ProductFilterInterface
-------------------------------------------
+ProductFilterInterface
+^^^^^^^^^^^^^^^^^^^^^^
 
 When a product already exists, this service allows to normalize the current product data to the Standard Format array.
 
@@ -354,8 +350,8 @@ The service uses the class ``Pim\Component\Catalog\Comparator\Filter\ProductFilt
 
     Don't hesitate to test and use different configurations for different product imports.
 
-Product Processor - ObjectUpdaterInterface
-------------------------------------------
+ObjectUpdaterInterface
+^^^^^^^^^^^^^^^^^^^^^^
 
 Once fetched or created, this service allows to apply updates on the product.
 
@@ -369,8 +365,8 @@ An important point to understand is that the updates are applied only in memory,
 
 The service uses the class ``Pim\Component\Catalog\Updater\ProductUpdater``.
 
-Product Processor - ValidatorInterface
---------------------------------------
+ValidatorInterface
+^^^^^^^^^^^^^^^^^^
 
 Once updated, the product is validated by this service.
 
@@ -397,8 +393,8 @@ When an item is skipped, or not returned by the processor, the writer doesn't re
 
     This detach operation is not the responsibility of the processor and the usage here is a workaround.
 
-Product Writer - Overview
--------------------------
+Product Writer
+--------------
 
 This element receives the validated products and saves them to the database.
 
@@ -439,8 +435,8 @@ The class ``Pim\Component\Connector\Writer\Doctrine\ProductWriter`` mainly deleg
         // ...
     }
 
-Product Writer - BulkSaverInterface
------------------------------------
+BulkSaverInterface
+^^^^^^^^^^^^^^^^^^
 
 This service allows to save several objects to the database.
 
@@ -448,8 +444,8 @@ For products, the implementation of ``Pim\Bundle\CatalogBundle\Doctrine\Common\S
 
 A dedicated chapter explains how it works :doc:`/cookbook/catalog/product/save`.
 
-Product Writer - BulkObjectDetacherInterface
---------------------------------------------
+BulkObjectDetacherInterface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This service allows to detach several objects from the Doctrine Unit Of Work to avoid keeping them in memory.
 
