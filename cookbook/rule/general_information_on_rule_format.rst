@@ -569,6 +569,12 @@ _____
 |              |   value:               |
 |              |     data: 12           |
 |              |     currency: EUR      |
+|              |                        |
+|              |   field: null_price    |
+|              |   operator: NOT EMPTY  |
+|              |   value:               |
+|              |     data: null         |
+|              |     currency: EUR      |
 +--------------+------------------------+
 
 Picture or file
