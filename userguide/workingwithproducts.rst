@@ -68,12 +68,12 @@ The Identifier is the unique way to identify each product. Every line in the CSV
 
     The identifier is the only mandatory attribute to import products.
 
-Example
+.. code-block:: none
 
-sku;family;
-Sku-101;shoe;
-Sku-102;shoe;
-Sku-103;shoe;
+    sku;family;
+    Sku-101;shoe;
+    Sku-102;shoe;
+    Sku-103;shoe;
 
 Family
 ------
@@ -85,12 +85,13 @@ You can import products with different families in the same CSV file.
 
 Families must exist in Akeneo. Use codes of families in CSV file.
 
-Example
+.. code-block:: none
 
-sku;family;
-Sku-101;shoe;
-Sku-102;Mug;
-Sku-103;;
+    sku;family;
+    Sku-101;shoe;
+    Sku-102;Mug;
+    Sku-103;;
+
 You can set or change the family of an existing product in Akeneo. Be careful with the column family.
 
 Categories
@@ -98,12 +99,13 @@ Categories
 
 The header of the field categories should be defined in the import profile.
 
-Example
+.. code-block:: none
 
-sku;family;categories;
-Sku-101;shoe;shoes,clothes;
-Sku-102;Mug;goodies;
-Sku-103;;
+    sku;family;categories;
+    Sku-101;shoe;shoes,clothes;
+    Sku-102;Mug;goodies;
+    Sku-103;;
+
 If there are no categories defined for a product, it will be not classified. Classification is optional for importing products.
 You can classify products within different categories in the same CSV file.
 Categories must exist in Akeneo. Use codes of categories in CSV file.
@@ -114,11 +116,13 @@ Enabled
 The header of the field enabled is optional. It allows to change the status of products: 0 = disabled, 1 = enabled.
 
 You can also define the value of enabled for all products you are importing in the configuration of the import profile. In this case, you don’t need to add the column ‘enabled’ in the CSV file.
-Example
-sku;family;categories;enabled
-Sku-101;shoe;shoes,clothes;0;
-Sku-102;Mug;goodies;0;
-Sku-103;;;1;
+
+.. code-block:: none
+
+    sku;family;categories;enabled
+    Sku-101;shoe;shoes,clothes;0;
+    Sku-102;Mug;goodies;0;
+    Sku-103;;;1;
 
 Attributes
 ----------
@@ -133,12 +137,12 @@ For attribute type select (simple select or multi-select), use codes of options.
 
 For attribute type image or file, give the path and the name of the file.
 
-Example
+.. code-block:: none
 
-sku;family;categories,short_description-en_US;short_description-fr_FR;color;name-en_US;name-fr_FR;size;
-Sku-101;shoe;apparels_shoes,shoes,shoes_woman;beautiful shoes;belles chaussures;PURPLE,RED;Butterfly shoes;Chaussures Papillon;8
-Sku-102;Mug;;;;;;;;
-Sku-103;;computers;;;GREEN;;;12
+    sku;family;categories,short_description-en_US;short_description-fr_FR;color;name-en_US;name-fr_FR;size;
+    Sku-101;shoe;apparels_shoes,shoes,shoes_woman;beautiful shoes;belles chaussures;PURPLE,RED;Butterfly shoes;Chaussures Papillon;8
+    Sku-102;Mug;;;;;;;;
+    Sku-103;;computers;;;GREEN;;;12
 
 Prices
 ------
@@ -147,19 +151,19 @@ You can have a price for each channel and for each locale. The currency can be t
 
 In the column for the attributes prices, give the values only, without spaces, without commas, and without the code of the currency.
 
-Example
+.. code-block:: none
 
-sku;family;price-en_US-mobile-EUR;price-fr_FR-mobile-EUR;categories,short_description-en_US;short_description-fr_FR;color;name-en_US;name-fr_FR;size;image_example
-Sku-101;shoe;15,15;apparels_shoes,shoes,shoes_woman;beautiful shoes;belles chaussures;PURPLE,RED;Butterfly shoes;Chaussures Papillon;8;gallery/images/example.png
-Sku-102;Mug;120,120;;;;;;;;
-Sku-103;;50,75;computers;;;GREEN;;;12;default.jpg
+    sku;family;price-en_US-mobile-EUR;price-fr_FR-mobile-EUR;categories,short_description-en_US;short_description-fr_FR;color;name-en_US;name-fr_FR;size;image_example
+    Sku-101;shoe;15,15;apparels_shoes,shoes,shoes_woman;beautiful shoes;belles chaussures;PURPLE,RED;Butterfly shoes;Chaussures Papillon;8;gallery/images/example.png
+    Sku-102;Mug;120,120;;;;;;;;
+    Sku-103;;50,75;computers;;;GREEN;;;12;default.jpg
 
 Images and Files
 ----------------
 
 You can upload an archive (zip) with files and images for different products in order to import them. In the column for the attributes images or files, give the path in the archive where Akeneo will upload images & files.
 
-.. Example::
+.. code-block:: none
 
     sku;family;price-USD;categories,short_description-en_US;short_description-fr_FR;color;name-en_US;name-fr_FR;size;image_example
     Sku-101;shoe;19;apparels_shoes,shoes,shoes_woman;beautiful shoes;belles chaussures;PURPLE,RED;Butterfly shoes;Chaussures Papillon;8;gallery/images/example.png

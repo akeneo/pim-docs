@@ -28,4 +28,4 @@ Product value validation
 ------------------------
 
 Product value validation uses different mechanisms than those described above. For more details about
-implementing your own rules, please read :doc:`../custom_entity/creating_an_attribute_type`.
+implementing your own rules, please read :doc:`/cookbook/ui_customization/create_a_new_field_type`.

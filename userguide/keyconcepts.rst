@@ -2,6 +2,7 @@ Key concepts
 ============
 
 .. _channel-label:
+
 What is a channel?
 -------------------
 
@@ -19,6 +20,7 @@ A channel works as a filter with the following properties:
 - Disabled products are ignored by channels
 
 .. _locale-label:
+
 What is a locale?
 ------------------
 
@@ -40,6 +42,7 @@ Only attributes with the property “localizable” set to True can have a diffe
     See Defining attributes to know how to set this property for an attribute.
 
 .. _completeness-label:
+
 What is completeness?
 ----------------------
 

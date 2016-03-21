@@ -1,7 +1,6 @@
 Getting started
 ===============
 
-.. _logging-label:
 Logging in to Akeneo
 --------------------
 
