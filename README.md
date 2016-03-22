@@ -47,4 +47,4 @@ Add all Acme bundles in `app/AppKernel.php` file.
 
 ## Contribution
 
-Don't hesitate to propose cookbook entries via https://github.com/akeneo/pim-docs/issues
+Don't hesitate to suggest cookbook ideas via https://github.com/akeneo/pim-docs/issues
