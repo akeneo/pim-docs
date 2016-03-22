@@ -87,7 +87,7 @@ The property setter replaces the data if it already exists.
 .. code-block:: php
 
     // sets data to the product name (an attribute)
-    $propertySetter->setData($product, 'name', 'my name');
+    $propertySetter->setData($product, 'name', 'my name', ['locale' => 'en_US', 'scope' => 'mobile']);
 
     // sets data to the product categories (a field)
     $propertySetter->setData($product, 'categories', ['category_code1', 'category_code2']);

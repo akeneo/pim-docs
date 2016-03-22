@@ -217,7 +217,7 @@ The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\proc
                 - '@pim_catalog.validator.product'
                 - '@akeneo_storage_utils.doctrine.object_detacher'
                 - '@pim_catalog.comparator.filter.product'
-                - '@pim_localization.localizer.converter'
+                - '@pim_catalog.localization.localizer.converter'
 
 The class ``Pim\Component\Connector\Processor\Denormalization\ProductProcessor`` mainly delegates the operations to different technical and business services.
 
@@ -291,8 +291,8 @@ The class ``Pim\Component\Connector\ArrayConverter\Flat\ProductStandardConverter
 
     The versionning will be reworked in a future version to use it too.
 
-Product Processor - AttributeLocalizedConverterInterface
---------------------------------------------------------
+Product Processor - AttributeConverterInterface
+-----------------------------------------------
 
 When you import a product with localized attributes (e.g. prices with comma as decimal separator),
 data will be converted to transform comma to dot.
@@ -301,7 +301,7 @@ data will be converted to transform comma to dot.
 
     $convertedItem = $this->convertLocalizedAttributes($convertedItem);
 
-The service uses the class ``Pim\Component\Localization\Localize\AttributeLocalizedConverter``.
+The service uses the class ``Akeneo\Component\Localization\Localize\AttributeConverter``.
 
 .. note::
 

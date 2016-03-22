@@ -71,3 +71,14 @@ So remember to fine tune the page size parameters if you encounter this kind of 
 
     parameters:
         pimee_catalog_rule.paginator.page_size: 100
+
+Memory leak fix in Rules Engine (ORM)
+-------------------------------------
+
+We discovered a memory leak occurring during the execution of rules with Doctrine ORM. It appears on ``commit()`` after products have been loaded and possibly modified.
+
+Our product entities tracking policy is set to "DEFFERED_EXPLICIT". It means that we are responsible for noticing Doctrine when a change has been made to an entity.
+When we notice Doctrine that an entity changed even when it has not, the library keeps a reference to this object internally.
+
+Unfortunately, when we try to ``flush()`` the entity manager, those objects are not detached. As we iterate and load more and more products, the number of references keeps growing until all memory is used.
+We decided to manually clean these unused references in ``Akeneo\Bundle\StorageUtilsBundle\Doctrine\Common\Detacher\ObjectDetacher`` to avoid this memory leak.
