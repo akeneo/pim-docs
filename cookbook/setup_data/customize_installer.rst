@@ -61,9 +61,9 @@ Copy all ``*.yml`` and ``*.csv`` files from Installer bundle into the ``mydatase
 
 Then, edit the files, for example, to declare your own channels:
 
-.. literalinclude:: ../../src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/channels.yml
+.. literalinclude:: ../../src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/channels.csv
    :language: yaml
-   :prepend: # /src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/channels.yml
+   :prepend: # /src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/channels.csv
    :linenos:
 
 .. tip::
