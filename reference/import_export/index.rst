@@ -5,11 +5,11 @@ This chapter describes the architecture and behaviour of imports and exports in 
 
 .. note::
 
-  The import part has been widely re-worked in 1.4: a new system has been introduced, and the old one is deleted since 1.6 version.
+  The import part has been widely re-worked in 1.4: a new system has been introduced. The old system has been marked as deprecated for 2 minor versions (1.4 and 1.5) and is now deleted since 1.6 version.
 
 .. note::
 
-  You can take a look at the cookbook section to practise through examples :doc:`/cookbook/import_export/index`.
+  You can have a look at the cookbook section to practise through examples :doc:`/cookbook/import_export/index`.
 
 .. toctree::
     :maxdepth: 2
