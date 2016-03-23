@@ -219,7 +219,7 @@ Add a Channel Configuration to Use the New Transformation
 
 Adding a channel configuration for Reference transformation is a simple YML import :
 
-.. code-block:: csv
+.. code-block:: none
 
     channel;configuration
     mobile;{"watermark":{"size":"15", "watermark":"Copyright Akeneo"}}

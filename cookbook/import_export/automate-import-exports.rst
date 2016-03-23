@@ -8,14 +8,14 @@ The batch job command
 
 Akeneo PIM provides a simple command to launch jobs:
 
-.. code-block:: batch
+.. code-block:: bash
     :linenos:
 
     app/console akeneo:batch:job [-c|--config CONFIG] [--email EMAIL] [--no-log] [--] <code>
 
 So to run the job csv_product_import you can run:
 
-.. code-block:: batch
+.. code-block:: bash
     :linenos:
 
     app/console akeneo:batch:job csv_product_import --env=prod
@@ -25,7 +25,7 @@ So to run the job csv_product_import you can run:
 
 You can also provide a custom configuration (in JSON format) for the job:
 
-.. code-block:: batch
+.. code-block:: bash
     :linenos:
 
     app/console akeneo:batch:job csv_product_import -c "{\"filePath\": \"/custom/path/to/product.csv\"}" --env=prod
@@ -39,21 +39,21 @@ To run a command periodically, you can use a cron_:
 
 First, you need to install it (example in debian/ubuntu based distributions):
 
-.. code-block:: batch
+.. code-block:: bash
     :linenos:
 
     apt-get install cron
 
 Then, you can edit our crontab:
 
-.. code-block:: batch
+.. code-block:: bash
     :linenos:
 
     crontab -e
 
 You can now add a new line at the end of the opened file:
 
-.. code-block:: batch
+.. code-block:: bash
     :linenos:
 
     0 * * * * /home/akeneo/pim/app/console akeneo:batch:job csv_product_import -c "{\"filePath\": \"/custom/path/to/product.csv\"}" --env=prod > /tmp/import.log
