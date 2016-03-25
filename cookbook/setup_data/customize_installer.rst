@@ -53,7 +53,14 @@ Add your own Data
 
 Create the directory ``Resources/fixtures/mydataset`` in your bundle.
 
-Copy all ``*.yml`` and ``*.csv`` files from Installer bundle into the ``mydataset`` directory of your bundle.
+Copy all ``*.yml`` and ``*.csv`` files from Installer bundle into the ``mydataset`` directory of your bundle and customize them depending on your needs.
+
+There are some values in original fixtures file set that can not be changed and customized. Be sure you have included them in your custom installation fixtures. These are:
+
+* user group ``all`` named ``All`` regardless of the translation in your ``user_groups.yml``;
+* attribute group ``other`` in your ``attribute_groups.yml``.
+
+You should also make sure your product attributes have only one attribute of type ``pim_catalog_identifier`` (SKU by default). And check that you have at least one ``channel`` and one ``category tree`` (default: master) in your ``channels.yml`` and ``categories.csv`` respectively.
 
 .. note::
 
