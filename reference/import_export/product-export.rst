@@ -123,7 +123,7 @@ The service is defined in ``src\Pim\Bundle\BaseConnectorBundle\Resources\config\
                 - '@pim_serializer'
                 - '@pim_catalog.manager.channel'
                 - ['pim_catalog_file', 'pim_catalog_image']
-                - %pim_localization.decimal_separators%
+                - %pim_catalog.localization.decimal_separators%
 
 The class ``Pim\Bundle\BaseConnectorBundle\Processor\ProductToFlatArrayProcessor`` mainly delegates the transformation to the service ``pim_serializer``.
 

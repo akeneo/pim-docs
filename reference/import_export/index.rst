@@ -9,7 +9,7 @@ This chapter describes the architecture and behaviour of imports and exports in 
 
 .. note::
 
-  You can have a look at the cookbook section to practise through examples :doc:`/cookbook/import_export/index`.
+  You can take a look at the cookbook section to practice through examples :doc:`/cookbook/import_export/index`.
 
 .. toctree::
     :maxdepth: 2

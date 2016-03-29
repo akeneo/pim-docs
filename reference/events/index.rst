@@ -9,3 +9,4 @@ Events
     :maxdepth: 2
 
     storage_events
+    workflow_events
