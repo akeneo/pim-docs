@@ -11,15 +11,15 @@ How to register a new Presenter
 Several presenters are already defined for prices, metrics, numbers, etc.
 You can implement your own Presenter to display your custom values.
 
-To create your new Presenter, first create a class implementing `Pim\\Component\\Localization\\Presenter\\PresenterInterface`.
+To create your new Presenter, first create a class implementing `Akeneo\\Component\\Localization\\Presenter\\PresenterInterface`.
 Next, declare it as a service:
 
 .. code-block:: yaml
 
-    pim_localization.presenter.my_own_presenter:
+    pim_catalog.localization.presenter.my_own_presenter:
         class: %my_own_presenter_class%
         tags:
-            - { name: pim_localization.presenter, type: 'product_value' }
+            - { name: pim_catalog.localization.presenter, type: 'product_value' }
 
 You have to tag your service with one of the following types:
 
@@ -39,12 +39,12 @@ You can define your own formats to present dates, datetimes and prices depending
 The formats of date, datetimes and currencies are predefined for a set of languages.
 When the requested format is not predefined, the fallback is defined by `IntlDateFormatter`_ and `NumberFormatter`_.
 
-To add or modify the default formats, you have to add or modify the `pim_localization.factory` tags (`date.formats`, `datetime.formats` and `currency.formats`).
+To add or modify the default formats, you have to add or modify the `pim_catalog.localization.factory` tags (`date.formats`, `datetime.formats` and `currency.formats`).
 
 For example:
 
 .. code-block:: yaml
 
-    pim_localization.factory.currency.formats:
+    pim_catalog.localization.factory.currency.formats:
         en_US: '¤#,##0.00'
         fr_FR: '#,##0.00 ¤'
