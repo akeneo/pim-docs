@@ -1,12 +1,10 @@
 Installation
 ============
 
-This document provides step by step instructions to install the PIM on development workstations based on Ubuntu 12.10, 13.10 or 14.04.
-
-The following instructions have been tested on fresh installations of Ubuntu 12.10, 13.10 and 14.04. The main difference between the distribution is the PHP version used (PHP 5.4 for Ubuntu 12.10 and PHP 5.5 for Ubuntu 13.10 and 14.04).
+This document provides step by step instructions to install the PIM on development workstations based on Ubuntu 14.04.
 
 .. note::
-    Even if the instructions apply to Ubuntu 12.10, 13.10 and 14.04, the same process and requirements can be used for any PHP 5.4 or PHP 5.5 based Linux distribution.
+    Even if the instructions apply to Ubuntu 14.04, the same process and requirements can be used for any PHP 5.4 or PHP 5.5 based Linux distribution.
 
 .. note::
     The instructions below apply on all the aforementioned Ubuntu versions, except if specified otherwise.
@@ -51,32 +49,12 @@ Installing PHP
 
     $ sudo apt-get install libapache2-mod-php5 php5-cli
     $ sudo apt-get install php5-mysql php5-intl php5-curl php5-gd php5-mcrypt
-
-**Ubuntu 13.10 only**
-
-.. code-block:: bash
-    :linenos:
-
-    $ sudo apt-get install php5-json
-    $ sudo ln -s /etc/php5/conf.d/mcrypt.ini /etc/php5/mods-available/
-
-**Ubuntu 13.10 and 14.04 only**
-
-.. code-block:: bash
-    :linenos:
-
     $ sudo php5enmod mcrypt
 
 Installing PHP opcode and data cache
 ************************************
-**Ubuntu 12.10 only**
 
-.. code-block:: bash
-    :linenos:
-
-    $ sudo apt-get install php-apc
-
-**Ubuntu 13.10 and 14.04 only**
+**Ubuntu 14.04**
 
 .. code-block:: bash
     :linenos:
@@ -84,7 +62,7 @@ Installing PHP opcode and data cache
     $ sudo apt-get install php5-apcu
 
 .. note::
-    PHP 5.5 provided in Ubuntu 13.10 and 14.04 comes with the Zend OPcache
+    PHP 5.5 provided in Ubuntu 14.04 comes with the Zend OPcache
     opcode cache.
     Only the data cache provided by APCu is needed.
 
@@ -193,20 +171,6 @@ Extracting the archive
 Installing the vendors
 **********************
 
-* First, you need to get composer. Install it in */path/to/pim/root*:
-
-.. code-block:: bash
-    :linenos:
-
-    $ curl -sS https://getcomposer.org/installer | php
-
-* Then, install the vendors:
-
-.. code-block:: bash
-    :linenos:
-
-    $ php composer.phar install
-
 Installing MongoDB and enabling it is as catalog storage
 --------------------------------------------------------
 **The following steps are optional.
@@ -231,17 +195,6 @@ Installing MongoDB
 Installing MongoDB PHP driver
 *****************************
 
-**Ubuntu 12.10 & 13.10 only**
-
-.. code-block:: bash
-    :linenos:
-
-    sudo apt-get install php-pear build-essential php5-dev
-    sudo pecl install mongo
-    sudo echo "extension=mongo.so" | sudo tee /etc/php5/conf.d/mongo.ini > /dev/null
-
-**Ubuntu 14.04 only**
-
 .. code-block:: bash
     :linenos:
 
@@ -256,7 +209,7 @@ Installing and enabling MongoDB support in Akeneo
     :linenos:
 
     $ cd /path/to/pim/root
-    $ php ../composer.phar --prefer-dist require doctrine/mongodb-odm-bundle 3.0.1
+    $ php composer.phar --prefer-dist require doctrine/mongodb-odm-bundle 3.0.1
 
 * In app/AppKernel.php, uncomment the following line (this will enable DoctrineMongoDBBundle and will load and enable the MongoDB configuration):
 
@@ -306,29 +259,6 @@ Creating the vhost file
 
     $ sudo gedit /etc/apache2/sites-available/akeneo-pim.local.conf
 
-**Ubuntu 12.10 only**
-
-.. code-block:: apache
-    :linenos:
-
-    <VirtualHost *:80>
-        ServerName akeneo-pim.local
-
-        DocumentRoot /path/to/pim/root/web/
-        <Directory /path/to/pim/root/web/>
-            Options Indexes FollowSymLinks MultiViews
-            AllowOverride All
-            Order allow,deny
-            allow from all
-        </Directory>
-        ErrorLog ${APACHE_LOG_DIR}/akeneo-pim_error.log
-
-        LogLevel warn
-        CustomLog ${APACHE_LOG_DIR}/akeneo-pim_access.log combined
-    </VirtualHost>
-
-**Ubuntu 13.10 and 14.04 only**
-
 .. code-block:: apache
     :linenos:
 
@@ -346,13 +276,6 @@ Creating the vhost file
         LogLevel warn
         CustomLog ${APACHE_LOG_DIR}/akeneo-pim_access.log combined
     </VirtualHost>
-
-.. note::
-
-    The differences in Virtual Host configuration between Ubuntu 12.10
-    and Ubuntu 13.10/14.04 are the result of the switch from Apache 2.2 to
-    Apache 2.4. See https://httpd.apache.org/docs/2.4/upgrading.html
-    for more details.
 
 Enabling the virtualhost
 ************************
@@ -393,7 +316,7 @@ Known issues
 
  * some segmentation fault and `zend_mm_heap corrupted` error can be caused as well by the circular references collector. You can disable it with the following setting in your php.ini files: `zend.enable_gc = 0`
 
- * When installing with `php composer.phar create-project...` command, error about `Unable to parse file "<path>/Resources/config/web.xml".`. It seems an external issue related to libxml, you can downgrade to `libxml2.x86_64 0:2.6.26-2.1.21.el5_9.1`. Look at: http://www.akeneo.com/topic/erreur-with-php-composer-phar-beta4/ for more informations.
+ * When installing with `php composer.phar create-project...` command, error about `Unable to parse file "<path>/Resources/config/web.xml".`. It seems an external issue related to libxml, you can downgrade to `libxml2.x86_64 0:2.6.26-2.1.21.el5_9.1`. Look at: http://www.akeneo.com/topic/erreur-with-php-composer-phar-beta4/ for more information.
 
 Generating a clean database (optional)
 --------------------------------------
