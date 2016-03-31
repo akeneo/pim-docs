@@ -1,15 +1,15 @@
-Akeneo Native Connector
-=======================
+Akeneo Connectors
+=================
 
-CSV Format
-----------
+CSV Connector
+-------------
 
-Akeneo Native Connector supports reading and writing CSV files.
+Akeneo CSV Connector supports reading and writing CSV files.
 
-XLSX Format
------------
+XLSX Connector
+--------------
 
-Akeneo Native Connector supports reading and writing XLSX files. The connector uses an open source library called Spout (https://github.com/box/spout) to read and create XLSX files.
+Akeneo XLSX Connector supports reading and writing XLSX files. The connector uses an open source library called Spout (https://github.com/box/spout) to read and create XLSX files.
 
 The connector supports the following Excel versions:
 
@@ -23,7 +23,7 @@ The connector supports the following Excel versions:
 Customizing connectors
 ----------------------
 
-It is possible to customize this connector to import and export numerous PIM related objects:
+It is possible to customize these connectors to import and export numerous PIM related objects:
 
-- Check how to import PIM objects using this connector (cf :doc:`reference/import_export/simple-import.rst`)
-- In order to understand how the connector is working for products, please refer to chapters about product import (cf :doc:`/reference/import_export/product-export`) and product export (cf :doc:`/reference/import_export/product-export`)
+- Check how to import PIM objects using the Akeneo Connectors (cf :doc:`/reference/import_export/simple-import`)
+- In order to understand how the Akeneo CSV Connector is working for products, please refer to chapters about product import (cf :doc:`/reference/import_export/product-export`) and product export (cf :doc:`/reference/import_export/product-export`)
