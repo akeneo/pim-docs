@@ -1,21 +1,25 @@
 
-How to add translation packs
+How to Add Translation Packs
 ============================
 
-Akeneo PIM UI is translated through Crowdin http://crowdin.net/project/akeneo (feel free to contribute!).
+.. _Crowdin: http://crowdin.net/project/akeneo/
 
-Each week, new translation keys are pushed to Crowdin, and new validated translations are pulled to our Github repository.
 
-Akeneo PIM contains translation packs for all languages with more than 80% of translated keys.
+Akeneo PIM UI is translated through `Crowdin`_ (feel free to :doc:`/contributing/translate`!).
 
-When we tag a new minor or patch version, the new translations are available.
+Once a week, new translation keys are pushed to Crowdin, and new validated translations are pulled from our Github repository.
 
-You can directly download translation packs from Crowdin.
+Akeneo PIM contains translation packs for all languages with more than 80% of translated keys. You can change this behavior by following this guide :doc:`/cookbook/localization/change_pim_locale`.
 
-The Akeneo PIM archive will contain a 'Community' and 'Enterprise' directories.
+Once a new minor or patch version has been tagged, the new translations are available.
 
-To add a pack you have to :
+You can directly download translation packs from `Crowdin`_.
 
- * rename the directories by following the rule 'src/Pim/Bundle/EnrichBundle' to 'PimEnrichBundle'
- * move this directory to app/Resources/
- * run `php app/console oro:translation:dump` fr de en (if you use en, fr and de locales)
+The Akeneo PIM archive will contain *Community* and *Enterprise* directories.
+
+To add a pack you have to:
+
+ * rename the directories by following the rule ``src/Pim/Bundle/EnrichBundle`` to ``PimEnrichBundle``
+ * move this directory to ``app/Resources/``
+ * run ``php app/console oro:translation:dump fr de en --env=prod`` (if you use en, fr and de locales)
+ * run ``php app/console cache:clear --env=prod``
