@@ -12,7 +12,7 @@ efficient answers to their multichannel needs.
     :maxdepth: 2
     :titlesonly:
 
-    developer_guide/installation/installation_workstation
+    developer_guide/installation/index
     developer_guide/migration/index
     reference/index
     cookbook/index

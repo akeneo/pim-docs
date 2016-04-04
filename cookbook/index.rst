@@ -26,3 +26,4 @@ Cookbook
     product_asset/index
     localization/index
     rule/index
+    setup_data/add_translation_packs
