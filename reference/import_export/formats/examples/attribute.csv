@@ -1,0 +1,13 @@
+type;code;label-en_US;label-fr_FR;group;unique;useable_as_grid_filter;allowed_extensions;metric_family;default_metric_unit;reference_data_name;localizable;scopable
+pim_catalog_identifier;sku;SKU;SKU;marketing;1;1;;;;;0;0
+pim_catalog_text;name;Name;Nom;marketing;0;1;;;;;0;0
+pim_catalog_textarea;description;Description;Description;marketing;0;1;;;;;1;1
+pim_catalog_number;optical_zoom;Optical zoom;Zoom optique;technical;0;1;;;;;0;0
+pim_catalog_boolean;image_stabilizer;Image stabilizer;Stabilisateur d'image;technical;0;1;;;;;0;0
+pim_catalog_simpleselect;sensor_type;Sensor type;Type de capteur;technical;0;1;;;;;0;0
+pim_catalog_multiselect;multifunctional_functions;All-in-one functions;Fonctions tout-en-un;technical;0;1;;;;;0;0
+pim_catalog_date;release_date;Release date;Date de sortie;marketing;0;1;;;;;0;1
+pim_catalog_metric;weight;Weight;Poids;technical;0;1;;Weight;KILOGRAM;;0;0
+pim_catalog_price_collection;price;Price;Prix;marketing;0;1;;;;;0;0
+pim_catalog_image;picture;Picture;Photographie;media;0;1;jpg,jpeg,gif;;;;0;0
+pim_catalog_file;pdf_description;PDF description;Description PDF;media;0;1;pdf;;;;0;0
