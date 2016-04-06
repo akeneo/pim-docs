@@ -5,8 +5,8 @@ Data structure
 --------------
 The import/export file follows this data structure:
 
-- Code: the association type code
-- Localized_labels: each label in a distinct column (See :doc:`localized-labels`)
+- **code** (required): the association type code
+- **label-<locale_code>**: each label in a distinct column (See :doc:`localized-labels`)
 
 .. note::
 
