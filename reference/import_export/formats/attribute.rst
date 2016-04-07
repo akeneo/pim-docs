@@ -35,5 +35,5 @@ Here is the description of the attribute types:
 
 .. csv-table::
     :header: "Attribute type", "Description"
-    :file: attribute_type.csv
+    :file: examples/attribute_type.csv
     :delim: ;
