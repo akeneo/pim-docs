@@ -1,12 +1,10 @@
 Association types data structure
 ================================
 
-Data structure
---------------
 The import/export file follows this data structure:
 
 - **code** (required): the association type code
-- **label-<locale_code>**: each label in a distinct column (See :doc:`localized-labels`)
+- **label-<locale_code>**: each label in a dedicated column (See :doc:`localized-labels`)
 
 .. note::
 
