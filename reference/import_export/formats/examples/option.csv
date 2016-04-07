@@ -1,0 +1,13 @@
+attribute;code;sort_order;label-en_US;label-fr_FR
+maximum_print_size;210_x_1219_mm;1;210 x 1219 mm;210 x 1219 mm
+maximum_print_size;215_x_355_mm;2;215 x 355 mm;215 x 355 mm
+sensor_type;ccd;1;CCD;CCD
+sensor_type;cmos;2;CMOS;CMOS
+camera_type;bridge;1;Bridge;Bridge
+camera_type;compact;2;Compact;Compact
+main_color;white;1;White;Blanc
+main_color;black;2;Black;Noir
+main_color;grey;3;Grey;Gris
+main_color;blue;4;Blue;Bleu
+main_color;purple;5;Purple;Violet
+main_color;orange;6;Orange;Orange
