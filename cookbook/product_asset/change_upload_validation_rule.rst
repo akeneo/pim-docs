@@ -12,7 +12,7 @@ Override the UploadChecker
 
 First, we will override the UploadChecker to be able to provide our own ParsedFilenameInterface implementation.
 
-.. code-block:: yml
+.. code-block:: yaml
 
     parameters:
         pimee_product_asset.upload_checker.class: Acme\CustomBundle\ProductAsset\Upload\UploadChecker

@@ -54,7 +54,7 @@ Add sorters:
 
     $pqb
         ->addSorter('family', 'ASC')
-        ->addSorter('price', 'DESC')
+        ->addSorter('sku', 'DESC')
         // to sort by completeness, the locale and the scope are expected, if not provided, the default ones are used
         ->addSorter('completeness', 'DESC', ['locale' => 'fr_FR', 'scope' => 'mobile']);
 

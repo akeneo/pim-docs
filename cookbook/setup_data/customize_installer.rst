@@ -68,9 +68,9 @@ You should also make sure your product attributes have only one attribute of typ
 
 Then, edit the files, for example, to declare your own channels:
 
-.. literalinclude:: ../../src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/channels.yml
+.. literalinclude:: ../../src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/channels.csv
    :language: yaml
-   :prepend: # /src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/channels.yml
+   :prepend: # /src/Acme/Bundle/InstallerBundle/Resources/fixtures/mydataset/channels.csv
    :linenos:
 
 .. tip::

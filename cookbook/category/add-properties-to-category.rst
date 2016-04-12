@@ -44,11 +44,11 @@ Define the Category Class
 
 You need to update your category entity parameter used in ``entities.yml`` file:
 
-.. literalinclude:: ../../src/Acme/Bundle/AppBundle/Resources/config/entities.yml
-   :language: yaml
-   :prepend: # /src/Acme/Bundle/AppBundle/Resources/config/entities.yml
-   :lines: 1-2
-   :linenos:
+.. code-block:: yaml
+
+    # /src/Acme/Bundle/AppBundle/Resources/config/entities.yml
+    parameters:
+        pim_catalog.entity.category.class: Acme\Bundle\AppBundle\Entity\Category
 
 .. note::
    You don't have to add a lot of code to the doctrine configuration to resolve target entities.
@@ -92,7 +92,10 @@ Then, don't forget to add your new field to the twig template:
 
 For the form validation you will have to add a new validation file:
 
-.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/validation/category.yml
-    :language: yaml
-    :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/validation/category.yml
-    :linenos:
+.. code-block:: yaml
+
+    # /src/Acme/Bundle/AppBundle/Resources/config/validation/category.yml
+    Acme\Bundle\AppBundle\Entity\Category:
+        properties:
+            description:
+                - NotBlank: ~

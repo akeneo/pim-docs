@@ -210,17 +210,20 @@ Created
 _______
 +--------------+-----------------------+
 | Operator     | - =                   |
+|              | - !=                  |
 |              | - ">"                 |
 |              | - <                   |
 |              | - BETWEEN             |
 |              | - NOT BETWEEN         |
 |              | - EMPTY               |
+|              | - NOT EMPTY           |
 +--------------+-----------------------+
 | Value        | dates format :        |
 |              | yyyy-mm-dd. If        |
-|              | operator is EMPTY,    |
-|              | values information    |
-|              | are ignored           |
+|              | operator is EMPTY or  |
+|              | NOT EMPTY values      |
+|              | information are       |
+|              | ignored.              |
 +--------------+-----------------------+
 | Example      | .. code-block:: yaml  |
 |              |                       |
@@ -233,17 +236,20 @@ Updated
 _______
 +--------------+-----------------------+
 | Operator     | - =                   |
+|              | - !=                  |
 |              | - ">"                 |
 |              | - <                   |
 |              | - BETWEEN             |
 |              | - NOT BETWEEN         |
 |              | - EMPTY               |
+|              | - NOT EMPTY           |
 +--------------+-----------------------+
 | Value        | dates format :        |
 |              | yyyy-mm-dd. If        |
-|              | operator is EMPTY,    |
-|              | values information    |
-|              | are ignored           |
+|              | operator is EMPTY or  |
+|              | NOT EMPTY values      |
+|              | information are       |
+|              | ignored.              |
 +--------------+-----------------------+
 | Example      | .. code-block:: yaml  |
 |              |                       |
@@ -256,6 +262,7 @@ Enabled
 _______
 +--------------+----------------------+
 | Operator     | - =                  |
+|              | - !=                 |
 +--------------+----------------------+
 | Value        | activated=> true,    |
 |              | deactived => false.  |
@@ -271,6 +278,7 @@ Completeness
 ____________
 +--------------+-----------------------+
 | Operator     | - =                   |
+|              | - !=                  |
 |              | - ">"                 |
 |              | - <                   |
 +--------------+-----------------------+
@@ -293,10 +301,12 @@ ______
 | Operator     | - IN                   |
 |              | - NOT IN               |
 |              | - EMPTY                |
+|              | - NOT EMPTY            |
 +--------------+------------------------+
 | Value        | Family codes or ids.   |
-|              | If operator is         |
-|              | EMPTY, value           |
+|              | yyyy-mm-dd. If         |
+|              | operator is EMPTY or   |
+|              | NOT EMPTY values       |
 |              | information are        |
 |              | ignored.               |
 +--------------+------------------------+
@@ -316,10 +326,11 @@ ______
 | Operator     | - IN                  |
 |              | - NOT IN              |
 |              | - EMPTY               |
+|              | - NOT EMPTY           |
 +--------------+-----------------------+
 | Value        | Groups codes or Ids.  |
-|              | If operator is        |
-|              | EMPTY, value          |
+|              | If operator is EMPTY  |
+|              | or NOT EMPTY values   |
 |              | information are       |
 |              | ignored.              |
 +--------------+-----------------------+
@@ -365,12 +376,14 @@ _______________
 |              | - CONTAINS                 |
 |              | - DOES NOT CONTAINS        |
 |              | - =                        |
+|              | - !=                       |
 |              | - EMPTY                    |
+|              | - NOT EMPTY                |
 +--------------+----------------------------+
 | Value        | Text, with or without      |
 |              | quotation marks. if        |
-|              | operator is empty,         |
-|              | values information         |
+|              | operator is EMPTY or NOT   |
+|              | EMPTY values information   |
 |              | are ignored.               |
 +--------------+----------------------------+
 | Example      | .. code-block:: yaml       |
@@ -386,18 +399,21 @@ ______
 | Operator     | - <                    |
 |              | - <=                   |
 |              | - =                    |
+|              | - !=                   |
 |              | - ">"                  |
 |              | - >=                   |
 |              | - EMPTY                |
+|              | - NOT EMPTY            |
 +--------------+------------------------+
 | Value        | Numeric value and      |
 |              | measure unity code.    |
 |              | Dot "." is the decimal |
 |              | separator. No space    |
 |              | between thousands. If  |
-|              | operators is empty,    |
-|              | values information     |
-|              | are ignored.           |
+|              | operators is EMPTY or  |
+|              | NOT EMPTY values       |
+|              | information are        |
+|              | ignored.               |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
@@ -413,6 +429,7 @@ Boolean
 _______
 +--------------+--------------------------+
 | Operator     | - =                      |
+|              | - !=                     |
 +--------------+--------------------------+
 | Value        | Yes => true, No => false |
 +--------------+--------------------------+
@@ -427,12 +444,17 @@ Dropdown List
 _____________
 +--------------+------------------------+
 | Operator     | - IN                   |
+|              | - NOT IN               |
 |              | - EMPTY                |
+|              | - NOT EMPTY            |
 +--------------+------------------------+
 | Value        | Option code. If        |
-|              | operator is empty,     |
-|              | values information     |
-|              | are ignored.           |
+|              | operator is EMPTY or   |
+|              | NOT EMPTY values       |
+|              | information are        |
+|              | ignored. NOT IN        |
+|              | (red, blue) means      |
+|              | != red and != blue.    |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
@@ -447,12 +469,17 @@ Multiselect List
 ________________
 +--------------+------------------------+
 | Operator     | - IN                   |
+|              | - NOT IN               |
 |              | - EMPTY                |
+|              | - NOT EMPTY            |
 +--------------+------------------------+
 | Value        | Option code. If        |
-|              | operator is empty,     |
-|              | values information     |
-|              | are ignored.           |
+|              | operator is EMPTY or   |
+|              | NOT EMPTY values       |
+|              | information are        |
+|              | ignored. NOT IN        |
+|              | (red, blue) means      |
+|              | != red and != blue.    |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
@@ -469,13 +496,15 @@ ______
 | Operator     | - <                    |
 |              | - <=                   |
 |              | - =                    |
+|              | - !=                   |
 |              | - ">"                  |
 |              | - >=                   |
 |              | - EMPTY                |
+|              | - NOT EMPTY            |
 +--------------+------------------------+
 | Value        | Number. If operator    |
-|              | is empty, values       |
-|              | information are        |
+|              | EMPTY or NOT EMPTY     |
+|              | values information are |
 |              | ignored.               |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
@@ -489,17 +518,20 @@ Date
 ____
 +--------------+------------------------+
 | Operator     | - <                    |
-|              | - =                    |
 |              | - ">"                  |
+|              | - =                    |
+|              | - !=                   |
 |              | - BETWEEN              |
 |              | - NOT BETWEEN          |
 |              | - EMPTY                |
+|              | - NOT EMPTY            |
 +--------------+------------------------+
 | Value        | Format date :          |
 |              | yyyy-mm-dd. If         |
-|              | operator is empty,     |
-|              | values information     |
-|              | are ignored.           |
+|              | operator is EMPTY or   |
+|              | NOT EMPTY values       |
+|              | information are        |
+|              | ignored.               |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
@@ -514,18 +546,21 @@ _____
 | Operator     | - <                    |
 |              | - <=                   |
 |              | - =                    |
+|              | - !=                   |
 |              | - ">"                  |
 |              | - >=                   |
 |              | - EMPTY                |
+|              | - NOT EMPTY            |
 +--------------+------------------------+
 | Value        | Numeric value and      |
 |              | currency code.         |
 |              | Dot "." is the decimal |
 |              | separator. No space    |
 |              | between thousands.     |
-|              | If operator is empty,  |
-|              | values information     |
-|              | are ignored.           |
+|              | If operator is EMPTY   |
+|              | or NOT EMPTY values    |
+|              | information are        |
+|              | ignored.               |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
@@ -533,6 +568,12 @@ _____
 |              |   operator: <=         |
 |              |   value:               |
 |              |     data: 12           |
+|              |     currency: EUR      |
+|              |                        |
+|              |   field: null_price    |
+|              |   operator: NOT EMPTY  |
+|              |   value:               |
+|              |     data: null         |
 |              |     currency: EUR      |
 +--------------+------------------------+
 
@@ -545,10 +586,12 @@ _______________
 |              | - DOES NOT                        |
 |              | - CONTAIN                         |
 |              | - =                               |
+|              | - !=                              |
 |              | - EMPTY                           |
+|              | - NOT EMPTY                       |
 +--------------+-----------------------------------+
-| Value        | Text. If operator is              |
-|              | empty, values                     |
+| Value        | Text. If operator is EMPTY or     |
+|              | NOT EMPTY values                  |
 |              | information are                   |
 |              | ignored.                          |
 +--------------+-----------------------------------+
