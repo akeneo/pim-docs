@@ -1,0 +1,4 @@
+code;label-en_US;label-fr_FR;attributes;attribute_as_label;requirements-ecommerce;requirements-mobile;requirements-print
+mugs;Mugs;Chopes/Mugs;sku,name,description,price,picture,container_material,main_color;name;sku,name,description,main_color,price,container_material;sku,name,description,main_color,price;sku,name,description,price
+camcorders;Camcorders;Caméscopes numériques;sku,name,description,weight,power_requirements,sensor_type,total_megapixels,optical_zoom,image_stabilizer,release_date,price,picture;name;sku,name,description,price,sensor_type,total_megapixels;sku,name,description,price,sensor_type,total_megapixels;sku,name,description,price,sensor_type,total_megapixels
+tshirts;;;sku,name,description,price,picture,main_color,secondary_color,clothing_size,tshirt_materials,tshirt_style;sku;sku,name,description,main_color,secondary_color,tshirt_materials,clothing_size;sku,name,description,main_color,secondary_color,price,clothing_size;sku,name,description,price

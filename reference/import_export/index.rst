@@ -15,6 +15,7 @@ This chapter describes the architecture and behaviour of imports and exports in 
     :maxdepth: 2
 
     main-concepts
+    csv-formats
     simple-import
     product-import
     product-export

@@ -1,0 +1,9 @@
+code;parent;label-de_DE;label-en_US;label-fr_FR
+master;;Hauptkatalog;"Master catalog";"Catalogue principal"
+tvs_projectors;master;"TVs und projectoren";"TVs and projectors";"Téléviseurs et projecteurs"
+pc_monitors;tvs_projectors;"PC Monitoren";"PC Monitors";"Moniteurs PC"
+led_tvs;tvs_projectors;"TVs LED";"LED TVs";"Télévisions LED"
+cameras;master;Cameras;Cameras;Caméras
+digital_cameras;cameras;"Digitale Kameras";"Digital cameras";"Caméras digitales"
+camcorders;cameras;"Digitale Videokameras";Camcorders;"Caméscopes numériques"
+webcams;cameras;Webcams;Webcams;Webcams
