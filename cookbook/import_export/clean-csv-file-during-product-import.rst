@@ -52,7 +52,7 @@ Configure a job in ``Resources/config/batch_jobs.yml``:
 
 Here we create an import job which contains a single step: `import`.
 
-The default step is ``Akeneo\Bundle\BatchBundle\Step\ItemStep``.
+The default step is ``Akeneo\Component\Batch\Step\ItemStep``.
 
 An item step is configured with 3 elements, a reader, a processor and a writer.
 
@@ -90,7 +90,7 @@ Then we declare this new array converter service in ``array_converters.yml``.
 
     You can notice here that we use the `Decorator Pattern`_ by injecting the default array converter in our own class.
 
-    The big advantage of this practise is to decouple your custom code from the PIM code, for instance, if in the future, an extra dependency is injected in the constructor of the default array converter, your code will not be impacted.
+    The big advantage of this practice is to decouple your custom code from the PIM code, for instance, if in the future, an extra dependency is injected in the constructor of the default array converter, your code will not be impacted.
 
 .. _Decorator Pattern: https://en.wikipedia.org/wiki/Decorator_pattern
 

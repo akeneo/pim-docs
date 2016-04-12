@@ -14,56 +14,36 @@ Create a custom action
 In this cookbook we are going to see how to add a custom action in the rule engine.
 For this example, the goal of this rule is to concatenate attributes name, price and total megapixels into the description field.
 
-First let's see how to add the action. You need to override `PimEnterprise\Bundle\CatalogRuleBundle\Engine\ProductRuleApplier` service that will contain the logic:
+-First let's see how to create the action. You need to create an ActionApplier object that will contain the logic:		
 
 .. code-block:: php
 
-    #/src/Acme/Bundle/CustomBundle/Engine/ProductRuleApplier/ProductsUpdater.php
+    #/src/Acme/Bundle/CustomBundle/ActionApplier/PatternActionApplier.php
     <?php
 
-    namespace Acme\Bundle\CustomBundle\Engine\ProductRuleApplier;
+    namespace Acme\Bundle\CustomBundle\ActionApplier;
 
-    use Acme\Bundle\CustomBundle\Model\ProductPatternActionInterface;
-    use Akeneo\Bundle\RuleEngineBundle\Model\RuleInterface;
-    use Doctrine\Common\Util\ClassUtils;
-    use Pim\Bundle\CatalogBundle\Model\ProductInterface;
-    use PimEnterprise\Bundle\CatalogRuleBundle\Engine\ProductRuleApplier\ProductsUpdater as BaseProductsUpdater;
-    use PimEnterprise\Bundle\CatalogRuleBundle\Model\ProductCopyValueActionInterface;
-    use PimEnterprise\Bundle\CatalogRuleBundle\Model\ProductSetValueActionInterface;
+    use Acme\Bundle\CustomBundle\Model\ProductPatternAction;
+    use Akeneo\Component\RuleEngine\ActionApplier\ActionApplierInterface;
+    use Akeneo\Component\StorageUtils\Updater\PropertySetterInterface;
 
-    class ProductsUpdater extends BaseProductsUpdater
+    class PatternActionApplier implements ActionApplierInterface
     {
+        /** @var PropertySetterInterface */
+        protected $propertySetter;
+
         /**
-         * @param ProductInterface[] $products
-         * @param RuleInterface      $rule
+         * @param PropertySetterInterface $propertySetter
          */
-        public function updateFromRule(array $products, RuleInterface $rule)
+        public function __construct(PropertySetterInterface $propertySetter)
         {
-            $actions = $rule->getActions();
-            foreach ($actions as $action) {
-                if ($action instanceof ProductSetValueActionInterface) {
-                    $this->applySetAction($products, $action);
-                } elseif ($action instanceof ProductCopyValueActionInterface) {
-                    $this->applyCopyAction($products, $action);
-                } elseif ($action instanceof ProductPatternActionInterface) {
-                    $this->applyPatternAction($products, $action);
-                } else {
-                    throw new \LogicException(
-                        sprintf('The action "%s" is not supported yet.', ClassUtils::getClass($action))
-                    );
-                }
-            }
+            $this->propertySetter = $propertySetter;
         }
 
         /**
-         * Applies a pattern action on a subject set.
-         *
-         * @param ProductInterface[]            $products
-         * @param ProductPatternActionInterface $action
-         *
-         * @return ProductRuleApplier
+         * {@inheritdoc}
          */
-        public function applyPatternAction(array $products = [], ProductPatternActionInterface $action)
+        public function applyAction(ActionInterface $action, array $products = [])
         {
             $attributes = $action->getAttributes();
             $pattern    = $action->getPattern();
@@ -86,6 +66,14 @@ First let's see how to add the action. You need to override `PimEnterprise\Bundl
                 );
             }
         }
+
+        /**
+         * {@inheritdoc}
+         */
+        public function supports(ActionInterface $action)
+        {
+            return $action instanceof ProductPatternAction;
+        }
     }
 
 Then we need to create the object that will handle the data.
@@ -100,8 +88,10 @@ Then we need to create the object that will handle the data.
     use Akeneo\Bundle\RuleEngineBundle\Model\ActionInterface;
     use PimEnterprise\Component\CatalogRule\Model\ProductAddActionInterface;
 
-    class ProductPatternAction implements ProductPatternActionInterface
+    class ProductPatternAction implements ActionInterface
     {
+        const ACTION_TYPE = 'pattern';
+
         /** @var string */
         protected $field;
 
@@ -191,68 +181,6 @@ Then we need to create the object that will handle the data.
         }
     }
 
-    #/src/Acme/Bundle/CustomBundle/Model/ProductPatternActionInterface.php
-    <?php
-
-    namespace Acme\Bundle\CustomBundle\Model;
-
-    use Akeneo\Bundle\RuleEngineBundle\Model\ActionInterface;
-    use PimEnterprise\Bundle\CatalogRuleBundle\Model\FieldImpactActionInterface;
-
-    interface ProductPatternActionInterface extends ActionInterface, FieldImpactActionInterface
-    {
-        const ACTION_TYPE = 'pattern';
-
-        /**
-         * @return string
-         */
-        public function getField();
-
-        /**
-         * @param string $field
-         *
-         * @return ProductPatternActionInterface
-         */
-        public function setField($field);
-
-        /**
-         * @return array
-         */
-        public function getOptions();
-
-        /**
-         * @param array $options
-         *
-         * @return ProductPatternActionInterface
-         */
-        public function setOptions(array $options = []);
-
-        /**
-         * @return array
-         */
-        public function getAttributes();
-
-        /**
-         * @param array $attributes
-         *
-         * @return ProductPatternActionInterface
-         */
-        public function setAttributes(array $attributes = []);
-
-        /**
-         * @return string
-         */
-        public function getPattern();
-
-        /**
-         * @param string $pattern
-         *
-         * @return ProductPatternActionInterface
-         */
-        public function setPattern($pattern);
-    }
-
-
 We also need to create a denormalizer that will return our previous object that handles the data. It will convert the array into an object (needed for the import).
 
 .. code-block:: php
@@ -337,7 +265,7 @@ Here is the constraint message and its associated validation file:
     class ExistingAttributes extends Constraint
     {
         /** @var string */
-        public $message = 'There are no attributes with such code : "%attribute%"';
+        public $message = 'There are no attributes with such code: "%attribute%"';
 
         /**
          * {@inheritdoc}
@@ -352,7 +280,16 @@ Here is the constraint message and its associated validation file:
 
     #/src/Acme/Bundle/CustomBundle/Resources/config/validation/ProductPatternAction.yml
     Acme\Bundle\CustomBundle\Model\ProductPatternAction:
+        constraints:
+            - \PimEnterprise\Bundle\CatalogRuleBundle\Validator\Constraints\ProductRule\PropertyAction: ~
         properties:
+            field:
+               - Type:
+                    type: string
+               - NotBlank: ~
+               - Length:
+                   max: 255
+               - \PimEnterprise\Bundle\CatalogRuleBundle\Validator\Constraints\ExistingSetField: ~
             attributes:
                 - Type:
                     type: array
@@ -371,9 +308,6 @@ Don't forget to add these classes in your service definition and to tag them wit
 .. code-block:: yml
 
     #/src/Acme/Bundle/CustomBundle/Resources/config/services.yml
-    parameters:
-        pimee_catalog_rule.applier.product.updater.class: Acme\Bundle\CustomBundle\Engine\ProductRuleApplier\ProductsUpdater
-
     services:
         acme.action_applier.pattern:
             class: Acme\Bundle\CustomBundle\ActionApplier\PatternActionApplier
@@ -394,28 +328,7 @@ Don't forget to add these classes in your service definition and to tag them wit
             tags:
                 - { name: validator.constraint_validator, alias: pimee_constraint_attributes_validator }
 
-        # you need to override this service to register your denormalizer
-        pimee_catalog_rule.denormalizer.product_rule.chained:
-            class: %pimee_catalog_rule.denormalizer.product_rule.chained.class%
-            calls:
-                - [addDenormalizer, ['@pimee_catalog_rule.denormalizer.product_rule.condition']]
-                - [addDenormalizer, ['@pimee_catalog_rule.denormalizer.product_rule.set_value_action']]
-                - [addDenormalizer, ['@pimee_catalog_rule.denormalizer.product_rule.copy_value_action']]
-                - [addDenormalizer, ['@pimee_catalog_rule.denormalizer.product_rule.content']]
-                - [addDenormalizer, ['@pimee_catalog_rule.denormalizer.product_rule']]
-                - [addDenormalizer, ['@acme.denormalizer.product_rule.pattern_action']]
-
-        # you need to override this service to register your action
-        pimee_catalog_rule.denormalizer.product_rule.content:
-            class: %pimee_catalog_rule.denormalizer.product_rule.content.class%
-            arguments:
-                - %akeneo_rule_engine.model.rule.class%
-                - %pimee_catalog_rule.model.product_condition.class%
-                - copy_value: %pimee_catalog_rule.model.copy_value_action.class%
-                  set_value: %pimee_catalog_rule.model.set_value_action.class%
-                  pattern: Acme\Bundle\CustomBundle\Model\ProductPatterAction
-
-Here is an example of how you could write a rule.
+Here is an example on how you could write a rule.
 
 .. code-block:: txt
 

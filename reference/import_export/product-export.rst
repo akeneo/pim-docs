@@ -7,7 +7,8 @@ It's a good start to understand the overall architecture and how to re-use or re
 
 .. note::
 
-  The import part has been widely re-worked in 1.4, please note that the export part remains the same as in 1.3 (all classes and services are in the BaseConnectorBundle).
+  Please note that the import part has been widely re-worked in 1.4.
+  Although a part of the export (writers) has been re-worked too in 1.5, most of the parts remain the same as in previous versions.
 
 Definition of the Job
 ---------------------
@@ -28,7 +29,7 @@ The product export is defined in ``src\Pim\Bundle\BaseConnectorBundle\Resources\
                         services:
                             reader:    pim_base_connector.reader.doctrine.product
                             processor: pim_base_connector.processor.product_to_flat_array
-                            writer:    pim_base_connector.writer.file.csv_product
+                            writer:    pim_connector.writer.file.csv_product
                         parameters:
                             batch_size: 10
 
@@ -41,7 +42,7 @@ Product Export Step
 
 The purpose of this step is to read products from database, to transform product objects to array and write lines in a csv file.
 
-This step is a default step, an ``Akeneo\Bundle\BatchBundle\Step\ItemStep`` is instanciated and injected.
+This step is a default step, an ``Akeneo\Component\Batch\Step\ItemStep`` is instanciated and injected.
 
 .. code-block:: yaml
 
@@ -51,14 +52,14 @@ This step is a default step, an ``Akeneo\Bundle\BatchBundle\Step\ItemStep`` is i
         services:
             reader:    pim_base_connector.reader.doctrine.product
             processor: pim_base_connector.processor.product_to_flat_array
-            writer:    pim_base_connector.writer.file.csv_product
+            writer:    pim_connector.writer.file.csv_product
         parameters:
             batch_size: 10
     [...]
 
 An ``ItemStep`` always contains 3 elements, a ``Akeneo\Bundle\BatchBundle\Item\ItemReaderInterface``, a ``Akeneo\Bundle\BatchBundle\Item\ItemProcessorInterface`` and a ``Akeneo\Bundle\BatchBundle\Item\ItemWriterInterface``.
 
-We provide here specific implementations for these elements, the services are declared with aliases ``pim_base_connector.reader.doctrine.product``, ``pim_base_connector.processor.product_to_flat_array``, ``pim_base_connector.writer.file.csv_product``.
+We provide here specific implementations for these elements, the services are declared with aliases ``pim_base_connector.reader.doctrine.product``, ``pim_base_connector.processor.product_to_flat_array``, ``pim_connector.writer.file.csv_product``.
 
 Product Reader
 --------------
@@ -122,6 +123,7 @@ The service is defined in ``src\Pim\Bundle\BaseConnectorBundle\Resources\config\
                 - '@pim_serializer'
                 - '@pim_catalog.manager.channel'
                 - ['pim_catalog_file', 'pim_catalog_image']
+                - %pim_catalog.localization.decimal_separators%
 
 The class ``Pim\Bundle\BaseConnectorBundle\Processor\ProductToFlatArrayProcessor`` mainly delegates the transformation to the service ``pim_serializer``.
 
@@ -166,15 +168,17 @@ The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\writ
 .. code-block:: yaml
 
     parameters:
-        pim_base_connector.writer.file.csv_product.class: Pim\Bundle\BaseConnectorBundle\Writer\File\CsvProductWriter
+        pim_connector.writer.file.csv_product.class: Pim\Component\Connector\Writer\File\CsvProductWriter
 
     services:
-        pim_base_connector.writer.file.csv_product:
-            class: %pim_base_connector.writer.file.csv_product.class%
+        pim_connector.writer.file.csv_product:
+            class: %pim_connector.writer.file.csv_product.class%
             arguments:
+                - '@pim_connector.writer.file.file_path_resolver'
+                - '@akeneo_buffer.factory.json_file_buffer'
                 - '@pim_connector.writer.file.file_exporter'
 
-This service first merges all used columns in different rows and adds missing cells for the rows, then it writes the csv file.
+This service first merges all used columns in all the rows, adds missing cells in each row, then writes the csv file.
 
 .. code-block:: php
 

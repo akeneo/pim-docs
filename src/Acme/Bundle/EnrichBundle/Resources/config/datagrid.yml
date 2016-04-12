@@ -32,7 +32,7 @@ datagrid:
                 updated:
                     type:             date
                     label:            Updated
-                    data_name:        o.udapted
+                    data_name:        o.updated
                     filter_by_having: true
         sorters:
             columns:
@@ -43,6 +43,6 @@ datagrid:
                 created:
                     data_name: o.created
                 updated:
-                    data_name: o.udapted
+                    data_name: o.updated
             default:
                 code: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'

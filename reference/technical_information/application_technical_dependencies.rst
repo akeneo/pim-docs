@@ -48,13 +48,13 @@ Testing libraries
 
 To ensure the best possible quality of our product and avoid any regressions we created unit and functional tests using various libraries such as:
 
-+---------+-----------------------------------------+
-| PHPSpec | Intuitive unit testing with mocking     |
-+---------+-----------------------------------------+
-| Behat   | Functional testing                      |
-+---------+-----------------------------------------+
-| PHPUnit | Basic but powerful unit testing library |
-+---------+-----------------------------------------+
++---------+--------------------------------------------------------------------------------+
+| PHPSpec | Intuitive unit testing with mocking                                            |
++---------+--------------------------------------------------------------------------------+
+| Behat   | Functional testing                                                             |
++---------+--------------------------------------------------------------------------------+
+| PHPUnit | Basic but powerful unit testing library (for legacy tests, we now use phpspec) |
++---------+--------------------------------------------------------------------------------+
 
 Frontend technologies
 ---------------------
@@ -74,7 +74,7 @@ Frontend technologies
 +-----------------+-----------------------------------------------------------------+
 | jQuery UI       | Frontend library to improve user experience with better widgets |
 +-----------------+-----------------------------------------------------------------+
-| Various widgets | TinyMCE (v4), Select2 (v3), etc.                                |
+| Various widgets | Select2 (v3), etc.                                              |
 +-----------------+-----------------------------------------------------------------+
 
 **Styling dependencies**

@@ -8,9 +8,9 @@ As a prerequisite, we assume that you are using a project installed from a Commu
 Patch Version
 -------------
 
-We frequently release patch versions, in order to provides security and bug fixess.
+We frequently release patch versions, in order to provides security and bug fixes.
 
-When fixing these issues, we take an extreme care to avoid any backward compatibility break.
+When fixing these issues, we take an extreme care to avoid any backward compatibility issues.
 
 In the following example, Akeneo PIM version 1.4.8 has just been released and we are using an Akeneo PIM version 1.4.7.
 
@@ -76,7 +76,7 @@ We release minor versions every 6 months, these versions bring new features.
 
 Depending on these features and on the custom code you've added in your project, the migration can be more or less straightforward.
 
-Each release is provided with a migration guide and a set of scripts to automatize it as most as possible.
+Each release is provided with a migration guide and a set of scripts to automate it as much as possible.
 
 We are continuing to improve this process to make every new migration easier than the previous one.
 
@@ -84,15 +84,17 @@ Here are the migration guides:
 
 **Community Edition**
 
+* `From v1.4 to v1.5`_
 * `From v1.3 to v1.4`_
 * `From v1.2 to v1.3`_
 * `From v1.1 to v1.2`_
 * `From v1.0 to v1.1`_
 
+.. _From v1.4 to v1.5: https://github.com/akeneo/pim-community-standard/blob/1.5/UPGRADE-1.5.md
 .. _From v1.3 to v1.4: https://github.com/akeneo/pim-community-standard/blob/1.4/UPGRADE-1.4.md
-.. _From v1.2 to v1.3: https://github.com/akeneo/pim-community-standard/blob/1.4/UPGRADE-1.3.md
-.. _From v1.1 to v1.2: https://github.com/akeneo/pim-community-standard/blob/1.4/UPGRADE-1.2.md
-.. _From v1.0 to v1.1: https://github.com/akeneo/pim-community-standard/blob/1.4/UPGRADE-1.1.md
+.. _From v1.2 to v1.3: https://github.com/akeneo/pim-community-standard/blob/1.3/UPGRADE-1.3.md
+.. _From v1.1 to v1.2: https://github.com/akeneo/pim-community-standard/blob/1.2/UPGRADE-1.2.md
+.. _From v1.0 to v1.1: https://github.com/akeneo/pim-community-standard/blob/1.1/UPGRADE-1.1.md
 
 **Enterprise Edition**
 
@@ -100,7 +102,8 @@ Please contact our team through your access to the support service desk to ask f
 
 Then, follow the migration guides located in this archive to upgrade your project.
 
-From EE v1.0 to EE v1.3: UPGRADE-1.3.md
-From EE v1.3 to EE v1.4: UPGRADE-1.4.md
+* From EE v1.0 to EE v1.3: UPGRADE-1.3.md
+* From EE v1.3 to EE v1.4: UPGRADE-1.4.md
+* From EE v1.4 to EE v1.5: UPGRADE-1.5.md
 
 From CE v1.4 to EE v1.4: UPGRADE-CE-1.4-EE-1.4.md
