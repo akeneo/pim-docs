@@ -77,6 +77,7 @@ Then, edit the files, for example, to declare your own channels:
 
   You can take a look at `Pim/Bundle/InstallerBundle/Resources/fixtures/minimal` to see what the expected format is and which
   fixtures are absolutely needed, then you can draw heavily on `Pim/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev` to add optional objects.
+  Additional information for user_groups fixture : a group "all" is required.
 
 Install the DB
 --------------
