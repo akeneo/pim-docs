@@ -42,6 +42,12 @@ The writer is implemented in the class ``Pim\Component\Connector\Writer\DummyIte
 
 We'll explain in next cookbook chapters how to create your own elements with real logic inside.
 
+.. note::
+
+   It is also possible to create multiple job configuration files by placing them in a folder ``Resources/config/batch_jobs``. The job configurations must be yaml files of any name.
+
+   For instance, I can declare a job configuration in a file named ``custom_jobs.yml`` like so ``Resources/config/batch_jobs/custom_jobs.yml``.
+
 Translate Job and Step titles
 -----------------------------
 
