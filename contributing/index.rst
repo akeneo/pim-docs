@@ -6,6 +6,7 @@ We gladly welcome many kind of contributions on Akeneo PIM!
 .. toctree::
     :maxdepth: 1
 
+    contribution_guide
     translate
     documentation
     report_bug
