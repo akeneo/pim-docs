@@ -4,6 +4,7 @@ Product CSV data structure
 Products are exported in a CSV file with the following fields:
 
 Attributes fields can be one of these:
+
 - **sku** (required): Identifier attribute (SKU is the common code)
 - **clothing_size**: size option code for a simple select option
 - **description-en_US-mobile**: localizable and scopable attribute en_US for channel mobile
@@ -15,10 +16,12 @@ Attributes fields can be one of these:
 - **tshirt_style**: list of option codes for a multi select option list
 
 Associations fields:
+
 - **<association-type-code>-groups**: groups list for the <association-type-code> association type
 - **<association-type-code>-products**: list of products identifiers in this association type
 
 Product properties fields:
+
 - **categories**: list of category codes
 - **enabled**: boolean
 - **family**: family code
