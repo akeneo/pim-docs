@@ -52,20 +52,20 @@ Each attribute type supports some general and special properties.
 **Akeneo PIM** provides built in set of attribute types:
 
 ================================  ================  ==========================================================================================================
-Code                              Value type         Description
+Code                              Field             Description
 ================================  ================  ==========================================================================================================
-pim_catalog_identifier            string            **(!!)** The only one attribute of this type is allowed. Identifier attribute, it may be **sku**, **erp product id** or any other.
-pim_catalog_boolean               boolean           Boolean value: Yes/No i.e. True/False.
-pim_catalog_number                integer/decimal   Represents any number value. For example stock quantity.
-pim_catalog_price_collection      integer/decimal   Allow to holds collection of numbers according to currency settings.
-pim_catalog_metric                integer/decimal   Extends number and also allows to holds information about metric family and unit.
-pim_catalog_text                  text              Text field. Holds any text/varchar data.
-pim_catalog_textarea              text              The same as text but longer and field may be represented as wysiwyg editor.
-pim_catalog_file                  text              Extends text and linked to media (FileInfoInterface). Allows to upload file of specific type. 
-pim_catalog_image                 text              The same as file. Allows uploading image/png, image/jpg file types. And is represented as image. 
-pim_catalog_date                  datetime          Any date information: expiration date, available on, etc. 
-pim_catalog_simpleselect          AttributeOption   Select field that holds single user predefined attribute option.
-pim_catalog_multiselect           AttributeOption   Select field that holds multiple user predefined attribute options.
+pim_catalog_identifier            string            **(!!)** Only one attribute of this type is allowed. Product identification attribute: it may be **sku**, **erp product id** or any other, it may be unque or not unique.
+pim_catalog_boolean               Yes/No            Boolean value: Yes/No i.e. True/False.
+pim_catalog_number                Number            Represents any number value. For example stock quantity.
+pim_catalog_price_collection      Price             Allow to holds collection of numbers according to currency settings.
+pim_catalog_metric                Metric            Extends number and also allows to holds information about metric family and unit.
+pim_catalog_text                  Text              Text field. Holds any text/varchar data.
+pim_catalog_textarea              Text area         The same as text but longer and field may be represented as wysiwyg editor.
+pim_catalog_file                  File              Extends text and linked to media (FileInfoInterface). Allows to upload file of specific type. 
+pim_catalog_image                 Image             The same as file. Allows uploading image/png, image/jpg file types, and is represented as image. 
+pim_catalog_date                  Date              Any date information: expiration date, available on, etc. 
+pim_catalog_simpleselect          Simple-select     Select field that holds single user predefined attribute option.
+pim_catalog_multiselect           Multi-Select      Select field that holds multiple user predefined attribute options.
 ================================  ================  ==========================================================================================================
 
 
