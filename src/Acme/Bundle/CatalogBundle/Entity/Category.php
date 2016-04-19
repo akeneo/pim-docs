@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Bundle\AppBundle\Entity;
+namespace Acme\Bundle\CatalogBundle\Entity;
 
 use Pim\Bundle\CatalogBundle\Entity\Category as BaseCategory;
 

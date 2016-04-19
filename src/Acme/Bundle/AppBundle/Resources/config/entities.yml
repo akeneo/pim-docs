@@ -1,2 +1,0 @@
-parameters:
-    pim_catalog.entity.category.class:      Acme\Bundle\CatalogBundle\Entity\Category
