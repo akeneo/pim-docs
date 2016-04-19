@@ -62,7 +62,7 @@ Each attribute type supports some general and special properties.
 ================================  ================  ==========================================================================================================
 Code                              Field             Description
 ================================  ================  ==========================================================================================================
-pim_catalog_identifier            string            **(!!)** Only one attribute of this type is allowed. Product identification attribute: it may be **sku**, **erp product id** or any other, it may be unque or not unique.
+pim_catalog_identifier            string            **(!!)** Only one attribute of this type is allowed. Product identification attribute: it may be **sku**, **erp product id** or any other.
 pim_catalog_boolean               Yes/No            Boolean value: Yes/No i.e. True/False.
 pim_catalog_number                Number            Represents any number value. For example stock quantity.
 pim_catalog_price_collection      Price             Allow to holds collection of numbers according to currency settings.
@@ -83,11 +83,11 @@ pim_catalog_multiselect           Multi-Select      Select field that holds mult
 Family and Completeness
 -----------------------
 
-The product family represents products prototype (architype, superclass), imposes product information structure and defines the list of required and optional attributes for product that belongs to it. Additional attributes may be added to concrete product as optional.
+The product family represents products prototype (architype, superclass), imposes product information structure and defines the list of attributes for product that belongs to it. These attributes can be mandatory or not. Additional attributes that don't belong to the family may be added to concrete product as optional.
 
-An attribute may be Global or scoped to specific channel. For example attribute may be required for e-commerce but not for mobile channel.
+An attribute may be global or scoped to specific channel. For example attribute may be required for e-commerce but not for mobile channel.
 
-The product completeness is calculated apart for each channel and locale combination.
+The calculation of the completeness is based on the mandatory attributes of the product family. Each combination channel/locale has its own completeness calculation.
 
 .. note::
     For information on how to import/export families using CSV format see :doc:`/reference/import_export/formats/family`.
