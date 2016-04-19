@@ -8,23 +8,31 @@ Overview
 
 The data model is structured as Entity - Attribute - Value (i.e. Product - Attribute - ProductValue).
 
-The **Product** entity (``Pim\Component\Catalog\Model\Product``) and has many **ProductValues** (``Pim\Component\Catalog\Model\ProductValue``) that are linked to different **Attributes** and hold value information depending on specific attribute they are related too.
+The **Product** entity (``Pim\Component\Catalog\Model\Product``) has many **ProductValues** (``Pim\Component\Catalog\Model\ProductValue``) that are linked to different **Attributes** and hold value information depending on specific attribute they are related too.
 
 Product
 -------
 
 The main entity is the product which,
 
-* has values,
-* belongs to a family,
+* has values;
+* belongs to a family;
 * is positioned in many categories.
 
+.. note::
+    For information on how to import/export categories using CSV format see :doc:`/reference/import_export/formats/category`.
+
+
+.. note::
+    PIM architecture is very flexible and allows you clear and easy way to customize the catalog structure for your own integration: :doc:`/cookbook/catalog_structure/index`
 Product value
 -------------
 
 Each product value is linked to a product, an attribute and some additional entities related to (media, metrics, options, etc).
 Each product **has many** product values that represent information about it according to their attribute type. 
 
+.. note::
+    For information on how to import/export product using CSV format see :doc:`/reference/import_export/formats/product`. 
 
 Attribute
 ---------
@@ -68,12 +76,18 @@ pim_catalog_simpleselect          Simple-select     Select field that holds sing
 pim_catalog_multiselect           Multi-Select      Select field that holds multiple user predefined attribute options.
 ================================  ================  ==========================================================================================================
 
+.. note::
+    For information on how to import/export product attributes using CSV format see :doc:`/reference/import_export/formats/attribute`.
+    
 
 Family and Completeness
 -----------------------
 
-The product family defines the list of required and optional attributes. Optional attributes may be added to concrete product.
+The product family represents products prototype (architype, superclass), imposes product information structure and defines the list of required and optional attributes for product that belongs to it. Additional attributes may be added to concrete product as optional.
 
-An attribute may be Global or scoped to specific channel. For example attribute may be required for e-commerce but not for mobile.
+An attribute may be Global or scoped to specific channel. For example attribute may be required for e-commerce but not for mobile channel.
 
 The product completeness is calculated apart for each channel and locale combination.
+
+.. note::
+    For information on how to import/export families using CSV format see :doc:`/reference/import_export/formats/family`.
