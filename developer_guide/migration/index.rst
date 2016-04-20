@@ -3,7 +3,7 @@ Migration
 
 This chapter describes how to upgrade from a patch or minor version to a more recent one.
 
-As a prerequisite, we assume that you are using a project installed from a Community Standard (:doc:`/developer_guide/installation/installation_workstation`).
+As a prerequisite, we assume that you are using a project installed from a Community Standard (:doc:`/developer_guide/installation/index`).
 
 Patch Version
 -------------
