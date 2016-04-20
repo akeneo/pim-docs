@@ -13,9 +13,9 @@ The first step is to create a class that extends PIM ``Category`` class.
 
 For example, we can add a description property with a text field.
 
-.. literalinclude:: ../../src/Acme/Bundle/AppBundle/Entity/Category.php
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Entity/Category.php
    :language: php
-   :prepend: # /src/Acme/Bundle/AppBundle/Entity/Category.php
+   :prepend: # /src/Acme/Bundle/CatalogBundle/Entity/Category.php
    :linenos:
 
 Configure the mapping override
@@ -23,9 +23,9 @@ Configure the mapping override
 
 Then, define the mapping for your own field only:
 
-.. literalinclude:: ../../src/Acme/Bundle/AppBundle/Resources/config/doctrine/Category.orm.yml
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/doctrine/Category.orm.yml
     :language: yaml
-    :prepend: # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/Category.orm.yml
+    :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/doctrine/Category.orm.yml
     :linenos:
 
 You also need to configure the mapping override in your application configuration (to avoid to copy/paste the whole parent class mapping):
@@ -37,18 +37,18 @@ You also need to configure the mapping override in your application configuratio
         mapping_overrides:
             -
                 original: Pim\Bundle\CatalogBundle\Entity\Category
-                override: Acme\Bundle\AppBundle\Entity\Category
+                override: Acme\Bundle\CatalogBundle\Entity\Category
 
 Define the Category Class
 -------------------------
 
-You need to update your category entity parameter used in ``entities.yml`` file:
+You need to update your category entity parameter used in ``entities.yml`` file (if you are creating a new bundle, double check that this file is inside the extension):
 
-.. code-block:: yaml
-
-    # /src/Acme/Bundle/AppBundle/Resources/config/entities.yml
-    parameters:
-        pim_catalog.entity.category.class: Acme\Bundle\AppBundle\Entity\Category
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/entities.yml
+   :language: yaml
+   :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/entities.yml
+   :lines: 1,3
+   :linenos:
 
 .. note::
    You don't have to add a lot of code to the doctrine configuration to resolve target entities.
@@ -85,9 +85,22 @@ Then, add this new file to your dependency injection extension:
 
 Then, don't forget to add your new field to the twig template:
 
-.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/views/CategoryTree/_tab-panes.html.twig
-    :language: jinja
-    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/views/CategoryTree/_tab-panes.html.twig
+.. code-block:: jinja
+
+    # /src/Acme/Bundle/EnrichBundle/Resources/views/CategoryTree/Tab/property.html.twig
+    <!-- ... -->
+    {% set generalProperties %}
+        {{ form_row(form.code) }}
+        {{ form_row(form.description) }}
+    {% endset %}
+    <!-- ... -->
+
+Make sure you've registered the template properly inside ``form_types.yml``:
+
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
+    :language: yaml
+    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
+    :lines: 1-3
     :linenos:
 
 For the form validation you will have to add a new validation file:
