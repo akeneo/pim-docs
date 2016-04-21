@@ -23,6 +23,7 @@ First let's see how to create the action. You need to create an ActionApplier ob
 
     namespace Acme\Bundle\CustomBundle\ActionApplier;
 
+    use Akeneo\Bundle\RuleEngineBundle\Model\ActionInterface;
     use Acme\Bundle\CustomBundle\Model\ProductPatternAction;
     use Akeneo\Component\RuleEngine\ActionApplier\ActionApplierInterface;
     use Akeneo\Component\StorageUtils\Updater\PropertySetterInterface;
