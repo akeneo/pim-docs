@@ -58,7 +58,7 @@ First step to create a custom field, we need to create a FieldProvider for our n
 
 Next you need to register it in your service.yml file:
 
-.. code-block:: yml
+.. code-block:: yaml
     :linenos:
 
     parameters:

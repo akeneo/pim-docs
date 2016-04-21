@@ -105,7 +105,10 @@ Make sure you've registered the template properly inside ``form_types.yml``:
 
 For the form validation you will have to add a new validation file:
 
-.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/validation/category.yml
-    :language: yaml
-    :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/validation/category.yml
-    :linenos:
+.. code-block:: yaml
+
+    # /src/Acme/Bundle/AppBundle/Resources/config/validation/category.yml
+    Acme\Bundle\AppBundle\Entity\Category:
+        properties:
+            description:
+                - NotBlank: ~

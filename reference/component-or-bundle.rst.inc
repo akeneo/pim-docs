@@ -9,4 +9,3 @@ We organise the code as above in any new development and trying to update legagy
 
 .. image:: /reference/component-or-bundle.png
     :width: 400pt
-.
