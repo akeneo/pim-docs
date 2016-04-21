@@ -14,7 +14,7 @@ Create a custom action
 In this cookbook we are going to see how to add a custom action in the rule engine.
 For this example, the goal of this rule is to concatenate attributes name, price and total megapixels into the description field.
 
--First let's see how to create the action. You need to create an ActionApplier object that will contain the logic:		
+First let's see how to create the action. You need to create an ActionApplier object that will contain the logic:
 
 .. code-block:: php
 
@@ -221,7 +221,7 @@ For our example we need to create an `ExistingAttributeValidator` that will chec
 
     namespace Acme\Bundle\CustomBundle\Validator\Constraints;
 
-    use Pim\Bundle\CatalogBundle\Repository\AttributeRepositoryInterface;
+    use Pim\Component\Catalog\Repository\AttributeRepositoryInterface;
     use Symfony\Component\Validator\Constraint;
     use Symfony\Component\Validator\ConstraintValidator;
 
@@ -281,7 +281,7 @@ Here is the constraint message and its associated validation file:
     #/src/Acme/Bundle/CustomBundle/Resources/config/validation/ProductPatternAction.yml
     Acme\Bundle\CustomBundle\Model\ProductPatternAction:
         constraints:
-            - \PimEnterprise\Bundle\CatalogRuleBundle\Validator\Constraints\ProductRule\PropertyAction: ~
+            - PimEnterprise\Bundle\CatalogRuleBundle\Validator\Constraint\PropertyAction: ~
         properties:
             field:
                - Type:
@@ -289,13 +289,13 @@ Here is the constraint message and its associated validation file:
                - NotBlank: ~
                - Length:
                    max: 255
-               - \PimEnterprise\Bundle\CatalogRuleBundle\Validator\Constraints\ExistingSetField: ~
+               - PimEnterprise\Bundle\CatalogRuleBundle\Validator\Constraint\ExistingSetField: ~
             attributes:
                 - Type:
                     type: array
                 - NotBlank:
                     message: The key "attributes" is missing or empty.
-                - \Acme\Bundle\CustomBundle\Validator\Constraints\ExistingAttributes: ~
+                - Acme\Bundle\CustomBundle\Validator\Constraints\ExistingAttributes: ~
             pattern:
                - Type:
                     type: string
