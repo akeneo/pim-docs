@@ -9,8 +9,3 @@ Acme\Bundle\CatalogBundle\Entity\Category:
     gedmo:
         tree:
             type: nested
-    fields:
-        description:
-            type: string
-            length: 255
-            nullable: true
