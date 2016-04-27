@@ -197,7 +197,7 @@ Again, we need to register it and create the template:
         pim-product-edit-form-warehouse:                  # The form extension code (can be whatever you want)
             module: pim/product-edit-form/panel/warehouse # The requirejs module we just created
             parent: pim-product-edit-form-panels          # The parent extension in the form where we want to be regisetred
-            targetZone: container
+            targetZone: panel-content
             position: 90                                  # The extension position
 
 .. code-block:: html
