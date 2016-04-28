@@ -1,7 +1,7 @@
 How to Customize Mass Edit Operations
 =====================================
 
-This chapter gives details on how to customize existing mass edit operations & how to add some new.
+This chapter gives details on how to customize existing mass edit operations and how to add new ones.
 
 .. toctree::
 

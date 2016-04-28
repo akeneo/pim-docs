@@ -18,7 +18,7 @@ One Service to Override
 -----------------------
 
 | For this cookbook let say we **don't want to apply rules** after a Mass Edit Common Attributes operation.
-| Currently, this operation is defined as it:
+| Currently, this operation is defined as follows:
 
 .. code-block:: php
 
