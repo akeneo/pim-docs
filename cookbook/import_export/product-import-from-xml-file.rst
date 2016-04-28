@@ -63,7 +63,7 @@ Here, we'll use a custom reader ``acme_xml_connector.reader.file.xml_product`` b
 Create the Reader
 -----------------
 
-As we don't have an existing reader which allows to read this kind of file, we'll write a new one.
+As we don't have an existing reader which allows to read this kind of files, we'll write a new one.
 
 The purpose of the reader is to return each item as an array, in the case of XML file, we can have more work to define what is the item.
 

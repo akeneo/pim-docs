@@ -43,7 +43,7 @@ The product updater is available as a service, you can fetch it from the contain
 
 .. warning::
 
-   The updater does not validate and save the products in the database, these operations are done by the Validator and the Saver (detailed in dedicated chapters).
+   The updater does not validate and save the products to the database, these operations are done by the Validator and the Saver (detailed in dedicated chapters).
 
    We target to respect the Single Responsibility Principle (SRP) in our classes, feel free to use these different services through a `Facade` if it facilitates your developments.
 
@@ -171,7 +171,7 @@ It's available as a service, you can fetch it from the container.
 Use the PropertyCopierInterface
 -------------------------------
 
-The property remover allows to copy a data from a property to another property (doctrine field data or attribute data).
+The property copier allows to copy data from a property to another (doctrine field data or attribute data).
 
 .. code-block:: php
 

@@ -21,7 +21,7 @@ So to run the job csv_product_import you can run:
     app/console akeneo:batch:job csv_product_import --env=prod
 
 .. tip::
-    Don't forget to add --env=prod to avoid memory leaks in dev environement (the default environment for commands)
+    Don't forget to add --env=prod to avoid memory leaks in dev environment (the default environment for commands)
 
 You can also provide a custom configuration (in JSON format) for the job:
 
@@ -44,7 +44,7 @@ First, you need to install it (example in debian/ubuntu based distributions):
 
     apt-get install cron
 
-Then, you can edit our crontab:
+Then, you can edit your crontab:
 
 .. code-block:: batch
     :linenos:

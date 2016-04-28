@@ -1,7 +1,7 @@
 Contributing
 ============
 
-We gladly welcome many kind of contributions on Akeneo PIM!
+We gladly welcome any kind of contribution on Akeneo PIM!
 
 .. toctree::
     :maxdepth: 1

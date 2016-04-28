@@ -13,7 +13,7 @@ File Structure
 --------------
 
 Enrichment rules are defined in YAML. The file extension has to be ".yml". Indentation is mandatory within the
-file and has to strictly follow the YAML format. You have to import a rule so that it can be used in the PIM.
+file and has to follow the YAML format strictly. You have to import a rule so that it can be used in the PIM.
 
 This file starts with "rules" root element, which contains the list of enrichment rules. This document is about this
 list. Each rule is referred to by a code and can contain a list of conditions and actions.
@@ -63,20 +63,20 @@ Indentation is mandatory within the file and must be strictly identical to the o
 Enrichment Rule Structure
 -------------------------
 
-Structure’s elements which define a rule are :
+Structure’s elements which define a rule are:
  - rule code (dynamic)
  - priority*
  - conditions
  - actions
 
-Structure's elements which define a condition are :
+Structure's elements which define a condition are:
  - field
  - locale​*
  - scope​*
  - operator
  - value
 
-An enrichment rule is structured as follows :
+An enrichment rule is structured as follows:
 
 .. code-block:: yaml
 
@@ -92,7 +92,7 @@ An enrichment rule is structured as follows :
             - type:
               [Diverse elements according to the action]
 
-Elements with * are optionals.
+Elements with * are optional.
 
 **Dashes** - ​before element field and after each element contained in value part are mandatory.
 
@@ -131,10 +131,10 @@ This action copies an attribute value into another.
     Source and target should share the same type. If source attribute is empty, the value "empty" will also
     be copied.
 
-Two parameters are required and four others are optional:
+Two parameters are required and four other are optional:
  - from_field: code of the attribute to be copied
- - from_locale : locale code of the value to be copied (optional).
- - from_scope : channel code of the value to be copied (optional).
+ - from_locale: locale code of the value to be copied (optional).
+ - from_scope: channel code of the value to be copied (optional).
  - to_field: attribute code the value will be copied into
  - to_locale: locale code the value will be copied into (optional)
  - to_scope: channel code the value will be copied into (optional).
@@ -160,11 +160,11 @@ ___
 
 This action assigns values to an attribute.
 
-Two parameters are required, two others are optional.
- - field : attribute code.
- - locale : local code for which value is assigned (optional).
- - scope : channel code for which value is assigned (optional).
- - value : attribute value
+Two parameters are required, two other are optional.
+ - field: attribute code.
+ - locale: local code for which value is assigned (optional).
+ - scope: channel code for which value is assigned (optional).
+ - value: attribute value
 
 .. tip::
 
@@ -186,10 +186,10 @@ ___
 This action adds values to a multiselect, a category or a collection.
 
 Two parameters are required, two other are optional.
- - field : attribute code.
- - locale : local code for which value is assigned (optional).
- - scope : channel code for which value is assigned (optional).
- - value : attribute value
+ - field: attribute code.
+ - locale: local code for which value is assigned (optional).
+ - scope: channel code for which value is assigned (optional).
+ - value: attribute value
 
 .. tip::
 
@@ -216,11 +216,11 @@ _______
 |              | - NOT BETWEEN         |
 |              | - EMPTY               |
 +--------------+-----------------------+
-| Value        | dates format :        |
+| Value        | dates format:         |
 |              | yyyy-mm-dd. If        |
 |              | operator is EMPTY,    |
 |              | values information    |
-|              | are ignored           |
+|              | is ignored            |
 +--------------+-----------------------+
 | Example      | .. code-block:: yaml  |
 |              |                       |
@@ -239,11 +239,11 @@ _______
 |              | - NOT BETWEEN         |
 |              | - EMPTY               |
 +--------------+-----------------------+
-| Value        | dates format :        |
+| Value        | dates format:         |
 |              | yyyy-mm-dd. If        |
 |              | operator is EMPTY,    |
 |              | values information    |
-|              | are ignored           |
+|              | is ignored            |
 +--------------+-----------------------+
 | Example      | .. code-block:: yaml  |
 |              |                       |
@@ -257,7 +257,7 @@ _______
 +--------------+----------------------+
 | Operator     | - =                  |
 +--------------+----------------------+
-| Value        | activated=> true,    |
+| Value        | activated => true,   |
 |              | deactived => false.  |
 +--------------+----------------------+
 | Example      | .. code-block:: yaml |
@@ -297,7 +297,7 @@ ______
 | Value        | Family codes or ids.   |
 |              | If operator is         |
 |              | EMPTY, value           |
-|              | information are        |
+|              | information is         |
 |              | ignored.               |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
@@ -320,7 +320,7 @@ ______
 | Value        | Groups codes or Ids.  |
 |              | If operator is        |
 |              | EMPTY, value          |
-|              | information are       |
+|              | information is        |
 |              | ignored.              |
 +--------------+-----------------------+
 | Example      | .. code-block:: yaml  |
@@ -371,7 +371,7 @@ _______________
 |              | quotation marks. if        |
 |              | operator is empty,         |
 |              | values information         |
-|              | are ignored.               |
+|              | is ignored.                |
 +--------------+----------------------------+
 | Example      | .. code-block:: yaml       |
 |              |                            |
@@ -397,7 +397,7 @@ ______
 |              | between thousands. If  |
 |              | operators is empty,    |
 |              | values information     |
-|              | are ignored.           |
+|              | is ignored.            |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
@@ -432,7 +432,7 @@ _____________
 | Value        | Option code. If        |
 |              | operator is empty,     |
 |              | values information     |
-|              | are ignored.           |
+|              | is ignored.            |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
@@ -452,7 +452,7 @@ ________________
 | Value        | Option code. If        |
 |              | operator is empty,     |
 |              | values information     |
-|              | are ignored.           |
+|              | is ignored.            |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
@@ -475,7 +475,7 @@ ______
 +--------------+------------------------+
 | Value        | Number. If operator    |
 |              | is empty, values       |
-|              | information are        |
+|              | information is         |
 |              | ignored.               |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
@@ -495,11 +495,11 @@ ____
 |              | - NOT BETWEEN          |
 |              | - EMPTY                |
 +--------------+------------------------+
-| Value        | Format date :          |
+| Value        | Format date:           |
 |              | yyyy-mm-dd. If         |
 |              | operator is empty,     |
 |              | values information     |
-|              | are ignored.           |
+|              | is ignored.            |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
@@ -525,7 +525,7 @@ _____
 |              | between thousands.     |
 |              | If operator is empty,  |
 |              | values information     |
-|              | are ignored.           |
+|              | is ignored.            |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
@@ -549,7 +549,7 @@ _______________
 +--------------+-----------------------------------+
 | Value        | Text. If operator is              |
 |              | empty, values                     |
-|              | information are                   |
+|              | information is                    |
 |              | ignored.                          |
 +--------------+-----------------------------------+
 | Example      | .. code-block:: yaml              |
@@ -557,7 +557,7 @@ _______________
 |              |   field: small_image              |
 |              |   operator: CONTAIN               |
 |              |   value:                          |
-|              |    - filePath : ../../../         |
+|              |    - filePath: ../../../          |
 |              |    src/PimEnterprise/Bundle/      |
 |              |    InstallerBundle/Resources/     |
 |              |    fixtures/icecat_demo/images/   |

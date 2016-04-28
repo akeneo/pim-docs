@@ -1,7 +1,7 @@
 How to implement your business logic using the event system
 ===========================================================
 
-The PIM use the Symfony event system and fires events when something happens inside the system. For you, this means that
+The PIM uses the Symfony event system and fires events when something happens inside the system. For you, this means that
 you can create your own `services`_ that interact with those objects whenever certain action happens within the PIM.
 
 .. note::

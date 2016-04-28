@@ -1,20 +1,20 @@
 Enhance the Documentation
 =========================
 
-Want to help enhance the `Documentation`_?
+Want to help improve the `Documentation`_?
 
 .. _Documentation: http://docs.akeneo.com/latest/index.html
 
 The Akeneo PIM documentation uses `reStructuredText`_ as its markup language and
 `Sphinx`_ for building the output (HTML, PDF, ...).
 
-We're very interested in tutorials or cookbooks to explain how to customize the PIM to your project's needs.
+We're very interested in tutorials or cookbooks to explain how to customize the PIM to fit your project's needs.
 
 Before contributing on a new entry, please begin by creating an `Issue`_ on GitHub to explain your idea.
 
 .. _Issue: https://github.com/akeneo/pim-docs/issues
 
-For typo / quick fixes you can directly propose a `PullRequest`_.
+For typo / quick fixes you can directly submit a `PullRequest`_.
 
 .. _PullRequest: https://help.github.com/articles/using-pull-requests/
 

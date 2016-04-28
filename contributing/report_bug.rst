@@ -17,5 +17,5 @@ Community Edition
 Enterprise Edition
 ------------------
 
-* Raise an issue by using your Service Desk Account.
+* Raise an issue by using your Service Desk Account
 * Our support team will handle your request
