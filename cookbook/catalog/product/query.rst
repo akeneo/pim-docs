@@ -79,7 +79,7 @@ We strongly advise to use this method to execute queries on products.
 Execute the Query ("classic" Doctrine mode)
 -------------------------------------------
 
-Once filters and sorters applied, you can still access the internal QueryBuilder to manipulate it before executing the query.
+Once filters and sorters are applied, you can still access the internal QueryBuilder to manipulate it before executing the query.
 
 Then you can use a "classic" Doctrine execute (with custom hydration, etc),
 

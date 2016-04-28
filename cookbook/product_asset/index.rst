@@ -3,7 +3,7 @@ How to Customize Product Assets
 
 This chapter describes how to customize elements from product assets.
 
-**These cookbooks are about a feature only provided in the Enterprise Edition.**
+**These cookbook entries are about a feature only provided in the Enterprise Edition.**
 
 .. toctree::
 

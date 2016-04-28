@@ -42,7 +42,7 @@ For further information about SFTP adapter check this `link
 Connect to an Amazon AwsS3v3 server
 -----------------------------------
 
-First of all you will need to install the following requirements:
+First of all, you will need to install the following requirements:
 
 ``composer --prefer-dist require aws/aws-sdk-php v3.5.0``
 ``composer --prefer-dist require league/flysystem-aws-s3-v3 v1.0.6``

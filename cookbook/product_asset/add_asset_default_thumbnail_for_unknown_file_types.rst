@@ -10,13 +10,13 @@ In the asset management each file type has a default image. Thus, if you add a n
 To add a default image for an unknown file type, you have to override a service and a parameter in the dependency injection.
 
 .. note::
-    Learn more about Symfony2 Dependency Injection on the documentation : http://symfony.com/doc/current/components/dependency_injection/index.html.
+    Learn more about Symfony2 Dependency Injection in the documentation: http://symfony.com/doc/current/components/dependency_injection/index.html.
 
 For the sake of the cookbook, we'll add a default thumbnail for audio type. Currently, if an audio file is added in Akeneo this image is shown:
 
 .. image:: ./misc_default.png
 
-The goal is to show this one instead:
+The goal is to display this one instead:
 
 .. image:: ./audio_default.png
 

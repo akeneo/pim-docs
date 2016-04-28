@@ -1,7 +1,7 @@
 How to add custom information to a field
-=========================================
+========================================
 
-Natively we add a lot of related information to product edit fields: data coming from a variant group, validation errors, etc. As an integrator, you can also add custom informations for your own needs and we will go through each steps in this cookbook to achieve this.
+Natively we add a lot of related information to product edit fields: data coming from a variant group, validation errors, etc. As an integrator, you can also add custom information for your own needs and we will go through each step to achieve this in this cookbook.
 
 Let's say that we want to display the minimum and maximum values allowed for a number field, for that we need to create a form extension listening to the `pim_enrich:form:field:extension:add` event:
 
@@ -88,4 +88,4 @@ And register your extension to the product edit form:
             targetZone: self
             position: 100
 
-Don't forget to clear your cache and you are good to go !
+Don't forget to clear your cache and you are good to go!

@@ -44,7 +44,7 @@ First, we need to create a Form extension in our bundle:
         }
     );
 
-For now this is a pretty dumb extension, but this is a good start!
+For now this is a dummy extension, but this is a good start!
 
 Let's register this file in the `requirejs` configuration
 
@@ -57,7 +57,7 @@ Let's register this file in the `requirejs` configuration
         paths:
             pim/product-edit-form/packages: pimacme/js/product/form/packages
 
-Now that our file is registered into `requirejs` configuration, we can add this extension to the product edit form:
+Now that our file is registered in `requirejs` configuration, we can add this extension to the product edit form:
 
 .. code-block:: yaml
     :linenos:
@@ -122,7 +122,7 @@ Remember to register your template in your requirejs file:
 
             pim/template/product/tab/packages: pimacme/templates/product/tab/packages.html
 
-And here is our template to list every packages:
+And here is our template to list every package:
 
 .. code-block:: html
     :linenos:
