@@ -19,6 +19,7 @@ Cookbook
     catalog_structure/index
     import_export/index
     ui
+    mass_edit
     acl/define-acl
     notification/how_to_add_a_notification
     rest_api/get-product
