@@ -69,6 +69,8 @@ And there is the service definition
         services:
             my.listener:
                 class: Acme\Bundle\AppBundle\EventListener\ProductModificationListener
+                arguments:
+                    - '@swiftmailer.mailer'
                 tags:
                     - { name: kernel.event_listener, event: akeneo.storage.post_save, method: onPostSave }
 
