@@ -2,8 +2,8 @@ How to Avoid Rules Execution on Mass Edit Actions
 =================================================
 
 | The Akeneo PIM comes with a number of mass edit actions.
-| By default in Enterprise Edition, after each of those actions, **rules are recalculated** for edited products.
-| If for any reason you don't want rules to apply, then please follow this cookbook.
+| By default in Enterprise Edition, after each of those actions, **rules are applied** for updated products.
+| Please follow this cookbook if you don't want rules to apply for some reason.
 
 Quick Overview
 --------------
@@ -70,7 +70,7 @@ One Service to Override
                 - '@pim_catalog.localization.localizer.registry'
                 - '@pim_enrich.filter.product_values_edit_data'
                 - '%tmp_storage_dir%'
-                - 'edit_common_attributes_with_permission'        # <<<< Notice the different job code (without rules)
+                - 'edit_common_attributes_with_permission'        # <<<< Notice we do not use rules anymore with this job code
             tags:
                 -
                     name: pim_enrich.mass_edit_action
@@ -110,4 +110,4 @@ Available Mass Edit Operation Jobs Without Rules
 
 .. note::
 
-  All mass edit operation jobs are in minimal data fixtures in ``src/PimEnterprise/Bundle/InstallerBundle/Resources/fixtures/minimal/jobs.yml``
+  All mass edit operation jobs are in the minimal data fixtures and declared in ``src/PimEnterprise/Bundle/InstallerBundle/Resources/fixtures/minimal/jobs.yml``
