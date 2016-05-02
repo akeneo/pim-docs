@@ -6,7 +6,10 @@ Quick Overview
 
 **This cookbook will demonstrate you how to store the assets on a SFTP instead of the default local filesystem. Assets are specific files available only in the Enterprise Edition. But you can apply the exact same cookbook to store your product medias elsewhere.**
 
-This cookbook assumes that you already configured an external server. This cookbook should be made before the installation of the PIM. Otherwise you will have to migrate your data to your external server.
+This cookbook assumes that you already configured an external server. This cookbook should be done before the installation of the PIM. Otherwise you will have to migrate your data to your external server.
+
+When connecting to an external server for storage, reference files and variations are created on the external server. The structure of the folders in which files are stored comes from the PIM.
+Only thumbnails are stored on the PIM server.
 
 Connect to an SFTP server
 -------------------------
