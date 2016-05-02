@@ -11,3 +11,4 @@ This chapter describes how to customize elements from product assets.
    add_asset_default_thumbnail_for_unknown_file_types
    how_to_connect_to_an_external_server
    change_upload_validation_rule
+   mass_import
