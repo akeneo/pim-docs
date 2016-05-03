@@ -153,6 +153,16 @@ The Job has to be in your database, so add it to your fixtures:
 
     To better understand how to handle this, you can read this chapter: :ref:`add-your-own-data`
 
+If your installation is already set up, use the `akeneo:batch:create-job` command:
+
+.. code-block:: bash
+    php app/console akeneo:batch:create-job "Akeneo Mass Edit Connector" "mass_edit_capitalize_values" "mass_edit" "capitalize_values" '{}' "Mass capitalize products value"
+
+.. warning::
+
+    If you are using Akeneo PIM EE, don't forget to add permissions in `pimee_security_job_profile_access` to your job profile.
+
+
 Phase 5: Translating the Mass Edit Action Choice
 ------------------------------------------------
 
