@@ -33,7 +33,7 @@ CheckPublishedProductOnRemovalSubscriber (Enterprise edition)     0
 
 Event Class: `RemoveEvent <https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Component/StorageUtils/Event/RemoveEvent.php>`_
 
-This event is dispatched after we remove an object using a remover.
+This event is dispatched after we have removed an object using a remover.
 
 These are the built-in PIM subscribers registered to this event:
 
@@ -71,7 +71,7 @@ Listener Class Name             Priority
 
 Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
-This event is dispatched after we save an object using a saver.
+This event is dispatched after we have saved an object using a saver.
 
 ``akeneo.storage.pre_save_all``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -85,4 +85,4 @@ This event is dispatched before we save a pool of objects using the saveAll func
 
 Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 
-This event is dispatched after we save a pool of objects using the saveAll function of the saver.
+This event is dispatched after we have saved a pool of objects using the saveAll function of the saver.

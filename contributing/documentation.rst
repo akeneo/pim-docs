@@ -56,12 +56,11 @@ it with the ``code-block`` directive:
 
     { foo: bar, bar: { foo: bar, bar: baz } }
 
-    If your PHP code begins with ``<?php``, then you need to use ``html+php`` as
-    the highlighted pseudo-language:
+If your PHP code begins with ``<?php``, then you need to use ``html+php`` as the highlighted pseudo-language:
 
-    .. code-block:: rst
+.. code-block:: rst
 
-.. code-block:: html+php
+    .. code-block:: html+php
 
     <?php echo $this->foobar(); ?>
 
@@ -82,19 +81,19 @@ directive to show the configuration in all supported configuration formats
 
     .. configuration-block::
 
-.. code-block:: yaml
+    .. code-block:: yaml
 
-    # Configuration in YAML
+        # Configuration in YAML
 
-.. code-block:: xml
+    .. code-block:: xml
 
-    <!-- Configuration in XML //-->
+        <!-- Configuration in XML //-->
 
-.. code-block:: php
+    .. code-block:: php
 
-    // Configuration in PHP
+        // Configuration in PHP
 
-The previous reST snippet renders as follow:
+The previous reST snippet renders as follows:
 
 .. configuration-block::
 

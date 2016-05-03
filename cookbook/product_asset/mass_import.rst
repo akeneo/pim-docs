@@ -3,7 +3,7 @@ How to Mass Import Assets
 
 A command has been created in the PIM to allow you to mass import assets: ``php app/console pim:product-asset:mass-upload``
 
-For this command to work, you need to copy files you want to import into the folder configured in ``pim_parameters.ym`` under the parameter ``tmp_storage``.
+For this command to work, you need to copy files you want to import into the folder configured in ``pim_parameters.yml`` under the parameter ``tmp_storage``.
 The command will upload the files into the application.
 
 For example, if you upload a file named "demo_video.avi", Akeneo PIM will check if an asset with the code "demo_video" exists.
@@ -13,7 +13,7 @@ If no asset exists with the code "demo_video", the PIM will create this new asse
 If you want to enrich these newly imported assets with other information (such as a description, tags, etc.), you need to create an import profile for the job "Asset import in CSV".
 For the sake of our example, let's say the code of this profile is "assets_mass_upload".
 
-The job accepts CSV a file in the same format as the one below (delimiters and escape characters can be configured in the interface):
+The job accepts a CSV file in the same format as the one below (delimiters and escape characters can be configured in the interface):
 
 .. csv-table:: Assets import
    :header-rows: 1

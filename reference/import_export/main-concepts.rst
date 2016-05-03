@@ -16,7 +16,7 @@ The Import/Export system is based on Akeneo BatchBundle.
 
 It helps to define "high level" jobs such as imports, exports and mass actions.
 
-There are the main objects of the architecture.
+Here are the main objects of the architecture.
 
 .. image:: ./batch-main-concepts.png
 

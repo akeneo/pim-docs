@@ -1,7 +1,7 @@
 Understand the CSV Product Export
 =================================
 
-We'll discuss here on how the csv product export works.
+We'll discuss here how the CSV product export works.
 
 It's a good start to understand the overall architecture and how to re-use or replace some parts.
 
@@ -102,12 +102,12 @@ The reader will only return products that are complete for the selected channel,
 
 .. note::
 
-    To know more about how we load different configuration depending on the storage driver you can take a look on ``Pim\Bundle\CatalogBundle\DependencyInjection\PimCatalogExtension``
+    To know more about how we load different configuration depending on the storage driver you can take a look at ``Pim\Bundle\CatalogBundle\DependencyInjection\PimCatalogExtension``
 
 Product Processor
 -----------------
 
-This element receives product objects one by one, transforms each product object into an array and returns the array
+This element receives product objects one by one, transforms each product object into an array and returns the array.
 
 The service is defined in ``src\Pim\Bundle\BaseConnectorBundle\Resources\config\processors.yml``.
 
@@ -135,7 +135,7 @@ We can see here that we normalize each product into the ``flat`` format (= csv f
 
 This service ``pim_serializer`` is declared in ``src\Pim\Bundle\TransformerBundle\Resources\config\serializer\serializer.yml`` and uses the Symfony ``Serializer`` class.
 
-We register several normalizers to normalize any kind of objects into a flat array, these normalizers are defined in ``src\Pim\Bundle\TransformerBundle\Resources\config\serializer\flat.yml``.
+We register several normalizers to normalize any kind of object into a flat array, these normalizers are defined in ``src\Pim\Bundle\TransformerBundle\Resources\config\serializer\flat.yml``.
 
 As a product may not have values for all attributes, depending on the product, the normalized array will contain different keys, for instance,
 

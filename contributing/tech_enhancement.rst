@@ -1,4 +1,4 @@
-Propose a Technical Enhancement
+Suggest a Technical Enhancement
 ===============================
 
 * Fork https://github.com/akeneo/pim-community-dev
