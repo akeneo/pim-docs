@@ -4,7 +4,7 @@ Setting-up the Hybrid Storage MySQL/MongoDB
 Prerequisites
 *************
 
-If you are here, it means you already sort out that you need to enable the Hybrid Storage Mysql/MongoDB. If not, please read the :doc:`/developer_guide/installation/system_requirements/system_requirements` section. It also means that you have installed MongoDB alongside with its PHP driver.
+If you are here, it means you have already sorted out that you need to enable the Hybrid Storage Mysql/MongoDB. If not, please read the :doc:`/developer_guide/installation/system_requirements/system_requirements` section. It also means that you have installed MongoDB alongside with its PHP driver.
 
 Installing and enabling MongoDB support in Akeneo
 *************************************************

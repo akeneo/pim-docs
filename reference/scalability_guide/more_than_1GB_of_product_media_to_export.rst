@@ -4,14 +4,14 @@ More than 1GB of product media to export?
 If you run an export with products containing media, an archive is created at the end. It contains the products data files and all the media for these products.
 However, trying to archive a large volume of media (usually more than 1GB) can fail because it's a very memory consuming process in PHP.
 
-It is handled by ``Pim\Bundle\BaseConnectorBundle\Archiver\ArchivableFileWriterArchiver`` which internally use `Flysystem ZipArchive`_. Unfortunately this has not been optimized to work with large volumes.
+It is handled by ``Pim\Bundle\BaseConnectorBundle\Archiver\ArchivableFileWriterArchiver`` which internally uses `Flysystem ZipArchive`_. Unfortunately this has not been optimized to work with large volumes.
 
 .. _`Flysystem ZipArchive`: https://github.com/thephpleague/flysystem-ziparchive
 
 Disable the media archiving
 ===========================
 
-If you encounter memory issues and you don't need media to be archived, a simple solution is to override the declaration of ``pim_base_connector.archiver.archivable_file_writer_archiver`` service as follows :
+If you encounter memory issues and you don't need media to be archived, a simple solution is to override the declaration of ``pim_base_connector.archiver.archivable_file_writer_archiver`` service as follows:
 
 .. code-block:: yaml
 
@@ -26,13 +26,13 @@ The tag ``pim_base_connector.archiver`` is removed here to prevent the archiver 
 Write your own archiver
 =======================
 
-However you may need to archive media and/or keep the archiving active for other usages.
+However, you may need to archive media and/or keep the archiving active for other usages.
 There is currently no out of the box solution to archive large volumes of media on a classic PIM installation (i.e. with the recommended PHP memory limit configuration).
-If you want to write your own archiving logic, you can either override the native archiver or create a new archiver.
+If you want to write your own archiving logic, you can either override the native archiver or create a new one.
 
 An archiver needs to :
 
-    - implements ``Pim\Bundle\BaseConnectorBundle\Archiver\ArchiverInterface``
+    - implement ``Pim\Bundle\BaseConnectorBundle\Archiver\ArchiverInterface``
     - be declared as a service and be tagged with ``pim_base_connector.archiver``
 
 Feel free to share it with the community!

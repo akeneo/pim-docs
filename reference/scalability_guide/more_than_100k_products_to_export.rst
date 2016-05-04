@@ -3,7 +3,7 @@ More than 100k products to export?
 
 In the past, we encountered use cases where partners would export 270k products and experienced issues with the memory usage.
 
-Most of PIM's massive operations like imports and exports processes the products iteratively via a size configured subsets of products in order to minimize the memory usage.
+Most of PIM's massive operations, such as imports and exports, process the products iteratively via a size configured subsets of products in order to minimize the memory usage.
 
 As each product may have different properties, the export operation would keep the transformed array in memory in order to add missing columns from one line to another.
 

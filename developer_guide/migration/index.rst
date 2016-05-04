@@ -14,7 +14,7 @@ When fixing these issues, we take an extreme care to avoid any backward compatib
 
 In the following example, Akeneo PIM version 1.4.8 has just been released and we are using an Akeneo PIM version 1.4.7.
 
-You can check the CHANGELOG-1.4.md which list the changes provided by each version.
+You can check the CHANGELOG-1.4.md which lists the changes provided by each version.
 
 **Community Edition**
 
@@ -60,7 +60,7 @@ We always tag both community and enterprise versions with aligned version number
 
 Using the exact patch version will avoid any local composer cache issue.
 
-Then follow the same process than for the community edition:
+Then follow the same process as the one for the community edition:
 
 .. code-block:: bash
 
@@ -78,7 +78,7 @@ Depending on these features and on the custom code you've added in your project,
 
 Each release is provided with a migration guide and a set of scripts to automate it as much as possible.
 
-We are continuing to improve this process to make every new migration easier than the previous one.
+We continue to improve this process to make every new migration easier than the previous one.
 
 Here are the migration guides:
 
@@ -105,5 +105,4 @@ Then, follow the migration guides located in this archive to upgrade your projec
 * From EE v1.0 to EE v1.3: UPGRADE-1.3.md
 * From EE v1.3 to EE v1.4: UPGRADE-1.4.md
 * From EE v1.4 to EE v1.5: UPGRADE-1.5.md
-
-From CE v1.4 to EE v1.4: UPGRADE-CE-1.4-EE-1.4.md
+* From CE v1.4 to EE v1.4: UPGRADE-CE-1.4-EE-1.4.md

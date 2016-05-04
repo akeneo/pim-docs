@@ -104,7 +104,7 @@ Structure
 
 * Exception message strings should be concatenated using :phpfunction:`sprintf`.
 
-* If we expect something from a method/function (i.e. the returned value of the method/function is used by the caller) we should always do an explicit return (not ``return;``).
+* If we expect something from a method/function (i.e. the returned value of the method/function used by the caller) we should always do an explicit return (not ``return;``).
 
 Naming Conventions
 ------------------
@@ -184,7 +184,7 @@ License
 * Akeneo PIM is released under the OSL license, and the license reference has to be
   present at the top of every PHP file, in the class PHPDoc.
 
-* Some bundles as BatchBundle are released under the MIT license, for these ones, please follow the repository convention.
+* Some bundles, such as BatchBundle, are released under the MIT license, for these ones, please follow the repository convention.
 
 .. _`PSR-0`: http://www.php-fig.org/psr/psr-0/
 .. _`PSR-1`: http://www.php-fig.org/psr/psr-1/
