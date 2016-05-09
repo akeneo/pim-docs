@@ -11,3 +11,4 @@ This chapter gives details on how to customize existing UI to fit your customer'
    ui_customization/create_a_new_field_type
    ui_customization/add_custom_information_to_a_field
    mass_edition/register_a_new_mass_edit_action
+   ui_customization/override_job_profile_templates
