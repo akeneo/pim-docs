@@ -148,6 +148,12 @@ Create the file ``/etc/apache2/sites-available/akeneo-pim.local.conf``
         CustomLog ${APACHE_LOG_DIR}/akeneo-pim_access.log combined
     </VirtualHost>
 
+.. note::
+    Replace */path/to/installation* by the path to the directory where you want to install the PIM.
+
+.. note::
+    Replace *pim-community-standard* by *pim-enterprise-standard* for enterprise edition
+
 Enabling the virtual host
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 

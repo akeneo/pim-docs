@@ -7,7 +7,8 @@ Once the requirements are fulfilled, you are ready to install Akeneo PIM. Otherw
     :maxdepth: 1
 
     system_requirements/system_requirements
-    installation_archive
+    installation_ce_archive
+    installation_ee_archive
     setup_hybrid_storage_mysql_mongo
 
 Here are the guides to setup system requirements on specific operating systems:
