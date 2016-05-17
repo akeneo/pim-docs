@@ -75,7 +75,7 @@ Create the directory ``Resources/fixtures/mydataset`` in your bundle.
 Copy all ``*.yml`` and ``*.csv`` files from ``vendor/akeneo/pim-community-dev/src/Pim/Bundle/InstallerBundle/Resources/fixtures/minimal`` to the ``mydataset`` directory of your bundle. Then customize them depending on your needs.
 
 Mandatory Data
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 
 Be sure you have included mandatory data in your custom installation fixtures. These are:
 

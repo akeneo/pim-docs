@@ -106,6 +106,7 @@ In this example, the user is *my_user* and the group is *my_group*.
     $ sudo service apache2 stop
 
 * Use your identifiers for Apache by editing the file ``/etc/apache2/envvars``. You have to replace the variables:
+
  * ``APACHE_RUN_USER=www-data`` by ``APACHE_RUN_USER=my_user``
  * ``APACHE_RUN_GROUP=www-data`` by ``APACHE_RUN_GROUP=my_group``
 

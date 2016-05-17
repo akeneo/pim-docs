@@ -530,7 +530,7 @@ ____
 |              | operator is EMPTY or   |
 |              | NOT EMPTY, values      |
 |              | information is         |
-|              |ignored.                |
+|              | ignored.               |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |

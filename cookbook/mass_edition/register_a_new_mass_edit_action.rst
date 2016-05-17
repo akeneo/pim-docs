@@ -156,6 +156,7 @@ The Job has to be in your database, so add it to your fixtures:
 If your installation is already set up, use the `akeneo:batch:create-job` command:
 
 .. code-block:: bash
+
     php app/console akeneo:batch:create-job "Akeneo Mass Edit Connector" "mass_edit_capitalize_values" "mass_edit" "capitalize_values" '{}' "Mass capitalize product values"
 
 .. warning::
