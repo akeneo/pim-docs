@@ -5,7 +5,7 @@ Your product catalog is unique, with different amount of attributes, families, l
 
 The following chapter explains the different performances bottlenecks you can encounter by using *Akeneo PIM* and lists known issues. It also explains best practices you should implement to ensure the success of your project.
 
-Thank you to contact us when your use case is not covered, we could handle it in next minor version or provide you an alternative solution for your project.
+We improve the performance in each new minor versions. If you encounter any new limitation, please do not hesitate to contact us through the forum http://akeneo.com/forums. We'll give you details about the roadmap for specific improvements and help you to find a suitable solution for your project.
 
 .. warning::
 
