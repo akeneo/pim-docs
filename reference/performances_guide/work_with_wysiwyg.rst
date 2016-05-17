@@ -1,9 +1,9 @@
-More than 100 WYSIWYG editor in a page?
+More than 100 WYSIWYG editors in a page
 ---------------------------------------
 
-WYSIWYG are javascript components and so are executed on the client side. Hardware performances of the client can affect the speed of pages with WYSIWYG.
+WYSIWYG are javascript components and are executed on the client side. Hardware performances of the client can affect the speed of pages with WYSIWYG.
 
-That's why it's not recommended to have more that one hundred WYSIWYG in the same page. In the product edit form, only attributes in the
+That's why it's not recommended to have more than one hundred WYSIWYG in the same page. In the product edit form, only attributes in the
 current attribute group and the current scope are rendered. It means that you should not have more than one hundred WYSIWYG in the same
 attribute group and scope. When configuring mass edit common attributes or editing variant group attributes, all scopes are rendered at
 the same time. It means you should not add more than one hundred WYSIWYG all scopes included at once.

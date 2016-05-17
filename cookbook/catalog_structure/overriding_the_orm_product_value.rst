@@ -30,7 +30,7 @@ First, we need to extend and replace the native `PimCatalogBundle:ProductValue` 
     namespace Acme\Bundle\AppBundle\Entity;
 
     use Acme\Bundle\AppBundle\Entity\Color;
-    use Pim\Bundle\CatalogBundle\Model\ProductValue as PimProductValue;
+    use Pim\Component\Catalog\Model\ProductValue as PimProductValue;
 
     /**
      * Acme override of the product value to link a simple object
@@ -64,7 +64,7 @@ First, we need to extend and replace the native `PimCatalogBundle:ProductValue` 
 Overriding the mapping
 **********************
 
-Create the mapping file `Resources/config/doctrine/ProductValue.orm.yml` into your your bundle.
+Create the mapping file `Resources/config/doctrine/ProductValue.orm.yml` in your bundle.
 
 First, copy the table name, the tracking policy and the indexes of the file `src/Pim/Bundle/CatalogBundle/Resources/config/doctrine/ProductValue.orm.yml`.
 
@@ -122,7 +122,7 @@ First, we need to extend and replace the native `PimCatalogBundle:ProductValue` 
 
     use Acme\Bundle\AppBundle\Entity\Color;
     use Doctrine\Common\Collections\ArrayCollection;
-    use Pim\Bundle\CatalogBundle\Model\ProductValue as PimProductValue;
+    use Pim\Component\Catalog\Model\ProductValue as PimProductValue;
 
     /**
      * Acme override of the product value to link a multiple object
@@ -181,7 +181,7 @@ First, we need to extend and replace the native `PimCatalogBundle:ProductValue` 
 Overriding the mapping
 **********************
 
-Create the mapping file `Resources/config/doctrine/ProductValue.orm.yml` into your your bundle.
+Create the mapping file `Resources/config/doctrine/ProductValue.orm.yml` in your bundle.
 
 First, copy the table name, the tracking policy and the indexes of the file `src/Pim/Bundle/CatalogBundle/Resources/config/doctrine/ProductValue.orm.yml`.
 
@@ -253,7 +253,7 @@ Then, configure the mapping override in your application configuration:
     akeneo_storage_utils:
         mapping_overrides:
             -
-                original: Pim\Bundle\CatalogBundle\Model\ProductValue
+                original: Pim\Component\Catalog\Model\ProductValue
                 override: Acme\Bundle\AppBundle\Entity\ProductValue
 
 .. note::

@@ -53,7 +53,7 @@ The following methods are available.
 
 Each dedicated repository also implements its own business interface, for instance, ``Pim\Bundle\CatalogBundle\Repository\AttributeRepositoryInterface``.
 
-This business interface provides several dedicated methods and we strongly advise to rely on this interface in your developments.
+This business interface provides several dedicated methods and we strongly recommend to rely on this interface in your developments.
 
 .. code-block:: php
 

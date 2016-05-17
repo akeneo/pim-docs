@@ -12,7 +12,7 @@ The version 1.4 introduces a new internal API to simplify these updates, it espe
 
 These updaters implement ``Akeneo\Component\StorageUtils\Updater\ObjectUpdaterInterface`` to apply a set of property updates on an object.
 
-We strongly recommend using this internal API for your developments and there are a few examples on how to use these dedicated updaters.
+We strongly recommend using this internal API for your developments, and here are a few examples on how to use these dedicated updaters.
 
 .. warning::
 
@@ -23,7 +23,7 @@ We strongly recommend using this internal API for your developments and there ar
 Use the AttributeUpdater to Update an Attribute
 -----------------------------------------------
 
-Here we can apply several property updates on any fields of an attribute.
+Here we can apply several property updates on any field of an attribute.
 
 .. code-block:: php
 
@@ -38,7 +38,7 @@ Here we can apply several property updates on any fields of an attribute.
 Use the FamilyUpdater to Update a Family
 ----------------------------------------
 
-Here we can apply many property updates on any fields of a family.
+Here we can apply many property updates on any field of a family.
 
 .. code-block:: php
 
@@ -61,7 +61,7 @@ Here we can apply many property updates on any fields of a family.
 Use the CategoryUpdater to Update a Category
 --------------------------------------------
 
-Here we can apply several property updates on any fields of a category.
+Here we can apply several property updates on any field of a category.
 
 .. code-block:: php
 

@@ -3,7 +3,7 @@ Create a project
 
 .. warning::
 
-    Here is a very early version of this section, we'll keep enriching it in coming weeks.
+    Here is a very early version of this section, we'll keep enriching it in the upcoming weeks.
 
 Setup the project
 -----------------
@@ -39,4 +39,4 @@ What about your dependencies?
 
 In your composer.json, you should try to rely as much as possible on stable dependencies (tags) when installing extra dependencies.
 
-Once installed don't hesitate to version your composer.lock. This practice ensures that any of your coworkers (or servers) will use the exact same version of all dependencies.
+Once installed don't hesitate to version your composer.lock. This practice ensures that all of your coworkers (or servers) will use the exact same version of all dependencies.

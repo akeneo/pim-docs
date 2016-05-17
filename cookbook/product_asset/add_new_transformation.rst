@@ -108,7 +108,7 @@ In order to create your transformation, you have to follow these rules:
 .. note::
     To see how the imagemagick command is launched, you can take a look at the ImageMagickLauncher_.
 
-In order to rely on options you can add an OptionsResolver, for this you need to follow this rule :
+In order to rely on options you can add an OptionsResolver, for this you need to follow this rule:
 
  * your OptionsResolver must implement the ``Akeneo\Component\FileTransformer\Options\TransformationOptionsResolverInterface``.
 
@@ -174,7 +174,7 @@ In order to rely on options you can add an OptionsResolver, for this you need to
 
 .. _OptionsResolver: http://symfony.com/doc/current/components/options_resolver.html
 .. note::
-    You can learn more about this Symfony2 component on the OptionsResolver_ documentation.
+    You can learn more about this Symfony2 component in the OptionsResolver_ documentation.
 
 Next step is to create corresponding services in a dedicated file `services.yml`:
 
@@ -217,7 +217,7 @@ A translation key is automatically created with the ``Watermark->getName()``. Yo
 Add a Channel Configuration to Use the New Transformation
 ---------------------------------------------------------
 
-Adding a channel configuration for Reference transformation is a simple YML import :
+Adding a channel configuration for Reference transformation is a simple YML import:
 
 .. code-block:: none
 
@@ -228,8 +228,8 @@ Adding a channel configuration for Reference transformation is a simple YML impo
     Configuration is a json format. All these options are required but as we pushed a default value we can put nothing.
 
 Once you created YML file you can go to Akeneo PIM and then start importing with asset channel configuration import in csv profile.
-Be careful, if you import only the previous file, all your previous configurations will be removed. You need to add your own configuration in the file to keep it.
+Be careful, if you import only the previous file, all your previous configurations will be removed. You need to add your own configuration in the file to keep them.
 
-Now try to create an asset and generate variations for your channel. Download the generated file and discover your watermark :
+Now try to create an asset and generate variations for your channel. Download the generated file and discover your watermark:
 
 .. image:: ./logo_watermark.png

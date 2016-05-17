@@ -6,7 +6,10 @@ Quick Overview
 
 **This cookbook will demonstrate you how to store the assets on a SFTP instead of the default local filesystem. Assets are specific files available only in the Enterprise Edition. But you can apply the exact same cookbook to store your product medias elsewhere.**
 
-This cookbook assumes that you already configured an external server. This cookbook should be made before the installation of the PIM. Otherwise you will have to migrate your data to your external server.
+This cookbook assumes that you already configured an external server. This cookbook should be done before the installation of the PIM. Otherwise you will have to migrate your data to your external server.
+
+When connecting to an external server for storage, reference files and variations are created on the external server. The structure of the folders in which files are stored comes from the PIM.
+Only thumbnails are stored on the PIM server.
 
 Connect to an SFTP server
 -------------------------
@@ -45,7 +48,7 @@ Connect to an Amazon AwsS3v3 server
 
 .. _Awss3 adapter: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/adapter_awss3.md
 
-First of all you will need to install the following requirements:
+First of all, you will need to install the following requirements:
 
 ``composer --prefer-dist require aws/aws-sdk-php v3.5.0``
 ``composer --prefer-dist require league/flysystem-aws-s3-v3 v1.0.6``

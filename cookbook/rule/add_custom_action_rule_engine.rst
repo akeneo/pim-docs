@@ -23,6 +23,7 @@ First let's see how to create the action. You need to create an ActionApplier ob
 
     namespace Acme\Bundle\CustomBundle\ActionApplier;
 
+    use Akeneo\Bundle\RuleEngineBundle\Model\ActionInterface;
     use Acme\Bundle\CustomBundle\Model\ProductPatternAction;
     use Akeneo\Component\RuleEngine\ActionApplier\ActionApplierInterface;
     use Akeneo\Component\StorageUtils\Updater\PropertySetterInterface;
@@ -77,6 +78,9 @@ First let's see how to create the action. You need to create an ActionApplier ob
     }
 
 Then we need to create the object that will handle the data.
+.. tip::
+
+    Implementing the FieldImpactActionInterface will allow the attribute to be flagged as smart in the UI.
 
 .. code-block:: php
 
@@ -86,9 +90,9 @@ Then we need to create the object that will handle the data.
     namespace Acme\Bundle\CustomBundle\Model;
 
     use Akeneo\Bundle\RuleEngineBundle\Model\ActionInterface;
-    use PimEnterprise\Component\CatalogRule\Model\ProductAddActionInterface;
+    use PimEnterprise\Component\CatalogRule\Model\FieldImpactActionInterface;
 
-    class ProductPatternAction implements ActionInterface
+    class ProductPatternAction implements ActionInterface, FieldImpactActionInterface
     {
         const ACTION_TYPE = 'pattern';
 
@@ -137,14 +141,6 @@ Then we need to create the object that will handle the data.
         }
 
         /**
-         * {@inheritdoc}
-         */
-        public function getImpactedFields()
-        {
-            return [$this->getField()];
-        }
-
-        /**
          * @return array
          */
         public function getAttributes()
@@ -162,8 +158,6 @@ Then we need to create the object that will handle the data.
 
         /**
          * @param array $attributes
-         *
-         * @return ProductAddActionInterface
          */
         public function setAttributes(array $attributes = [])
         {
@@ -172,12 +166,18 @@ Then we need to create the object that will handle the data.
 
         /**
          * @param string $pattern
-         *
-         * @return ProductAddActionInterface
          */
         public function setPattern($pattern)
         {
             $this->pattern = $pattern;
+        }
+
+        /**
+         * {@inheritdoc}
+         */
+        public function getImpactedFields()
+        {
+            return [$this->getField()];
         }
     }
 

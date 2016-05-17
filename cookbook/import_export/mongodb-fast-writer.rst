@@ -10,7 +10,7 @@ How to use the new fast MongoDB writer [Deprecated]
 Why?
 -----
 MongoDB storage in Akeneo has been implemented to support large catalogs. This
-means larges volume of data to import as well.
+means large volumes of data to import as well.
 
 The standard ProductWriter uses MongoDB Doctrine ODM to write products. While
 it allows less work to be done on Akeneo's side to persist data, it has not been
@@ -35,7 +35,7 @@ create a simple connector that will allow you to use it.
 
 .. warning::
 
-    For performances reason, this writer does not allow to generate full history
+    For performances reasons, this writer does not allow to generate full history
     of the product changes. It does however **generate pending history lines**,
     meaning the history is not lost, only the changeset needs to be computed.
     After having executed the import, you can use the following command to

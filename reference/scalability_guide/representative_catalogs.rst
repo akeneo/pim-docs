@@ -54,7 +54,7 @@ The application is installed on a server following the recommended architecture 
 
 Depending on the catalog, we used a different database storage. We installed the data `fixtures` via the installer before importing the products through the default product csv import job (for a large product import, we split the catalog into 10 files + parallel imports + custom optimisations).
 
-The targeted amount of product values imply to choose a relevant database storage, if you want to know more about how to choose the right storage strategy, please read :doc:`/reference/scalability_guide/more_than_5M_product_values`.
+The targeted amount of product values implies to choose a relevant database storage, if you want to know more about how to choose the right storage strategy, please read :doc:`/reference/scalability_guide/more_than_5M_product_values`.
 
 Depending on the data volume, the number of field indexes in MongoDB also impacts the performances, please read :doc:`/reference/scalability_guide/more_than_64_indexes_with_mongodb` for more information.
 
@@ -74,22 +74,22 @@ We use the application in production mode, with xdebug disabled, and we expect a
 
 **Audit Backend Processes**
 
-We run backend processes (bulk actions, imports, exports, rules execution, etc) in production mode, with xdebug disabled. Processes may run for quite a long time depending on the amount of data but does not consume more memory than the volume advised in :doc:`/reference/technical_information/index`. Please note that for some project data set, several extra configurations are required (for instance, change the size of a bulk of products for the rules execution).
+We run backend processes (bulk actions, imports, exports, rules execution, etc) in production mode, with xdebug disabled. Processes may run for quite a long time depending on the amount of data but do not consume more memory than the volume advised in :doc:`/reference/technical_information/index`. Please note that for some project data set, several extra configurations are required (for instance, changing the size of a bulk of products for the rules execution).
 
 **Automation**
 
-We have built several tools to automate these performance and scalability tests. Basically, our continuous integration loads a target catalog and then run different scenarios. The build is considered to fail when thresholds on time execution and memory usage are reached. These tools are not open sourced for now.
+We have built several tools to automate these performance and scalability tests. Basically, our continuous integration loads a target catalog and then runs different scenarios. The build is considered to fail when thresholds on time execution and memory usage are reached. These tools are not open sourced for now.
 
 Known limitations on representative catalogs
 --------------------------------------------
 
 We observed two kinds of limitations during the audit: memory leaks and scalability limitations.
 
-Memory leaks when a process consumes more memory than recommended. These issues are qualified as bugs which fix are released in version patches.
+Memory leaks when a process consumes more memory than recommended. These issues are qualified as bugs, their fixes are released in version patches.
 
 Scalability limitations, when we try to support larger data volume for an axis. These issues are qualified as improvements which are released in minor versions.
 
-The following limitations has been encountered with standard installations without any custom code:
+The following limitations have been encountered with standard installations without any custom code:
 
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **Type** | **Catalog** | **Edition** | **Released** | **Note**                                                                                                                                                       |

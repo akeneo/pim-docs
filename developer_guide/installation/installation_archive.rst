@@ -1,3 +1,23 @@
+Installing Akeneo PIM with the Archive
+======================================
+
+This document provides step by step instructions to install the PIM with the archive on an environment that fulfills the expected :doc:`system_requirements/system_requirements`.
+
+Getting Akeneo PIM
+------------------
+
+Downloading the archive
+***********************
+
+You can choose to download a PIM edition along with demo data (called *icecat*) or not (called *minimal*) from the download page http://www.akeneo.com/download.
+If you prefer, you can also download them using the command line:
+
+.. code-block:: bash
+    :linenos:
+
+    $ wget http://download.akeneo.com/pim-community-standard-v1.5-latest-icecat.tar.gz #for icecat version
+    $ wget http://download.akeneo.com/pim-community-standard-v1.5-latest.tar.gz #for minimal version
+
 Extracting the archive
 **********************
 
@@ -37,20 +57,20 @@ The application needs the following tasks to be executed in background on a regu
 .. code-block:: bash
     :linenos:
 
-        # for community and enterprise editions
-        /path/to/php /path/to/installation/pim-community-standard/app/console pim:completeness:calculate --env=prod    # recalculates the products completeness
-        /path/to/php /path/to/installation/pim-community-standard/app/console pim:versioning:refresh --env=prod        # processes pending versions
+    # for community and enterprise editions
+    /path/to/php /path/to/installation/pim-community-standard/app/console pim:completeness:calculate --env=prod    # recalculates the products completeness
+    /path/to/php /path/to/installation/pim-community-standard/app/console pim:versioning:refresh --env=prod        # processes pending versions
 
-        # for enterprise edition only
-        /path/to/php /path/to/installation/pim-community-standard/app/console akeneo:rule:run --env=prod               # executes rules on products
+    # for enterprise edition only
+    path/to/php /path/to/installation/pim-community-standard/app/console akeneo:rule:run --env=prod               # executes rules on products
 
 Edit your crontab with ``crontab -e`` and configure each task. For example, the following line will run the completeness calculation every 15 minutes:
 
 .. code-block:: bash
     :linenos:
 
-        # m  h  dom  mon  dow  command
-        */15 *  *    *    *    /path/to/php /path/to/installation/pim-community-standard/app/console pim:completeness:calculate --env=prod > /path/to/installation/pim-community-standard/app/logs/calculate_completeness.log 2>&1
+    # m  h  dom  mon  dow  command
+    */15 *  *    *    *    /path/to/php /path/to/installation/pim-community-standard/app/console pim:completeness:calculate --env=prod > /path/to/installation/pim-community-standard/app/logs/calculate_completeness.log 2>&1
 
 .. note::
 
@@ -62,7 +82,7 @@ Edit your crontab with ``crontab -e`` and configure each task. For example, the 
 
 .. warning::
 
-    Adapt the frequency according to your needs, your server capabilities and your catalog size as some tasks may have a long execution time.
+    Since some tasks may take a long time to be executed, adapt the frequency of these tasks according to your needs, to your server capabilities and to your catalog size.
 
 
 Testing your installation
@@ -81,7 +101,7 @@ Known issues
 What's next?
 ------------
 
-Now you have an up and running Akeneo PIM. But maybe you want more! What about these topics?
+Now you have an Akeneo PIM up and running. But maybe you want more! What about these topics?
 
  * If you need it, you can enable the MySQL/MongoDB hybrid storage for products by following :doc:`/developer_guide/installation/setup_hybrid_storage_mysql_mongo`.
  * You can switch to the *minimal* dataset or import your own data by following :doc:`/cookbook/setup_data/customize_dataset`.

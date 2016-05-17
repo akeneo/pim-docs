@@ -23,8 +23,8 @@ We can only guarantee the behaviour on the following web server:
 
 The web server will also need the following libraries and modules:
 
-+--------------------------------------------------------+
-| mod rewrite  | Required                                |
++--------------+-----------------------------------------+
+| mod rewrite  |  Required                               |
 +--------------+-----------------------------------------+
 | mod php5     |  Required (no CGI, no FastCGI, nor FPM) |
 +--------------+-----------------------------------------+
@@ -63,9 +63,9 @@ Besides these modules, the following configuration is the minimal configuration 
 
 .. warning::
 
-Due to changes in API MongoDB, 3.0 is not supported.
+  Due to changes in its API, MongoDB 3.0 is not supported.
 
-Depending on the configuration you will pick, you will need to respect parts or all of the following requirements:
+Depending on the configuration you pick, you will need to respect parts or all of the following requirements.
 
 **MySQL**
 
@@ -123,7 +123,7 @@ Most of the application folders and files require only read access. Here is a li
 
 These permissions are the ones required by the Symfony Framework (see its official documentation for more information).
 
-Akeneo PIM application uses an abstraction layer called Flysystem to store media and files uploaded from the application. Flysystem is configured by default to store these files on the application server filesystem, but this configuration can easily be changed in favor of, for example, a distributed remote storage system (see Gaufrette documentation for more information).
+Akeneo PIM application uses an abstraction layer called Flysystem to store media and files uploaded from the application. By default, Flysystem is configured to store these files on the application server, but this configuration can easily be changed in favor of, for example, a distributed remote storage system (see Gaufrette documentation for more information).
 
 The app/uploads folder could be located elsewhere depending on the configuration you defined in the parameters.yml of your Akeneo PIM application instance.
 

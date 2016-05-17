@@ -4,7 +4,7 @@ How to Define Access Control List
 Access control is composed of two steps:
 
 - Creating ACL resources
-- Enforcing the rights
+- Enforcing the permissions
 
 
 Creating ACL resources
@@ -89,8 +89,8 @@ For a more complete explanation of the ACL options, refer to `OroSecurityBundle`
 .. _OroSecurityBundle: https://github.com/orocrm/platform/tree/master/src/Oro/Bundle/SecurityBundle
 
 
-Enforcing the rights
---------------------
+Enforcing the permissions
+-------------------------
 
 Controller actions with @Acl or @AclAncestor annotations are already protected.
 To allow conditional access to other resources, you can either use the ``SecurityFacade`` component

@@ -10,7 +10,7 @@ To make an educated choice you should try to find out how many product values yo
  * A scopable attribute will generate as many product values as you have channels
  * A localizable and scopable attribute will generate: (number of enabled locales * number of channels) product values
 
-We consider that MySQL can store up to 5 millions products values. Here is the complete formula to check if you have, by far, more product values than the recommended threshold that MySQL can manage alone:
+We consider that MySQL can store up to 5 million product values. Here is the complete formula to check if you have more product values than the recommended threshold that MySQL can manage alone:
 
 .. code-block:: yaml
 
@@ -19,4 +19,4 @@ We consider that MySQL can store up to 5 millions products values. Here is the c
         + ( N localized attributes * N enabled locales )
         + ( N scopable attributes * N existing channels )
         + ( N scopable AND localizable attributes * N enabled locales * N existing channels )
-    ) > 5 Millions
+    ) > 5 Million

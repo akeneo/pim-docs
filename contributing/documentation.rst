@@ -1,20 +1,20 @@
 Enhance the Documentation
 =========================
 
-Want to help enhance the `Documentation`_?
+Want to help improve the `Documentation`_?
 
 .. _Documentation: http://docs.akeneo.com/latest/index.html
 
 The Akeneo PIM documentation uses `reStructuredText`_ as its markup language and
 `Sphinx`_ for building the output (HTML, PDF, ...).
 
-We're very interested in tutorials or cookbooks to explain how to customize the PIM to your project's needs.
+We're very interested in tutorials or cookbooks to explain how to customize the PIM to fit your project's needs.
 
 Before contributing on a new entry, please begin by creating an `Issue`_ on GitHub to explain your idea.
 
 .. _Issue: https://github.com/akeneo/pim-docs/issues
 
-For typo / quick fixes you can directly propose a `PullRequest`_.
+For typo / quick fixes you can directly submit a `PullRequest`_.
 
 .. _PullRequest: https://help.github.com/articles/using-pull-requests/
 
@@ -56,12 +56,11 @@ it with the ``code-block`` directive:
 
     { foo: bar, bar: { foo: bar, bar: baz } }
 
-    If your PHP code begins with ``<?php``, then you need to use ``html+php`` as
-    the highlighted pseudo-language:
+If your PHP code begins with ``<?php``, then you need to use ``html+php`` as the highlighted pseudo-language:
 
-    .. code-block:: rst
+.. code-block:: rst
 
-.. code-block:: html+php
+    .. code-block:: html+php
 
     <?php echo $this->foobar(); ?>
 
@@ -82,19 +81,19 @@ directive to show the configuration in all supported configuration formats
 
     .. configuration-block::
 
-.. code-block:: yaml
+    .. code-block:: yaml
 
-    # Configuration in YAML
+        # Configuration in YAML
 
-.. code-block:: xml
+    .. code-block:: xml
 
-    <!-- Configuration in XML //-->
+        <!-- Configuration in XML //-->
 
-.. code-block:: php
+    .. code-block:: php
 
-    // Configuration in PHP
+        // Configuration in PHP
 
-The previous reST snippet renders as follow:
+The previous reST snippet renders as follows:
 
 .. configuration-block::
 

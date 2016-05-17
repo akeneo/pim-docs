@@ -1,7 +1,7 @@
 Recommended configuration
 =========================
 
-For information, here follows a quite standard configuration, and therefore the one we recommend:
+For information, here follows a quite standard configuration, and therefore the one we recommend.
 
 Hardware Minimum Configuration
 ------------------------------
@@ -31,9 +31,11 @@ Software
 | or MongoDB        | 2.4                                                          |
 +-------------------+--------------------------------------------------------------+
 
-Remark: For performance reasons, we recommend having the database on the same server on which import and export job will be run. Otherwise you will have potential network latency when communicating with the database instead of using a socket to communicate more efficiently.
+.. warning::
+    For performance reasons, we recommend having the database on the same server on which import and export job will be run. Otherwise you will have potential network latency when communicating with the database instead of using a socket to communicate more efficiently.
 
-Remark: For security reasons, the database root user should not be used by Akeneo PIM to access its database.
+.. warning::
+    For security reasons, the database root user should not be used by Akeneo PIM to access its database.
 
 Virtualization
 --------------

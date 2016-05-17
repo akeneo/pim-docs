@@ -37,18 +37,18 @@ If the 'schedule' option is passed with 'true', the product completeness will be
 
 .. note::
 
-    The 'schedule' option is more efficient than 'recalculate', the computation is made later with a cron task on the command 'pim:completeness:calculate'.
+    The 'schedule' option is more efficient than 'recalculate', the computation is done later with a cron task on the command 'pim:completeness:calculate'.
 
 Dive into the Saver
 -------------------
 
 Internally, the Saver uses persist() and flush() methods from Doctrine ObjectManager.
 
-You should never use persist() and flush() directly in other services, if you have do so please put these classes in the Doctrine folder of your bundle.
+You should never use persist() and flush() directly in other services. If you have to do so, please put these classes in the Doctrine folder of your bundle.
 
-Avoiding the usage of persist() and flush() in your other classes will also facilitate your future migrations.
+Avoiding the usage of persist() and flush() in your other classes will also simplify your future migrations.
 
-This change is part of our effort to decouple the Doctrine logic from the Business logic.
+This modification is part of our effort to decouple the Doctrine logic from the Business logic.
 
 
 Since the 1.4, we use the changeTrackingPolicy DEFERRED_EXPLICIT value in the mapping of almost every object (except for the Version model).
@@ -71,7 +71,7 @@ Since 1.4,
 
     $object = $repository->find(12);
     $object->setFoo('bar');
-    // now we explicitly need to tell Doctrine to persist the object so that the changes are
+    // now we need to explicitly tell Doctrine to persist the object so that the changes are
     // saved into database (the persist follow the cascade persist defined in the model mapping)
     $em->persist($object);
     $em->flush();

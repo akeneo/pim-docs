@@ -20,7 +20,7 @@ Here is a representation of this architecture:
 Create a field provider
 +++++++++++++++++++++++
 
-First step to create a custom field, we need to create a FieldProvider for our new field type:
+To create a custom field, first we need to create a FieldProvider for our new field type:
 
 .. code-block:: php
     :linenos:
@@ -56,7 +56,7 @@ First step to create a custom field, we need to create a FieldProvider for our n
     }
 
 
-Next you need to register it in your service.yml file:
+Next, you need to register it in your service.yml file:
 
 .. code-block:: yaml
     :linenos:
@@ -133,7 +133,7 @@ You can now register this module into your requirejs configuration:
 
             acme/template/product/field/range: acmecustom/templates/product/field/range.html
 
-Then, last opperation, match the field type (`acme-range-field`) with the requirejs module (`acme/range-field`):
+Then, last operation, match the field type (`acme-range-field`) with the requirejs module (`acme/range-field`):
 
 .. code-block:: yaml
     :linenos:

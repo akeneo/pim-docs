@@ -49,7 +49,7 @@ You have to implement the ``Pim\Bundle\EnrichBundle\ViewElement\ViewElementInter
 How to add a visibility checker
 -------------------------------
 
-You can decide to display your view element only to a category of users or only on form edit, etc. To ease this process, we created some standard
+You can decide to display your view element only to a category of users or only on form edit, etc. To simplify this process, we created some standard
 visibility checkers:
 
 .. code-block:: yaml
@@ -129,15 +129,15 @@ You can now create your template ``/src/Acme/Bundle/EnrichBundle/Resources/views
 
     {{ dump(form) }}
 
-After a cache clear (``app/console cache:clear``) you should see something like this on a category edit form:
+After a cache clear (``app/console cache:clear``) you should see something like this on the category edit form:
 
 As you can see, you will have to translate the tab title in your translations file (see http://symfony.com/doc/current/book/translation.html).
 
 As shown in the screenshot above, we have total access to the category edit form and we can now render our package section in this tab.
 
-* Apply rights on our tab
+* Apply permissions on our tab
 
-To apply rights on our tab we can add a visibility checker to it:
+To apply permissions on our tab we can add a visibility checker to it:
 
 .. code-block:: yaml
     :linenos:

@@ -1,5 +1,5 @@
 Product Information
-==================
+===================
 
 The following chapter is designed for developers (integrators and contributors) and provides all information needed to create quick overview and understanding of how product data is kept in **PIM**.
 
@@ -25,6 +25,7 @@ The main entity is the product which,
 
 .. note::
     PIM architecture is very flexible and allows you clear and easy way to customize the catalog structure for your own integration: :doc:`/cookbook/catalog_structure/index`
+
 Product value
 -------------
 
