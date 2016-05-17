@@ -10,7 +10,7 @@ Prior to 1.4.12, all attributes could be displayed in the grid columns and only 
 From 1.4.12 and upper versions, the attribute option *attributes usable as grid filter* became *usable in grid*.
 This option states whether or not the attribute can be displayed as a column or used as a filter in product grids.
 
-We'll to improve the datagrid system to increase this limitation in an upcoming minor version.
+We'll try to improve the datagrid system to increase this limitation in an upcoming minor version.
 
 .. warning::
 

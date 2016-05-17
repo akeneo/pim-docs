@@ -27,7 +27,7 @@ This event is dispatched **before** a product is published.
 ``pimee_workflow.published_product.post_publish``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product is published.
+This event is dispatched **after** a product has been published.
 
 **Event Class**: ``PimEnterprise\Bundle\WorkflowBundle\Event\PublishedProductEvent``
 
@@ -49,7 +49,7 @@ This event is dispatched **before** a product is unpublished.
 ``pimee_workflow.published_product.post_unpublish``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product is unpublished.
+This event is dispatched **after** a product has been unpublished.
 
 **Event Class**: ``PimEnterprise\Bundle\WorkflowBundle\Event\PublishedProductEvent``
 
@@ -104,7 +104,7 @@ This event is dispatched **before** a product draft status is set to "ready".
 ``pimee_workflow.product_draft.post_ready``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product draft status is set to "ready" and saved to DB.
+This event is dispatched **after** a product draft's status has been set to "ready" and saved to DB.
 The product draft now becomes a proposal, **ready to be reviewed**.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
@@ -127,7 +127,7 @@ This event is dispatched **before** a product draft is approved.
 ``pimee_workflow.product_draft.post_approve``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product draft is approved.
+This event is dispatched **after** a product draft has been approved.
 The product **is updated and saved** with the new values, and the product draft is removed or updated.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
@@ -175,7 +175,7 @@ This event is dispatched **before** a product object is updated from draft value
 ``pimee_workflow.product_draft.post_apply``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product object is updated from draft values.
+This event is dispatched **after** a product object has been updated from draft values.
 Note that **the product is not saved yet**, only the product object is updated.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
@@ -190,7 +190,7 @@ This event is dispatched **before** a product draft is refused.
 ``pimee_workflow.product_draft.post_refuse``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product draft is refused.
+This event is dispatched **after** a product draft has been refused.
 The product draft is updated in the DB.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
@@ -238,7 +238,7 @@ This event is dispatched **before** a product draft is removed.
 ``pimee_workflow.product_draft.post_remove``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This event is dispatched **after** a product draft is removed.
+This event is dispatched **after** a product draft has been removed.
 
 **Event Class**: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
 

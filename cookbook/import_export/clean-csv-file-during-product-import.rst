@@ -11,7 +11,7 @@ The use case is to clean the following CSV file when importing products:
    :language: xml
    :linenos:
 
-Here, we want remove the prefix ``uselesspart-`` in the sku before to run a classic import.
+Here, we want remove the prefix ``uselesspart-`` in the sku before running a classic import.
 
 We assume that we're using a standard edition with the ``icecat_demo_dev`` data set, ``sku`` and ``name`` already exist as real attributes of the PIM.
 
@@ -56,16 +56,16 @@ The default step is ``Akeneo\Component\Batch\Step\ItemStep``.
 
 An item step is configured with 3 elements, a reader, a processor and a writer.
 
-Here, we'll use a custom processor service, named ``acme_csvcleanerconnector.processor.denormalization.product.flat``, but we'll continue to use default reader and writer.
+Here, we'll use a custom processor service, named ``acme_csvcleanerconnector.processor.denormalization.product.flat``, but we'll continue to use the default reader and writer.
 
 .. important::
 
-    We strongly advise to always try to re-use most of the existing pieces, it ensures that all business rules and validation will be applied.
+    We strongly recommend to always try to re-use most of the existing pieces, it ensures that all business rules and validation will be applied.
 
 Configure the Processor
 -----------------------
 
-In fact, we're using the default processor class but we create a new service to change the injected array converter (replace ``pim_connector.array_converter.flat.product`` by ``acme_csvcleanerconnector.array_converter.flat.product``), all other services remain the same.
+In fact, we're using the default processor class, but we have to create a new service to change the injected array converter (replace ``pim_connector.array_converter.flat.product`` by ``acme_csvcleanerconnector.array_converter.flat.product``), all other services remain the same.
 
 .. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/Resources/config/processors.yml
    :language: yaml

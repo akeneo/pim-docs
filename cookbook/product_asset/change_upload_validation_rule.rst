@@ -87,4 +87,4 @@ You can now implement your own custom logic in your own ParsedFilenameInterface 
         }
     }
 
-You can now imagine implement your own logic and customize this rule as you want.
+You can now imagine implementing your own logic and customize this rule as you want.

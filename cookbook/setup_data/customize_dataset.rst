@@ -22,7 +22,7 @@ Edit the file ``app/config/parameters.yml`` and add the line
 You can now (re)install your database by running:
 
 .. warning::
-    Be careful, the following command will erase your database and then recreate it.
+    Be careful, the following command will drop your database and then recreate it.
 
 .. code-block:: bash
 
@@ -89,7 +89,7 @@ You should also make sure that:
 
 .. note::
 
-  For 1.4 and newer version, the installer will use the same CSV format than the one used for import and export. The main advantage is that any data exported can be used in fixtures.
+  For 1.4 and newer version, the installer will use the same CSV format as the one used for import and export. The main advantage is that any data exported can be used in fixtures.
 
 .. tip::
 
@@ -108,7 +108,7 @@ Edit the file ``app/config/parameters.yml`` and add the line
 You can now (re)install your database by running:
 
 .. warning::
-    Be careful, the following command will erase your database and then recreate it.
+    Be careful, the following command will drop your database and then recreate it.
 
 .. code-block:: bash
 

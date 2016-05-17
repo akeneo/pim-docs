@@ -1,9 +1,9 @@
-Memory usage of rules execution (Enterprise Edition)?
------------------------------------------------------
+Memory usage of rules execution (Enterprise Edition)
+----------------------------------------------------
 
 When we designed the rules engine for the Enterprise Edition, we did a benchmark on a set of 150 rules with a standard catalog structure.
 
-The memory usage and execution time is depending on the amount of rules, the kind of rule and different data volume amount, as number of products, attributes per products, categories, etc.
+The memory usage and execution time depends on the amount of rules, the kind of rule and different data volume amount, such as number of products, attributes per products, categories, etc.
 
 Lately a client encountered some performance issues with a really simple rule set and without any heavy customization. We investigated on his project and here are the data we collected when executing the rules on the catalog (prod mode, xdebug disabled, without the bulk saver improvement):
 
@@ -14,7 +14,7 @@ Lately a client encountered some performance issues with a really simple rule se
              I/O:      37.2 s
           Memory:        1 GB
 
-As we can see the memory consumption is very high. To understand what is going on, you need to understand how the rule engine works: to process high number of products we use a paginator to process them as batch. The default page size configuration is 1000 products in the PIM.
+As we can see the memory consumption is very high. To understand what is going on, you need to understand how the rule engine works: to process high number of products we use a paginator to process them as batches. The default page size configuration is 1000 products in the PIM.
 
 In the current example each product has around 100 product values and a lot of categories and attribute options linked to them.
 
@@ -27,7 +27,7 @@ So if you process them as a batch of 1000 products, you end up consuming more th
              I/O:      28.6 s
           Memory:      323 MB
 
-As you can see it's far more better and consumes far less memory.
+As you can see it's much better and consumes far less memory.
 
 And with 10 products per page:
 
@@ -38,7 +38,7 @@ And with 10 products per page:
              I/O:      44.1 s
           Memory:      354 MB
 
-As you can see we don't get any performance improvement with this page size because if we flush modifications to the database too often, we loose benefits of pagination by adding far more doctrine flushes (quite greedy operation).
+As you can see we don't get any performance improvement with this page size because if we flush modifications to the database too often, we loose benefits of pagination by adding more doctrine flushes (quite a greedy operation).
 
 To be sure that 100 products per page fixes our problem we can take a look at the memory consumption over time during the rule application:
 
@@ -63,7 +63,7 @@ To be sure that 100 products per page fixes our problem we can take a look at th
     1700 products processed. Memory used: 103 MB
     ...
 
-We can see here that the memory usage remains under 300 MB and the garbage collector can clean in periodically as expected.
+We can see here that the memory usage remains under 300 MB and the garbage collector can clean periodically as expected.
 
 So remember to fine tune the page size parameters if you encounter this kind of issue:
 

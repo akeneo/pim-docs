@@ -330,7 +330,7 @@ ProductFilterInterface
 
 When a product already exists, this service allows to normalize the current product data to the Standard Format array.
 
-Then, it compares the current data against the updated data provided by the StandardArrayConverterInterface to present only new or changed value.
+Then, it compares the current data against the updated data provided by the StandardArrayConverterInterface to present only new or changed values.
 
 This comparison mode can be enabled or disabled with the configuration parameter ``enabledComparison`` of the product import.
 

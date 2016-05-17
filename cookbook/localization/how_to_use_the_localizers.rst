@@ -48,7 +48,7 @@ If you want to add your own separator, you have to configure it in your `app/con
 How to Add a Date Format in Import/Export
 -----------------------------------------
 
-Some basic formats have been added in configuration.
+Some basic formats have been added in the configuration.
 If you want to add your own format, you have to configure it in your `app/config/config.yml` file.
 
 .. code-block:: yaml
