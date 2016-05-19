@@ -32,6 +32,10 @@ list. Each rule is referred to by a code and can contain a list of conditions an
                 - field: name
                   operator: CONTAINS
                   value: Canon
+                - field: camera_brand.code
+                  operator: NOT IN
+                  value:
+                    - canon_brand
             actions:
                 - type: set_value
                   field: camera_brand
@@ -43,22 +47,14 @@ list. Each rule is referred to by a code and can contain a list of conditions an
                   operator: IN
                   value:
                     - camcorders
+                - field: camera_model_name
+                  operator: EMPTY
             actions:
                 - type: copy_value
                   from_field: name
                   to_field: camera_model_name
 
 Indentation is mandatory within the file and must be strictly identical to the one shown in the example.
-
-.. tip::
-
-    To apply a rule on every product, set the following condition:
-
-    .. code-block:: yaml
-
-        conditions:[]
-        actions:
-          - type:
 
 Enrichment Rule Structure
 -------------------------
@@ -114,6 +110,86 @@ they will be executed in a "technical" order. (database reading order)
 
 Action’s conditions can be applied on localizable and scopable values. In this case, it has
 to be specified using locale and scope elements.
+
+The definition of conditions is very important to select only the products concerned by the rules.
+Don't forget to add conditions to not execute the rules at each execution.
+
+- The field "camera_brand" will be updated only if its value is not already equal to "canon_brand".
+
+.. code-block:: yaml
+
+    rules:
+        camera_set_canon_brand:
+            priority: 0
+            conditions:
+                - field: family.code
+                  operator: IN
+                  value:
+                    - camcorders
+                - field: name
+                  operator: CONTAINS
+                  value: Canon
+                - field: camera_brand.code
+                  operator: NOT IN
+                  value:
+                    - canon_brand
+            actions:
+                - type: set_value
+                  field: camera_brand
+                  value: canon_brand
+
+- The field "auto_focus_points" will be updated only if its value is not already equal to "4".
+
+.. code-block:: yaml
+
+    rules:
+        camera_set_autofocus_point:
+            priority: 0
+            conditions:
+                - field: family.code
+                  operator: IN
+                  value:
+                    - camcorders
+                - field: name
+                  operator: CONTAINS
+                  value: Canon
+                - field: auto_focus_points
+                  operator: !=
+                  value: 4
+            actions:
+                - type: set
+                  field: auto_focus_points
+                  value: 4
+
+- The field "description" for en_US ecommerce will be updated only if its value is EMPTY and if the source field "description" for en_US print is NOT EMPTY.
+
+.. code-block:: yaml
+
+    rules:
+        copy_description_us_to_ecommerce_us:
+            priority: 0
+            conditions:
+                - field: family.code
+                  operator: IN
+                  value:
+                    - camcorders
+                - field: description
+                  locale: en_US
+                  scope: ecommerce
+                  operator: EMPTY
+                - field: description
+                  locale: en_US
+                  scope: print
+                  operator: NOT_EMPTY
+            actions:
+                - type: copy
+                  from_field: description
+                  to_field: description
+                  from_locale: en_US
+                  from_scope: print
+                  to_locale: en_US
+                  to_scope: ecommerce
+
 
 Enrichment Rule Definition
 --------------------------
