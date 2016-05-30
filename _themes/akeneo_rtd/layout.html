@@ -76,7 +76,8 @@
 
   {# Keep modernizr in head - http://modernizr.com/docs/#installing #}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-
+  {# Algolia #}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -160,5 +161,13 @@
 
   {%- block footer %} {% endblock %}
 
+  {# Algolia #}
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+  <script type="text/javascript"> docsearch({
+    apiKey: '90e155c70f9456125f229cc924db6000',
+    indexName: 'akeneo',
+    inputSelector: '.search-input'
+  });
+  </script>
 </body>
 </html>
