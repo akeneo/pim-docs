@@ -28,3 +28,4 @@ Cookbook
     localization/index
     rule/index
     setup_data/add_translation_packs
+    purge_job_execution
