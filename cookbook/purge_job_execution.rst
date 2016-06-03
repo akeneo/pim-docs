@@ -23,7 +23,7 @@ You can also provide a custom configuration for the job:
 
     app/console akeneo:batch:purge-job-execution --days=30 --env=prod
 
-For example, with the option -days=30, the command will remove all jobs executions older than 30 days.
+For example, with the option --days=30, the command will remove all jobs executions older than 30 days.
 
 Scheduling the jobs
 -------------------
