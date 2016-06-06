@@ -9,9 +9,7 @@ We've tested performances with a set of 10k attributes in total (not 10k attribu
     We've already improved different screens and processes but we are still experiencing different issues with 10k attributes and a low amount of families and categories.
 
     The impacted screens are the following:
-     - **[TODO]** (PIM-5401) the attributes popin in family edit page, attribute group page, variant group page (Community Edition)
      - **[TODO]** (PIM-5212) the configure step of the family / mass edit / requirements (Community Edition)
-     - **[TODO]** (PIM-5283) use the same edit form system than product for the variant group edit
 
     **If you plan to use the PIM with more than 10k attributes, please contact us.**
 
