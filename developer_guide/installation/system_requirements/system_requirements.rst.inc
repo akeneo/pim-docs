@@ -4,11 +4,11 @@
 Akeneo PIM only works on Linux servers. The application’s behaviour has been tested on several operating systems. We cannot guarantee the behaviour of the application on servers different from:
 
 +------------------------+-------------------+
-| Debian (Linux)         | ≥ 7 (64 bits)     |
+| Debian (Linux)         | ≥ 8 (64 bits)     |
 +------------------------+-------------------+
-| Ubuntu (Linux)         | ≥ 13.04 (64 bits) |
+| Ubuntu (Linux)         | ≥ 14.04 (64 bits) |
 +------------------------+-------------------+
-| CentOS / RHEL* (Linux) | ≥ 6               |
+| CentOS / RHEL* (Linux) | ≥ 7               |
 +------------------------+-------------------+
 
 * RHEL stands for Red Hat Enterprise Linux.
@@ -18,7 +18,7 @@ Akeneo PIM only works on Linux servers. The application’s behaviour has been t
 We can only guarantee the behaviour on the following web server:
 
 +-------------------+-------+
-| Apache web server | ≥ 2.2 |
+| Apache web server | ≥ 2.4 |
 +-------------------+-------+
 
 The web server will also need the following libraries and modules:
@@ -31,19 +31,19 @@ The web server will also need the following libraries and modules:
 
 **PHP required modules and configuration**
 
-+----------------------+-------------------------------------------------------------------------------------------+
-| PHP                  | 5.4, 5.5 or 5.6                                                                           |
-+----------------------+-------------------------------------------------------------------------------------------+
-| php5-curl            | No specific configuration                                                                 |
-+----------------------+-------------------------------------------------------------------------------------------+
-| php5-gd              | No specific configuration                                                                 |
-+----------------------+-------------------------------------------------------------------------------------------+
-| php5-intl            | No specific configuration                                                                 |
-+----------------------+-------------------------------------------------------------------------------------------+
-| php5-mcrypt          | No specific configuration                                                                 |
-+----------------------+-------------------------------------------------------------------------------------------+
-| php5-apc / php5-apcu | Depends on the installed PHP version (php5-apc for 5.4 and php5-apcu for PHP 5.5 and 5.6) |
-+----------------------+-------------------------------------------------------------------------------------------+
++-------------+---------------------------+
+| PHP         | 5.6                       |
++-------------+---------------------------+
+| php5-curl   | No specific configuration |
++-------------+---------------------------+
+| php5-gd     | No specific configuration |
++-------------+---------------------------+
+| php5-intl   | No specific configuration |
++-------------+---------------------------+
+| php5-mcrypt | No specific configuration |
++-------------+---------------------------+
+| php5-apcu   | No specific configuration |
++-------------+---------------------------+
 
 Besides these modules, the following configuration is the minimal configuration required:
 
