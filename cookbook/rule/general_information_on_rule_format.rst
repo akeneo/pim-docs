@@ -208,11 +208,11 @@ This action copies an attribute value into another.
     be copied.
 
 Two parameters are required and four other are optional:
- - from_field: code of the attribute to be copied
+ - from_field: code of the attribute to be copied.
  - from_locale: locale code of the value to be copied (optional).
  - from_scope: channel code of the value to be copied (optional).
- - to_field: attribute code the value will be copied into
- - to_locale: locale code the value will be copied into (optional)
+ - to_field: attribute code the value will be copied into.
+ - to_locale: locale code the value will be copied into (optional).
  - to_scope: channel code the value will be copied into (optional).
 
 .. tip::
@@ -240,7 +240,7 @@ Two parameters are required, two other are optional.
  - field: attribute code.
  - locale: local code for which value is assigned (optional).
  - scope: channel code for which value is assigned (optional).
- - value: attribute value
+ - value: attribute value.
 
 .. tip::
 
@@ -265,7 +265,7 @@ Two parameters are required, two other are optional.
  - field: attribute code.
  - locale: local code for which value is assigned (optional).
  - scope: channel code for which value is assigned (optional).
- - value: attribute value
+ - items: attribute values to add.
 
 .. tip::
 
@@ -275,8 +275,31 @@ Two parameters are required, two other are optional.
 
         actions:
             - type: add
-              field: category
-              value:
+              field: categories
+              items:
+                - t-shirts
+
+Remove
+______
+
+This action removes values to a multiselect, a category or a collection.
+
+Two parameters are required, two other are optional.
+ - field: attribute code.
+ - locale: local code for which value is assigned (optional).
+ - scope: channel code for which value is assigned (optional).
+ - items: attribute values to remove.
+
+.. tip::
+
+    For instance, removing category "t-shirts" action will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: remove
+              field: categories
+              items:
                 - t-shirts
 
 Fields
