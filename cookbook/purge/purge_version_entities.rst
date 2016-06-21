@@ -1,7 +1,7 @@
 How to adapt the version purger to your needs
 =============================================
 
-After an intensive use of the PIM, it is possible that your database volume has increased in a way that the PIM holds too many unused versions.
+After an intensive use of the PIM, your database volume may have increased in a way that the PIM holds too many unused versions.
 
 It is possible to purge unused versions in the PIM for a specific entity or for all entities using the version purger (see the command ``pim:versioning:purge``).
 
@@ -24,7 +24,7 @@ The advisor's responsibility is to indicate whether a version should be purged o
 We can customize the purge process by registering a new advisor within the version purger.
 
 
-Advisor : SkipPairVersionAdvisor
+Advisor: SkipPairVersionAdvisor
 ---------------------------------------
 
 First, we define a new class within our bundle.
@@ -59,7 +59,7 @@ First, we define a new class within our bundle.
          * Indicates if the version needs to be purged
          *
          * @param VersionInterface $version
-         * @param array $options
+         * @param array            $options
          *
          * @return bool
          */
@@ -98,7 +98,7 @@ You can add a few test versions in the PIM by modifying and saving a product or 
 
 .. code-block:: bash
 
-    app/console pim:versioning:purge --more-than-days 0  --env=prod
+    app/console pim:versioning:purge --more-than-days 0 --env=prod
 
 .. warning::
 
