@@ -1,5 +1,5 @@
 Setup System Requirements on Ubuntu 14.04
-==========================================
+=========================================
 
 Here is a quick guide to setup the :doc:`system_requirements` on Ubuntu 14.04.
 
@@ -23,6 +23,22 @@ Base dependencies
 
 .. note::
     PHP 5.5 provided in Ubuntu 14.04 comes with the Zend OPcache opcode cache. Only the data cache provided by APCu is needed.
+
+As PHP 5.5 is provided in Ubuntu 14.04, you will have to upgrade to PHP 5.6 using:
+
+.. code-block:: bash
+    :linenos:
+
+        $ sudo add-apt-repository ppa:ondrej/php
+        $ sudo apt-get update
+        $ sudo apt-get install php5.6
+
+Check that PHP 5.6 is now your current PHP version with:
+
+.. code-block:: bash
+    :linenos:
+
+        $ php -v
 
 Choosing the product storage
 ****************************
@@ -139,7 +155,6 @@ Create the file ``/etc/apache2/sites-available/akeneo-pim.local.conf``
 
         DocumentRoot /path/to/installation/pim-community-standard/web/
         <Directory /path/to/installation/pim-community-standard/web/>
-            Options Indexes FollowSymLinks MultiViews
             AllowOverride All
             Require all granted
         </Directory>

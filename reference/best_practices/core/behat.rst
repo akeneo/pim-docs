@@ -53,10 +53,8 @@ included in the URL):
 
         DocumentRoot /home/akeneo/pim/web
         <Directory /home/akeneo/pim/web>
-            Options Indexes FollowSymLinks MultiViews
             AllowOverride None
-            Order allow,deny
-            allow from all
+            Require all granted
         </Directory>
 
         RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f

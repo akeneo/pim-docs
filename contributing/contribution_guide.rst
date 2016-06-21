@@ -17,7 +17,7 @@ Install the Software Stack
 Before working on Akeneo PIM, set a Symfony2 friendly environment up with the following software:
 
 * Git
-* PHP version 5.4.4 ≤ version ≤ 5.6
+* PHP version 5.6
 * MySQL 5.1 ≤ version ≤ 5.6
 
 Configure Git

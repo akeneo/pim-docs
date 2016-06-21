@@ -11,11 +11,11 @@ Backend technologies
 The application relies on Symfony framework. This web framework allows Akeneo PIM application to be built on a solid structure with a wonderful ecosystem of bundles and libraries.
 This means that Akeneo PIM  installation process will use composer to install or update all these dependencies easily.
 
-+---------+-------------------------------------------------------+------------------+
-| PHP     | ≥ 5.4.4 (Apache mod_php, no CGI, no Fast CGI nor FPM) | Required         |
-+---------+-------------------------------------------------------+------------------+
-| Symfony | 2.7                                                   | Shipped with PIM |
-+---------+-------------------------------------------------------+------------------+
++---------+---------------------------------------------------+------------------+
+| PHP     | 5.6 (Apache mod_php, no CGI, no Fast CGI nor FPM) | Required         |
++---------+---------------------------------------------------+------------------+
+| Symfony | 2.7                                               | Shipped with PIM |
++---------+---------------------------------------------------+------------------+
 
 **Main Symfony bundles**
 
