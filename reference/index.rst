@@ -21,4 +21,5 @@ Reference
     events/index
     import_export/index
     workflow/index
+    behavior_test/index
     best_practices/index
