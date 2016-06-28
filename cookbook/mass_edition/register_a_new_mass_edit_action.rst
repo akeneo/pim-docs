@@ -35,7 +35,7 @@ Once your bundle is created, we must inform Symfony it inherits our Bundle:
     }
 
 Phase 1: Create the Operation
-------------------------------
+-----------------------------
 
 .. tip::
 
@@ -44,9 +44,7 @@ Phase 1: Create the Operation
 
 The first step is to create a new class in the Operation folder that extends ``AbstractMassEditOperation`` and declare this new class as a service in the mass_actions.yml file.
 
-The method ``getBatchJobCode()`` is very important as it determines which job process to use. In our example we will use the ``capitalize_values`` job.
-
-The ``getItemsName()`` method is used for the UI, in order to properly show with which items the user is working. In our example, we are working on 'product' type.
+The method ``getJobInstanceCode()`` is very important as it determines which job process to use. In our example we will use the ``capitalize_values`` job.
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/MassEditAction/Operation/CapitalizeValues.php
    :language: php
@@ -64,12 +62,28 @@ Once the Operation is created, you must register it as a service in the DIC with
    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/mass_actions.yml
    :linenos:
 
+As you can see, the tag needs several parameters:
+
+- ``name``: Tag name to identify all mass edit operations in the PIM
+- ``alias``: Alias of the operation, should be unique among your operations
+- ``acl``: The ACL the operation is linked to
+- ``datagrid``: The datagrid name this operation appears on
+- ``form_type``: The FormType name this operation uses to be configured
+- ``operation_group``: The group the operation belongs to (to regroup operations, see below screenshot)
+
+.. image:: operation-group-dropdown.png
+    :height: 180px
+    :width: 205 px
+    :scale: 100 %
+    :alt: Operation group dropdown
+    :align: center
+
 .. note::
 
     The alias will be used in the URL (``/enrich/mass-edit-action/capitalize-values/configure``)
 
 Phase 2: Create the FormType
------------------------------
+----------------------------
 
 .. tip::
 
