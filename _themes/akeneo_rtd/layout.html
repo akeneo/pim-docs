@@ -44,7 +44,6 @@
   {% endfor %}
 
   <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
-  <link rel="stylesheet" href="{{ pathto('_static/css/akeneo.css' , 1) }}" type="text/css" />
 
   {%- block linktags %}
     {%- if hasdoc('about') %}
@@ -78,6 +77,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
   {# Algolia #}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+
+  <link rel="stylesheet" href="{{ pathto('_static/css/akeneo.css' , 1) }}" type="text/css" />
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -88,10 +89,6 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-nav-logo">
           <a href="{{ pathto(master_doc) }}"><img src="{{ pathto('_static/img/logo.png', 1) }}" /></a>
-      </div>
-
-      <div class="wy-side-nav-search">
-        {% include "searchbox.html" %}
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
@@ -114,10 +111,12 @@
         <a href="{{ pathto(master_doc) }}">{{ project }}</a>
       </nav>
 
-
       {# PAGE CONTENT #}
       <div class="wy-nav-content">
         <div class="rst-content">
+          <div class="wy-side-nav-search">
+            {% include "searchbox.html" %}
+          </div>
           {% include "breadcrumbs.html" %}
           <div role="main">
             {% block body %}{% endblock %}
@@ -163,11 +162,16 @@
 
   {# Algolia #}
   <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
-  <script type="text/javascript"> docsearch({
-    apiKey: '90e155c70f9456125f229cc924db6000',
-    indexName: 'akeneo',
-    inputSelector: '.search-input'
-  });
+  <script type="text/javascript">
+      docsearch({
+      apiKey: '90e155c70f9456125f229cc924db6000',
+      indexName: 'akeneo',
+      inputSelector: '.search-input',
+      algoliaOptions: {
+        hitsPerPage: 15,
+        'facetFilters': ["version:{{ version|e }}"],
+      }
+    });
   </script>
 </body>
 </html>
