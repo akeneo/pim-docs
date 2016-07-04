@@ -56,9 +56,9 @@ copyright = u'2016, Akeneo SAS'
 # built documents.
 #
 # The short X.Y version.
-version = 'unknown'
+version = 'latest'
 html_context = {
-    'versions': ['unknown']
+    'versions': ['latest']
 }
 # The full version, including alpha/beta/rc tags.
 release = 'beta'
