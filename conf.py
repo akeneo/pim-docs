@@ -60,7 +60,10 @@ version = 'latest'
 html_context = {
 # Warning: These versions will be deleted on documenation deploy.
     'versions': ['latest', '1.5', '1.4', '1.3'],
-    'css_files': ['_static/css/akeneo.css'],
+    'css_files': [
+        'https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css',
+        '_static/css/akeneo.css',
+    ],
     'display_github': True,
     'github_user': 'akeneo',
     'github_repo': 'pim-docs',

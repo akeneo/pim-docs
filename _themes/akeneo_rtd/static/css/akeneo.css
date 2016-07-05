@@ -100,4 +100,52 @@ a {
     background-size:20px;
     background-color: white;
     height: 44px;
+    font-size: 100%;
+}
+::-webkit-input-placeholder {
+    color: #9452BA; /* Akeneo purple */
+}
+:-moz-placeholder {
+    color: #9452BA; /* Akeneo purple */
+    opacity: 1;
+}
+::-moz-placeholder {
+    color: #9452BA; /* Akeneo purple */
+    opacity: 1;
+}
+:-ms-input-placeholder {
+    color: #9452BA; /* Akeneo purple */
+}
+
+/* Algolia autocomplete */
+.algolia-autocomplete {
+    width: 100%;
+}
+.algolia-docsearch-suggestion {
+    border-bottom-color: #723a92; /* Akeneo purple darken */
+}
+.algolia-docsearch-suggestion--category-header {
+    background-color: #11324D; /* Akeneo dark blue */
+}
+.algolia-docsearch-suggestion--highlight {
+    color: #9452BA; /* Akeneo purple */
+}
+.aa-cursor .algolia-docsearch-suggestion {
+    background: rgb(231, 242, 250);
+    color: #9452BA; /* Akeneo purple */
+}
+.aa-cursor .algolia-docsearch-suggestion--content {
+    color: #9452BA; /* Akeneo purple */
+}
+.aa-dropdown-menu {
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    max-width: 800px;
+    max-height: 500px;
+    overflow-y: auto;
+    font-size:90%;
 }
