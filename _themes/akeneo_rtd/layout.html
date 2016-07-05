@@ -193,6 +193,20 @@
   </script>
   {% endif %}
 
+  {# ALGOLIA #}
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: '90e155c70f9456125f229cc924db6000',
+      indexName: 'akeneo',
+      inputSelector: '#rtd-search-form input[type=text]',
+      algoliaOptions: {
+        hitsPerPage: 15,
+        'facetFilters': ["version:{{ version|e }}"],
+      }
+    });
+  </script>
+
   {%- block footer %} {% endblock %}
 
 </body>
