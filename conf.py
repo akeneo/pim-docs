@@ -58,7 +58,14 @@ copyright = u'2016, Akeneo SAS'
 # The short X.Y version.
 version = 'unknown'
 html_context = {
-    'versions': ['unknown']
+# Warning: These versions will be deleted on documenation deploy.
+    'versions': ['latest', '1.5', '1.4', '1.3'],
+    'css_files': ['_static/css/akeneo.css'],
+    'display_github': True,
+    'github_user': 'akeneo',
+    'github_repo': 'pim-docs',
+    'github_version': ('master' if version == 'latest' else version)+'/',
+    'source_suffix': '.rst',
 }
 # The full version, including alpha/beta/rc tags.
 release = 'beta'
