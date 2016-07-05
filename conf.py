@@ -56,7 +56,7 @@ copyright = u'2016, Akeneo SAS'
 # built documents.
 #
 # The short X.Y version.
-version = 'unknown'
+version = 'latest'
 html_context = {
 # Warning: These versions will be deleted on documenation deploy.
     'versions': ['latest', '1.5', '1.4', '1.3'],
@@ -131,7 +131,7 @@ html_title = project + ' documentation'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-#html_logo = None
+html_logo = '_themes/akeneo_rtd/static/img/logo.png'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
