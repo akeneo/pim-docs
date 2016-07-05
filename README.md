@@ -26,7 +26,6 @@ From the `./pim-docs` directory, run:
 
 The documentation will be generated inside `../pim-docs-build`.
 
-
 Make documentation code works with pim-community-dev or standard
 ----------------------------------------------------------------
 
@@ -35,7 +34,6 @@ Install pim-community
 Then go on Akeneo PIM `src/` directory and create a symlink `Acme` pointing on `pim-docs/src/Acme`.
 
 Add all Acme bundles in `app/AppKernel.php` file.
-
 
 Contribution
 ------------
