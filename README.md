@@ -16,7 +16,6 @@ Install [Sphinx](http://sphinx-doc.org/).
 
 ### Mac OS
 
-
 ```bash
     $ brew install python
     $ pip install sphinx
@@ -35,7 +34,6 @@ From the `./pim-docs` directory, run:
 
 The documentation will be generated inside `../pim-docs-build`.
 
-
 ## Make documentation code work with pim-community-dev or standard
 
 Install pim-community
@@ -44,7 +42,11 @@ Then, go to Akeneo PIM `src/` directory and create a symlink `Acme` pointing to 
 
 Add all Acme bundles in `app/AppKernel.php` file.
 
-
 ## Contribution
 
 Don't hesitate to suggest cookbook ideas via https://github.com/akeneo/pim-docs/issues
+
+## Developer's notes
+
+- The folder `/_themes/sphinx_rtd_theme` is a clone from https://github.com/snide/sphinx_rtd_theme, and was
+updated on 2016-07. If you want to customize the Akeneo theme, please only update `/_theme/akeneo_rtd` theme.

@@ -1,4 +1,3 @@
-{# WARNING: This file is a copy/paste from sphinx_rtd_theme. The only thing udpated is the position of the search box #}
 {# TEMPLATE VAR SETTINGS #}
 {%- set url_root = pathto('', 1) %}
 {%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
@@ -115,6 +114,8 @@
             {% endif %}
           {% endif %}
 
+          {% include "searchbox.html" %}
+
           {% endblock %}
         </div>
 
@@ -144,9 +145,6 @@
       {# PAGE CONTENT #}
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div class="akeneo-search">
-            {% include "searchbox.html" %}
-          </div>
           {% include "breadcrumbs.html" %}
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
@@ -192,20 +190,6 @@
       });
   </script>
   {% endif %}
-
-  {# ALGOLIA #}
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
-  <script type="text/javascript">
-    docsearch({
-      apiKey: '90e155c70f9456125f229cc924db6000',
-      indexName: 'akeneo',
-      inputSelector: '#rtd-search-form input[type=text]',
-      algoliaOptions: {
-        hitsPerPage: 15,
-        'facetFilters': ["version:{{ version|e }}"],
-      }
-    });
-  </script>
 
   {%- block footer %} {% endblock %}
 
