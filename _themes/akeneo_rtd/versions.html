@@ -8,9 +8,8 @@
     <dl>
       <dt>Versions</dt>
       {% for version in versions %}
-        <dd><a href="{{ version|e }}/index.html">{{ version|e }}</a></dd>
+        <dd><a href="/{{ version|e }}/index.html">{{ version|e }}</a></dd>
       {% endfor %}
     </dl>
   </div>
 </div>
-
