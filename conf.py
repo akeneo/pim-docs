@@ -58,10 +58,10 @@ copyright = u'2016, Akeneo SAS'
 # built documents.
 #
 # The short X.Y version.
-version = 'latest'
+version = 'master'
 html_context = {
 # Warning: These versions will be deleted on documenation deploy.
-    'versions': ['latest', '1.5', '1.4', '1.3'],
+    'versions': ['master', '1.5', '1.4', '1.3'],
     'css_files': [
         'https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css',
         '_static/css/akeneo.css',
@@ -69,7 +69,7 @@ html_context = {
     'display_github': True,
     'github_user': 'akeneo',
     'github_repo': 'pim-docs',
-    'github_version': ('master' if version == 'latest' else version)+'/',
+    'github_version': version+'/',
     'source_suffix': '.rst',
 }
 # The full version, including alpha/beta/rc tags.
