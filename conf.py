@@ -33,6 +33,8 @@ extensions = ['sensio.sphinx.refinclude', 'sensio.sphinx.configurationblock', 's
 lexers['php'] = PhpLexer(startinline=True)
 lexers['php-annotations'] = PhpLexer(startinline=True)
 
+mathjax_path="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+
 primary_domain = 'php'
 
 # Add any paths that contain templates here, relative to this directory.
