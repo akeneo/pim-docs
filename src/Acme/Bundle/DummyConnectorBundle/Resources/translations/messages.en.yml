@@ -1,5 +1,2 @@
-acme_dummy_connector:
-    jobs:
-        dummy_job:
-            title: Dummy Job
-            dummy.title: Dummy Step
+batch_jobs.dummy_job.label: Dummy Job
+batch_jobs.dummy_job.dummy_step.label: Dummy Step
