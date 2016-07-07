@@ -16,7 +16,6 @@ Base dependencies
     $ sudo apt-get install mysql-server
     $ sudo apt-get install apache2
     $ sudo apt-get install libapache2-mod-php5 php5-cli
-    $ sudo apt-get install php5-mysql php5-intl php5-curl php5-gd php5-mcrypt
     $ sudo php5enmod mcrypt
     $ sudo a2enmod rewrite
     $ sudo apt-get install php5-apcu
@@ -32,6 +31,7 @@ As PHP 5.5 is provided in Ubuntu 14.04, you will have to upgrade to PHP 5.6 usin
         $ sudo add-apt-repository ppa:ondrej/php
         $ sudo apt-get update
         $ sudo apt-get install php5.6
+        $ sudo apt-get install php5.6-xml php5.6-zip php5.6-curl php5.6-mongo php5.6-intl php5.6-mbstring php5.6-mysql php5.6-gd php5.6-mcrypt
 
 Check that PHP 5.6 is now your current PHP version with:
 
