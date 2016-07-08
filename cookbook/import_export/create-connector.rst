@@ -3,8 +3,8 @@ How to Create a New Connector
 
 We'll implement here a very minimalist Connector, it will do nothing but allow us to understand the main concepts and the overall architecture.
 
-Create our Connector
---------------------
+Create our Bundle
+-----------------
 
 Create a new Symfony bundle:
 
@@ -23,39 +23,69 @@ Register the bundle in AppKernel:
         // ...
     }
 
-Create our Job
---------------
+Configure our Job service
+-------------------------
 
-Create a file ``Resources/config/batch_jobs.yml`` in our Bundle to configure a new job:
+Create a file ``Resources/config/jobs.yml`` in our Bundle to configure a new job:
 
-.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/batch_jobs.yml
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/jobs.yml
     :language: yaml
     :linenos:
+
+Load this file in the bundle extension:
+
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/DependencyInjection/AcmeDummyConnectorExtension.php
+    :language: php
+    :linenos:
+    :lines: 1-15,17-20
 
 Here we use an existing dummy reader, a processor and a writer (they implement relevant interfaces and are usable but they do nothing with data).
 
-The reader is implemented in the class ``Pim\Component\Connector\Reader\DummyItemReader``, it's defined as a service in the ConnectorBundle with the alias ``pim_connector.reader.dummy_item`` in the file ``Resources\config\readers.yml``.
+The reader is implemented in the class ``Pim\Component\Connector\Reader\DummyItemReader`` which is defined as a service in the ConnectorBundle with the alias ``pim_connector.reader.dummy_item`` in the file ``Resources\config\readers.yml``.
 
-The processor is implemented in the class ``Pim\Component\Connector\Processor\DummyItemProcessor``, it's defined as a service in the ConnectorBundle with the alias ``pim_connector.processor.dummy_item`` in the file ``Resources\config\processors.yml``.
+The processor is implemented in the class ``Pim\Component\Connector\Processor\DummyItemProcessor`` which is defined as a service in the ConnectorBundle with the alias ``pim_connector.processor.dummy_item`` in the file ``Resources\config\processors.yml``.
 
-The writer is implemented in the class ``Pim\Component\Connector\Writer\DummyItemWriter``, it's defined as a service in the ConnectorBundle with the alias ``pim_connector.writer.dummy_item`` in the file ``Resources\config\writers.yml``.
+The writer is implemented in the class ``Pim\Component\Connector\Writer\DummyItemWriter``, which is defined as a service in the ConnectorBundle with the alias ``pim_connector.writer.dummy_item`` in the file ``Resources\config\writers.yml``.
 
 We'll explain in next cookbook chapters how to create your own elements with real logic inside.
 
-.. note::
+.. warning::
 
-   It is also possible to create multiple job configuration files by placing them in a folder ``Resources/config/batch_jobs``. The job configurations must be yaml files of any name.
+   Please note that in versions < 1.6, the file was always named "batch_jobs.yml" and was automatically loaded. The file content was very strict, was less standard and upgradeable than it is now.
 
-   For instance, I can declare a job configuration in a file named ``custom_jobs.yml`` like so ``Resources/config/batch_jobs/custom_jobs.yml``.
+Configure our JobParameters
+---------------------------
 
-Translate Job and Step titles
------------------------------
+To be executed, a Job is launched with a JobParameters which contains runtime parameters.
 
-Create a file ``Resources/translations/messages.en.yml`` in our Bundle to translate title keys.
+In our example, let's assume that our job needs a file path where to write data. This path must be provided and the directory has to be writable in order to execute the job.
 
-.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/translations/messages.en.yml
+We have to define a couple of services implementing ``Akeneo\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface`` and ``Akeneo\Component\Batch\Job\JobParameters\ConstraintCollectionProviderInterface``.
+
+The first service provides the default values used to create a JobParameters instance,
+
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Job/JobParameters/DefaultValuesProvider/DummyExport.php
+    :language: php
+    :linenos:
+
+The second service provides the contraints used to validate each parameter of a JobParameters instance,
+
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Job/JobParameters/ConstraintCollectionProvider/DummyExport.php
+    :language: php
+    :linenos:
+
+These services use tags and implement ``supports()`` method so they can only be used for our job.
+
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/job_parameters.yml
     :language: yaml
     :linenos:
+    :lines: 1-3,5-23
+
+As for the ``jobs.yml``, this service file ``job_parameters.yml`` must be loaded in our ``AcmeDummyConnectorExtension``.
+
+.. note::
+
+    We could implement a single class implementing the 2 interfaces and define a single service on both tags.
 
 Create a Job Instance
 ---------------------
@@ -88,6 +118,54 @@ You can run the job with the following command:
 
     php app/console akeneo:batch:job my_job_instance
 
-.. note::
+    [2016-07-07 16:48:35] batch.DEBUG: Job execution starting: startTime=, endTime=, updatedTime=, status=2, exitStatus=[UNKNOWN] , exitDescription=[], job=[my_job_instance] [] []
+    [2016-07-07 16:48:35] batch.INFO: Step execution starting: id=0, name=[dummy_step], status=[2], exitCode=[EXECUTING], exitDescription=[] [] []
+    [2016-07-07 16:48:35] batch.DEBUG: Step execution success: id= 1 [] []
+    [2016-07-07 16:48:35] batch.DEBUG: Step execution complete: id=1, name=[dummy_step], status=[1], exitCode=[EXECUTING], exitDescription=[] [] []
+    [2016-07-07 16:48:35] batch.DEBUG: Upgrading JobExecution status: startTime=2016-07-07T14:48:35+00:00, endTime=, updatedTime=, status=3, exitStatus=[UNKNOWN] , exitDescription=[], job=[my_job_instance] [] []
+    Export my_job_instance has been successfully executed.
 
-    This job is not configurable through the PIM UI, we'll see in the next chapters how to write configurable jobs.
+The ``--config`` option can be used to override the default values parameters, for instance, to change the file path.
+
+.. code-block:: bash
+
+    php app/console akeneo:batch:job my_job_instance --config='{"filePath":"\/tmp\/new_path.txt"}'
+
+Configure the UI for our JobParameters
+--------------------------------------
+
+At this point, the job is usable in command line though it cannot be configured via the UI.
+
+We need to write a service providing the form type configuration for each parameter of our JobParameters instance.
+
+In our case we want to display a a text field where to fill in the path. The validation constraint defined earlier will also apply here.
+
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Job/JobParameters/FormConfigurationProvider/DummyExport.php
+    :language: php
+    :linenos:
+
+This service is configured using a tag and it implements ``supports()`` method to be used for our job only.
+
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/job_parameters.yml
+    :language: yaml
+    :linenos:
+    :lines: 1,4-6,25-33
+
+Translate Job and Step labels in the UI
+---------------------------------------
+
+Behind the scene, the service ``Pim\Bundle\ImportExportBundle\JobLabel\TranslatedLabelProvider`` provides translated Job and Step labels to be used in the UI.
+
+This service uses following conventions:
+ - for a job label, given a $jobName, "batch_jobs.$jobName.label"
+ - for a step label, given a $jobName and a $stepName, "batch_jobs.$jobName.$stepName.label"
+
+Create a file ``Resources/translations/messages.en.yml`` in our Bundle to translate label keys.
+
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/translations/messages.en.yml
+    :language: yaml
+    :linenos:
+
+We can now create a new configuration for our Job from the UI, using the menu "spread > export profiles" then "create export profile" button.
+
+.. image:: ./create_connector_edit.png

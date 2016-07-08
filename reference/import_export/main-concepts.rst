@@ -12,7 +12,7 @@ Akeneo PIM comes with a set of configurable connectors based on re-usable classe
 Overview
 --------
 
-The Import/Export system is based on Akeneo BatchBundle.
+The Import/Export system is based on Akeneo Batch component and bundle.
 
 It helps to define "high level" jobs such as imports, exports and mass actions.
 
@@ -22,7 +22,7 @@ Here are the main objects of the architecture.
 
 .. note::
 
-    Akeneo BatchBundle is drawn heavily on Spring Batch http://spring.io/docs, it implements a very small part of the original work, and mainly provides reusable functions to process large volumes of records.
+    Akeneo Batch is widely based on Spring Batch http://spring.io/docs, it implements a very small part of the original work, and mainly provides reusable functions to process large volumes of records.
 
 Connector
 ---------
@@ -40,7 +40,21 @@ Being the main batch domain object, a job is an explicit abstraction representin
 
 ``Akeneo\Bundle\BatchBundle\Launcher\JobLauncherInterface`` allows to run a Job.
 
+Each Job has a name, its unique identifier.
 Each Job can be composed of different Steps.
+A Job is declared as a Symfony service using the tag 'akeneo_batch.job'.
+
+JobParameters
+-------------
+
+The execution of a Job is configured through a JobParameters which represents the runtime parameters.
+
+Several business services help to manipulate the JobParameters,
+
+ - ``Akeneo\Component\Batch\Job\JobParametersFactory`` to create a JobParameters for a given Job
+ - ``Akeneo\Component\Batch\Job\JobParametersValidator`` to validate the JobParameters to be used within a Job
+ - ``Akeneo\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface`` to provide the default values used to create a JobParameters
+ - ``Akeneo\Component\Batch\Job\JobParameters\ConstraintCollectionProviderInterface`` to provide the contraints used to validate a JobParameters
 
 Step
 ----
