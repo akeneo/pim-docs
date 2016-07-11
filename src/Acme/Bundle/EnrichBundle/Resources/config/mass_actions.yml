@@ -8,4 +8,5 @@ services:
                 alias: capitalize-values
                 acl: acme_enrich_product_capitalize_values
                 datagrid: product-grid
+                operation_group: mass-edit
                 form_type: acme_enrich.form.type.capitalize_values

@@ -33,14 +33,6 @@ class CapitalizeValues extends AbstractMassEditOperation
     /**
      * {@inheritdoc}
      */
-    public function getItemsName()
-    {
-        return 'product';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getActions()
     {
         return [
@@ -52,7 +44,7 @@ class CapitalizeValues extends AbstractMassEditOperation
     /**
      * {@inheritdoc}
      */
-    public function getBatchJobCode()
+    public function getJobInstanceCode()
     {
         return 'capitalize_values';
     }
