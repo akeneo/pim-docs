@@ -62,7 +62,7 @@ Installing MongoDB
 
 .. note::
 
-    Akeneo PIM will not work with MongoDB 3.*. *The supported version are 2.4 and 2.6*.
+    Akeneo PIM will not work with MongoDB 3.*. *The supported versions are 2.4 and 2.6*.
 
 * Install MongoDB PHP driver
 
@@ -168,7 +168,10 @@ Create the file ``/etc/apache2/sites-available/akeneo-pim.local.conf``
     Replace */path/to/installation* by the path to the directory where you want to install the PIM.
 
 .. note::
-    Replace *pim-community-standard* by *pim-enterprise-standard* for enterprise edition
+    Replace *pim-community-standard* by *pim-enterprise-standard* for enterprise edition.
+
+.. note::
+    Don't forget to add the ``web`` directory of your Symfony application.
 
 Enabling the virtual host
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -177,8 +180,8 @@ Enabling the virtual host
     :linenos:
 
     $ cd /etc/apache2/sites-available/
+    $ sudo apache2ctl configtest
     $ sudo a2ensite akeneo-pim.local
-    $ sudo apache2ctl -t
     $ sudo service apache2 reload
 
 
