@@ -1,7 +1,11 @@
-Setup System Requirements on Ubuntu 14.04
-=========================================
+Setup System Requirements on Debian 8 Jessie
+============================================
 
-Here is a quick guide to setup the :doc:`system_requirements` on Ubuntu 14.04.
+Here is a quick guide to setup the :doc:`system_requirements` on Debian 8 Jessie.
+
+.. note::
+
+    Please perform the following commands as root.
 
 System installation
 -------------------
@@ -12,33 +16,13 @@ Base dependencies
 .. code-block:: bash
     :linenos:
 
-    $ sudo apt-get update
-    $ sudo apt-get install mysql-server
-    $ sudo apt-get install apache2
-    $ sudo apt-get install libapache2-mod-php5 php5-cli
-    $ sudo php5enmod mcrypt
-    $ sudo a2enmod rewrite
-    $ sudo apt-get install php5-apcu
+    # apt-get update
+    # apt-get install mysql-server apache2 libapache2-mod-php5 php5-cli php5-apcu php5-mcrypt php5-intl php5-mysql php5-curl php5-gd
+    # php5enmod mcrypt
+    # a2enmod rewrite
 
 .. note::
-    PHP 5.5 provided in Ubuntu 14.04 comes with the Zend OPcache opcode cache. Only the data cache provided by APCu is needed.
-
-As PHP 5.5 is provided in Ubuntu 14.04, you will have to upgrade to PHP 5.6 using:
-
-.. code-block:: bash
-    :linenos:
-
-        $ sudo add-apt-repository ppa:ondrej/php
-        $ sudo apt-get update
-        $ sudo apt-get install php5.6
-        $ sudo apt-get install php5.6-xml php5.6-zip php5.6-curl php5.6-mongo php5.6-intl php5.6-mbstring php5.6-mysql php5.6-gd php5.6-mcrypt
-
-Check that PHP 5.6 is now your current PHP version with:
-
-.. code-block:: bash
-    :linenos:
-
-        $ php -v
+    PHP 5.6 provided in Debian 8 Jessie comes with the Zend OPcache opcode cache. Only the data cache provided by APCu is needed.
 
 Choosing the product storage
 ****************************
@@ -57,8 +41,8 @@ Installing MongoDB
 .. code-block:: bash
     :linenos:
 
-    $ sudo apt-get update
-    $ sudo apt-get install mongodb
+    # apt-get update
+    # apt-get install mongodb
 
 .. note::
 
@@ -69,7 +53,7 @@ Installing MongoDB
 .. code-block:: bash
     :linenos:
 
-    $ sudo apt-get install php5-mongo
+    # apt-get install php5-mongo
 
 
 .. _system-configuration:
@@ -85,7 +69,7 @@ MySQL
 .. code-block:: bash
     :linenos:
 
-    $ mysql -u root -p
+    # mysql -u root -p
     mysql> CREATE DATABASE akeneo_pim;
     mysql> GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim';
     mysql> EXIT
@@ -101,15 +85,19 @@ Apache
 Setting-up the permissions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To avoid spending too much time on permission problems between the CLI user and the Apache user, an easy configuration
-is to use the same user for both processes.
+.. warning::
+
+    To avoid spending too much time on permission problems between the CLI user and the Apache user, an easy configuration
+    is to use the same user for both processes.
+
+    This configuration is aimed to easily setup a development machine. **It is absolutely not suited for a production environment.**
 
 * Get your identifiers
 
 .. code-block:: bash
     :linenos:
 
-    $ id
+    # id
     uid=1000(my_user), gid=1000(my_group), ...
 
 In this example, the user is *my_user* and the group is *my_group*.
@@ -119,7 +107,7 @@ In this example, the user is *my_user* and the group is *my_group*.
 .. code-block:: bash
     :linenos:
 
-    $ sudo service apache2 stop
+    # service apache2 stop
 
 * Use your identifiers for Apache by editing the file ``/etc/apache2/envvars``. You have to replace the variables:
 
@@ -129,18 +117,14 @@ In this example, the user is *my_user* and the group is *my_group*.
 .. code-block:: bash
     :linenos:
 
-    $ sudo gedit /etc/apache2/envvars
-    # replace the environment variables
-    export APACHE_RUN_USER=my_user
-    export APACHE_RUN_GROUP=my_group
-    $ sudo chown -R my_user /var/lock/apache2
+    # chown -R my_user /var/lock/apache2
 
 * Restart Apache
 
 .. code-block:: bash
     :linenos:
 
-    $ sudo service apache2 start
+    # service apache2 start
 
 Creating the virtual host file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -179,10 +163,10 @@ Enabling the virtual host
 .. code-block:: bash
     :linenos:
 
-    $ cd /etc/apache2/sites-available/
-    $ sudo apache2ctl configtest
-    $ sudo a2ensite akeneo-pim.local
-    $ sudo service apache2 reload
+    # cd /etc/apache2/sites-available/
+    # apache2ctl configtest
+    # a2ensite akeneo-pim.local
+    # service apache2 reload
 
 
 Adding the virtual host name
