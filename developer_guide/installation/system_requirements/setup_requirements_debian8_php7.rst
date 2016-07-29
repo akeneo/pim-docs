@@ -38,7 +38,7 @@ Now install the required dependencies:
     :linenos:
 
     # apt-get update
-    # apt-get install mysql-server apache2 libapache2-mod-php7.0 php7.0-cli php7.0-apcu php7.0-apcu-bc php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-xml php7.0-zip
+    # apt-get install mysql-server apache2 libapache2-mod-php7.0 php7.0-cli php7.0-apcu php7.0-apcu-bc php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip
     # a2enmod rewrite
 
 Check that PHP7 is now your current PHP version with:
