@@ -219,6 +219,8 @@ Add a Channel Configuration to Use the New Transformation
 
 Adding a channel configuration for Reference transformation is a simple YML import:
 
+
+
 .. code-block:: yaml
 
 asset_channel_configurations:
