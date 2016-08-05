@@ -223,12 +223,12 @@ Adding a channel configuration for Reference transformation is a simple YML impo
 
 .. code-block:: yaml
 
-asset_channel_configurations:
-    mobile:
-         configuration:
-             watermark:
-                size: 15
-                watermark: "Copyright Akeneo"
+    asset_channel_configurations:
+        mobile:
+             configuration:
+                 watermark:
+                    size: 15
+                    watermark: "Copyright Akeneo"
 
 Once you created YML file you can go to Akeneo PIM and then start importing with the Asset channel configuration import in Yaml profile.
 Be careful, if you import only the previous file, all previous configurations will be removed. You will need to add your current configurations in the file to keep them.
