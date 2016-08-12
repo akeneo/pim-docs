@@ -1,5 +1,5 @@
-CSV formats
-===========
+Formats
+=======
 
 Headers for localized and/or scopable entities follow the same generic rule:
 
@@ -24,3 +24,7 @@ CSV formats used for import/export profiles in a default Akeneo PIM installation
     formats/option
     formats/product
     formats/variant-group
+
+.. note::
+
+  XLSX format is also available. Data remain the same.
