@@ -76,7 +76,7 @@ Create the ArrayConverter
 
 The purpose of the array converter is to transform the array provided by the reader to the standard array format, cf :doc:`/reference/import_export/product-import`
 
-.. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/ArrayConverter/ProductStandardConverter.php
+.. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/ArrayConverter/StandardToFlat/Product.php
    :language: php
    :linenos:
 
