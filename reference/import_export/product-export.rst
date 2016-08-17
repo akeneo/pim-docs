@@ -1,13 +1,12 @@
-Understand the CSV Product Export
-=================================
-
-We'll discuss here how the CSV product export works.
+Understanding the Product Export
+================================
 
 It's a good start to understand the overall architecture and how to re-use or replace some parts.
+You can now natively export data into CSV and XLSX format.
 
 .. note::
 
-  Please note that the imports jobs have been widely re-worked in 1.6.
+  Please note that the imports jobs have been widely re-worked in 1.6. The old import system has been removed, please refer to previous versions of this page if needed.
 
 Definition of the Job
 ---------------------
@@ -16,20 +15,41 @@ The product export is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/conf
 
 .. code-block:: yaml
 
-    pim_connector.job.csv_product_export:
+    parameters:
+        pim_connector.connector_name.csv: 'Akeneo CSV Connector'
+        pim_connector.connector_name.xlsx: 'Akeneo XLSX Connector'
+        pim_connector.job.simple_job.class: Akeneo\Component\Batch\Job\Job
+        pim_connector.job_name.csv_product_export: 'csv_product_export'
+        pim_connector.job_name.xlsx_product_export: 'xlsx_product_export'
+        pim_connector.job.export_type: export
+
+    services:
+        ## CSV export
+        pim_connector.job.csv_product_export:
+            class: '%pim_connector.job.simple_job.class%'
+            arguments:
+                - '%pim_connector.job_name.csv_product_export%'
+                - '@event_dispatcher'
+                - '@akeneo_batch.job_repository'
+                -
+                    - '@pim_connector.step.csv_product.export'
+            tags:
+                - { name: akeneo_batch.job, connector: '%pim_connector.connector_name.csv%', type: '%pim_connector.job.export_type%' }
+
+    ## XLSX export
+    pim_connector.job.xlsx_product_export:
         class: '%pim_connector.job.simple_job.class%'
         arguments:
-            - '%pim_connector.job_name.csv_product_export%'
+            - '%pim_connector.job_name.xlsx_product_export%'
             - '@event_dispatcher'
             - '@akeneo_batch.job_repository'
             -
-                - '@pim_connector.step.csv_product.export'
+                - '@pim_connector.step.xlsx_product.export'
         tags:
-            - { name: akeneo_batch.job, connector: '%pim_connector.connector_name.csv%', type: '%pim_connector.job.export_type%' }
+            - { name: akeneo_batch.job, connector: '%pim_connector.connector_name.xlsx%', type: '%pim_connector.job.export_type%' }
 
 With the ``type`` parameter, we can see that this job is an export.
 
-We can also count a single step named ``export``.
 
 Product Export Step
 -------------------
@@ -40,18 +60,37 @@ All steps service definitions are defined in ``src/Pim/Bundle/ConnectorBundle/Re
 
 .. code-block:: yaml
 
-    pim_connector.step.csv_product.export:
-        class: '%pim_connector.step.item_step.class%'
-        arguments:
-            - 'export' # Export name
-            - '@event_dispatcher'
-            - '@akeneo_batch.job_repository'
-            - '@pim_connector.reader.database.product' # Reader
-            - '@pim_connector.processor.normalization.product' # Processor
-            - '@pim_connector.writer.file.csv_product' # Writer
-            - 10 # Batch size
+    parameters:
+        pim_connector.step.item_step.class: Akeneo\Component\Batch\Step\ItemStep
 
-An ``ItemStep`` always contains 3 elements, a ``Akeneo\Bundle\BatchBundle\Item\ItemReaderInterface``, a ``Akeneo\Bundle\BatchBundle\Item\ItemProcessorInterface`` and a ``Akeneo\Bundle\BatchBundle\Item\ItemWriterInterface``.
+    services:
+        pim_connector.step.csv_product.export:
+            class: '%pim_connector.step.item_step.class%'
+            arguments:
+                - 'export' # Export name
+                - '@event_dispatcher'
+                - '@akeneo_batch.job_repository'
+                - '@pim_connector.reader.database.product' # Reader
+                - '@pim_connector.processor.normalization.product' # Processor
+                - '@pim_connector.writer.file.csv_product' # Writer
+                - 10 # Batch size
+
+        pim_connector.step.xlsx_product.export:
+            class: '%pim_connector.step.item_step.class%'
+            arguments:
+                - 'export'
+                - '@event_dispatcher'
+                - '@akeneo_batch.job_repository'
+                - '@pim_connector.reader.database.product'
+                - '@pim_connector.processor.normalization.product'
+                - '@pim_connector.writer.file.xlsx_product'
+                - 10
+
+An ``ItemStep`` always contains 3 elements:
+
+- ``Akeneo\Bundle\BatchBundle\Item\ItemReaderInterface``
+- ``Akeneo\Bundle\BatchBundle\Item\ItemProcessorInterface``
+- ``Akeneo\Bundle\BatchBundle\Item\ItemWriterInterface``
 
 We provide here specific implementations for these elements, the services are declared with aliases ``pim_connector.reader.database.product``, ``pim_connector.processor.normalization.product``, ``pim_connector.writer.file.csv_product``.
 
@@ -61,6 +100,8 @@ Product Reader
 This element reads products from database and returns objects one by one.
 
 The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/readers.yml``.
+
+The product reader now uses the ProductQueryBuilder, it means that you can now finely select which products to export with the ProductQueryBuilder filters.
 
 .. code-block:: yaml
 
@@ -86,7 +127,7 @@ The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/proc
 .. code-block:: yaml
 
     parameters:
-        pim_base_connector.processor.product_to_flat_array.class: Pim\Bundle\BaseConnectorBundle\Processor\ProductToFlatArrayProcessor
+        pim_connector.processor.normalization.product.class: Pim\Component\Connector\Processor\Normalization\ProductProcessor
 
     services:
         pim_connector.processor.normalization.product:
@@ -105,13 +146,13 @@ We can see here that we normalize each product into the ``standard`` format. It 
 
 .. code-block:: php
 
-        $productStandard = $this->normalizer->normalize($product, 'json', [
-            'channels' => [$channel->getCode()],
-            'locales'  => array_intersect(
-                $channel->getLocaleCodes(),
-                $parameters->get('filters')['structure']['locales']
-            ),
-        ]);
+    $productStandard = $this->normalizer->normalize($product, 'json', [
+        'channels' => [$channel->getCode()],
+        'locales'  => array_intersect(
+            $channel->getLocaleCodes(),
+            $parameters->get('filters')['structure']['locales']
+        ),
+    ]);
 
 This service ``pim_serializer.normalizer.product`` is declared in ``src/Pim/Bundle/CatalogBundle/Resources/config/serializers.yml`` and uses the Symfony ``Serializer`` class.
 
@@ -120,7 +161,9 @@ As a product may not have values for all attributes, depending on the product, t
 .. code-block:: php
 
     $product1 = [
-        'sku'           => 'AKNTS_BPXS',
+        'sku'           => [
+            ['data' => 'AKNTS_BPXS', 'locale' => null, 'scope' => null]
+        ],
         'family'        => 'tshirts',
         'clothing_size' =>
             [
@@ -128,7 +171,7 @@ As a product may not have values for all attributes, depending on the product, t
                     'locale' => NULL,
                     'scope'  => NULL,
                     'data'   => 'xs'
-                ]
+                ],
             ],
         'description' =>
             [
@@ -136,8 +179,8 @@ As a product may not have values for all attributes, depending on the product, t
                     'locale' => 'en_US',
                     'scope'  => 'mobile',
                     'data'   => 'Akeneo T-Shirt'
-                ]
-            ]
+                ],
+            ],
     ];
 
 .. note::
@@ -147,15 +190,17 @@ Here another example:
 .. code-block:: php
 
     $product2 = [
-        'sku'           => 'AKNTS_BPXS',
-        'family'        => 'tshirts',
+        'sku'           => [
+            ['data' => 'AKNTS_BPXS', 'locale' => null, 'scope' => null]
+        ],
+        'family'     => 'tshirts',
         'main_color' =>
             [
                 [
                     'locale' => NULL,
                     'scope'  => NULL,
                     'data'   => 'black'
-                ]
+                ],
             ],
         'name' =>
             [
@@ -163,8 +208,8 @@ Here another example:
                     'locale' => NULL,
                     'scope'  => NULL,
                     'data'   => 'Akeneo T-Shirt black and purple with short sleeve'
-                ]
-            ]
+                ],
+            ],
     ];
 
 .. note::

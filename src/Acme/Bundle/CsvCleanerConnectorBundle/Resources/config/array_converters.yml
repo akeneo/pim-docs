@@ -1,8 +1,8 @@
 parameters:
-    acme_csvcleanerconnector.array_converter.flat.product.class: Acme\Bundle\CsvCleanerConnectorBundle\ArrayConverter\ProductStandardConverter
+    acme_csvcleanerconnector.array_converter.flat.product.class: Acme\Bundle\CsvCleanerConnectorBundle\ArrayConverter\StandardToFlat\Product
 
 services:
     acme_csvcleanerconnector.array_converter.flat.product:
         class: %acme_csvcleanerconnector.array_converter.flat.product.class%
         arguments:
-            - '@pim_connector.array_converter.flat.product'
+            - '@pim_connector.array_converter.standard_to_flat.product_localized'
