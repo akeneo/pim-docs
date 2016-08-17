@@ -1,0 +1,15 @@
+parameters:
+    acme_csvcleanerconnector.job_name.csv_product_import_cleaner: 'csv_product_import_cleaner'
+
+services:
+    acme_csvcleanerconnector.job.csv_product_import_cleaner:
+        class: '%pim_connector.job.simple_job.class%'
+        arguments:
+            - '%acme_csvcleanerconnector.job_name.csv_product_import_cleaner%'
+            - '@event_dispatcher'
+            - '@akeneo_batch.job_repository'
+            -
+                - '@pim_connector.step.charset_validator'
+                - '@acme_csvcleanerconnector.step.csv_product.import'
+        tags:
+            - { name: akeneo_batch.job, connector: '%pim_connector.connector_name.csv%', type: '%pim_connector.job.import_type%' }

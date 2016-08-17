@@ -13,6 +13,11 @@ class AcmeCsvCleanerConnectorExtension extends Extension
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('array_converters.yml');
-        $loader->load('processors.yml');
+        $loader->load('jobs.yml');
+        $loader->load('job_constraints.yml');
+        $loader->load('job_defaults.yml');
+        $loader->load('job_parameters.yml');
+        $loader->load('readers.yml');
+        $loader->load('steps.yml');
     }
 }

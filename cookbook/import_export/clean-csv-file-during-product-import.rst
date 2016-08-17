@@ -18,6 +18,7 @@ We assume that we're using a standard edition with the ``icecat_demo_dev`` data 
 .. note::
 
     The code inside this cookbook entry is available in the src directory, you can clone pim-docs (https://github.com/akeneo/pim-docs) and use a symlink to make the Acme bundle available in the `src/`.
+    The same cookbook could be applied for XLSX Product Import
 
 Create the Connector
 --------------------
@@ -39,37 +40,6 @@ Register the bundle in AppKernel:
             new Acme\Bundle\CsvCleanerConnectorBundle\AcmeCsvCleanerConnectorBundle(),
         // ...
     }
-
-Configure the Job
------------------
-
-Configure a job in ``Resources/config/batch_jobs.yml``:
-
-.. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/Resources/config/batch_jobs.yml
-   :language: yaml
-   :linenos:
-   :lines: 1-13
-
-Here we create an import job which contains a single step: `import`.
-
-The default step is ``Akeneo\Component\Batch\Step\ItemStep``.
-
-An item step is configured with 3 elements, a reader, a processor and a writer.
-
-Here, we'll use a custom processor service, named ``acme_csvcleanerconnector.processor.denormalization.product.flat``, but we'll continue to use the default reader and writer.
-
-.. important::
-
-    We strongly recommend to always try to re-use most of the existing pieces, it ensures that all business rules and validation will be applied.
-
-Configure the Processor
------------------------
-
-In fact, we're using the default processor class, but we have to create a new service to change the injected array converter (replace ``pim_connector.array_converter.flat.product`` by ``acme_csvcleanerconnector.array_converter.flat.product``), all other services remain the same.
-
-.. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/Resources/config/processors.yml
-   :language: yaml
-   :linenos:
 
 Create the ArrayConverter
 -------------------------
@@ -99,6 +69,63 @@ Finally, we introduce the following extension to load the services files in conf
 .. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/DependencyInjection/AcmeCsvCleanerConnectorExtension.php
    :language: php
    :linenos:
+
+Configure the Job
+-----------------
+
+To be executed, a Job is launched with a JobParameters which contains runtime parameters. We also need a ``ConstraintCollectionProviderInterface`` which contains the form job constraints and the ``DefaultValuesProviderInterface`` which contains the default job values.
+
+First we need to define the reader service with the new array converter:
+
+.. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/Resources/config/readers.yml
+    :language: yaml
+    :linenos:
+
+Then we need to create our custom step service definition to use our new reader:
+
+.. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/Resources/config/steps.yml
+    :language: yaml
+    :linenos:
+
+Finally we need to create a new job configuration that uses our custom step:
+
+.. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/Resources/config/jobs.yml
+    :language: yaml
+    :linenos:
+
+At this point, the job is usable in command line though it cannot be configured via the UI.
+We need to write a service providing the form type configuration for each parameter of our JobParameters instance:
+
+.. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/Resources/config/job_parameters.yml
+    :language: yaml
+    :linenos:
+
+.. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/Resources/config/job_constraints.yml
+    :language: yaml
+    :linenos:
+
+.. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/Resources/config/job_defaults.yml
+    :language: yaml
+    :linenos:
+
+For further information you can check the :doc:`/cookbook/import_export/create-connector`
+
+As for the ``jobs.yml``, this service file ``job_parameters.yml`` must be loaded in our ``AcmeCsvCleanerConnectorExtension``.
+
+Translate Job and Step labels in the UI
+---------------------------------------
+
+Behind the scene, the service ``Pim\Bundle\ImportExportBundle\JobLabel\TranslatedLabelProvider`` provides translated Job and Step labels to be used in the UI.
+
+This service uses following conventions:
+ - for a job label, given a $jobName, "batch_jobs.$jobName.label"
+ - for a step label, given a $jobName and a $stepName, "batch_jobs.$jobName.$stepName.label"
+
+Create a file ``Resources/translations/messages.en.yml`` in our Bundle to translate label keys.
+
+.. literalinclude:: ../../src/Acme/Bundle/CsvCleanerConnectorBundle/Resources/translations/messages.en.yml
+    :language: yaml
+    :linenos:
 
 Use the new Connector
 ---------------------
