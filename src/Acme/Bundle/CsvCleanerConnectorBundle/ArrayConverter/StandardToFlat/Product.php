@@ -19,10 +19,12 @@ class Product implements ArrayConverterInterface
 
     public function convert(array $item, array $options = [])
     {
+        // cleans the sku
+        $item['sku'] = str_replace('uselesspart-', '', $item['sku']);
+
         $convertedItem = $this->productConverter->convert($item, $options);
 
-        // cleans the sku
-        $convertedItem['sku'] = str_replace('uselesspart-', '', $convertedItem['sku']);
+
 
         return $convertedItem;
     }

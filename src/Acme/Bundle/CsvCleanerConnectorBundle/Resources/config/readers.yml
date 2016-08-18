@@ -1,0 +1,8 @@
+services:
+    acme_csvcleanerconnector.reader.file.csv_product:
+        class: '%pim_connector.reader.file.csv_product.class%'
+        arguments:
+            - '@pim_connector.reader.file.csv_iterator_factory'
+            - '@acme_csvcleanerconnector.array_converter.flat.product'
+            - '@pim_connector.reader.file.media_path_transformer'
+            - []

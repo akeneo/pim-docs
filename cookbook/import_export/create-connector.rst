@@ -68,7 +68,7 @@ The first service provides the default values used to create a JobParameters ins
     :language: php
     :linenos:
 
-The second service provides the contraints used to validate each parameter of a JobParameters instance,
+The second service provides the constraints used to validate each parameter of a JobParameters instance,
 
 .. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Job/JobParameters/ConstraintCollectionProvider/DummyExport.php
     :language: php

@@ -1,0 +1,9 @@
+services:
+    acme_csvcleanerconnector.job.job_parameters.default_values_provider.product_csv_import:
+        class: '%pim_connector.job.job_parameters.default_values_provider.product_csv_import.class%'
+        arguments:
+            - '@pim_connector.job.job_parameters.default_values_provider.simple_csv_import'
+            -
+                - 'csv_product_import_cleaner'
+        tags:
+            - { name: akeneo_batch.job.job_parameters.default_values_provider }
