@@ -4,24 +4,25 @@ More than 1GB of product media to export?
 If you run an export with products containing media, an archive is created at the end. It contains the products data files and all the media for these products.
 However, trying to archive a large volume of media (usually more than 1GB) can fail because it's a very memory consuming process in PHP.
 
-It is handled by ``Pim\Bundle\BaseConnectorBundle\Archiver\ArchivableFileWriterArchiver`` which internally uses `Flysystem ZipArchive`_. Unfortunately this has not been optimized to work with large volumes.
+It is handled by ``Pim\Component\Connector\Archiver\ArchivableFileWriterArchiver`` which internally uses `Flysystem ZipArchive`_. Unfortunately this has not been optimized to work with large volumes.
 
 .. _`Flysystem ZipArchive`: https://github.com/thephpleague/flysystem-ziparchive
 
 Disable the media archiving
 ===========================
 
-If you encounter memory issues and you don't need media to be archived, a simple solution is to override the declaration of ``pim_base_connector.archiver.archivable_file_writer_archiver`` service as follows:
+If you encounter memory issues and you don't need media to be archived, a simple solution is to override the declaration of ``pim_connector.archiver.archivable_file_writer_archiver`` service as follows:
 
 .. code-block:: yaml
 
-    pim_base_connector.archiver.archivable_file_writer_archiver:
-        class: %pim_base_connector.archiver.archivable_file_writer_archiver.class%
+    pim_connector.archiver.archivable_file_writer_archiver:
+        class: '%pim_connector.archiver.archivable_file_writer_archiver.class%'
         arguments:
-            - '@pim_base_connector.factory.zip_filesystem'
+            - '@pim_connector.factory.zip_filesystem'
             - '@oneup_flysystem.archivist_filesystem'
-
-The tag ``pim_base_connector.archiver`` is removed here to prevent the archiver to be used by the Symfony DI. The media archiving will be disabled.
+            - '@akeneo_batch.job.job_registry'
+        tags:
+            - { name: pim_connector.archiver }
 
 Write your own archiver
 =======================
@@ -32,8 +33,8 @@ If you want to write your own archiving logic, you can either override the nativ
 
 An archiver needs to :
 
-    - implement ``Pim\Bundle\BaseConnectorBundle\Archiver\ArchiverInterface``
-    - be declared as a service and be tagged with ``pim_base_connector.archiver``
+    - implement ``Pim\Component\Connector\Archiver\ArchiverInterface``
+    - be declared as a service and be tagged with ``pim_connector.archiver``
 
 Feel free to share it with the community!
 
@@ -43,7 +44,7 @@ Here is an example of a working customization of the native archiver based on th
 
 .. code-block:: php
 
-    use Pim\Bundle\BaseConnectorBundle\Archiver\ArchivableFileWriterArchiver;
+    use Pim\Component\Connector\Archiver\ArchivableFileWriterArchiver;
     use Symfony\Component\Process\Process;
 
     class CustomArchiver extends ArchivableFileWriterArchiver
