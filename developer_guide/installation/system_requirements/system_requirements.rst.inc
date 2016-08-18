@@ -42,7 +42,7 @@ The web server will also need the following libraries and modules:
 +-------------+---------------------------+
 | php5-mcrypt | No specific configuration |
 +-------------+---------------------------+
-| php5-apcu   | No specific configuration |
+| php5-apcu   | apc.enable_cli=1          |
 +-------------+---------------------------+
 
 Besides these modules, the following configuration is the minimal configuration required:

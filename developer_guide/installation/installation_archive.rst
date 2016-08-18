@@ -1,5 +1,5 @@
 Installing Akeneo PIM with the Archive
-======================================
+--------------------------------------
 
 This document provides step by step instructions to install the PIM with the archive on an environment that fulfills the expected :doc:`system_requirements/system_requirements`.
 
