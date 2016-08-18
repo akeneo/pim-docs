@@ -104,9 +104,8 @@ In order to create your transformation, you have to follow these rules:
         }
     }
 
-.. _ImageMagickLauncher: https://github.com/akeneo/pim-enterprise-dev/blob/master/src/Akeneo/Component/FileTransformer/Transformation/Image/ImageMagickLauncher.php
 .. note::
-    To see how the imagemagick command is launched, you can take a look at the ImageMagickLauncher_.
+    To see how the imagemagick command is launched, you can take a look at the ``Akeneo/Component/FileTransformer/Transformation/Image/ImageMagickLauncher.php`` class.
 
 In order to rely on options you can add an OptionsResolver, for this you need to follow this rule:
 
