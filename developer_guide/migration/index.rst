@@ -96,7 +96,7 @@ Here are the migration guides:
 
 **Enterprise Edition**
 
-Standard EE archives are now available on a dedicated portal, pleae contact your sales manager or channel partner to have access to this portal if it's not already the case. You will be able to download your EE archive directly from the Portal interface.
+Standard EE archives are now available on a dedicated portal, please contact your sales manager or channel partner to have access to this portal if it's not already the case. You will be able to download your EE archive directly from the Portal interface.
 
 Then, follow the migration guides located in your archive to upgrade your project.
 
