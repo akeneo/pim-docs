@@ -171,7 +171,7 @@ In order to rely on options you can add an OptionsResolver, for this you need to
         }
     }
 
-.. _OptionsResolver: http://symfony.com/doc/current/components/options_resolver.html
+.. _OptionsResolver: http://symfony.com/doc/2.7/components/options_resolver.html
 .. note::
     You can learn more about this Symfony2 component in the OptionsResolver_ documentation.
 
