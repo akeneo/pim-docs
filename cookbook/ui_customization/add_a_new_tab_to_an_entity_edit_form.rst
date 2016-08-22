@@ -131,7 +131,7 @@ You can now create your template ``/src/Acme/Bundle/EnrichBundle/Resources/views
 
 After a cache clear (``app/console cache:clear``) you should see something like this on the category edit form:
 
-As you can see, you will have to translate the tab title in your translations file (see http://symfony.com/doc/current/book/translation.html).
+As you can see, you will have to translate the tab title in your translations file (see http://symfony.com/doc/2.7/translation.html).
 
 As shown in the screenshot above, we have total access to the category edit form and we can now render our package section in this tab.
 
