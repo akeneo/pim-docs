@@ -1,6 +1,10 @@
 parameters:
-    acme_notifyconnector.step.notify.class:  Acme\Bundle\NotifyConnectorBundle\Step\NotifyStep
-    acme_notifyconnector.handler.curl.class: Acme\Bundle\NotifyConnectorBundle\Handler\CurlHandler
+    acme_notifyconnector.step.notify.class: Acme\Bundle\NotifyConnectorBundle\Step\NotifyStep
+
 services:
-    acme_notifyconnector.handler.curl:
-        class: "%acme_notifyconnector.handler.curl.class%"
+    acme_notifyconnector.step.notify:
+        class: '%acme_notifyconnector.step.notify.class%'
+        arguments:
+            - 'notify'
+            - '@event_dispatcher'
+            - '@akeneo_batch.job_repository'

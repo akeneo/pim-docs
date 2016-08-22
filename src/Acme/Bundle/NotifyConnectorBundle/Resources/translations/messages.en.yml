@@ -11,3 +11,10 @@ acme_notify_connector:
         help: The url to call at the end of the export
 
 job_execution.summary.notified: Notification sent
+
+batch_jobs:
+    csv_product_export_notify:
+        label: Product Import Notify Csv
+        export.label: Product import notify
+        validation.label:  File encoding validation
+        notify.label: Notify step
