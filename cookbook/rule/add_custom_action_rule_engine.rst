@@ -78,6 +78,7 @@ First let's see how to create the action. You need to create an ActionApplier ob
     }
 
 Then we need to create the object that will handle the data.
+
 .. tip::
 
     Implementing the FieldImpactActionInterface will allow the attribute to be flagged as smart in the UI.
