@@ -9,3 +9,7 @@ acme_xml_connector:
         import.filePath:
             label: File path
             help: Path of the XML file
+
+batch_jobs:
+    xml_product_import:
+        import.label: Product Import XML
