@@ -15,20 +15,9 @@ We will begin by creating a NotifyStep with its configuration and a doExecute me
 .. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Step/NotifyStep.php
    :language: php
    :linenos:
-   :lines: 1-4,10-
 
-Create our Step Element
------------------------
-
-Then, we implement a Step Element, in our case, a handler responsible for sending a ping request:
-
-.. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Handler/CurlHandler.php
-   :language: php
-   :linenos:
-   :lines: 1-3,9-
-
-Define the Step Element as Service
-----------------------------------
+Define the Step as a service
+----------------------------
 
 Add your step element to ``steps.yml`` to ensure that it is loaded and processed by ``DependencyInjection/AcmeNotifyConnectorExtension``:
 
@@ -39,12 +28,79 @@ Add your step element to ``steps.yml`` to ensure that it is loaded and processed
 Configure our new Job
 ---------------------
 
-In ``Resources/config/batch_jobs.yml``, we use a first step to export products in csv and we configure the second one to send a notification:
+In ``Resources/config/jobs.yml``, we use a first step to export products in CSV and we configure the second one to send a notification:
 
-.. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Resources/config/batch_jobs.yml
+.. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Resources/config/jobs.yml
    :language: yaml
    :linenos:
 
-You may have noticed that we use a custom class for the notification step and we define the handler as a step element.
+Configure the job parameters
+----------------------------
+
+In order to setup the form we use a form configuration provider.
+
+First of all you need to create a new class that will contain the job parameters. This class should implement the following interfaces:
+- ``ConstraintCollectionProviderInterface``
+- ``DefaultValuesProviderInterface``
+- ``FormConfigurationProviderInterface``
+
+Here we decorate the ``ProductCsvExport`` classes in order to retrieve the proper form export configuration.
+
+.. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/JobParameters/ProductCsvExportNotify.php
+   :language: php
+   :linenos:
+   :lines: 31-39
+
+Then we add the form configuration for our new ``url`` field.
+
+.. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/JobParameters/ProductCsvExportNotify.php
+   :language: php
+   :linenos:
+   :lines: 56-69
+
+In order to validate the job parameters we need to define some constraints. Here we want a valid url as input.
+
+.. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/JobParameters/ProductCsvExportNotify.php
+   :language: php
+   :linenos:
+   :lines: 44-51
+
+We also need to add the default values to our job form.
+
+.. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/JobParameters/ProductCsvExportNotify.php
+   :language: php
+   :linenos:
+   :lines: 74-79
+
+Add the support method with your job name ``csv_product_export_notify``.
+
+.. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/JobParameters/ProductCsvExportNotify.php
+   :language: php
+   :linenos:
+   :lines: 85-88
+
+Declare this class as a service, with the proper job name as parameter:
+
+.. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Resources/config/job_parameters.yml
+   :language: yaml
+   :linenos:
+
+Configure the job profile
+-------------------------
+
+We need our new form field to be visible on the UI, to do this we need to define our job in the view element as follows:
+
+.. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Resources/config/job_profile.yml
+   :language: yaml
+   :linenos:
+
+Translations
+------------
+
+Add a translation for our brand new step:
+
+.. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Resources/translations/messages.en.yml
+   :language: yaml
+   :linenos:
 
 That's it, you can now connect to the PIM and begin configuring and using your new export!
