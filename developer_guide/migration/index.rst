@@ -98,7 +98,7 @@ Here are the migration guides:
 
 **Enterprise Edition**
 
-Please contact our team through your access to the support service desk to ask for a standard archive.
+Please go to the Partners Portal for a standard archive.
 
 Then, follow the migration guides located in this archive to upgrade your project.
 
