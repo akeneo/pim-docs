@@ -1,6 +1,8 @@
-Suggest a Technical Enhancement
-===============================
+Suggest a Technical Improvement
+-------------------------------
 
-* Fork https://github.com/akeneo/pim-community-dev
-* Describe the improvement, write some sample code
-* Submit a Pull Request that allows to discuss the enhancement
+* Check if this improvement is already discussed: https://github.com/akeneo/pim-community-dev/labels/tech-improvement
+* Create a new Github issue that:
+
+  * clearly describes the improvement
+  * write some sample code

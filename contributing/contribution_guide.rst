@@ -1,12 +1,16 @@
-Submitting a Patch
-==================
+Submit a Patch to the Core
+==========================
 
-As Akeneo PIM is an open-source project, all contributions are very welcome.
-Patches are the best way to provide a bug fix or to propose enhancements.
-All features contributions are submitted to our Product Owner before being merged.
-Only they have the power to accept your contribution!
+As Akeneo PIM is an open-source project, all contributions are very welcome!
 
 Note that documentation has been largely inspired from the `Sylius documentation`_. Thank them for the great work.
+
+If you don't know how to start, you can pick an issue here: https://github.com/akeneo/pim-community-dev/labels/wanna-contribute
+
+Step 0: Sign the Contributor Agreement
+--------------------------------------
+
+To be able to merge your contribution, we need you to read and sign the following contributor agreement http://www.akeneo.com/contributor-license-agreement/
 
 Step 1: Setup your Environment
 ------------------------------
@@ -17,8 +21,7 @@ Install the Software Stack
 Before working on Akeneo PIM, set a Symfony2 friendly environment up with the following software:
 
 * Git
-* PHP version 5.6
-* MySQL 5.1 ≤ version ≤ 5.6
+* Follow the technical requirements :doc:`/developer_guide/installation/system_requirements/system_requirements`
 
 Configure Git
 ~~~~~~~~~~~~~
@@ -390,3 +393,8 @@ messages of all the commits. When you are finished, execute the push command.
 .. _`begin with PHPSpec`:               http://www.phpspec.net/en/latest/
 .. _`Prophecy documentation`:           https://github.com/phpspec/prophecy#prophecy
 .. _`Doctrine migration documentation`: http://docs.doctrine-project.org/projects/doctrine-migrations/en/latest/reference/introduction.html
+
+Step 4: Is my pull request merged?
+----------------------------------
+
+Once your Pull Request is merged, don't hesitate to claim your badge "Core contributor" on badger at http://badger.akeneo.com/badge/41acec2c-649f-11e6-92dc-d60437e930cf
