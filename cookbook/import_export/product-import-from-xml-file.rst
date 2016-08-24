@@ -61,7 +61,7 @@ Here is the definition of the Step:
 
 Here, we'll use a custom reader ``acme_xml_connector.reader.file.xml_product`` but we'll continue to use the default processor and writer.
 
-Then you will need to add the job parameters classes (it contains the job configuration, job constraints and job default values):
+Then you will need to add the job parameters classes (they define the job configuration, job constraints and job default values):
 
 .. literalinclude:: ../../src/Acme/Bundle/XmlConnectorBundle/Resources/config/job_parameters.yml
    :language: yaml
@@ -88,7 +88,7 @@ The purpose of the reader is to return each item as an array, in the case of XML
    :language: php
    :linenos:
 
-The reader processes the file and iterates to return products line by line and then converts it into the Standard format
+The reader processes the file and iterates to return products line by line and then converts them into the Standard format
 
 This element must be configured with the path of the XML file (an example file is provided in ``XmlConnectorBundle\Resources\fixtures\products.xml``).
 
