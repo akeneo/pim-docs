@@ -1,12 +1,11 @@
 <?php
 
-namespace Acme\Bundle\EnrichBundle\Connector\Processor\MassEdit\Product;
+namespace Acme\Bundle\CustomMassActionBundle\Connector\Processor\MassEdit\Product;
 
 use Akeneo\Component\StorageUtils\Updater\PropertySetterInterface;
-use Pim\Bundle\CatalogBundle\Exception\InvalidArgumentException;
-use Pim\Bundle\CatalogBundle\Model\ProductInterface;
 use Pim\Bundle\EnrichBundle\Connector\Processor\AbstractProcessor;
-use Pim\Component\Connector\Repository\JobConfigurationRepositoryInterface;
+use Pim\Component\Catalog\Exception\InvalidArgumentException;
+use Pim\Component\Catalog\Model\ProductInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class CapitalizeValuesProcessor extends AbstractProcessor
@@ -18,17 +17,11 @@ class CapitalizeValuesProcessor extends AbstractProcessor
     protected $validator;
 
     /**
-     * @param JobConfigurationRepositoryInterface $jobConfigRepository
-     * @param PropertySetterInterface             $propertySetter
-     * @param ValidatorInterface                  $validator
+     * @param PropertySetterInterface $propertySetter
+     * @param ValidatorInterface      $validator
      */
-    public function __construct(
-        JobConfigurationRepositoryInterface $jobConfigRepository,
-        PropertySetterInterface $propertySetter,
-        ValidatorInterface $validator
-    ) {
-        parent::__construct($jobConfigRepository);
-
+    public function __construct(PropertySetterInterface $propertySetter, ValidatorInterface $validator)
+    {
         $this->propertySetter = $propertySetter;
         $this->validator      = $validator;
     }
@@ -44,13 +37,7 @@ class CapitalizeValuesProcessor extends AbstractProcessor
         // $product the Reader gave us.
 
         // This is the configuration we receive from our Operation
-        $configuration = $this->getJobConfiguration();
-
-        if (!array_key_exists('actions', $configuration)) {
-            throw new InvalidArgumentException('Missing configuration for \'actions\'.');
-        }
-
-        $actions = $configuration['actions'];
+        $actions = $this->getConfiguredActions();
 
         // Retrieve custom config from the action
         $field = $actions['field'];

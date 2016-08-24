@@ -1,0 +1,11 @@
+pim_enrich.mass_edit_action:
+    capitalize-values:
+        label: Capitalize values
+        description: The selected product(s) will have capitalized values
+        launched_flash: The bulk action "capitalize values" has been launched. You will be notified when it is done.
+        success_flash: Product(s) values have been updated
+
+batch_jobs:
+    mass_edit_capitalize_values:
+        capitalize_values:
+            label: Capitalize values

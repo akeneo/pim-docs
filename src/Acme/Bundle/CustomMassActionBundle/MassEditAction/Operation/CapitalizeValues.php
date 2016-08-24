@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Bundle\EnrichBundle\MassEditAction\Operation;
+namespace Acme\Bundle\CustomMassActionBundle\MassEditAction\Operation;
 
 use Pim\Bundle\EnrichBundle\MassEditAction\Operation\AbstractMassEditOperation;
 
@@ -19,7 +19,7 @@ class CapitalizeValues extends AbstractMassEditOperation
      */
     public function getFormType()
     {
-        return 'acme_enrich_operation_capitalize_values';
+        return 'acme_custom_mass_action_operation_capitalize_values';
     }
 
     /**
@@ -39,13 +39,5 @@ class CapitalizeValues extends AbstractMassEditOperation
             'field'   => 'name',
             'options' => ['locale' => null, 'scope' => null]
         ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getJobInstanceCode()
-    {
-        return 'capitalize_values';
     }
 }
