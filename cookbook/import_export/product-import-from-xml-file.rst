@@ -59,7 +59,7 @@ Here is the definition of the Step:
    :linenos:
    :lines: 2-11
 
-Here, we'll use a custom reader ``acme_xml_connector.reader.file.xml_product`` but we'll continue to use default processor and writer.
+Here, we'll use a custom reader ``acme_xml_connector.reader.file.xml_product`` but we'll continue to use the default processor and writer.
 
 Then you will need to add the job parameters classes (it contains the job configuration, job constraints and job default values):
 
@@ -109,7 +109,7 @@ Translate Job and Step labels in the UI
 
 Behind the scene, the service ``Pim\Bundle\ImportExportBundle\JobLabel\TranslatedLabelProvider`` provides translated Job and Step labels to be used in the UI.
 
-This service uses following conventions:
+This service uses the following conventions:
  - for a job label, given a %%jobName%%, "batch_jobs.%%jobName%%.label"
  - for a step label, given a %%jobName%% and a %%stepName%%, "batch_jobs.%%jobName%%.%%stepName%%.label"
 
