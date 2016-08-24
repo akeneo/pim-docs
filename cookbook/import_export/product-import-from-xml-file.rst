@@ -88,7 +88,7 @@ The purpose of the reader is to return each item as an array, in the case of XML
    :language: php
    :linenos:
 
-Our reader reads the file and iterates to return products line by line and then converts it into the Standard format
+The reader processes the file and iterates to return products line by line and then converts it into the Standard format
 
 This element must be configured with the path of the XML file (an example file is provided in ``XmlConnectorBundle\Resources\fixtures\products.xml``).
 
@@ -110,10 +110,10 @@ Translate Job and Step labels in the UI
 Behind the scene, the service ``Pim\Bundle\ImportExportBundle\JobLabel\TranslatedLabelProvider`` provides translated Job and Step labels to be used in the UI.
 
 This service uses following conventions:
- - for a job label, given a $jobName, "batch_jobs.$jobName.label"
- - for a step label, given a $jobName and a $stepName, "batch_jobs.$jobName.$stepName.label"
+ - for a job label, given a %%jobName%%, "batch_jobs.%%jobName%%.label"
+ - for a step label, given a %%jobName%% and a %%stepName%%, "batch_jobs.%%jobName%%.%%stepName%%.label"
 
-Create a file ``Resources/translations/messages.en.yml`` in our Bundle to translate label keys.
+Create a file ``Resources/translations/messages.en.yml`` in the Bundle to translate label keys.
 
 .. literalinclude:: ../../src/Acme/Bundle/XmlConnectorBundle/Resources/translations/messages.en.yml
    :language: yaml
