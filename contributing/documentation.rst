@@ -1,6 +1,9 @@
 Enhance the Documentation
 =========================
 
+How to contribute
+-----------------
+
 Want to help improve the `Documentation`_?
 
 .. _Documentation: http://docs.akeneo.com/latest/index.html
@@ -21,6 +24,8 @@ For typo / quick fixes you can directly submit a `PullRequest`_.
 To test the rendering of the documentation you can follow this `HowTo`_.
 
 .. _HowTo: https://github.com/akeneo/pim-docs/blob/master/README.md
+
+Once your Pull Request is merged, don't hesitate to claim your badge on badger at http://badger.akeneo.com/badge/0a25c62e-1bae-11e6-92dc-d60437e930cf !
 
 reStructuredText
 ----------------

@@ -11,4 +11,3 @@ Best Practices
 
     project
     reusable_bundle
-    core
