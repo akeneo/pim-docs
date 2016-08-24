@@ -1,0 +1,14 @@
+services:
+    acme_custom_mass_action.mass_edit_action.capitalize_values:
+        public: false
+        class: Acme\Bundle\CustomMassActionBundle\MassEditAction\Operation\CapitalizeValues
+        arguments:
+            - 'mass_edit_capitalize_values'
+        tags:
+            -
+                name: pim_enrich.mass_edit_action
+                alias: capitalize-values
+                acl: pim_enrich_product_edit_attributes
+                datagrid: product-grid
+                operation_group: mass-edit
+                form_type: acme_custom_mass_action.form.type.capitalize_values

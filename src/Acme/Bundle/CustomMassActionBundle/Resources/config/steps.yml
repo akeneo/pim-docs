@@ -1,0 +1,10 @@
+services:
+    acme_custom_mass_action.step.capitalize_values.mass_edit:
+        class: '%pim_connector.step.item_step.class%'
+        arguments:
+            - 'mass_edit_capitalize_values'
+            - '@event_dispatcher'
+            - '@akeneo_batch.job_repository'
+            - '@pim_connector.reader.database.product'
+            - '@acme_custom_mass_action.mass_edit.capitalize_values.processor'
+            - '@pim_connector.writer.database.product'

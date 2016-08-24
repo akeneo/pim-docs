@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Bundle\EnrichBundle\Form\Type\MassEditAction;
+namespace Acme\Bundle\CustomMassActionBundle\Form\Type\MassEditAction;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,14 +16,14 @@ class CapitalizeValuesType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(
-            array(
-                'data_class' => 'Acme\\Bundle\\EnrichBundle\\MassEditAction\\Operation\\CapitalizeValues'
-            )
+            [
+                'data_class' => 'Acme\\Bundle\\CustomMassActionBundle\\MassEditAction\\Operation\\CapitalizeValues'
+            ]
         );
     }
 
     public function getName()
     {
-        return 'acme_enrich_operation_capitalize_values';
+        return 'acme_custom_mass_action_operation_capitalize_values';
     }
 }
