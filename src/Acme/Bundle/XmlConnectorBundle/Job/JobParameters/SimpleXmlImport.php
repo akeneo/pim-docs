@@ -49,16 +49,16 @@ class SimpleXmlImport implements
     public function getDefaultValues()
     {
         return [
-            'filePath'                  => null,
-            'uploadAllowed'             => true,
-            'dateFormat'                => LocalizerInterface::DEFAULT_DATE_FORMAT,
-            'decimalSeparator'          => LocalizerInterface::DEFAULT_DECIMAL_SEPARATOR,
-            'enabled'                   => true,
-            'categoriesColumn'          => 'categories',
-            'familyColumn'              => 'family',
-            'groupsColumn'              => 'groups',
-            'enabledComparison'         => true,
-            'realTimeVersioning'        => true,
+            'filePath'           => null,
+            'uploadAllowed'      => true,
+            'dateFormat'         => LocalizerInterface::DEFAULT_DATE_FORMAT,
+            'decimalSeparator'   => LocalizerInterface::DEFAULT_DECIMAL_SEPARATOR,
+            'enabled'            => true,
+            'categoriesColumn'   => 'categories',
+            'familyColumn'       => 'family',
+            'groupsColumn'       => 'groups',
+            'enabledComparison'  => true,
+            'realTimeVersioning' => true,
         ];
     }
 
