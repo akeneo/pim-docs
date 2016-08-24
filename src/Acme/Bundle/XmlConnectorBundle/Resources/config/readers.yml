@@ -4,3 +4,5 @@ parameters:
 services:
     acme_xml_connector.reader.file.xml_product:
         class: '%acme_xml_connector.reader.file.xml_product.class%'
+        arguments:
+            - '@pim_connector.array_converter.flat_to_standard.product'

@@ -41,20 +41,37 @@ Register the bundle in AppKernel:
 Configure the Job
 -----------------
 
-Configure a job in ``Resources/config/batch_jobs.yml``:
+Configure a job in ``Resources/config/jobs.yml``:
 
-.. literalinclude:: ../../src/Acme/Bundle/XmlConnectorBundle/Resources/config/batch_jobs.yml
+.. literalinclude:: ../../src/Acme/Bundle/XmlConnectorBundle/Resources/config/jobs.yml
    :language: yaml
    :linenos:
-   :lines: 1-13
-
-Here we create an import job which contains a single step: `import`.
+   :lines: 2-11
 
 The default step is ``Akeneo\Component\Batch\Step\ItemStep``.
 
 An item step is configured with 3 elements, a reader, a processor and a writer.
 
-Here, we'll use a custom reader ``acme_xml_connector.reader.file.xml_product`` but we'll continue to use default processor and writer.
+Here is the definition of the Step:
+
+.. literalinclude:: ../../src/Acme/Bundle/XmlConnectorBundle/Resources/config/steps.yml
+   :language: yaml
+   :linenos:
+   :lines: 2-11
+
+Here, we'll use a custom reader ``acme_xml_connector.reader.file.xml_product`` but we'll continue to use the default processor and writer.
+
+Then you will need to add the job parameters classes (it contains the job configuration, job constraints and job default values):
+
+.. literalinclude:: ../../src/Acme/Bundle/XmlConnectorBundle/Resources/config/job_parameters.yml
+   :language: yaml
+   :linenos:
+
+.. literalinclude:: ../../src/Acme/Bundle/XmlConnectorBundle/Job/JobParameters/SimpleXmlImport.php
+   :language: php
+   :linenos:
+
+For further information you can check the following cookbook: :doc:`/cookbook/import_export/create-connector`
 
 .. important::
 
@@ -71,15 +88,9 @@ The purpose of the reader is to return each item as an array, in the case of XML
    :language: php
    :linenos:
 
-Our reader reads the file and iterates to return products line by line.
+The reader processes the file and iterates to return products line by line and then converts it into the Standard format
 
 This element must be configured with the path of the XML file (an example file is provided in ``XmlConnectorBundle\Resources\fixtures\products.xml``).
-
-.. note::
-
-    It is recommended to provide a **label** option (otherwise the attribute name will be used, which can lead to translation collision).
-
-    The **help** option allows you to display a hint next to the field in the job edition form.
 
 Then, we need to define this reader as a service in `readers.yml`:
 
@@ -91,6 +102,21 @@ And we introduce the following extension to load the services files in configura
 
 .. literalinclude:: ../../src/Acme/Bundle/XmlConnectorBundle/DependencyInjection/AcmeXmlConnectorExtension.php
    :language: php
+   :linenos:
+
+Translate Job and Step labels in the UI
+---------------------------------------
+
+Behind the scene, the service ``Pim\Bundle\ImportExportBundle\JobLabel\TranslatedLabelProvider`` provides translated Job and Step labels to be used in the UI.
+
+This service uses the following conventions:
+ - for a job label, given a %%jobName%%, "batch_jobs.%%jobName%%.label"
+ - for a step label, given a %%jobName%% and a %%stepName%%, "batch_jobs.%%jobName%%.%%stepName%%.label"
+
+Create a file ``Resources/translations/messages.en.yml`` in the Bundle to translate label keys.
+
+.. literalinclude:: ../../src/Acme/Bundle/XmlConnectorBundle/Resources/translations/messages.en.yml
+   :language: yaml
    :linenos:
 
 Use the new Connector
