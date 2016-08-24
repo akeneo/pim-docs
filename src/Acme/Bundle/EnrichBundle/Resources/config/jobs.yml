@@ -1,0 +1,11 @@
+services:
+    acme_enrich.job.capitalize_values:
+        class: '%pim_connector.job.simple_job.class%'
+        arguments:
+            - 'capitalize_values'
+            - '@event_dispatcher'
+            - '@akeneo_batch.job_repository'
+            -
+                - '@acme_enrich.step.capitalize_values.mass_edit'
+        tags:
+            - { name: akeneo_batch.job, connector: '%pim_enrich.connector_name.mass_edit%', type: '%pim_enrich.job.mass_edit_type%' }

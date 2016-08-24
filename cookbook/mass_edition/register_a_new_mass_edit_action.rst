@@ -146,14 +146,23 @@ Phase 4: Create the background Job
 
 .. tip::
 
-    The Job will run 3 steps: **Read**, **Process** & **Write**. In this cookbook, we use existing Reader and Writer.
+    The Step will run 3 steps: **Read**, **Process** & **Write**. In this cookbook, we use existing Reader and Writer.
 
 We just wrote the Processor in the previous phase, so let's tell the Job which services to use!
 
-.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/batch_jobs.yml
+First of all you need to define a new job as follows:
+
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/jobs.yml
     :language: yaml
     :emphasize-lines: 12-14
-    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/batch_jobs.yml
+    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/jobs.yml
+    :linenos:
+
+Then you need to define your step with the proper **Reader**, **Processor** and **Writer**.
+
+.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/steps.yml
+    :language: yaml
+    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/steps.yml
     :linenos:
 
 The Job has to be in your database, so add it to your fixtures:

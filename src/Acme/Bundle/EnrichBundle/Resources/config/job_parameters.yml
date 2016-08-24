@@ -1,0 +1,14 @@
+services:
+    acme_enrich.connector.job.job_parameters.default_values_provider.simple_mass_edit:
+        class: '%pim_enrich.connector.job.job_parameters.default_values_provider.simple_mass_edit.class%'
+        arguments:
+            - ['capitalize_values']
+        tags:
+            - { name: akeneo_batch.job.job_parameters.default_values_provider }
+
+    acme_enrich.connector.job.job_parameters.constraint_collection_provider.simple_mass_edit:
+        class: '%pim_enrich.connector.job.job_parameters.constraint_collection_provider.simple_mass_edit.class%'
+        arguments:
+            - ['capitalize_values']
+        tags:
+            - { name: akeneo_batch.job.job_parameters.constraint_collection_provider }
