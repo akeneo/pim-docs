@@ -88,11 +88,16 @@ Declare this class as a service, with the proper job name as parameter:
 Configure the job profile
 -------------------------
 
-We need our new form field to be visible on the UI, to do this we need to define our job in the view element as follows:
+As it is a job profile based on products export, we need to display the "content" tab on the UI.
+To do this, we have to register the view element as visible for our job name:
 
-.. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Resources/config/job_profile.yml
-   :language: yaml
+.. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/AcmeNotifyConnectorBundle.php
+   :language: php
    :linenos:
+
+.. note::
+
+   You could also add directly the string of your job name if you have not defined any parameter for it!
 
 Translations
 ------------
