@@ -59,7 +59,7 @@ copyright = u'2016, Akeneo SAS'
 version = 'master'
 html_context = {
 # Warning: These versions will be deleted on documenation deploy.
-    'versions': ['master', '1.5', '1.4', '1.3'],
+    'versions': ['master', '1.6', '1.5', '1.4', '1.3'],
     'css_files': [
         'https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css',
         '_static/css/akeneo.css',
