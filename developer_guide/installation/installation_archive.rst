@@ -15,8 +15,8 @@ If you prefer, you can also download them using the command line:
 .. code-block:: bash
     :linenos:
 
-    $ wget http://download.akeneo.com/pim-community-standard-v1.5-latest-icecat.tar.gz #for icecat version
-    $ wget http://download.akeneo.com/pim-community-standard-v1.5-latest.tar.gz #for minimal version
+    $ wget http://download.akeneo.com/pim-community-standard-v1.6-latest-icecat.tar.gz #for icecat version
+    $ wget http://download.akeneo.com/pim-community-standard-v1.6-latest.tar.gz #for minimal version
 
 Extracting the archive
 **********************
@@ -25,15 +25,15 @@ Extracting the archive
     :linenos:
 
     $ mkdir -p /path/to/installation
-    $ tar -xvzf pim-community-standard-v1.5-latest-icecat.tar.gz -C /path/to/installation/
+    $ tar -xvzf pim-community-standard-v1.6-latest-icecat.tar.gz -C /path/to/installation/
 
 .. note::
     Replace */path/to/installation* by the path to the directory where you want to install the PIM.
 
 .. note::
-    * For Community Edition, replace *pim-community-standard-v1.5-latest-icecat.tar.gz* by the location and the name
+    * For Community Edition, replace *pim-community-standard-v1.6-latest-icecat.tar.gz* by the location and the name
       of the archive you have downloaded from https://www.akeneo.com/download
-    * For Enterprise Edition, replace *pim-community-standard-v1.5-latest-icecat.tar.gz* by the location and the name
+    * For Enterprise Edition, replace *pim-community-standard-v1.6-latest-icecat.tar.gz* by the location and the name
       of the archive you have downloaded from https://partners.akeneo.com
 
 .. note::
