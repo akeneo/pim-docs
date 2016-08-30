@@ -134,6 +134,13 @@ Then you need to define your step with the proper **Reader**, **Processor** and 
     :prepend: # /src/Acme/Bundle/CustomMassActionBundle/Resources/config/steps.yml
     :linenos:
 
+You also need to set job parameters:
+
+.. literalinclude:: ../../src/Acme/Bundle/CustomMassActionBundle/Resources/config/job_parameters.yml
+    :language: yaml
+    :prepend: # /src/Acme/Bundle/CustomMassActionBundle/Resources/config/job_parameters.yml
+    :linenos:
+
 The Job has to be in your database, so add it to your fixtures:
 
 .. literalinclude:: ../../src/Acme/Bundle/CustomMassActionBundle/Resources/fixtures/jobs.yml
