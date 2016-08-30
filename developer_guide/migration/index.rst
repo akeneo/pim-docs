@@ -53,10 +53,10 @@ To upgrade, please change the composer.json to:
 
 .. code-block:: yaml
 
-    "akeneo/pim-enterprise-dev": "1.4.8",
-    "akeneo/pim-community-dev": "1.4.8",
+    "akeneo/pim-enterprise-dev": "1.6.0",
+    "akeneo/pim-community-dev": "1.6.0",
 
-We always tag both community and enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 1.4.8 fix may depend on CE 1.4.8.
+We always tag both community and enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 1.6.0 fix may depend on CE 1.6.0.
 
 Using the exact patch version will avoid any local composer cache issue.
 
@@ -84,12 +84,14 @@ Here are the migration guides:
 
 **Community Edition**
 
+* `From v1.5 to v1.6`_
 * `From v1.4 to v1.5`_
 * `From v1.3 to v1.4`_
 * `From v1.2 to v1.3`_
 * `From v1.1 to v1.2`_
 * `From v1.0 to v1.1`_
 
+.. _From v1.5 to v1.6: https://github.com/akeneo/pim-community-standard/blob/1.6/UPGRADE-1.6.md
 .. _From v1.4 to v1.5: https://github.com/akeneo/pim-community-standard/blob/1.5/UPGRADE-1.5.md
 .. _From v1.3 to v1.4: https://github.com/akeneo/pim-community-standard/blob/1.4/UPGRADE-1.4.md
 .. _From v1.2 to v1.3: https://github.com/akeneo/pim-community-standard/blob/1.3/UPGRADE-1.3.md
