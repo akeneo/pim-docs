@@ -65,6 +65,10 @@ Besides these modules, the following configuration is the minimal configuration 
 
   Due to changes in its API, MongoDB 3.0 is not supported.
 
+.. warning::
+
+  MySQL 5.7 is not yet supported.
+
 Depending on the configuration you pick, you will need to respect parts or all of the following requirements.
 
 **MySQL**
