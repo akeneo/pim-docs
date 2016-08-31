@@ -111,8 +111,9 @@ The Apache configuration is done, you need to enable it:
 
 .. code-block:: bash
 
-    $ cd /etc/apache2/sites-available/
     $ sudo apache2ctl configtest
+    # This will return 'Syntax OK'
+
     $ sudo a2ensite akeneo-pim.local
     $ sudo service apache2 reload
 

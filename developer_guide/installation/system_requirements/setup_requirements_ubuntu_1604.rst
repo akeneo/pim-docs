@@ -20,12 +20,11 @@ php installation
 
     $ sudo add-apt-repository ppa:ondrej/php
 
-* Then, you have to add the ``universe`` source for Ubuntu 16.04, to be able to use mycrypt and mongodb. Open ``/etc/apt/sources.list`` with your favorite text editor and add this line:
+* Then, you have to add the ``universe`` source for Ubuntu 16.04, to be able to use mycrypt and mongodb:
 
 .. code-block:: bash
 
-    $ sudo vi /etc/apt/sources.list
-    deb http://us.archive.ubuntu.com/ubuntu xenial main universe
+    $ sudo add-apt-repository "http://us.archive.ubuntu.com/ubuntu xenial main universe"
 
 * You can now install php5.6 and the needed libraries:
 
@@ -33,6 +32,7 @@ php installation
     :linenos:
 
     $ sudo apt-get update
+    $ sudo apt-get remove php7.0-cli
     $ sudo apt-get install php5.6
     $ sudo apt-get install php5.6-xml php5.6-zip php5.6-curl php5.6-mongo php5.6-intl php5.6-mbstring php5.6-mysql php5.6-gd php5.6-mcrypt php5.6-cli php5.6-apcu
     $ sudo php5enmod mcrypt
@@ -55,6 +55,7 @@ Base installation
     $ sudo apt-get install apache2 libapache2-mod-php5.6
     $ sudo apt-get install mysql-server
     $ sudo a2enmod rewrite
+    $ sudo service apache2 restart
 
 Choosing the product storage
 ****************************

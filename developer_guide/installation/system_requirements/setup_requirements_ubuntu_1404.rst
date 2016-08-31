@@ -45,6 +45,7 @@ Base installation
     $ sudo apt-get install apache2 libapache2-mod-php5.6
     $ sudo apt-get install mysql-server
     $ sudo a2enmod rewrite
+    $ sudo service apache2 restart
 
 .. note::
 
