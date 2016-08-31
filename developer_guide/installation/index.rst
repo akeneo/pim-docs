@@ -17,5 +17,6 @@ Here are the guidelines to setup system requirements on specific operating syste
     :maxdepth: 1
 
     system_requirements/setup_requirements_ubuntu_1404
+    system_requirements/setup_requirements_ubuntu_1604
     system_requirements/setup_requirements_debian8
     system_requirements/setup_requirements_debian8_php7
