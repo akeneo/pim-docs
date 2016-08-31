@@ -44,12 +44,16 @@ class XmlProductReader implements
             $this->xml->rewind();
         }
 
-        if($data = $this->xml->current()) {
+        if ($data = $this->xml->current()) {
             $item = [];
             foreach ($data->attributes() as $attributeName => $attributeValue) {
                 $item[$attributeName] = (string) $attributeValue;
             }
             $this->xml->next();
+
+            if (null !== $this->stepExecution) {
+                $this->stepExecution->incrementSummaryInfo('item_position');
+            }
 
             try {
                 $item = $this->converter->convert($item);
@@ -95,7 +99,7 @@ class XmlProductReader implements
         if (null !== $exception->getViolations()) {
             throw new InvalidItemFromViolationsException(
                 $exception->getViolations(),
-                new FileInvalidItem($item, ($this->stepExecution->getSummaryInfo('read_lines') + 1)),
+                new FileInvalidItem($item, $this->stepExecution->getSummaryInfo('item_position')),
                 [],
                 0,
                 $exception
@@ -104,7 +108,7 @@ class XmlProductReader implements
 
         $invalidItem = new FileInvalidItem(
             $item,
-            ($this->stepExecution->getSummaryInfo('read_lines') + 1)
+            $this->stepExecution->getSummaryInfo('item_position')
         );
 
         throw new InvalidItemException($exception->getMessage(), $invalidItem, [], 0, $exception);

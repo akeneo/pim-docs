@@ -10,6 +10,7 @@ To create a custom filter, first we need to create a FilterProvider for our new 
 
 .. code-block:: php
     :linenos:
+
     <?php
 
     namespace Acme\Bundle\CustomBundle\Enrich\Provider\Filter;
@@ -133,6 +134,7 @@ You can now register this module into our requirejs configuration:
 
 .. code-block:: yaml
     :linenos:
+
     # Acme/Bundle/CustomBundle/Resources/config/requirejs.yml
 
     config:

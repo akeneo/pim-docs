@@ -60,7 +60,7 @@ The purpose of this step is to validate that the input file has the expected enc
 
 This step is a custom step, not a default ``ItemStep``.
 
-This step is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/steps.yml`
+This step is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/steps.yml``
 
 .. code-block:: yaml
 
