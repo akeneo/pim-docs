@@ -1,7 +1,12 @@
 * Setup *Apache php.ini* file ``/etc/php5/apache2/php.ini``
 
+.. note::
+
+    If you have several php versions in your server, these files can be located in ``/etc/php/x.x/apache2/php.ini`` and ``/etc/php/x.x/cli/php.ini``.
+
 .. code-block:: yaml
 
+    $ sudo vim /etc/php5/apache2/php.ini
     memory_limit = 512M
     date.timezone = Etc/UTC
 
@@ -9,12 +14,9 @@
 
 .. code-block:: yaml
 
+    $ sudo vim /etc/php5/cli/php.ini
     memory_limit = 768M
     date.timezone = Etc/UTC
-
-.. note::
-
-    If you have several php versions in your server, these files can be located in ``/etc/php/5.6/apache2/php.ini`` and ``/etc/php/5.6/cli/php.ini``.
 
 .. note::
 

@@ -56,9 +56,9 @@ Choosing the product storage
 
 .. include:: /reference/technical_information/choose_database.rst.inc
 
-Based on this formula, either you need a :ref:`mongodb-install`, either you can directly go to the :ref:`system-configuration` section.
+Based on this formula, either you need a :ref:`mongodb-install-1404`, either you can directly go to the :ref:`system-configuration-1404` section.
 
-.. _mongodb-install:
+.. _mongodb-install-1404:
 
 MongoDB Installation (optional)
 *******************************
@@ -76,6 +76,6 @@ MongoDB Installation (optional)
     $ sudo apt-get install php5-mongo
 
 
-.. _system-configuration:
+.. _system-configuration-1404:
 
 .. include:: system_configuration.rst.inc

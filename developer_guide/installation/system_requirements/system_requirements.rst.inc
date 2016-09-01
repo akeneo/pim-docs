@@ -1,4 +1,3 @@
-
 **Operating Systems**
 
 Akeneo PIM only works on Linux servers. The application’s behaviour has been tested on several operating systems. We cannot guarantee the behaviour of the application on servers different from:

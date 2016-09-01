@@ -29,7 +29,7 @@ Choosing the product storage
 
 .. include:: /reference/technical_information/choose_database.rst.inc
 
-Based on this formula, either you need :ref:`installing-mongodb`, either you can directly go to the :ref:`system-configuration` section.
+Based on this formula, either you need :ref:`installing-mongodb`, either you can directly go to the :ref:`system-configuration-debian8` section.
 
 .. _installing-mongodb:
 
@@ -53,6 +53,6 @@ Installing MongoDB
 
     $ apt-get install php5-mongo
 
-.. _system-configuration:
+.. _system-configuration-debian8:
 
 .. include:: system_configuration.rst.inc
