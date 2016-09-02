@@ -11,7 +11,7 @@ Once the requirements are fulfilled, you are ready to install Akeneo PIM. Otherw
     installation_ee_archive
     setup_hybrid_storage_mysql_mongo
 
-Here are the guidelines to setup your system on specific operating systems:
+Here are the guidelines to set everything up according to your operating system:
 
 .. toctree::
     :maxdepth: 1

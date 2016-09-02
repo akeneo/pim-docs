@@ -74,7 +74,7 @@ Setup *CLI php.ini* file ``/etc/php/7.0/cli/php.ini``
     Use the time zone matching your location, for example *America/Los_Angeles* or *Europe/Berlin*. See http://www.php.net/timezones for the list of all available timezones.
 
 
-Setting-up the Hybrid Storage MySQL/MongoDB
+Setting up the Hybrid Storage MySQL/MongoDB
 -------------------------------------------
 
 If you use the full SQL storage with MySQL, you don't need to follow this section, and you're done.

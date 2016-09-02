@@ -10,7 +10,7 @@ System installation
 Base installation
 *****************
 
-* Install apache, mysql, then the dedicated modules for Akeneo PIM:
+* Install apache, MySQL, then the dedicated modules for Akeneo PIM:
 
 .. code-block:: bash
 
@@ -21,21 +21,21 @@ Base installation
 
 
 
-php installation
+PHP installation
 ****************
 
-Since Akeneo PIM 1.6, the minimal php version is php 5.6. Ubuntu 16.04 default php version is php 7.0.
+Since Akeneo PIM 1.6, the minimal PHP version is PHP 5.6. Ubuntu 16.04 default PHP version is PHP 7.0.
 You have two possibilities:
 
-* Work with php :ref:`php56`. Actually, the only supported version of php for Akeneo PIM is 5.6. You need to downgrade your version to php 5.6.
-* Work with php :ref:`php7`. You also can install Akeneo PIM with 7, in experimental mode.
+* Work with :ref:`php56`. Actually, the only supported version of PHP for Akeneo PIM is 5.6. You need to downgrade your version to PHP 5.6.
+* Work with :ref:`php7`. You also can install Akeneo PIM with 7, in experimental mode and not supported.
 
 .. _php56:
 
-php 5.6 (supported)
+PHP 5.6 (supported)
 ^^^^^^^^^^^^^^^^^^^
 
-* To downgrade to php 5.6, add this repository:
+* To downgrade to PHP 5.6, add this repository:
 
 .. code-block:: bash
 
@@ -47,7 +47,7 @@ php 5.6 (supported)
 
     $ sudo add-apt-repository "http://us.archive.ubuntu.com/ubuntu xenial main universe"
 
-* You can now install php 5.6 and the needed libraries:
+* You can now install PHP 5.6 and the needed libraries:
 
 .. code-block:: bash
 
@@ -57,7 +57,7 @@ php 5.6 (supported)
     $ sudo apt-get install php5.6-xml php5.6-zip php5.6-curl php5.6-mongo php5.6-intl php5.6-mbstring php5.6-mysql php5.6-gd php5.6-mcrypt php5.6-cli php5.6-apcu libapache2-mod-php5.6
     $ sudo phpenmod mcrypt
 
-* Check that php 5.6 is now your current php version with:
+* Check that PHP 5.6 is now your current PHP version with:
 
 .. code-block:: bash
 
@@ -67,15 +67,15 @@ php 5.6 (supported)
 
 .. _php7:
 
-php 7 (experimental)
+PHP 7 (experimental)
 ^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
 
-    We continued our effort regarding Akeneo PIM php 7 support. php 7 is now usable in experimental mode for both CLI and Web.
+    We continued our effort regarding PHP 7 support. PHP 7 is now usable in experimental mode for both CLI and Web.
     Experimental means that we manage to install and use the PIM but due to missing tests in our functional matrix we can't commit to support it.
 
-* You only need to install php 7.0 and its needed libraries:
+* You only need to install PHP 7.0 and its needed libraries:
 
 .. code-block:: bash
 
@@ -102,10 +102,10 @@ Based on this formula, either you need a :ref:`mongodb-install-1604`, either you
 MongoDB Installation (optional)
 *******************************
 
-php 5.6 (supported)
+PHP 5.6 (supported)
 ^^^^^^^^^^^^^^^^^^^
 
-* Install MongoDB server and php driver
+* Install MongoDB server and PHP driver
 
 .. note::
 
@@ -117,7 +117,7 @@ php 5.6 (supported)
     $ sudo apt-get install mongodb
     $ sudo apt-get install php5-mongo
 
-php 7.0 (experimental)
+PHP 7.0 (experimental)
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. _extension: https://docs.mongodb.com/ecosystem/drivers/php/

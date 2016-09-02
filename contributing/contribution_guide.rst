@@ -12,8 +12,8 @@ Step 0: Sign the Contributor Agreement
 
 To be able to merge your contribution, we need you to read and sign the following contributor agreement http://www.akeneo.com/contributor-license-agreement/
 
-Step 1: Setup your Environment
-------------------------------
+Step 1: Set up your Environment
+-------------------------------
 
 Install the Software Stack
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

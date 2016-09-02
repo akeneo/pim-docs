@@ -2,7 +2,7 @@
 
 .. note::
 
-    If you have several php versions in your server, these files can be located in ``/etc/php/x.x/apache2/php.ini`` and ``/etc/php/x.x/cli/php.ini``.
+    If you have several php versions on your server, these files can be located in ``/etc/php/x.x/apache2/php.ini`` and ``/etc/php/x.x/cli/php.ini``.
 
 .. code-block:: yaml
 

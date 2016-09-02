@@ -78,7 +78,7 @@ To use this database you will also require the distribution package:
 | mysql-server | Required |
 +--------------+----------+
 
-and the following php modules:
+and the following PHP modules:
 
 +------------+----------+
 | php5-mysql | Required |
