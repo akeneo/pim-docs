@@ -1,5 +1,5 @@
-Setup System Requirements on Debian 8 Jessie
-============================================
+System install on Debian 8 Jessie
+=================================
 
 Here is a quick guide to setup the :doc:`system_requirements` on Debian 8 Jessie.
 

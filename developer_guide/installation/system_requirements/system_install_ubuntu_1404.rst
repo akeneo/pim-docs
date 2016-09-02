@@ -1,5 +1,5 @@
-Setup System Requirements on Ubuntu 14.04
-=========================================
+System install on Ubuntu 14.04
+==============================
 
 Here is a quick guide to setup the :doc:`system_requirements` on Ubuntu 14.04. This guide will help you to install all
 the packages and modules needed for Akeneo PIM, then configure it to match your local installation.

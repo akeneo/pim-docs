@@ -1,5 +1,5 @@
-Setup System Requirements on Debian 8 Jessie with PHP7
-======================================================
+System install on Debian 8 Jessie with PHP7
+===========================================
 
 .. warning::
 
