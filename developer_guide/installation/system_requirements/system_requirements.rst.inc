@@ -1,4 +1,3 @@
-
 **Operating Systems**
 
 Akeneo PIM only works on Linux servers. The application’s behaviour has been tested on several operating systems. We cannot guarantee the behaviour of the application on servers different from:
@@ -81,7 +80,7 @@ To use this database you will also require the distribution package:
 | mysql-server | Required |
 +--------------+----------+
 
-and the following php modules:
+and the following PHP modules:
 
 +------------+----------+
 | php5-mysql | Required |

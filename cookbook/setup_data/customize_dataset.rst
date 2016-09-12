@@ -31,7 +31,7 @@ You can now (re)install your database by running:
 Using Your Own Dataset
 ----------------------
 
-A custom dataset can be used during Akeneo PIM installation, so you can setup your own catalog structure or demo data. Here are the steps needed create your custom dataset:
+A custom dataset can be used during Akeneo PIM installation, so you can set up your own catalog structure or demo data. Here are the steps needed create your custom dataset:
 
 Create and register your custom dataset bundle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
