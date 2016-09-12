@@ -1,23 +1,3 @@
-Installing Akeneo PIM with the Archive
---------------------------------------
-
-This document provides step by step instructions to install the PIM with the archive on an environment that fulfills the expected :doc:`system_requirements/system_requirements`.
-
-Getting Akeneo PIM
-------------------
-
-Downloading the archive
-***********************
-
-You can choose to download a PIM edition along with demo data (called *icecat*) or not (called *minimal*) from the download page http://www.akeneo.com/download.
-If you prefer, you can also download them using the command line:
-
-.. code-block:: bash
-    :linenos:
-
-    $ wget http://download.akeneo.com/pim-community-standard-v1.6-latest-icecat.tar.gz #for icecat version
-    $ wget http://download.akeneo.com/pim-community-standard-v1.6-latest.tar.gz #for minimal version
-
 Extracting the archive
 **********************
 
