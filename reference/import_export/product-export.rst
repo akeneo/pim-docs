@@ -226,7 +226,7 @@ The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\writ
 .. code-block:: yaml
 
     parameters:
-        pim_connector.writer.file.csv_product.class: Pim\Component\Connector\Writer\File\CsvProductWriter
+        pim_connector.writer.file.csv_product.class: Pim\Component\Connector\Writer\File\Csv\ProductWriter
 
     services:
         pim_connector.writer.file.csv_product:
