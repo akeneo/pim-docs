@@ -49,16 +49,17 @@ class SimpleXmlImport implements
     public function getDefaultValues()
     {
         return [
-            'filePath'           => null,
-            'uploadAllowed'      => true,
-            'dateFormat'         => LocalizerInterface::DEFAULT_DATE_FORMAT,
-            'decimalSeparator'   => LocalizerInterface::DEFAULT_DECIMAL_SEPARATOR,
-            'enabled'            => true,
-            'categoriesColumn'   => 'categories',
-            'familyColumn'       => 'family',
-            'groupsColumn'       => 'groups',
-            'enabledComparison'  => true,
-            'realTimeVersioning' => true,
+            'filePath'                  => null,
+            'uploadAllowed'             => true,
+            'dateFormat'                => LocalizerInterface::DEFAULT_DATE_FORMAT,
+            'decimalSeparator'          => LocalizerInterface::DEFAULT_DECIMAL_SEPARATOR,
+            'enabled'                   => true,
+            'categoriesColumn'          => 'categories',
+            'familyColumn'              => 'family',
+            'groupsColumn'              => 'groups',
+            'enabledComparison'         => true,
+            'realTimeVersioning'        => true,
+            'invalid_items_file_format' => 'xml',
         ];
     }
 
@@ -107,6 +108,9 @@ class SimpleXmlImport implements
                     'realTimeVersioning' => [
                         new Type('bool')
                     ],
+                    'invalid_items_file_format' => [
+                        new Type('string')
+                    ]
                 ]
             ]
         );
@@ -120,8 +124,8 @@ class SimpleXmlImport implements
         return [
             'filePath' => [
                 'options' => [
-                    'label' => 'pim_connector.import.filePath.label',
-                    'help'  => 'pim_connector.import.filePath.help'
+                    'label' => 'pim_connector.import.xml.filePath.label',
+                    'help'  => 'pim_connector.import.xml.filePath.help'
                 ]
             ],
             'decimalSeparator' => [
@@ -130,8 +134,8 @@ class SimpleXmlImport implements
                     'choices'  => $this->decimalSeparators,
                     'required' => true,
                     'select2'  => true,
-                    'label'    => 'pim_connector.export.decimalSeparator.label',
-                    'help'     => 'pim_connector.export.decimalSeparator.help'
+                    'label'    => 'pim_connector.import.xml.decimalSeparator.label',
+                    'help'     => 'pim_connector.import.xml.decimalSeparator.help'
                 ]
             ],
             'dateFormat' => [
@@ -140,47 +144,47 @@ class SimpleXmlImport implements
                     'choices'  => $this->dateFormats,
                     'required' => true,
                     'select2'  => true,
-                    'label'    => 'pim_connector.export.dateFormat.label',
-                    'help'     => 'pim_connector.export.dateFormat.help',
+                    'label'    => 'pim_connector.import.xml.dateFormat.label',
+                    'help'     => 'pim_connector.import.xml.dateFormat.help',
                 ]
             ],
             'enabled' => [
                 'type'    => 'switch',
                 'options' => [
-                    'label' => 'pim_connector.import.enabled.label',
-                    'help'  => 'pim_connector.import.enabled.help'
+                    'label' => 'pim_connector.import.xml.enabled.label',
+                    'help'  => 'pim_connector.import.xml.enabled.help'
                 ]
             ],
             'categoriesColumn' => [
                 'options' => [
-                    'label' => 'pim_connector.import.categoriesColumn.label',
-                    'help'  => 'pim_connector.import.categoriesColumn.help'
+                    'label' => 'pim_connector.import.xml.categoriesColumn.label',
+                    'help'  => 'pim_connector.import.xml.categoriesColumn.help'
                 ]
             ],
             'familyColumn' => [
                 'options' => [
-                    'label' => 'pim_connector.import.familyColumn.label',
-                    'help'  => 'pim_connector.import.familyColumn.help'
+                    'label' => 'pim_connector.import.xml.familyColumn.label',
+                    'help'  => 'pim_connector.import.xml.familyColumn.help'
                 ]
             ],
             'groupsColumn' => [
                 'options' => [
-                    'label' => 'pim_connector.import.groupsColumn.label',
-                    'help'  => 'pim_connector.import.groupsColumn.help'
+                    'label' => 'pim_connector.import.xml.groupsColumn.label',
+                    'help'  => 'pim_connector.import.xml.groupsColumn.help'
                 ]
             ],
             'enabledComparison' => [
                 'type'    => 'switch',
                 'options' => [
-                    'label' => 'pim_connector.import.enabledComparison.label',
-                    'help'  => 'pim_connector.import.enabledComparison.help'
+                    'label' => 'pim_connector.import.xml.enabledComparison.label',
+                    'help'  => 'pim_connector.import.xml.enabledComparison.help'
                 ]
             ],
             'realTimeVersioning' => [
                 'type'    => 'switch',
                 'options' => [
-                    'label' => 'pim_connector.import.realTimeVersioning.label',
-                    'help'  => 'pim_connector.import.realTimeVersioning.help'
+                    'label' => 'pim_connector.import.xml.realTimeVersioning.label',
+                    'help'  => 'pim_connector.import.xml.realTimeVersioning.help'
                 ]
             ]
         ];

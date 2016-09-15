@@ -1,9 +1,9 @@
 parameters:
-    acme_xml_connector.job.job_parameters.product_xml_import.class: Acme\Bundle\XmlConnectorBundle\Job\JobParameters\SimpleXmlImport
+    acme_xml_connector.job.job_parameters.simple_xml_export.class: Acme\Bundle\XmlConnectorBundle\Job\JobParameters\SimpleXmlImport
 
 services:
-    acme_xml_connector.job.job_parameters.product_xml_product_import:
-        class: '%acme_xml_connector.job.job_parameters.product_xml_import.class%'
+    acme_xml_connector.job.job_parameters.simple_xml_product_import:
+        class: '%acme_xml_connector.job.job_parameters.simple_xml_export.class%'
         arguments:
             - '%pim_catalog.localization.decimal_separators%'
             - '%pim_catalog.localization.date_formats%'

@@ -183,9 +183,7 @@ As a product may not have values for all attributes, depending on the product, t
             ],
     ];
 
-.. note::
-
-Here another example:
+Here is another example:
 
 .. code-block:: php
 
