@@ -12,9 +12,9 @@ We frequently release patch versions, in order to provides security and bug fixe
 
 When fixing these issues, we take an extreme care to avoid any backward compatibility issues.
 
-In the following example, Akeneo PIM version 1.4.8 has just been released and we are using an Akeneo PIM version 1.4.7.
+In the following example, Akeneo PIM version 1.6.2 has just been released and we are using an Akeneo PIM version 1.6.0.
 
-You can check the CHANGELOG-1.4.md which lists the changes provided by each version.
+You can check the CHANGELOG-1.6.md which lists the changes provided by each version.
 
 **Community Edition**
 
@@ -24,7 +24,7 @@ Run the composer update command:
 
     php composer.phar --prefer-dist update
 
-Double check in the output of this command that the 1.4.8 version has been fetched, you can also check it by using the following command:
+Double check in the output of this command that the 1.6.2 version has been fetched, you can also check it by using the following command:
 
 .. code-block:: bash
 
