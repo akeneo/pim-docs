@@ -24,7 +24,7 @@ pim_connector:
         xml:
             enabled:
                 label: Enable the product
-                help: Whether or not imported product should be enabled
+                help: Whether or not the imported product should be enabled
             categoriesColumn:
                 label: Categories column
                 help: Name of the categories column
@@ -60,7 +60,7 @@ pim_connector:
                 help: Means that the products are automatically updated with variant group values, can be switched off to only update variant group
             enabledComparison:
                 label: Compare values
-                help: Enable the comparison between original values and imported values. Can speed up import if imported values are very similar to original values
+                help: Enable the comparison between original values and imported values. Can speed up the import if imported values are very similar to original values
             decimalSeparator:
                 label: Decimal separator
                 help: One character used to set the field separator for decimal

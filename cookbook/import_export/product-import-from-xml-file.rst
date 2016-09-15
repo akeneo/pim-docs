@@ -18,11 +18,11 @@ For a recap, here is the process of a product import job execution:
 1. Starting the job and reading the first product
 
     - The job opens the file to import, it reads the first product in the file and converts it into a standard format.
-    - If an error or a warning is thrown during this step the product is marked as invalid.
+    - If an error or a warning is thrown during this step, the product is marked as invalid.
 
 2. Process the product and check the product values
 
-    - If no errors has been thrown in the previous step, the read and converted product is then processed by a product processor.
+    - If no errors have been thrown in the previous step, the read and converted product is then processed by a product processor.
     - If an error is thrown while processing, the product is marked as invalid.
 
 .. note::
@@ -33,7 +33,7 @@ For a recap, here is the process of a product import job execution:
 
     - The processed product is written in the database using a product writer.
 
-4. Collect the invalid products found and export them in a separate file
+4. Collect the invalid products found and export them into a separate file
 
     - When all products have been read, processed and written into the database, the job collects all the errors found in the file at each step and writes them back into a separate file of invalid items.
 
@@ -112,7 +112,7 @@ For further information you can check the following cookbook: :doc:`/cookbook/im
 
 .. important::
 
-    We strongly advise to always try to re-use most of the existing pieces, especially processor and writer, it makes sure that all business rules and validation will be properly applied.
+    We strongly advise to always try to re-use most of the existing pieces, especially processors and writers, it makes sure that all business rules and validation will be properly applied.
 
 Create the Reader
 -----------------
@@ -163,7 +163,7 @@ Now if you refresh the cache, the new connector and xml job can be found under C
 
 You can create an instance of this job and give it a name like ``xml_product_import``.
 
-Now you can run the job from the UI or use following command:
+Now you can run the job from the UI or use the following command:
 
 .. code-block:: bash
 
@@ -176,11 +176,11 @@ When the PIM reads the file and processes the entities we want to import, it per
 
 The PIM is then capable of exporting back the invalid items that do not respect those constraints after an import operation.
 
-In order for our connector to support this feature, we will need to implement a few more parts in our connector:
+For our connector to support this feature, we will need to implement a few more parts in our connector:
 
 - ``XmlInvalidItemWriter``: a registered XML invalid writer service whose work is to export the invalid lines found during the reading and processing steps.
 - ``XmlFileIterator``: which is used by the ``XmlInvalidItemWriter`` to read the imported file to find the invalid items.
-- ``XmlWriter``: Its responsibility is to write the invalid items back in a separate file available for download to the user.
+- ``XmlWriter``: Its responsibility is to write the invalid items back into a separate file available for download to the user.
 
 
 Create an XML file iterator class
@@ -221,7 +221,7 @@ Let's declare a Symfony service for our XML writer in ``Resources/config/writers
 
         Please note that every new configuration file created in the ``Resources/config`` folder should be loaded in the Symfony dependency injection for it to be taken into account.
 
-Plug it altogether
+Plug it all together
 --------------------
 
 Now that our XmlFileIterator class and service are defined, let's use them in our custom implementation of the ``XmlInvalidWriterInterface``.
