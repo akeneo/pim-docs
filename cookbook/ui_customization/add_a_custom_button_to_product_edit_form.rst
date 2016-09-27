@@ -65,9 +65,9 @@ Now we need to register it in the requirejs configuration:
     # /src/Acme/Bundle/EnrichBundle/Resources/config/requirejs.yml
     config:
         paths:
-            pim/product-edit-form/export-csv: pimacme/js/product/form/export-csv
+            pim/product-edit-form/export-csv: acmeenrich/js/product/form/export-csv
 
-            pim/template/product/export-csv: pimacme/templates/product/export-csv.html
+            pim/template/product/export-csv: acmeenrich/templates/product/export-csv.html
 
 
 And add it to our product form:
@@ -134,7 +134,7 @@ Now, we need to register it in the requirejs configuration:
     # /src/Acme/Bundle/EnrichBundle/Resources/config/requirejs.yml
     config:
         paths:
-            pim/product-edit-form/meta/export-status: pimacme/js/product/form/meta/export-status
+            pim/product-edit-form/meta/export-status: acmeenrich/js/product/form/meta/export-status
 
 
 And add it to our product form:
