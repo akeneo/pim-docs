@@ -55,7 +55,7 @@ Let's register this file in the `requirejs` configuration
 
     config:
         paths:
-            pim/product-edit-form/packages: pimacme/js/product/form/packages
+            pim/product-edit-form/packages: acmeenrich/js/product/form/packages
 
 Now that our file is registered in `requirejs` configuration, we can add this extension to the product edit form:
 
@@ -118,9 +118,9 @@ Remember to register your template in your requirejs file:
     # /src/Acme/Bundle/EnrichBundle/Resources/config/requirejs.yml
     config:
         paths:
-            pim/product-edit-form/packages: pimacme/js/product/form/packages
+            pim/product-edit-form/packages: acmeenrich/js/product/form/packages
 
-            pim/template/product/tab/packages: pimacme/templates/product/tab/packages.html
+            pim/template/product/tab/packages: acmeenrich/templates/product/tab/packages.html
 
 And here is our template to list every package:
 
@@ -183,9 +183,9 @@ Again, we need to register it and create the template:
     # /src/Acme/Bundle/EnrichBundle/Resources/config/requirejs.yml
     config:
         paths:
-            pim/product-edit-form/panel/warehouse: pimacme/js/product/form/panel/warehouse
+            pim/product-edit-form/panel/warehouse: acmeenrich/js/product/form/panel/warehouse
 
-            pim/template/product/panel/warehouse: pimacme/templates/product/panel/warehouse.html
+            pim/template/product/panel/warehouse: acmeenrich/templates/product/panel/warehouse.html
 
 
 .. code-block:: yaml
