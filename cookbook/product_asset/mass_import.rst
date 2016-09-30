@@ -5,7 +5,7 @@ A command has been created in the PIM to allow you to mass import assets: ``php 
 
 For instance, with the user "admin", the command will be: ``php app/console pim:product-asset:mass-upload --user=admin``
 
-To make this command works, you need to copy the files you want to import into the following folder:
+To make this command work, you need to copy the files you want to import into the following folder:
 
 ``[tmp_storage_dir]/mass_upload_imported/[username]/``
 
