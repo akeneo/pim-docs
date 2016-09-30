@@ -1,9 +1,18 @@
 How to Mass Import Assets
 =========================
 
-A command has been created in the PIM to allow you to mass import assets: ``php app/console pim:product-asset:mass-upload``
+A command has been created in the PIM to allow you to mass import assets: ``php app/console pim:product-asset:mass-upload --user=[username]``
 
-For this command to work, you need to copy files you want to import into the folder configured in ``pim_parameters.yml`` under the parameter ``tmp_storage``.
+For instance, with the user "admin", the command will be: ``php app/console pim:product-asset:mass-upload --user=admin``
+ 
+To make this command work, you need to copy the files you want to import into the following folder:
+ 
+``[tmp_storage_dir]/mass_upload_scheduled/[username]/``
+ 
+With:
+``[tmp_storage_dir]`` the path configured in ``pim_parameters.yml`` under the parameter ``tmp_storage``.
+``[username]`` the name of the user that processes the import.
+  
 The command will upload the files into the application.
 
 For example, if you upload a file named "demo_video.avi", Akeneo PIM will check if an asset with the code "demo_video" exists.
