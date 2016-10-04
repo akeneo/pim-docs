@@ -100,7 +100,7 @@ Here are the migration guides:
 
 **Enterprise Edition**
 
-Standard Enterprise Edition (EE) archives are now available on a dedicated portal: https://partners.akeneo.com/. You will be able to download your EE archive directly from it. If you do not have access to this interface, please contact your Sales or Channel Manager.
+Standard Enterprise Edition (EE) archives are now available on a dedicated portal: https://partners.akeneo.com/. You will be able to download your EE archive directly from it. If you do not have access to this interface, please contact your Customer Success or Channel Manager.
 
 Then, follow the migration guides located in your archive to upgrade your project.
 
