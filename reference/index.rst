@@ -23,3 +23,4 @@ Reference
     workflow/index
     behavior_test/index
     best_practices/index
+    standard_format/index
