@@ -518,7 +518,7 @@ ______
 |              |   field: weight        |
 |              |   operator: =          |
 |              |   value:               |
-|              |    data: 0.5           |
+|              |    amount: 0.5         |
 |              |    unit: KILOGRAM      |
 +--------------+------------------------+
 
@@ -665,13 +665,13 @@ _____
 |              |   field: basic_price   |
 |              |   operator: <=         |
 |              |   value:               |
-|              |     data: 12           |
+|              |     amount: 12         |
 |              |     currency: EUR      |
 |              |                        |
 |              |   field: null_price    |
 |              |   operator: NOT EMPTY  |
 |              |   value:               |
-|              |     data: null         |
+|              |     amount: null       |
 |              |     currency: EUR      |
 +--------------+------------------------+
 
