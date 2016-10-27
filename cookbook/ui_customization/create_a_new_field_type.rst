@@ -29,7 +29,7 @@ To create a custom field, first we need to create a FieldProvider for our new fi
 
     namespace Acme\Bundle\CustomBundle\Enrich\Provider\Field;
 
-    use Pim\Bundle\CatalogBundle\Model\AttributeInterface;
+    use Pim\Component\Catalog\Model\AttributeInterface;
     use Pim\Bundle\EnrichBundle\Provider\Field\FieldProviderInterface;
 
     class RangeFieldProvider implements FieldProviderInterface
