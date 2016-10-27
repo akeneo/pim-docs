@@ -189,7 +189,7 @@ Two parameters are required, two other are optional.
  - field: attribute code.
  - locale: local code for which value is assigned (optional).
  - scope: channel code for which value is assigned (optional).
- - value: attribute value
+ - items: attribute value
 
 .. tip::
 
@@ -200,7 +200,7 @@ Two parameters are required, two other are optional.
         actions:
             - type: add
               field: category
-              value:
+              items:
                 - t-shirts
 
 Fields
