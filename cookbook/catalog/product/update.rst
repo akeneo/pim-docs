@@ -127,7 +127,7 @@ The property adder keeps the existing items and adds a new item to the set.
     $propertyAdder->addData($product, 'color', ['red']);
 
     // adds data to product categories (a field)
-    $propertyAdder->addData($product, 'category', ['tshirt', 'promo']);
+    $propertyAdder->addData($product, 'categories', ['tshirt', 'promo']);
 
 Instantiate a New PropertyRemoverInterface
 ------------------------------------------
@@ -155,7 +155,7 @@ The property remover keeps the existing items and removes only the provided item
     $propertyRemover->removeData($product, 'color', ['red']);
 
     // removes the product from the category "promo" (a field)
-    $propertyRemover->removeData($product, 'category', ['promo']);
+    $propertyRemover->removeData($product, 'categories', ['promo']);
 
 Instantiate a New PropertyCopierInterface
 -----------------------------------------
