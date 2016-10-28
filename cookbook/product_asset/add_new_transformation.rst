@@ -229,7 +229,7 @@ Adding a channel configuration for Reference transformation is a simple YML impo
                     watermark: "Copyright Akeneo"
 
 
-Once you created YML file you can go to Akeneo PIM and then start importing with the asset channel configuration import in yml profile.
+Once you created the YML file you can go to Akeneo PIM and then start importing with the asset channel configuration import in yml profile.
 Be careful, if you import only the new channel configuration file, all your previous configurations will be removed. You need to add your old configuration(s) in the file to keep it.
 
 Now try to create an asset and generate variations for your channel. Download the generated file and discover your watermark:
