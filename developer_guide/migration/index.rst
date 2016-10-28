@@ -10,11 +10,11 @@ Patch Version
 
 We frequently release patch versions, in order to provides security and bug fixes.
 
-When fixing these issues, we take an extreme care to avoid any backward compatibility issues.
+When fixing these issues, we take extreme care to avoid any backward compatibility break.
 
-In the following example, Akeneo PIM version 1.4.8 has just been released and we are using an Akeneo PIM version 1.4.7.
+In the following example, Akeneo PIM version 1.6.2 has just been released and we are using an Akeneo PIM version 1.6.0.
 
-You can check the CHANGELOG-1.4.md which lists the changes provided by each version.
+You can check the CHANGELOG-1.6.md which lists the changes provided by each version.
 
 **Community Edition**
 
@@ -24,7 +24,7 @@ Run the composer update command:
 
     php composer.phar --prefer-dist update
 
-Double check in the output of this command that the 1.4.8 version has been fetched, you can also check it by using the following command:
+Double check in the output of this command that the 1.6.2 version has been fetched, you can also check it by using the following command:
 
 .. code-block:: bash
 
@@ -53,10 +53,10 @@ To upgrade, please change the composer.json to:
 
 .. code-block:: yaml
 
-    "akeneo/pim-enterprise-dev": "1.4.8",
-    "akeneo/pim-community-dev": "1.4.8",
+    "akeneo/pim-enterprise-dev": "1.6.0",
+    "akeneo/pim-community-dev": "1.6.0",
 
-We always tag both community and enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 1.4.8 fix may depend on CE 1.4.8.
+We always tag both community and enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 1.6.0 fix may depend on CE 1.6.0.
 
 Using the exact patch version will avoid any local composer cache issue.
 
@@ -84,12 +84,14 @@ Here are the migration guides:
 
 **Community Edition**
 
+* `From v1.5 to v1.6`_
 * `From v1.4 to v1.5`_
 * `From v1.3 to v1.4`_
 * `From v1.2 to v1.3`_
 * `From v1.1 to v1.2`_
 * `From v1.0 to v1.1`_
 
+.. _From v1.5 to v1.6: https://github.com/akeneo/pim-community-standard/blob/1.6/UPGRADE-1.6.md
 .. _From v1.4 to v1.5: https://github.com/akeneo/pim-community-standard/blob/1.5/UPGRADE-1.5.md
 .. _From v1.3 to v1.4: https://github.com/akeneo/pim-community-standard/blob/1.4/UPGRADE-1.4.md
 .. _From v1.2 to v1.3: https://github.com/akeneo/pim-community-standard/blob/1.3/UPGRADE-1.3.md
@@ -98,11 +100,12 @@ Here are the migration guides:
 
 **Enterprise Edition**
 
-Please contact our team through your access to the support service desk to ask for a standard archive.
+Standard Enterprise Edition (EE) archives are now available on a dedicated portal: https://partners.akeneo.com/. You will be able to download your EE archive directly from it. If you do not have access to this interface, please contact your please contact your Customer Success or Channel Manager.
 
-Then, follow the migration guides located in this archive to upgrade your project.
+Then, follow the migration guides located in your archive to upgrade your project.
 
 * From EE v1.0 to EE v1.3: UPGRADE-1.3.md
 * From EE v1.3 to EE v1.4: UPGRADE-1.4.md
-* From EE v1.4 to EE v1.5: UPGRADE-1.5.md
 * From CE v1.4 to EE v1.4: UPGRADE-CE-1.4-EE-1.4.md
+* From EE v1.4 to EE v1.5: UPGRADE-1.5.md
+* From EE v1.5 to EE v1.6: UPGRADE-1.6.md

@@ -1,4 +1,4 @@
-Setting-up the Hybrid Storage MySQL/MongoDB
+Setting up the Hybrid Storage MySQL/MongoDB
 ===========================================
 
 Prerequisites

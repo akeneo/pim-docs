@@ -37,7 +37,7 @@ list. Each rule is referred to by a code and can contain a list of conditions an
                   value:
                     - canon_brand
             actions:
-                - type: set_value
+                - type: set
                   field: camera_brand
                   value: canon_brand
         camera_copy_name_to_model:
@@ -50,7 +50,7 @@ list. Each rule is referred to by a code and can contain a list of conditions an
                 - field: camera_model_name
                   operator: EMPTY
             actions:
-                - type: copy_value
+                - type: copy
                   from_field: name
                   to_field: camera_model_name
 
@@ -134,7 +134,7 @@ Don't forget to add conditions to not execute the rules at each execution.
                   value:
                     - canon_brand
             actions:
-                - type: set_value
+                - type: set
                   field: camera_brand
                   value: canon_brand
 
@@ -180,7 +180,7 @@ Don't forget to add conditions to not execute the rules at each execution.
                 - field: description
                   locale: en_US
                   scope: print
-                  operator: NOT_EMPTY
+                  operator: NOT EMPTY
             actions:
                 - type: copy
                   from_field: description
