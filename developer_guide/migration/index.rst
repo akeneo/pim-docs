@@ -10,7 +10,7 @@ Patch Version
 
 We frequently release patch versions, in order to provides security and bug fixes.
 
-When fixing these issues, we take an extreme care to avoid any backward compatibility issues.
+When fixing these issues, we take extreme care to avoid any backward compatibility break.
 
 In the following example, Akeneo PIM version 1.6.2 has just been released and we are using an Akeneo PIM version 1.6.0.
 
@@ -100,7 +100,7 @@ Here are the migration guides:
 
 **Enterprise Edition**
 
-Standard Enterprise Edition (EE) archives are now available on a dedicated portal: https://partners.akeneo.com/. You will be able to download your EE archive directly from it. If you do not have access to this interface, please contact your Customer Success or Channel Manager.
+Standard Enterprise Edition (EE) archives are now available on a dedicated portal: https://partners.akeneo.com/. You will be able to download your EE archive directly from it. If you do not have access to this interface, please contact your please contact your Customer Success or Channel Manager.
 
 Then, follow the migration guides located in your archive to upgrade your project.
 
@@ -108,4 +108,4 @@ Then, follow the migration guides located in your archive to upgrade your projec
 * From EE v1.3 to EE v1.4: UPGRADE-1.4.md
 * From CE v1.4 to EE v1.4: UPGRADE-CE-1.4-EE-1.4.md
 * From EE v1.4 to EE v1.5: UPGRADE-1.5.md
-* From EE v1.4 to EE v1.5: UPGRADE-1.6.md
+* From EE v1.5 to EE v1.6: UPGRADE-1.6.md
