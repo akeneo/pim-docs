@@ -68,11 +68,19 @@ The first service provides the default values used to create a JobParameters ins
     :language: php
     :linenos:
 
+.. tip::
+
+    If the job doesn't need any particular parameters, it's possible to use directly the class ``Akeneo\Component\Batch\Job\JobParameters\EmptyDefaultValuesProvider``.
+
 The second service provides the constraints used to validate each parameter of a JobParameters instance,
 
 .. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Job/JobParameters/ConstraintCollectionProvider/DummyExport.php
     :language: php
     :linenos:
+
+.. tip::
+
+    If the job doesn't need any particular parameters, it's possible to use directly the class ``Akeneo\Component\Batch\Job\JobParameters\EmptyConstraintCollectionProvider``.
 
 These services use tags and implement ``supports()`` method so they can only be used for our job.
 

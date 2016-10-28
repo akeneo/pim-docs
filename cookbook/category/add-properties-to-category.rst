@@ -159,7 +159,7 @@ Then, define the mapping for your own field only:
 
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/doctrine/CategoryTranslation.orm.yml
     :language: yaml
-    :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/doctrine/CategoryCategoryTranslation.orm.yml
+    :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/doctrine/CategoryTranslation.orm.yml
     :linenos:
 
 As we override the ``Category`` class, we need to redefine its mapping too, even if we have nothing to add in it:

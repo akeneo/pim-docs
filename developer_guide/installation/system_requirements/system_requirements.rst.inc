@@ -1,4 +1,3 @@
-
 **Operating Systems**
 
 Akeneo PIM only works on Linux servers. The application’s behaviour has been tested on several operating systems. We cannot guarantee the behaviour of the application on servers different from:
@@ -65,6 +64,12 @@ Besides these modules, the following configuration is the minimal configuration 
 
   Due to changes in its API, MongoDB 3.0 is not supported.
 
+.. _ONLY_FULL_GROUP_BY: http://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_only_full_group_by
+
+.. warning::
+
+  MySQL 5.7 is not officialy supported but works as experimental mode if you disable the ONLY_FULL_GROUP_BY_ mode.
+
 Depending on the configuration you pick, you will need to respect parts or all of the following requirements.
 
 **MySQL**
@@ -75,7 +80,7 @@ To use this database you will also require the distribution package:
 | mysql-server | Required |
 +--------------+----------+
 
-and the following php modules:
+and the following PHP modules:
 
 +------------+----------+
 | php5-mysql | Required |
@@ -123,7 +128,7 @@ Most of the application folders and files require only read access. Here is a li
 
 These permissions are the ones required by the Symfony Framework (see its official documentation for more information).
 
-Akeneo PIM application uses an abstraction layer called Flysystem to store media and files uploaded from the application. By default, Flysystem is configured to store these files on the application server, but this configuration can easily be changed in favor of, for example, a distributed remote storage system (see Gaufrette documentation for more information).
+Akeneo PIM application uses an abstraction layer called Flysystem to store media and files uploaded from the application. By default, Flysystem is configured to store these files on the application server, but this configuration can easily be changed in favor of, for example, a distributed remote storage system (see Flysystem documentation for more information).
 
 The app/uploads folder could be located elsewhere depending on the configuration you defined in the parameters.yml of your Akeneo PIM application instance.
 

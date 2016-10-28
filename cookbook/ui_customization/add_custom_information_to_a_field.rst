@@ -32,7 +32,7 @@ Let's say that we want to display the minimum and maximum values allowed for a n
                         var field = event.field;
 
                         if ('pim_catalog_number' === field.attribute.type) {
-                            if (!_.isNull(field.attribute.number_min)) {
+                            if (!_.isNull(field.attribute.number_min) && !_.isEmpty(field.attribute.number_min)) {
                                 //To add html or a DOM element to a field, you can add the addElement method:
                                 // addElement: function (position, code, element)
                                 field.addElement(
@@ -42,7 +42,7 @@ Let's say that we want to display the minimum and maximum values allowed for a n
                                 );
                             }
 
-                            if (!_.isNull(field.attribute.number_max)) {
+                            if (!_.isNull(field.attribute.number_max) && !_.isEmpty(field.attribute.number_max)) {
                                 //To add html or a DOM element to a field, you can add the addElement method:
                                 // addElement: function (position, code, element)
                                 field.addElement(
