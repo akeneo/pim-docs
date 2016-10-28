@@ -100,10 +100,9 @@ Here are the migration guides:
 
 Standard Enterprise Edition (EE) archives are now available on a dedicated portal: https://partners.akeneo.com/. You will be able to download your EE archive directly from it. If you do not have access to this interface, please contact your please contact your Customer Success or Channel Manager.
 
-
 Then, follow the migration guides located in your archive to upgrade your project.
 
 * From EE v1.0 to EE v1.3: UPGRADE-1.3.md
 * From EE v1.3 to EE v1.4: UPGRADE-1.4.md
-* From EE v1.4 to EE v1.5: UPGRADE-1.5.md
 * From CE v1.4 to EE v1.4: UPGRADE-CE-1.4-EE-1.4.md
+* From EE v1.4 to EE v1.5: UPGRADE-1.5.md

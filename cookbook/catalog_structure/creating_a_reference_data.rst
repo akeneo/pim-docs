@@ -8,11 +8,8 @@ As Akeneo relies heavily on standard tools like Doctrine, creating the entity is
 quite straightforward for any developer with Doctrine experience.
 
 .. note::
-    At the moment, Reference Data can only be stored in ORM. No MongoDB support is provided.
-
-.. note::
     At the moment, there is no native CRUD functionality for the Reference Data.
-    You'll need to use AkeneoLabsCustomEntityBundle for that.
+    You'll need to use https://github.com/akeneo-labs/CustomEntityBundle for that.
 
 In order to create your reference data, you have to respect the following rules:
 
