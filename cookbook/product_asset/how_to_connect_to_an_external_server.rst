@@ -24,7 +24,7 @@ Let's assume that you already have a fully functional SFTP server ready to recei
     oneup_flysystem:
         adapters:
             asset_storage_adapter:
-                SFTP:
+                sftp:
                     host: ftp.domain.com
                     port: ~
                     username: ~
