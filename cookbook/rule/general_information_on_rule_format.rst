@@ -697,11 +697,9 @@ _______________
 |              |                                   |
 |              |   field: small_image              |
 |              |   operator: CONTAIN               |
-|              |   value:                          |
-|              |    - filePath: ../../../          |
+|              |   value: ../../../                |
 |              |    src/PimEnterprise/Bundle/      |
 |              |    InstallerBundle/Resources/     |
 |              |    fixtures/icecat_demo/images/   |
 |              |    AKNTS_PB.jpg                   |
-|              |    - originalFilename: akeneo.jpg |
 +--------------+-----------------------------------+
