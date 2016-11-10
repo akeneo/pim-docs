@@ -97,12 +97,18 @@ Finally, add your custom relations to the mapping:
         # the link to the simple Color object
         color:
             targetEntity: Acme\Bundle\AppBundle\Entity\Color
+            cascade:
+                - refresh
+                - detach
             joinColumn:
                 name: color_id
                 referencedColumnName: id
 
 .. note::
     The link between a product value and a simple object is defined by a *many-to-one* relationship.
+
+.. warning::
+    Don't forget to cascade detach your reference data from the product value. Otherwise you may encounter a memory leak.
 
 
 Linking the ProductValue to a Collection of Objects
@@ -216,6 +222,7 @@ Finally, add your custom relations to the mapping:
             targetEntity: Acme\Bundle\AppBundle\Entity\Color
             cascade:
                 - refresh
+                - detach
             joinTable:
                 name: acme_catalog_product_value_color
                 joinColumns:
@@ -230,6 +237,9 @@ Finally, add your custom relations to the mapping:
 
 .. note::
     The link between a product value and a collection of objects is defined by a *many-to-many* relationship.
+
+.. warning::
+    Don't forget to cascade detach your reference data from the product value. Otherwise you may encounter a memory leak.
 
 Registering the Custom Product Value Class
 ------------------------------------------
