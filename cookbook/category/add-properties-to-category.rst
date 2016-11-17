@@ -70,6 +70,13 @@ You need to update your category entity parameter used in ``entities.yml`` file:
    You don't have to add a lot of code to the Doctrine configuration to resolve target entities.
    We already have a resolver which injects the new category class name.
 
+Now, you can run the following commands to update your database:
+
+.. code-block:: bash
+
+    php app/console doctrine:schema:update --dump-sql
+    php app/console doctrine:schema:update --force
+
 Define the Category Form
 ************************
 
@@ -209,6 +216,13 @@ You need to update your category entity parameter used in ``entities.yml`` file:
 .. note::
    You don't have to add a lot of code to the Doctrine configuration to resolve target entities.
    We already have a resolver which injects the new category class name.
+
+Now, you can run the following commands to update your database:
+
+.. code-block:: bash
+
+    php app/console doctrine:schema:update --dump-sql
+    php app/console doctrine:schema:update --force
 
 Define the Category Form
 ************************

@@ -17,13 +17,13 @@ class CategoryType extends BaseCategoryType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        
+
         $builder->add(
             'description',
             'pim_translatable_field',
             [
                 'field'             => 'description',
-                'translation_class' => $this->translationdataClass,
+                'translation_class' => $this->translationDataClass,
                 'entity_class'      => $this->dataClass,
                 'property_path'     => 'translations',
                 'widget'            => 'textarea',
