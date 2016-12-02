@@ -22,10 +22,10 @@ Base installation
 MySQL installation
 ******************
 
-Since Akeneo PIM 1.6, the minimal MySQL version is MySQL 5.6. Ubuntu 16.04 default PHP version is MySQL 5.7.
+Akeneo PIM supports MySQL from 5.1 to 5.6. Ubuntu 16.04 default PHP version is MySQL 5.7.
 You have two possibilities:
 
-* Work with MySQL 5.6. Actually, the only supported version of PHP for Akeneo PIM is 5.6. You need to downgrade your version to MySQL 5.6.
+* Work with MySQL 5.6. You need to downgrade your version to MySQL 5.6.
 * Work with MySQL 5.7. MySQL 5.7 is not officialy supported but works in experimental mode if you disable the ONLY_FULL_GROUP_BY mode.
 
 
