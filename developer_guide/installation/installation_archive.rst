@@ -46,6 +46,8 @@ Initializing Akeneo
     $ php app/console cache:clear --env=prod
     $ php app/console pim:install --env=prod
 
+.. _tasks-crontab:
+
 Configuring tasks via crontab
 -----------------------------
 
