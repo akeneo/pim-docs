@@ -26,7 +26,7 @@ Apache
 Setting up the permissions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To avoid spending too much time on permission problems between the CLI user and the Apache user, an good practice is to use the same user for of them.
+To avoid spending too much time on permission problems between the CLI user and the Apache user, a good practice is to use the same user for both of them.
 
 .. warning::
 
