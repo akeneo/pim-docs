@@ -17,3 +17,4 @@ efficient answers to their multichannel needs.
     reference/index
     cookbook/index
     contributing/index
+    troubleshooting/index
