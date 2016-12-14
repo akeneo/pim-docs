@@ -9,14 +9,6 @@ If you are here, it means you have already sorted out that you need to enable th
 Installing and enabling MongoDB support in Akeneo
 *************************************************
 
-* Install the required dependency
-
-.. code-block:: bash
-    :linenos:
-
-    $ cd /path/to/installation/pim-community-standard
-    $ php ../composer.phar --prefer-dist require doctrine/mongodb-odm-bundle 3.2.0
-
 * In ``app/AppKernel.php``, uncomment the following line (this will enable ``DoctrineMongoDBBundle`` and will load and enable the MongoDB configuration):
 
 .. code-block:: bash
@@ -36,3 +28,11 @@ Installing and enabling MongoDB support in Akeneo
 
     mongodb_server: 'mongodb://localhost:27017'
     mongodb_database: your_mongo_database
+
+* Install the required dependency
+
+.. code-block:: bash
+    :linenos:
+
+    $ cd /path/to/installation/pim-community-standard
+    $ php -d memory_limit=3G ../composer.phar --prefer-dist require doctrine/mongodb-odm-bundle 3.2.0
