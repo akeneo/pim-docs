@@ -35,4 +35,4 @@ Installing and enabling MongoDB support in Akeneo
     :linenos:
 
     $ cd /path/to/installation/pim-community-standard
-    $ php ../composer.phar --prefer-dist require doctrine/mongodb-odm-bundle 3.2.0
+    $ php -d memory_limit=3G ../composer.phar --prefer-dist require doctrine/mongodb-odm-bundle 3.2.0
