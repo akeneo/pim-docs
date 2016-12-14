@@ -22,7 +22,7 @@ In order to do that you can create an event listener that will send the email.
 
 .. code-block:: php
 
-    # /src/Acme/Bundle/AppBundle/EventSubscriber/ProductModificationListener.php
+    # /src/Acme/Bundle/AppBundle/EventListener/ProductModificationListener.php
     <?php
 
     namespace Acme\Bundle\AppBundle\EventListener;

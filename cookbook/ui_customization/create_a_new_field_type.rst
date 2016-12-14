@@ -56,7 +56,7 @@ To create a custom field, first we need to create a FieldProvider for our new fi
     }
 
 
-Next, you need to register it in your service.yml file:
+Next, you need to register it in your services.yml file:
 
 .. code-block:: yaml
     :linenos:
