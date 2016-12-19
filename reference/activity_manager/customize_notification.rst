@@ -1,11 +1,11 @@
-Customize notification
-======================
+Customize notifications
+=======================
 
 Overview
 --------
 
 Currently users are notified through the notification center, but you can easily customize this system to add your own notifications.
-Let's explain how send an email to the users for instance. At the end of the project creation, an event is dispatched: ``Akeneo\ActivityManager\Component\Event\ProjectEvents::PROJECT_CALCULATED``.
+Let's explain how to send an email to the users for instance. At the end of the project creation, an event is dispatched: ``Akeneo\ActivityManager\Component\Event\ProjectEvents::PROJECT_CALCULATED``.
 You need to subscribe to this event to send an email.
 
 .. note::
@@ -55,7 +55,7 @@ First you need to create a new subscriber in your bundle, example: ``src\AppBund
         }
 
         /**
-         * Notify users that belongs to user groups linked to the project without the project owner.
+         * Notifies users that belong to user groups linked to the project without the project owner.
          *
          * @param ProjectEvent $event
          */
