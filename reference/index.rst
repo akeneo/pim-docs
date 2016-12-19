@@ -24,3 +24,4 @@ Reference
     behavior_test/index
     best_practices/index
     standard_format/index
+    activity_manager/index
