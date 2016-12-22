@@ -22,42 +22,54 @@ Rajouter kk part:
 - erreur si donnée non reconnue dans le format standard
 - faire un lien vers le format standard
 
-Current version
----------------
-
-The version of the current API is v1. All URI have to request explicitly this version. A 404 Not Found response will be thrown in the other hand.
-
-.. code-block:: shell
-
-    GET https://demo.akeneo.com/api/rest/v1
-
-
 How it's structured
 -------------------
 
-There is two APIs, one REST with basic CRUD operations. One to work with several objects, where processes are launched asynchronous.
+There is actually two APIs. A REST API with basic CRUD operations, and a job API which can launch heavy processes asynchronously.
+The current version of the API is v1. All URI have to request explicitly this version.
 
 .. code-block:: shell
 
     GET https://demo.akeneo.com/api/rest/v1
     GET https://demo.akeneo.com/api/jobs/v1
 
-Request these URI to get all the endpoint categories that the API supports [A CONFIRMER].
+Request these URIs to get all the endpoint categories that the API supports [A CONFIRMER].
 
 Scope of the API
 ----------------
 
-Currently, only Product, Category, Family, Attribute and Attribute Option are cover by the API.
+Currently, only Product, Category, Family, Attribute and Attribute Option entities are covered by the API.
 
 .. warning::
-    For Enterprise Edition, permissions are not managed.
+    As these APIs are mainly designed to be used by connectors, Enterprise Edition permissions are not managed.
 
 Authentication
 --------------
 
-We use OAuth2 to authenticate a user to the API.
+We use OAuth2 to authenticate a user to the API and Symfony ACLs to handle authorizations.
 
 TODO
+
+ACLs
+~~~~
+
+There are ACLs to protect the access to the API. In the role form, a tab `Web API permissions` defines the access to the API:
+
+- Overall Web API access
+- List attributes
+- List attribute options
+- List categories
+- List families
+- Create and update attributes
+- Create and update attribute options
+- Create and update categories
+- Create and update families
+
+.. image:: ./acl.png
+
+.. note::
+
+    We strongly advise you to create a role dedicated to the API usage.
 
 Create OAuth client
 ~~~~~~~~~~~~~~~~~~~
@@ -77,20 +89,6 @@ You will receive client public id and client secret
 
     A new client with public id 4gm4rnoizp8gskgkk080ssoo80040g44ksowwgw844k44sc00s, secret 5dyvo1z6y34so4ogkgksw88ookoows00cgoc488kcs8wk4c40s has been added
 
-
-ACLs
-~~~~
-
-There are ACLs to protect the access to the API. In the role form, a tab `Web API permissions` define the access to the API:
-
-- Overall Web API access
-- Access to the list and the administration (create and update) of the attributes
-- Access to the list and the administration (create and update) of the attribute options
-- Access to the list and the administration (create and update) of the categories
-- Access to the list and the administration (create and update) of the families
-
-.. image:: ./acl.png
-
 Get a token
 ~~~~~~~~~~~
 
@@ -105,7 +103,7 @@ Send the request with the following parameters:
         -d "username"=admin@example.com \
         -d "password"=admin
 
-Example response
+Response example:
 
 .. code-block:: json
 
@@ -131,9 +129,9 @@ HTTP Verbs
 ====== ===========
 Verb   Description
 ====== ===========
-GET	   Used for retrieving a resource or collection.
+GET	   Used for retrieving a resource or collection of resources.
 POST   Used for creating a resource.
-PATCH  Used for updating a resource with partial JSON data.
+PATCH  Used for partially updating a resource.
 PUT	   Used for replacing a resource.
 DELETE Used for deleting a resource.
 ====== ===========
@@ -141,7 +139,7 @@ DELETE Used for deleting a resource.
 Pagination
 ----------
 
-All requests that return multiple items will be paginated to 10 items by default.
+All responses containing a collection of resources will be paginated by 10 items by default.
 
 .. warning::
     You cannot request more than 100 resources at the same time.
@@ -152,29 +150,31 @@ The response will respect this structure, even if there is no item to return.
 .. code-block:: json
 
    {
-       "page":2,
-       "limit":10,
-       "pages":4,
+       "page": 2,
+       "limit": 10,
+       "pages": 4,
        "total": 38,
-       "_links":{
-          "self":{
-             "href":"https://demo.akeneo.com/api/rest/v1/categories?page=2&limit=10"
+       "_links": {
+          "self": {
+             "href": "https://demo.akeneo.com/api/rest/v1/categories?page=2&limit=10"
           },
-          "first":{
-             "href":"https://demo.akeneo.com/api/rest/v1/categories?page=1&limit=10"
+          "first": {
+             "href": "https://demo.akeneo.com/api/rest/v1/categories?page=1&limit=10"
           },
-          "last":{
-             "href":"https://demo.akeneo.com/api/rest/v1/categories?page=4&limit=10"
+          "last": {
+             "href": "https://demo.akeneo.com/api/rest/v1/categories?page=4&limit=10"
           },
-          "previous":{
-             "href":"https://demo.akeneo.com/api/rest/v1/categories?page=1&limit=10"
+          "previous": {
+             "href": "https://demo.akeneo.com/api/rest/v1/categories?page=1&limit=10"
           },
-          "next":{
-             "href":"https://demo.akeneo.com/api/rest/v1/categories?page=3&limit=10"
+          "next": {
+             "href": "https://demo.akeneo.com/api/rest/v1/categories?page=3&limit=10"
           }
        },
-       "_embedded":{
-          "items": []
+       "_embedded": {
+          "items": [
+              ...
+          ]
        }
    }
 
@@ -188,9 +188,6 @@ Request format
 For POST, PUT and PATCH requests, the request body must be JSON, with the Content-Type header set to `application/json`.
 
 .. note::
-    Content-Type is not required. Your request will be treated as JSON if missing.
-
-.. note::
     The :doc:`/reference/standard_format/index` has to be used to manipulate data. (REVOIR LA PHRASE)
 
 PATCH vs PUT
@@ -202,19 +199,23 @@ Expliquer la diff. Donner des exemples pour mettre à jour un produit avec PATCH
 Response format
 ---------------
 
-Get a resource/collection
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Get a resource or collection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The response format for requests is a JSON object.
-
 
 Create or update a resource
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When a resource is successfully created or updated, the API returns an HTTP redirection.
-Receiving an HTTP redirection is not an error and clients should follow that redirect.
-Redirect responses will have a `Location` header field which contains the URI of the resource to which the client should repeat the requests.
+Receiving an HTTP redirection is not an error and clients can follow that redirect if needed.
 
+For example, after creating a new category with a POST you will get:
+
+.. code-block:: shell
+
+   Status: 201 Created
+   Location: https://demo.akeneo.com/api/rest/v1/categories/my_category
 
 Let's try our WEB API directly ! (links to RAML definition)
 
