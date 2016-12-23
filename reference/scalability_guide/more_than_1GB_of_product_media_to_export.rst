@@ -21,8 +21,8 @@ If you encounter memory issues and you don't need media to be archived, a simple
             - '@pim_connector.factory.zip_filesystem'
             - '@oneup_flysystem.archivist_filesystem'
             - '@akeneo_batch.job.job_registry'
-        tags:
-            - { name: pim_connector.archiver }
+            
+The tag ``pim_connector.archiver`` is removed here to prevent the archiver to be used by the Symfony DI. The media archiving will be disabled.
 
 Write your own archiver
 =======================
