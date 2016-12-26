@@ -164,11 +164,93 @@ Create or update a resource
 When a resource is successfully created or updated, the API returns an HTTP redirection.
 Receiving an HTTP redirection is not an error and clients can follow that redirect if needed.
 
-For example, after creating a new category with a POST you will get:
+Response Codes
+--------------
 
-.. code-block:: bash
+Client errors
+~~~~~~~~~~~~~
 
-   Status: 201 Created
-   Location: https://demo.akeneo.com/api/rest/v1/categories/my_category
+There are four possible types of errors on API:
 
-Let's try our WEB API directly ! (links to RAML definition)
+Trying to access to the API without authentication will result in a `401 Unauthorized` response.
+
+.. code-block:: shell
+
+    HTTP/1.1 401 Unauthorized
+
+    {"code": 401, "message": "Authentication is required"}
+
+
+Sending invalid JSON will result in a `400 Bad Request` response.
+
+.. code-block:: shell
+
+    HTTP/1.1 400 Bad Request
+
+    {"code": 400, "message": "JSON is not valid."}
+
+
+Sending unrecognized keys will result in a `400 Bad Request` response.
+
+.. code-block:: shell
+
+    HTTP/1.1 400 Bad Request
+
+    {
+        "code": 400,
+        "message": "Property 'extra_property' does not exist. Check the standard format documentation.",
+        "_links": {
+            "documentation": {
+                "href": "https://docs.akeneo.com/master/reference/standard_format/other_entities.html#category"
+            }
+        }
+    }
+
+Trying to access to a nonexistent resource will result in a `404 Not Found` response.
+
+.. code-block:: shell
+
+    HTTP/1.1 404 Not Found
+
+    {"code": 404, "message": "Category master does not exist."}
+
+
+Sending invalid data will result in a `422 Unprocessable Entity` response.
+
+.. code-block:: shell
+
+    HTTP/1.1 422 Unprocessable Entity
+
+    {
+        "code": 422,
+        "message": "Validation failed.",
+        "errors": [
+            {"field": "code", "message": "This value should not be blank."}
+        ]
+    }
+
+
+Client success
+~~~~~~~~~~~~~~
+
+There are three possible types of client success on API:
+
+Getting a resource or a collection resources will result in a `200 OK` response.
+
+.. code-block:: shell
+
+    HTTP/1.1 200 OK
+
+Create a resource will result in a `201 Created` response.
+
+.. code-block:: shell
+
+    HTTP/1.1 201 Created
+    Location: https://demo.akeneo.com/api/rest/v1/categories/winter
+
+Updating a resource will result in a `204 No Content` response.
+
+.. code-block:: shell
+
+    HTTP/1.1 204 No Content
+    Location: https://demo.akeneo.com/api/rest/v1/categories/winter
