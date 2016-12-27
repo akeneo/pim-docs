@@ -109,7 +109,7 @@ Here are some examples on a category to explain that:
 |                              |                                        |                                               |                                               |
 |                              |  {                                     |  {                                            |  {                                            |
 |                              |      "code": "boots",                  |      "labels": {                              |      "code": "boots",                         |
-|                              |      "parent": "master",               |          "fr_FR": "Bottines",                 |      "parent": "shoes",                       |
+|                              |      "parent": "master",               |          "fr_FR": "Bottines",                 |      "parent": "master",                      |
 |                              |      "labels": {                       |      }                                        |      "labels": {                              |
 |                              |          "en_US": "Boots",             |  }                                            |          "en_US": "Boots",                    |
 |                              |          "fr_FR": "Bottes"             |                                               |          "fr_FR": "Bottines"                  |
@@ -120,7 +120,7 @@ Here are some examples on a category to explain that:
 |                              |                                        |                                               |                                               |
 |                              |  {                                     |  {                                            |  {                                            |
 |                              |      "code": "boots",                  |      "labels": {                              |      "code": "boots",                         |
-|                              |      "parent": "master",               |          "fr_FR": null,                       |      "parent": "shoes",                       |
+|                              |      "parent": "master",               |          "fr_FR": null,                       |      "parent": "master",                      |
 |                              |      "labels": {                       |      }                                        |      "labels": {                              |
 |                              |          "en_US": "Boots",             |  }                                            |          "en_US": "Boots",                    |
 |                              |          "fr_FR": "Bottes"             |                                               |          "fr_FR": null                        |
@@ -131,7 +131,7 @@ Here are some examples on a category to explain that:
 | (type mismatch)              |                                        |                                               |                                               |
 | See the :doc:`Client errors` |  {                                     |  {                                            |  {                                            |
 | section for more information |      "code": "boots",                  |      "labels": null                           |      "code": "boots",                         |
-|                              |      "parent": "master",               |  }                                            |      "parent": "shoes",                       |
+|                              |      "parent": "master",               |  }                                            |      "parent": "master",                      |
 |                              |      "labels": {                       |                                               |      "labels": {                              |
 |                              |          "en_US": "Boots",             |                                               |          "en_US": "Boots",                    |
 |                              |          "fr_FR": "Bottes"             |                                               |          "fr_FR": "Bottes"                    |
@@ -142,7 +142,7 @@ Here are some examples on a category to explain that:
 |                              |                                        |                                               |                                               |
 |                              |  {                                     |  {                                            |  {                                            |
 |                              |      "code": "boots",                  |      "labels": {}                             |      "code": "boots",                         |
-|                              |      "parent": "master",               |  }                                            |      "parent": "shoes",                       |
+|                              |      "parent": "master",               |  }                                            |      "parent": "master",                      |
 |                              |      "labels": {                       |                                               |      "labels": {                              |
 |                              |          "en_US": "Boots",             |                                               |          "en_US": "Boots",                    |
 |                              |          "fr_FR": "Bottes"             |                                               |          "fr_FR": "Bottes"                    |
