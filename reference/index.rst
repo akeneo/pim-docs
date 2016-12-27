@@ -25,3 +25,5 @@ Reference
     best_practices/index
     standard_format/index
     api/index
+    api/rest
+    api/jobs
