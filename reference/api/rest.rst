@@ -81,7 +81,11 @@ PATCH vs PUT
 
 The content of a PUT request will replace entirely the corresponding resource. For example, if a key is missing from the representation you send in the body, it will be removed from the resource.
 
-Unlike PUT, A PATCH request will update only the specified keys according to the following rules:
+.. note::
+  In accordance with `JSON definition <http://www.json.org>`_, what is called object in this documentation is
+  a data structure indexed by alphanumeric keys, arrays don't have any key.
+
+Unlike PUT, a PATCH request will update only the specified keys according to the following rules:
 
  - If the value is an object, it will be merged with the old value.
  - If the value is anything else, it will replace the old value.

@@ -7,9 +7,6 @@ Overview
 TODO Rajouter kk part:
 
 - max file size sur l'upload
-- erreur si donnée non reconnue dans le format standard
-- faire un lien vers le format standard
-- explication diff objects / arrays ?
 
 How it's structured
 -------------------
