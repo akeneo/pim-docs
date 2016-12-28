@@ -150,6 +150,104 @@ Here are some examples on a category to explain that:
 |                              |  }                                     |                                               |  }                                            |
 +------------------------------+----------------------------------------+-----------------------------------------------+-----------------------------------------------+
 
+The PATCH behaviour described above is quite intuitive. However, applying a PATCH containing product values on a product is a bit different:
+
++------------------------------+--------------------------------------+-------------------------------------+-------------------------------------+
+| Use case                     | Original resource                    | PATCH request body                  | Modified resource                   |
++==============================+======================================+=====================================+=====================================+
+| Add a product value          |.. code-block:: json                  |.. code-block:: json                 |.. code-block:: json                 |
+|                              |                                      |                                     |                                     |
+|                              |  {                                   |  {                                  |  {                                  |
+|                              |      "values": {                     |      "values": {                    |      "values": {                    |
+|                              |          "sku": [                    |          "name": [                  |          "sku": [                   |
+|                              |              {                       |              {                      |              {                      |
+|                              |                  "locale": null,     |                  "locale": "en_US", |                  "locale": null,    |
+|                              |                  "scope": null,      |                  "scope": null,     |                  "scope": null,     |
+|                              |                  "data": "mug"       |                  "data": "Mug"      |                  "data": "mug"      |
+|                              |              }                       |              }                      |              }                      |
+|                              |          ]                           |          ]                          |          ],                         |
+|                              |      }                               |      }                              |          "name": [                  |
+|                              |  }                                   |  }                                  |              {                      |
+|                              |                                      |                                     |                  "locale": "en_US", |
+|                              |                                      |                                     |                  "scope": null,     |
+|                              |                                      |                                     |                  "data": "Mug"      |
+|                              |                                      |                                     |              }                      |
+|                              |                                      |                                     |          ]                          |
+|                              |                                      |                                     |      }                              |
+|                              |                                      |                                     |  }                                  |
++------------------------------+--------------------------------------+-------------------------------------+-------------------------------------+
+| Modify a product value       |.. code-block:: json                  |.. code-block:: json                 |.. code-block:: json                 |
+|                              |                                      |                                     |                                     |
+|                              |  {                                   |  {                                  |  {                                  |
+|                              |      "values": {                     |      "values": {                    |      "values": {                    |
+|                              |          "sku": [                    |          "name": [                  |          "sku": [                   |
+|                              |              {                       |              {                      |              {                      |
+|                              |                  "locale": null,     |                  "locale": "en_US", |                  "locale": null,    |
+|                              |                  "scope": null,      |                  "scope": null,     |                  "scope": null,     |
+|                              |                  "data": "mug"       |                  "data": "New mug"  |                  "data": "mug"      |
+|                              |              }                       |              }                      |              }                      |
+|                              |          ],                          |          ]                          |          ],                         |
+|                              |          "name": [                   |      }                              |          "name": [                  |
+|                              |              {                       |  }                                  |              {                      |
+|                              |                  "locale": "en_US",  |                                     |                  "locale": "en_US", |
+|                              |                  "scope": null,      |                                     |                  "scope": null,     |
+|                              |                  "data": "Mug"       |                                     |                  "data": "New mug"  |
+|                              |              }                       |                                     |              }                      |
+|                              |          ]                           |                                     |          ]                          |
+|                              |      }                               |                                     |      }                              |
+|                              |  }                                   |                                     |  }                                  |
++------------------------------+--------------------------------------+-------------------------------------+-------------------------------------+
+| Modify a product value       |.. code-block:: json                  |.. code-block:: json                 |.. code-block:: json                 |
+|                              |                                      |                                     |                                     |
+| (for just one locale/scope)  |  {                                   |  {                                  |  {                                  |
+|                              |      "values": {                     |      "values": {                    |      "values": {                    |
+|                              |          "sku": [                    |          "name": [                  |          "sku": [                   |
+|                              |              {                       |              {                      |              {                      |
+|                              |                  "locale": null,     |                  "locale": "en_US", |                  "locale": null,    |
+|                              |                  "scope": null,      |                  "scope": null,     |                  "scope": null,     |
+|                              |                  "data": "mug"       |                  "data": "New mug"  |                  "data": "mug"      |
+|                              |              }                       |              }                      |              }                      |
+|                              |          ],                          |          ]                          |          ],                         |
+|                              |          "name": [                   |      }                              |          "name": [                  |
+|                              |             {                        |  }                                  |              {                      |
+|                              |                  "locale": "en_US",  |                                     |                  "locale": "en_US", |
+|                              |                  "scope": null,      |                                     |                  "scope": null,     |
+|                              |                  "data": "Mug"       |                                     |                  "data": "New mug"  |
+|                              |              },                      |                                     |              },                     |
+|                              |              {                       |                                     |              {                      |
+|                              |                   "locale": "fr_FR", |                                     |                  "locale": "fr_FR", |
+|                              |                   "scope": null,     |                                     |                  "scope": null,     |
+|                              |                   "data": "Tasse"    |                                     |                  "data": "Tasse"    |
+|                              |              }                       |                                     |              }                      |
+|                              |          ]                           |                                     |          ]                          |
+|                              |      }                               |                                     |      }                              |
+|                              |  }                                   |                                     |  }                                  |
++------------------------------+--------------------------------------+-------------------------------------+-------------------------------------+
+| Erase a product value        |.. code-block:: json                  |.. code-block:: json                 |.. code-block:: json                 |
+|                              |                                      |                                     |                                     |
+|                              |  {                                   |  {                                  |  {                                  |
+|                              |      "values": {                     |      "values": {                    |      "values": {                    |
+|                              |          "sku": [                    |          "name": [                  |          "sku": [                   |
+|                              |              {                       |              {                      |              {                      |
+|                              |                  "locale": null,     |                  "locale": "en_US", |                 "locale": null,     |
+|                              |                  "scope": null,      |                  "scope": null,     |                 "scope": null,      |
+|                              |                  "data": "mug"       |                  "data": null       |                 "data": "mug"       |
+|                              |              }                       |              }                      |              }                      |
+|                              |          ],                          |          ]                          |          ],                         |
+|                              |          "name": [                   |      }                              |          "name": [                  |
+|                              |             {                        |  }                                  |              {                      |
+|                              |                  "locale": "en_US",  |                                     |                  "locale": "en_US", |
+|                              |                  "scope": null,      |                                     |                  "scope": null,     |
+|                              |                  "data": "Mug"       |                                     |                  "data": null       |
+|                              |             }                        |                                     |              }                      |
+|                              |          ]                           |                                     |          ]                          |
+|                              |      }                               |                                     |      }                              |
+|                              | }                                    |                                     |  }                                  |
++------------------------------+--------------------------------------+-------------------------------------+-------------------------------------+
+
+.. note::
+  For these examples only products values are represented, but usually products also include other information as specified in the standard format.
+
 Response format
 ---------------
 
