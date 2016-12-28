@@ -276,7 +276,7 @@ There are four possible types of errors on API:
 
 Trying to access to the API without authentication will result in a `401 Unauthorized` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 401 Unauthorized
 
@@ -285,7 +285,7 @@ Trying to access to the API without authentication will result in a `401 Unautho
 
 Sending invalid JSON will result in a `400 Bad Request` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 400 Bad Request
 
@@ -294,7 +294,7 @@ Sending invalid JSON will result in a `400 Bad Request` response.
 
 Sending unrecognized keys will result in a `400 Bad Request` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 400 Bad Request
 
@@ -310,7 +310,7 @@ Sending unrecognized keys will result in a `400 Bad Request` response.
 
 Trying to access to a nonexistent resource will result in a `404 Not Found` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 404 Not Found
 
@@ -319,7 +319,7 @@ Trying to access to a nonexistent resource will result in a `404 Not Found` resp
 
 Sending invalid data will result in a `422 Unprocessable Entity` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 422 Unprocessable Entity
 
@@ -339,20 +339,20 @@ There are three possible types of client success on API:
 
 Getting a resource or a collection resources will result in a `200 OK` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 200 OK
 
 Create a resource will result in a `201 Created` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 201 Created
     Location: https://demo.akeneo.com/api/rest/v1/categories/winter
 
 Updating a resource will result in a `204 No Content` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 204 No Content
     Location: https://demo.akeneo.com/api/rest/v1/categories/winter
