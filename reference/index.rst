@@ -26,5 +26,3 @@ Reference
     standard_format/index
     activity_manager/index
     api/index
-    api/rest
-    api/jobs
