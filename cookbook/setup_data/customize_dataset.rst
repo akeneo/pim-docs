@@ -10,7 +10,7 @@ Akeneo PIM ships with *icecat-demo-dev* enabled.
 Switching From Icecat to Minimal
 --------------------------------
 
-Edit the file ``app/config/parameters.yml`` and add the line
+Edit the file ``app/config/pim_parameters.yml`` and add the line
 
 .. code-block:: yaml
 
