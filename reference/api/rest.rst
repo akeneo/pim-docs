@@ -81,7 +81,11 @@ PATCH vs PUT
 
 The content of a PUT request will replace entirely the corresponding resource. For example, if a key is missing from the representation you send in the body, it will be removed from the resource.
 
-Unlike PUT, A PATCH request will update only the specified keys according to the following rules:
+.. note::
+  In accordance with `JSON definition <http://www.json.org>`_, what is called object in this documentation is
+  a data structure indexed by alphanumeric keys, arrays don't have any key.
+
+Unlike PUT, a PATCH request will update only the specified keys according to the following rules:
 
  - If the value is an object, it will be merged with the old value.
  - If the value is anything else, it will replace the old value.
@@ -150,6 +154,104 @@ Here are some examples on a category to explain that:
 |                              |  }                                     |                                               |  }                                            |
 +------------------------------+----------------------------------------+-----------------------------------------------+-----------------------------------------------+
 
+The PATCH behaviour described above is quite intuitive. However, applying a PATCH containing product values on a product is a bit different:
+
++------------------------------+--------------------------------------+-------------------------------------+-------------------------------------+
+| Use case                     | Original resource                    | PATCH request body                  | Modified resource                   |
++==============================+======================================+=====================================+=====================================+
+| Add a product value          |.. code-block:: json                  |.. code-block:: json                 |.. code-block:: json                 |
+|                              |                                      |                                     |                                     |
+|                              |  {                                   |  {                                  |  {                                  |
+|                              |      "values": {                     |      "values": {                    |      "values": {                    |
+|                              |          "sku": [                    |          "name": [                  |          "sku": [                   |
+|                              |              {                       |              {                      |              {                      |
+|                              |                  "locale": null,     |                  "locale": "en_US", |                  "locale": null,    |
+|                              |                  "scope": null,      |                  "scope": null,     |                  "scope": null,     |
+|                              |                  "data": "mug"       |                  "data": "Mug"      |                  "data": "mug"      |
+|                              |              }                       |              }                      |              }                      |
+|                              |          ]                           |          ]                          |          ],                         |
+|                              |      }                               |      }                              |          "name": [                  |
+|                              |  }                                   |  }                                  |              {                      |
+|                              |                                      |                                     |                  "locale": "en_US", |
+|                              |                                      |                                     |                  "scope": null,     |
+|                              |                                      |                                     |                  "data": "Mug"      |
+|                              |                                      |                                     |              }                      |
+|                              |                                      |                                     |          ]                          |
+|                              |                                      |                                     |      }                              |
+|                              |                                      |                                     |  }                                  |
++------------------------------+--------------------------------------+-------------------------------------+-------------------------------------+
+| Modify a product value       |.. code-block:: json                  |.. code-block:: json                 |.. code-block:: json                 |
+|                              |                                      |                                     |                                     |
+|                              |  {                                   |  {                                  |  {                                  |
+|                              |      "values": {                     |      "values": {                    |      "values": {                    |
+|                              |          "sku": [                    |          "name": [                  |          "sku": [                   |
+|                              |              {                       |              {                      |              {                      |
+|                              |                  "locale": null,     |                  "locale": "en_US", |                  "locale": null,    |
+|                              |                  "scope": null,      |                  "scope": null,     |                  "scope": null,     |
+|                              |                  "data": "mug"       |                  "data": "New mug"  |                  "data": "mug"      |
+|                              |              }                       |              }                      |              }                      |
+|                              |          ],                          |          ]                          |          ],                         |
+|                              |          "name": [                   |      }                              |          "name": [                  |
+|                              |              {                       |  }                                  |              {                      |
+|                              |                  "locale": "en_US",  |                                     |                  "locale": "en_US", |
+|                              |                  "scope": null,      |                                     |                  "scope": null,     |
+|                              |                  "data": "Mug"       |                                     |                  "data": "New mug"  |
+|                              |              }                       |                                     |              }                      |
+|                              |          ]                           |                                     |          ]                          |
+|                              |      }                               |                                     |      }                              |
+|                              |  }                                   |                                     |  }                                  |
++------------------------------+--------------------------------------+-------------------------------------+-------------------------------------+
+| Modify a product value       |.. code-block:: json                  |.. code-block:: json                 |.. code-block:: json                 |
+|                              |                                      |                                     |                                     |
+| (for just one locale/scope)  |  {                                   |  {                                  |  {                                  |
+|                              |      "values": {                     |      "values": {                    |      "values": {                    |
+|                              |          "sku": [                    |          "name": [                  |          "sku": [                   |
+|                              |              {                       |              {                      |              {                      |
+|                              |                  "locale": null,     |                  "locale": "en_US", |                  "locale": null,    |
+|                              |                  "scope": null,      |                  "scope": null,     |                  "scope": null,     |
+|                              |                  "data": "mug"       |                  "data": "New mug"  |                  "data": "mug"      |
+|                              |              }                       |              }                      |              }                      |
+|                              |          ],                          |          ]                          |          ],                         |
+|                              |          "name": [                   |      }                              |          "name": [                  |
+|                              |             {                        |  }                                  |              {                      |
+|                              |                  "locale": "en_US",  |                                     |                  "locale": "en_US", |
+|                              |                  "scope": null,      |                                     |                  "scope": null,     |
+|                              |                  "data": "Mug"       |                                     |                  "data": "New mug"  |
+|                              |              },                      |                                     |              },                     |
+|                              |              {                       |                                     |              {                      |
+|                              |                   "locale": "fr_FR", |                                     |                  "locale": "fr_FR", |
+|                              |                   "scope": null,     |                                     |                  "scope": null,     |
+|                              |                   "data": "Tasse"    |                                     |                  "data": "Tasse"    |
+|                              |              }                       |                                     |              }                      |
+|                              |          ]                           |                                     |          ]                          |
+|                              |      }                               |                                     |      }                              |
+|                              |  }                                   |                                     |  }                                  |
++------------------------------+--------------------------------------+-------------------------------------+-------------------------------------+
+| Erase a product value        |.. code-block:: json                  |.. code-block:: json                 |.. code-block:: json                 |
+|                              |                                      |                                     |                                     |
+|                              |  {                                   |  {                                  |  {                                  |
+|                              |      "values": {                     |      "values": {                    |      "values": {                    |
+|                              |          "sku": [                    |          "name": [                  |          "sku": [                   |
+|                              |              {                       |              {                      |              {                      |
+|                              |                  "locale": null,     |                  "locale": "en_US", |                 "locale": null,     |
+|                              |                  "scope": null,      |                  "scope": null,     |                 "scope": null,      |
+|                              |                  "data": "mug"       |                  "data": null       |                 "data": "mug"       |
+|                              |              }                       |              }                      |              }                      |
+|                              |          ],                          |          ]                          |          ],                         |
+|                              |          "name": [                   |      }                              |          "name": [                  |
+|                              |             {                        |  }                                  |              {                      |
+|                              |                  "locale": "en_US",  |                                     |                  "locale": "en_US", |
+|                              |                  "scope": null,      |                                     |                  "scope": null,     |
+|                              |                  "data": "Mug"       |                                     |                  "data": null       |
+|                              |             }                        |                                     |              }                      |
+|                              |          ]                           |                                     |          ]                          |
+|                              |      }                               |                                     |      }                              |
+|                              | }                                    |                                     |  }                                  |
++------------------------------+--------------------------------------+-------------------------------------+-------------------------------------+
+
+.. note::
+  For these examples only products values are represented, but usually products also include other information as specified in the standard format.
+
 Response format
 ---------------
 
@@ -174,7 +276,7 @@ There are four possible types of errors on API:
 
 Trying to access to the API without authentication will result in a `401 Unauthorized` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 401 Unauthorized
 
@@ -183,7 +285,7 @@ Trying to access to the API without authentication will result in a `401 Unautho
 
 Sending invalid JSON will result in a `400 Bad Request` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 400 Bad Request
 
@@ -192,7 +294,7 @@ Sending invalid JSON will result in a `400 Bad Request` response.
 
 Sending unrecognized keys will result in a `400 Bad Request` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 400 Bad Request
 
@@ -208,7 +310,7 @@ Sending unrecognized keys will result in a `400 Bad Request` response.
 
 Trying to access to a nonexistent resource will result in a `404 Not Found` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 404 Not Found
 
@@ -217,7 +319,7 @@ Trying to access to a nonexistent resource will result in a `404 Not Found` resp
 
 Sending invalid data will result in a `422 Unprocessable Entity` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 422 Unprocessable Entity
 
@@ -237,20 +339,20 @@ There are three possible types of client success on API:
 
 Getting a resource or a collection resources will result in a `200 OK` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 200 OK
 
 Create a resource will result in a `201 Created` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 201 Created
     Location: https://demo.akeneo.com/api/rest/v1/categories/winter
 
 Updating a resource will result in a `204 No Content` response.
 
-.. code-block:: shell
+.. code-block:: bash
 
     HTTP/1.1 204 No Content
     Location: https://demo.akeneo.com/api/rest/v1/categories/winter
