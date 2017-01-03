@@ -122,9 +122,12 @@ Response example:
         "refresh_token": "MDk2ZmIwODBkYmE3YjNjZWQ4ZTk2NTk2N2JmNjkyZDQ4NzA3YzhiZDQzMjJjODI5MmQ4ZmYxZjlkZmU1ZDNkMQ"
     }
 
- - `access_token` is the information that must be included in every requests to the API for the client application to be authorized (see the example below).
- - `expires_in` is the token lifespan (in seconds).
- - `refresh_token` is a special token used only to refresh your `access_token` after it expired.
+
+- `access_token` is the information that must be included in every requests to the API for the client application to be authorized (see the example below).
+- `expires_in` is the token lifespan (in seconds).
+- `refresh_token` is a special token used only to refresh your `access_token` after it expired.
+
+.. image:: ./img/authentication.png
 
 Accessing a resource
 ********************
@@ -153,6 +156,8 @@ After a token has expired, the client application can ask a new token by calling
 The response will be the same than when asking for the initial token except it will contain a new `access_token`
 and `refresh_token`.
 
+.. image:: ./img/refreshing_access_token.png
+
 Authorization
 ~~~~~~~~~~~~~
 
@@ -169,7 +174,7 @@ In the role form, a `Web API permissions` tab includes ACLs for the API:
 - Create and update categories
 - Create and update families
 
-.. image:: ./acl.png
+.. image:: ./img/acl.png
 
 .. note::
   We strongly advise you to create a role dedicated to the API usage.
