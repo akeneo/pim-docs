@@ -28,34 +28,59 @@ Let's say that we want to display the minimum and maximum values allowed for a n
                 addFieldExtension: function (event) {
                     //The event contains the field and an array of promises. The field will wait for all the promises to be resolved before rendering.
                     //You can add a promise to this array to be sure that the field will wait for it before rendering itself
-                    event.promises.push($.Deferred().resolve().then(function () {
-                        var field = event.field;
+                    var deferred = $.Deferred();
+                    event.promises.push(deferred);
 
-                        if ('pim_catalog_number' === field.attribute.type) {
-                            if (!_.isNull(field.attribute.number_min) && !_.isEmpty(field.attribute.number_min)) {
-                                //To add html or a DOM element to a field, you can add the addElement method:
-                                // addElement: function (position, code, element)
-                                field.addElement(
-                                    'footer',
-                                    'number_min',
-                                    '<span>Min value: ' + field.attribute.number_min + '</span>'
-                                );
-                            }
-
-                            if (!_.isNull(field.attribute.number_max) && !_.isEmpty(field.attribute.number_max)) {
-                                //To add html or a DOM element to a field, you can add the addElement method:
-                                // addElement: function (position, code, element)
-                                field.addElement(
-                                    'footer',
-                                    'number_max',
-                                    '<span>Max value: ' + field.attribute.number_max + '</span>'
-                                );
-                            }
-
-                            //You can also disable the field with the setEditable method of the field
-                            //field.setEditable(false);
+                    var field = event.field;
+                    if ('pim_catalog_number' === field.attribute.type) {
+                        if (!_.isNull(field.attribute.number_min) && !_.isEmpty(field.attribute.number_min)) {
+                            //To add html or a DOM element to a field, you can add the addElement method:
+                            // addElement: function (position, code, element)
+                            field.addElement(
+                                'footer',
+                                'number_min',
+                                '<span>Min value: ' + field.attribute.number_min + '</span>'
+                            );
                         }
-                    }.bind(this)).promise());
+
+                        if (!_.isNull(field.attribute.number_max) && !_.isEmpty(field.attribute.number_max)) {
+                            //To add html or a DOM element to a field, you can add the addElement method:
+                            // addElement: function (position, code, element)
+                            field.addElement(
+                                'footer',
+                                'number_max',
+                                '<span>Max value: ' + field.attribute.number_max + '</span>'
+                            );
+                        }
+
+                        //You can also disable the field with the setEditable method of the field
+                        //field.setEditable(false);
+                    }
+
+                    // After you successfully finished your computation, you have to resolve your
+                    // deferred Promise. Otherwise the field won't get rendered.
+                    // The resolve() can happen everywhere, even in a callback of another Promise.
+                    // 
+                    // Other Examples:
+                    //
+                    //     /**
+                    //      * Example waiting for another Promise to be resolved
+                    //      */
+                    //     FetcherRegistry
+                    //       .getFetcher('product')
+                    //       .fetch(this.parentProductId)
+                    //       .then(function (parentProduct) {
+                    //         deferred.resolve();
+                    //       });
+                    //
+                    //     /**
+                    //      * Example using a simple setTimeout
+                    //      */
+                    //     setTimeout(function () {
+                    //       deferred.resolve();
+                    //     }, 10000);
+                    //     
+                    deferred.resolve();
 
                     return this;
                 }
