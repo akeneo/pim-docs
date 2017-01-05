@@ -3,8 +3,6 @@ First aid kit
 
 Here is our first aid kit if you encounter a bug on your PIM project.
 
-.. image:: /troubleshooting/unicorn-akeneo_128.png
-
 Step 1: are you sure that it's a bug?
 -------------------------------------
 
@@ -117,7 +115,7 @@ Step 10: did you customize your PIM?
 
     If the previous steps failed to solve the bug, try this one.
 
-Deactivate all your custom developments by commenting them in the "AppKernel.php" file ``/path/to/your/pim/app/AppKernel.php``.
+Disable all custom developments by commenting them in the "AppKernel.php" file ``/path/to/your/pim/app/AppKernel.php``.
 
 .. code-block:: php
 
@@ -126,7 +124,7 @@ Deactivate all your custom developments by commenting them in the "AppKernel.php
 
 And then, re-apply `Step 7: are your assets properly deployed?`_ and `Step 8: did you clear the cache?`_
 
-Alternativly, you can check if the issue is reproducible on http://demo.akeneo.com (only for the latest PIM version).
+Alternatively, you can check if the issue is reproducible on http://demo.akeneo.com (only for the latest PIM version).
 
 Does the bug persist?
 ---------------------
