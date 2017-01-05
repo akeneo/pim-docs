@@ -53,7 +53,7 @@ Tasks bugs are issues which occur when running the PIM jobs, like mass edit, imp
 Performances issues
 -------------------
 
-When the PIM is sloooowwwww, it's probably a performance issue.
+If you notice slowdowns: if it takes time to display pages, if imports or exports are running for ever, you are probably experimenting a performance issue.
 
 **What to do?**
 
