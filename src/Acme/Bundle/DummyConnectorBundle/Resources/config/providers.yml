@@ -1,0 +1,12 @@
+services:
+    acme_dummy_connector.provider.form.job_instance:
+        class: '%pim_enrich.provider.form.job_instance.class%'
+        arguments:
+            -
+                my_custom_job_name: pim-job-instance-csv-base-export
+
+    acme_dummy_connector.provider.form.custom_job_instance:
+        class: '%pim_enrich.provider.form.job_instance.class%'
+        arguments:
+            -
+                my_custom_job_name: acme-job-instance-csv-base-import
