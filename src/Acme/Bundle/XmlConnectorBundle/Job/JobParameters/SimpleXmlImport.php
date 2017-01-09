@@ -27,22 +27,6 @@ class SimpleXmlImport implements
     /** @var FormConfigurationProviderInterface */
     protected $formConfiguration;
 
-    /** @var array */
-    protected $decimalSeparators;
-
-    /** @var array */
-    protected $dateFormats;
-
-    /**
-     * @param array $decimalSeparators
-     * @param array $dateFormats
-     */
-    public function __construct(array $decimalSeparators, array $dateFormats)
-    {
-        $this->decimalSeparators = $decimalSeparators;
-        $this->dateFormats = $dateFormats;
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -114,80 +98,6 @@ class SimpleXmlImport implements
                 ]
             ]
         );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getFormConfiguration()
-    {
-        return [
-            'filePath' => [
-                'options' => [
-                    'label' => 'pim_connector.import.xml.filePath.label',
-                    'help'  => 'pim_connector.import.xml.filePath.help'
-                ]
-            ],
-            'decimalSeparator' => [
-                'type'    => 'choice',
-                'options' => [
-                    'choices'  => $this->decimalSeparators,
-                    'required' => true,
-                    'select2'  => true,
-                    'label'    => 'pim_connector.import.xml.decimalSeparator.label',
-                    'help'     => 'pim_connector.import.xml.decimalSeparator.help'
-                ]
-            ],
-            'dateFormat' => [
-                'type'    => 'choice',
-                'options' => [
-                    'choices'  => $this->dateFormats,
-                    'required' => true,
-                    'select2'  => true,
-                    'label'    => 'pim_connector.import.xml.dateFormat.label',
-                    'help'     => 'pim_connector.import.xml.dateFormat.help',
-                ]
-            ],
-            'enabled' => [
-                'type'    => 'switch',
-                'options' => [
-                    'label' => 'pim_connector.import.xml.enabled.label',
-                    'help'  => 'pim_connector.import.xml.enabled.help'
-                ]
-            ],
-            'categoriesColumn' => [
-                'options' => [
-                    'label' => 'pim_connector.import.xml.categoriesColumn.label',
-                    'help'  => 'pim_connector.import.xml.categoriesColumn.help'
-                ]
-            ],
-            'familyColumn' => [
-                'options' => [
-                    'label' => 'pim_connector.import.xml.familyColumn.label',
-                    'help'  => 'pim_connector.import.xml.familyColumn.help'
-                ]
-            ],
-            'groupsColumn' => [
-                'options' => [
-                    'label' => 'pim_connector.import.xml.groupsColumn.label',
-                    'help'  => 'pim_connector.import.xml.groupsColumn.help'
-                ]
-            ],
-            'enabledComparison' => [
-                'type'    => 'switch',
-                'options' => [
-                    'label' => 'pim_connector.import.xml.enabledComparison.label',
-                    'help'  => 'pim_connector.import.xml.enabledComparison.help'
-                ]
-            ],
-            'realTimeVersioning' => [
-                'type'    => 'switch',
-                'options' => [
-                    'label' => 'pim_connector.import.xml.realTimeVersioning.label',
-                    'help'  => 'pim_connector.import.xml.realTimeVersioning.help'
-                ]
-            ]
-        ];
     }
 
     /**

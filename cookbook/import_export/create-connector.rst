@@ -144,35 +144,28 @@ Configure the UI for our JobParameters
 
 At this point, the job is usable in command line though it cannot be configured via the UI.
 
-We need to write a service providing the form type configuration for each parameter of our JobParameters instance.
+We need to provide a form name to the frontend to be able to render it properly. If your connector doesn't require extra fields you use the basic froms already in Akeneo:
 
-In our case we want to display a a text field where to fill in the path. The validation constraint defined earlier will also apply here.
-
-.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Job/JobParameters/FormConfigurationProvider/DummyExport.php
-    :language: php
-    :linenos:
-
-This service is configured using a tag and it implements ``supports()`` method to be used for our job only.
-
-.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/job_parameters.yml
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/providers.yml
     :language: yaml
     :linenos:
-    :lines: 1,4-6,25-33
+    :lines: 1-6
 
-Translate Job and Step labels in the UI
----------------------------------------
+If you want to go further, you can create your own form and re-use common parts provided by default. Here is an example of a full form configuration:
 
-Behind the scene, the service ``Pim\Bundle\ImportExportBundle\JobLabel\TranslatedLabelProvider`` provides translated Job and Step labels to be used in the UI.
-
-This service uses following conventions:
- - for a job label, given a $jobName, "batch_jobs.$jobName.label"
- - for a step label, given a $jobName and a $stepName, "batch_jobs.$jobName.$stepName.label"
-
-Create a file ``Resources/translations/messages.en.yml`` in our Bundle to translate label keys.
-
-.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/translations/messages.en.yml
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/form_extensions.yml
     :language: yaml
     :linenos:
+
+Register it in the form provider and you are good to go!
+
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/providers.yml
+    :language: yaml
+    :linenos:
+    :lines: 8-13
+
+Conclusion
+----------
 
 We can now create a new configuration for our Job from the UI, using the menu "spread > export profiles" then "create export profile" button.
 
