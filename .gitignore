@@ -1,2 +1,6 @@
-_exts/
+vendor/
 composer.lock
+app/config/*
+app/cache/*
+app/logs/*
+web/

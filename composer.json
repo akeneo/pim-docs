@@ -3,9 +3,38 @@
     "description": "Technical documentation of the Akeneo PIM",
     "minimal-stability": "dev",
     "require": {
-        "fabpot/sphinx-php": "1.0.1"
+        "fabpot/sphinx-php": "1.0.1",
+        "akeneo/pim-community-dev": "dev-master",
+        "symfony/console": "~2.0"
     },
     "config": {
-        "vendor-dir": "_exts"
+        "vendor-dir": "vendor"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/akeneo/pim-community-dev.git",
+            "branch": "master"
+        }
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "rm app/config/*",
+            "ln -s $(pwd)/vendor/akeneo/pim-community-dev/app/config/config.yml $(pwd)/app/config/",
+            "ln -s $(pwd)/vendor/akeneo/pim-community-dev/app/config/config_dev.yml $(pwd)/app/config/",
+            "ln -s $(pwd)/vendor/akeneo/pim-community-dev/app/config/security.yml $(pwd)/app/config/",
+            "ln -s $(pwd)/vendor/akeneo/pim-community-dev/app/config/parameters.yml.dist $(pwd)/app/config/parameters.yml",
+            "ln -s $(pwd)/vendor/akeneo/pim-community-dev/app/config/pim_parameters.yml $(pwd)/app/config/",
+            "php app/console asset:install",
+            "php app/console oro:assetic:dump"
+        ]
+    },
+    "extra": {
+        "incenteev-parameters": {
+            "keep-outdated": true,
+            "file": "app/config/parameters.yml"
+        },
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web"
     }
 }
