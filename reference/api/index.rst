@@ -17,7 +17,17 @@ The current version of the API is v1. All URI have to request explicitly this ve
     GET https://demo.akeneo.com/api/rest/v1
     GET https://demo.akeneo.com/api/jobs/v1
 
-Request these URIs to get all the endpoint categories that the API supports.
+By requesting these two URI, you will get the list of all available endpoints:
+
+
+.. code-block:: bash
+
+    {
+        "attributes_url": "http://demo.akeneo.com/api/rest/{version}/attributes",
+        "categories_url": "http://demo.akeneo.com/api/rest/{version}/categories",
+        "families_url": "http://demo.akeneo.com/api/rest/{version}/families",
+        ...
+    }
 
 Scope of the API
 ----------------
@@ -25,7 +35,7 @@ Scope of the API
 Currently, only Product, Category, Family, Attribute and Attribute Option entities are covered by the API.
 
 .. warning::
-    As these APIs are mainly designed to be used by connectors, Enterprise Edition permissions are not managed.
+    As these APIs are mainly designed to be used by connectors, Enterprise Edition permissions are not enforced for now, the same way there are not enforced in the connectors themselves.
 
 Security
 --------
@@ -40,7 +50,11 @@ Creating an OAuth client
 ************************
 
 The first operation you will need to authorize third-party applications to use the API is to create a `client id`.
-To do so, use the following command:
+A client id identifies a client application.
+
+To increase security, the OAuth protocol specifies that a client id comes with a secret. They are always generated, used and revoked together.
+
+To create a new pair of client id / secret, use the following command:
 
 .. code-block:: bash
 
@@ -48,11 +62,13 @@ To do so, use the following command:
         --grant-type="password" \
         --grant-type="refresh_token"
 
-You will receive the client id and client secret:
+You will get something like:
 
 .. code-block:: bash
 
-    A new client with client id 4gm4rnoizp8gskgkk080ssoo80040g44ksowwgw844k44sc00s and secret 5dyvo1z6y34so4ogkgksw88ookoows00cgoc488kcs8wk4c40s has been added.
+    A new client has been added:
+    client_id: 4gm4rnoizp8gskgkk080ssoo80040g44ksowwgw844k44sc00s
+    secret: 5dyvo1z6y34so4ogkgksw88ookoows00cgoc488kcs8wk4c40s
 
 These keys must be transmitted by the administrator to any third-party application wanting to use the API.
 
@@ -97,7 +113,7 @@ To get the list of all existing client ids use the following command:
 Getting a token
 ***************
 
-A client id has been created and set into the client application. The last information needed to use the API is the token.
+A client id has been created and provided to the client application. The last information needed to use the API is the token.
 
 To get a valid token, the client application must send the following request:
 
@@ -176,5 +192,5 @@ In the role form, a `Web API permissions` tab includes ACLs for the API:
 
 .. image:: ./img/acl.png
 
-.. note::
-  We strongly advise you to create a role dedicated to the API usage.
+.. warning::
+  As accessing the API grants higher privileges than when using the UI, we strongly recommend creating one or more dedicated users with specific roles for the web API.

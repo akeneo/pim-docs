@@ -7,10 +7,9 @@ HTTP Verbs
 ====== ===========
 Verb   Description
 ====== ===========
-GET	   Used for retrieving a resource or a collection of resources.
-POST   Used for creating a resource.
-PATCH  Used for partially updating a resource.
-PUT	   Used for replacing a resource.
+GET	   Used for fetching a resource or a collection of resources.
+POST   Used for adding a resource.
+PATCH  Used for partially updating a resource. If it does not exist it is created.
 DELETE Used for deleting a resource.
 ====== ===========
 
@@ -30,10 +29,9 @@ The response will respect this structure, even if there is no item to return.
 .. code-block:: json
 
    {
-       "page": 2,
-       "limit": 10,
-       "pages": 4,
-       "total": 38,
+       "current_page": 2,
+       "pages_count": 4,
+       "items_count": 38,
        "_links": {
           "self": {
              "href": "https://demo.akeneo.com/api/rest/v1/categories?page=2&limit=10"
@@ -65,19 +63,15 @@ The response will respect this structure, even if there is no item to return.
 Request format
 --------------
 
-Headers
-~~~~~~~
-
-POST, PUT and PATCH requests must specify a `Content-Type` header set to `application/json`.
-
 Body
 ~~~~
 
-.. note::
-  :doc:`/reference/standard_format/index` is used for both sending and receiving data from the API.
+Entities are represented following the :doc:`/reference/standard_format/index` when both sending and receiving data from the API.
 
-PATCH vs PUT
-~~~~~~~~~~~~
+JSON is the only format supported by the API for now.
+
+PATCH behavior
+~~~~~~~~~~~~~~
 
 The content of a PUT request will replace entirely the corresponding resource. For example, if a key is missing from the representation you send in the body, it will be removed from the resource.
 
@@ -93,7 +87,7 @@ Unlike PUT, a PATCH request will update only the specified keys according to the
 
 Any data in non specified keys will be left untouched.
 
-Here are some examples on a category to explain that:
+Here are some examples to explain that:
 
 +------------------------------+----------------------------------------+-----------------------------------------------+-----------------------------------------------+
 | Use case                     | Original resource                      | PATCH request body                            | Modified resource                             |
@@ -109,7 +103,7 @@ Here are some examples on a category to explain that:
 |                              |      }                                 |                                               |      }                                        |
 |                              |  }                                     |                                               |  }                                            |
 +------------------------------+----------------------------------------+-----------------------------------------------+-----------------------------------------------+
-| Modify a label               |.. code-block:: json                    |.. code-block:: json                           |.. code-block:: json                           |
+| Modify a category label      |.. code-block:: json                    |.. code-block:: json                           |.. code-block:: json                           |
 |                              |                                        |                                               |                                               |
 |                              |  {                                     |  {                                            |  {                                            |
 |                              |      "code": "boots",                  |      "labels": {                              |      "code": "boots",                         |
@@ -120,7 +114,7 @@ Here are some examples on a category to explain that:
 |                              |      }                                 |                                               |      }                                        |
 |                              |  }                                     |                                               |  }                                            |
 +------------------------------+----------------------------------------+-----------------------------------------------+-----------------------------------------------+
-| Erase a label                |.. code-block:: json                    |.. code-block:: json                           |.. code-block:: json                           |
+| Erase a category label       |.. code-block:: json                    |.. code-block:: json                           |.. code-block:: json                           |
 |                              |                                        |                                               |                                               |
 |                              |  {                                     |  {                                            |  {                                            |
 |                              |      "code": "boots",                  |      "labels": {                              |      "code": "boots",                         |
@@ -152,6 +146,17 @@ Here are some examples on a category to explain that:
 |                              |          "fr_FR": "Bottes"             |                                               |          "fr_FR": "Bottes"                    |
 |                              |      }                                 |                                               |      }                                        |
 |                              |  }                                     |                                               |  }                                            |
++------------------------------+----------------------------------------+-----------------------------------------------+-----------------------------------------------+
+| Remove a product from a      |.. code-block:: json                    |.. code-block:: json                           |.. code-block:: json                           |
+| category                     |                                        |                                               |                                               |
+|                              |  {                                     |  {                                            |  {                                            |
+|                              |      "identifier": "boots-4846",       |      "categories": ["boots"]                  |      "identifier": "boots-4846",              |
+|                              |      "categories": ["shoes", "boots"]  |  }                                            |      "categories": ["boots"]                  |
+|                              |  }                                     |                                               |  }                                            |
+|                              |                                        |                                               |                                               |
+|                              |                                        |                                               |                                               |
+|                              |                                        |                                               |                                               |
+|                              |                                        |                                               |                                               |
 +------------------------------+----------------------------------------+-----------------------------------------------+-----------------------------------------------+
 
 The PATCH behaviour described above is quite intuitive. However, applying a PATCH containing product values on a product is a bit different:
@@ -255,16 +260,15 @@ The PATCH behaviour described above is quite intuitive. However, applying a PATC
 Response format
 ---------------
 
-Get a resource or collection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Getting a resource or collection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The response format for requests is a JSON object.
+Like requests, responses always contain data as JSON.
 
-Create or update a resource
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Creating or updating a resource
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When a resource is successfully created or updated, the API returns an HTTP redirection.
-Receiving an HTTP redirection is not an error and clients can follow that redirect if needed.
+When a resource is successfully created or updated, the response contains a Location header. It is especially useful when the client modifies the identifier of a product since its URI changes.
 
 Response Codes
 --------------
@@ -272,9 +276,9 @@ Response Codes
 Client errors
 ~~~~~~~~~~~~~
 
-There are four possible types of errors on API:
+There are five possible types of errors when accessing the API:
 
-Trying to access to the API without authentication will result in a `401 Unauthorized` response.
+Trying to access to the API without authentication will result in a `401 Unauthorized` response:
 
 .. code-block:: bash
 
@@ -282,8 +286,19 @@ Trying to access to the API without authentication will result in a `401 Unautho
 
     {"code": 401, "message": "Authentication is required"}
 
+It can happen at two moments:
+ - When asking for an access token (usually it means that the client id does not exist or has been revoked)
+ - During the regular use of the API (the token has expired)
 
-Sending invalid JSON will result in a `400 Bad Request` response.
+Trying to perform an action without having the corresponding ACL will result in a `403 Forbidden` response:
+
+.. code-block:: bash
+
+    HTTP/1.1 403 Forbidden
+
+    {"code": 403, "message": "Access forbidden. You are not allowed to administrate categories."}
+
+Sending malformed data will result in a `400 Bad Request` response:
 
 .. code-block:: bash
 
@@ -291,33 +306,16 @@ Sending invalid JSON will result in a `400 Bad Request` response.
 
     {"code": 400, "message": "JSON is not valid."}
 
-
-Sending unrecognized keys will result in a `400 Bad Request` response.
-
-.. code-block:: bash
-
-    HTTP/1.1 400 Bad Request
-
-    {
-        "code": 400,
-        "message": "Property 'extra_property' does not exist. Check the standard format documentation.",
-        "_links": {
-            "documentation": {
-                "href": "https://docs.akeneo.com/master/reference/standard_format/other_entities.html#category"
-            }
-        }
-    }
-
-Trying to access to a nonexistent resource will result in a `404 Not Found` response.
+Trying to access to a non-existing resource will result in a `404 Not Found` response:
 
 .. code-block:: bash
 
     HTTP/1.1 404 Not Found
 
-    {"code": 404, "message": "Category master does not exist."}
+    {"code": 404, "message": "Category 'master' does not exist."}
 
 
-Sending invalid data will result in a `422 Unprocessable Entity` response.
+Sending invalid data will result in a `422 Unprocessable Entity` response:
 
 .. code-block:: bash
 
@@ -329,6 +327,23 @@ Sending invalid data will result in a `422 Unprocessable Entity` response.
         "errors": [
             {"field": "code", "message": "This value should not be blank."}
         ]
+    }
+
+
+Sending unrecognized keys as well:
+
+.. code-block:: bash
+
+    HTTP/1.1 422 Unprocessable Entity
+
+    {
+        "code": 422,
+        "message": "Property 'extra_property' does not exist. Check the standard format documentation.",
+        "_links": {
+            "documentation": {
+                "href": "https://docs.akeneo.com/master/reference/standard_format/other_entities.html#category"
+            }
+        }
     }
 
 
