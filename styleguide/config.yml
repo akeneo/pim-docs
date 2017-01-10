@@ -1,0 +1,211 @@
+groups:
+  Buttons:
+    AknButton:
+      description: "Print buttons with text, with or without an icon. You can mix this module's modifiers: for example,
+      you can create a big important uppercase button with icon. If the button contains only an icon, please use
+      the AknIconButton module."
+      modifiers:
+        Big button: { class: 'AknButton--big' }
+        Small button: { class: 'AknButton--small' }
+        Micro button: { class: 'AknButton--micro' }
+        Apply button: { class: 'AknButton--apply' }
+        Grey button: { class: 'AknButton--grey' }
+        Important button: { class: 'AknButton--important' }
+        Action button: { class: 'AknButton--action' }
+        Disabled button: { class: 'AknButton--disabled' }
+        Button without left radius: { class: 'AknButton--noLeftRadius' }
+        Uppercase button: { class: 'AknButton--uppercase' }
+        Button with icon: { template: 'withIcon' }
+    AknButtonList:
+      description: "Print a list of buttons. This can be used with a single button. By default, buttons are aligned to
+      the left."
+      modifiers:
+        Align right: { class: 'AknButtonList--right' }
+        Align center: { class: 'AknButtonList--centered' }
+        In two columns: { class: 'AknButtonList--twoColumns' }
+    AknActionButton:
+      description: "The action buttons are used for all the secondary actions on a page (in most of the cases, it does
+      not change or reload the current page)."
+      modifiers:
+        Action Button with caret: { template: 'withCaret' }
+        Action Button without left border: { class: 'AknActionButton--noLeftBorder' }
+        Action Button without right border: { class: 'AknActionButton--noRightBorder' }
+        Action Button containing button: { template: 'withButton' }
+        Big action button: { class: 'AknActionButton--big' }
+        Glued: { template: 'glued' }
+        Disabled: { class: 'AknActionButton--disabled' }
+        Square: { class: 'AknActionButton--square', text: '>' }
+    AknSeveralActionsButton:
+      description: "Prints a button with several actions: a primary action and secondary actions. The text of the
+      primary action is displayed on the button, and a caret is available to display the other actions."
+      modifiers:
+        Apply button: { class: 'AknSeveralActionsButton--apply' }
+        Action button: { class: 'AknSeveralActionsButton--action' }
+        Small button: { class: 'AknSeveralActionsButton--small' }
+    AknDropdownButton:
+      description: "Prints a button to choose the action on a dropdown (there is no primary action)."
+      modifiers:
+        Apply button: { class: 'AknDropdownButton--apply' }
+        Important button: { class: 'AknDropdownButton--important' }
+        Small button: { class: 'AknDropdownButton--small' }
+    AknIconButton:
+      description: "Prints a single button with a unique icon."
+      modifiers:
+        Light icon button: { class: 'AknIconButton--light' }
+        Grey icon button: { class: 'AknIconButton--grey' }
+        Important icon button: { class: 'AknIconButton--important' }
+        Apply icon button: { class: 'AknIconButton--apply' }
+        Small icon button: { class: 'AknIconButton--small' }
+    AknDashboardButtons:
+      description: "Prints a set of big buttons with an image."
+
+  Filters:
+    AknFilterBox:
+      description: "The filter box contains several filters, and a left primary button."
+    AknFilterChoice:
+      description: "Prints an inline filter with an action and a field."
+    AknFilterDate:
+      description: "Prints a filter to manage dates. The first and secondary fields can be hidden."
+
+  Grids:
+    AknGrid:
+      modifiers:
+        With full line: { template: 'withFullLine' }
+        With custom cells: { template: 'withCustomCells' }
+        With align: { template: 'withAlign' }
+        With carets: { template: 'withCarets' }
+        Condensed: { class: 'AknGrid--condensed' }
+        Unclickable: { class: 'AknGrid--unclickable' }
+    AknGridsLine:
+      description: "Prints a set of grids in one line."
+    AknGridContainer: ~
+
+  Templates:
+    AknGridToolbar: ~
+    AknAttributeActions:
+      modifiers:
+        Comparison mode: { template: 'comparisonMode' }
+    AknBreadcrumbContainer: ~
+    AknColumnConfigurator: ~
+    AknFooter:
+      description: "Prints a discreet list of informations."
+    AknHeader: ~
+    AknMainMenu: ~
+    AknNotification:
+      description: "TODO Add modifiers and check why the icon is not green anymore"
+    AknNotificationList: ~
+    AknProjectWidget: ~
+    AknSequentialEdit: ~
+    AknTitleContainer:
+      description: "TODO Remove -rightButton element"
+    AknWidget:
+      modifiers:
+        withPadding: { contentClass: 'AknWidget-content--withPadding' }
+    AknInfoBlock:
+      description: "Prints a centered text for additional information."
+
+  Panels:
+    AknPanelContainer:
+      description: "Prints a panel for lateral information. The PanelContainer has an height of 100% of the page."
+    AknCommentPanel: ~
+    AknCompletenessBlock: ~
+    AknTabContainer: ~
+
+  Forms:
+    AknFormContainer:
+      description: "Prints a container with a fixed width for listing form elements vertically."
+      modifiers:
+        With padding: { class: 'AknFormContainer--withPadding' }
+    AknFieldContainer:
+      description: "A Field container is mainly composed of a label and an input. You can create a very simple field
+      container with these 2 elements, or add a footer (for validation errors, for example), add icons next to the
+      input, etc. Basically, a field container will take all the width of the parent container. If you want resize it,
+      use the AknFormContainer module."
+      modifiers:
+        Complete: { template: 'complete' }
+    AknTextField:
+      description: "Prints a simple text field. The radius modifiers can be used to create inline forms."
+      modifiers:
+        Without right radius: { class: 'AknTextField--noRightRadius' }
+        Without left radius: { class: 'AknTextField--noLeftRadius' }
+        Without radius: { class: 'AknTextField--noRadius' }
+        With right button: { template: 'withRightButton' }
+        Disabled: { class: 'AknTextField--disabled' }
+    AknTextareaField:
+      modifiers:
+        Small: { class: 'AknTextareaField--small' }
+        Disabled: { attribute: 'disabled' }
+    AknMetricField:
+      description: "Prints an inline field with a text field and a dropdown menu to choose metric."
+    AknPriceList:
+      description: "Prints a list of prices. The width of each price is computed to display 3 inline prices on an
+      AknFormContainer"
+    AknMediaField:
+      modifiers:
+        With media: { template: 'withMedia' }
+    AknComparableFields:
+      description: "Displays 2 FieldContainer side by side, with a checkbox between."
+
+  Navigation:
+    AknHorizontalNavtab: ~
+    AknTabHeader: ~
+    AknVerticalNavtab:
+      modifiers:
+        Condensed: { class: 'AknVerticalNavtab--condensed' }
+    AknBreadcrumb: ~
+    AknUserMenu:
+      description: "TODO: Remove this module and put into Header"
+
+  Other:
+    AknBadge:
+      modifiers:
+        With icon: { template: 'withIcon' }
+        Success: { class: 'AknBadge--success' }
+        Important: { class: 'AknBadge--important' }
+        Warning: { class: 'AknBadge--warning' }
+        Grey: { class: 'AknBadge--grey' }
+    AknBell: ~
+    AknCaret:
+      modifiers:
+        Big: { class: 'AknCaret--big' }
+        Inverse: { class: 'AknCaret--inverse' }
+    AknDropdown: ~
+    AknFlash:
+      modifiers:
+        Success: { class: 'AknFlash--success' }
+        Danger: { class: 'AknFlash--danger' }
+    AknLoadingMask:
+      description: "The loading mask is used when an element is loading. Please note than all the style attributes in
+      the source example are automatically generated by the application, you don't need to add it."
+    AknMessageBox:
+      modifiers:
+        Apply: { class: 'AknMessageBox--apply' }
+        Warning: { class: 'AknMessageBox--warning' }
+        Danger: { class: 'AknMessageBox--danger' }
+        Centered: { class: 'AknMessageBox--centered' }
+    AknProgress:
+      modifiers:
+        Apply: { class: 'AknProgress--apply' }
+        Warning: { class: 'AknProgress--warning' }
+        Small: { class: 'AknProgress--small' }
+        Micro: { class: 'AknProgress--micro' }
+        Main: { class: 'AknProgress--main' }
+    AknVerticalList:
+      modifiers:
+        Without border: { class: 'AknVerticalList--withoutBorder' }
+        Selectable items: { itemClass: 'selectableItems' }
+        Movable items: { template: 'movableItems' }
+    AknAcl:
+      modifiers:
+        Granted: { iconClass: 'AknAcl-icon--granted', icon: 'icon-ok' }
+        Non granted: { iconClass: 'AknAcl-icon--nonGranted', icon: 'icon-remove' }
+        Centered: { class: 'AknAcl--centered' }
+    AknDiff:
+      description: "Allow to display text with differences (add or remove). Basically, the style only display inline
+      text, you have to use one of the available modifiers to see the difference."
+      modifiers:
+        Remove: { class: 'AknDiff--remove' }
+        Add: { class: 'AknDiff--add' }
+    AknList:
+      modifiers:
+        With discs: { class: 'AknList--withDisc' }

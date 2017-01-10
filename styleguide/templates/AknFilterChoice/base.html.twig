@@ -1,0 +1,9 @@
+<div style="width: 1px"><!-- Used to simulate a little container, don't copy it -->
+    <div class="AknFilterChoice">
+        <div class="AknFilterChoice-operator">
+            {% include 'AknActionButton/base.html.twig' with { 'class': 'AknActionButton--big AknActionButton--noRightBorder' } %}
+        </div>
+        {% include 'AknTextField/base.html.twig' with { 'class' : 'AknFilterChoice-field AknTextField--noRadius' } only %}
+        <button class="AknFilterChoice-button AknButton AknButton--apply AknButton--noLeftRadius">Update</button>
+    </div>
+</div>

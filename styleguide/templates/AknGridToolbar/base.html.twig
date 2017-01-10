@@ -1,0 +1,18 @@
+<div class="AknGridToolbar">
+    <div class="AknGridToolbar-left">
+        {% include "AknActionButton/withCaret.html.twig" with { 'class': 'AknGridToolbar-actionButton' } only %}
+    </div>
+    <div class="AknGridToolbar-center">
+        <label class="AknGridToolbar-label">Page:</label>
+        <div>
+            {% include "AknActionButton/glued.html.twig" only %}
+        </div>
+        <label class="AknGridToolbar-label">of 6 | 55 records</label>
+    </div>
+    <div class="AknGridToolbar-right">
+        <div class="AknGridToolbar-pageSize">
+            <label>View per page: &nbsp;</label>
+            {% include "AknActionButton/withCaret.html.twig" only %}
+        </div>
+    </div>
+</div>

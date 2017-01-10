@@ -23,7 +23,7 @@ import sys, os
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
 
-sys.path.insert(0, os.path.abspath('_exts/fabpot/sphinx-php'))
+sys.path.insert(0, os.path.abspath('vendor/fabpot/sphinx-php'))
 from sphinx.highlighting import lexers
 from pygments.lexers.web import PhpLexer
 
@@ -85,7 +85,7 @@ release = 'beta'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['reference/technical_information/choose_database.rst.inc']
+exclude_patterns = ['vendor/**/*', 'reference/technical_information/choose_database.rst.inc']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None

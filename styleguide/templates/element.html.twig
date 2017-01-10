@@ -1,0 +1,39 @@
+{% set code = groupName ~ '-' ~ elementName %}
+<div class="AknStyleGuide-element" data-group="{{ groupName }}" data-module="{{ elementName }}">
+    <h1 class="AknStyleGuide-elementTitle">
+        {{ elementName }}
+        <a href="#" class="AknStyleGuide-showCode btn btn-neutral float-right" data-code="{{ code }}" onclick="toggleCode('{{ code }}'); return false;">Show code <span class="fa fa-arrow-circle-down"></span></a>
+    </h1>
+    {% if elementConfig['description'] is defined and elementConfig['description'] is not empty %}
+        <div class="admonition note">
+            <p class="first admonition-title">Description</p>
+            <p class="last">{{ elementConfig['description'] }}</p>
+        </div>
+    {% endif %}
+
+    {% autoescape false %}
+        {{ render_code(template, code) }}
+    {% endautoescape %}
+
+    {% if elementConfig['modifiers'] is defined %}
+        <h2 class="AknStyleGuide-modifiersTitle">Modifiers</h2>
+        {% for modifierName, modifierConfig in elementConfig['modifiers'] %}
+            {% set code = groupName ~ '-' ~ elementName ~ '-' ~ modifierName %}
+            <div class="AknStyleGuide-modifier">
+                <h3 class="AknStyleGuide-modifierTitle">
+                    {{ modifierName }}
+                    <a href="#" class="AknStyleGuide-showCode btn btn-neutral float-right" data-code="{{ code }}" onclick="toggleCode('{{ code }}'); return false;">Show code <span class="fa fa-arrow-circle-down"></span></a>
+                </h3>
+
+                {% set modifierTemplate = template %}
+                {% if modifierConfig['template'] is defined %}
+                    {% set modifierTemplate = elementName ~ '/' ~ modifierConfig['template'] ~ '.html.twig' %}
+                {% endif %}
+
+                {% autoescape false %}
+                    {{ render_code(modifierTemplate, code, modifierConfig) }}
+                {% endautoescape %}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>

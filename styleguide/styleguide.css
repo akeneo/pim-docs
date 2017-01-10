@@ -1,0 +1,148 @@
+body {
+    height: 100%;
+    width: 100%;
+    background: #eee;
+    overflow: auto;
+    color: #404040;
+    line-height: normal;
+    font-size: 16px;
+}
+
+.AknStyleGuide-title {
+    font-weight: 100;
+    color: white;
+    text-align: center;
+    display: block;
+    border-bottom: 1px solid #888;
+    padding-bottom: 20px;
+}
+
+.AknStyleGuide-leftPanel {
+    position: fixed;
+    height: 100%;
+    width: 300px;
+    background: #282b2e;
+}
+
+.AknStyleGuide-rightPanel {
+    padding: 30px 30px 30px 330px;
+}
+
+.AknStyleGuide-element {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+
+.AknStyleGuide-elementTitle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.AknStyleGuide-modifiersTitle {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 20px;
+    margin: 30px 0 10px 0;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.AknStyleGuide-modifier {
+    border: solid #ddd;
+    border-width: 1px 1px 1px 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+}
+
+.AknStyleGuide-description {
+    font-weight: 300;
+    font-size: 15px;
+    color: #777;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    background: #fff9ef;
+}
+
+.AknStyleGuide-modifierTitle {
+    font-weight: 300;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 10px 0;
+    align-items: center;
+}
+
+.AknStyleGuide-showCode {
+    font-size: 15px;
+}
+
+.AknStyleGuide-showCode:hover {
+    background: #fafafa;
+}
+
+.AknStyleGuide-subMenu {
+    display: none;
+}
+
+.AknStyleGuide-menuItem--current .AknStyleGuide-subMenu {
+    display: block;
+}
+
+.AknStyleGuide-menuItem--current .AknStyleGuide-groupLink {
+    font-weight: bold;
+}
+
+.AknStyleGuide-groupLink {
+    color: #ccc;
+    padding: 5px 20px;
+    display: block;
+    font-size: 15px;
+}
+
+code.html.hljs.xml {
+    color: #a9b7c6;
+    background: #282b2e;
+    white-space: pre;
+    padding: 0.5em;
+}
+
+.wy-menu-vertical li a span.toctree-expand {
+    display: none;
+}
+
+.wy-menu-vertical li.on a span.toctree-expand, .wy-menu-vertical li.current>a span.toctree-expand {
+    display: none;
+}
+
+.wy-plain-list-decimal li, .rst-content .section ol li, .rst-content ol.arabic li, article ol li {
+    list-style: none;
+    margin-left: 0;
+}
+
+.wy-plain-list-disc li, .rst-content .section ul li, .rst-content .toctree-wrapper ul li, article ul li {
+    list-style: none;
+    margin-left: 0;
+}
+
+.wy-plain-list-disc, .rst-content .section ul, .rst-content .toctree-wrapper ul, article ul {
+    margin-bottom: 0;
+}
+
+.reset-bem {
+    font-size: 12.132px;
+    color: #67768A;
+}
+
+.reset-bem label {
+    color: #11324D;
+}
+
+.reset-bem h1 {
+    font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
