@@ -18,8 +18,8 @@
         }
     ],
     "scripts": {
-        "post-install-cmd": [
-            "rm app/config/*",
+        "post-autoload-dump": [
+            "mkdir $(pwd)/app/config",
             "ln -s $(pwd)/vendor/akeneo/pim-community-dev/app/config/config.yml $(pwd)/app/config/",
             "ln -s $(pwd)/vendor/akeneo/pim-community-dev/app/config/config_dev.yml $(pwd)/app/config/",
             "ln -s $(pwd)/vendor/akeneo/pim-community-dev/app/config/security.yml $(pwd)/app/config/",
