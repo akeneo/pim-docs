@@ -51,7 +51,7 @@ $yaml = \Symfony\Component\Yaml\Yaml::parse(file_get_contents('config.yml'));
         <div class="wy-side-scroll">
             <div class="wy-side-nav-search">
                 <a href="#">
-                    <img src="/_static/logo.png" class="logo" />
+                    <img src="/styleguide/akeneo-style-guide.png" class="logo" />
                 </a>
             </div>
             <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
