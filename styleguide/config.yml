@@ -128,7 +128,9 @@ groups:
       description: "Prints a discreet list of information."
     AknHeader: ~
     AknNotification:
-      description: "TODO Add modifiers and check why the icon is not green anymore"
+      modifiers:
+        Unread: { linkClass: 'AknNotification-link--new' }
+        Icon List: { template: 'iconList' }
     AknNotificationList: ~
     AknProjectWidget: ~
     AknSequentialEdit: ~
