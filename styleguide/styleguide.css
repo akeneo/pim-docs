@@ -110,6 +110,7 @@ code.html.hljs.xml {
     background: #282b2e;
     white-space: pre;
     padding: 0.5em;
+    font-size: 14px;
 }
 
 label {
@@ -149,6 +150,17 @@ label {
     margin-bottom: 0;
 }
 
+.wy-plain-list-disc li li,
+.rst-content .section ul li li,
+.rst-content .toctree-wrapper ul li li,
+article ul li li,
+.wy-plain-list-disc li li li,
+.rst-content .section ul li li li,
+.rst-content .toctree-wrapper ul li li li,
+article ul li li li {
+    list-style: none;
+}
+
 .reset-bem {
     font-size: 12.132px;
     color: #67768A;
@@ -156,4 +168,14 @@ label {
 
 .reset-bem .AknList--withDisc .AknList-item {
     list-style: disc !important;
+}
+
+.reset-bem .AknMainMenu-link {
+    color: white !important;
+}
+.reset-bem .AknMainMenu-item:hover .AknMainMenu-link {
+    color: #515d6d !important;
+}
+.reset-bem .AknHeader-logoImage {
+    height: 50px !important;
 }

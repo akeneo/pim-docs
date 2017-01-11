@@ -75,37 +75,6 @@ groups:
       description: "Prints a set of grids in one line."
     AknGridContainer: ~
 
-  Templates:
-    AknGridToolbar: ~
-    AknAttributeActions:
-      modifiers:
-        Comparison mode: { template: 'comparisonMode' }
-    AknBreadcrumbContainer: ~
-    AknColumnConfigurator: ~
-    AknFooter:
-      description: "Prints a discreet list of information."
-    AknHeader: ~
-    AknMainMenu: ~
-    AknNotification:
-      description: "TODO Add modifiers and check why the icon is not green anymore"
-    AknNotificationList: ~
-    AknProjectWidget: ~
-    AknSequentialEdit: ~
-    AknTitleContainer:
-      description: "TODO Remove -rightButton element"
-    AknWidget:
-      modifiers:
-        withPadding: { contentClass: 'AknWidget-content--withPadding' }
-    AknInfoBlock:
-      description: "Prints a centered text for additional information."
-
-  Panels:
-    AknPanelContainer:
-      description: "Prints a panel for lateral information. The PanelContainer has an height of 100% of the page."
-    AknCommentPanel: ~
-    AknCompletenessBlock: ~
-    AknTabContainer: ~
-
   Forms:
     AknFormContainer:
       description: "Prints a fixed-width container for listing form elements vertically."
@@ -146,6 +115,37 @@ groups:
     AknBreadcrumb: ~
     AknUserMenu:
       description: "TODO: Remove this module and put into Header"
+
+  Templates:
+    AknGridToolbar: ~
+    AknAttributeActions:
+      modifiers:
+        Comparison mode: { template: 'comparisonMode' }
+    AknBreadcrumbContainer: ~
+    AknColumnConfigurator: ~
+    AknFooter:
+      description: "Prints a discreet list of information."
+    AknHeader: ~
+    AknMainMenu: ~
+    AknNotification:
+      description: "TODO Add modifiers and check why the icon is not green anymore"
+    AknNotificationList: ~
+    AknProjectWidget: ~
+    AknSequentialEdit: ~
+    AknTitleContainer:
+      description: "TODO Remove -rightButton element"
+    AknWidget:
+      modifiers:
+        withPadding: { contentClass: 'AknWidget-content--withPadding' }
+    AknInfoBlock:
+      description: "Prints a centered text for additional information."
+
+  Panels:
+    AknPanelContainer:
+      description: "Prints a panel for lateral information. The PanelContainer has an height of 100% of the page."
+    AknCommentPanel: ~
+    AknCompletenessBlock: ~
+    AknTabContainer: ~
 
   Other:
     AknBadge:
