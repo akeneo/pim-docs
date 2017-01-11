@@ -48,6 +48,7 @@ groups:
       dark: true
       modifiers:
         Light icon button: { class: 'AknIconButton--light', dark: true }
+        Dark icon button: { class: 'AknIconButton--dark', dark: true }
         Grey icon button: { class: 'AknIconButton--grey', dark: true }
         Important icon button: { class: 'AknIconButton--important', dark: true }
         Apply icon button: { class: 'AknIconButton--apply', dark: true }
