@@ -19,13 +19,13 @@
     ],
     "scripts": {
         "post-autoload-dump": [
-            "mkdir $(pwd)/app/config",
-            "ln -s $(pwd)/vendor/akeneo/pim-community-dev/app/config/config.yml $(pwd)/app/config/",
-            "ln -s $(pwd)/vendor/akeneo/pim-community-dev/app/config/config_dev.yml $(pwd)/app/config/",
-            "ln -s $(pwd)/vendor/akeneo/pim-community-dev/app/config/security.yml $(pwd)/app/config/",
-            "ln -s $(pwd)/vendor/akeneo/pim-community-dev/app/config/parameters.yml.dist $(pwd)/app/config/parameters.yml",
-            "ln -s $(pwd)/vendor/akeneo/pim-community-dev/app/config/pim_parameters.yml $(pwd)/app/config/",
-            "php app/console asset:install",
+            "mkdir -p $(pwd)/app/config",
+            "ln -sf $(pwd)/vendor/akeneo/pim-community-dev/app/config/config.yml $(pwd)/app/config/",
+            "ln -sf $(pwd)/vendor/akeneo/pim-community-dev/app/config/config_dev.yml $(pwd)/app/config/",
+            "ln -sf $(pwd)/vendor/akeneo/pim-community-dev/app/config/security.yml $(pwd)/app/config/",
+            "ln -sf $(pwd)/vendor/akeneo/pim-community-dev/app/config/parameters.yml.dist $(pwd)/app/config/parameters.yml",
+            "ln -sf $(pwd)/vendor/akeneo/pim-community-dev/app/config/pim_parameters.yml $(pwd)/app/config/",
+            "php app/console asset:install || php app/console asset:install",
             "php app/console oro:assetic:dump"
         ]
     },
