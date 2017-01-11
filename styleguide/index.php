@@ -35,12 +35,12 @@ $yaml = \Symfony\Component\Yaml\Yaml::parse(file_get_contents('config.yml'));
     <script src="../_static/js/modernizr.min.js"></script>
 
     <!-- Styleguide -->
+    <link rel="stylesheet" href="styleguide.css" type="text/css" />
     <link rel="stylesheet" href="//highlightjs.org/static/demo/styles/androidstudio.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
     <script src="../web/bundles/pimui/lib/jquery/jquery-1.10.2.js"></script>
     <script src="../web/bundles/pimui/lib/bootstrap/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../web/css/pim.css" type="text/css" />
-    <link rel="stylesheet" href="styleguide.css" type="text/css" />
     <script src="styleguide.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 </head>

@@ -112,6 +112,21 @@ code.html.hljs.xml {
     padding: 0.5em;
 }
 
+label {
+    margin: 0;
+    color: #404040;
+}
+
+.reset-bem h1 {
+    font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.wy-menu.wy-menu-vertical.affix,
+.wy-breadcrumbs,
+.rst-footer-buttons {
+    font-size: 16px;
+}
+
 .wy-menu-vertical li a span.toctree-expand {
     display: none;
 }
@@ -139,10 +154,6 @@ code.html.hljs.xml {
     color: #67768A;
 }
 
-.reset-bem label {
-    color: #11324D;
-}
-
-.reset-bem h1 {
-    font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
+.reset-bem .AknList--withDisc .AknList-item {
+    list-style: disc !important;
 }
