@@ -134,8 +134,7 @@ groups:
     AknNotificationList: ~
     AknProjectWidget: ~
     AknSequentialEdit: ~
-    AknTitleContainer:
-      description: "TODO Remove -rightButton element"
+    AknTitleContainer: ~
     AknWidget:
       modifiers:
         withPadding: { contentClass: 'AknWidget-content--withPadding' }
@@ -147,7 +146,9 @@ groups:
       description: "Prints a panel for lateral information. The PanelContainer has an height of 100% of the page."
     AknCommentPanel: ~
     AknCompletenessBlock: ~
-    AknTabContainer: ~
+    AknTabContainer:
+      modifiers:
+        Right panel closed: { panelClass: 'AknTabContainer-panels--closed' }
 
   Other:
     AknBadge:
@@ -163,7 +164,6 @@ groups:
       modifiers:
         Big: { class: 'AknCaret--big' }
         Inverse: { class: 'AknCaret--inverse', dark: true }
-    AknDropdown: ~
     AknFlash:
       modifiers:
         Success: { class: 'AknFlash--success' }

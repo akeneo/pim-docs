@@ -1,1 +1,16 @@
-TODO
+<div class="AknTabContainer">
+    {% include 'AknHorizontalNavtab/base.html.twig' only %}
+    <div class="AknTabContainer-contentThreeColumns">
+        <div class="AknTabContainer-notPanels tab-container tab-content">
+            <div class="tabs-left">
+                {% include 'AknVerticalNavtab/base.html.twig' only %}
+                <div class="AknTabContainer-content tab-content">
+                    Middle panel
+                </div>
+            </div>
+        </div>
+        <div class="AknTabContainer-panels {% if panelClass is defined %} {{ panelClass }}{% endif %}">
+            {% include 'AknPanelContainer/base.html.twig' only %}
+        </div>
+    </div>
+</div>
