@@ -3,4 +3,5 @@ composer.lock
 app/config/*
 app/cache/*
 app/logs/*
-web/
+web/bundles/*
+web/css/*
