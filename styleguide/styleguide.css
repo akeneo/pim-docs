@@ -173,9 +173,16 @@ article ul li li li {
 .reset-bem .AknMainMenu-link {
     color: white !important;
 }
+
 .reset-bem .AknMainMenu-item:hover .AknMainMenu-link {
     color: #515d6d !important;
 }
+
 .reset-bem .AknHeader-logoImage {
     height: 50px !important;
+}
+
+.reset-bem.dark {
+    background: #404040;
+    padding: 10px;
 }

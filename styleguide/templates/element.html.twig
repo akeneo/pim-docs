@@ -12,7 +12,7 @@
     {% endif %}
 
     {% autoescape false %}
-        {{ render_code(template, code) }}
+        {{ render_code(template, code, { 'dark': elementConfig['dark'] is defined and elementConfig['dark'] == 1 }) }}
     {% endautoescape %}
 
     {% if elementConfig['modifiers'] is defined %}

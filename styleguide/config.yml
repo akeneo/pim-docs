@@ -45,12 +45,13 @@ groups:
         Small button: { class: 'AknDropdownButton--small' }
     AknIconButton:
       description: "Prints a single button with a unique icon."
+      dark: true
       modifiers:
-        Light icon button: { class: 'AknIconButton--light' }
-        Grey icon button: { class: 'AknIconButton--grey' }
-        Important icon button: { class: 'AknIconButton--important' }
-        Apply icon button: { class: 'AknIconButton--apply' }
-        Small icon button: { class: 'AknIconButton--small' }
+        Light icon button: { class: 'AknIconButton--light', dark: true }
+        Grey icon button: { class: 'AknIconButton--grey', dark: true }
+        Important icon button: { class: 'AknIconButton--important', dark: true }
+        Apply icon button: { class: 'AknIconButton--apply', dark: true }
+        Small icon button: { class: 'AknIconButton--small', dark: true }
     AknDashboardButtons:
       description: "Prints a set of big buttons with an image."
 
@@ -126,7 +127,8 @@ groups:
     AknFooter:
       description: "Prints a discreet list of information."
     AknHeader: ~
-    AknMainMenu: ~
+    AknMainMenu:
+      dark: true
     AknNotification:
       description: "TODO Add modifiers and check why the icon is not green anymore"
     AknNotificationList: ~
@@ -155,11 +157,12 @@ groups:
         Important: { class: 'AknBadge--important' }
         Warning: { class: 'AknBadge--warning' }
         Grey: { class: 'AknBadge--grey' }
-    AknBell: ~
+    AknBell:
+      dark: true
     AknCaret:
       modifiers:
         Big: { class: 'AknCaret--big' }
-        Inverse: { class: 'AknCaret--inverse' }
+        Inverse: { class: 'AknCaret--inverse', dark: true }
     AknDropdown: ~
     AknFlash:
       modifiers:
