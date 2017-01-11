@@ -44,7 +44,6 @@ function toggleMenu(group, module) {
         if (items[i].getAttribute('data-group') === group) {
             items[i].className = 'AknStyleGuide-menuItem AknStyleGuide-menuItem--current current reference internal';
             var subItems = items[i].querySelectorAll('.AknStyleGuide-subMenuItem[data-module]');
-            console.log(subItems.length);
             for (var j = 0; j < subItems.length; j++) {
                 if (subItems[j].getAttribute('data-module') === module)  {
                     subItems[j].className = 'AknStyleGuide-subMenuItem toctree-l2 current';
