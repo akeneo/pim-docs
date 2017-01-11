@@ -26,22 +26,22 @@ $yaml = \Symfony\Component\Yaml\Yaml::parse(file_get_contents('config.yml'));
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akeneo PIM Documentation &mdash; Akeneo PIM documentation</title>
-    <link rel="shortcut icon" href="/_static/favicon.ico"/>
-    <link rel="stylesheet" href="/_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" type="text/css" />
-    <link rel="stylesheet" href="/_static/css/akeneo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/akeneo.css" type="text/css" />
     <link rel="top" title="Akeneo PIM documentation" href="#"/>
     <link rel="next" title="Installation" href="developer_guide/installation/index.html"/>
-    <script src="/_static/js/modernizr.min.js"></script>
+    <script src="../_static/js/modernizr.min.js"></script>
 
     <!-- Styleguide -->
     <link rel="stylesheet" href="//highlightjs.org/static/demo/styles/androidstudio.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
-    <script src="/web/bundles/pimui/lib/jquery/jquery-1.10.2.js"></script>
-    <script src="/web/bundles/pimui/lib/bootstrap/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="/web/css/pim.css" type="text/css" />
-    <link rel="stylesheet" href="/styleguide/styleguide.css" type="text/css" />
-    <script src="/styleguide/styleguide.js"></script>
+    <script src="../web/bundles/pimui/lib/jquery/jquery-1.10.2.js"></script>
+    <script src="../web/bundles/pimui/lib/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../web/css/pim.css" type="text/css" />
+    <link rel="stylesheet" href="styleguide.css" type="text/css" />
+    <script src="styleguide.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 </head>
 
@@ -51,7 +51,7 @@ $yaml = \Symfony\Component\Yaml\Yaml::parse(file_get_contents('config.yml'));
         <div class="wy-side-scroll">
             <div class="wy-side-nav-search">
                 <a href="#">
-                    <img src="/styleguide/akeneo-style-guide.png" class="logo" />
+                    <img src="akeneo-style-guide.png" class="logo" />
                 </a>
             </div>
             <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
@@ -81,7 +81,7 @@ $yaml = \Symfony\Component\Yaml\Yaml::parse(file_get_contents('config.yml'));
             <div class="rst-content">
                 <div role="navigation" aria-label="breadcrumbs navigation">
                     <ul class="wy-breadcrumbs">
-                        <li><a href="/">Docs</a> &raquo;</li>
+                        <li><a href="../">Docs</a> &raquo;</li>
                         <li>Akeneo style guide</li>
                         <li class="wy-breadcrumbs-aside">
                             <a href="https://github.com/akeneo/pim-docs/blob/master/index.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -128,10 +128,10 @@ $yaml = \Symfony\Component\Yaml\Yaml::parse(file_get_contents('config.yml'));
 <script type="text/javascript">
     DOCUMENTATION_OPTIONS = [];
 </script>
-<script type="text/javascript" src="/_static/jquery.js"></script>
-<script type="text/javascript" src="/_static/underscore.js"></script>
-<script type="text/javascript" src="/_static/doctools.js"></script>
-<script type="text/javascript" src="/_static/js/theme.js"></script>
+<script type="text/javascript" src="../_static/jquery.js"></script>
+<script type="text/javascript" src="../_static/underscore.js"></script>
+<script type="text/javascript" src="../_static/doctools.js"></script>
+<script type="text/javascript" src="../_static/js/theme.js"></script>
 <script type="text/javascript">
     jQuery(function () {
         SphinxRtdTheme.StickyNav.enable();

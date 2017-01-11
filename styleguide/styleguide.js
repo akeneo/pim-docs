@@ -47,9 +47,9 @@ function toggleMenu(group, module) {
             console.log(subItems.length);
             for (var j = 0; j < subItems.length; j++) {
                 if (subItems[j].getAttribute('data-module') === module)  {
-                    subItems[i].className = 'AknStyleGuide-subMenuItem toctree-l2 current';
+                    subItems[j].className = 'AknStyleGuide-subMenuItem toctree-l2 current';
                 } else {
-                    subItems[i].className = 'AknStyleGuide-subMenuItem toctree-l2';
+                    subItems[j].className = 'AknStyleGuide-subMenuItem toctree-l2';
                 }
             }
         } else {
