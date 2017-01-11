@@ -114,8 +114,8 @@ groups:
       modifiers:
         Condensed: { class: 'AknVerticalNavtab--condensed' }
     AknBreadcrumb: ~
-    AknUserMenu:
-      description: "TODO: Remove this module and put into Header"
+    AknMainMenu:
+      dark: true
 
   Templates:
     AknGridToolbar: ~
@@ -127,8 +127,6 @@ groups:
     AknFooter:
       description: "Prints a discreet list of information."
     AknHeader: ~
-    AknMainMenu:
-      dark: true
     AknNotification:
       description: "TODO Add modifiers and check why the icon is not green anymore"
     AknNotificationList: ~

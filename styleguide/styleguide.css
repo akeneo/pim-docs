@@ -166,6 +166,11 @@ article ul li li li {
     color: #67768A;
 }
 
+.reset-bem.dark {
+    background: #404040;
+    padding: 10px;
+}
+
 .reset-bem .AknList--withDisc .AknList-item {
     list-style: disc !important;
 }
@@ -182,7 +187,6 @@ article ul li li li {
     height: 50px !important;
 }
 
-.reset-bem.dark {
-    background: #404040;
-    padding: 10px;
+.reset-bem .AknHeader-userMenu {
+    line-height: 50px !important;
 }
