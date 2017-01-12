@@ -1,0 +1,88 @@
+<div class="AknStyleGuide-element" data-group="Overview">
+    <h1 class="AknStyleGuide-elementTitle">
+        Overview
+    </h1>
+
+    <p>
+        In these pages you will find the complete list of available modules for Akeneo PIM. Akeneo PIM uses the
+        <a href="http://getbem.com/introduction/">BEM methodology</a> to manage the style of the page.
+    </p>
+    <p>
+        BEM means:
+        <ul>
+            <li><strong>Block</strong>: a designed entity,</li>
+            <li><strong>Element</strong>: a part of the block,</li>
+            <li><strong>Modifier</strong>: a variation on a block or on an element.</li>
+        </ul>
+    </p>
+    <p>
+        Different naming conventions are available for the BEM methodology. In Akeneo PIM, we implement the next
+        convention:
+        <ul>
+            <li><tt class="docutils literal"><span class="pre">AknBlockName</span></tt> for the main block declaration.
+                We use the prefix Akn to distinguish Akeneo blocks from those of external libraries. The block name is
+                in upper CamelCase.</li>
+            <li><tt class="docutils literal"><span class="pre">AknBlockName-elementName</span></tt> for each element of
+                the block. The element is linked to the block name with a simple dash, and uses lower camelCase.</li>
+            <li><tt class="docutils literal"><span class="pre">AknBlockName-elementName--modifierName</span></tt> or
+                <tt class="docutils literal"><span class="pre">AknBlockName--modifierName</span></tt> for the modifiers.
+                The modifier is linked to the block or element with 2 dashes and uses lower camelCase</li>
+        </ul>
+    </p>
+
+    <hr/>
+
+    <p>
+        You can use every block in your custom development, simply with a copy-paste of the HTML code.
+    </p>
+
+    <p>
+        You can also mix 2 blocks together. For example, the module
+        <tt class="docutils literal"><span class="pre">AknButtonList</span></tt> prints a list of buttons, centered
+        with the modifier <tt class="docutils literal"><span class="pre">--center</span></tt>:
+    </p>
+
+    <div class="highlight-yaml">
+        <div class="highlight">
+            <div class="reset-bem">
+                <div class="AknButtonList AknButtonList--centered">
+                    <div class="AknButtonList-item">Item 1</div>
+                    <div class="AknButtonList-item">Item 2</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <pre>
+    <code class="html">&#60;div class="AknButtonList AknButtonList--centered"&#62;
+    &#60;div class="AknButtonList-item">Item 1&#60;/div&#62;
+    &#60;div class="AknButtonList-item">Item 2&#60;/div&#62;
+&#60;/div&#62;</code>
+    </pre>
+
+    <p>
+        The <tt class="docutils literal"><span class="pre">AknButtonList-item</span></tt> is an element of
+        <tt class="docutils literal"><span class="pre">AknButtonList</span></tt>, but can also be a module itself, for
+        example <tt class="docutils literal"><span class="pre">AknIconButton</span></tt>:
+    </p>
+
+
+    <div class="highlight-yaml">
+        <div class="highlight">
+            <div class="reset-bem">
+                <div class="AknButtonList AknButtonList--centered">
+                    <div class="AknButtonList-item AknIconButton AknIconButton--important"><i class="icon-star"></i></div>
+                    <div class="AknButtonList-item AknIconButton AknIconButton--apply"><i class="icon-star"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <pre>
+    <code class="html">&#60;div class="AknButtonList AknButtonList--centered"&#62;
+    &#60;div class="AknButtonList-item AknIconButton AknIconButton--important"&#62;&#60;i class="icon-star"&#62;&#60;/i>&#60;/div&#62;
+    &#60;div class="AknButtonList-item AknIconButton AknIconButton--apply"&#62;&#60;i class="icon-star"&#62;&#60;/i>&#60;/div&#62;
+&#60;/div&#62;</code>
+    </pre>
+
+</div>

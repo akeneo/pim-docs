@@ -39,6 +39,8 @@ body {
 .AknStyleGuide-elementTitle {
     display: flex;
     justify-content: space-between;
+    font-size: 28px;
+    color: #404040;
 }
 
 .AknStyleGuide-modifiersTitle {
@@ -118,6 +120,14 @@ label {
     color: #404040;
 }
 
+:not(.reset-bem) p {
+    margin-bottom: 24px;
+}
+
+:not(.reset-bem) ul {
+    font-size: 16px;
+}
+
 .reset-bem h1 {
     font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -132,21 +142,31 @@ label {
     display: none;
 }
 
-.wy-menu-vertical li.on a span.toctree-expand, .wy-menu-vertical li.current>a span.toctree-expand {
+.wy-menu-vertical li.on a span.toctree-expand,
+.wy-menu-vertical li.current>a span.toctree-expand {
     display: none;
 }
 
-.wy-plain-list-decimal li, .rst-content .section ol li, .rst-content ol.arabic li, article ol li {
+.wy-plain-list-decimal li,
+.rst-content .section ol li,
+.rst-content ol.arabic li,
+article ol li {
     list-style: none;
     margin-left: 0;
 }
 
-.wy-plain-list-disc li, .rst-content .section ul li, .rst-content .toctree-wrapper ul li, article ul li {
+.wy-plain-list-disc li,
+.rst-content .section ul li,
+.rst-content .toctree-wrapper ul li,
+article ul li {
     list-style: none;
     margin-left: 0;
 }
 
-.wy-plain-list-disc, .rst-content .section ul, .rst-content .toctree-wrapper ul, article ul {
+.wy-plain-list-disc,
+.rst-content .section ul,
+.rst-content .toctree-wrapper ul,
+article ul {
     margin-bottom: 0;
 }
 

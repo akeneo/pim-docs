@@ -50,16 +50,22 @@ $yaml = \Symfony\Component\Yaml\Yaml::parse(file_get_contents('config.yml'));
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
         <div class="wy-side-scroll">
             <div class="wy-side-nav-search">
-                <a href="#">
+                <a href="index.php">
                     <img src="akeneo-style-guide.png" class="logo" />
                 </a>
             </div>
             <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
+                    <li class="AknStyleGuide-menuItem" data-group="Overview">
+                        <a href="../" class="toctree-l1">Back to the documentation</a>
+                    </li>
+                    <li class="AknStyleGuide-menuItem" data-group="Overview">
+                        <a href="#" class="toctree-l1" onclick="setAnchor('Overview'); return false;">Overview</a>
+                    </li>
                     <?php
                     foreach ($yaml['groups'] as $groupName => $elements) {
                         echo '<li class="AknStyleGuide-menuItem" data-group="' . $groupName . '">';
-                        echo '<a href="#" class="toctree-l1" onclick="setAnchor(\'' . $groupName . '\'); return false;" class="AknStyleGuide-groupLink">' . $groupName . '</a>';
+                        echo '<a href="#" class="toctree-l1" onclick="setAnchor(\'' . $groupName . '\'); return false;">' . $groupName . '</a>';
                         echo '<ul class="AknStyleGuide-subMenu toctree-l1">';
                         foreach ($elements as $elementName => $elementConfig) {
                             echo '<li class="AknStyleGuide-subMenuItem toctree-l2" data-module="' . $elementName . '"><a onclick="setAnchor(\'' . $groupName . '-' . $elementName . '\'); return false;">' . $elementName . '</a></li>';
@@ -93,6 +99,8 @@ $yaml = \Symfony\Component\Yaml\Yaml::parse(file_get_contents('config.yml'));
                     <div itemprop="articleBody">
                         <div class="section" id="akeneo-pim-documentation">
                             <?php
+                            echo $twig->render('overview.html.twig');
+
                             foreach ($yaml['groups'] as $groupName => $elements) {
                                 foreach ($elements as $elementName => $elementConfig) {
                                     $baseTemplate = $elementName . '/base.html.twig';
