@@ -40,8 +40,8 @@ groups:
     AknDropdownButton:
       description: "Prints a button to choose the action within a dropdown (there is no primary action)."
       modifiers:
-        Apply button: { class: 'AknDropdownButton--apply' }
-        Important button: { class: 'AknDropdownButton--important' }
+        Apply button: { class: 'AknDropdownButton--apply', caretClass: 'AknCaret--apply' }
+        Important button: { class: 'AknDropdownButton--important', caretClass: 'AknCaret--important' }
         Small button: { class: 'AknDropdownButton--small' }
     AknIconButton:
       description: "Prints a single button with a unique icon."
@@ -164,6 +164,8 @@ groups:
     AknCaret:
       modifiers:
         Big: { class: 'AknCaret--big' }
+        Important: { class: 'AknCaret--important' }
+        Apply: { class: 'AknCaret--apply' }
         Inverse: { class: 'AknCaret--inverse', dark: true }
     AknFlash:
       modifiers:

@@ -56,7 +56,7 @@ $yaml = \Symfony\Component\Yaml\Yaml::parse(file_get_contents('config.yml'));
             </div>
             <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <ul>
-                    <li class="AknStyleGuide-menuItem" data-group="Overview">
+                    <li class="AknStyleGuide-menuItem" data-group="">
                         <a href="../" class="toctree-l1">Back to the documentation</a>
                     </li>
                     <li class="AknStyleGuide-menuItem" data-group="Overview">
