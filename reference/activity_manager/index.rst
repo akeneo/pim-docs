@@ -1,5 +1,5 @@
-Activity manager
-================
+Activity manager (Enterprise Edition)
+=====================================
 
 .. toctree::
 
