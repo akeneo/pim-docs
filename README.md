@@ -42,6 +42,16 @@ Then, go to Akeneo PIM `src/` directory and create a symlink `Acme` pointing to 
 
 Add all Acme bundles in `app/AppKernel.php` file.
 
+## Install the Akeneo Styleguide page
+
+The needed files for Akeneo Styleguide are installed with the `composer install`. When you build the documentation,
+you will have an empty page `/styleguide/index.html`. You have to add a RewriteRule on your Apache configuration
+to redirect to `/styleguide/index.php`:
+
+```
+    RedirectMatch 301 /styleguide/index.html /styleguide/index.php
+```
+
 ## Contribution
 
 Don't hesitate to suggest cookbook ideas via https://github.com/akeneo/pim-docs/issues

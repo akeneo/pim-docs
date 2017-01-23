@@ -18,3 +18,4 @@ efficient answers to their multichannel needs.
     cookbook/index
     contributing/index
     troubleshooting/index
+    styleguide/index
