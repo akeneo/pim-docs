@@ -107,6 +107,7 @@ class AppKernel extends Kernel
             new Akeneo\Bundle\BufferBundle\AkeneoBufferBundle(),
             new Akeneo\Bundle\StorageUtilsBundle\AkeneoStorageUtilsBundle(),
             new Akeneo\Bundle\FileStorageBundle\AkeneoFileStorageBundle(),
+            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
         ];
     }
 

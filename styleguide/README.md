@@ -7,9 +7,9 @@ When you update a BEM module in the pim-community-dev repository, you have to up
 How it works
 ------------
 
-- The file `styleguide/config.yml` contains the list of the available module, their description and modifiers.
+- The file `styleguide/config.yml` contains the list of the available modules, their descriptions and modifiers.
 - Each module has its own folder in `templates/`. The default template is called `base.html.twig`.
-- You can simply access to `styleguide/index.php` to view the style guides.
+- You can simply access `styleguide/index.php` to view the style guides.
 
 Add a new module modifier
 -------------------------
