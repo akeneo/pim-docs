@@ -28,5 +28,5 @@ Screen resolution
 -----------------
 
 +---------------------+------------------------------+
-| Minimal screen size | 1280px depth / 600px height. |
+| Minimal screen size | 1280px width / 800px height |
 +---------------------+------------------------------+
