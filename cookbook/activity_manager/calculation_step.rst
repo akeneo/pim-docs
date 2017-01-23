@@ -5,6 +5,7 @@ To add a new step you just need to create a new Step Class that implements
 `PimEnterprise\Component\ActivityManager\Job\ProjectCalculation\CalculationStep\CalculationStepInterface` interface.
 
 .. code-block:: php
+
     <?php
 
     namespace AcmeBundle\ProjectCalculation\CalculationStep;
