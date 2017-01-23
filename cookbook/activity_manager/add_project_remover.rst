@@ -3,14 +3,14 @@ How To Remove A Project On A Custom Catalog Update?
 
 .. _reference: ../../reference/activity_manager/catalog_impact.html
 
-Several catalog updates can have an impact on projects integrity. In this case we remove impacted projects. Akeneo PIM
-already manages its own catalog updates. The list is available in Activity Manager reference_ part.
+Several catalog updates can have an impact on project integrity. In this case we need to remove the impacted projects.
+Akeneo PIM already manages its own catalog updates. The list is available in Activity Manager reference_ part.
 
 How does It Work?
 _________________
 
 A subscriber handles catalog structure updates by listening to `Akeneo\Component\StorageUtils\StorageEvents::POST_SAVE`
-and `Akeneo\Component\StorageUtils\StorageEvents::PRE_REMOVE` on all entities and dispatching them to the
+and `Akeneo\Component\StorageUtils\StorageEvents::PRE_REMOVE` on all entities and by dispatching them to the
 `PimEnterprise\Component\ActivityManager\Remover\ChainedProjectRemover`. This chained project remover contains all
 project removers and guesses which one has the responsibility to handle both the entity and the action it received.
 
@@ -67,10 +67,10 @@ interface and be tagged `pimee_activity_manager.project_remover`.
         }
 
         /**
-         * This method is called by the ChainedProjectRemover to determinate which ProjectRemover matches the
+         * This method is called by the ChainedProjectRemover to determine which ProjectRemover matches the
          * entity/action pair it receives.
          *
-         * Does this project remover supports given entity/action?
+         * Does this project remover support the given entity/action?
          *
          * @param mixed  $entity (here renamed as $color)
          * @param string $action
@@ -95,8 +95,8 @@ interface and be tagged `pimee_activity_manager.project_remover`.
             /**
              * Don't be afraid to use `projectRepository->findAll()` as this method has been rewritten in
              * our repository to return a `Akeneo\Component\StorageUtils\Cursor\CursorInterface`. It does not hydrate
-             * all projects in the same time. But don't forget to detach projects that are not removed to avoid
-             * memory leak.
+             * all projects at the same time. But don't forget to detach projects that are not removed to avoid
+             * memory leaks.
              */
             foreach ($this->projectRepository->findAll() as $project) {
                 if ($this->hasToBeRemoved($project, $color)) {
@@ -142,7 +142,7 @@ Once your `ProjectRemover` is done you need to register it in the dependency inj
                 - '@pimee_activity_manager.remover.project'
                 - '@akeneo_storage_utils.doctrine.object_detacher'
             public: false
-            # All project removers MUST be tagged as follow to be managed by the ChainedProjectRemover
+            # All project removers MUST be tagged as follows to be managed by the ChainedProjectRemover
             tags:
                 - { name: pimee_activity_manager.project_remover }
 

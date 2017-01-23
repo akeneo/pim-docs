@@ -24,7 +24,7 @@ To add a new step you just need to create a new Step Class that implements
     }
 
 For example, we created the
-`PimEnterprise\Component\ActivityManager\Job\ProjectCalculation\CalculationStep\LoggableStep` for debug purpose.
+`PimEnterprise\Component\ActivityManager\Job\ProjectCalculation\CalculationStep\LoggableStep` for debug purposes.
 It allows to log the memory usage for each loop of the
 `PimEnterprise\Component\ActivityManager\Job\ProjectCalculation\ProjectCalculationTasklet`. It helped us to hunt
 memory leaks. Don't hesitate to use it to check your custom calculation step.

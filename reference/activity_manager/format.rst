@@ -6,7 +6,7 @@ Project Format
     array:8 => [
       "label" => "Summer collection 2016"
       "code" => "summer-collection-2016"
-      "description" => "Our summer collection 2016 is ready to enrich."
+      "description" => "Our summer collection 2016 is ready for enrichment."
       "due_date" => "2017-01-27"
       "owner" => [] User to [internal_api] format
       "channel" => [] Channel to [internal_api] format,
