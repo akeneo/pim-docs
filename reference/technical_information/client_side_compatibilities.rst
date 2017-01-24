@@ -21,7 +21,7 @@ Browsers
 +------------------------+-------------------------+
 | Supported Browsers     | Chrome 30+, Firefox 29+ |
 +------------------------+-------------------------+
-| Recommended Resolution | 1280 x 960              |
+| Recommended Resolution | 1440 x 900              |
 +------------------------+-------------------------+
 
 Screen resolution
