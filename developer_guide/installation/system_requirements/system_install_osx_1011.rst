@@ -1,5 +1,5 @@
 System install on OS X 10.11 (and higher)
-==============================
+=========================================
 
 Here is a quick guide to setup the :doc:`system_requirements` on OS X 10.11. This guide will help you to install all
 the packages and modules needed for Akeneo PIM, then configure it to match your local installation.
@@ -16,19 +16,29 @@ You have two possibilities:
 * Work with MySQL 5.6. You need to downgrade your version to MySQL 5.6.
 * Work with MySQL 5.7. MySQL 5.7 is not officialy supported but works in experimental mode if you disable the ONLY_FULL_GROUP_BY mode.
 
+Download and install the Mysql Community edition server from the Official website: https://dev.mysql.com/downloads/mysql/
 
-MySQL 5.7
-^^^^^^^^^
+Select the Mac OS X platform then download and install the DMG Archive. This package installs a preference pane extension for Mysql.
+
+.. note::
+
+    The root password will be handed to you during the installation. Don't forget to copy it in order to change it after the installations completes.
+    The Mysql files will be installed in the following path `/usr/local/mysql`.
+
+Run the Mysql server on your machine by starting it from the preferences.
+
+Check that you can connect to mysql with:
 
 .. code-block:: bash
 
-        $ sudo apt-get install mysql-server
+        $ mysql -u root -p # Enter the copied password
 
+During the first connection, mysql will ask you to change the root password for security reasons, follow the indicated steps.
 
 PHP installation
 ****************
 
-Since Akeneo PIM 1.6, the minimal PHP version is PHP 5.6. Ubuntu 16.04 default PHP version is PHP 7.0.
+Since Akeneo PIM 1.6, the minimal PHP version is PHP 5.6.
 You have two possibilities:
 
 * Work with :ref:`php56`. Actually, the only supported version of PHP for Akeneo PIM is 5.6. You need to downgrade your version to PHP 5.6.
@@ -51,8 +61,14 @@ PHP 5.6 (supported)
 .. code-block:: bash
 
     $ brew update
-    $ brew install php56 --with-apache
+    $ brew install php56 --with-apache # This installs the httpd24 package automatically and compiles the libphp5 extension as well
     $ brew install php56-apcu php56-mcrypt php56-opcache php56-intl
+
+.. note::
+
+    The --with-apache option installs the package httpd24 automatically and compiles the libphp5.so extension for apache. If you want to
+    use the OS X built-in apache you need to unlink the package using the following command: `brew unlink httpd24` (This command does not delete
+    the libphp5.so extension that you will need to include your apache configuration.
 
 * Check that PHP 5.6 is now your current PHP version with:
 
@@ -61,8 +77,6 @@ PHP 5.6 (supported)
     $ php -v
 
 * Now you can directly continue by :ref:`choosing_product_storage`.
-
-.. _php7:
 
 Choosing the product storage
 ****************************
@@ -91,8 +105,6 @@ PHP 5.6 (supported)
     $ brew install mongodb24
     $ brew install php56-mongo
 
-
-
 System configuration
 --------------------
 
@@ -118,7 +130,7 @@ PHP
 
 .. note::
 
-    If you have several php versions on your server, these files can be located in ``/usr/local/etc/php/x.x/php.ini``.
+    If you have several php versions on your machine installed with homebrew, these files can be located in ``/usr/local/etc/php/x.x/php.ini``.
 
 .. code-block:: yaml
 
