@@ -30,7 +30,7 @@ You have two possibilities:
 
 .. code-block:: mysql
 
-        mysql> SET sql_mode = '';
+        mysql> SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 
 
 MySQL 5.6 (supported)
