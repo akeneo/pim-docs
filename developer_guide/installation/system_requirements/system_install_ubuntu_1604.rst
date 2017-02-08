@@ -26,7 +26,11 @@ Akeneo PIM supports MySQL from 5.1 to 5.6. Ubuntu 16.04 default MySQL version is
 You have two possibilities:
 
 * Work with MySQL 5.6. You need to downgrade your version to MySQL 5.6.
-* Work with MySQL 5.7. MySQL 5.7 is not officialy supported but works in experimental mode if you disable the ONLY_FULL_GROUP_BY mode.
+* Work with MySQL 5.7. MySQL 5.7 is not officialy supported but works in experimental mode if you disable the ONLY_FULL_GROUP_BY mode:
+
+.. code-block:: mysql
+
+        mysql> SET sql_mode = '';
 
 
 MySQL 5.6 (supported)
