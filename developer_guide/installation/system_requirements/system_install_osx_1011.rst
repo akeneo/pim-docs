@@ -2,7 +2,7 @@ System install on OS X 10.11 (and higher)
 =========================================
 
 Here is a quick guide to setup the :doc:`system_requirements` on OS X 10.11. This guide will help you to install all
-the packages and modules needed for Akeneo PIM, then configure it to match your local installation.
+the packages and modules needed for Akeneo PIM, then configure them to match your local installation.
 
 System installation
 -------------------
@@ -16,41 +16,44 @@ You have two possibilities:
 * Work with MySQL 5.6. You need to downgrade your version to MySQL 5.6.
 * Work with MySQL 5.7. MySQL 5.7 is not officially supported but works in experimental mode if you disable the ONLY_FULL_GROUP_BY mode.
 
-Download and install the Mysql Community edition server from the official website: https://dev.mysql.com/downloads/mysql/
+Download and install the MySQL Community edition server from the official website: https://dev.MySQL.com/downloads/MySQL/
 
-Select your Mac OS X platform then download and install the DMG Archive. This package installs a preference pane extension for Mysql.
+Select your Mac OS X platform then download and install the DMG Archive. This package installs a preference pane extension for MySQL.
 
 .. note::
 
-    The root password will be handed to you during the installation process. Don't forget to copy it in order to change it after the installation completes.
-    The Mysql files will be installed in the following path `/usr/local/mysql`.
+    You will be given the root password during the installation process. Don't forget to copy it in order to change it once the installation is over.
+    The MySQL files will be installed at the following location `/usr/local/MySQL`.
 
-Run the Mysql server on your machine by starting it from the preferences.
+Run the MySQL server on your machine by starting it from the preferences.
 
-Check that you can connect to mysql with:
+Check that you can connect to MySQL with:
 
 .. code-block:: bash
 
-        $ mysql -u root -p # Enter the copied password
+        $ MySQL -u root -p # Enter the copied password
 
 .. note::
 
-    During the first connection, Mysql will ask you to change the root password for security reasons, follow the indicated steps.
+    During the first connection, MySQL will ask you to change the root password for security reasons, follow the indicated steps.
 
 PHP installation
 ****************
 
 Since Akeneo PIM 1.6, the minimal PHP version is PHP 5.6.
-You have two possibilities:
 
-* Currently, the only supported version of PHP for Akeneo PIM is 5.6.
+Homebrew installation
+^^^^^^^^^^^^^^^^^^^^^
+
+In this guide, we will use Homebrew a package manager for OS X to install PHP and Apache.
+Visit this website http://brew.sh/ to install Homebrew on your machine.
 
 .. _php56:
 
 PHP 5.6 (supported)
 ^^^^^^^^^^^^^^^^^^^
 
-* In order to install specific php versions (5.6, 7.0 and even 7.1), add those repositories:
+* In order to install specific php versions (5.6, 7.0 and even 7.1), add these repositories:
 
 .. code-block:: bash
 
@@ -72,7 +75,7 @@ PHP 5.6 (supported)
     use the OS X built-in apache version, you need to unlink the package using the following command: `brew unlink httpd24` (This command does not delete
     the libphp5.so extension that you will need to include your apache configuration).
 
-* Check that PHP 5.6 is now your current PHP version with:
+* Check that your PHP version is correct:
 
 .. code-block:: bash
 
@@ -143,7 +146,7 @@ PHP
 
 .. note::
 
-    If you have several php versions on your machine installed with homebrew, these files can be located in ``/usr/local/etc/php/x.x/php.ini``.
+    If you have several PHP versions on your machine installed with homebrew, these files can be located in ``/usr/local/etc/php/x.x/php.ini``.
 
 .. code-block:: yaml
 
