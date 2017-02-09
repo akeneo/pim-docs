@@ -61,12 +61,12 @@ PHP 5.6 (supported)
 .. code-block:: bash
 
     $ brew update
-    $ brew install php56 --with-apache # This installs the httpd24 package automatically and compiles the libphp5 extension as well
+    $ brew install php56 --with-httpd24 # This installs the httpd24 package automatically and compiles the libphp5 extension as well
     $ brew install php56-apcu php56-mcrypt php56-opcache php56-intl
 
 .. note::
 
-    The --with-apache option installs the package httpd24 automatically and compiles the libphp5.so extension for apache. If you want to
+    The --with-httpd24 option installs the package httpd24 automatically and compiles the libphp5.so extension for apache. If you want to
     use the OS X built-in apache you need to unlink the package using the following command: `brew unlink httpd24` (This command does not delete
     the libphp5.so extension that you will need to include your apache configuration.
 
@@ -174,12 +174,10 @@ In this example, the user is *my_user* and the group is *my_group*.
 
 .. code-block:: bash
 
-    $ sudo vi /etc/apache2/envvars
+    $ sudo vi /usr/local/etc/apache2/2.4/envvars
     # add these environment variables:
     export APACHE_RUN_USER=my_user
     export APACHE_RUN_GROUP=my_group
-
-    $ sudo chown -R my_user /var/lock/apache2 #Not sure we should do that.
 
 .. note::
 
@@ -193,8 +191,12 @@ In this example, the user is *my_user* and the group is *my_group*.
 .. code-block:: yaml
 
     $ sudo vim /usr/local/etc/apache2/httpd.config
+    # Uncomment the following lines
     LoadModule vhost_alias_module libexec/mod_vhost_alias.so
+    LoadModule rewrite_module libexec/mod_rewrite.so
+    Include /usr/local/etc/apache2/2.4/extra/httpd-vhosts.conf
 
+    # Add those lines
     LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
     <FilesMatch .php$>
         SetHandler application/x-httpd-php
@@ -216,12 +218,12 @@ First, open the file ``/usr/local/etc/apache/2.4/extra/httpd-vhost.conf`` and ad
 
 .. code-block:: apache
     :linenos:
-
         <VirtualHost *:80>
             ServerName akeneo-pim.local
 
             DocumentRoot /path/to/installation/pim-community-standard/web/
             <Directory /path/to/installation/pim-community-standard/web/>
+                Options Indexes FollowSymLinks MultiViews
                 AllowOverride All
                 Require all granted
             </Directory>
