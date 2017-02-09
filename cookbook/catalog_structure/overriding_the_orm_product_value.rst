@@ -273,4 +273,4 @@ Now you are ready to perform a Doctrine schema update and use your own `ProductV
 
 .. code-block:: bash
 
-    php app/console doctrine:schema:update --force
+    php app/console doctrine:schema:update --dump-sql --force
