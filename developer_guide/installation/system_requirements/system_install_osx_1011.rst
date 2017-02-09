@@ -14,15 +14,15 @@ Akeneo PIM supports MySQL from 5.1 to 5.7.
 You have two possibilities:
 
 * Work with MySQL 5.6. You need to downgrade your version to MySQL 5.6.
-* Work with MySQL 5.7. MySQL 5.7 is not officialy supported but works in experimental mode if you disable the ONLY_FULL_GROUP_BY mode.
+* Work with MySQL 5.7. MySQL 5.7 is not officially supported but works in experimental mode if you disable the ONLY_FULL_GROUP_BY mode.
 
-Download and install the Mysql Community edition server from the Official website: https://dev.mysql.com/downloads/mysql/
+Download and install the Mysql Community edition server from the official website: https://dev.mysql.com/downloads/mysql/
 
-Select the Mac OS X platform then download and install the DMG Archive. This package installs a preference pane extension for Mysql.
+Select your Mac OS X platform then download and install the DMG Archive. This package installs a preference pane extension for Mysql.
 
 .. note::
 
-    The root password will be handed to you during the installation. Don't forget to copy it in order to change it after the installations completes.
+    The root password will be handed to you during the installation process. Don't forget to copy it in order to change it after the installation completes.
     The Mysql files will be installed in the following path `/usr/local/mysql`.
 
 Run the Mysql server on your machine by starting it from the preferences.
@@ -33,7 +33,9 @@ Check that you can connect to mysql with:
 
         $ mysql -u root -p # Enter the copied password
 
-During the first connection, mysql will ask you to change the root password for security reasons, follow the indicated steps.
+.. note::
+
+    During the first connection, Mysql will ask you to change the root password for security reasons, follow the indicated steps.
 
 PHP installation
 ****************
@@ -41,7 +43,7 @@ PHP installation
 Since Akeneo PIM 1.6, the minimal PHP version is PHP 5.6.
 You have two possibilities:
 
-* Work with :ref:`php56`. Actually, the only supported version of PHP for Akeneo PIM is 5.6. You need to downgrade your version to PHP 5.6.
+* Currently, the only supported version of PHP for Akeneo PIM is 5.6.
 
 .. _php56:
 
@@ -61,14 +63,14 @@ PHP 5.6 (supported)
 .. code-block:: bash
 
     $ brew update
-    $ brew install php56 --with-httpd24 # This installs the httpd24 package automatically and compiles the libphp5 extension as well
+    $ brew install php56 --with-httpd24
     $ brew install php56-apcu php56-mcrypt php56-opcache php56-intl
 
 .. note::
 
-    The --with-httpd24 option installs the package httpd24 automatically and compiles the libphp5.so extension for apache. If you want to
-    use the OS X built-in apache you need to unlink the package using the following command: `brew unlink httpd24` (This command does not delete
-    the libphp5.so extension that you will need to include your apache configuration.
+    The `--with-httpd24` option installs the package httpd24 (apache) automatically and compiles the libphp5.so extension for apache. If you want to
+    use the OS X built-in apache version, you need to unlink the package using the following command: `brew unlink httpd24` (This command does not delete
+    the libphp5.so extension that you will need to include your apache configuration).
 
 * Check that PHP 5.6 is now your current PHP version with:
 
@@ -104,6 +106,17 @@ PHP 5.6 (supported)
     $ brew update
     $ brew install mongodb24
     $ brew install php56-mongo
+
+Check that mongodb has been correctly installed by listing homebrew services:
+
+.. code-block:: bash
+
+    $ brew services list
+
+You can run the mongodb server with:
+
+.. code-block:: bash
+    $ brew services mongodb24 start
 
 System configuration
 --------------------
@@ -218,12 +231,12 @@ First, open the file ``/usr/local/etc/apache/2.4/extra/httpd-vhost.conf`` and ad
 
 .. code-block:: apache
     :linenos:
+
         <VirtualHost *:80>
             ServerName akeneo-pim.local
 
             DocumentRoot /path/to/installation/pim-community-standard/web/
             <Directory /path/to/installation/pim-community-standard/web/>
-                Options Indexes FollowSymLinks MultiViews
                 AllowOverride All
                 Require all granted
             </Directory>

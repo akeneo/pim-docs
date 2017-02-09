@@ -20,3 +20,4 @@ Here are the guidelines to set everything up according to your operating system:
     system_requirements/system_install_ubuntu_1604
     system_requirements/system_install_debian8
     system_requirements/system_install_debian8_php7
+    system_requirements/system_install_osx_1011
