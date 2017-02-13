@@ -23,7 +23,7 @@ Select your Mac OS X platform then download and install the DMG Archive. This pa
 .. note::
 
     You will be given the root password during the installation process. Don't forget to copy it in order to change it once the installation is over.
-    The MySQL files will be installed at the following location `/usr/local/MySQL`.
+    The MySQL files will be installed at the following location `/usr/local/mysql`.
 
 Run the MySQL server on your machine by starting it from the preferences.
 
@@ -31,7 +31,7 @@ Check that you can connect to MySQL with:
 
 .. code-block:: bash
 
-        $ MySQL -u root -p # Enter the copied password
+        $ mysql -u root -p # Enter the copied password
 
 .. note::
 
@@ -73,7 +73,7 @@ PHP 5.6 (supported)
 
     The `--with-httpd24` option installs the package httpd24 (apache) automatically and compiles the libphp5.so extension for apache. If you want to
     use the OS X built-in apache version, you need to unlink the package using the following command: `brew unlink httpd24` (This command does not delete
-    the libphp5.so extension that you will need to include your apache configuration).
+    the libphp5.so extension that you will need to include in your apache configuration).
 
 * Check that your PHP version is correct:
 
