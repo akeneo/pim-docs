@@ -95,31 +95,26 @@ Based on this formula, either you need a :ref:`mongodb-install-1604`, either you
 MongoDB Installation (optional)
 *******************************
 
-PHP 5.6 (supported)
-^^^^^^^^^^^^^^^^^^^
+MongoDB 2.4
+^^^^^^^^^^^
 
-* Install MongoDB server and PHP driver
+* Install the MongoDB server:
+
+Follow the manual installation steps described in the official documentation https://docs.mongodb.com/v2.4/tutorial/install-mongodb-on-os-x
 
 .. note::
 
     Akeneo PIM will not work with MongoDB 3.*. *The supported versions are 2.4 and 2.6*.
 
+PHP 5.6 (supported)
+^^^^^^^^^^^^^^^^^^^
+
+* Install the PHP driver for Mongo
+
 .. code-block:: bash
 
     $ brew update
-    $ brew install mongodb24
     $ brew install php56-mongo
-
-Check that mongodb has been correctly installed by listing homebrew services:
-
-.. code-block:: bash
-
-    $ brew services list
-
-You can run the mongodb server with:
-
-.. code-block:: bash
-    $ brew services mongodb24 start
 
 System configuration
 --------------------
