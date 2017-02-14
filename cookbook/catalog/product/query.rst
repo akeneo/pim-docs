@@ -33,10 +33,8 @@ Add filters:
 .. code-block:: php
 
     $pqb
-        // You can filter on a field by id
-        ->addFilter('categories.id', 'IN', [1, 2])
-        // Or filter using codes by adding the '.code' suffix
-        ->addFilter('groups.code', 'IN', ['shirts'])
+        // You can filter on a field
+        ->addFilter('groups', 'IN', ['shirts'])
         // filter on sku which is not localizable and not scopable
         ->addFilter('sku', 'CONTAINS', 'akeneo')
         // filter on name which is localizable, the default locale is used, here 'en_US'
