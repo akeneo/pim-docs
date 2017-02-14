@@ -269,7 +269,7 @@ Finally, check that your mapping override is correct by launching the following 
 
     php app/console doctrine:mapping:info
 
-Now you are ready to perform a Doctrine schema update and use your own `ProductValue` class:
+Now you are ready to perform a Doctrine schema update and to use your own `ProductValue` class:
 
 .. code-block:: bash
 
