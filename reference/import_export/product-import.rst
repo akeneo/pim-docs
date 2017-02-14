@@ -11,7 +11,7 @@ You can now natively import data into CSV and XLSX format.
 Definition of the Job
 ---------------------
 
-Take a look to this configuration based on ConnectorBundle (``src/Pim/Bundle/ConnectorBundle/Resources/config/jobs.yml``).
+Take a look at this configuration based on ConnectorBundle (``src/Pim/Bundle/ConnectorBundle/Resources/config/jobs.yml``).
 
 .. code-block:: yaml
 
