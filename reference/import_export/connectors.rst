@@ -26,4 +26,4 @@ Customizing connectors
 It is possible to customize these connectors to import and export numerous PIM related objects:
 
 - Check how to import PIM objects using the Akeneo Connectors (cf :doc:`/reference/import_export/simple-import`)
-- In order to understand how the Akeneo CSV Connector is working for products, please refer to chapters about product import (cf :doc:`/reference/import_export/product-export`) and product export (cf :doc:`/reference/import_export/product-export`)
+- In order to understand how the Akeneo CSV Connector is working for products, please refer to chapters about product import (cf :doc:`/reference/import_export/product-import`) and product export (cf :doc:`/reference/import_export/product-export`)
