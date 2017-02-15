@@ -1,7 +1,7 @@
 How to add a custom unit of measure
 ===================================
 
-If Akeneo PIM didn´t provide all the measures you need, you can easily add a custom unit of measure to an existing measure family.
+If Akeneo PIM didn't provide all the measures you need, you can easily add a custom unit of measure to an existing measure family.
 
 The custom measures are configured in a ``Resources/config/measure.yml`` file.
 This Yaml file could be in every custom bundle registered by the AppKernel.php and will be processed by the Akeneo MeasureBundle.
