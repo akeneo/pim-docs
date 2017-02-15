@@ -75,7 +75,7 @@ Clear app cache with this command:
 
 .. code-block:: bash
 
-	rm -rf app/cache /*
+	rm -rf app/cache/*
 
 
 Try to create a new attribute in Akeneo frontend with metric as the attribute type.
