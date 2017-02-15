@@ -161,7 +161,7 @@ You'll have to install the **new** Mongo PHP extension_ and enable it:
 .. _adapter: https://github.com/alcaeus/mongo-php-adapter
 .. _composer: https://getcomposer.org
 
-Finally, you have to install the Mongo PHP adapter_ using the dependancy management tool composer_:
+Finally, you have to install the Mongo PHP adapter_ using the dependancy manager composer_:
 
 .. code-block:: bash
 
