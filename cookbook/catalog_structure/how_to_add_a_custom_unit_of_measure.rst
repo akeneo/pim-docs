@@ -1,12 +1,12 @@
 How to add a custom unit of measure
 ===================================
 
-If Akeneo PIM didn´t provide all the measures you need, you can easily add a custom unit of measure on an existing family.
+If Akeneo PIM didn´t provide all the measures you need, you can easily add a custom unit of measure to an existing measure family.
 
-The custom measures are configured by a ``Resources/config/measure.yml`` file.
-This Yaml file could be in every custom bundle registered by the AppKernel.php and will be processed for the Akeneo MeasureBundle.
+The custom measures are configured in a ``Resources/config/measure.yml`` file.
+This Yaml file could be in every custom bundle registered by the AppKernel.php and will be processed by the Akeneo MeasureBundle.
 
-In this example we will add the MICROMETER unit to the length measure family in a own MyMeasure Bundle.
+In this example we will add the MICROMETER unit to the length measure family in a custom MyMeasure Bundle.
 
 Create our Bundle
 -----------------
@@ -50,7 +50,7 @@ Create a file ``Resources/config/measure.yml`` in our Bundle to configure the un
                 convert: [{'mul': 0.000001}]
                 symbol: μm
 
-Here, we just add the "MICROMETER" unit with his conversion rules from it to standard unit. To have equivalent to 1 micrometer in meters, you must multiply by 0,000001. A symbol is required too to define unit format to display. 
+Here, we just add the "MICROMETER" unit with its conversion rules from it to standard unit. To have equivalent to 1 micrometer in meters, you must multiply by 0,000001. A symbol is also required to define the unit format to display. 
 
 .. tip::
 	For more examples you can find the original measure.yml here https://github.com/akeneo/MeasureBundle/blob/master/Resources/config/measure.yml
@@ -60,7 +60,7 @@ Translate our custom unit
 
 Create the files ``Resources/translations/messages.en.yml`` and ``Resources/translations/jsmessages.en.yml`` in our Bundle to translate our custom unit of measure.
 
-These two files contains this translation:
+These two files contain this translation:
 
 .. code-block:: yaml
 
