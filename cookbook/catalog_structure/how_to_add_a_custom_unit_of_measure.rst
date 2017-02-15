@@ -45,7 +45,6 @@ Create a file ``Resources/config/measure.yml`` in our Bundle to configure the un
 	
     measures_config:
     Length:
-        standard: METER
         units:
             MICROMETER:
                 convert: [{'mul': 0.000001}]
