@@ -16,16 +16,16 @@ What is a product?
 
 Akeneo provides a powerful and very flexible way to structure your products using an Entity Attribute Value (i.e. Product - Attribute - ProductValue) model.
 
-For instance, let's say we want to create a "Car" product in Akeneo.
+For instance, let's say we want to store cars in Akeneo.
 
 A Car has multiple properties (or attributes):
 
  - A color
- - A motorization
+ - A manufacturer
  - A price (a value and a currency)
  - ...
 
-We build the Car product *Family* (a "product type") using *Attributes*.
+We build the Car *Family* (or "product type") using *Attributes*.
 Akeneo is shipped with common attributes:
 
  - text;
@@ -33,7 +33,8 @@ Akeneo is shipped with common attributes:
  - picture;
  - date...
 
-Once a Family is created, you can create products organized in one or multiples *Categories*.
+Once a Family is created, you can create products organized in one or multiples *Categories*,
+for example "Tesla Model X" in "electrical motorization" category.
 
 Most of the time, we export data to various destinations: an eCommerce website, a mobile application, or a paper catalog.
 You can use Channels to provide a different data for each product according to the selected destination.
@@ -49,7 +50,7 @@ How does it work?
 
 .. image:: ./akeneo_overview.png
 
-As a developer, you will interact with Akeneo to import and export data.
+As a developer, you will mainly interact with Akeneo to import and export data.
 We create Import and Export tasks using *Jobs* put in *Connectors*.
 
 A job?
@@ -67,7 +68,7 @@ To export data from Akeneo, we need:
 
  - to read data from database;
  - to process it into an understandable format (XML, JSON, CSV...);
- - to write into plain files.
+ - to export data into plain files or through a web service.
 
 Because Akeneo PIM is open source, multiple connectors - or modules - already exist both for importing or exporting data.
 
