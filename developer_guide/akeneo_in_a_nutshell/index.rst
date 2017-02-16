@@ -9,12 +9,12 @@ It is a productivity tool helping the contributors to serve the product informat
 
 Akeneo is the first open source PIM made for non-technical users.
 Easy to use and very flexible, the solution can adapt to your product organization and processes, not the other way around.
-Available in two edition, Community, and Enterprise, you can choose the one that fits your needs.
+Available in two editions, Community, and Enterprise, you can choose the one that fits your needs.
 
 What is a product?
 ------------------
 
-Akeneo provides a powerful and very flexible way to structure your products using an Entity Attribute Value (i.e. Product - Attribute - ProductValue) system.
+Akeneo provides a powerful and very flexible way to structure your products using an Entity Attribute Value (i.e. Product - Attribute - ProductValue) model.
 
 For instance, let's say we want to create a "Car" product in Akeneo.
 
@@ -35,7 +35,7 @@ Akeneo is shipped with common attributes:
 
 Once a Family is created, you can create products organized in one or multiples *Categories*.
 
-Most of the time, we export data to various destinations: an eCommerce website, a mobile application, a paper catalog.
+Most of the time, we export data to various destinations: an eCommerce website, a mobile application, or a paper catalog.
 You can use Channels to provide a different data for each product according to the selected destination.
 
 When you start a PIM project, the first task to do is to build the structure of the data from a "functional" point of view.
@@ -47,8 +47,10 @@ When you start a PIM project, the first task to do is to build the structure of 
 How does it work?
 *****************
 
+.. image:: ./akeneo_overview.png
+
 As a developer, you will interact with Akeneo to import and export data.
-We create Import and Exports tasks using *Jobs* put in *Connectors*.
+We create Import and Export tasks using *Jobs* put in *Connectors*.
 
 A job?
 ------
@@ -57,9 +59,9 @@ A Job defines a series of steps to execute to do a task.
 
 To import data in Akeneo, we need:
 
- - to read data and convert it to understandable format;
+ - to read data and convert it an understandable format;
  - to map and validate this data into products;
- - to save them into database;
+ - to save them into database.
 
 To export data from Akeneo, we need:
 
@@ -67,7 +69,7 @@ To export data from Akeneo, we need:
  - to process it into an understandable format (XML, JSON, CSV...);
  - to write into plain files.
 
-Because Akeneo PIM is open source, multiple connectors - or modules - already exists both for importing or exporting data.
+Because Akeneo PIM is open source, multiple connectors - or modules - already exist both for importing or exporting data.
 
 .. note::
 
