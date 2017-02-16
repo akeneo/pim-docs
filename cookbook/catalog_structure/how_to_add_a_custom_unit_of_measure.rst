@@ -14,7 +14,7 @@ Create our Bundle
 Create a new Symfony bundle:
 
 .. code-block:: php
-	
+
 	<?php
 
 	namespace Acme\Bundle\MyMeasureBundle;
@@ -24,7 +24,7 @@ Create a new Symfony bundle:
 	class AcmeMyMeasureBundle extends Bundle
 	{
 	}
-	
+
 Register the bundle in AppKernel:
 
 .. code-block:: php
@@ -38,11 +38,11 @@ Register the bundle in AppKernel:
 
 Configure our unit of measure
 -----------------------------
-	
+
 Create a file ``Resources/config/measure.yml`` in our Bundle to configure the unit of measure:
 
 .. code-block:: yaml
-	
+
     measures_config:
     Length:
         units:
@@ -50,7 +50,7 @@ Create a file ``Resources/config/measure.yml`` in our Bundle to configure the un
                 convert: [{'mul': 0.000001}]
                 symbol: μm
 
-Here, we just add the "MICROMETER" unit with its conversion rules from it to standard unit. To have equivalent to 1 micrometer in meters, you must multiply by 0,000001. A symbol is also required to define the unit format to display. 
+Here, we just add the "MICROMETER" unit with its conversion rules to a standard unit. To have equivalent to 1 micrometer in meters, you must multiply by 0,000001. A symbol is also required to define the unit format to display.
 
 .. tip::
 	For more examples you can find the original measure.yml here https://github.com/akeneo/MeasureBundle/blob/master/Resources/config/measure.yml
@@ -64,9 +64,9 @@ These two files contain this translation:
 
 .. code-block:: yaml
 
-	MICROMETER: micrometer
-	
-Finaly clear cache and try it out
+    MICROMETER: micrometer
+
+Clear the cache and try it out
 ---------------------------------
 
 Delete all translation files inside of ``/web/js/translations/``.
