@@ -11,3 +11,6 @@ Best Practices
 
     project
     reusable_bundle
+    ./core/behat
+    ./core/conventions
+    ./core/standards
