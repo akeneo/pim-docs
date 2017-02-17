@@ -4,7 +4,7 @@ Project creation
 Overview
 --------
 
-Projects are the heart of the Activity Manager. They allow users to know what they have to fill in a selection of
+Projects are the heart of the Teamwork Assistant. They allow users to know what they have to fill in a selection of
 products. In this section, we will understand how a project is created and what are the important steps it goes through
 during creation.
 
@@ -40,4 +40,4 @@ is dispatched it ensures that all business around a project is finished.
 
 .. tip::
 
-    This event is used by the Activity Manager to notify users impacted by the project.
+    This event is used by the Teamwork Assistant to notify users impacted by the project.
