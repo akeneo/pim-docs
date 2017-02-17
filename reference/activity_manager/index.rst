@@ -1,4 +1,4 @@
-Activity manager (Enterprise Edition)
+Teamwork Assistant (Enterprise Edition)
 =====================================
 
 .. toctree::
