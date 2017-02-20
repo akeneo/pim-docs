@@ -2,7 +2,13 @@ System install on OS X 10.11 (and higher)
 =========================================
 
 Here is a quick guide to setup the :doc:`system_requirements` on OS X 10.11. This guide will help you to install all
-the packages and modules needed for Akeneo PIM, then configure them to match your local installation.
+the packages and modules needed for Akeneo PIM.
+
+.. warning::
+    This guide is dedicated to set up development environments only. We do not support OS X for production.
+    If you want to build a production environment, please refer to the other `linux based installation guides`_.
+
+.. _`linux based installation guides`: ../index.html
 
 System installation
 -------------------
