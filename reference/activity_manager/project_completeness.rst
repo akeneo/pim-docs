@@ -10,7 +10,7 @@ will explain our technical and structure choices.
 Goal
 ____
 
-The Activity Manager feature is about creating projects from a product selection that gives a vision on the enrichment
+The Teamwork Assistant feature is about creating projects from a product selection that gives a vision on the enrichment
 progress to contributors (users in charge of the enrichment). Each project gives to the contributor their own
 completeness on the product selection, taking into account their permissions to edit or not product, attribute groups,
 locales and channels.

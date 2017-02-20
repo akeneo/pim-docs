@@ -29,4 +29,4 @@ Cookbook
     rule/index
     setup_data/add_translation_packs
     purge/index
-    activity_manager/index
+    teamwork_assistant/index
