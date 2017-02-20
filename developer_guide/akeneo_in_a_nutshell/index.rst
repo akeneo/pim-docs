@@ -26,7 +26,7 @@ A Car has multiple properties (or attributes):
  - ...
 
 We build the Car *Family* (or "product type") using *Attributes*.
-Akeneo is shipped with common attributes:
+Akeneo is shipped with common attribute types:
 
  - text;
  - price;
@@ -60,7 +60,7 @@ A Job defines a series of steps to execute to do a task.
 
 To import data in Akeneo, we need:
 
- - to read data and convert it an understandable format;
+ - to read data and convert it into an understandable format;
  - to map and validate this data into products;
  - to save them into database.
 
