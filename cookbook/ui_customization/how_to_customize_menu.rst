@@ -30,7 +30,7 @@ New entries are created under the ``items`` key. Each item must have a ``label``
 The example above defines three menu items:
  - The ``reference_data`` item consists of a label and the URI ``#``. This means that the item will not react on mouse click,
    but can be used as a placeholder for nested menus;
- - Both ``brand`` and ``manufacturer`` items reference and existing route. So, when we will click one of theses items, we will
+ - Both ``brand`` and ``manufacturer`` items reference an existing route. So, when we will click one of theses items, we will
    get the corresponding page.
 
 Here is the list of all available options for an item:
@@ -58,7 +58,7 @@ Here is the list of all available options for an item:
 Organize the Navigation trees
 *****************************
 
-The next step is to put together a tree for these menu items All trees are built under the ``tree`` key.
+The next step is to put together a tree for these menu items. All trees are built under the ``tree`` key.
 
 .. code-block:: yaml
 
@@ -85,3 +85,21 @@ Akeneo PIM is provided with two trees where items can be added.
 
 In the example above, items are also registered in an already existing subtree *System* tab. With the given configuration,
 the menu *Reference Data* will appear under the existing *System* tab of the application menu.
+
+Here is the list of all available options for a tree:
+
+.. code-block:: yaml
+
+    tree:
+        <menu_alias>                            # menu alias
+            type: <menu_type>                   # menu type code. Link to menu template section.
+            scope_type: <string>                # menu scope type identifier
+            read_only: <boolean>                # disable ability to edit menu in UI
+            max_nesting_level: <integer>        # menu max nesting level
+            merge_strategy: <strategy>          # node merge strategy. possible strategies are append|replace|move
+            extras:                             # extra parameters for container renderer
+                brand: <string>
+                brandLink: <string>
+            children:                           # submenu items
+                <links to items hierarchy>
+                position: <integer>             # menu item position
