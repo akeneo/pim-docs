@@ -39,6 +39,10 @@ Backend bugs are issues which occur on the server side (PHP/Symfony code, databa
 * Analyze the error messages provided in the Symfony's log files ``/path/to/your/pim/app/logs/prod.log`` or ``/path/to/your/pim/app/logs/dev.log``
 * Take a look at the PHP error log file.
 
+.. note::
+
+    If the web debug toolbar is not displayed in ``dev`` environment, you can retrieve the link in ``X-Debug-Token-Link`` header of request.
+
 Tasks bugs
 ----------
 
