@@ -7,14 +7,8 @@ Creating the Reference Data Entity
 As Akeneo relies heavily on standard tools like Doctrine, creating the entity is
 quite straightforward for any developer with Doctrine experience.
 
-.. note::
-    At the moment, there is no native CRUD functionality for the Reference Data.
-    You'll need to use https://github.com/akeneo-labs/CustomEntityBundle for that.
-
-In order to create your reference data, you have to respect the following rules:
-
- * your entity has to implement `Pim\\Component\\ReferenceData\\Model\\ReferenceDataInterface`
- * your entity must have a unique *code* field
+To create a reference data, an Entity has to implement `Pim\\Component\\ReferenceData\\Model\\ReferenceDataInterface`.
+The best way (and the one we recommend) is to extend the abstract class `Pim\\Component\\ReferenceData\\Model\\AbstractReferenceData`.
 
 .. code-block:: php
 
@@ -134,11 +128,6 @@ In order to create your reference data, you have to respect the following rules:
         }
     }
 
-.. note::
-    To facilitate the integration of the entity in the PIM, we extended the abstract class
-    `Pim\\Component\\ReferenceData\\Model\\AbstractReferenceData`. This is the recommended way to do so, but you can simply
-    implement the interface `Pim\\Component\\ReferenceData\\Model\\ReferenceDataInterface` if you want.
-
 .. code-block:: yaml
 
     # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/Color.orm.yml
@@ -147,16 +136,16 @@ In order to create your reference data, you have to respect the following rules:
         type: entity
         table: acme_catalog_color
         fields:
-            id:
+            id: # required
                 type: integer
                 id: true
                 generator:
                     strategy: AUTO
-            code:
+            code: # required
                 type: string
                 length: 255
                 unique: true
-            sortOrder:
+            sortOrder: # required
                 type: integer
             name:
                 type: string
@@ -173,7 +162,7 @@ In order to create your reference data, you have to respect the following rules:
         lifecycleCallbacks: {  }
 
 
-You can check that you have correctly mapped your `Color` entity by using the following command:
+To check if the entities are correctly set up, use the following command:
 
 .. code-block:: bash
 
@@ -183,19 +172,19 @@ You can check that you have correctly mapped your `Color` entity by using the fo
 Overriding the ProductValue
 ---------------------------
 
-Depending on your needs, a product can be linked to several colors or just one.
+Depending on the needs, a product can be linked to several colors or just one.
 The first case will be called *simple reference data*, while the second one will be referred to as *multiple reference data*.
 
-To link your reference data to the product, you need to override the `ProductValue` object.
-This task is documented here :doc:`overriding_the_orm_product_value` or here :doc:`overriding_the_mongodb_product_value` depending on your product storage.
+To link a reference data to the product, the `ProductValue` object needs to be overriden.
+This task is documented here :doc:`overriding_the_orm_product_value` or here :doc:`overriding_the_mongodb_product_value` depending on the product storage.
 
-Don't forget to check the mapping of your product value and to register your custom class in the container.
+Don't forget to check the mapping of the product value and to register the custom class in the container.
 
 
 Configuring the Reference Data
 ------------------------------
 
-Now that the reference data is linked to the ProductValue, we have to configure it in your `app/config/config.yml` file.
+Now that the reference data is linked to the ProductValue, declare it in the `app/config/config.yml` file.
 
 For a simple reference data:
 
@@ -217,16 +206,18 @@ For a multiple reference data:
             class: Acme\Bundle\AppBundle\Entity\Color
             type: multi
 
-.. note::
-    The reference data name (here `color` or `colors`) must use only letters and be camel-cased.
+The reference data name (here `color` or `colors`) must use only letters and be camel-cased: the same `Color`
+entity can be used as simple or multiple reference data.
 
-.. note::
-    As you can see here, the same `Color` entity can be used as simple or multiple reference data.
-
-You can now check the setup and the configuration of your reference data with the the following command:
+To check the setup and the configuration of a reference data, use the following command:
 
 .. code-block:: bash
 
     php app/console pim:reference-data:check
 
-If everything is green, your reference data is correctly configured and you can now link them to products within the PIM.
+If everything is green, the reference data is correctly configured and may be linked to the products within the PIM,
+and displayed in the Back Office.
+
+.. note::
+
+    Want to learn how to display a CRUD in back office for a Reference Data? Look at the :doc:`/cookbook/ui_customization/create_a_reference_data_crud` cookbook.
