@@ -12,6 +12,7 @@ efficient answers to their multichannel needs.
     :maxdepth: 2
     :titlesonly:
 
+    developer_guide/akeneo_in_a_nutshell/index
     developer_guide/installation/index
     developer_guide/migration/index
     reference/index
