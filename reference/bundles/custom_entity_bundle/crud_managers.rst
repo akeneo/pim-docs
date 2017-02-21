@@ -19,7 +19,7 @@ Your manager can be registered by using the pim_custom_entity.manager tag in you
                 - { name:   pim_custom_entity.manager, alias: my_manager }
 
 
-The manager for each class can be specified in your ``custom_entities.yml`` files:
+The manager for each class can be specified in your ``custom_entities.yml`` file:
 
 
 .. code-block:: yaml
