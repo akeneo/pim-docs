@@ -1,27 +1,22 @@
 CRUD Configuration
 ******************
 
-The configuration for the CRUD actions of your custom entities must be in a file named 'config/custom_entities.yml',
+The configuration for the CRUD actions of your custom entities must be in a file named ``config/custom_entities.yml``,
 located in an activated bundle. To have a full working CRUD for an entity, the following configuration could be used:
 
 .. code-block:: yaml
 
     # Resources/config/custom_entities.yml
-
     custom_entities:
         color:
-            entity_class: Acme\Bundle\CustomBundle\Entity\Color
+            entity_class: Acme\Bundle\AppBundle\Entity\MyEntity
             options:
-                acl_prefix: acme_enrich_color
+                acl_prefix: acme_enrich_my_entity
             actions:
                 edit:
-                    form_type: acme_enrich_color
+                    form_type: acme_enrich_my_entity
                 create:
-                    form_type: acme_enrich_color
-                mass_edit:
-                    form_type: acme_enrich_mass_edit_color
-                quick_export:
-                    service: pim_custom_entity.action.quick_export
+                    form_type: acme_enrich_my_entity
 
 
 The root level of the file contains the configuration for all your entities, indexed by alias. The alias will be used in the
@@ -70,7 +65,7 @@ By default, the index action uses the ``pim_custom_entity.action.index`` service
 
     custom_entities:
         my_entity:
-            entity_class: Acme\Bundle\CatalogBundle\Entity\MyEntity
+            entity_class: Acme\Bundle\AppBundle\Entity\MyEntity
             actions:
                 index:
                     service: pim_custom_entity.action.index
@@ -95,7 +90,7 @@ By default, the create action uses the ``pim_custom_entity.action.create`` servi
 
     custom_entities:
         my_entity:
-            entity_class: Acme\Bundle\CatalogBundle\Entity\MyEntity
+            entity_class: Acme\Bundle\AppBundle\Entity\MyEntity
             actions:
                 create:
                     service: pim_custom_entity.action.create
@@ -131,7 +126,7 @@ By default, the edit action uses the ``pim_custom_entity.action.edit`` service w
 
     custom_entities:
         my_entity:
-            entity_class: Acme\Bundle\CatalogBundle\Entity\MyEntity
+            entity_class: Acme\Bundle\AppBundle\Entity\MyEntity
             actions:
                 edit:
                     service: pim_custom_entity.action.edit
@@ -162,7 +157,7 @@ By default, the delete action uses the ``pim_custom_entity.action.delete`` servi
 
     custom_entities:
         my_entity:
-            entity_class: Acme\Bundle\CatalogBundle\Entity\MyEntity
+            entity_class: Acme\Bundle\AppBundle\Entity\MyEntity
             actions:
                 delete:
                     service: pim_custom_entity.action.delete
@@ -178,12 +173,12 @@ By default, the show action uses the ``pim_custom_entity.action.show`` service w
 
     custom_entities:
         my_entity:
-            entity_class: Acme\Bundle\CatalogBundle\Entity\MyEntity
+            entity_class: Acme\Bundle\AppBundle\Entity\MyEntity
             actions:
                 show:
                     service:  pim_custom_entity.action.show
                     route:    pim_customentity_show
-                    template: AcmeCatalogBundle:MyEntity:show.html.twig # required
+                    template: AcmeAppBundle:MyEntity:show.html.twig # required
 
 The datagrid could be defined like that:
 
@@ -205,123 +200,6 @@ The datagrid could be defined like that:
                     label:     Show the reference data
                     icon:      eye-open
                     link:      show_link
-
-Mass Edit Action Options
-------------------------
-
-By default, the mass edit action uses the ``pim_custom_entity.action.mass_edit`` service with the following options:
-
-.. code-block:: yaml
-
-    custom_entities:
-        my_entity:
-            entity_class: Acme\Bundle\CatalogBundle\Entity\MyEntity
-            actions:
-                mass_edit:
-                    service: pim_custom_entity.action.mass_edit
-                    route: pim_customentity_massedit
-                    template: PimCustomEntityBundle:CustomEntity:massEdit.html.twig
-                    form_type: ~
-                    form_options: {}
-                    redirect_route: pim_customentity_index
-                    redirect_route_parameters: { customEntityName: my_entity }
-                    success_message: flash.my_entity.mass_edited
-
-
-- **template**: the template of the action
-- **form_type**: the form type used to create objects. **This option is required**
-- **form_options**: options which should be passed to the form factory
-- **redirect_route**: the route to use for redirections on success
-- **redirect_route_parameters**: the parameters for the redirect route
-- **success_message**: translation key of the message being displayed on success
-
-Also, you have to define the following configuration:
-
-.. code-block:: yaml
-
-    # Resources\config\datagrid.yml
-
-    custom_entities:
-        my_entity:
-            mass_actions:
-                mass_edit:
-                    type: redirect
-                    label: Mass Edit
-                    icon: edit
-                    route: pim_customentity_massedit
-                    route_parameters:
-                        customEntityName: my_entity
-
-
-Mass Delete
------------
-
-.. code-block:: yaml
-
-    # Resources\config\datagrid.yml
-
-    datagrid:
-        my_entity_datagrid:
-            mass_actions:
-                delete:
-                    type: delete
-                    label: pim.grid.mass_action.delete
-                    entity_name: my_entity
-                    acl_resource: ~
-                    handler: mass_delete
-                    messages:
-                        confirm_title: pim_datagrid.mass_action.delete.confirm_title
-                        confirm_content: pim_datagrid.mass_action.delete.confirm_content
-                        confirm_ok: pim_datagrid.mass_action.delete.confirm_ok
-                        success: pim_datagrid.mass_action.delete.success
-                        error: pim_datagrid.mass_action.delete.error
-                        empty_selection: pim_datagrid.mass_action.delete.empty_selection
-                    launcherOptions:
-                        icon: trash
-
-Quick Export Action Options
----------------------------
-
-By default, the quick_export action uses the ``pim_custom_entity.action.quick_export`` service with the following options:
-
-.. code-block:: yaml
-
-    # custom_entities.yml
-
-    custom_entities:
-        my_entity:
-            entity_class: Acme\Bundle\CatalogBundle\Entity\MyEntity
-            actions:
-                quick_export:
-                    service:     pim_custom_entity.action.quick_export
-                    route:       pim_customentity_quickexport
-                    job_profile: csv_reference_data_quick_export
-
-Also, you should defined the following configuration :
-
-.. code-block:: yaml
-
-    # Resources\config\datagrid.yml
-
-    custom_entities:
-        my_entity:
-            entity_class: Acme\Bundle\CatalogBundle\Entity\MyEntity
-            actions:
-                quick_export_csv:
-                type: export
-                label: pim.grid.mass_action.quick_export.csv_all
-                icon: download
-                handler: quick_export
-                route: pim_customentity_quickexport
-                route_parameters:
-                    customEntityName: brand
-                    _format: csv
-                    _contentType: text/csv
-                context:
-                    withHeader: true
-                messages:
-                    empty_selection: pim_datagrid.mass_action.delete.empty_selection
-
 
 Datagrid Configuration
 ----------------------

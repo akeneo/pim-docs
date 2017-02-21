@@ -55,23 +55,10 @@ and enable the bundle in the ``app/AppKernel.php`` file in the ``registerBundles
         new Pim\Bundle\CustomEntityBundle\PimCustomEntityBundle(),
     ]
 
-Enable Mass Edit / Quick exports features (Optional)
-----------------------------------------------------
-
-If you want to use the quick export and/or the mass edit features, you have to load the job fixtures
-defined in ``Resources/fixtures/jobs.yml`` file and to copy/paste its content to your installer.
-
-If your installation is already set up, you have to run the following command:
-
-.. code-block:: bash
-
-    php app/console akeneo:batch:create-job "Akeneo Mass Edit Connector" "reference_data_quick_export" "quick_export" "csv_reference_data_quick_export" '{"delimiter": ";", "enclosure": "\"", "withHeader": true, "filePath": "/tmp/reference_data_quick_export.csv"}'
-
-
 .. include:: crud_interfaces.rst.inc
 
 .. toctree::
-    :hidden:
+   :hidden:
 
     crud_managers.rst
     abstract_entities_and_repositories.rst
