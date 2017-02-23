@@ -22,10 +22,6 @@ The main entity is the product which,
 .. note::
     For information on how to import/export categories using CSV format see :doc:`/reference/import_export/formats/category`.
 
-
-.. note::
-    PIM architecture is very flexible and allows you clear and easy way to customize the catalog structure for your own integration: :doc:`/cookbook/catalog_structure/index`
-
 Product value
 -------------
 
