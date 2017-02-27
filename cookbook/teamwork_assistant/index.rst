@@ -1,5 +1,5 @@
-How To Customize Activity Manager (Enterprise Edition)
-======================================================
+How To Customize Teamwork Assistant (Enterprise Edition)
+========================================================
 
 .. toctree::
 
