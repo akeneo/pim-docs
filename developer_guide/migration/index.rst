@@ -84,6 +84,7 @@ Here are the migration guides:
 
 **Community Edition**
 
+* `From v1.6 to v1.7`_
 * `From v1.5 to v1.6`_
 * `From v1.4 to v1.5`_
 * `From v1.3 to v1.4`_
@@ -91,6 +92,7 @@ Here are the migration guides:
 * `From v1.1 to v1.2`_
 * `From v1.0 to v1.1`_
 
+.. _From v1.6 to v1.7: https://github.com/akeneo/pim-community-standard/blob/1.7/UPGRADE-1.7.md
 .. _From v1.5 to v1.6: https://github.com/akeneo/pim-community-standard/blob/1.6/UPGRADE-1.6.md
 .. _From v1.4 to v1.5: https://github.com/akeneo/pim-community-standard/blob/1.5/UPGRADE-1.5.md
 .. _From v1.3 to v1.4: https://github.com/akeneo/pim-community-standard/blob/1.4/UPGRADE-1.4.md
@@ -109,3 +111,4 @@ Then, follow the migration guides located in your archive to upgrade your projec
 * From CE v1.4 to EE v1.4: UPGRADE-CE-1.4-EE-1.4.md
 * From EE v1.4 to EE v1.5: UPGRADE-1.5.md
 * From EE v1.5 to EE v1.6: UPGRADE-1.6.md
+* From EE v1.5 to EE v1.7: UPGRADE-1.7.md
