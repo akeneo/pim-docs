@@ -28,7 +28,7 @@ For each entity, the following options are available:
 - **extends**: the alias of the extended configuration. The bundle offers three base configurations that can be extended: default, quick_create, and mass_actions
 - **options**: general options for the CRUD
 - **actions**: the configuration for the enabled CRUD actions
-- **entity_class**: the class of the entity, **required** if the configuration is not abstract.
+- **entity_class**: the class of the entity, **required** if the configuration is not abstract
   (Container parameters can be used in the class value)
 
 
@@ -37,12 +37,12 @@ Global Configuration Options
 
 The following options can be used:
 
-- **manager**: alias of the CRUD object manager. Default is "default".
-- **acl_prefix**: a prefix for all ACLs of the CRUD. If not set, no ACLs will be set.
+- **manager**: alias of the CRUD object manager. Default is "default"
+- **acl_prefix**: a prefix for all ACLs of the CRUD. If not set, no ACLs will be set
 - **acl_separator**: the separator between the ACL prefix and the ACL suffix. Default is "_"
-- **form_type**: the default form type for form actions.
-- **form_options**: the default form options for form actions.
-- **form_template**: the default template for form actions.
+- **form_type**: the default form type for form actions
+- **form_options**: the default form options for form actions
+- **form_template**: the default template for form actions
 
 Common Action Options
 ---------------------
@@ -77,7 +77,7 @@ By default, the index action uses the ``pim_custom_entity.action.index`` service
 
 - **template**: the template of the action
 - **row_actions**: an array of action types available for each row on the grid
-- **quick_create**: `true` if the create action should be displayed in a lightbox. It requires the use of the **pim_custom_entity.action.quick_create** service for the create action.
+- **quick_create**: `true` if the create action should be displayed in a lightbox. It requires the use of the **pim_custom_entity.action.quick_create** service for the create action
 - **quick_create_action_type**: the action type for the quick create action
 
 

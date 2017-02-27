@@ -7,7 +7,7 @@ If you need to implement other backends, or specific business logic, you can cre
 by implementing the ``Pim\Bundle\CustomEntityBundle\Manager\ManagerInterface`` interface, or overriding
 the ``Pim\Bundle\CustomEntityBundle\Manager\Manager`` class.
 
-Your manager can be registered by using the pim_custom_entity.manager tag in your DI:
+Your manager can be registered by using the ``pim_custom_entity.manager`` tag in your DI:
 
 
 .. code-block:: yaml

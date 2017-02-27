@@ -17,7 +17,7 @@ Entity\\AbstractTranslatableCustomEntity
 ----------------------------------------
 
 This entity extends the AbstractCustomEntity, and provides a link to a translation entity. This is used
-to provide a different label or description for example for each activated locale.
+to provide a different label or description for each activated locale for instance.
 
 The entity containing the translations should implement ``Akeneo\Component\Localization\Model\TranslatableInterface``.
 
