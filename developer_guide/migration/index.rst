@@ -111,4 +111,4 @@ Then, follow the migration guides located in your archive to upgrade your projec
 * From CE v1.4 to EE v1.4: UPGRADE-CE-1.4-EE-1.4.md
 * From EE v1.4 to EE v1.5: UPGRADE-1.5.md
 * From EE v1.5 to EE v1.6: UPGRADE-1.6.md
-* From EE v1.5 to EE v1.7: UPGRADE-1.7.md
+* From EE v1.6 to EE v1.7: UPGRADE-1.7.md
