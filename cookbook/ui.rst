@@ -5,6 +5,7 @@ This chapter gives details on how to customize existing UI to fit your customer'
 
 .. toctree::
 
+   ui_customization/how_to_customize_menu
    ui_customization/add_a_new_tab_to_an_entity_edit_form
    ui_customization/add_a_tab_to_product_edit_form
    ui_customization/add_a_custom_button_to_product_edit_form
