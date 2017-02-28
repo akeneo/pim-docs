@@ -33,8 +33,6 @@ extensions = ['sensio.sphinx.refinclude', 'sensio.sphinx.configurationblock', 's
 lexers['php'] = PhpLexer(startinline=True)
 lexers['php-annotations'] = PhpLexer(startinline=True)
 
-primary_domain = 'php'
-
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
