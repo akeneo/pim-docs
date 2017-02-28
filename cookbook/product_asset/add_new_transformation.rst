@@ -186,10 +186,10 @@ Next step is to create corresponding services in a dedicated file `services.yml`
 
     services:
         akeneo_file_transformer.options.image.watermark:
-            class: %akeneo_file_transformer.options.image.watermark.class%
+            class: '%akeneo_file_transformer.options.image.watermark.class%'
 
         akeneo_file_transformer.transformation.image.watermark:
-            class: %akeneo_file_transformer.transformation.image.watermark.class%
+            class: '%akeneo_file_transformer.transformation.image.watermark.class%'
             arguments:
                 - '@akeneo_file_transformer.options.image.watermark'
                 - '@akeneo_file_transformer.transformation.image.image_magick_launcher'

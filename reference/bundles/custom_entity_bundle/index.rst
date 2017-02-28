@@ -45,7 +45,7 @@ Then add the following lines **at the end** of your ``app/config/routing.yml``:
 .. code-block:: yaml
 
     pim_customentity:
-        prefix: /reference-data
+        prefix: '/reference-data'
         resource: "@PimCustomEntityBundle/Resources/config/routing.yml"
 
 and enable the bundle in the ``app/AppKernel.php`` file in the ``registerBundles()`` method:
@@ -60,7 +60,7 @@ and enable the bundle in the ``app/AppKernel.php`` file in the ``registerBundles
 .. include:: crud_interfaces.rst.inc
 
 .. toctree::
-   :hidden:
+    :hidden:
 
     crud_managers.rst
     abstract_entities_and_repositories.rst

@@ -66,7 +66,7 @@ Next, you need to register it in your services.yml file:
 
     services:
         acme.custom.provider.field.range:
-            class: %acme.custom.provider.field.range.class%
+            class: '%acme.custom.provider.field.range.class%'
             tags:
                 - { name: pim_enrich.provider.field, priority: 90 }
 

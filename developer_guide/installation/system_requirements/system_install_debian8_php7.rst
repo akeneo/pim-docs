@@ -6,7 +6,7 @@ System install on Debian 8 Jessie with PHP7
     We continued our effort regarding Akeneo PIM PHP7 support. PHP7 is now usable in experimental mode for both CLI and Web.
     Experimental means that we manage to install and use the PIM but due to missing tests in our functional matrix we can't commit to support it.
 
-Here is a quick guide to setup the :doc:`system_requirements` on Debian 8 Jessie with PHP7. It assumes you have already followed the guide :doc:`setup_requirements_debian8` and have the PIM working with PHP5.
+Here is a quick guide to setup the :doc:`system_requirements` on Debian 8 Jessie with PHP7. It assumes you have already followed the guide :doc:`system_install_debian8` and have the PIM working with PHP5.
 
 .. note::
 
