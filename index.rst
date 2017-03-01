@@ -11,7 +11,6 @@ efficient answers to their multichannel needs.
 .. toctree::
     :maxdepth: 2
     :titlesonly:
-    :hidden:
 
     developer_guide/akeneo_in_a_nutshell/index
     developer_guide/installation/index
@@ -20,3 +19,4 @@ efficient answers to their multichannel needs.
     cookbook/index
     contributing/index
     troubleshooting/index
+    styleguide/index
