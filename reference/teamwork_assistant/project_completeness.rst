@@ -62,6 +62,7 @@ Some data are still missing. User groups permissions are not only about products
 
 Here is the final structure we needed (only data that are relevant for the demonstration are shown):
  - Pre-processing table:
+
   - For each locale,
   - For each channel,
   - Does the attribute group,
@@ -70,6 +71,7 @@ Here is the final structure we needed (only data that are relevant for the demon
   - or is it complete?
 
  - Project model:
+ 
   - locale
   - channel
   - product filters
