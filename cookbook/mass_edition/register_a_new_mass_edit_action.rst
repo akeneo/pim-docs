@@ -183,6 +183,7 @@ Phase 6: add user groups permissions to job profiles (ENTERPRISE EDITION)
 
 In Enterprise Edition version, job profiles are managed with user groups permissions, so you need to add these permissions. 
 To deal with these permissions, you have 3 tables:
+
   - ``akeneo_batch_job_instance``: which stores the job profiles
   - ``oro_access_group``: which stored the user groups
   - ``pimee_security_job_profile_access``: which stores the permissions (this table only exists in Enterprise Edition)

@@ -10,6 +10,7 @@ To create a custom filter, first we need to create a FilterProvider for our new 
 
 .. code-block:: php
     :linenos:
+
     <?php
 
     namespace Acme\Bundle\CustomBundle\Enrich\Provider\Filter;
@@ -123,7 +124,7 @@ Now that we have a filter provider, we can create the filter itself:
 
 And its template:
 
-.. code-block:: html
+.. code-block:: text
     :linenos:
 
     <!-- src/Acme/Bundle/CustomBundle/Resources/public/templates/product/filter/range.html -->
@@ -133,13 +134,13 @@ You can now register this module into our requirejs configuration:
 
 .. code-block:: yaml
     :linenos:
+
     # Acme/Bundle/CustomBundle/Resources/config/requirejs.yml
 
     config:
         paths:
-            acme/range-filter: acmecustom/js/product/filter/range-filter
-
-            acme/template/product/filter/range: acmecustom/templates/product/filter/range.html
+            acme/range-filter: 'acmecustom/js/product/filter/range-filter'
+            acme/template/product/filter/range: 'acmecustom/templates/product/filter/range.html'
 
 Then, last operation, match the filter type (`acme-range-filter`) with the requirejs module (`acme/range-filter`):
 

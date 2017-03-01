@@ -14,7 +14,7 @@ To add your own localizer, you need to create a class implementing ``Akeneo\Comp
 .. code-block:: yaml
 
     pim_catalog.localization.localizer.my_own_localizer:
-        class: %my_localizer_class%
+        class: '%my_localizer_class%'
         arguments:
             - ['pim_catalog_number']
         tags:

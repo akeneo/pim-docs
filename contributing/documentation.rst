@@ -1,3 +1,5 @@
+.. _contribute_to_docs:
+
 Enhance the Documentation
 =========================
 

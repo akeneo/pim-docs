@@ -256,7 +256,7 @@ Here is an example for a translatable option entity:
                     updated:
                         data_name: o.updated
                 default:
-                    code: %oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC
+                    code: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'
             mass_actions:
                 delete:
                     type: delete

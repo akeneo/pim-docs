@@ -18,4 +18,4 @@ You can also download them directly from the command line:
     $ wget http://download.akeneo.com/pim-community-standard-v1.6-latest-icecat.tar.gz #for icecat version
     $ wget http://download.akeneo.com/pim-community-standard-v1.6-latest.tar.gz #for minimal version
 
-.. include:: ./installation_archive.rst
+.. include:: ./installation_archive.rst.inc

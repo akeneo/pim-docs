@@ -1,3 +1,5 @@
+.. _choose_database:
+
 Depending on your data volume (number of products, number of attributes per product, number of basic, localized or scopable attributes, number of locales, number of scopes, etc.) you will have to choose a strategy to store your products, which will determine your database server configurations:
 
  * Full SQL database with MySQL. All your data will be stored in MySQL.
