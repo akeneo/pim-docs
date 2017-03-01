@@ -114,7 +114,7 @@ Now that we have a field provider, we can create the field itself:
 
 And its template:
 
-.. code-block:: html
+.. code-block:: text
     :linenos:
 
     <!-- src/Acme/Bundle/CustomBundle/Resources/public/templates/product/field/range.html -->

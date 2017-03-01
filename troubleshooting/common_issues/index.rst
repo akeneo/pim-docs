@@ -3,7 +3,7 @@ Common issues
 
 .. tip::
 
-    Feel free to improve this documentation by clicking on the "Edit on GitHub" link on the top right corner. You can also have a look at our ":doc:`/contributing/documentation`" guide.
+    Feel free to improve this documentation by clicking on the "Edit on GitHub" link on the top right corner. You can also have a look at our ":ref:`Contribute to documentation <contribute_to_docs>`" guide.
 
 I have an error when I upload large files
 -----------------------------------------

@@ -48,7 +48,7 @@ First, we need to create our button:
 
 With its attached template:
 
-.. code-block:: html
+.. code-block:: text
     :linenos:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/public/templates/product/export-csv.html

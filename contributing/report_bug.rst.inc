@@ -1,3 +1,5 @@
+.. _report_bug:
+
 Report a Bug
 ------------
 
