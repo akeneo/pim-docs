@@ -7,6 +7,6 @@ Getting Akeneo PIM
 ------------------
 This document provides step by step instructions to obtain an archive of the PIM Enterprise Edition.
 
-.. include:: ./partners_portal_archive.rst
-.. include:: ./installation_archive.rst
+.. include:: ./partners_portal_archive.rst.inc
+.. include:: ./installation_archive.rst.inc
 

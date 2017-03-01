@@ -11,11 +11,9 @@ during creation.
 .. _calculation steps: calculation_steps.html
 .. _project completeness: project_completeness.html
 
-- project **saved**: Via the UI, the user creates a new project, then saves it. A project is saved when the Project
-entity has been saved in the database.
-- project **calculated**: Once a project has been saved some background processes are launched. For example, these
-processes detect impacted users and they compute the `project completeness`_ of each product for multiple user groups
-and permissions using `calculation steps`_.
+ * project **saved**: Via the UI, the user creates a new project, then saves it. A project is saved when the Project entity has been saved in the database.
+ * project **calculated**: Once a project has been saved some background processes are launched. For example, these processes detect impacted users and they compute the `project completeness`_ of each product for multiple user groups
+   and permissions using `calculation steps`_.
 
 A project is known as created when these two steps are done.
 
@@ -35,7 +33,7 @@ or to trigger special actions. This event is located in the class
 ProjectCreationEvents::PROJECT_CALCULATED
 +++++++++++++++++++++++++++++++++++++++++
 
-`PROJECT_CALCULATED` is dispatched after the end of the job which launches all `calculation steps`_. When this event
+This event is dispatched after the end of the job which launches all `calculation steps`_. When this event
 is dispatched it ensures that all business around a project is finished.
 
 .. tip::
