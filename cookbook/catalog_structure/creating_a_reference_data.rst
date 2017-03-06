@@ -180,6 +180,8 @@ This task is documented here :doc:`overriding_the_orm_product_value` or here :do
 
 Don't forget to check the mapping of the product value and to register the custom class in the container.
 
+.. warning::
+    If your products are stored in MySQL, don't forget to cascade detach your reference data from the product value. Otherwise you may encounter a memory leak.
 
 Configuring the Reference Data
 ------------------------------
