@@ -5,7 +5,6 @@ Teamwork Assistant (Enterprise Edition)
 
   Formats <format>
   Project creation <project_creation>
-  Calculation Step <calculation_step>
   Catalog update impact <catalog_impact>
   What is the project completeness? <project_completeness>
   Completeness widget <widget_extension_points>
