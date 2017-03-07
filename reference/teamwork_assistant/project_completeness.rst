@@ -95,7 +95,7 @@ project -> project_products -> product_category -> category -> category_access
 
 Problem comes with ODM storage where `product_category` is transferred to MongoDB. Joining all these tables in MySQL is
 not possible anymore. To avoid to do a lot of extra queries in MongoDB to fetch `product_category`, we added
-`PimEnterprise\\Component\\ActivityManager\\Job\\ProjectCalculation\\CalculationStep\\LinkProductAndCategoryStep`
+`PimEnterprise\\Component\\TeamworkAssistant\\Job\\ProjectCalculation\\CalculationStep\\LinkProductAndCategoryStep`
 `calculation step`_. This step allows us to re-create this link table in MySQL and be able to calculate every
 completeness with MySQL even in ODM.
 

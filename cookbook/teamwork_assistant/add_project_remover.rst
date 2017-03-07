@@ -9,9 +9,9 @@ Akeneo PIM already manages its own catalog updates. The list is available in Act
 How does It Work?
 _________________
 
-A subscriber handles catalog structure updates by listening to `Akeneo\Component\StorageUtils\StorageEvents::POST_SAVE`
-and `Akeneo\Component\StorageUtils\StorageEvents::PRE_REMOVE` on all entities and by dispatching them to the
-`PimEnterprise\Component\ActivityManager\Remover\ChainedProjectRemover`. This chained project remover contains all
+A subscriber handles catalog structure updates by listening to ``Akeneo\Component\StorageUtils\StorageEvents::POST_SAVE``
+and ``Akeneo\Component\StorageUtils\StorageEvents::PRE_REMOVE`` on all entities and by dispatching them to the
+``PimEnterprise\Component\ActivityManager\Remover\ChainedProjectRemover``. This chained project remover contains all
 project removers and guesses which one has the responsibility to handle both the entity and the action it received.
 
 A `ProjectRemover` has the responsibility to find and to remove all projects impacted by an entity and action pair.
@@ -20,11 +20,11 @@ How To Add A Custom Project Remover?
 ____________________________________
 
 Reference data will be a good example to demonstrate how to add a `ProjectRemover`. We will take the example of the
-Color reference data which is provided by default. See pim-community-dev repository `app/config.yml` and
-`app/AppKernel.php` to enable it.
+Color reference data which is provided by default. See pim-community-dev repository ``app/config.yml`` and
+``app/AppKernel.php`` to enable it.
 
-Each project remover must implement the `PimEnterprise\Component\ActivityManager\Remover\ProjectRemoverInterface`
-interface and be tagged `pimee_activity_manager.project_remover`.
+Each project remover must implement the ``PimEnterprise\Component\ActivityManager\Remover\ProjectRemoverInterface``
+interface and be tagged ``pimee_activity_manager.project_remover``.
 
 .. code-block:: php
 
@@ -129,7 +129,7 @@ interface and be tagged `pimee_activity_manager.project_remover`.
         }
     }
 
-Once your `ProjectRemover` is done you need to register it in the dependency injection and tag it.
+Once your ``ProjectRemover`` is done you need to register it in the dependency injection and tag it.
 
 .. code-block:: yaml
 

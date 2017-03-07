@@ -24,11 +24,11 @@ A project is known as created when these two steps are done.
 Project Event
 _____________
 
-.. _add notifications: ../../cookbook/activity_manager/customize_notification.html
+.. _add notifications: ../../cookbook/teamwork_assistant/customize_notification.html
 
 The PIM offers event on which you can plug listeners to add custom behaviors. For example to `add notifications`_,
 or to trigger special actions. This event is located in the class
-``Akeneo\ActivityManager\Component\Event\ProjectCreationEvents``.
+``Akeneo\TeamworkAssistant\Component\Event\ProjectCreationEvents``.
 
 ProjectCreationEvents::PROJECT_CALCULATED
 +++++++++++++++++++++++++++++++++++++++++
