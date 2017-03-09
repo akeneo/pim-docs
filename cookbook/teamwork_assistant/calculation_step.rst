@@ -12,7 +12,7 @@ information in project. For custom development you may need to add your own calc
     To get more information about project creation and calculation steps go to this `project creation`_.
 
 To add a new step you just need to create a new Step Class that implements
-``PimEnterprise\Component\ActivityManager\Job\ProjectCalculation\CalculationStep\CalculationStepInterface`` interface.
+``PimEnterprise\Component\TeamworkAssistant\Job\ProjectCalculation\CalculationStep\CalculationStepInterface`` interface.
 
 .. code-block:: php
 
