@@ -20,6 +20,24 @@ A project is known as created when these two steps are done.
 
     Project **created** = Project **saved** + Project **calculated**
 
+Project Format
+______________
+
+Once normalized a project looks like this:
+
+.. code-block:: php
+
+    array:8 => [
+      "label" => "Summer collection 2016"
+      "code" => "summer-collection-2016"
+      "description" => "Our summer collection 2016 is ready for enrichment."
+      "due_date" => "2017-01-27"
+      "owner" => [] User to [internal_api] format
+      "channel" => [] Channel to [internal_api] format,
+      "locale" => [] Locale to [internal_api] format,
+      "datagridView" => [] DatagridView [internal_api] format
+    ]
+
 Calculation Steps
 _________________
 
