@@ -6,7 +6,7 @@ ________
 
 With the Teamwork Assistant feature comes a widget in the dashboard. The goal of this widget is to display the
 completeness for contributors and owner. Displayed data are contextual. It means that the completeness is not the same
-for each contributor and for the owner. Contributors see completeness in terms of their own permissions. The owner sees
+for each contributor and for the owner. Contributors see completeness depending on their own permissions. The owner sees
 the full completeness of family requirements.
 
 .. _`project calculation`: project_completeness.html

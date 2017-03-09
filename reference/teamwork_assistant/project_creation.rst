@@ -23,7 +23,7 @@ A project is known as created when these two steps are done.
 Project Format
 ______________
 
-Once normalized a project looks like this:
+Once normalized, a project looks like this:
 
 .. code-block:: php
 
@@ -45,7 +45,7 @@ Once a project is saved, a job is launched in background. The purpose of this jo
 notify users concerned by the project.
 
 For each product we need to identify the user groups that have the rights to edit the product, once all the products
-have been checked we send a notification to the concerned users (aka the contributors).
+have been checked, we send a notification to the concerned users (aka the contributors).
 
 .. _Job: ../import_export/main-concepts.html#job
 

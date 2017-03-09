@@ -90,7 +90,7 @@ completeness with MySQL even in ODM.
 Project Completeness Format
 ___________________________
 
-One normalized the completeness looks like this:
+One normalized, the completeness looks like this:
 
 .. code-block:: php
 
@@ -115,8 +115,8 @@ recalculate data according to your needs.
 .. _scalability guide: scalability_guide.html
 
 The advantage is that the regularity of the pre-processing data updating can be adjusted as required with this command.
-Before to use this you should have a look to the `scalability guide`_.
+Before using this you should have a look to the `scalability guide`_.
 
 According to our benchmark on a catalog with 3.6 millions of product values, pre-processing those data is feasible
 during the night for many projects as we don't pre-process all the catalog but only products concerned by projects and
-products that as been updated.
+products that has been updated.
