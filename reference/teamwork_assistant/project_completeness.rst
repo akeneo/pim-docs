@@ -112,8 +112,10 @@ are computed once you save a project, when you save a product concerned by a pro
 sequential edit. Moreover, a command ``php app/console pimee:project:recalculate`` is provided to help you to
 recalculate data according to your needs.
 
+.. _scalability guide: scalability_guide.html
+
 The advantage is that the regularity of the pre-processing data updating can be adjusted as required with this command.
-Before to use this you should have a look to the scalability guide.
+Before to use this you should have a look to the `scalability guide`_.
 
 According to our benchmark on a catalog with 3.6 millions of product values, pre-processing those data is feasible
 during the night for many projects as we don't pre-process all the catalog but only products concerned by projects and
