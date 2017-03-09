@@ -3,9 +3,9 @@ Teamwork Assistant (Enterprise Edition)
 
 .. toctree::
 
-  Formats <format>
   Project creation <project_creation>
-  Users permission summary for Behat tests <behat_permission_summary>
-  Calculation Step <calculation_step>
+  Project completeness <project_completeness>
+  Project Completeness widget <widget_extension_points>
   Catalog update impact <catalog_impact>
-  What is the project completeness? <project_completeness>
+  Scalability guide <scalability_guide>
+  Users permission summary for Behat tests <behat_permission_summary>

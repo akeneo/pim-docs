@@ -24,28 +24,16 @@ completeness of the project in terms of his own permissions, whereas the owner s
 As every user will have his very own completeness depending on his permissions, we need to walk through every product
 to compute completeness for every user. As you can guess, it's a really huge task that cannot be done synchronously.
 
-We need to go deeper
-____________________
-
-We found two ways to deal with this problem. The first one was to calculate this detailed completeness for each user and
-cache it in a table. The benefit of this method is clear, each time we need those numbers we simply query the database:
-"Hey you, I just met Mary, what is her completeness? TODO: 42, IN_PROGRESS: 1251, DONE: 3254.". And this is crazy, the
-result is instant, but the main drawback, is that the data is not up-to-date as this table is a cache. It needs to be
-calculated as often as possible but the task is so huge that with many different projects and users a night could not
-be sufficient.
-
 One table to rule them all
 __________________________
 
-This first method does not seem to be the chosen one. Let's recap which data we need:
+From this introduction, let's recap which data we need:
  - For each locale,
  - For each channel,
  - For each user,
  - Does the product
  - have at least an attribute filled in?
  - or is it complete?
-
-Oh. Can you see this?
 
 Creating a table to gather all data we need to compute the completeness seems to be a good idea but we need some
 adjustments. It can't be scalable if we do this for each user.
@@ -78,7 +66,7 @@ Here is the final structure we needed (only data that are relevant for the demon
   - products (*)
   - user groups (*)
 
-.. _calculation step: calculation_step.html
+.. _calculation step: project_creation.html#calculation-steps
 
 (*) As these fields are only used for the completeness calculation purpose and they have no sense from a business point
 of view, they are not mapped to doctrine. The `products` field from project model is a n - n table that helps to join
@@ -91,23 +79,44 @@ in terms of a user and a products selection.
 
 In ORM, the process of joining Project to Category access works as follows:
 
-project -> project_products -> product_category -> category -> category_access
+``project -> project_products -> product_category -> category -> category_access``
 
 Problem comes with ODM storage where `product_category` is transferred to MongoDB. Joining all these tables in MySQL is
 not possible anymore. To avoid to do a lot of extra queries in MongoDB to fetch `product_category`, we added
-`PimEnterprise\\Component\\ActivityManager\\Job\\ProjectCalculation\\CalculationStep\\LinkProductAndCategoryStep`
+``PimEnterprise\\Component\\TeamworkAssistant\\Job\\ProjectCalculation\\CalculationStep\\LinkProductAndCategoryStep``
 `calculation step`_. This step allows us to re-create this link table in MySQL and be able to calculate every
 completeness with MySQL even in ODM.
+
+Project Completeness Format
+___________________________
+
+One normalized, the completeness looks like this:
+
+.. code-block:: php
+
+    array:7 => [
+      "isComplete" => (bool),
+      "productsCountTodo" => (int),
+      "productsCountInProgress" => (int),
+      "productsCountDone" => (int),
+      "ratioTodo" => (int),
+      "ratioInProgress" => (int),
+      "ratioDone" => (int),
+    ]
 
 This is the end
 _______________
 
-Still the drawback mentioned in the first method remains: the completeness is not up-to-date.
+The drawback of this method is that the completeness is not really up-to-date. For the moment, the pre-processing data
+are computed once you save a project, when you save a product concerned by a project from the Product Edit Form and the
+sequential edit. Moreover, a command ``php app/console pimee:project:recalculate`` is provided to help you to
+recalculate data according to your needs.
 
-However, the advantage is that the pre-processing of all data is really faster than calculating and caching the full
-completeness per user. Guessing impacted user groups is not a big deal and can be done during project creation to gain
-completeness calculation time and scalability.
+.. _scalability guide: scalability_guide.html
+
+The advantage is that the regularity of the pre-processing data updating can be adjusted as required with this command.
+Before using this you should have a look to the `scalability guide`_.
 
 According to our benchmark on a catalog with 3.6 millions of product values, pre-processing those data is feasible
-during the night for many projects as we don't pre-process all the catalog but only products concerned by projects.
-As it's faster, the regularity of the pre-processing data updating can be adjusted as required.
+during the night for many projects as we don't pre-process all the catalog but only products concerned by projects and
+products that has been updated.
