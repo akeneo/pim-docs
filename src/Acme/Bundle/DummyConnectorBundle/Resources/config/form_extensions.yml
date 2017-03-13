@@ -331,12 +331,12 @@ extensions:
 # Resources/config/form_extensions/acme_job_instance_csv_base_import.yml
 
 acme-job-instance-csv-base-import-show-properties-my-custom-list:
-        module: %THE_NAME_OF_YOUR_FECTHER%
+        module: "%THE_NAME_OF_YOUR_FECTHER%"
         parent: acme-job-instance-csv-base-import-show-properties
         position: 155
         targetZone: global-settings
         config:
             fieldCode: configuration.myCustomList
             readOnly: false
-            label: %your_label_translation_key%
-            tooltip: %your_tooltip_translation_key%
+            label: "%your_label_translation_key%"
+            tooltip: "%your_tooltip_translation_key%"

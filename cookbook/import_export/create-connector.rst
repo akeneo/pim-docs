@@ -151,7 +151,7 @@ We need to provide a form name to the frontend to be able to render it properly.
     :linenos:
     :lines: 1-6
 
-If you want to go further, you can create your own form and re-use common parts provided by default. Here is an example of a full form configuration (config/form_extensions/acme_job_instance_csv_base_import.yml):
+If you want to go further, you can create your own form and re-use common parts provided by default. Here is an example of a full form configuration :download: `Resources/config/form_extensions/acme_job_instance_csv_base_import.yml <../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/form_extensions.yml>`:
 
 .. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/form_extensions.yml
     :language: yaml
@@ -186,52 +186,17 @@ First, you will have to create a controller (with a conform routing configuratio
         }
     }
 
-Then configure a fetcher
+Then configure a fetcher:
 
 .. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/requirejs.yml
     :language: yaml
     :linenos:
 
-The JS module itself
+The JS module itself:
 
-.. code-block:: javascript
-
-    # Resources/public/js/my-custom-choices-list.js
-
-    'use strict';
-
-    define([
-        'jquery',
-        'underscore',
-        'oro/translator',
-        'pim/fetcher-registry',
-        'pim/job/common/edit/field/select'
-    ], function (
-        $,
-        _,
-        __,
-        FetcherRegistry,
-        SelectField
-    ) {
-        return SelectField.extend({
-            /**
-            * {@inherit}
-            */
-            configure: function () {
-                return $.when(
-                    FetcherRegistry.getFetcher('%THE_NAME_OF_YOUR_FETCHER%').fetchAll(),
-                    SelectField.prototype.configure.apply(this, arguments)
-                ).then(function (myCustomChoicesList) {
-                    if (_.isEmpty(myCustomChoicesList)) {
-                        this.config.readOnly = true;
-                        this.config.options = {'NO OPTION': __('%your_translation_key%')};
-                    } else {
-                        this.config.options = myCustomChoicesList;
-                    }
-                }.bind(this));
-            }
-        });
-    });
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/public/js/my-custom-choices-list.js
+    :language: javascript
+    :linenos:
 
 The translation configuration:
 
