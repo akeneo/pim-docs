@@ -4,14 +4,14 @@ How To Remove A Project On A Custom Catalog Update?
 .. _reference: ../../reference/activity_manager/catalog_impact.html
 
 Several catalog updates can have an impact on project integrity. In this case we need to remove the impacted projects.
-Akeneo PIM already manages its own catalog updates. The list is available in Activity Manager reference_ part.
+Akeneo PIM already manages its own catalog updates. The list is available in Teamwork Assistant reference_ part.
 
 How does It Work?
 _________________
 
 A subscriber handles catalog structure updates by listening to ``Akeneo\Component\StorageUtils\StorageEvents::POST_SAVE``
 and ``Akeneo\Component\StorageUtils\StorageEvents::PRE_REMOVE`` on all entities and by dispatching them to the
-``PimEnterprise\Component\ActivityManager\Remover\ChainedProjectRemover``. This chained project remover contains all
+``PimEnterprise\Component\TeamworkAssistant\Remover\ChainedProjectRemover``. This chained project remover contains all
 project removers and guesses which one has the responsibility to handle both the entity and the action it received.
 
 A `ProjectRemover` has the responsibility to find and to remove all projects impacted by an entity and action pair.
@@ -23,7 +23,7 @@ Reference data will be a good example to demonstrate how to add a `ProjectRemove
 Color reference data which is provided by default. See pim-community-dev repository ``app/config.yml`` and
 ``app/AppKernel.php`` to enable it.
 
-Each project remover must implement the ``PimEnterprise\Component\ActivityManager\Remover\ProjectRemoverInterface``
+Each project remover must implement the ``PimEnterprise\Component\TeamworkAssistant\Remover\ProjectRemoverInterface``
 interface and be tagged ``pimee_activity_manager.project_remover``.
 
 .. code-block:: php
@@ -37,8 +37,8 @@ interface and be tagged ``pimee_activity_manager.project_remover``.
     use Akeneo\Component\StorageUtils\Remover\RemoverInterface;
     use Akeneo\Component\StorageUtils\StorageEvents;
     use Doctrine\Common\Persistence\ObjectRepository;
-    use PimEnterprise\Component\ActivityManager\Model\ProjectInterface;
-    use PimEnterprise\Component\ActivityManager\Remover\ProjectRemoverInterface;
+    use PimEnterprise\Component\TeamworkAssistant\Model\ProjectInterface;
+    use PimEnterprise\Component\TeamworkAssistant\Remover\ProjectRemoverInterface;
 
     class ColorProjectRemover implements ProjectRemoverInterface
     {

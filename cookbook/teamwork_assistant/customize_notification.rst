@@ -5,7 +5,7 @@ Overview
 --------
 
 Currently users are notified through the notification center, but you can easily customize this system to add your own notifications.
-Let's explain how to send an email to the users for instance. At the end of the project creation, an event is dispatched: ``Akeneo\ActivityManager\Component\Event\ProjectEvents::PROJECT_CALCULATED``.
+Let's explain how to send an email to the users for instance. At the end of the project creation, an event is dispatched: ``PimEnterprise\Component\TeamworkAssistant\Event\ProjectEvents::PROJECT_CALCULATED``.
 You need to subscribe to this event to send an email.
 
 .. note::
@@ -22,7 +22,7 @@ First you need to create a new subscriber in your bundle, example: ``src\AppBund
     namespace AppBundle\EventListener;
 
     use Akeneo\Bundle\BatchBundle\Notification\MailNotifier;
-    use Akeneo\ActivityManager\Component\Repository\UserRepositoryInterface;
+    use PimEnterprise\Component\TeamworkAssistant\Repository\UserRepositoryInterface;
 
     class ProjectCreationNotifierSubscriber implements EventSubscriberInterface
     {
