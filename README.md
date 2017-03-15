@@ -12,6 +12,7 @@ Install [Sphinx](http://sphinx-doc.org/).
 ```bash
     $ sudo pip install sphinx~=1.5.3
     $ sudo pip install git+https://github.com/fabpot/sphinx-php.git
+    $ sudo pip install git+https://github.com/mickaelandrieu/sphinxcontrib.youtube.git
 ```
 
 ### Mac OS
@@ -20,6 +21,7 @@ Install [Sphinx](http://sphinx-doc.org/).
     $ brew install python
     $ pip install sphinx
     $ pip install git+https://github.com/fabpot/sphinx-php.git
+    $ pip install git+https://github.com/mickaelandrieu/sphinxcontrib.youtube.git
 ```
 
 Download composer `curl -s https://getcomposer.org/installer | php` and run `php composer.phar install`.
