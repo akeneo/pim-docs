@@ -1,6 +1,11 @@
 How to Create a Reference Data
 ==============================
 
+What is a Reference Data?
+-------------------------
+
+.. youtube:: 3mMMC5Hczy8
+
 Creating the Reference Data Entity
 ----------------------------------
 
