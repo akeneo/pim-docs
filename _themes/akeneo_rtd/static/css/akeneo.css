@@ -162,3 +162,7 @@ a {
 .toggle .header.open:after {
     content: " ▲";
 }
+
+table.docutils .line-block {
+    margin-left: 0;
+}
