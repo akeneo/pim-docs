@@ -22,7 +22,7 @@ Install Selenium Server
 -----------------------
 Download Selenium server 2.43.1 `here`_.
 
-.. _here: http://docs.seleniumhq.org/download/
+.. _here: http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar
 
 
 Install Firefox
@@ -111,7 +111,7 @@ You can now launch Selenium by issuing the following command:
 
 .. code-block:: bash
 
-  $ java -jar selenium-server-standalone-2.43.0.jar
+  $ java -jar selenium-server-standalone-2.43.1.jar
 
 
 All the feature tests can be run by issuing the following command:
