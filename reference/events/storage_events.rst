@@ -52,9 +52,9 @@ Listener Class Name                                  Priority
 ``akeneo.storage.pre_save``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
+Event Class: `SaveEvent <https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Component/StorageUtils/Event/SaveEvent.php>`_
 
-This event is dispatched before we save an object using a saver.
+This event is dispatched before we save an object using a saver, either when saving one object or a pool of objects, using save and saveAll methods of the saver.
 
 These are the built-in PIM subscribers registered to this event:
 
@@ -69,20 +69,20 @@ Listener Class Name             Priority
 ``akeneo.storage.post_save``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
+Event Class: `SaveEvent <https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Component/StorageUtils/Event/SaveEvent.php>`_
 
-This event is dispatched after we have saved an object using a saver.
+This event is dispatched after we have saved an object using a saver, either when saving one object or a pool of objects, using save and saveAll methods of the saver.
 
 ``akeneo.storage.pre_save_all``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
+Event Class: `BulkSaveEvent <https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Component/StorageUtils/Event/BulkSaveEvent.php>`_
 
 This event is dispatched before we save a pool of objects using the saveAll function of the saver.
 
 ``akeneo.storage.post_save_all``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Event Class: `GenericEvent <http://api.symfony.com/2.7/Symfony/Component/EventDispatcher/GenericEvent.html>`_
+Event Class: `BulkSaveEvent <https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Component/StorageUtils/Event/BulkSaveEvent.php>`_
 
 This event is dispatched after we have saved a pool of objects using the saveAll function of the saver.
