@@ -111,7 +111,7 @@ You can now launch Selenium by issuing the following command:
 
 .. code-block:: bash
 
-  $ java -jar selenium-server-standalone-2.33.0.jar
+  $ java -jar selenium-server-standalone-2.43.0.jar
 
 
 All the feature tests can be run by issuing the following command:
