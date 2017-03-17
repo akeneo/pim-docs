@@ -44,6 +44,10 @@ The web server will also need the following libraries and modules:
 | php5-apcu   | apc.enable_cli=1          |
 +-------------+---------------------------+
 
+.. warning::
+
+  function `exec()` is required in order to handle data import/export, check if it hasn't been disabled in your php.ini.
+
 Besides these modules, the following configuration is the minimal configuration required:
 
 .. include:: /reference/technical_information/php_ini.rst.inc
