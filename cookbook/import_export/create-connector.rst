@@ -144,7 +144,7 @@ Configure the UI for our JobParameters
 
 At this point, the job is usable in command line though it cannot be configured via the UI.
 
-We need to provide a form name to the frontend to be able to render it properly. If your connector doesn't require extra fields you use the basic froms already in Akeneo:
+We need to provide a form name to the frontend to be able to render it properly. If your connector doesn't require extra fields, you can use the basic forms shipped with Akeneo:
 
 .. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/providers.yml
     :language: yaml
