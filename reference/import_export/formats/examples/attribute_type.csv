@@ -6,7 +6,7 @@ pim_catalog_number;Number (integer and float)
 pim_catalog_simpleselect;Simple choice list
 pim_catalog_multiselect;Multiple choice list
 pim_catalog_date;Date
-pim_catalog_metric;Metric. It links a value and a unit like a weight.
-pim_catalog_price_collection;Collection of prices. Each price contains a value and a currency
+pim_catalog_metric;Metric. It consists of a value and a unit (a weight for example).
+pim_catalog_price_collection;Collection of prices. Each price contains a value and a currency.
 pim_catalog_image;Image
 pim_catalog_file;File
