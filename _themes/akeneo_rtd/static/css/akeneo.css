@@ -166,3 +166,10 @@ a {
 table.docutils .line-block {
     margin-left: 0;
 }
+
+footer .platformsh-logo {
+    height: 25px !important;
+    display: inline-block;
+    line-height: 25px;
+    vertical-align: -5px;
+}
