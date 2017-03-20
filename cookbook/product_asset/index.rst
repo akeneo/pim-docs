@@ -12,3 +12,7 @@ This chapter describes how to customize elements from product assets.
    how_to_connect_to_an_external_server
    change_upload_validation_rule
    mass_import
+
+If you need a presentation of Product Assets Manager feature, take a look at the *Product focus* video!
+
+.. youtube:: Xe87N_H1P54
