@@ -207,6 +207,23 @@ Installing the vendors
 
     $ php composer.phar install
 
+Installing the vendors
+**********************
+
+* You first need to get composer. Install it in */path/to/pim/root*:
+
+.. code-block:: bash
+    :linenos:
+
+    $ curl -sS https://getcomposer.org/installer | php
+
+* Then install the vendors:
+
+.. code-block:: bash
+    :linenos:
+
+    $ php composer.phar install
+
 Installing MongoDB and enabling it is as catalog storage
 --------------------------------------------------------
 **The following steps are optional.
