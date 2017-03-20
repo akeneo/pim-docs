@@ -259,7 +259,7 @@ Two parameters are required, two other are optional.
 Add
 ___
 
-This action adds values to a multiselect, a category or a collection.
+This action allows to add values to a multi-select attribute or a product to categories.
 
 Two parameters are required, two other are optional.
  - field: attribute code.
