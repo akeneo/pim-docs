@@ -3,8 +3,6 @@ First aid kit
 
 Here is our first aid kit if you encounter a bug on your PIM project.
 
-.. image:: /troubleshooting/unicorn-akeneo_128.png
-
 Step 1: are you sure that it's a bug?
 -------------------------------------
 
@@ -29,7 +27,7 @@ Step 3: are the system requirements still OK?
 
 Maybe something has been changed in your server. You can check that by running the following command:
 
-.. code-block:: txt
+.. code-block:: bash
 
     cd /path/to/your/pim/
     php app/console pim:installer:check-requirements
@@ -43,7 +41,7 @@ In addition, check that:
 
 * The Xdebug PHP extension is well deactivated.
 * The PIM commands are well run in prod mode instead of dev mode (See: `Symfony documentation: Selecting the Environment for Console Commands <https://symfony.com/doc/2.7/configuration/environments.html#selecting-the-environment-for-console-commands>`_)
-* Your crontab scheduled PIM commands are not launched too frequently (See: :ref:`tasks-crontab`)
+* Your crontab scheduled PIM commands are not launched too frequently
 
 Step 4: what about your infrastructure?
 ---------------------------------------
@@ -92,7 +90,7 @@ Step 8: did you clear the cache?
 
 Clear the PIM cache (also known as "Symfony cache") by running the following commands:
 
-.. code-block:: txt
+.. code-block:: bash
 
     cd /path/to/your/pim/
     php app/console cache:clear --env=prod
@@ -117,7 +115,7 @@ Step 10: did you customize your PIM?
 
     If the previous steps failed to solve the bug, try this one.
 
-Deactivate all your custom developments by commenting them in the "AppKernel.php" file ``/path/to/your/pim/app/AppKernel.php``.
+Disable all custom developments by commenting them in the "AppKernel.php" file ``/path/to/your/pim/app/AppKernel.php``.
 
 .. code-block:: php
 
@@ -126,7 +124,7 @@ Deactivate all your custom developments by commenting them in the "AppKernel.php
 
 And then, re-apply `Step 7: are your assets properly deployed?`_ and `Step 8: did you clear the cache?`_
 
-Alternativly, you can check if the issue is reproducible on http://demo.akeneo.com (only for the latest PIM version).
+Alternatively, you can check if the issue is reproducible on http://demo.akeneo.com (only for the latest PIM version).
 
 Does the bug persist?
 ---------------------

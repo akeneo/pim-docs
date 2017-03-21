@@ -1,0 +1,32 @@
+code;;all types;"| Must be unique
+| Must only contain letters, numbers and underscores
+| Must be less than 255 characters long
+| Cannot be one of: id, associationTypes, categories, categoryId, completeness, enabled, family, groups, associations, products, scope, treeId, values, category
+| Cannot end with “_products” or “_groups”"
+type;;all types;Must be a valid type (see table below)
+label-<locale_code>;;;
+group;;all types;Must be a valid attribute group code
+unique;0;;
+useable_as_grid_filter;0;;
+allowed_extensions;;;"| Must be a subset of extensions set in the parameters `pim_catalog_image_allowed_extensions` (for images)
+| or `pim_catalog_file_allowed_extensions` (for files)"
+metric_family;;metric;Must be a valid metric family (see `MeasureBundle measures`_)
+default_metric_unit;;metric;Must be a valid metric unit and must be part of the specified metric_family (see `MeasureBundle measures`_)
+reference_data_name;;reference data;Must be a valid reference data code (see `Reference data configuration`_)
+available_locales;;;Must be a list of valid and activated locales
+max_characters;;;"| Must be a positive integer
+| Cannot be more than 255 for texts, or 65535 for textareas"
+validation_rule;;;Must be one of: email, url, regexp
+validation_regexp;;;Must be a valid PERL regular expression
+wysiwyg_enabled;;;
+number_min;;;Must be lower than number_max
+number_max;;;Must be greater than number_min
+decimals_allowed;;number, metric, price collection;
+negative_allowed;;number, metric;
+date_min;;;Must be lower than date_max
+date_max;;;Must be greater than date_min
+max_file_size;;;Must be between 0.01 and 9999.99 (in MB)
+minimum_input_length;;;
+sort_order;0;;Must be a positive integer
+localizable;0;;Must be false if the attribute is unique
+scopable;0;;Must be false if the attribute is unique

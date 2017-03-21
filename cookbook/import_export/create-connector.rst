@@ -151,11 +151,12 @@ We need to provide a form name to the frontend to be able to render it properly.
     :linenos:
     :lines: 1-6
 
-If you want to go further, you can create your own form and re-use common parts provided by default. Here is an example of a full form configuration:
+If you want to go further, you can create your own form and re-use common parts provided by default. Here is an example of a full form configuration :download: `Resources/config/form_extensions/acme_job_instance_csv_base_import.yml <../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/form_extensions.yml>`:
 
 .. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/form_extensions.yml
     :language: yaml
     :linenos:
+    :lines: 1-329
 
 Register it in the form provider and you are good to go!
 
@@ -163,6 +164,52 @@ Register it in the form provider and you are good to go!
     :language: yaml
     :linenos:
     :lines: 8-13
+
+Configure a custom field in our UI for Job
+------------------------------------------
+
+If you want to add a custom field such as a "select" field with custom data, you will have to create your own JS module with dynamic choices.
+
+First, you will have to create a controller (with a conform routing configuration) which return the list on a JSON format for example:
+
+.. code-block:: php
+    
+    class MyCustomController
+    {
+        ...
+
+        public function listAction() {
+            $choices['my_option_1'] = 'my_option_1';
+            $choices['my_option_2'] = 'my_option_2';
+
+            return new JsonResponse($choices);
+        }
+    }
+
+Then configure a fetcher:
+
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/requirejs.yml
+    :language: yaml
+    :linenos:
+
+The JS module itself:
+
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/public/js/my-custom-choices-list.js
+    :language: javascript
+    :linenos:
+
+The translation configuration:
+
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/translations/jsmessages.en.yml
+    :language: yaml
+    :linenos:
+
+And to finish, activate you custom field into your form configuration:
+
+.. literalinclude:: ../../src/Acme/Bundle/DummyConnectorBundle/Resources/config/form_extensions.yml
+    :language: yaml
+    :linenos:
+    :lines: 331-342
 
 Conclusion
 ----------

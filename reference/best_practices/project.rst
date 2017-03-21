@@ -10,7 +10,7 @@ Setup the project
 
 The Akeneo PIM standard project comes with a default configuration to help you during the development.
 
-Please install it by following the :doc:`/developer_guide/installation/installation_workstation` process.
+Please install it by following the :doc:`/developer_guide/installation/index` process.
 
 This distribution contains an empty src folder, your custom code will reside here.
 

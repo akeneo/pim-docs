@@ -159,6 +159,8 @@ groups:
         Important: { class: 'AknBadge--important' }
         Warning: { class: 'AknBadge--warning' }
         Grey: { class: 'AknBadge--grey' }
+        Highlight: { class: 'AknBadge--highlight' }
+        Light: { class: 'AknBadge--light' }
     AknBell:
       dark: true
     AknCaret:
