@@ -27,7 +27,7 @@ Step 3: are the system requirements still OK?
 
 Maybe something has been changed in your server. You can check that by running the following command:
 
-.. code-block:: txt
+.. code-block:: bash
 
     cd /path/to/your/pim/
     php app/console pim:installer:check-requirements
@@ -40,8 +40,8 @@ Maybe something has been changed in your server. You can check that by running t
 In addition, check that:
 
 * The Xdebug PHP extension is well deactivated.
-* The PIM commands are well run in prod mode instead of dev mode (See: `Symfony documentation: Selecting the Environment for Console Commands <https://symfony.com/doc/2.7/configuration/environments.html#selecting-the-environment-for-console-commands>`_)
-* Your crontab scheduled PIM commands are not launched too frequently (See: :ref:`tasks-crontab`)
+* The PIM commands are well run in prod mode instead of dev mode (See: `Symfony documentation: Selecting the Environment for Console Commands <https://symfony.com/doc/2.7/configuration/environments.html#selecting-the-environment-for-console-commands>`_).
+* Your crontab scheduled PIM commands are not launched too frequently.
 
 Step 4: what about your infrastructure?
 ---------------------------------------
@@ -90,7 +90,7 @@ Step 8: did you clear the cache?
 
 Clear the PIM cache (also known as "Symfony cache") by running the following commands:
 
-.. code-block:: txt
+.. code-block:: bash
 
     cd /path/to/your/pim/
     php app/console cache:clear --env=prod

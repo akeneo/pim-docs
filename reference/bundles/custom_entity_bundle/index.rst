@@ -60,7 +60,7 @@ and enable the bundle in the ``app/AppKernel.php`` file in the ``registerBundles
 .. include:: crud_interfaces.rst.inc
 
 .. toctree::
-   :hidden:
+    :hidden:
 
     crud_managers.rst
     abstract_entities_and_repositories.rst
