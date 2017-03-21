@@ -3,6 +3,6 @@ parameters:
 
 services:
     acme_csvcleanerconnector.array_converter.flat.product:
-        class: "%acme_csvcleanerconnector.array_converter.flat.product.class%"
+        class: '%acme_csvcleanerconnector.array_converter.flat.product.class%'
         arguments:
             - '@pim_connector.array_converter.flat_to_standard.product_delocalized'
