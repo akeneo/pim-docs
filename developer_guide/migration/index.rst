@@ -51,10 +51,14 @@ In your enterprise standard project, the composer.json will reference both commu
 
 To upgrade, please change the composer.json to:
 
-.. code-block:: yaml
+.. code-block:: javascript
 
-    "akeneo/pim-enterprise-dev": "1.6.0",
-    "akeneo/pim-community-dev": "1.6.0",
+    {
+        ...
+        "akeneo/pim-enterprise-dev": "1.6.0",
+        "akeneo/pim-community-dev": "1.6.0",
+        ...
+    }
 
 We always tag both community and enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 1.6.0 fix may depend on CE 1.6.0.
 

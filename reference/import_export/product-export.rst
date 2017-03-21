@@ -142,7 +142,7 @@ The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/proc
 
 The class ``Pim\Component\Connector\Processor\Normalization\ProductProcessor`` mainly delegates the transformation to the service ``pim_serializer.normalizer.product``.
 
-We can see here that we normalize each product into the ``standard`` format. It is the writer's responsibility to convert the standard format to the flat format. (cf :doc:`/cookbook/import_export/clean-csv-file-during-product-import.rst`)
+We can see here that we normalize each product into the ``standard`` format. It is the writer's responsibility to convert the standard format to the flat format. (cf :doc:`/cookbook/import_export/clean-csv-file-during-product-import`)
 
 .. code-block:: php
 
@@ -185,32 +185,32 @@ As a product may not have values for all attributes, depending on the product, t
 
 .. note::
 
-Here another example:
+    Here another example:
 
-.. code-block:: php
+    .. code-block:: php
 
-    $product2 = [
-        'sku'           => [
-            ['data' => 'AKNTS_BPXS', 'locale' => null, 'scope' => null]
-        ],
-        'family'     => 'tshirts',
-        'main_color' =>
-            [
-                [
-                    'locale' => NULL,
-                    'scope'  => NULL,
-                    'data'   => 'black'
-                ],
+        $product2 = [
+            'sku'           => [
+                ['data' => 'AKNTS_BPXS', 'locale' => null, 'scope' => null]
             ],
-        'name' =>
-            [
+            'family'     => 'tshirts',
+            'main_color' =>
                 [
-                    'locale' => NULL,
-                    'scope'  => NULL,
-                    'data'   => 'Akeneo T-Shirt black and purple with short sleeve'
+                    [
+                        'locale' => NULL,
+                        'scope'  => NULL,
+                        'data'   => 'black'
+                    ],
                 ],
-            ],
-    ];
+            'name' =>
+                [
+                    [
+                        'locale' => NULL,
+                        'scope'  => NULL,
+                        'data'   => 'Akeneo T-Shirt black and purple with short sleeve'
+                    ],
+                ],
+        ];
 
 .. note::
 
