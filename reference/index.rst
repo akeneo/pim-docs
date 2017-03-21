@@ -25,3 +25,4 @@ Reference
     best_practices/index
     standard_format/index
     activity_manager/index
+    api/index
