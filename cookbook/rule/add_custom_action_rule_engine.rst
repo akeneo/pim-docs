@@ -276,7 +276,7 @@ Here is the constraint message and its associated validation file:
         }
     }
 
-.. code-block:: yml
+.. code-block:: yaml
 
     #/src/Acme/Bundle/CustomBundle/Resources/config/validation/ProductPatternAction.yml
     Acme\Bundle\CustomBundle\Model\ProductPatternAction:
@@ -305,7 +305,7 @@ Here is the constraint message and its associated validation file:
 
 Don't forget to add these classes in your service definition and to tag them with the proper tag
 
-.. code-block:: yml
+.. code-block:: yaml
 
     #/src/Acme/Bundle/CustomBundle/Resources/config/services.yml
     services:
@@ -330,7 +330,7 @@ Don't forget to add these classes in your service definition and to tag them wit
 
 Here is an example on how you could write a rule.
 
-.. code-block:: txt
+.. code-block:: text
 
     rules:
         test_pattern:

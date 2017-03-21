@@ -29,7 +29,7 @@ In some cases, you might see technical codes instead of the correct tab or butto
 
 To fix this issue, just run the following commands:
 
-.. code-block:: txt
+.. code-block:: bash
 
     cd /path/to/your/pim/
     rm -rf web/translations/*
@@ -53,7 +53,7 @@ This feature is not supported yet by the PIM.
 
 You can revert this operation by running the following commands:
 
-.. code-block:: txt
+.. code-block:: bash
 
     cd /path/to/your/pim/
     rm ./web/js/oro.min.js

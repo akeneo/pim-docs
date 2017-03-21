@@ -12,7 +12,7 @@ Cookbook
 .. toctree::
     :maxdepth: 2
 
-    setup_data/customize_installer
+    setup_data/customize_dataset
     catalog/product/index
     catalog/common/index
     event/index

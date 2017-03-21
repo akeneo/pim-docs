@@ -34,15 +34,15 @@ Override the ``pim_enrich.guesser.file_type`` service and ``pim_enrich.provider.
     # /src/Acme/Bundle/CustomBundle/Resources/config/services.yml
     parameters:
         pim_enrich.provider.default_image.images:
-            pim_enrich_file_document: { path: %kernel.root_dir%/../web/bundles/pimenrich/img/text_default.png, mime_type: image/png, extension: png }
-            pim_enrich_file_image:    { path: %kernel.root_dir%/../web/bundles/pimenrich/img/image_default.png, mime_type: image/png, extension: png }
-            pim_enrich_file_video:    { path: %kernel.root_dir%/../web/bundles/pimenrich/img/video_default.png, mime_type: image/png, extension: png }
-            pim_enrich_file_misc:     { path: %kernel.root_dir%/../web/bundles/pimenrich/img/misc_default.png, mime_type: image/png, extension: png }
-            acme_custom_file_audio:   { path: %kernel.root_dir%/../web/bundles/acmecustom/img/audio_default.png, mime_type: image/png, extension: png }
+            pim_enrich_file_document: { path: '%kernel.root_dir%/../web/bundles/pimenrich/img/text_default.png', mime_type: image/png, extension: png }
+            pim_enrich_file_image:    { path: '%kernel.root_dir%/../web/bundles/pimenrich/img/image_default.png', mime_type: image/png, extension: png }
+            pim_enrich_file_video:    { path: '%kernel.root_dir%/../web/bundles/pimenrich/img/video_default.png', mime_type: image/png, extension: png }
+            pim_enrich_file_misc:     { path: '%kernel.root_dir%/../web/bundles/pimenrich/img/misc_default.png', mime_type: image/png, extension: png }
+            acme_custom_file_audio:   { path: '%kernel.root_dir%/../web/bundles/acmecustom/img/audio_default.png', mime_type: image/png, extension: png }
 
     services:
         pim_enrich.guesser.file_type:
-            class: %pim_enrich.guesser.file_type.class%
+            class: '%pim_enrich.guesser.file_type.class%'
             arguments:
                 - acme_custom_file_audio: ['audio/*']
 

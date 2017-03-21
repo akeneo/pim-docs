@@ -72,7 +72,7 @@ The service is defined in ``src\Pim\Bundle\BaseConnectorBundle\Resources\config\
 
     services:
         pim_base_connector.reader.doctrine.product:
-            class: %pim_base_connector.reader.doctrine.product.class%
+            class: '%pim_base_connector.reader.doctrine.product.class%'
             arguments:
                 - '@pim_catalog.repository.product'
                 - '@pim_catalog.manager.channel'
@@ -118,12 +118,12 @@ The service is defined in ``src\Pim\Bundle\BaseConnectorBundle\Resources\config\
 
     services:
         pim_base_connector.processor.product_to_flat_array:
-            class: %pim_base_connector.processor.product_to_flat_array.class%
+            class: '%pim_base_connector.processor.product_to_flat_array.class%'
             arguments:
                 - '@pim_serializer'
                 - '@pim_catalog.manager.channel'
                 - ['pim_catalog_file', 'pim_catalog_image']
-                - %pim_catalog.localization.decimal_separators%
+                - '%pim_catalog.localization.decimal_separators%'
 
 The class ``Pim\Bundle\BaseConnectorBundle\Processor\ProductToFlatArrayProcessor`` mainly delegates the transformation to the service ``pim_serializer``.
 
@@ -172,7 +172,7 @@ The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\writ
 
     services:
         pim_connector.writer.file.csv_product:
-            class: %pim_connector.writer.file.csv_product.class%
+            class: '%pim_connector.writer.file.csv_product.class%'
             arguments:
                 - '@pim_connector.writer.file.file_path_resolver'
                 - '@akeneo_buffer.factory.json_file_buffer'
@@ -204,6 +204,6 @@ This service first merges all used columns in all the rows, adds missing cells i
 .. warning::
 
     In versions prior to 1.4.9, this writer used to load all products in memory. This can lead to performance and/or stability issues when exporting a very large number of lines (500k for instance).
-    Since 1.4.9 the writer uses a buffer on the disk to avoid overloading the memory, so the only limit is the free space on your server's disk, which is much less likely to be reached.
+    Since 1.4.9 the writer uses a buffer on the disk to avoid overloading the memory, so the only limit is the free space on your server disk, which is much less likely to be reached.
 
     If you encounter this kind of memory issue, please consider upgrading to the latest 1.4 version.

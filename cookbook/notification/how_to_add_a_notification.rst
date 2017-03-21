@@ -14,11 +14,11 @@ The Akeneo PIM project introduces services to help you manage your notifications
 
 The service is called: ``@pim_notification.manager.notification``
 
-.. code-block:: php
+.. code-block:: yaml
 
     services:
         pim_notification.event_subscriber.job_execution_notifier:
-            class: %pim_notification.event_subscriber.job_execution_notifier.class%
+            class: '%pim_notification.event_subscriber.job_execution_notifier.class%'
             arguments:
                 - '@pim_notification.manager.notification'
             tags:

@@ -105,9 +105,7 @@ In this example, the user is *my_user* and the group is *my_group*.
 
     $ sudo service apache2 stop
 
-* Use your identifiers for Apache by editing the file ``/etc/apache2/envvars``. You have to replace the variables:
- * ``APACHE_RUN_USER=www-data`` by ``APACHE_RUN_USER=my_user``
- * ``APACHE_RUN_GROUP=www-data`` by ``APACHE_RUN_GROUP=my_group``
+* Open this file ``/etc/apache2/envvars`` with your favorite text editor:
 
 .. code-block:: bash
     :linenos:
@@ -116,7 +114,15 @@ In this example, the user is *my_user* and the group is *my_group*.
     # replace the environment variables
     export APACHE_RUN_USER=my_user
     export APACHE_RUN_GROUP=my_group
+
     $ sudo chown -R my_user /var/lock/apache2
+
+.. note::
+
+    On the default installation, Apache run user and Apache run group are ``www-data``. You have to replace these variables:
+
+    * ``APACHE_RUN_USER=www-data`` by ``APACHE_RUN_USER=my_user``
+    * ``APACHE_RUN_GROUP=www-data`` by ``APACHE_RUN_GROUP=my_group``
 
 * Restart Apache
 

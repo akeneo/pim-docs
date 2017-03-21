@@ -63,7 +63,7 @@ Besides these modules, the following configuration is the minimal configuration 
 
 .. warning::
 
-Due to changes in its API, MongoDB 3.0 is not supported.
+    Due to changes in its API, MongoDB 3.0 is not supported.
 
 Depending on the configuration you pick, you will need to respect parts or all of the following requirements.
 

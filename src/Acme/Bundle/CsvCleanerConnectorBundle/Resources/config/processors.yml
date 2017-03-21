@@ -1,6 +1,6 @@
 services:
     acme_csvcleanerconnector.processor.denormalization.product.flat:
-        class: %pim_connector.processor.denormalization.product.class%
+        class: '%pim_connector.processor.denormalization.product.class%'
         arguments:
             - '@acme_csvcleanerconnector.array_converter.flat.product'
             - '@pim_catalog.repository.product'

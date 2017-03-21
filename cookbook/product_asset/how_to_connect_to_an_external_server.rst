@@ -14,6 +14,8 @@ Only thumbnails are stored on the PIM server.
 Connect to an SFTP server
 -------------------------
 
+.. _Sftp adapter: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/adapter_sftp.md
+
 Let's assume that you already have a fully functional SFTP server ready to receive files. You will have to setup the adapter in the ``app/config/config.yml`` file.
 
 .. code-block:: yaml
@@ -34,16 +36,19 @@ Let's assume that you already have a fully functional SFTP server ready to recei
                     permPublic: ~
 
 .. note::
+
     Don't forget to add your SFTP credentials.
 
 .. note::
+
     If you want to change the way your product media are stored, you have to configure the key `catalog_storage_adapter` instead of `asset_storage_adapter`.
 
-For further information about SFTP adapter check this `link
-<https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/adapter_sftp.md>`_.
+For further information about SFTP adapter check `Sftp adapter`_.
 
 Connect to an Amazon AwsS3v3 server
 -----------------------------------
+
+.. _Awss3 adapter: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/adapter_awss3.md
 
 First of all, you will need to install the following requirements:
 
@@ -70,6 +75,7 @@ This version requires you to use the "v4" of the signature.
                         secret: "s3-secret"
 
 .. note::
+
     Don't forget to add your credentials and the region-id
 
 Then set this service as the value of the client key in the ``app/config/config.yml`` file.
@@ -86,16 +92,18 @@ Then set this service as the value of the client key in the ``app/config/config.
                     prefix: ~
 
 .. note::
+
     Don't forget to add the bucket name
 
 .. note::
-If you want to change the way your product media are stored, you have to configure the key `catalog_storage_adapter` instead of `asset_storage_adapter`.
 
-For further information about AWS adapter check this `link
-<https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/adapter_awss3.md/>`_.
+    If you want to change the way your product media are stored, you have to configure the key `catalog_storage_adapter` instead of `asset_storage_adapter`.
+
+For further information about AWS adapter check `Awss3 adapter`_.
 
 Other
 -----
 
-You can find more information about adapters on the following `link
-<https://github.com/1up-lab/OneupFlysystemBundle/tree/master/Resources/doc/>`_.
+.. _Flysystem documentation: https://github.com/1up-lab/OneupFlysystemBundle/tree/master/Resources/doc/
+
+You can find more information about adapters in `Flysystem documentation`_.
