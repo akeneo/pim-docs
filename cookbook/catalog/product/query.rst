@@ -165,7 +165,7 @@ To add your own filter, you need to create a class implementing ``Pim\Bundle\Cat
 .. code-block:: yaml
 
     pim_catalog.doctrine.query.filter.boolean:
-        class: %my_filter_class%
+        class: '%my_filter_class%'
         arguments:
             - ['pim_catalog_boolean']
             - ['enabled']
@@ -183,6 +183,6 @@ Sorter implementation mechanism is very similar to the filter one: a registry, t
 .. code-block:: yaml
 
     pim_catalog.doctrine.query.sorter.completeness:
-        class: %pim_catalog.doctrine.query.sorter.completeness.class%
+        class: '%pim_catalog.doctrine.query.sorter.completeness.class%'
         tags:
             - { name: 'pim_catalog.doctrine.query.sorter', priority: 30 }

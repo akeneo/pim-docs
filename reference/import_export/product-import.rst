@@ -83,7 +83,7 @@ This service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\ite
 
     services:
         pim_connector.validator.item.charset_validator:
-            class: %pim_connector.validator.item.charset_validator.class%
+            class: '%pim_connector.validator.item.charset_validator.class%'
 
 The constructor of the ``CharsetValidator`` shows that it's configured to check only a file which matches some extensions and to check the 'UTF-8' encoding.
 
