@@ -58,7 +58,7 @@ Then, configure your job ``Resources/config/batch_jobs.yml``:
             steps:
                 validation:
                     title: pim_connector.jobs.csv_product_import.validation.title
-                    class: %pim_connector.step.validator.class%
+                    class: '%pim_connector.step.validator.class%'
                     services:
                         charsetValidator: pim_connector.validator.item.charset_validator
                 import:

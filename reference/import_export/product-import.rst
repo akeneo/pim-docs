@@ -29,7 +29,7 @@ The product import is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\conf
                 steps:
                     validation:
                         title: pim_connector.jobs.csv_product_import.validation.title
-                        class: %pim_connector.step.validator.class%
+                        class: '%pim_connector.step.validator.class%'
                         services:
                             charsetValidator: pim_connector.validator.item.charset_validator
                     import:
@@ -61,7 +61,7 @@ This step is a custom step, not a default ``ItemStep``, so we need to define the
     [...]
     validation:
         title: pim_connector.jobs.csv_product_import.validation.title
-        class: %pim_connector.step.validator.class%
+        class: '%pim_connector.step.validator.class%'
         services:
             charsetValidator: pim_connector.validator.item.charset_validator
     [...]
@@ -84,7 +84,7 @@ This service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\ite
 
     services:
         pim_connector.validator.item.charset_validator:
-            class: %pim_connector.validator.item.charset_validator.class%
+            class: '%pim_connector.validator.item.charset_validator.class%'
 
 The constructor of the ``CharsetValidator`` shows that it's configured to check only a file which matches some extensions and to check the 'UTF-8' encoding.
 
@@ -184,7 +184,7 @@ The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\read
 
     services:
         pim_connector.reader.file.csv_product:
-            class: %pim_connector.reader.file.csv_product.class%
+            class: '%pim_connector.reader.file.csv_product.class%'
             arguments:
                 - '@pim_catalog.repository.attribute'
 
@@ -208,7 +208,7 @@ The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\proc
 
     services:
         pim_connector.processor.denormalization.product.flat:
-            class: %pim_connector.processor.denormalization.product.class%
+            class: '%pim_connector.processor.denormalization.product.class%'
             arguments:
                 - '@pim_connector.array_converter.flat.product'
                 - '@pim_catalog.repository.product'
@@ -411,7 +411,7 @@ The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\writ
 
     services:
         pim_connector.writer.doctrine.product:
-            class: %pim_connector.writer.doctrine.product.class%
+            class: '%pim_connector.writer.doctrine.product.class%'
             arguments:
                 - '@pim_catalog.manager.media'
                 - '@pim_versioning.manager.version'

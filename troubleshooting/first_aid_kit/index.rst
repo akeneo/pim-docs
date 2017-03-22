@@ -29,7 +29,7 @@ Step 3: are the system requirements still OK?
 
 Maybe something has been changed in your server. You can check that by running the following command:
 
-.. code-block:: txt
+.. code-block:: bash
 
     cd /path/to/your/pim/
     php app/console pim:installer:check-requirements
@@ -92,7 +92,7 @@ Step 8: did you clear the cache?
 
 Clear the PIM cache (also known as "Symfony cache") by running the following commands:
 
-.. code-block:: txt
+.. code-block:: bash
 
     cd /path/to/your/pim/
     php app/console cache:clear --env=prod

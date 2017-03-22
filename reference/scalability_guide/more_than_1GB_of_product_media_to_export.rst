@@ -16,7 +16,7 @@ If you encounter memory issues and you don't need media to be archived, a simple
 .. code-block:: yaml
 
     pim_base_connector.archiver.archivable_file_writer_archiver:
-        class: %pim_base_connector.archiver.archivable_file_writer_archiver.class%
+        class: '%pim_base_connector.archiver.archivable_file_writer_archiver.class%'
         arguments:
             - '@pim_base_connector.factory.zip_filesystem'
             - '@oneup_flysystem.archivist_filesystem'

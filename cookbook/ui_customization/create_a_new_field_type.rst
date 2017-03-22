@@ -58,7 +58,7 @@ To create a custom field, first we need to create a FieldProvider for our new fi
 
 Next, you need to register it in your service.yml file:
 
-.. code-block:: yml
+.. code-block:: yaml
     :linenos:
 
     parameters:
@@ -66,7 +66,7 @@ Next, you need to register it in your service.yml file:
 
     services:
         acme.custom.provider.field.range:
-            class: %acme.custom.provider.field.range.class%
+            class: '%acme.custom.provider.field.range.class%'
             tags:
                 - { name: pim_enrich.provider.field, priority: 90 }
 
@@ -114,7 +114,7 @@ Now that we have a field provider, we can create the field itself:
 
 And its template:
 
-.. code-block:: html
+.. code-block:: text
     :linenos:
 
     <!-- src/Acme/Bundle/CustomBundle/Resources/public/templates/product/field/range.html -->

@@ -17,6 +17,7 @@ Reference
     performances_guide/index
     components/index
     bundles/index
+    product_information/index
     events/index
     import_export/index
     workflow/index
