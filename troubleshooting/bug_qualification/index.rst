@@ -39,6 +39,10 @@ Backend bugs are issues which occur on the server side (PHP/Symfony code, databa
 * Analyze the error messages provided in the Symfony's log files ``/path/to/your/pim/app/logs/prod.log`` or ``/path/to/your/pim/app/logs/dev.log``
 * Take a look at the PHP error log file.
 
+.. note::
+
+    If the web debug toolbar is not displayed in ``dev`` environment, you can retrieve the link in ``X-Debug-Token-Link`` header of request.
+
 Tasks bugs
 ----------
 
@@ -53,7 +57,7 @@ Tasks bugs are issues which occur when running the PIM jobs, like mass edit, imp
 Performances issues
 -------------------
 
-When the PIM is sloooowwwww, it's probably a performance issue.
+When you notice slownesses, displaying pages and/or during import/exports, you are probably experiencing a performance issue.
 
 **What to do?**
 
@@ -65,4 +69,4 @@ When the PIM is sloooowwwww, it's probably a performance issue.
 Reporting the bug
 -----------------
 
-With the information you have gathered, you can now :doc:`/contributing/report_bug`.
+With the information you have gathered, you can now :ref:`Report a bug <report_bug>`.

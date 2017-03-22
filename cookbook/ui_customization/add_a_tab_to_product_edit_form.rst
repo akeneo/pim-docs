@@ -124,7 +124,7 @@ Remember to register your template in your requirejs file:
 
 And here is our template to list every package:
 
-.. code-block:: html
+.. code-block:: text
     :linenos:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/public/templates/product/tab/packages.html
@@ -200,7 +200,7 @@ Again, we need to register it and create the template:
             targetZone: panel-content
             position: 90                                  # The extension position
 
-.. code-block:: html
+.. code-block:: text
     :linenos:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/public/templates/product/panel/warehouse.html

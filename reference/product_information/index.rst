@@ -22,10 +22,6 @@ The main entity is the product which,
 .. note::
     For information on how to import/export categories using CSV format see :doc:`/reference/import_export/formats/category`.
 
-
-.. note::
-    PIM architecture is very flexible and allows you clear and easy way to customize the catalog structure for your own integration: :doc:`/cookbook/catalog_structure/index`
-
 Product value
 -------------
 
@@ -47,7 +43,7 @@ An attribute with an activated localized property has different values for each 
 A scoped attribute has different value for each channel, eg: e-commerce and mobile
 
 An attribute can be localized and scoped, and therefore have different values for each combination of locale and
-channel, eg: e-commerce - French, e-commerce English, etc.
+channel, eg: e-commerce - French, e-commerce - English, etc.
 
 Attribute type
 --------------

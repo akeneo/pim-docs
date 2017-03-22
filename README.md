@@ -10,8 +10,10 @@ Clone this repository.
 
 Install [Sphinx](http://sphinx-doc.org/).
 ```bash
-    $ sudo apt-get install python-sphinx
+    $ sudo pip install --upgrade pip
+    $ sudo pip install sphinx~=1.5.3
     $ sudo pip install git+https://github.com/fabpot/sphinx-php.git
+    $ sudo pip install git+https://github.com/mickaelandrieu/sphinxcontrib.youtube.git
 ```
 
 ### Mac OS
@@ -20,7 +22,11 @@ Install [Sphinx](http://sphinx-doc.org/).
     $ brew install python
     $ pip install sphinx
     $ pip install git+https://github.com/fabpot/sphinx-php.git
+    $ pip install git+https://github.com/mickaelandrieu/sphinxcontrib.youtube.git
 ```
+
+> If you encounter the following error ``ValueError: ('Expected version spec in', 'sphinx~=1.5.3', 'at', '~=1.5.3')``
+  Use ``pip install --upgrade pip`` before install sphinx
 
 Download composer `curl -s https://getcomposer.org/installer | php` and run `php composer.phar install`.
 

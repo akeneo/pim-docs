@@ -11,23 +11,19 @@ You can now natively import data into CSV and XLSX format.
 Definition of the Job
 ---------------------
 
-The product import is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/jobs.yml``.
+Take a look at this configuration based on ConnectorBundle (``src/Pim/Bundle/ConnectorBundle/Resources/config/jobs.yml``).
 
 .. code-block:: yaml
 
     parameters:
-        pim_connector.connector_name.csv: 'Akeneo CSV Connector'
-        pim_connector.connector_name.xlsx: 'Akeneo XLSX Connector'
-        pim_connector.job_name.csv_product_import: 'csv_product_import'
         pim_connector.job.simple_job.class: Akeneo\Component\Batch\Job\Job
-        pim_connector.job.import_type: import
 
     services:
         ## CSV product import
         pim_connector.job.csv_product_import:
             class: '%pim_connector.job.simple_job.class%'
             arguments:
-                - '%pim_connector.job_name.csv_product_import%'
+                - 'csv_product_import'
                 - '@event_dispatcher'
                 - '@akeneo_batch.job_repository'
                 -
@@ -35,13 +31,13 @@ The product import is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/conf
                     - '@pim_connector.step.csv_product.import'
                     - '@pim_connector.step.csv_product.import_associations'
             tags:
-                - { name: akeneo_batch.job, connector: '%pim_connector.connector_name.csv%', type: '%pim_connector.job.import_type%' }
+                - { name: akeneo_batch.job, connector: 'Akeneo CSV Connector', type: 'import' }
 
         ## XLSX product import
         pim_connector.job.xlsx_product_import:
             class: '%pim_connector.job.simple_job.class%'
             arguments:
-                - '%pim_connector.job_name.xlsx_product_import%'
+                - 'xlsx_product_import'
                 - '@event_dispatcher'
                 - '@akeneo_batch.job_repository'
                 -
@@ -49,7 +45,7 @@ The product import is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/conf
                     - '@pim_connector.step.xlsx_product.import'
                     - '@pim_connector.step.xlsx_product.import_associations'
             tags:
-                - { name: akeneo_batch.job, connector: '%pim_connector.connector_name.xlsx%', type: '%pim_connector.job.import_type%' }
+                - { name: akeneo_batch.job, connector: 'Akeneo XLSX Connector', type: 'import' }
 
 With the ``type`` parameter, we can see that this job is an import.
 
@@ -76,11 +72,6 @@ This step is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/steps.
                 - '@akeneo_batch.job_repository'
                 - '@pim_connector.validator.item.charset_validator'
 
-.. code-block:: yaml
-
-    parameters:
-        pim_connector.step.validator.class: Pim\Component\Connector\Step\ValidatorStep
-
 We can also see that we inject a service ``pim_connector.validator.item.charset_validator`` in this step.
 
 This service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\items.yml``.
@@ -92,7 +83,7 @@ This service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\ite
 
     services:
         pim_connector.validator.item.charset_validator:
-            class: %pim_connector.validator.item.charset_validator.class%
+            class: '%pim_connector.validator.item.charset_validator.class%'
 
 The constructor of the ``CharsetValidator`` shows that it's configured to check only a file which matches some extensions and to check the 'UTF-8' encoding.
 

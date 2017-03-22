@@ -17,7 +17,7 @@ Next, declare it as a service:
 .. code-block:: yaml
 
     pim_catalog.localization.presenter.my_own_presenter:
-        class: %my_own_presenter_class%
+        class: '%my_own_presenter_class%'
         tags:
             - { name: pim_catalog.localization.presenter, type: 'product_value' }
 

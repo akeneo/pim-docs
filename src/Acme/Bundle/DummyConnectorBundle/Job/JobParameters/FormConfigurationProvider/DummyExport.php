@@ -15,7 +15,7 @@ class DummyExport implements FormConfigurationProviderInterface
         $this->supportedJobNames = $supportedJobNames;
     }
 
-    public function getFormConfiguration(JobInstance $jobInstance)
+    public function getFormConfiguration()
     {
         return [
             'filePath' => [

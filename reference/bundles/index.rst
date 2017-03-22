@@ -26,7 +26,14 @@ PIM Enterprise bundles
 Akeneo Labs bundles
 -------------------
 
+.. include:: akeneo_labs_bundles.rst.inc
+
 .. note::
   You can also use our "`AkeneoLabs`_" bundles, they could be integrated later in the core of the PIM, we do experiments here
 
 .. _AkeneoLabs: https://github.com/akeneo-labs
+
+.. toctree::
+    :maxdepth: 2
+
+    custom_entity_bundle/index

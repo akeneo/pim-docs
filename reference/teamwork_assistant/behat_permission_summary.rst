@@ -1,6 +1,15 @@
 Users permission summary for Behat tests
 ========================================
 
+.. _Setup Behat part: ../best_practices/core/behat.html
+
+In the case you extended the Teamwork Assistant, you may want to check that you didn't broke basics features. You can
+have a look to the `Setup Behat part`_ to learn more about how to run our functional tests.
+
+Because the Teamwork Assistant heavily uses permissions, we created a custom catalog that we use in our test features.
+Here is a summary about permissions we use in our catalog. This catalog has been modified in few scenario but it is
+still mainly the same all over tests.
+
 Users:
 ------
 +----------+------------------+----------------------+----------------------------------------------------+--------------------------------+
