@@ -14,3 +14,17 @@ etc.) and technically (how to use the recalculate command) in a healthy way.
 
     To know more about the project completeness visit the `project completeness`_ reference.
 
+Compute Project Completeness
+----------------------------
+
+.. _medium catalog: ../scalability_guide/representative_catalogs.html
+
+Before beginning to work with the Teamwork Assistant, you have to be aware that this feature has to compute a lot of
+data. The more products and attribute groups you have in a project, the more project completeness computing will take.
+We realized some benchmarks with our `medium catalog`_ on MySQL to give you an idea of the time it can take. A medium
+catalog is about 3,66 millions of product values.
+
++-------------------------+-----------------------+
+| Project size (products) | time spent to compute |
++=========================+=======================+
+|
