@@ -208,49 +208,49 @@ Fields
 
 Created
 _______
-+--------------+-----------------------+
-| Operator     | - =                   |
-|              | - ">"                 |
-|              | - <                   |
-|              | - BETWEEN             |
-|              | - NOT BETWEEN         |
-|              | - EMPTY               |
-+--------------+-----------------------+
-| Value        | dates format:         |
-|              | yyyy-mm-dd. If        |
-|              | operator is EMPTY,    |
-|              | values information    |
-|              | is ignored            |
-+--------------+-----------------------+
-| Example      | .. code-block:: yaml  |
-|              |                       |
-|              |   field: created      |
-|              |   operator: =         |
-|              |   value: "2015-01-23" |
-+--------------+-----------------------+
++--------------+--------------------------------+
+| Operator     | - =                            |
+|              | - ">"                          |
+|              | - <                            |
+|              | - BETWEEN                      |
+|              | - NOT BETWEEN                  |
+|              | - EMPTY                        |
++--------------+--------------------------------+
+| Value        | dates format:                  |
+|              | yyyy-mm-dd HH:ii:ss. If        |
+|              | operator is EMPTY,             |
+|              | values information             |
+|              | is ignored                     |
++--------------+--------------------------------+
+| Example      | .. code-block:: yaml           |
+|              |                                |
+|              |   field: created               |
+|              |   operator: =                  |
+|              |   value: "2015-01-23 00:00:00" |
++--------------+--------------------------------+
 
 Updated
 _______
-+--------------+-----------------------+
-| Operator     | - =                   |
-|              | - ">"                 |
-|              | - <                   |
-|              | - BETWEEN             |
-|              | - NOT BETWEEN         |
-|              | - EMPTY               |
-+--------------+-----------------------+
-| Value        | dates format:         |
-|              | yyyy-mm-dd. If        |
-|              | operator is EMPTY,    |
-|              | values information    |
-|              | is ignored            |
-+--------------+-----------------------+
-| Example      | .. code-block:: yaml  |
-|              |                       |
-|              |   field: updated      |
-|              |   operator: =         |
-|              |   value: "2015-01-23" |
-+--------------+-----------------------+
++--------------+--------------------------------+
+| Operator     | - =                            |
+|              | - ">"                          |
+|              | - <                            |
+|              | - BETWEEN                      |
+|              | - NOT BETWEEN                  |
+|              | - EMPTY                        |
++--------------+--------------------------------+
+| Value        | dates format:                  |
+|              | yyyy-mm-dd HH:ii:ss. If        |
+|              | operator is EMPTY,             |
+|              | values information             |
+|              | is ignored                     |
++--------------+--------------------------------+
+| Example      | .. code-block:: yaml           |
+|              |                                |
+|              |   field: updated               |
+|              |   operator: =                  |
+|              |   value: "2015-01-23 00:00:00" |
++--------------+--------------------------------+
 
 Enabled
 _______
