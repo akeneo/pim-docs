@@ -120,6 +120,7 @@
         </div>
 
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          {% include "versions.html" %}
           {% block menu %}
             {% set toctree = toctree(maxdepth=4, collapse=theme_collapse_navigation, includehidden=True) %}
             {% if toctree %}
