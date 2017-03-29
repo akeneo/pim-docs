@@ -190,8 +190,7 @@ Several customers challenge the limitations even more in their custom projects a
 | improv.  | All         | All         | TODO         | (PIM-5562) When delete a product associated to other products, run a backend process to cleanup all associations                                               |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | improv.  | All         | All         | TODO         | (PIM-5563) Query for completeness rescheduling when saving a family with 50k products inside is too long to execute, exec as backend process                   |
-+----------+-------------+-------------+--------------+---------------------------------------------------------------------------------
--------------------------------------------------------------------------------+
-| improv.  | All         | All         | TODO         | (IM-766) Variant groups scalability: limit number of axes or set a limit?                                                                                       |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| improv.  | All         | All         | TODO         | (IM-766) Variant groups scalability: limit number of axes or set a limit?                                                                                      |
 +----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+ 
 
