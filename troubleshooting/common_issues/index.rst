@@ -62,7 +62,7 @@ You can revert this operation by running the following commands:
     php app/console assets:install --symlink web
     
 I cannot export my products "An exception occurred during the export"
---------------------------------------------------------------------
+---------------------------------------------------------------------
 
 If you have **thousands of products to export with the native CSV and XSLX connector** and if the job finishes or fails with the error: **"An exception occured during the export"**. If the error message is not explicit enough, you can launch it in dev mode, also check
 the logs to have more information.
