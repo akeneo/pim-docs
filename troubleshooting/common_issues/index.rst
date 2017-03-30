@@ -73,8 +73,8 @@ First step is to **disable the media archiving** in the job's properties (Export
 
 If it works and if you do not need the medias in the export file, you can keep this configuration.
 
-If you need to export medias, unfortunately there is no out of the box solution to archive large volumes of media on a classic PIM installation, so you will have to write your own archiver, you can find an example here: :doc:`/reference/scalability_guide/more_than_1GB_of_product_media_to_export.html#write-your-own-archiver`
+If you need to export medias, unfortunately there is no out of the box solution to archive large volumes of media on a classic PIM installation, so you will have to write your own archiver, you can find an example here: :doc:`/reference/scalability_guide/more_than_1GB_of_product_media_to_export`
 
 If the issue remains, you need to follow our qualification guide: :doc:`/troubleshooting/bug_qualification/index.html#performances-issues`.
 
-Regarding data export volumetry, please note that we have clients exporting more than 270K at once and the PIM handles such exports. See our Scalability guide for more informations about our tests: :doc:`/reference/scalability_guide/index.html`
+Regarding data export volumetry, please note that we have clients exporting more than 270K at once and the PIM handles such exports. See our Scalability guide for more informations about our tests: :doc:`/reference/scalability_guide/index`
