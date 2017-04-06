@@ -48,7 +48,7 @@ If the patch is a javascript fix, please clear your browser cache before testing
 
 .. note::
    
-   If you gett a 500 error after upgrading and clear cache aint working try to clear the apc cache with a php script or restart Apache/Web server.
+    If you get a 500 error after upgrading and clear cache isn't working try to clear the apc cache with a php script or restart Apache/Web server.
 
 .. code-block:: bash
 
