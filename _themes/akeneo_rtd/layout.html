@@ -113,21 +113,10 @@
             <img src="{{ pathto('_static/' + logo, 1) }}" class="logo" />
           {% endif %}
           </a>
-
-          {% if theme_display_version %}
-            {%- set nav_version = version %}
-            {% if READTHEDOCS and current_version %}
-              {%- set nav_version = current_version %}
-            {% endif %}
-            {% if nav_version %}
-              <div class="version">
-                {{ nav_version }}
-              </div>
-            {% endif %}
-          {% endif %}
-
           {% endblock %}
         </div>
+
+        {% include "versions.html" %}
 
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           {% block menu %}
@@ -171,7 +160,6 @@
     </section>
 
   </div>
-  {% include "versions.html" %}
 
   {% if not embedded %}
 
