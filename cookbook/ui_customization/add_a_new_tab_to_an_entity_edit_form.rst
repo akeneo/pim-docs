@@ -1,5 +1,5 @@
-How to Add a New Tab to Akeneo entities forms (except product edit form)
-========================================================================
+How to Add a New Tab to Akeneo entities forms (except product edit form and jobs edit form)
+===========================================================================================
 
 To add or override a tab to an Akeneo PIM edit form, you can use our view element system based on tagged services.
 For each tab of our entities' form we have a tagged service to handle its rendering. You can find them in the
