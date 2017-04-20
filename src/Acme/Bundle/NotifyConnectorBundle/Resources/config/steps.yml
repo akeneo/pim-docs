@@ -1,9 +1,6 @@
-parameters:
-    acme_notifyconnector.step.notify.class: Acme\Bundle\NotifyConnectorBundle\Step\NotifyStep
-
 services:
     acme_notifyconnector.step.notify:
-        class: '%acme_notifyconnector.step.notify.class%'
+        class: 'Acme\Bundle\NotifyConnectorBundle\Step\NotifyStep'
         arguments:
             - 'notify'
             - '@event_dispatcher'
