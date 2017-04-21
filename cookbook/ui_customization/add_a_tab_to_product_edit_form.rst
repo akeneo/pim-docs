@@ -1,5 +1,5 @@
-How to add a tab or a panel to the product edit form or the jobs edit form
-==========================================================================
+How to add a tab or a panel to the product edit form
+====================================================
 
 The most common UI customization on the Akeneo PIM is to add a tab to the product edit form. With the new product edit form introduced in 1.4 we splitted tabs in distinct elements:
 
