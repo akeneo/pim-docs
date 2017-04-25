@@ -69,4 +69,4 @@ When you notice slownesses, displaying pages and/or during import/exports, you a
 Reporting the bug
 -----------------
 
-With the information you have gathered, you can now :doc:`/contributing/report_bug`.
+With the information you have gathered, you can now :doc:`/contributing/report`.
