@@ -1,5 +1,7 @@
 <?php
-require_once("../vendor/autoload.php");
+require_once("./vendor/autoload.php");
+
+use Symfony\Component\Yaml\Yaml;
 
 $loader = new \Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new \Twig_Environment($loader);
@@ -7,7 +9,7 @@ $twig = new \Twig_Environment($loader);
 $renderCodeFunction = new Twig_SimpleFunction('render_code', function ($template, $code, $args = []) {
     global $twig;
 
-    $result = '<div class="reset-bem' . ($args['dark'] ? ' dark' : '') . '">';
+    $result = '<div class="reset-bem' . (array_key_exists('dark', $args) ? ' dark' : '') . '">';
     $htmlCode = $twig->render($template, $args);
     $result .= $htmlCode;
     $result .= '</div>';
@@ -17,7 +19,7 @@ $renderCodeFunction = new Twig_SimpleFunction('render_code', function ($template
 });
 $twig->addFunction($renderCodeFunction);
 
-$yaml = \Symfony\Component\Yaml\Yaml::parse(file_get_contents('config.yml'));
+$yaml = Yaml::parse(file_get_contents('config.yml'));
 
 ?><!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
@@ -25,12 +27,12 @@ $yaml = \Symfony\Component\Yaml\Yaml::parse(file_get_contents('config.yml'));
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akeneo PIM Documentation &mdash; Akeneo PIM documentation</title>
+    <title>Akeneo PIM Documentation &mdash; Akeneo PIM styleguide</title>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/css/akeneo.css" type="text/css" />
-    <link rel="top" title="Akeneo PIM documentation" href="#"/>
+    <link rel="top" title="Akeneo PIM styleguide" href="#"/>
     <link rel="next" title="Installation" href="developer_guide/installation/index.html"/>
     <script src="../_static/js/modernizr.min.js"></script>
 
