@@ -261,7 +261,7 @@ First, we need to create a Form extension in our bundle:
 
 For now this is a dummy extension, but this is a good start!
 
-Let's register this file in the `requirejs` configuration
+Let's register this file in the ``requirejs`` configuration
 
 .. code-block:: yaml
     :linenos:
@@ -272,7 +272,7 @@ Let's register this file in the `requirejs` configuration
         paths:
             pim/job/product/edit/mapping: acmeenrich/js/job/product/form/mapping
 
-Now that our file is registered in `requirejs` configuration, we can add this extension to the product edit form:
+Now that our file is registered in ``requirejs`` configuration, we can add this extension to the product edit form:
 
 .. code-block:: yaml
     :linenos:
@@ -304,6 +304,8 @@ Now that our file is registered in `requirejs` configuration, we can add this ex
                 tabTitle: acme_enrich.form.job_instance.tab.mapping.title
                 tabCode: pim-job-instance-mapping
 
-After a cache clear (`app/console cache:clear`), you should see your new tab in the job edit form. If not, make sure that you ran the `app/console assets:install --symlink web` command
+After a cache clear (``app/console cache:clear``), you should see your new tab in the job edit form. If not, make sure that you ran the `app/console assets:install --symlink web` command.
 
-Now that we have our extension loaded in our form, we can add some logic into it
+Now that we have our extension loaded in our form, we can add some logic into it, check how to `customize the UI`_.
+    
+.. _customize the UI: ../ui
