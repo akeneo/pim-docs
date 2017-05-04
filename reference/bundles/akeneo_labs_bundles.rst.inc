@@ -1,4 +1,4 @@
-.. _CustomEntityBundle: https://github.com/akeneo-labs/CustomEntityBundle.git
+.. _CustomEntityBundle: https://github.com/akeneo-labs/CustomEntityBundle
 
 +-------------------------+--------------------------------------------------------------------------------------------------------------------+
 | **Bundle**              | **Scope**                                                                                                          |

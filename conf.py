@@ -265,3 +265,6 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+# When using "linkckeck" builder, no checks on anchors.
+linkcheck_anchors = False

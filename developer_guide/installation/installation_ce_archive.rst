@@ -9,7 +9,7 @@ Getting Akeneo PIM
 Downloading the archive
 ***********************
 
-You can choose to download a PIM Community Edition along with demo data (called *icecat*) or not (called *minimal*) from the download page http://www.akeneo.com/download.
+You can choose to download a PIM Community Edition along with demo data (called *icecat*) or not (called *minimal*) from the download page https://www.akeneo.com/download.
 You can also download them directly from the command line:
 
 .. code-block:: bash
