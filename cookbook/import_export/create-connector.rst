@@ -33,7 +33,7 @@ Jobs and steps are actually Symfony services. The first thing we need is to decl
     Please note that in versions < 1.6, the file was named ``batch_jobs.yml`` and was automatically loaded.
     The file content was very strict, was less standard and upgradeable than it is now.
 
-.. _Symfony documentation: http://symfony.com/doc/2.7/bundles/extension.html#using-the-load-method
+.. _Symfony documentation: https://symfony.com/doc/2.7/bundles/extension.html#using-the-load-method
 
 As you can see there is almost no difference with the native CSV export job.
 The only new info here is the name (first parameter) and the connector name (the ``connector`` property of the tag).

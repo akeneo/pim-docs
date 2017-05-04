@@ -55,8 +55,8 @@ You can find some configuration examples on our `Akeneo-Labs`_ projects (`scruti
 .. _Single Responsibility principle: https://en.wikipedia.org/wiki/Single_responsibility_principle
 .. _SOLID principles: https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)
 .. _PMD: https://phpmd.org/
-.. _PhpSpec: http://phpspec.readthedocs.org/
-.. _Behat: http://docs.behat.org/
+.. _PhpSpec: http://phpspec.readthedocs.io/en/stable/
+.. _Behat: http://docs.behat.org/en/latest/
 .. _Travis: https://travis-ci.org/
 .. _Scrutinizer: https://scrutinizer-ci.com/
 .. _Akeneo-Labs: https://github.com/akeneo-labs
@@ -89,14 +89,14 @@ Use registries
 """"""""""""""
 Registries are also a good extension point when you have to deal with many cases (different attribute types, entities, etc.).
 They are used to gather related classes (i.e: filters, sorters).
-Simply declare it as a service and tag it (http://symfony.com/doc/2.7/components/dependency_injection/tags.html).
+Simply declare it as a service and `tag it <https://symfony.com/doc/2.7/service_container/tags.html>`_.
 
 .. note::
     Learn more about `registry`_ pattern.
 
 You can also follow the localizers' cookbook example: :doc:`/cookbook/localization/how_to_use_the_localizers`
 
-.. _registry: http://martinfowler.com/eaaCatalog/registry.html
+.. _registry: https://martinfowler.com/eaaCatalog/registry.html
 
 
 Plug on events (datagrid, savers, remover, etc.)
@@ -138,9 +138,9 @@ Two options:
 For your own model classes, create your class and its interface.
 Then you can rely on your interface and use the `Akeneo target resolver`_ which is based on the `Doctrine target entity resolver`_.
 
-.. _oneToOne unidirectional association: http://doctrine-orm.readthedocs.org/projects/doctrine-orm/en/latest/reference/association-mapping.html#one-to-one-unidirectional
+.. _oneToOne unidirectional association: https://doctrine-orm.readthedocs.io/projects/doctrine-orm/en/latest/reference/association-mapping.html#one-to-one-unidirectional
 .. _Akeneo target resolver: https://github.com/akeneo/pim-community-dev/blob/1.5/src/Pim/Bundle/CatalogBundle/DependencyInjection/Compiler/ResolveDoctrineTargetModelPass.php
-.. _Doctrine target entity resolver: http://symfony.com/doc/2.7/cookbook/doctrine/resolve_target_entity.html
+.. _Doctrine target entity resolver: https://symfony.com/doc/2.7/doctrine/resolve_target_entity.html
 
 
 Repositories
@@ -165,6 +165,6 @@ Remember never to use the `findAll()` method from a repository as you don't know
 On batch processes, don't forget to detach your objects from the Doctrine UnitOfWork and check the memory usage.
 You can use `blackfire`_ and `php-meminfo`_ to help you track memory leaks.
 
-.. _representative catalogs: http://docs.akeneo.com/latest/reference/scalability_guide/representative_catalogs.html
+.. _representative catalogs: /reference/scalability_guide/representative_catalogs`
 .. _blackfire: https://blackfire.io/docs/introduction
 .. _php-meminfo: https://github.com/BitOne/php-meminfo
