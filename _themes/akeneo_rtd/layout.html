@@ -92,10 +92,8 @@
 </head>
 
 <body class="wy-body-for-nav" role="document">
-
   {% block extrabody %} {% endblock %}
   <div class="wy-grid-for-nav">
-
     {# SIDE NAV, TOGGLES ON MOBILE #}
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
@@ -144,7 +142,6 @@
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
       {# MOBILE NAV, TRIGGLES SIDE NAV ON TOGGLE #}
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
@@ -155,6 +152,16 @@
       {# PAGE CONTENT #}
       <div class="wy-nav-content">
         <div class="rst-content">
+          {% if theme_deprecated_version %}
+          <div class="rst-content akeneo-deprecated">
+            <div class="admonition warning">
+              <p class="first admonition-title">Caution</p>
+              <p>You are browsing the documentation for Akeneo in version <b>{{ version }}</b>, which is not maintained anymore.</p>
+              <p class="last">Consider upgrading to the <a href="https://docs.akeneo.com/latest/">latest version</a>.</p>
+            </div>
+          </div>
+          {% endif %}
+
           <div class="akeneo-search">
             {% include "searchbox.html" %}
           </div>
