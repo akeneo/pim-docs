@@ -16,8 +16,7 @@ Base dependencies
 .. code-block:: bash
 
     $ apt-get update
-    $ apt-get install mysql-server apache2 libapache2-mod-php5 php5-cli php5-apcu php5-mcrypt php5-intl php5-mysql php5-curl php5-gd
-    $ php5enmod mcrypt
+    $ apt-get install mysql-server apache2 libapache2-mod-php5 php5-cli php5-apcu php5-intl php5-mysql php5-curl php5-gd
     $ a2enmod rewrite
 
 .. note::
