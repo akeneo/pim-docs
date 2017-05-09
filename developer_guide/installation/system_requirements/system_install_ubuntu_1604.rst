@@ -2,7 +2,7 @@ System install on Ubuntu 16.04
 ==============================
 
 Here is a quick guide to setup the :doc:`system_requirements` on Ubuntu 16.04. This guide will help you to install all
-the packages and modules needed for Akeneo PIM on a newly installed ubuntu 16.04 system, then configure it to match your local installation.
+the packages and modules needed for Akeneo PIM on a freshly installed ubuntu 16.04 system and then configure the application to match your local installation.
 
 System installation
 -------------------
@@ -159,13 +159,12 @@ You'll have to install the **new** Mongo PHP extension_ and enable it:
     $ sudo phpenmod mongodb
 
 .. _adapter: https://github.com/alcaeus/mongo-php-adapter
-.. _composer: https://getcomposer.org
+.. _composer: https://getcomposer.org/doc/00-intro.md
 
 Finally, you have to install the Mongo PHP adapter_ using the dependency manager composer_:
 
 .. code-block:: bash
 
-    $ sudo apt-get install composer
     $ composer require alcaeus/mongo-php-adapter --ignore-platform-reqs
 
 .. _system-configuration-1604:
