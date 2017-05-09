@@ -44,6 +44,8 @@ The web server will also need the following libraries and modules:
 +----------------------+-------------------------------------------------------------------------------------------+
 | php5-apc / php5-apcu | Depends on the installed PHP version (php5-apc for 5.4 and php5-apcu for PHP 5.5 and 5.6) |
 +----------------------+-------------------------------------------------------------------------------------------+
+| php5-imagick         | Only required for Enterprise Edition                                                      |
++----------------------+-------------------------------------------------------------------------------------------+
 
 Besides these modules, the following configuration is the minimal configuration required:
 
