@@ -45,6 +45,29 @@ If the patch is a javascript fix, please clear your browser cache before testing
     We set any other dependencies to their exact patch versions to avoid compatibility issues.
     We strongly advise you to add the composer.lock in your versioning system.
 
+
+.. note::
+   
+    If you get a 500 error after upgrading and clear cache isn't working try to clear the apc cache with a php script or restart Apache/Web server.
+    
+Restart Apache:
+
+.. code-block:: bash
+
+    service apache2 graceful
+    
+or call this script from a dedicated page. "yourdomain.local/clear_apc.php":
+
+.. code-block:: php   
+
+    <?php
+        //clear_apc.php
+        apc_clear_cache(); 
+        apc_clear_cache('user'); 
+        apc_clear_cache('opcode');
+    ?>
+
+
 **Enterprise Edition**
 
 In your enterprise standard project, the composer.json will reference both community and enterprise bundles repositories.
@@ -106,7 +129,7 @@ Here are the migration guides:
 
 **Enterprise Edition**
 
-Standard Enterprise Edition (EE) archives are now available on a dedicated portal: https://partners.akeneo.com/. You will be able to download your EE archive directly from it. If you do not have access to this interface, please contact your please contact your Customer Success or Channel Manager.
+Standard Enterprise Edition (EE) archives are now available on a dedicated portal: https://partners.akeneo.com/. You will be able to download your EE archive directly from it. If you do not have access to this interface, please contact your Customer Success or Channel Manager.
 
 Then, follow the migration guides located in your archive to upgrade your project.
 
