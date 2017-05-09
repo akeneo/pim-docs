@@ -4,7 +4,7 @@
     "minimal-stability": "dev",
     "require": {
         "fabpot/sphinx-php": "1.0.1",
-        "akeneo/pim-community-dev": "1.7.x-dev@dev",
+        "akeneo/pim-community-dev": "dev-master",
         "symfony/console": "~2.0"
     },
     "config": {

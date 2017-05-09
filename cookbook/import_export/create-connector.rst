@@ -137,6 +137,13 @@ The ``--config`` option can be used to override the job instance parameters at r
 
     php app/console akeneo:batch:job my_app_product_export --config='{"filePath":"\/tmp\/new_path.csv"}'
 
+Configure the UI for our JobParameters
+--------------------------------------
+
+At this point, the job is usable in command line though it cannot be configured via the UI.
+
+We need to provide a form name to the frontend to be able to render it properly. If your connector doesn't require extra fields, you can use the basic forms shipped with Akeneo:
+
 Configure the UI for our new job
 --------------------------------
 

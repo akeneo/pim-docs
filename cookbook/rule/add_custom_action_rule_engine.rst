@@ -329,6 +329,170 @@ Don't forget to add these classes in your service definition and to tag them wit
             tags:
                 - { name: validator.constraint_validator, alias: pimee_constraint_attributes_validator }
 
+You have to override the action column from the rule view to use the pattern type.
+
+.. code-block:: jinja
+
+    {# src/Acme/Bundle/CustomBundle/Resources/views/Rules/_actions.html.twig #}
+    {% for action in value.actions %}
+        <p class="AknRule">
+            {% if action.type in ["copy", "copy_value"] %}
+                {% set parameters = {
+                '%from_field%': action.from_field|append_locale_and_scope_context(action.from_locale|default, action.from_scope|default)|highlight,
+                '%to_field%': action.to_field|append_locale_and_scope_context(action.to_locale|default, action.to_scope|default)|highlight
+                } %}
+            {% elseif action.type in ["add", "remove"] %}
+                {% set parameters = {
+                '%field%': action.field|append_locale_and_scope_context(action.options.locale|default, action.options.scope|default)|highlight,
+                '%value%': action.items|present_rule_action_value(action.field)|highlight,
+                } %}
+            {% elseif action.type == 'pattern' %}
+                {% set parameters = {
+                '%field%': action.field|append_locale_and_scope_context(action.options.locale|default, action.options.scope|default)|highlight,
+                '%attributes%': action.attributes|join(',')|highlight
+                } %}
+            {% else %}
+                {% set parameters = {
+                '%field%': action.field|append_locale_and_scope_context(action.locale|default, action.scope|default)|highlight,
+                '%value%': action.value|present_rule_action_value(action.field)|highlight
+                } %}
+            {% endif %}
+
+            {{ ('pimee_catalog_rule.actions.type.' ~ action.type) |trans(parameters)|raw }}
+        </p>
+    {% endfor %}
+
+You also need to override the rule file for the datagrid with your template.
+
+.. code-block:: yaml
+
+    #src/Acme/Bundle/CustomBundle/Resources/config/datagrid/rule.yml
+    datagrid:
+        rule-grid:
+            source:
+                acl_resource: pimee_catalog_rule_rule_view_permissions
+                repository_method: createDatagridQueryBuilder
+                type: pim_datasource_rule
+                entity: '%akeneo_rule_engine.model.rule_definition.class%'
+            columns:
+                code:
+                    label: pimee_catalog_rule.datagrid.rule-grid.column.code
+                conditions:
+                    label: pimee_catalog_rule.datagrid.rule-grid.column.conditions
+                    type: twig
+                    template: PimEnterpriseCatalogRuleBundle:Rule:_conditions.html.twig
+                    frontend_type: html
+                    data_name: content
+                actions:
+                    label: pimee_catalog_rule.datagrid.rule-grid.column.actions
+                    type: twig
+                    template: AcmeCustomBundle:Rules:_actions.html.twig
+                    frontend_type: html
+                    data_name: content
+                impactedSubjectCount:
+                    label: pimee_catalog_rule.datagrid.rule-grid.column.impacted_product_count.label
+                    type: twig
+                    template: PimEnterpriseCatalogRuleBundle:Rule:_impacted_product_count.html.twig
+                    frontend_type: html
+            properties:
+                id: ~
+                execute_link:
+                    type: url
+                    route: pimee_catalog_rule_rule_execute
+                    params:
+                        - code
+                delete_link:
+                    type: url
+                    route: pimee_catalog_rule_rule_delete
+                    params:
+                        - id
+            actions:
+                execute:
+                    type: ajax
+                    label: pimee_catalog_rule.datagrid.rule-grid.actions.execute
+                    icon: play
+                    link: execute_link
+                    acl_resource: pimee_catalog_rule_rule_execute_permissions
+                    confirmation: true
+                    messages:
+                        confirm_title: pimee_catalog_rule.datagrid.rule-grid.actions.execute.confirm_title
+                        confirm_content: pimee_catalog_rule.datagrid.rule-grid.actions.execute.confirm_content
+                        confirm_ok: pimee_catalog_rule.datagrid.rule-grid.actions.execute.confirm_ok
+                delete:
+                    type: delete
+                    label: pimee_catalog_rule.datagrid.rule-grid.actions.delete
+                    icon: trash
+                    link: delete_link
+                    acl_resource:  pimee_catalog_rule_rule_delete_permissions
+            filters:
+                columns:
+                    code:
+                        type: string
+                        data_name:   r.code
+            sorters:
+                columns:
+                    code:
+                        data_name: r.code
+                    impactedSubjectCount:
+                        data_name: r.impactedSubjectCount
+                default:
+                    code: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'
+            mass_actions_groups:
+                bulk_actions:
+                    label: pim_datagrid.mass_action_group.bulk_actions.label
+            mass_actions:
+                impacted_product_count:
+                    type: ajax
+                    acl_resource: pimee_catalog_rule_rule_impacted_product_count_permissions
+                    handler: rule_impacted_product_count
+                    label: pimee_catalog_rule.datagrid.rule-grid.mass_edit_action.impacted_product_count
+                    route: pimee_catalog_rule_rule_mass_impacted_product_count
+                    messages:
+                        confirm_title: pimee_catalog_rule.datagrid.rule-grid.mass_edit_action.confirm_title
+                        confirm_content: pimee_catalog_rule.datagrid.rule-grid.mass_edit_action.confirm_content
+                        confirm_ok: pimee_catalog_rule.datagrid.rule-grid.mass_edit_action.confirm_ok
+                    launcherOptions:
+                        group: bulk_actions
+                execute:
+                    type: ajax
+                    acl_resource: pimee_catalog_rule_rule_execute_permissions
+                    label: pimee_catalog_rule.datagrid.rule-grid.mass_edit_action.execute
+                    handler: mass_execute_rule
+                    messages:
+                        confirm_title: pimee_catalog_rule.datagrid.rule-grid.mass_action.execute.confirm_title
+                        confirm_content: pimee_catalog_rule.datagrid.rule-grid.mass_action.execute.confirm_content
+                        confirm_ok: pimee_catalog_rule.datagrid.rule-grid.mass_action.execute.confirm_ok
+                        success: pimee_catalog_rule.datagrid.rule-grid.mass_action.execute.success
+                        error: pimee_catalog_rule.datagrid.rule-grid.mass_action.execute.error
+                        empty_selection: pimee_catalog_rule.datagrid.rule-grid.mass_action.execute.empty_selection
+                    launcherOptions:
+                        group: bulk_actions
+                delete:
+                    type: delete
+                    entity_name: rule
+                    acl_resource: pimee_catalog_rule_rule_delete_permissions
+                    handler: mass_delete_rule
+                    label: pimee_catalog_rule.datagrid.rule-grid.mass_edit_action.delete
+                    messages:
+                        confirm_title: pimee_catalog_rule.datagrid.rule-grid.mass_action.delete.confirm_title
+                        confirm_content: pimee_catalog_rule.datagrid.rule-grid.mass_action.delete.confirm_content
+                        confirm_ok: pimee_catalog_rule.datagrid.rule-grid.mass_action.delete.confirm_ok
+                        success: pimee_catalog_rule.datagrid.rule-grid.mass_action.delete.success
+                        error: pimee_catalog_rule.datagrid.rule-grid.mass_action.delete.error
+                        empty_selection: pimee_catalog_rule.datagrid.rule-grid.mass_action.delete.empty_selection
+                    launcherOptions:
+                        group: bulk_actions
+
+Then, add the translations.
+
+.. code-block:: yaml
+
+    #src/Acme/Bundle/CustomBundle/Resources/translations/messages.en.yml
+    pimee_catalog_rule:
+        actions:
+            type:
+                "pattern": Then attributes (%attributes%) from pattern are replaced by specific values into %field%
+
 Here is an example on how you could write a rule.
 
 .. code-block:: yaml

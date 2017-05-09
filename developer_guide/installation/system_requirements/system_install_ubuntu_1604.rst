@@ -82,8 +82,7 @@ PHP 5.6 (supported)
     $ sudo apt-get update
     $ sudo apt-get remove php7*
     $ sudo apt-get install php5.6
-    $ sudo apt-get install php5.6-xml php5.6-zip php5.6-curl php5.6-mongo php5.6-intl php5.6-mbstring php5.6-mysql php5.6-gd php5.6-mcrypt php5.6-cli php5.6-apcu libapache2-mod-php5.6
-    $ sudo phpenmod mcrypt
+    $ sudo apt-get install php5.6-xml php5.6-zip php5.6-curl php5.6-mongo php5.6-intl php5.6-mbstring php5.6-mysql php5.6-gd php5.6-cli php5.6-apcu libapache2-mod-php5.6
 
 * Check that PHP 5.6 is now your current PHP version with:
 
@@ -109,11 +108,10 @@ PHP 7 (experimental)
 
     $ sudo apt-get update
     $ sudo apt-get install php7.0
-    $ sudo apt-get install php7.0-xml php7.0-zip php7.0-curl php-mongodb php7.0-intl php7.0-mbstring php7.0-mysql php7.0-gd php7.0-mcrypt php7.0-cli php-apcu libapache2-mod-php7.0
+    $ sudo apt-get install php7.0-xml php7.0-zip php7.0-curl php-mongodb php7.0-intl php7.0-mbstring php7.0-mysql php7.0-gd php7.0-cli php-apcu libapache2-mod-php7.0
     $ sudo a2dismod mpm_event
     $ sudo a2enmod mpm_prefork
     $ sudo a2enmod php7.0
-    $ sudo phpenmod mcrypt
     $ sudo service apache2 reload
 
 .. _choosing_product_storage:
