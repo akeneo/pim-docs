@@ -220,3 +220,92 @@ Job form fields need special properties defined under the ``config`` key:
     You can also use other fields natively available in the PIM or, if you have more specific needs, create your own field.
 
 Now we can create and edit job instances via the UI using the menu "Spread > Export profiles" then "Create export profile" button.
+
+Add a tab to the job edit form
+------------------------------
+
+Let's say that we would like to add a custom tab to our job edit form in order to manage field mappings.
+
+First, we need to create a Form extension in our bundle:
+
+.. code-block:: javascript
+    :linenos:
+
+    'use strict';
+    /*
+     * /src/Acme/Bundle/EnrichBundle/Resources/public/js/job/product/edit/mapping.js
+     */
+    define(['pim/form'],
+        function (BaseForm) {
+            return BaseForm.extend({
+                configure: function () {
+                    this.trigger('tab:register', {
+                        code: this.code,
+                        isVisible: this.isVisible.bind(this),
+                        label: 'Mapping'
+                    });
+
+                    return BaseForm.prototype.configure.apply(this, arguments);
+                },
+                render: function () {
+                    this.$el.html('Hello world');
+
+                    return this;
+                },
+                isVisible: function () {
+                    return true;
+                }
+            });
+        }
+    );
+
+For now this is a dummy extension, but this is a good start!
+
+Let's register this file in the ``requirejs`` configuration
+
+.. code-block:: yaml
+    :linenos:
+
+    # /src/Acme/Bundle/EnrichBundle/Resources/config/requirejs.yml
+
+    config:
+        paths:
+            pim/job/product/edit/mapping: acmeenrich/js/job/product/form/mapping
+
+Now that our file is registered in ``requirejs`` configuration, we can add this extension to the product edit form:
+
+.. code-block:: yaml
+    :linenos:
+
+    # /src/Acme/Bundle/EnrichBundle/Resources/config/form_extensions/job_instance/csv_product_export_edit.yml
+
+    extensions:
+        pim-job-instance-csv-product-export-edit-mapping:                        # The form extension code (can be whatever you want)
+            module: pim/job/product/edit/mapping                                 # The requirejs module we just created
+            parent: pim-job-instance-csv-product-export-edit-tabs                # The parent extension in the form where we want to be regisetred
+            aclResourceId: pim_importexport_export_profile_mapping_edit          # The user will need this ACL for this extension to be registered
+            targetZone: container
+            position: 140                                                        # The extension position
+            config:
+                tabTitle: acme_enrich.form.job_instance.tab.mapping.title
+                tabCode: pim-job-instance-mapping
+                
+
+    # /src/Acme/Bundle/EnrichBundle/Resources/config/form_extensions/job_instance/csv_product_export_show.yml
+
+    extensions:
+        pim-job-instance-csv-product-export-show-mapping:                        # The form extension code (can be whatever you want)
+            module: pim/job/product/show/mapping                                 # The requirejs module we just created
+            parent: pim-job-instance-csv-product-export-show-tabs                # The parent extension in the form where we want to be regisetred
+            aclResourceId: pim_importexport_export_profile_mapping_show          # The user will need this ACL for this extension to be registered
+            targetZone: container
+            position: 140                                                        # The extension position
+            config:
+                tabTitle: acme_enrich.form.job_instance.tab.mapping.title
+                tabCode: pim-job-instance-mapping
+
+After a cache clear (``app/console cache:clear``), you should see your new tab in the job edit form. If not, make sure that you ran the `app/console assets:install --symlink web` command.
+
+Now that we have our extension loaded in our form, we can add some logic into it, check how to `customize the UI`_.
+    
+.. _customize the UI: ../ui
