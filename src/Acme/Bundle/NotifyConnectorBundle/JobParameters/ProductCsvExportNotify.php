@@ -5,67 +5,35 @@ namespace Acme\Bundle\NotifyConnectorBundle\JobParameters;
 use Akeneo\Component\Batch\Job\JobInterface;
 use Akeneo\Component\Batch\Job\JobParameters\ConstraintCollectionProviderInterface;
 use Akeneo\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface;
-use Pim\Bundle\ImportExportBundle\JobParameters\FormConfigurationProviderInterface;
 use Symfony\Component\Validator\Constraints\Collection;
 use Symfony\Component\Validator\Constraints\Url;
 
 class ProductCsvExportNotify implements
     ConstraintCollectionProviderInterface,
-    DefaultValuesProviderInterface,
-    FormConfigurationProviderInterface
+    DefaultValuesProviderInterface
 {
     /** @var DefaultValuesProviderInterface */
-    protected $productCsvDefaultValues;
-
-    /** @var FormConfigurationProviderInterface */
-    protected $productCsvFormProvider;
+    private $baseDefaultValuesProvider;
 
     /** @var ConstraintCollectionProviderInterface */
-    protected $productCsvConstraint;
+    private $baseConstraintCollectionProvider;
+
+    /** @var string[] */
+    private $supportedJobNames;
 
     /**
-     * @param DefaultValuesProviderInterface        $productCsvDefaultValues
-     * @param FormConfigurationProviderInterface    $productCsvFormProvider
-     * @param ConstraintCollectionProviderInterface $productCsvConstraint
+     * @param DefaultValuesProviderInterface        $baseDefaultValuesProvider
+     * @param ConstraintCollectionProviderInterface $baseConstraintCollectionProvider
+     * @param string[]                              $supportedJobNames
      */
     public function __construct(
-        DefaultValuesProviderInterface $productCsvDefaultValues,
-        FormConfigurationProviderInterface $productCsvFormProvider,
-        ConstraintCollectionProviderInterface $productCsvConstraint
+        DefaultValuesProviderInterface $baseDefaultValuesProvider,
+        ConstraintCollectionProviderInterface $baseConstraintCollectionProvider,
+        array $supportedJobNames
     ) {
-        $this->productCsvDefaultValues = $productCsvDefaultValues;
-        $this->productCsvFormProvider = $productCsvFormProvider;
-        $this->productCsvConstraint = $productCsvConstraint;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getConstraintCollection()
-    {
-        $baseConstraint = $this->productCsvConstraint->getConstraintCollection();
-        $constraintFields = $baseConstraint->fields;
-        $constraintFields['url'] = new Url();
-
-        return new Collection(['fields' => $constraintFields]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getFormConfiguration()
-    {
-        $csvFormOptions = array_merge($this->productCsvFormProvider->getFormConfiguration(), [
-            'url' => [
-                'options' => [
-                    'required' => true,
-                    'label'    => 'pim_connector.export.dateFormat.label',
-                    'help'     => 'pim_connector.export.dateFormat.help',
-                ]
-            ],
-        ]);
-
-        return $csvFormOptions;
+        $this->baseDefaultValuesProvider = $baseDefaultValuesProvider;
+        $this->baseConstraintCollectionProvider = $baseConstraintCollectionProvider;
+        $this->supportedJobNames = $supportedJobNames;
     }
 
     /**
@@ -73,10 +41,24 @@ class ProductCsvExportNotify implements
      */
     public function getDefaultValues()
     {
-        $parameters = $this->productCsvDefaultValues->getDefaultValues();
-        $parameters['url'] = 'http://';
+        return array_merge(
+            $this->baseDefaultValuesProvider->getDefaultValues(),
+            ['urlToNotify' => 'http://']
+        );
+    }
 
-        return $parameters;
+    /**
+     * {@inheritdoc}
+     */
+    public function getConstraintCollection()
+    {
+        $baseConstraints = $this->baseConstraintCollectionProvider->getConstraintCollection();
+        $constraintFields = array_merge(
+            $baseConstraints->fields,
+            ['urlToNotify' => new Url()]
+        );
+
+        return new Collection(['fields' => $constraintFields]);
     }
 
     /**
@@ -84,6 +66,6 @@ class ProductCsvExportNotify implements
      */
     public function supports(JobInterface $job)
     {
-        return $job->getName() === 'csv_product_export_notify';
+        return in_array($job->getName(), $this->supportedJobNames);
     }
 }
