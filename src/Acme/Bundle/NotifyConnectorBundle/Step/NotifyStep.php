@@ -11,20 +11,23 @@ class NotifyStep extends AbstractStep
     {
         // inject the step execution in the step item to be able to log summary info during execution
         $jobParameters = $stepExecution->getJobParameters();
-        $filepath = $jobParameters->get('filePath');
-        $fields = sprintf("filepath=%s", urlencode($filepath));
-        $url = $jobParameters->get('url');
+
+        $directory = dirname($jobParameters->get('filePath'));
+        $fields = sprintf('directory=%s', urlencode($directory));
+        $url = $jobParameters->get('urlToNotify');
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
-        $result = curl_exec($ch);
-        if ($result === false) {
-            // we stop the whole job
-            throw new \Exception('Curl fail');
+
+        if (false !== curl_exec($ch)) {
+            $stepExecution->addSummaryInfo('notified', 'yes');
+        } else {
+            $stepExecution->addSummaryInfo('notified', 'no');
+            $stepExecution->addError('Failed to call target URL: '.curl_error($ch));
         }
-        // we add custom details in the summary
-        $stepExecution->addSummaryInfo('notified', 'yes');
+
         curl_close($ch);
     }
 }

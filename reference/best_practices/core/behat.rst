@@ -29,7 +29,7 @@ Install Firefox
 ---------------
 In order to use Selenium RC, you must actually install `firefox`_.
 
-.. _firefox: http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/32.0/
+.. _firefox: http://ftp.mozilla.org/pub/firefox/releases/32.0/
 
 
 Create a VirtualHost
@@ -126,4 +126,4 @@ You can also define which feature to run:
 
   > ~/git/pim-community-dev$ ./bin/behat features/product/edit_product.feature
 
-More details and options are available on http://behat.org/
+More details and options are available on `Behat website <http://behat.org/en/latest/>`_.

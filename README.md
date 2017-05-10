@@ -40,6 +40,14 @@ From the `./pim-docs` directory, run:
 
 The documentation will be generated inside `../pim-docs-build`.
 
+## Validate the documentation
+
+From the `./pim-docs` directory, run:
+
+``` bash
+    $ sphinx-build -nWT -b linkcheck . _build/
+```
+
 ## Make documentation code work with pim-community-dev or standard
 
 Install pim-community

@@ -66,7 +66,7 @@ Besides these modules, the following configuration is the minimal configuration 
 
   Due to changes in its API, MongoDB 3.0 is not supported.
 
-.. _ONLY_FULL_GROUP_BY: http://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_only_full_group_by
+.. _ONLY_FULL_GROUP_BY: https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_only_full_group_by
 
 .. warning::
 

@@ -1,7 +1,7 @@
 More than 64 indexes with MongoDB?
 ----------------------------------
 
-A known limit of MongoDB is the number of indexes per collection https://docs.mongodb.org/manual/reference/limits/#Number-of-Indexes-per-Collection.
+A known limit of MongoDB is the number of indexes per collection https://docs.mongodb.com/manual/reference/limits/#Number-of-Indexes-per-Collection.
 
 The product documents are stored in a single collection and can be impacted by this limit.
 

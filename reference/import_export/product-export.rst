@@ -212,7 +212,7 @@ Here is another example:
 
 .. note::
 
-    You can find extra information about the Serializer component in the official Symfony documentation http://symfony.com/doc/2.7/components/serializer.html
+    You can find extra information about the Serializer component in the official Symfony documentation https://symfony.com/doc/2.7/components/serializer.html
 
 Product Writer
 --------------
