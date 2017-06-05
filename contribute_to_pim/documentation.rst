@@ -6,9 +6,7 @@ How to enhance the documentation?
 How to contribute
 -----------------
 
-Want to help improve the `Documentation`_?
-
-.. _Documentation: http://docs.akeneo.com/latest/index.html
+Want to help improve the Documentation?
 
 The Akeneo PIM documentation uses `reStructuredText`_ as its markup language and
 `Sphinx`_ for building the output (HTML, PDF, ...).
@@ -27,7 +25,7 @@ To test the rendering of the documentation you can follow this `HowTo`_.
 
 .. _HowTo: https://github.com/akeneo/pim-docs/blob/master/README.md
 
-Once your Pull Request is merged, don't hesitate to claim your badge on badger at http://badger.akeneo.com/badge/0a25c62e-1bae-11e6-92dc-d60437e930cf !
+Once your Pull Request is merged, don't hesitate to claim your badge "Core contributor" on `Badger platform <http://badger.akeneo.com/login/>`_!
 
 reStructuredText
 ----------------
@@ -162,7 +160,7 @@ also specify alternative text for the link:
 
 .. code-block:: rst
 
-    :doc:`Le Lien </bundles/FooBundle/installation>`
+    :doc:`</bundles/FooBundle/installation>`
 
 You can also add links to the PHP documentation:
 
@@ -175,10 +173,10 @@ You can also add links to the PHP documentation:
     :phpfunction:`iterator_to_array`
 
 .. _reStructuredText:        http://docutils.sourceforge.net/rst.html
-.. _Sphinx:                  http://sphinx-doc.org/
+.. _Sphinx:                  http://www.sphinx-doc.org/en/stable/
 .. _documents:               https://github.com/akeneo/pim-docs
-.. _reStructuredText Primer: http://sphinx-doc.org/rest.html
-.. _markup:                  http://sphinx-doc.org/markup/
+.. _reStructuredText Primer: http://www.sphinx-doc.org/en/stable/rest.html
+.. _markup:                  http://www.sphinx-doc.org/en/stable/markup/
 .. _Pygments website:        http://pygments.org/languages/
 .. _source:                  https://github.com/fabpot/sphinx-php
-.. _Sphinx quick setup:      http://sphinx-doc.org/tutorial.html#setting-up-the-documentation-sources
+.. _Sphinx quick setup:      http://www.sphinx-doc.org/en/stable/tutorial.html#setting-up-the-documentation-sources

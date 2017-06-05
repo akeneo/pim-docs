@@ -124,7 +124,7 @@ Disable all custom developments by commenting them in the "AppKernel.php" file `
 
 And then, re-apply `Step 7: are your assets properly deployed?`_ and `Step 8: did you clear the cache?`_
 
-Alternatively, you can check if the issue is reproducible on http://demo.akeneo.com (only for the latest PIM version).
+Alternatively, you can check if the issue is reproducible on `Demo website <http://demo.akeneo.com/user/login>`_ (only for the latest PIM version).
 
 Does the bug persist?
 ---------------------
