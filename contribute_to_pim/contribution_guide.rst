@@ -10,7 +10,7 @@ If you don't know how to start, you can pick an issue here: https://github.com/a
 Step 0: Sign the Contributor Agreement
 --------------------------------------
 
-To be able to merge your contribution, we need you to read and sign the following contributor agreement http://www.akeneo.com/contributor-license-agreement/
+To be able to merge your contribution, we need you to read and sign the following contributor agreement https://www.akeneo.com/contributor-license-agreement/
 
 Step 1: Set up your Environment
 -------------------------------
@@ -122,8 +122,8 @@ branch (you can check the branch you are working on with ``git branch``).
 Work on your Patch
 ~~~~~~~~~~~~~~~~~~
 
-Before working on a contribution for an Akeneo repository, please read the following `code conventions`_
-and `coding standard`_ to make sure you respect all our standards.
+Before working on a contribution for an Akeneo repository, please read the following :doc:`/technical_architecture/best_practices/core/conventions`
+and :doc:`coding standards </technical_architecture/best_practices/core/standards>` to make sure you respect all our standards.
 
 When you work on a patch, please keep in mind:
 
@@ -136,7 +136,7 @@ When you work on a patch, please keep in mind:
 
 .. note::
 
-    We wrote a guide to `setup behat`_ in Akeneo PIM and you can check the `behat quick intro`_ on their documentation.
+    We wrote a guide to :doc:`setup behat </technical_architecture/best_practices/core/behat>` in Akeneo PIM and you can check the `behat quick intro`_ on their documentation.
 
     Here is the documentation to `begin with PHPSpec`_ and `Prophecy documentation`_.
 
@@ -169,7 +169,7 @@ It will help us to:
  - Revert a single commit if needed
  - Cherry pick a commit if needed
 
-Example of a well formed commit message (from github doc https://git-scm.com/book/ch5-2.html)
+Example of a well formed commit message (from `Git documentation <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project>`_).
 
 .. note::
 
@@ -381,20 +381,20 @@ you to edit the commit message, which by default is a listing of the commit
 messages of all the commits. When you are finished, execute the push command.
 
 .. _`Akeneo PIM repository`:            https://github.com/akeneo/pim-community-dev
-.. _ProGit:                             http://git-scm.com/book
-.. _GitHub:                             https://github.com/signup/free
+.. _ProGit:                             https://git-scm.com/book/en/v2
+.. _GitHub:                             https://github.com/join
 .. _`GitHub's Documentation`:           https://help.github.com/articles/ignoring-files
 .. _`documentation repository`:         https://github.com/akeneo/pim-docs
-.. _`Sylius documentation`:             http://docs.sylius.org/en/latest/contributing/index.html
 .. _`code conventions`:                 http://docs.akeneo.com/latest/technical_architecture/best_practices/core/conventions.html
 .. _`coding standard`:                  http://docs.akeneo.com/latest/technical_architecture/best_practices/core/standards.html
 .. _`setup behat`:                      http://docs.akeneo.com/latest/technical_architecture/best_practices/core/behat.html
+.. _`Sylius documentation`:             http://docs.sylius.org/en/latest/                  
 .. _`behat quick intro`:                http://docs.behat.org/en/v2.5/quick_intro.html
-.. _`begin with PHPSpec`:               http://www.phpspec.net/en/latest/
+.. _`begin with PHPSpec`:               https://www.phpspec.net/en/latest/
 .. _`Prophecy documentation`:           https://github.com/phpspec/prophecy#prophecy
 .. _`Doctrine migration documentation`: http://docs.doctrine-project.org/projects/doctrine-migrations/en/latest/reference/introduction.html
 
 Step 4: Is my pull request merged?
 ----------------------------------
 
-Once your Pull Request is merged, don't hesitate to claim your badge "Core contributor" on badger at http://badger.akeneo.com/badge/41acec2c-649f-11e6-92dc-d60437e930cf
+Once your Pull Request is merged, don't hesitate to claim your badge "Core contributor" on `Badger platform <http://badger.akeneo.com/login/>`_.

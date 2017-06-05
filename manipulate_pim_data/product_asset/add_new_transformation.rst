@@ -18,7 +18,7 @@ Then, you can find in ``Akeneo\Component\FileTransformer`` all business code and
 Transformation runs with the registry pattern. You have to create your own Transformation implementing ``Akeneo\Component\FileTransformer\Transformation\TransformationInterface`` and register the service with the ``akeneo_file_transformer.transformation`` tag.
 Then, compiler pass will inject your tagged Transformation in the registry which will make it available.
 
-.. _registry: http://martinfowler.com/eaaCatalog/registry.html
+.. _registry: https://martinfowler.com/eaaCatalog/registry.html
 .. note::
     Learn more about registry_ pattern.
 
@@ -171,7 +171,7 @@ In order to rely on options you can add an OptionsResolver, for this you need to
         }
     }
 
-.. _OptionsResolver: http://symfony.com/doc/2.7/components/options_resolver.html
+.. _OptionsResolver: https://symfony.com/doc/2.7/components/options_resolver.html
 .. note::
     You can learn more about this Symfony2 component in the OptionsResolver_ documentation.
 
