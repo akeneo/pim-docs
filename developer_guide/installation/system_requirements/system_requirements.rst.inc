@@ -86,20 +86,6 @@ and the following PHP modules:
 | php5-mysql | Required |
 +------------+----------+
 
-**MongoDB**
-
-To use this database you will also require the distribution package:
-
-+----------------+----------+
-| mongodb-server | Required |
-+----------------+----------+
-
-and the following php modules:
-
-+------------+----------+
-| php5-mongo | Required |
-+------------+----------+
-
 **Network**
 
 The following ports should be opened on the server host for the PIM to work properly:

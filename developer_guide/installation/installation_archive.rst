@@ -85,6 +85,5 @@ What's next?
 
 Now you have an Akeneo PIM up and running. But maybe you want more! What about these topics?
 
- * If you need it, you can enable the MySQL/MongoDB hybrid storage for products by following :doc:`/developer_guide/installation/setup_hybrid_storage_mysql_mongo`.
  * You can switch to the *minimal* dataset or import your own data by following :doc:`/cookbook/setup_data/customize_dataset`.
  * You can add additional translations by following :doc:`/cookbook/setup_data/add_translation_packs`.
