@@ -26,7 +26,7 @@ PHP installation
 
     $ sudo apt-get update
     $ sudo apt-get install php5.6
-    $ sudo apt-get install php5.6-xml php5.6-zip php5.6-curl php5.6-mongo php5.6-intl php5.6-mbstring php5.6-mysql php5.6-gd php5.6-cli php5.6-apcu
+    $ sudo apt-get install php5.6-xml php5.6-zip php5.6-curl php5.6-intl php5.6-mbstring php5.6-mysql php5.6-gd php5.6-cli php5.6-apcu
 
 * Check that PHP 5.6 is now your current PHP version with:
 
@@ -49,32 +49,3 @@ Base installation
 .. note::
 
     PHP 5.5 provided in Ubuntu 14.04 comes with the Zend OPcache opcode cache. Only the data cache provided by APCu is needed.
-
-Choosing the product storage
-****************************
-
-.. include:: /technical_architecture/technical_information/choose_database.rst.inc
-
-Based on this formula, either you need a :ref:`mongodb-install-1404`, either you can directly go to the :ref:`system-configuration-1404` section.
-
-.. _mongodb-install-1404:
-
-MongoDB Installation (optional)
-*******************************
-
-* Install MongoDB server and PHP driver
-
-.. note::
-
-    Akeneo PIM will not work with MongoDB 3.*. *The supported versions are 2.4 and 2.6*.
-
-.. code-block:: bash
-
-    $ sudo apt-get update
-    $ sudo apt-get install mongodb
-    $ sudo apt-get install php5-mongo
-
-
-.. _system-configuration-1404:
-
-.. include:: system_configuration.rst.inc

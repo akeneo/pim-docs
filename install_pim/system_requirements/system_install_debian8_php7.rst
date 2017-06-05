@@ -73,31 +73,4 @@ Setup *CLI php.ini* file ``/etc/php/7.0/cli/php.ini``
 .. note::
     Use the time zone matching your location, for example *America/Los_Angeles* or *Europe/Berlin*. See http://www.php.net/timezones for the list of all available timezones.
 
-
-Setting up the Hybrid Storage MySQL/MongoDB
--------------------------------------------
-
-If you use the full SQL storage with MySQL, you don't need to follow this section, and you're done.
-The PIM should now work :)
-
-.. _extension: https://docs.mongodb.com/ecosystem/drivers/php/
-
-Otherwise, you'll have to install the **new** Mongo PHP extension_ and enable it:
-
-.. code-block:: bash
-
-    $ apt-get install php7.0-dev pkg-config
-    $ pecl install mongodb
-    $ echo "extension=mongodb.so" >> /etc/php/7.0/mods-available/mongodb.ini
-    $ phpenmod mongodb
-
-.. _adapter: https://github.com/alcaeus/mongo-php-adapter
-
-Finally, as a regular user, you have to install the Mongo PHP adapter_:
-
-.. code-block:: bash
-
-    $ su my_user
-    $ composer require alcaeus/mongo-php-adapter --ignore-platform-reqs
-
 That's it! You can now use the PIM with PHP7 :)
