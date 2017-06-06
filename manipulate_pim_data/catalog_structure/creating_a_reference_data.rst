@@ -181,7 +181,7 @@ Depending on the needs, a product can be linked to several colors or just one.
 The first case will be called *simple reference data*, while the second one will be referred to as *multiple reference data*.
 
 To link a reference data to the product, the `ProductValue` object needs to be overriden.
-This task is documented here :doc:`overriding_the_orm_product_value` or here :doc:`overriding_the_mongodb_product_value` depending on the product storage.
+This task is documented here :doc:`overriding_the_orm_product_value`.
 
 Don't forget to check the mapping of the product value and to register the custom class in the container.
 

@@ -15,7 +15,6 @@ Thank you to contact us when your use case is not covered, we could handle it in
 .. toctree::
     :maxdepth: 2
 
-    mongodb_product_saving
     rules_execution_memory_usage
     work_with_wysiwyg
     php7_hhvm

@@ -52,21 +52,17 @@ How we tested?
 
 The application is installed on a server following the recommended architecture :doc:`/technical_architecture/technical_information/index`.
 
-Depending on the catalog, we used a different database storage. We installed the data `fixtures` via the installer before importing the products through the default product csv import job (for a large product import, we split the catalog into 10 files + parallel imports + custom optimisations).
+Depending on the catalog, we installed the data `fixtures` via the installer before importing the products through the default product csv import job (for a large product import, we split the catalog into 10 files + parallel imports + custom optimisations).
 
-The targeted amount of product values implies to choose a relevant database storage, if you want to know more about how to choose the right storage strategy, please read :doc:`/maintain_pim/scalability_guide/more_than_5M_product_values`.
-
-Depending on the data volume, the number of field indexes in MongoDB also impacts the performances, please read :doc:`/maintain_pim/scalability_guide/more_than_64_indexes_with_mongodb` for more information.
-
-+---------+---------+----------------+--------------------------------------------------------------------------------------------------------------------------+
-|         | Storage | Product values | Note                                                                                                                     |
-+---------+---------+----------------+--------------------------------------------------------------------------------------------------------------------------+
-| Small   | MySQL   | 159.676        |                                                                                                                          |
-+---------+---------+----------------+--------------------------------------------------------------------------------------------------------------------------+
-| Medium  | MySQL   | 3.661.981      |                                                                                                                          |
-+---------+---------+----------------+--------------------------------------------------------------------------------------------------------------------------+
-| Large   | MongoDB | 52.699.463     | **With more than ~300k products or ~15M product values, you should use the additional ElasticSearchBundle (contact us)** |
-+---------+---------+----------------+--------------------------------------------------------------------------------------------------------------------------+
++---------+----------------+
+|         | Product values | 
++---------+----------------+
+| Small   | 159.676        |
++---------+----------------+
+| Medium  | 3.661.981      |
++---------+----------------+
+| Large   | 52.699.463     |
++---------+----------------+
 
 **Audit User Interface**
 
@@ -91,21 +87,21 @@ Scalability limitations, when we try to support larger data volume for an axis. 
 
 The following limitations have been encountered with standard installations without any custom code:
 
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Type** | **Catalog** | **Edition** | **Released** | **Note**                                                                                                                                                       |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
+| **Type** | **Catalog** | **Edition** | **Released** | **Note**                             
++----------+-------------+-------------+--------------+--------------------------------------
 | memleak  | All         | All         | v1.4.23      | (PIM-5507) Memory leak when executing mass edit or mass publish on several thousands of products                                                               |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
 | improv.  | Medium      | All         | TODO         | (PIM-5467) First load of the completeness widget is too long (ORM)                                                                                             |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
 | improv.  | Large       | All         | TODO         | (PIM-5518) Timeout with synchronous update of products when remove 'AssociationType', 'Attribute', 'AttributeOption', 'Category', 'Family', 'Group', 'Channel' |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
 | improv.  | Large       | All         | v1.6.0       | (PIM-5542) the request /configuration/family/rest slow down the UI (dashboard, grid, pef)                                                                      |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
 | improv.  | Large       | Enterprise  | TODO         | (PIM-5544) the request /enrich/product-category-tree/list-tree.json allowing to load the tree on the grid is very slow (improved with Elastic Search Bundle)   |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
 | improv.  | Large       | All         | TODO         | MongoDB timeout when filtering and sorting on product grid when using not indexed fields (improved with Elastic Search Bundle)                                 |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
 
 Examples of customers instance
 ------------------------------
@@ -176,20 +172,20 @@ Several customers challenge the limitations even more in their custom projects a
 
 **Known limitations on other axes or combinations**
 
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| **Type** | **Catalog** | **Edition** | **Released** | **Note**                                                                                                                                                       |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
+| **Type** | **Catalog** | **Edition** | **Released** | **Note**                             
++----------+-------------+-------------+--------------+--------------------------------------
 | improv.  | All         | All         | TODO         | (PIM-5519) Mass edit products, display the add to a group configuration is too long with a lot of product groups (use a paginated select2 and not checkboxes)  |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
 | improv.  | All         | All         | TODO         | (PIM-5520) Mass edit products, display the add to a variant group configuration is too long with a lot of product groups (use a paginated select2)             |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
 | improv.  | All         | All         | TODO         | (PIM-5467) When saving a variant group, variant group values are synchronously copied in products, it may cause timeout issue                                  |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
 | improv.  | All         | All         | TODO         | (PIM-5463) When associating a lot of products to a group, variant group or association, you may encounter "The requested URL's length exceeds the capacity"    |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
 | improv.  | All         | All         | TODO         | (PIM-5562) When delete a product associated to other products, run a backend process to cleanup all associations                                               |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
 | improv.  | All         | All         | TODO         | (PIM-5563) Query for completeness rescheduling when saving a family with 50k products inside is too long to execute, exec as backend process                   |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------
 | improv.  | All         | All         | TODO         | (PIM-5861) Cannot remove an attribute on big (~1M products) MongoDB catalog because of timeout when we update MongoDB database to remove it from all products  |
-+----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------+-------------+-------------+--------------+--------------------------------------

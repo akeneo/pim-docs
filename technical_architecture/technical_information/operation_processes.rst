@@ -12,7 +12,7 @@ But if you are using the full MySQL database structure, you can proceed to a “
 
 Two pieces of information should be backed up:
 
-  * database data: When using a MySQL server we recommend using the mysqldump tool with the --single-transaction option. If you also use MongoDB, we recommend using the mongodump tool to dump a binary file with the content of the MongoDB database.
+  * database data: When using a MySQL server we recommend using the mysqldump tool with the --single-transaction option.
   * files and media data (uploaded and archived): This data can be found in the upload_dir and archive_dir (as defined in the app/config/pim_parameters.yml file). No specific backup tool is recommended for this task.
 
 **Restoration process**

@@ -21,9 +21,6 @@ Compatibility
 -------------
 
 Your bundle won't be reusable if you forget some cases. That is no more an issue if you document compatibilities of your bundle.
-
-Akeneo PIM storage stack comes with MySQL and hybrid MySQL/MongoDB (:ref:`Choose storage <choose_database>`).
-You can refer to the internal API to be sure you develop your bundle the right way.
 Follow these cookbooks for more details: ":doc:`/manipulate_pim_data/product/index`" and ":doc:`/manipulate_pim_data/non-product/index`".
 
 There are two existing distributions: `Community`_ (CE) and `Enterprise`_ (EE) which comes with several extra features dedicated to advanced needs.

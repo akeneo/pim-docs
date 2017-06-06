@@ -61,10 +61,6 @@ class AppKernel extends Kernel
         if (is_file($file = __DIR__.'/config/config_'.$this->getEnvironment().'_local.yml')) {
             $loader->load($file);
         }
-
-        if (isset($this->bundleMap['DoctrineMongoDBBundle'])) {
-            $loader->load(__DIR__ .'/config/config_mongodb.yml');
-        }
     }
 
     /**
@@ -109,6 +105,7 @@ class AppKernel extends Kernel
     protected function getPimDependenciesBundles()
     {
         return [
+            new Akeneo\Bundle\ElasticsearchBundle\AkeneoElasticsearchBundle(),
             new Akeneo\Bundle\BatchBundle\AkeneoBatchBundle(),
             new Akeneo\Bundle\BufferBundle\AkeneoBufferBundle(),
             new Akeneo\Bundle\FileStorageBundle\AkeneoFileStorageBundle(),
@@ -129,8 +126,7 @@ class AppKernel extends Kernel
     {
         return [
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            // Uncomment the following line to use MongoDB implementation
-            // new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
+            new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),

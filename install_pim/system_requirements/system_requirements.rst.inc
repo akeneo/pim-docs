@@ -52,25 +52,11 @@ Besides these modules, the following configuration is the minimal configuration 
 
 .. _database-servers:
 
-**Database servers**
-
-.. include:: /technical_architecture/technical_information/choose_database.rst.inc
+**Database server**
 
 +-----------------+---------------------+
-| MySQL (SQL)     | 5.1 ≤ version ≤ 5.6 |
+| MySQL (SQL)     | 5.1 ≤ version ≤ 5.7 |
 +-----------------+---------------------+
-| MongoDB (NoSQL) | 2.4 or 2.6          |
-+-----------------+---------------------+
-
-.. warning::
-
-  Due to changes in its API, MongoDB 3.0 is not supported.
-
-.. _ONLY_FULL_GROUP_BY: https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_only_full_group_by
-
-.. warning::
-
-  MySQL 5.7 is not officially supported but works as experimental mode if you disable the ONLY_FULL_GROUP_BY_ mode.
 
 Depending on the configuration you pick, you will need to respect parts or all of the following requirements.
 
@@ -86,20 +72,6 @@ and the following PHP modules:
 
 +------------+----------+
 | php5-mysql | Required |
-+------------+----------+
-
-**MongoDB**
-
-To use this database you will also require the distribution package:
-
-+----------------+----------+
-| mongodb-server | Required |
-+----------------+----------+
-
-and the following php modules:
-
-+------------+----------+
-| php5-mongo | Required |
 +------------+----------+
 
 **Network**

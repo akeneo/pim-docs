@@ -19,9 +19,6 @@ We improve the scalability in each new minor version. If you encounter any new l
     more_than_10k_attributes
     more_than_10k_families
     more_than_10k_categories
-    more_than_5M_product_values
-    more_than_64_indexes_with_mongodb
     more_than_500_attributes_usable_in_product_grid
     more_than_100k_products_to_export
     more_than_1GB_of_product_media_to_export
-    mongo_cursor_timeout_exception
