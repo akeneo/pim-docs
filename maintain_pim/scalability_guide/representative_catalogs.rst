@@ -54,15 +54,15 @@ The application is installed on a server following the recommended architecture 
 
 Depending on the catalog, we installed the data `fixtures` via the installer before importing the products through the default product csv import job (for a large product import, we split the catalog into 10 files + parallel imports + custom optimisations).
 
-+---------+-----------------+
++---------+----------------+
 |         | Product values | 
-+---------+-----------------+
++---------+----------------+
 | Small   | 159.676        |
-+---------+---------+----------------+
++---------+----------------+
 | Medium  | 3.661.981      |
-+---------+---------+----------------+
++---------+----------------+
 | Large   | 52.699.463     |
-+---------+---------+----------------+
++---------+----------------+
 
 **Audit User Interface**
 

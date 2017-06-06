@@ -22,28 +22,6 @@ Base installation
 MySQL installation
 ******************
 
-.. _ONLY_FULL_GROUP_BY: https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html
-
-Akeneo PIM supports MySQL from 5.1 to 5.6. Ubuntu 16.04 default MySQL version is MySQL 5.7.
-You have two possibilities:
-
-* Work with MySQL 5.6. You need to downgrade your version to MySQL 5.6.
-* Work with MySQL 5.7. MySQL 5.7 is not officialy supported but works in experimental mode if you disable the ONLY_FULL_GROUP_BY_ mode.
-
-
-MySQL 5.6 (supported)
-^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: bash
-
-        $ sudo apt-get install software-properties-common
-        $ sudo add-apt-repository -y ppa:ondrej/mysql-5.6
-        $ sudo apt-get install mysql-server-5.6
-
-
-MySQL 5.7
-^^^^^^^^^
-
 .. code-block:: bash
 
         $ sudo apt-get install mysql-server
@@ -89,8 +67,6 @@ PHP 5.6 (supported)
 .. code-block:: bash
 
     $ php -v
-
-* Now you can directly continue by :ref:`choosing_product_storage`.
 
 .. _php7:
 
