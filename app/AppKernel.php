@@ -125,7 +125,7 @@ class AppKernel extends Kernel
     {
         return [
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            // Uncomment the following line to use MongoDB implementation
+            new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
