@@ -19,4 +19,9 @@ class Category extends BaseCategory
 
         return $this;
     }
+
+    public function getTranslationFQCN()
+    {
+        return CategoryTranslation::class;
+    }
 }
