@@ -36,9 +36,11 @@ Let's assume that you already have a fully functional SFTP server ready to recei
                     permPublic: ~
 
 .. note::
+
     Don't forget to add your SFTP credentials.
 
 .. note::
+
     If you want to change the way your product media are stored, you have to configure the key `catalog_storage_adapter` instead of `asset_storage_adapter`.
 
 For further information about SFTP adapter check `Sftp adapter`_.
@@ -73,6 +75,7 @@ This version requires you to use the "v4" of the signature.
                         secret: "s3-secret"
 
 .. note::
+
     Don't forget to add your credentials and the region-id
 
 Then set this service as the value of the client key in the ``app/config/config.yml`` file.
