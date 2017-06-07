@@ -24,4 +24,4 @@ It returns here a list of violation errors, a ``Symfony\Component\Validator\Cons
 
 .. warning::
 
-    The validation of a product is a bit different, you should use its own validator, the service alias is  `pim_catalog.validator.product`.
+    The validation of a product is a bit different, you should use its own validator, the service alias is ``pim_catalog.validator.product``.

@@ -60,3 +60,21 @@ You can revert this operation by running the following commands:
     rm -rf ./app/cache/*
     php app/console pim:install:asset --env=prod
     php app/console assets:install --symlink web
+
+I cannot export my products "An exception occurred during the export"
+---------------------------------------------------------------------
+
+If you have **thousands of products to export with the native CSV and XSLX connector** and if the job finishes or fails with the error: **"An exception occured during the export"**. If the error message is not explicit enough, you can launch it in dev mode, also check
+the logs to have more information.
+
+If the system mentions an error like "CRITICAL: Fatal Error: Allowed memory size of bytes exhausted (tried to allocate XXXXXXXX bytes)" **it means that there is a memory leak and it might be linked to the media archiving**. We have noticed that exporting more than 1 GB of medias could lead to a memory leak :doc:`/maintain_pim/scalability_guide/more_than_1GB_of_product_media_to_export`
+
+First step is to **disable the media archiving** in the job's properties (Export files and medias set to No) and then try again.
+
+If it works and if you do not need the medias in the export file, you can keep this configuration.
+
+If you need to export medias, unfortunately there is no out of the box solution to archive large volumes of media on a classic PIM installation, so you will have to write your own archiver, you can find an example here: :doc:`/maintain_pim/scalability_guide/more_than_1GB_of_product_media_to_export`
+
+If the issue remains, you need to follow our qualification guide: :doc:`/maintain_pim/bug_qualification/index`.
+
+Regarding data export volumetry, please note that we have clients exporting more than 270K at once and the PIM handles such exports. See our Scalability guide for more informations about our tests: :doc:`/maintain_pim/scalability_guide/index`
