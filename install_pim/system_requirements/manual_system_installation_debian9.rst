@@ -76,3 +76,4 @@ Apache
     $ apt-get install apache2 libapache2-mod-php7.1
     $ a2enmod rewrite
 
+.. include:: system_configuration.rst.inc
