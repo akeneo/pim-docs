@@ -15,7 +15,7 @@
 .. code-block:: yaml
 
     $ sudo vim /etc/php/7.1/cli/php.ini
-    memory_limit = 768M
+    memory_limit = 1024M
     date.timezone = Etc/UTC
 
 .. note::
