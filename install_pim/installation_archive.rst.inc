@@ -29,6 +29,9 @@ Initializing Akeneo
     $ php app/console cache:clear --env=prod
     $ php app/console pim:install --env=prod
 
+.. note::
+    The ``../composer.phar install`` command writes the database configuration to ``app/config/parameters.yml``
+
 .. include:: ./crontab_tasks.rst.inc 
 
 
