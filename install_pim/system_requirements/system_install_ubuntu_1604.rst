@@ -30,7 +30,7 @@ MySQL installation
 PHP installation
 ****************
 
-Since Akeneo PIM 1.6, the minimal PHP version is PHP 5.6. Ubuntu 16.04 default PHP version is PHP 7.0.
+Since Akeneo PIM 1.6, the minimal PHP version is PHP 5.6. Ubuntu 16.04 default PHP version is PHP 7.x.
 You have two possibilities:
 
 * Work with :ref:`php56`. Actually, the only supported version of PHP for Akeneo PIM is 5.6. You need to downgrade your version to PHP 5.6.
@@ -41,7 +41,7 @@ You have two possibilities:
 PHP 5.6 (supported)
 ^^^^^^^^^^^^^^^^^^^
 
-* To downgrade to PHP 5.6, add this repository:
+* To install PHP 5.6, add this repository:
 
 .. code-block:: bash
 
@@ -58,15 +58,27 @@ PHP 5.6 (supported)
 .. code-block:: bash
 
     $ sudo apt-get update
-    $ sudo apt-get remove php7*
     $ sudo apt-get install php5.6
     $ sudo apt-get install php5.6-xml php5.6-zip php5.6-curl php5.6-intl php5.6-mbstring php5.6-mysql php5.6-gd php5.6-cli php5.6-apcu libapache2-mod-php5.6
 
-* Check that PHP 5.6 is now your current PHP version with:
+* Check that PHP 5.6 installed:
 
 .. code-block:: bash
 
-    $ php -v
+    $ php5.6 -v
+
+* Set php5.6 to be your default commandline ``php``
+
+.. code-block:: bash
+
+    $ sudo update-alternatives --install /usr/bin/php php /usr/bin/php5.6 1000
+
+* Set php5.6 to be the default used by apache
+
+.. code-block:: bash
+
+    $ sudo a2dismod php7.0
+    $ sudo a2enmod php5.6
 
 .. _php7:
 
