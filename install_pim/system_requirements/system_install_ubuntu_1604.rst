@@ -67,12 +67,6 @@ PHP 5.6 (supported)
 
     $ php5.6 -v
 
-* Set php5.6 to be your default commandline ``php``
-
-.. code-block:: bash
-
-    $ sudo update-alternatives --install /usr/bin/php php /usr/bin/php5.6 1000
-
 * Set php5.6 to be the default used by apache
 
 .. code-block:: bash
@@ -80,6 +74,12 @@ PHP 5.6 (supported)
     $ sudo a2dismod php7.0
     $ sudo a2enmod php5.6
 
+* (Optional) Set php5.6 to be your default commandline ``php``
+
+.. code-block:: bash
+
+    $ sudo update-alternatives --install /usr/bin/php php /usr/bin/php5.6 1000
+    
 .. _php7:
 
 PHP 7 (experimental)
