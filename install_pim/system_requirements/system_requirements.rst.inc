@@ -131,3 +131,13 @@ Akeneo PIM application uses an abstraction layer called Flysystem to store media
 The var/uploads folder could be located elsewhere depending on the configuration you defined in the parameters.yml of your Akeneo PIM application instance.
 
 Please note that neither the Apache user or the CLI should be the root user of the system.
+
+**For Enterprise Edition only**
+
+The Enterprise Edition ships with a few special features that require extra dependencies.
+
++----------------+---------------------------+
+| image magick   | ≥ 6.8                     |
++----------------+---------------------------+
+| php7.1-imagick | No specific configuration |
++----------------+---------------------------+

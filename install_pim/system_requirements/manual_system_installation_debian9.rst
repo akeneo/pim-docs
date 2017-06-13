@@ -46,11 +46,17 @@ First, install the `Sury repository <https://packages.sury.org/php/README.txt>`_
     $ sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
     $ apt-get update
 
-Then, install PHP:
+Then, install PHP and the required extensions:
 
 .. code-block:: bash
 
     $ apt-get install php7.1-cli php7.1-apcu php7.1-mcrypt php7.1-intl php7.1-mysql php7.1-curl php7.1-gd php7.1-soap php7.1-xml php7.1-zip php7.1-bcmath
+
+For Enterprise Edition, please also install:
+
+.. code-block:: bash
+
+    $ apt-get install php7.1-imagick
 
 Elasticsearch 5.4+
 ******************
