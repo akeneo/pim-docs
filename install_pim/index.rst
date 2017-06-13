@@ -15,10 +15,9 @@ Here are the guidelines to set everything up according to your operating system:
 .. toctree::
     :maxdepth: 1
 
-    system_requirements/system_install_ubuntu_1404
     system_requirements/system_install_ubuntu_1604
-    system_requirements/system_install_debian8
-    system_requirements/system_install_debian8_php7
+    system_requirements/manual_system_installation_debian9
+
 
 .. toctree::
     :maxdepth: 2

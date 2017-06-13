@@ -1,7 +1,7 @@
 System configuration
 --------------------
 
-You now have a system with the right versions of Apache, PHP and MySQL. The next step is to configure them to be able to run an Akeneo PIM instance.
+You now have a system with the right versions of Apache, PHP, MySQL and Elasticsearch. The next step is to configure them to be able to run an Akeneo PIM instance.
 
 MySQL
 *****
@@ -15,10 +15,24 @@ MySQL
     mysql> GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim';
     mysql> EXIT
 
+* Configure the file ``mysql.cnf`` or ``my.cnf`` to remove the ``ONLY_FULL_GROUP_BY`` option. By default, this option is enabled alongside with other options:
+
+.. code-block:: bash
+
+    # usually /etc/mysql/my.cnf
+    [mysqld]
+    sql_mode=ERROR_FOR_DIVISION_BY_ZERO,NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+
 PHP
 ***
 
 .. include:: /technical_architecture/technical_information/php_ini.rst.inc
+
+Elasticsearch
+*************
+
+Depending on the volume of data, it can be interesting to tweak the amount of memory usable by the JVM, as recommended by the ``official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html>``_.
+Usually, this configuration lies in the file ``/etc/elasticsearch/jvm.options``.
 
 Apache
 ******
