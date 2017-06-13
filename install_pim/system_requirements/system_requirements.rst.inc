@@ -124,13 +124,15 @@ Most of the application folders and files require only read access. Here is a li
 | web         | Contains the web assets required by the application                            |
 +-------------+--------------------------------------------------------------------------------+
 
-These permissions are the ones required by the Symfony Framework (see its official documentation for more information).
+These permissions are the ones required by the Symfony Framework (see its `official documentation <https://symfony.com/doc/3.4/setup/file_permissions.html>`_ for more information).
 
-Akeneo PIM application uses an abstraction layer called Flysystem to store media and files uploaded from the application. By default, Flysystem is configured to store these files on the application server, but this configuration can easily be changed in favor of, for example, a distributed remote storage system (see Flysystem documentation for more information).
+Akeneo PIM application uses an abstraction layer called Flysystem to store media and files uploaded from the application. By default, Flysystem is configured to store these files on the application server, but this configuration `can easily be changed <https://flysystem.thephpleague.com/>`_ in favor of, for example, a distributed remote storage system (see Flysystem documentation for more information).
 
-The var/uploads folder could be located elsewhere depending on the configuration you defined in the parameters.yml of your Akeneo PIM application instance.
+The ``var/uploads`` folder could be located elsewhere depending on the configuration you defined in the ``parameters.yml`` of your Akeneo PIM application instance.
 
-Please note that neither the Apache user or the CLI should be the root user of the system.
+.. warning::
+
+    Please note that neither the Apache user or the CLI should be the root user of the system.
 
 **For Enterprise Edition only**
 
