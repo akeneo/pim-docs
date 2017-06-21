@@ -55,6 +55,8 @@ The web server will also need the following libraries and modules:
 +---------------+---------------------------+
 | php7.1-zip    | No specific configuration |
 +---------------+---------------------------+
+| php-exif      | No specific configuration |
++---------------+---------------------------+
 
 .. warning::
 
