@@ -6,7 +6,6 @@ use Akeneo\Component\Batch\Job\JobInterface;
 use Akeneo\Component\Batch\Job\JobParameters\ConstraintCollectionProviderInterface;
 use Akeneo\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface;
 use Akeneo\Component\Localization\Localizer\LocalizerInterface;
-use Pim\Bundle\ImportExportBundle\JobParameters\FormConfigurationProviderInterface;
 use Pim\Component\Catalog\Validator\Constraints\FileExtension;
 use Symfony\Component\Validator\Constraints\Collection;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -15,8 +14,7 @@ use Symfony\Component\Validator\Constraints\Type;
 
 class SimpleXmlImport implements
     DefaultValuesProviderInterface,
-    ConstraintCollectionProviderInterface,
-    FormConfigurationProviderInterface
+    ConstraintCollectionProviderInterface
 {
     /** @var ConstraintCollectionProviderInterface */
     protected $constraintCollectionProvider;
@@ -24,8 +22,6 @@ class SimpleXmlImport implements
     /** @var DefaultValuesProviderInterface */
     protected $defaultValuesProvider;
 
-    /** @var FormConfigurationProviderInterface */
-    protected $formConfiguration;
 
     /**
      * {@inheritdoc}
