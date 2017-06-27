@@ -17,6 +17,7 @@ efficient answers to their multichannel needs.
     developer_guide/migration/index
     reference/index
     cookbook/index
+    rest_api/api-website.rst
     contributing/index
     troubleshooting/index
     styleguide/index
