@@ -15,14 +15,6 @@ MySQL
     mysql> GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim';
     mysql> EXIT
 
-* Configure the file ``mysql.cnf`` or ``my.cnf`` to remove the ``ONLY_FULL_GROUP_BY`` option. By default, this option is enabled alongside with other options:
-
-.. code-block:: bash
-
-    # usually /etc/mysql/my.cnf
-    [mysqld]
-    sql_mode=ERROR_FOR_DIVISION_BY_ZERO,NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
-
 PHP
 ***
 
