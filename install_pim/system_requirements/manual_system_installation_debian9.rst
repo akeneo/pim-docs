@@ -58,10 +58,10 @@ For Enterprise Edition, please also install:
 
     $ apt-get install php7.1-imagick
 
-Elasticsearch 5.4+
+Elasticsearch 5.5+
 ******************
 
-The easiest way to install Elasticsearch 5.4+ is to use the `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html#deb-key>`_:
+The easiest way to install Elasticsearch 5.5+ is to use the `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html#deb-key>`_:
 
 - first install the PGP key
 - then install the package via the official repository
