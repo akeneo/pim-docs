@@ -41,12 +41,10 @@ These are the built-in PIM subscribers registered to this event:
 Listener Class Name                                  Priority
 ===================================================  ===============
 `AddRemoveVersionSubscriber`_                        0
-`RemoveOutdatedProductsFromAssociationsSubscriber`_  0
 `ProductCategorySubscriber`_                         0
 ===================================================  ===============
 
 .. _AddRemoveVersionSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/VersioningBundle/EventSubscriber/AddRemoveVersionSubscriber.php
-.. _RemoveOutdatedProductsFromAssociationsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/MongoDBODM/RemoveOutdatedProductsFromAssociationsSubscriber.php
 .. _ProductCategorySubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/ProductCategorySubscriber.php
 
 ``akeneo.storage.pre_save``
