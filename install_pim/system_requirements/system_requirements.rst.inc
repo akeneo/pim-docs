@@ -89,7 +89,7 @@ and the following PHP modules:
 **Search engine**
 
 +---------------+---------------------+
-| Elasticsearch | 5.4 ≤ version < 6.0 |
+| Elasticsearch | 5.5 ≤ version < 6.0 |
 +---------------+---------------------+
 
 and the following Java Runtime Environment version
