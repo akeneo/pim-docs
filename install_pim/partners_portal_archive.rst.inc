@@ -45,10 +45,19 @@ Each user wanting to get the bootstrap archive has to share their SSH public key
 
 .. image:: ./papo/add_public_key_2.png
 
-Requesting an archive on the Partners Portal
+Requesting an Archive on the Partners Portal
 ********************************************
-In the left menu click on Activities > Project and then on your project.
+Once the users are authorized under the Permissions in the project, they will be able to see the download button on the project.
 
-On your project page on the right you will find a button to download the archive. We strongly recommend you to choose the latest version.
+* Go to Projects under Activities menu.
+* Choose the corresponding project.
+* Look for the Version button on the right side of the screen.
+* Click on it, you’ll be prompted to select one PIM EE version.
 
 .. image:: ./papo/download_archive.png
+ 
+Once this is done, you should see a completeness message. Bootstrap archive will be send to your email in the following 5 minutes. Sometimes it could take a bit more, but always check your Spam folder before requesting the bootstrap again.
+
+ We strongly recommend you to choose the latest version.
+
+
