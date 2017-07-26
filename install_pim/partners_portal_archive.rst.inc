@@ -8,7 +8,7 @@ If you are a developer on the project you should request an account to access th
 
 Getting Enterprise Edition access via the Partners Portal
 *********************************************************
-By default `Composer <https://getcomposer.org/>`_ uses `packagist.org <https://packagist.org/>`_. to retrieve all open source packages and their updates.
+ to retrieve all open source packages and their updates.
 To download the PIM Enterprise Edition, you have to get access to our private enterprise edition repository by sending your SSH public key to our systems.
 
 Login to the `Partners Portal <https://partners.akeneo.com/login>`_:
