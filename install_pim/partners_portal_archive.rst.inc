@@ -1,10 +1,13 @@
-Getting Akeneo Partners Portal access
+Getting Akeneo Partners Portal Access
 *************************************
-After obtaining your Enterprise Edition license you should have recieved an access to the Akeneo Partners Portal.
+Akeneo Partners Portal login credentials are sent to you by email. If case you haven't recieved it you can request one at: http://helpdesk.akeneo.com/
 
-If you haven't recieved it you can request one at: http://helpdesk.akeneo.com/
+It’s important to know that there’re 2 types of users that can do this action:
 
-If you are a developer on the project you should request an account to access the project to your company manager (supervisor).
+* Supervisor
+* Developers
+
+Only Supervisors can create new Developers (user assigned to Developer group) by going to My Company > Contacts > Add Contact > Saving > Activating it (by clicking on the red X).
 
 Getting Enterprise Edition access via the Partners Portal
 *********************************************************
