@@ -23,22 +23,25 @@ Supervisor user has to add the allowed user to get the bootstrap into the Permis
 
 If you are not a Supervisor, you should contact that person to be added under the permissions. You can check who the Supervisor is in your company by going in My Company > General Information and under the section Supervisors you will see them listed.
 
-Getting Enterprise Edition access via the Partners Portal
-*********************************************************
- to retrieve all open source packages and their updates.
-To download the PIM Enterprise Edition, you have to get access to our private enterprise edition repository by sending your SSH public key to our systems.
+Sharing your Public SSH Key
+***************************
+Each user wanting to get the bootstrap archive has to share their SSH public key with Akeneo first.
 
-Login to the `Partners Portal <https://partners.akeneo.com/login>`_:
+* Login to the `Partners Portal <https://partners.akeneo.com/login>`_:
 
-* In your account go to manage public keys
+* Click over you User name in the upper right corner.
+ 
+* Select Manage Public Keys
 
 .. image:: ./papo/manage_public_keys.png
 
-* Click the following button
+* Click Add a new public key
 
 .. image:: ./papo/add_public_key.png
 
-* Enter a name, an email and the associated public key file content (usually located at `~/.ssh/id_rsa.pub`) and click save
+* Give the key a name, an email and the associated public key file content (usually located at `~/.ssh/id_rsa.pub`) 
+ 
+* Click save
 
 .. image:: ./papo/add_public_key_2.png
 
