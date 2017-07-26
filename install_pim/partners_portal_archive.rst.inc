@@ -21,6 +21,10 @@ Supervisor user has to add the allowed user to get the bootstrap into the Permis
 * Save
   * This going to send an email to the given users letting them know that their access to the project is ready.
 
+.. image:: ./papo/permission_box.png
+
+.. image:: ./papo/permission_add.png
+
 If you are not a Supervisor, you should contact that person to be added under the permissions. You can check who the Supervisor is in your company by going in My Company > General Information and under the section Supervisors you will see them listed.
 
 Sharing your Public SSH Key
@@ -54,7 +58,7 @@ Once the users are authorized under the Permissions in the project, they will be
 * Look for the Version button on the right side of the screen.
 * Click on it, you’ll be prompted to select one PIM EE version.
 
-.. image:: ./papo/download_archive.png
+.. image:: ./papo/download_button.png
  
 Once this is done, you should see a completeness message. Bootstrap archive will be send to your email in the following 5 minutes. Sometimes it could take a bit more, but always check your Spam folder before requesting the bootstrap again.
 
