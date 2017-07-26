@@ -114,7 +114,7 @@ The following ports should be opened on the server host for the PIM to work prop
 
 **Files and folders access rights**
 
-Most of the application folders and files require only read access. Here is a list of folders that also need write access for the Apache user:
+Most of the application folders and files require only read access. Here is a list of folders that also need write access for the FPM user:
 
 +-------------+--------------------------------------------------------------------------------+
 | var/cache   | Contains application cache files                                               |
