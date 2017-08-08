@@ -39,7 +39,7 @@ The web server will also need the following libraries and modules:
 +----------------+---------------------------+
 | php7.1-curl    | No specific configuration |
 +----------------+---------------------------+
-| php7.1 fpm     | No specific configuration |
+| php7.1-fpm     | No specific configuration |
 +----------------+---------------------------+
 | php7.1-gd      | No specific configuration |
 +----------------+---------------------------+
