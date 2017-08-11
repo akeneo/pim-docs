@@ -5,3 +5,5 @@ app/cache/*
 app/logs/*
 web/bundles/*
 web/css/*
+_build/
+
