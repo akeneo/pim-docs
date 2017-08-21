@@ -21,7 +21,7 @@ install:
 
 # command to run tests
 script:
- - composer install --no-ansi --no-interaction --no-progress
+ - composer update --no-ansi --no-interaction --no-progress
  - sphinx-build -nWT -b linkcheck . _build/
 # Flags used here
 #  -n   Run in nit-picky mode. Currently, this generates warnings for all missing references.
