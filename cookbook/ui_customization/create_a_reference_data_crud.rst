@@ -161,12 +161,12 @@ really easy to add a new menu entry to the back office:
                 label:              'Colors'
                 route:              'pim_customentity_index'
                 routeParameters: { customEntityName: color }
-                tree:
-                application_menu:
-                    children:
-                        pim_reference_data_tab:
-                            children:
-                                app_enrich_color: ~
+        tree:
+            application_menu:
+                children:
+                    pim_reference_data_tab:
+                        children:
+                            app_enrich_color: ~
 
 .. note::
 
