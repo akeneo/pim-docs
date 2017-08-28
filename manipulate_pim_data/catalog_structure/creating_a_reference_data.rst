@@ -161,7 +161,7 @@ The best way (and the one we recommend) is to extend the abstract class `Pim\\Co
     }
 
 .. note::
-    If you use your own custom entity as Reference Data with the CustomEntityBundle, the last three methods above are required. Otherwise, they may be omitted.
+    If you use your own custom entity as Reference Data with the CustomEntityBundle https://github.com/akeneo-labs/CustomEntityBundle), the last three methods above are required. Otherwise, they may be omitted.
 
 .. code-block:: yaml
 
