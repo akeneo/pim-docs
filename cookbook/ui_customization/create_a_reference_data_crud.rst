@@ -85,6 +85,13 @@ look at the following configuration:
                 default:
                     code: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'
 
+In the exemple above:
+ - In the ``properties`` section
+     - The ``customEntityName`` tells the grid to call the ``getCustomEntityName`` method
+       in order to get the entity name needed to generate the route.
+       You therefore need a method on the entity class to return the entity name.
+     - The ``id`` will work the same way, it will call the getId of the Entity.
+
 Creating the Form Type for creation and edition
 -----------------------------------------------
 
@@ -122,6 +129,18 @@ Creating the Form Type for creation and edition
 
     Want to learn more about forms? Take a look at the `Symfony documentation`_.
 
+
+We need to register the form type to the form type registry
+
+.. code-block:: yaml
+
+    # /src/Acme/Bundle/AppBundle/Resources/config/services.yml
+    services:
+        class: Acme\Bundle\AppBundle\Form\Type\ColorType
+        tags:
+            - { name: form.type, alias: app_enrich_color }
+
+
 Declare the CRUD actions
 ------------------------
 
@@ -139,6 +158,12 @@ the last step is to declare the reference data as a "custom entity":
                     form_type: app_enrich_color # Identical to the form type `getName()` value
                 create:
                     form_type: app_enrich_color
+
+In the yml above:
+ - The `color` is the name of the custom entity.
+ - The method `getCustomEntityName` of the Color Entity must return `color` as well so that the grid can generate proper url from the routes.
+
+ - The list of available actions can be found here : :doc:`/reference/bundles/custom_entity_bundle/index`.
 
 .. note::
 
@@ -170,7 +195,7 @@ really easy to add a new menu entry to the back office:
 
 .. note::
 
-    Want to learn more about the menu management? Take a look at the :doc:`/cookbook/catalog_structure/creating_a_reference_data` cookbook.
+    Want to learn more about the menu management? Take a look at the :doc:`/cookbook/ui_customization/how_to_customize_menu` cookbook.
 
 .. _`akeneo/custom-entity-bundle`: https://packagist.org/packages/akeneo/custom-entity-bundle
-.. _`Symfony documentation`: symfony.com/doc/2.7/forms.html
+.. _`Symfony documentation`: https://symfony.com/doc/2.7/forms.html
