@@ -131,6 +131,30 @@ The best way (and the one we recommend) is to extend the abstract class `Pim\\Co
         {
             return 'color';
         }
+
+        /**
+         * @return string
+         */
+        public function getCustomEntityName()
+        {
+            return 'color';
+        }
+
+        /**
+         * @return string
+         */
+        public function getSortOrderColumn()
+        {
+            return 'sortOrder';
+        }
+
+        /**
+         * @return string
+         */
+        public static function getLabelProperty()
+        {
+            return 'name';
+        }
     }
 
 .. code-block:: yaml
