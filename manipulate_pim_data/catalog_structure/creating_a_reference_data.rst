@@ -133,6 +133,7 @@ The best way (and the one we recommend) is to extend the abstract class `Pim\\Co
         }
 
         /**
+         * Required only if you use Reference Data in conjunction with the CustomEntityBundle
          * @return string
          */
         public function getCustomEntityName()
@@ -141,6 +142,7 @@ The best way (and the one we recommend) is to extend the abstract class `Pim\\Co
         }
 
         /**
+         * Required only if you use Reference Data in conjunction with the CustomEntityBundle
          * @return string
          */
         public function getSortOrderColumn()
@@ -149,6 +151,7 @@ The best way (and the one we recommend) is to extend the abstract class `Pim\\Co
         }
 
         /**
+         * Required only if you use Reference Data in conjunction with the CustomEntityBundle
          * @return string
          */
         public static function getLabelProperty()
@@ -156,6 +159,9 @@ The best way (and the one we recommend) is to extend the abstract class `Pim\\Co
             return 'name';
         }
     }
+
+.. note::
+    If you use your own custom entity as Reference Data with the CustomEntityBundle, the last three methods above are required. Otherwise, they may be omitted.
 
 .. code-block:: yaml
 
