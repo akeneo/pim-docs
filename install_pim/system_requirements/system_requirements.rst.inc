@@ -3,9 +3,9 @@
 Akeneo PIM only works on Linux servers. The application’s behaviour has been tested on several operating systems. We cannot guarantee the behaviour of the application on servers different from:
 
 +------------------------+-------------------+
-| Debian (Linux)         | ≥ 8 (64 bits)     |
+| Debian (Linux)         | ≥ 9 (64 bits)     |
 +------------------------+-------------------+
-| Ubuntu (Linux)         | ≥ 14.04 (64 bits) |
+| Ubuntu (Linux)         | ≥ 16.04 (64 bits) |
 +------------------------+-------------------+
 | CentOS / RHEL* (Linux) | ≥ 7               |
 +------------------------+-------------------+
@@ -22,25 +22,44 @@ We can only guarantee the behaviour on the following web server:
 
 The web server will also need the following libraries and modules:
 
-+--------------+-----------------------------------------+
-| mod rewrite  |  Required                               |
-+--------------+-----------------------------------------+
-| mod php5     |  Required (no CGI, no FastCGI, nor FPM) |
-+--------------+-----------------------------------------+
++--------------+-----------------------------------+
+| mod rewrite  |  Required                         |
++--------------+-----------------------------------+
+| mod-fastcgi  |  Required (no CGI nor libmod-php) |
++--------------+-----------------------------------+
 
 **PHP required modules and configuration**
 
-+-------------+---------------------------+
-| PHP         | 5.6                       |
-+-------------+---------------------------+
-| php5-curl   | No specific configuration |
-+-------------+---------------------------+
-| php5-gd     | No specific configuration |
-+-------------+---------------------------+
-| php5-intl   | No specific configuration |
-+-------------+---------------------------+
-| php5-apcu   | apc.enable_cli=1          |
-+-------------+---------------------------+
++----------------+---------------------------+
+| PHP            | 7.1                       |
++----------------+---------------------------+
+| php-apcu       | apc.enable_cli=1          |
++----------------+---------------------------+
+| php7.1-bcmath  | No specific configuration |
++----------------+---------------------------+
+| php7.1-curl    | No specific configuration |
++----------------+---------------------------+
+| php7.1-fpm     | No specific configuration |
++----------------+---------------------------+
+| php7.1-gd      | No specific configuration |
++----------------+---------------------------+
+| php7.1-intl    | No specific configuration |
++----------------+---------------------------+
+| php7.1-mcrypt  | No specific configuration |
++----------------+---------------------------+
+| php7.1-mysql   | No specific configuration |
++----------------+---------------------------+
+| php7.1-soap    | No specific configuration |
++----------------+---------------------------+
+| php7.1-xml     | No specific configuration |
++----------------+---------------------------+
+| php7.1-zip     | No specific configuration |
++----------------+---------------------------+
+| php-exif       | No specific configuration |
++----------------+---------------------------+
+| php7.1-imagick | No specific configuration |
++----------------+---------------------------+
+
 
 .. warning::
 
@@ -50,17 +69,18 @@ Besides these modules, the following configuration is the minimal configuration 
 
 .. include:: /technical_architecture/technical_information/php_ini.rst.inc
 
+** Extra dependencies
++----------------+---------------------------+
+| image magick   | ≥ 6.8                     |
++----------------+---------------------------+
+
 .. _database-servers:
 
 **Database server**
 
-+-----------------+---------------------+
-| MySQL (SQL)     | 5.1 ≤ version ≤ 5.7 |
-+-----------------+---------------------+
-
-Depending on the configuration you pick, you will need to respect parts or all of the following requirements.
-
-**MySQL**
++-----------------+-----+
+| MySQL (SQL)     | 5.7 |
++-----------------+-----+
 
 To use this database you will also require the distribution package:
 
@@ -70,9 +90,21 @@ To use this database you will also require the distribution package:
 
 and the following PHP modules:
 
-+------------+----------+
-| php5-mysql | Required |
-+------------+----------+
++--------------+----------+
+| php7.1-mysql | Required |
++--------------+----------+
+
+**Search engine**
+
++---------------+---------------------+
+| Elasticsearch | 5.5 ≤ version < 6.0 |
++---------------+---------------------+
+
+and the following Java Runtime Environment version
+
++------------------------+----------+
+| openjdk-8-jre-headless | Required |
++------------------------+----------+
 
 **Network**
 
@@ -83,27 +115,32 @@ The following ports should be opened on the server host for the PIM to work prop
 +---------------+-----------------------------------------------------------+---------------------------+
 | MySQL         | unix socket or 3306 (if MySQL server on a different host) | Required                  |
 +---------------+-----------------------------------------------------------+---------------------------+
+| Elasticsearch | 9200                                                      | Required                  |
++---------------+-----------------------------------------------------------+---------------------------+
 | SSH           | 22                                                        | Required (for deployment) |
 +---------------+-----------------------------------------------------------+---------------------------+
 
 **Files and folders access rights**
 
-Most of the application folders and files require only read access. Here is a list of folders that also need write access for the Apache user:
+Most of the application folders and files require only read access. Here is a list of folders that also need write access for the FPM user:
 
 +-------------+--------------------------------------------------------------------------------+
-| app/cache   | Contains application cache files                                               |
+| var/cache   | Contains application cache files                                               |
 +-------------+--------------------------------------------------------------------------------+
-| app/logs    | Contains application log files                                                 |
+| var/logs    | Contains application log files                                                 |
 +-------------+--------------------------------------------------------------------------------+
-| app/uploads | Contains files uploaded to the application by users or during import processes |
+| var/uploads | Contains files uploaded to the application by users or during import processes |
 +-------------+--------------------------------------------------------------------------------+
 | web         | Contains the web assets required by the application                            |
 +-------------+--------------------------------------------------------------------------------+
 
-These permissions are the ones required by the Symfony Framework (see its official documentation for more information).
+These permissions are the ones required by the Symfony Framework (see its `official documentation <https://symfony.com/doc/3.4/setup/file_permissions.html>`_ for more information).
 
-Akeneo PIM application uses an abstraction layer called Flysystem to store media and files uploaded from the application. By default, Flysystem is configured to store these files on the application server, but this configuration can easily be changed in favor of, for example, a distributed remote storage system (see Flysystem documentation for more information).
+Akeneo PIM application uses an abstraction layer called Flysystem to store media and files uploaded from the application. By default, Flysystem is configured to store these files on the application server, but this configuration `can easily be changed <https://flysystem.thephpleague.com/>`_ in favor of, for example, a distributed remote storage system (see Flysystem documentation for more information).
 
-The app/uploads folder could be located elsewhere depending on the configuration you defined in the parameters.yml of your Akeneo PIM application instance.
+The ``var/uploads`` folder could be located elsewhere depending on the configuration you defined in the ``parameters.yml`` of your Akeneo PIM application instance.
 
-Please note that neither the Apache user or the CLI should be the root user of the system.
+.. warning::
+
+    Please note that neither the Apache user or the CLI should be the root user of the system.
+

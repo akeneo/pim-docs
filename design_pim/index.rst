@@ -6,6 +6,11 @@ This chapter gives details on how to customize existing UI to fit your customer'
 .. toctree::
     :maxdepth: 2
 
+    overview
+
+.. toctree::
+    :maxdepth: 2
+
     guides/add_a_custom_button_to_product_edit_form
     guides/add_a_new_tab_to_an_entity_edit_form
     guides/add_a_tab_to_product_edit_form

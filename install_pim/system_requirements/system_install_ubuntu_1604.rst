@@ -1,93 +1,80 @@
-System install on Ubuntu 16.04
-==============================
+System installation on Ubuntu 16.04 (Xenial Xerus)
+==================================================
 
 Here is a quick guide to setup the :doc:`system_requirements` on Ubuntu 16.04. This guide will help you to install all
-the packages and modules needed for Akeneo PIM on a freshly installed ubuntu 16.04 system and then configure the application to match your local installation.
+the packages and modules needed for Akeneo PIM on a freshly installed Ubuntu 16.04 system and then configure the
+application to match your local installation.
+
+.. note::
+
+    Please perform the following commands as root.
 
 System installation
 -------------------
 
-Base installation
-*****************
-
-* Install apache, MySQL, then the dedicated modules for Akeneo PIM:
+MySQL 5.7
+*********
 
 .. code-block:: bash
 
-        $ sudo apt-get install apache2
-        $ sudo a2enmod rewrite
-        $ sudo service apache2 restart
+        # apt install mysql-server
 
+PHP 7.1
+*******
 
-MySQL installation
+The easiest way to install PHP 7.1 is to use `Ond?ej Sur? <https://deb.sury.org/>`_ packages.
+
+First, install the `repository <https://launchpad.net/~ondrej/+archive/ubuntu/php/>`_:
+
+.. code-block:: bash
+
+    # add-apt-repository ppa:ondrej/php
+    # apt update
+
+Then, install PHP and the required extensions:
+
+.. code-block:: bash
+
+    # apt install php7.1-apcu php7.1-bcmath php7.1-cli php7.1-curl php7.1-fpm php7.1-gd php7.1-intl php7.1-mcrypt php7.1-mysql php7.1-soap php7.1-xml php7.1-zip
+
+For Enterprise Edition, please also install:
+
+.. code-block:: bash
+
+    # apt install php7.1-imagick
+
+Elasticsearch 5.5+
 ******************
 
-.. code-block:: bash
+The easiest way to install Elasticsearch 5.5+ is to use the `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html#deb-key>`_:
 
-        $ sudo apt-get install mysql-server
-
-
-PHP installation
-****************
-
-Since Akeneo PIM 1.6, the minimal PHP version is PHP 5.6. Ubuntu 16.04 default PHP version is PHP 7.0.
-You have two possibilities:
-
-* Work with :ref:`php56`. Actually, the only supported version of PHP for Akeneo PIM is 5.6. You need to downgrade your version to PHP 5.6.
-* Work with :ref:`php7`. You also can install Akeneo PIM with 7, in experimental mode and not supported.
-
-.. _php56:
-
-PHP 5.6 (supported)
-^^^^^^^^^^^^^^^^^^^
-
-* To downgrade to PHP 5.6, add this repository:
+- first install the PGP key
+- then install the package via the official repository
 
 .. code-block:: bash
 
-    $ sudo add-apt-repository ppa:ondrej/php
+    # apt install apt-transport-https
+    # wget -O - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
+    # echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-5.x.list
+    # apt update
+    # apt install openjdk-8-jre-headless
+    # apt install elasticsearch
 
-* Then, you have to add the ``universe`` source for Ubuntu 16.04, to be able to use mycrypt:
-
-.. code-block:: bash
-
-    $ sudo add-apt-repository "http://us.archive.ubuntu.com/ubuntu xenial main universe"
-
-* You can now install PHP 5.6 and the needed libraries:
-
-.. code-block:: bash
-
-    $ sudo apt-get update
-    $ sudo apt-get remove php7*
-    $ sudo apt-get install php5.6
-    $ sudo apt-get install php5.6-xml php5.6-zip php5.6-curl php5.6-intl php5.6-mbstring php5.6-mysql php5.6-gd php5.6-cli php5.6-apcu libapache2-mod-php5.6
-
-* Check that PHP 5.6 is now your current PHP version with:
+Apache
+******
 
 .. code-block:: bash
 
-    $ php -v
+    # apt install apache2
+    # a2enmod rewrite proxy_fcgi
+    # systemctl restart apache2
 
-.. _php7:
+.. note::
 
-PHP 7 (experimental)
-^^^^^^^^^^^^^^^^^^^^
-
-.. warning::
-
-    We continued our effort regarding PHP 7 support. PHP 7 is now usable in experimental mode for both CLI and Web.
-    Experimental means that we manage to install and use the PIM but due to missing tests in our functional matrix we can't commit to support it.
-
-* You only need to install PHP 7.0 and its needed libraries:
+    If you migrate from Apache with mod_php, don't forget to deactivate it by running the following commands
 
 .. code-block:: bash
 
-    $ sudo apt-get update
-    $ sudo apt-get install php7.0
-    $ sudo apt-get install php7.0-xml php7.0-zip php7.0-curl php7.0-intl php7.0-mbstring php7.0-mysql php7.0-gd php7.0-cli php-apcu libapache2-mod-php7.0
-    $ sudo a2dismod mpm_event
-    $ sudo a2enmod mpm_prefork
-    $ sudo a2enmod php7.0
-    $ sudo service apache2 reload
+    # a2dismod php5
 
-.. _choosing_product_storage:
+.. include:: system_configuration.rst.inc

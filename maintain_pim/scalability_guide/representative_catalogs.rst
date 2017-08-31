@@ -55,7 +55,7 @@ The application is installed on a server following the recommended architecture 
 Depending on the catalog, we installed the data `fixtures` via the installer before importing the products through the default product csv import job (for a large product import, we split the catalog into 10 files + parallel imports + custom optimisations).
 
 +---------+----------------+
-|         | Product values | 
+|         | Product values |
 +---------+----------------+
 | Small   | 159.676        |
 +---------+----------------+
@@ -88,7 +88,7 @@ Scalability limitations, when we try to support larger data volume for an axis. 
 The following limitations have been encountered with standard installations without any custom code:
 
 +----------+-------------+-------------+--------------+--------------------------------------
-| **Type** | **Catalog** | **Edition** | **Released** | **Note**                             
+| **Type** | **Catalog** | **Edition** | **Released** | **Note**
 +----------+-------------+-------------+--------------+--------------------------------------
 | memleak  | All         | All         | v1.4.23      | (PIM-5507) Memory leak when executing mass edit or mass publish on several thousands of products                                                               |
 +----------+-------------+-------------+--------------+--------------------------------------
@@ -172,20 +172,23 @@ Several customers challenge the limitations even more in their custom projects a
 
 **Known limitations on other axes or combinations**
 
-+----------+-------------+-------------+--------------+--------------------------------------
-| **Type** | **Catalog** | **Edition** | **Released** | **Note**                             
-+----------+-------------+-------------+--------------+--------------------------------------
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **Type** | **Catalog** | **Edition** | **Released** | **Note**                                                                                                                                                       |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | improv.  | All         | All         | TODO         | (PIM-5519) Mass edit products, display the add to a group configuration is too long with a lot of product groups (use a paginated select2 and not checkboxes)  |
-+----------+-------------+-------------+--------------+--------------------------------------
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | improv.  | All         | All         | TODO         | (PIM-5520) Mass edit products, display the add to a variant group configuration is too long with a lot of product groups (use a paginated select2)             |
-+----------+-------------+-------------+--------------+--------------------------------------
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | improv.  | All         | All         | TODO         | (PIM-5467) When saving a variant group, variant group values are synchronously copied in products, it may cause timeout issue                                  |
-+----------+-------------+-------------+--------------+--------------------------------------
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | improv.  | All         | All         | TODO         | (PIM-5463) When associating a lot of products to a group, variant group or association, you may encounter "The requested URL's length exceeds the capacity"    |
-+----------+-------------+-------------+--------------+--------------------------------------
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | improv.  | All         | All         | TODO         | (PIM-5562) When delete a product associated to other products, run a backend process to cleanup all associations                                               |
-+----------+-------------+-------------+--------------+--------------------------------------
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | improv.  | All         | All         | TODO         | (PIM-5563) Query for completeness rescheduling when saving a family with 50k products inside is too long to execute, exec as backend process                   |
-+----------+-------------+-------------+--------------+--------------------------------------
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | improv.  | All         | All         | TODO         | (PIM-5861) Cannot remove an attribute on big (~1M products) MongoDB catalog because of timeout when we update MongoDB database to remove it from all products  |
-+----------+-------------+-------------+--------------+--------------------------------------
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| improv.  | All         | All         | TODO         | (IM-766) Variant groups scalability: limit number of axes or set a limit?                                                                                      |
++----------+-------------+-------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+

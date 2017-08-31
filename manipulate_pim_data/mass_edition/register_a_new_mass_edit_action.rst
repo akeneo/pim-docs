@@ -161,7 +161,7 @@ If your installation is already set up, use the `akeneo:batch:create-job` comman
 .. warning::
 
     For Enterprise Edition version, see Phase 6 to add job profile permissions in pimee_security_job_profile_access table.
-    
+
 
 Phase 5: Translating the Mass Edit Action Choice
 ------------------------------------------------
@@ -178,10 +178,10 @@ You may now define some translation keys (``label, description, success_flash...
   :prepend: # /src/Acme/Bundle/CustomMassActionBundle/Resources/translations/messages.en.yml
   :linenos:
 
-Phase 6: add user groups permissions to job profiles (ENTERPRISE EDITION)
+Phase 6: Add user groups permissions to job profiles (ENTERPRISE EDITION)
 ------------------------------------------------------------------------------------
 
-In Enterprise Edition version, job profiles are managed with user groups permissions, so you need to add these permissions. 
+In Enterprise Edition version, job profiles are managed with user groups permissions, so you need to add these permissions.
 To deal with these permissions, you have 3 tables:
 
 - ``akeneo_batch_job_instance``: which stores the job profiles
@@ -191,7 +191,7 @@ To deal with these permissions, you have 3 tables:
 You have to get your job instance (job profile) code from the first table, get the user groups from your second table and then
 execute an insert SQL query to add these permissions.
 It will be something like:
-    
+
 .. code-block:: mySQL
 
     INSERT INTO pimee_security_job_profile_access VALUES ('', <job_profile_id>, <user_group_id>, 1, 1);
