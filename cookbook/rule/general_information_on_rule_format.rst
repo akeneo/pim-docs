@@ -472,7 +472,7 @@ _______________
 | Operator     | - STARTS WITH              |
 |              | - ENDS WITH                |
 |              | - CONTAINS                 |
-|              | - DOES NOT CONTAINS        |
+|              | - DOES NOT CONTAIN         |
 |              | - =                        |
 |              | - !=                       |
 |              | - EMPTY                    |
@@ -681,8 +681,7 @@ _______________
 | Operator     | - STARTS WITH                     |
 |              | - ENDS WITH                       |
 |              | - CONTAINS                        |
-|              | - DOES NOT                        |
-|              | - CONTAIN                         |
+|              | - DOES NOT CONTAIN                |
 |              | - =                               |
 |              | - !=                              |
 |              | - EMPTY                           |
