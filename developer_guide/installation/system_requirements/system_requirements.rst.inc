@@ -30,19 +30,21 @@ The web server will also need the following libraries and modules:
 
 **PHP required modules and configuration**
 
-+-------------+---------------------------+
-| PHP         | 5.6                       |
-+-------------+---------------------------+
-| php5-curl   | No specific configuration |
-+-------------+---------------------------+
-| php5-gd     | No specific configuration |
-+-------------+---------------------------+
-| php5-intl   | No specific configuration |
-+-------------+---------------------------+
-| php5-mcrypt | No specific configuration |
-+-------------+---------------------------+
-| php5-apcu   | apc.enable_cli=1          |
-+-------------+---------------------------+
++--------------+--------------------------------------+
+| PHP          | 5.6                                  |
++--------------+--------------------------------------+
+| php5-curl    | No specific configuration            |
++--------------+--------------------------------------+
+| php5-gd      | No specific configuration            |
++--------------+--------------------------------------+
+| php5-intl    | No specific configuration            |
++--------------+--------------------------------------+
+| php5-mcrypt  | No specific configuration            |
++--------------+--------------------------------------+
+| php5-apcu    | apc.enable_cli=1                     |
++--------------+--------------------------------------+
+| php5-imagick | Only required for Enterprise Edition |
++--------------+--------------------------------------+
 
 Besides these modules, the following configuration is the minimal configuration required:
 
