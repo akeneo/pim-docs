@@ -30,19 +30,21 @@ The web server will also need the following libraries and modules:
 
 **PHP required modules and configuration**
 
-+-------------+---------------------------+
-| PHP         | 5.6                       |
-+-------------+---------------------------+
-| php5-curl   | No specific configuration |
-+-------------+---------------------------+
-| php5-gd     | No specific configuration |
-+-------------+---------------------------+
-| php5-intl   | No specific configuration |
-+-------------+---------------------------+
-| php5-mcrypt | No specific configuration |
-+-------------+---------------------------+
-| php5-apcu   | apc.enable_cli=1          |
-+-------------+---------------------------+
++--------------+--------------------------------------+
+| PHP          | 5.6                                  |
++--------------+--------------------------------------+
+| php5-curl    | No specific configuration            |
++--------------+--------------------------------------+
+| php5-gd      | No specific configuration            |
++--------------+--------------------------------------+
+| php5-intl    | No specific configuration            |
++--------------+--------------------------------------+
+| php5-mcrypt  | No specific configuration            |
++--------------+--------------------------------------+
+| php5-apcu    | apc.enable_cli=1                     |
++--------------+--------------------------------------+
+| php5-imagick | Only required for Enterprise Edition |
++--------------+--------------------------------------+
 
 .. warning::
 
@@ -68,7 +70,7 @@ Besides these modules, the following configuration is the minimal configuration 
 
   Due to changes in its API, MongoDB 3.0 is not supported.
 
-.. _ONLY_FULL_GROUP_BY: http://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_only_full_group_by
+.. _ONLY_FULL_GROUP_BY: https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_only_full_group_by
 
 .. warning::
 

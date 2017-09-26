@@ -21,7 +21,7 @@ If you encounter memory issues and you don't need media to be archived, a simple
             - '@pim_connector.factory.zip_filesystem'
             - '@oneup_flysystem.archivist_filesystem'
             - '@akeneo_batch.job.job_registry'
-            
+
 The tag ``pim_connector.archiver`` is removed here to prevent the archiver from being used by the Symfony DI. The media archiving will be disabled.
 
 Write your own archiver
@@ -40,7 +40,7 @@ Feel free to share it with the community!
 
 Here is an example of a working customization of the native archiver based on the Unix zip command and the Symfony `Process Component`_ :
 
-.. _`Process Component`: http://symfony.com/doc/2.7/components/process.html
+.. _`Process Component`: https://symfony.com/doc/2.7/components/process.html
 
 .. code-block:: php
 

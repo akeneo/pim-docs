@@ -10,6 +10,7 @@ Clone this repository.
 
 Install [Sphinx](http://sphinx-doc.org/).
 ```bash
+    $ sudo apt-get install python-pip
     $ sudo pip install --upgrade pip
     $ sudo pip install sphinx~=1.5.3
     $ sudo pip install git+https://github.com/fabpot/sphinx-php.git
@@ -39,6 +40,14 @@ From the `./pim-docs` directory, run:
 ```
 
 The documentation will be generated inside `../pim-docs-build`.
+
+## Validate the documentation
+
+From the `./pim-docs` directory, run:
+
+``` bash
+    $ sphinx-build -nWT -b linkcheck . _build/
+```
 
 ## Make documentation code work with pim-community-dev or standard
 

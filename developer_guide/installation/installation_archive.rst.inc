@@ -14,7 +14,7 @@ Extracting the archive
     * For Community Edition, replace *pim-community-standard-v1.7-latest-icecat.tar.gz* by the location and the name
       of the archive you have downloaded from https://www.akeneo.com/download
     * For Enterprise Edition, replace *pim-community-standard-v1.7-latest-icecat.tar.gz* by the location and the name
-      of the archive you have downloaded from https://partners.akeneo.com
+      of the archive you have downloaded from `Partner portal <https://partners.akeneo.com/login>`_
 
 .. note::
     The PIM will be extracted in the folder /path/to/installation/pim-community-standard.
@@ -34,7 +34,7 @@ Initializing Akeneo
 
 Testing your installation
 -------------------------
-Go to http://akeneo-pim.local/ and log in with *admin/admin*. If you see the dashboard, congratulations, you have successfully installed Akeneo PIM! You can also access the dev environment on http://akeneo-pim.local/app_dev.php
+Access the `web` folder using your favorite web browser and log in with *admin/admin*. If you see the dashboard, congratulations, you have successfully installed Akeneo PIM! You can also access the dev environment on using `app_dev.php` as index.
 
 If an error occurs, it means that something went wrong in one of the previous steps. Please check error outputs of all the steps.
 

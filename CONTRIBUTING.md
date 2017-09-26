@@ -1,1 +1,1 @@
-Please read and sign the following contributor agreement http://www.akeneo.com/contributor-license-agreement/
+Please read and sign the following contributor agreement https://www.akeneo.com/contributor-license-agreement/
