@@ -66,7 +66,7 @@ I removed and re-created an attribute with different properties and I cannot sav
 
 If you created a non-localizable, non-scopable or locale-specific attribute, then added it to a variant group, then deleted this attribute to create it back, but this time localizable, scopable or non locale-specific, you will end with broken product templates. To fix all your product templates, you need to run the following command:
 
--- code-block: bash
+.. code-block:: bash
 
     app/console pim:product-template:clean-values
     
