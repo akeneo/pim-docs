@@ -1,6 +1,6 @@
 Getting Akeneo Partners Portal Access
 *************************************
-Akeneo Partners Portal login credentials are sent to you by email. If case you haven't recieved it you can request one at: http://helpdesk.akeneo.com/
+Akeneo Partners Portal login credentials are sent to you by email. If case you haven't received it you can request one at: http://helpdesk.akeneo.com/
 
 It’s important to know that there’re 2 types of users that can do this action:
 
@@ -64,7 +64,7 @@ Once the users are authorized under the Permissions in the project, they will be
 
 .. image:: ./papo/download_button.png
  
-Once this is done, you should see a completeness message. Bootstrap archive will be send to your email in the following 5 minutes. Sometimes it could take a bit more, but always check your Spam folder before requesting the bootstrap again.
+Once this is done, you should see a completeness message. Bootstrap archive will be sent to your email in the following 5 minutes. Sometimes it could take a bit more, but always check your Spam folder before requesting the bootstrap again.
 
 .. warning::
 
