@@ -7,11 +7,57 @@ How to create the UI to manage a Reference Data
 Creating the Reference Data Management UI
 *****************************************
 
+The custom entity
+-----------------
+
+Reusing the Color entity from :doc:`/cookbook/catalog_structure/creating_a_reference_data` as example, we will first transform it into a custom entity.
+Instead of extending ``AbstractReferenceData``, it needs to extends ``AbstractCustomEntity`` (which itself extends ``AbstractReferenceData``) as follow:
+
+.. code-block:: php
+
+    <?php
+    # /src/Acme/Bundle/AppBundle/Entity/Color.php
+
+    namespace Acme\Bundle\AppBundle\Entity;
+
+    use Pim\Bundle\CustomEntityBundle\Entity\AbstractCustomEntity;
+
+    /**
+     * Acme Color entity
+     */
+    class Color extends AbstractCustomEntity
+    {
+        // Keep here the code from "cookbook/catalog_structure/creating_a_reference_data" cookbook
+
+        /**
+         * @return string
+         */
+        public function getCustomEntityName()
+        {
+            return 'color';
+        }
+
+        /**
+         * @return string
+         */
+        public static function getSortOrderColumn()
+        {
+            return 'sortOrder';
+        }
+
+        /**
+         * @return string
+         */
+        public static function getLabelProperty()
+        {
+            return 'name';
+        }
+    }
+
 The Grid
 --------
 
-Reusing the Color entity from :doc:`/cookbook/catalog_structure/creating_a_reference_data` as example,
-look at the following configuration:
+Now that the Color entity is updated, look at the following configuration:
 
 .. code-block:: yaml
 
