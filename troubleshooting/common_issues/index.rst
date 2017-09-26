@@ -60,6 +60,15 @@ You can revert this operation by running the following commands:
     rm -rf ./app/cache/*
     php app/console pim:install:asset --env=prod
     php app/console assets:install --symlink web
+
+I removed and re-created an attribute with different properties and I cannot save variant group anymore
+-------------------------------------------------------------------------------------------------------
+
+If you created a non-localizable, non-scopable or locale-specific attribute, then added it to a variant group, then deleted this attribute to create it back, but this time localizable, scopable or non locale-specific, you will end with broken product templates. To fix all your product templates, you need to run the following command:
+
+.. code-block:: bash
+
+    app/console pim:product-template:clean-values
     
 I cannot export my products "An exception occurred during the export"
 ---------------------------------------------------------------------
