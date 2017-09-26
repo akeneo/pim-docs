@@ -50,12 +50,10 @@ These are the built-in PIM subscribers registered to this event:
 ===================================================  ===============
 Listener Class Name                                  Priority
 ===================================================  ===============
-`IndexProductModelDescendantsSubscriber`_            0
 `IndexProductModelsSubscriber`_                      0
 `IndexProductsSubscriber`_                           0
 ===================================================  ===============
 
-.. _IndexProductModelDescendantsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/IndexProductModelDescendantsSubscriber.php
 .. _IndexProductModelsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/IndexProductModelsSubscriber.php
 .. _IndexProductsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/IndexProductsSubscriber.php
 
@@ -111,7 +109,6 @@ These are the built-in PIM subscribers registered to this event:
 ==============================================  ===============
 Listener Class Name                             Priority
 ==============================================  ===============
-`IndexProductModelDescendantsSubscriber`_       0
 `IndexProductModelsSubscriber`_                 0
 `IndexProductsSubscriber`_                      0
 CatalogUpdatesSubscriber (Enterprise edition)   0
@@ -146,7 +143,6 @@ These are the built-in PIM subscribers registered to this event:
 ===========================================================  ===============
 Listener Class Name                                          Priority
 ===========================================================  ===============
-`IndexProductModelDescendantsSubscriber`_                    0
 `IndexProductModelsSubscriber`_                              0
 `IndexProductsSubscriber`_                                   0
 AddAttributeGroupPermissionsSubscriber (Enterprise edition)  0
