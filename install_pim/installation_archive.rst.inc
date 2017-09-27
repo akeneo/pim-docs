@@ -32,7 +32,7 @@ Dependencies,
 .. code-block:: bash
     :linenos:
 
-    $ ../composer.phar install --optimize-autoloader --prefer-dist memory_limit=3G
+    $ php -d memory_limit=3G composer.phar install --optimize-autoloader --prefer-dist
     $ yarn install
 
 Frontend,
@@ -40,7 +40,7 @@ Frontend,
 .. code-block:: bash
     :linenos:
 
-    $ php bin/console cache:clear --env=prod
+    $ php bin/console cache:clear --env=prod --no-warmup
     $ php bin/console --env=prod pim:installer:assets --symlink --clean
     $ yarn run webpack
 
