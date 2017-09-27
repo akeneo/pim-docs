@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/akeneo/pim-community-dev.git",
-                "reference": "0cbbe25a264c96014e60694bd662e37f03f5c90c"
+                "reference": "69c32668037475e7039416069d1c0cfa9b792b05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/akeneo/pim-community-dev/zipball/0cbbe25a264c96014e60694bd662e37f03f5c90c",
-                "reference": "0cbbe25a264c96014e60694bd662e37f03f5c90c",
+                "url": "https://api.github.com/repos/akeneo/pim-community-dev/zipball/69c32668037475e7039416069d1c0cfa9b792b05",
+                "reference": "69c32668037475e7039416069d1c0cfa9b792b05",
                 "shasum": ""
             },
             "require": {
@@ -185,7 +185,7 @@
                 "source": "https://github.com/akeneo/pim-community-dev/tree/master",
                 "issues": "https://github.com/akeneo/pim-community-dev/issues"
             },
-            "time": "2017-09-26T10:45:46+00:00"
+            "time": "2017-09-27T08:26:28+00:00"
         },
         {
             "name": "ass/xmlsecurity",

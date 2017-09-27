@@ -11,4 +11,4 @@ services:
                 acl: pim_enrich_product_edit_attributes
                 datagrid: product-grid
                 operation_group: mass-edit
-                form_type: acme_custom_mass_action.form.type.capitalize_values
+                form_type: acme_custom_mass_action_operation_capitalize_values

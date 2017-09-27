@@ -7,11 +7,57 @@ How to create the UI to manage a Reference Data
 Creating the Reference Data Management UI
 *****************************************
 
+The custom entity
+-----------------
+
+Reusing the Color entity from :doc:`/manipulate_pim_data/catalog_structure/creating_a_reference_data` as example, we will first transform it into a custom entity.
+Instead of extending ``AbstractReferenceData``, it needs to extends ``AbstractCustomEntity`` (which itself extends ``AbstractReferenceData``) as follow:
+
+.. code-block:: php
+
+    <?php
+    # /src/Acme/Bundle/AppBundle/Entity/Color.php
+
+    namespace Acme\Bundle\AppBundle\Entity;
+
+    use Pim\Bundle\CustomEntityBundle\Entity\AbstractCustomEntity;
+
+    /**
+     * Acme Color entity
+     */
+    class Color extends AbstractCustomEntity
+    {
+        // Keep here the code from "cookbook/catalog_structure/creating_a_reference_data" cookbook
+
+        /**
+         * @return string
+         */
+        public function getCustomEntityName()
+        {
+            return 'color';
+        }
+
+        /**
+         * @return string
+         */
+        public static function getSortOrderColumn()
+        {
+            return 'sortOrder';
+        }
+
+        /**
+         * @return string
+         */
+        public static function getLabelProperty()
+        {
+            return 'name';
+        }
+    }
+
 The Grid
 --------
 
-Reusing the Color entity from :doc:`/manipulate_pim_data/catalog_structure/creating_a_reference_data` as example,
-look at the following configuration:
+Now that the Color entity is updated, look at the following configuration:
 
 .. code-block:: yaml
 
@@ -85,6 +131,13 @@ look at the following configuration:
                 default:
                     code: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'
 
+In the exemple above:
+ - In the ``properties`` section
+     - The ``customEntityName`` tells the grid to call the ``getCustomEntityName`` method
+       in order to get the entity name needed to generate the route.
+       You therefore need a method on the entity class to return the entity name.
+     - The ``id`` will work the same way, it will call the getId of the Entity.
+
 Creating the Form Type for creation and edition
 -----------------------------------------------
 
@@ -122,6 +175,18 @@ Creating the Form Type for creation and edition
 
     Want to learn more about forms? Take a look at the `Symfony documentation`_.
 
+
+We need to register the form type to the form type registry
+
+.. code-block:: yaml
+
+    # /src/Acme/Bundle/AppBundle/Resources/config/services.yml
+    services:
+        class: Acme\Bundle\AppBundle\Form\Type\ColorType
+        tags:
+            - { name: form.type, alias: app_enrich_color }
+
+
 Declare the CRUD actions
 ------------------------
 
@@ -139,6 +204,12 @@ the last step is to declare the reference data as a "custom entity":
                     form_type: app_enrich_color # Identical to the form type `getName()` value
                 create:
                     form_type: app_enrich_color
+
+In the yml above:
+ - The `color` is the name of the custom entity.
+ - The method `getCustomEntityName` of the Color Entity must return `color` as well so that the grid can generate proper url from the routes.
+
+ - The list of available actions can be found here : :doc:`/technical_architecture/bundles/custom_entity_bundle/index`.
 
 .. note::
 
@@ -161,16 +232,16 @@ really easy to add a new menu entry to the back office:
                 label:              'Colors'
                 route:              'pim_customentity_index'
                 routeParameters: { customEntityName: color }
-                tree:
-                application_menu:
-                    children:
-                        pim_reference_data_tab:
-                            children:
-                                app_enrich_color: ~
+        tree:
+            application_menu:
+                children:
+                    pim_reference_data_tab:
+                        children:
+                            app_enrich_color: ~
 
 .. note::
 
     Want to learn more about the menu management? Take a look at the :doc:`/manipulate_pim_data/catalog_structure/creating_a_reference_data` cookbook.
 
 .. _`akeneo/custom-entity-bundle`: https://packagist.org/packages/akeneo/custom-entity-bundle
-.. _`Symfony documentation`: symfony.com/doc/2.7/forms.html
+.. _`Symfony documentation`: https://symfony.com/doc/3.3/forms.html
