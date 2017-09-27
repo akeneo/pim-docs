@@ -32,7 +32,7 @@ Dependencies,
 .. code-block:: bash
     :linenos:
 
-    $ ../composer.phar install --optimize-autoloader --prefer-dist memory_limit=3G
+    $ php -d memory_limit=3G composer.phar install --optimize-autoloader --prefer-dist
     $ yarn install
 
 Frontend,
