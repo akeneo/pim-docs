@@ -78,3 +78,57 @@ If you need to export medias, unfortunately there is no out of the box solution 
 If the issue remains, you need to follow our qualification guide: :doc:`/maintain_pim/bug_qualification/index`.
 
 Regarding data export volumetry, please note that we have clients exporting more than 270K at once and the PIM handles such exports. See our Scalability guide for more informations about our tests: :doc:`/maintain_pim/scalability_guide/index`
+
+
+The limit of total fields is reached in Elasticsearch
+-----------------------------------------------------
+
+Elasticsearch defines a ``index.mapping.total_fields.limit`` `parameter <https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html#mapping-limit-settings>`_. You can increase this setting in case you encounter the following error:
+
+.. code-block:: json
+
+    {
+       "error":{
+          "root_cause":[
+             {
+                "type":"illegal_argument_exception",
+                "reason":"Limit of total fields [5000] in index [akeneo_pim_product_and_product_model] has been exceeded"
+             }
+          ],
+          "type":"illegal_argument_exception",
+          "reason":"Limit of total fields [5000] in index [akeneo_pim_product_and_product_model] has been exceeded"
+       },
+       "status":400
+    }
+
+To do so, create a ``my_index_configuration.yml`` file with the following content:
+
+.. code-block:: yaml
+
+    settings:
+        mapping:
+            total_fields:
+                limit: 6000 # fix your own limit here
+
+Then, load the ``my_index_configuration.yml`` by adding it to the Symfony ``elasticsearch_index_configuration_files`` parameter that is present in the file ``parameters.yml`` or ``pim_parameters.yml``.
+
+For instance, if you have a *Community* edition:
+
+.. code-block:: yaml
+
+    # parameters.yml
+    # ...
+    elasticsearch_index_configuration_files:
+        - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Pim/Bundle/CatalogBundle/Resources/elasticsearch/index_configuration.yml'
+        - '/path/to/my_index_configuration.yml'
+
+If you have the *Enterprise* edition:
+
+.. code-block:: yaml
+
+    # parameters.yml
+    # ...
+    elasticsearch_index_configuration_files:
+        - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Pim/Bundle/CatalogBundle/Resources/elasticsearch/index_configuration.yml'
+        - '%kernel.root_dir%/../vendor/akeneo/pim-enterprise-dev/src/PimEnterprise/Bundle/WorkflowBundle/Resources/elasticsearch/index_configuration.yml'
+        - '/path/to/my_index_configuration.yml'

@@ -11,50 +11,40 @@ Backend technologies
 The application relies on Symfony framework. This web framework allows Akeneo PIM application to be built on a solid structure with a wonderful ecosystem of bundles and libraries.
 This means that Akeneo PIM  installation process will use composer to install or update all these dependencies easily.
 
-+---------+---------------------------------------------------+------------------+
-| PHP     | 5.6 (Apache mod_php, no CGI, no Fast CGI nor FPM) | Required         |
-+---------+---------------------------------------------------+------------------+
-| Symfony | 2.7                                               | Shipped with PIM |
-+---------+---------------------------------------------------+------------------+
++---------+-----------------------------------------------------+------------------+
+| PHP     | 7.1 (Apache Fast CGI with FPM, no CGI, nor mod_php) | Required         |
++---------+-----------------------------------------------------+------------------+
+| Symfony | 3.4                                                 | Shipped with PIM |
++---------+-----------------------------------------------------+------------------+
 
 **Main Symfony bundles**
 
-+------------------------+-------------------------------------------------------------+
-| Oro Platform           | Open source Business Application Platform                   |
-+------------------------+-------------------------------------------------------------+
-| Doctrine               | ORM (and/or ODM) to abstract interactions with databases    |
-+------------------------+-------------------------------------------------------------+
-| KNP Menu               | Manages menus and navigation more easily                    |
-+------------------------+-------------------------------------------------------------+
-| League Flysystem       | Filesystem abstraction layer                                |
-+------------------------+-------------------------------------------------------------+
-| Liip Imagine           | Manages image manipulation and caching                      |
-+------------------------+-------------------------------------------------------------+
-| APY JSFV               | Form validation provided on the frontend side               |
-+------------------------+-------------------------------------------------------------+
-| JMS Serializer         | Manages data serialization and deserialization              |
-+------------------------+-------------------------------------------------------------+
-| FOS REST               | Manages REST interactions                                   |
-+------------------------+-------------------------------------------------------------+
-| Genemu Form            | Adds more complex form widgets                              |
-+------------------------+-------------------------------------------------------------+
-| FOS JS Routing         | Allows to expose application routing on the JavaScript side |
-+------------------------+-------------------------------------------------------------+
-| Leafo LessPHP          | Converts LESS stylesheets to CSS stylesheets                |
-+------------------------+-------------------------------------------------------------+
++------------------------+--------------------------------------------------------------------------------+
+| Oro Platform           | Open source Business Application Platform                                      |
++------------------------+--------------------------------------------------------------------------------+
+| Doctrine               | ORM (and/or ODM) to abstract interactions with databases                       |
++------------------------+--------------------------------------------------------------------------------+
+| League Flysystem       | Filesystem abstraction layer                                                   |
++------------------------+--------------------------------------------------------------------------------+
+| FOS OAuth Server       | Server side OAuth2 Bundle for Symfony2                                         |
++------------------------+--------------------------------------------------------------------------------+
+| FOS REST               | Manages REST interactions                                                      |
++------------------------+--------------------------------------------------------------------------------+
+| Monolog                | Sends your logs to files, sockets, inboxes, databases and various web services |
++------------------------+--------------------------------------------------------------------------------+
 
 Testing libraries
 -----------------
 
-To ensure the best possible quality of our product and avoid any regressions we created unit and functional tests using various libraries such as:
+To ensure the best possible quality of our product and avoid any regressions we created unit, integration and functional tests using various libraries such as:
 
-+---------+--------------------------------------------------------------------------------+
-| PHPSpec | Intuitive unit testing with mocking                                            |
-+---------+--------------------------------------------------------------------------------+
-| Behat   | Functional testing                                                             |
-+---------+--------------------------------------------------------------------------------+
-| PHPUnit | Basic but powerful unit testing library (for legacy tests, we now use phpspec) |
-+---------+--------------------------------------------------------------------------------+
++---------+-------------------------------------------------------------------------+
+| PHPSpec | Intuitive unit testing with mocking (for unit tests and classes design) |
++---------+-------------------------------------------------------------------------+
+| Behat   | Behavior Driven Development framework (for functional tests)            |
++---------+-------------------------------------------------------------------------+
+| PHPUnit | Basic but powerful unit testing library (for integration tests)         |
++---------+-------------------------------------------------------------------------+
 
 Frontend technologies
 ---------------------

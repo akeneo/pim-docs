@@ -1,7 +1,7 @@
 System configuration
 --------------------
 
-You now have a system with the right versions of Apache, PHP and MySQL. The next step is to configure them to be able to run an Akeneo PIM instance.
+You now have a system with the right versions of Apache, PHP, MySQL and Elasticsearch. The next step is to configure them to be able to run an Akeneo PIM instance.
 
 MySQL
 *****
@@ -20,58 +20,14 @@ PHP
 
 .. include:: /technical_architecture/technical_information/php_ini.rst.inc
 
+Elasticsearch
+*************
+
+Depending on the volume of data, it can be interesting to tweak the amount of memory usable by the JVM, as recommended by the `official documentation <https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html>`_.
+Usually, this configuration lies in the file ``/etc/elasticsearch/jvm.options``.
+
 Apache
 ******
-
-Setting up the permissions
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To avoid spending too much time on permission problems between the CLI user and the Apache user, a good practice is to use the same user for both of them.
-
-.. warning::
-
-    This configuration is aimed to easily set up a development machine.
-    **It is absolutely not suited for a production environment.**
-
-* Get your identifiers
-
-.. code-block:: bash
-
-    $ id
-    uid=1000(my_user), gid=1000(my_group), ...
-
-In this example, the user is *my_user* and the group is *my_group*.
-
-* Stop Apache
-
-.. code-block:: bash
-
-    $ sudo service apache2 stop
-
-* Open this file ``/etc/apache2/envvars`` with your favorite text editor:
-
-.. code-block:: bash
-
-    $ sudo vi /etc/apache2/envvars
-    # replace these environment variables:
-    export APACHE_RUN_USER=my_user
-    export APACHE_RUN_GROUP=my_group
-
-    $ sudo chown -R my_user /var/lock/apache2
-
-.. note::
-
-    On the default installation, Apache run user and Apache run group are ``www-data``. You have to replace these variables:
-
-    * ``APACHE_RUN_USER=www-data`` by ``APACHE_RUN_USER=my_user``
-    * ``APACHE_RUN_GROUP=www-data`` by ``APACHE_RUN_GROUP=my_group``
-
-* Restart Apache
-
-.. code-block:: bash
-
-    $ sudo service apache2 start
-
 
 Creating the virtual host file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -85,13 +41,32 @@ First, create the file ``/etc/apache2/sites-available/akeneo-pim.local.conf``
     <VirtualHost *:80>
         ServerName akeneo-pim.local
 
-        DocumentRoot /path/to/installation/pim-community-standard/web/
-        <Directory /path/to/installation/pim-community-standard/web/>
-            AllowOverride All
+        DocumentRoot /path/to/installation/pim-community-standard/web
+        <Directory /path/to/installation/pim-community-standard/web>
+            AllowOverride None
             Require all granted
-        </Directory>
-        ErrorLog ${APACHE_LOG_DIR}/akeneo-pim_error.log
 
+            Options -MultiViews
+            RewriteEngine On
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteRule ^(.*)$ app.php [QSA,L]
+        </Directory>
+
+        <Directory /path/to/installation/pim-community-standard>
+            Options FollowSymlinks
+        </Directory>
+
+        <Directory /path/to/installation/pim-community-standard/web/bundles>
+            RewriteEngine Off
+        </Directory>
+
+        <FilesMatch \.php$>
+            SetHandler "proxy:unix:/run/php/php7.1-fpm.sock|fcgi://localhost/"
+        </FilesMatch>
+
+        SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+        ErrorLog ${APACHE_LOG_DIR}/akeneo-pim_error.log
         LogLevel warn
         CustomLog ${APACHE_LOG_DIR}/akeneo-pim_access.log combined
     </VirtualHost>
@@ -100,8 +75,8 @@ First, create the file ``/etc/apache2/sites-available/akeneo-pim.local.conf``
 
     * Replace ``/path/to/installation`` by the path to the directory where you want to install the PIM.
     * Replace ``pim-community-standard`` by ``pim-enterprise-standard`` for enterprise edition.
+    * ``/run/php/php7.1-fpm.sock`` is the default socket path. If you changed it in ``/etc/php/7.1/fpm/pool.d/www.conf``, change it in the virtual host too.
     * Don't forget to add the ``web`` directory of your Symfony application.
-
 
 Enabling the virtual host
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -114,8 +89,7 @@ The Apache configuration is done, you need to enable it:
     # This will return 'Syntax OK'
 
     $ sudo a2ensite akeneo-pim.local
-    $ sudo service apache2 reload
-
+    $ sudo systemctl reload apache2
 
 Adding the virtual host name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
