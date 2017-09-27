@@ -36,7 +36,7 @@ Backend bugs are issues which occur on the server side (PHP/Symfony code, databa
 * Use the Symfony buit-in developer tools (the debug toolbar and the profiler).
 * Use the Symfony and PIM built-in debug commands (to see them, use the command ``php bin/console`` without any arguments).
 * Use the tools of your integrated development environment to debug the code step by step.
-* Analyze the error messages provided in the Symfony's log files ``/path/to/your/pim/app/logs/prod.log`` or ``/path/to/your/pim/app/logs/dev.log``
+* Analyze the error messages provided in the Symfony's log files ``/path/to/your/pim/var/logs/prod.log`` or ``/path/to/your/pim/var/logs/dev.log``
 * Take a look at the PHP error log file.
 
 .. note::
@@ -50,7 +50,7 @@ Tasks bugs are issues which occur when running the PIM jobs, like mass edit, imp
 
 **What to do?**
 
-* Analyze the error messages provided in the following file ``/path/to/your/pim/app/logs/batch_execute.log``
+* Analyze the error messages provided in the following file ``/path/to/your/pim/var/logs/batch_execute.log``
 * Launch the command out of the PIM with the tools of your integrated development environment ``php bin/console akeneo:batch:job <batch_name> <additional_params>``
 * Check the to do list of the "Backend bugs" section.
 
