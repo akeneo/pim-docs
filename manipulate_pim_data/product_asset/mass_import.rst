@@ -1,9 +1,9 @@
 How to Mass Import Assets
 =========================
 
-A command has been created in the PIM to allow you to mass import assets: ``php app/console pim:product-asset:mass-upload --user=[username]``
+A command has been created in the PIM to allow you to mass import assets: ``php bin/console pim:product-asset:mass-upload --user=[username]``
 
-For instance, with the user "admin", the command will be: ``php app/console pim:product-asset:mass-upload --user=admin``
+For instance, with the user "admin", the command will be: ``php bin/console pim:product-asset:mass-upload --user=admin``
 
 To make this command work, you need to copy the files you want to import into the following folder:
 
@@ -31,4 +31,4 @@ The job accepts a CSV file in the same format as the one below (delimiters and e
 In the profile configuration of the import job, you can specify the path to the assets CSV file on the server, so that this file is imported when the job is executed.
 
 Then, the job can be can ran with:
-``php app/console akeneo:batch:job assets_mass_upload --env=prod``
+``php bin/console akeneo:batch:job assets_mass_upload --env=prod``

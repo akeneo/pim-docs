@@ -175,7 +175,7 @@ Now you can run the job from the UI or use the following command:
 
 .. code-block:: bash
 
-    php app/console akeneo:batch:job xml_product_import
+    php bin/console akeneo:batch:job xml_product_import
 
 Adding support for invalid items export
 ---------------------------------------

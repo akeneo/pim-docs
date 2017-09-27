@@ -33,7 +33,7 @@ To fix this issue, just run the following commands:
 
     cd /path/to/your/pim/
     rm -rf web/translations/*
-    php app/console oro:translation:dump
+    php bin/console oro:translation:dump
 
 Some Javascript, CSS or media files are not taken into account
 --------------------------------------------------------------
@@ -58,8 +58,8 @@ You can revert this operation by running the following commands:
     cd /path/to/your/pim/
     rm ./web/js/oro.min.js
     rm -rf ./app/cache/*
-    php app/console pim:install:asset --env=prod
-    php app/console assets:install --symlink web
+    php bin/console pim:install:asset --env=prod
+    php bin/console assets:install --symlink web
 
 I cannot export my products "An exception occurred during the export"
 ---------------------------------------------------------------------

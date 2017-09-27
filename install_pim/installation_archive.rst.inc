@@ -40,7 +40,7 @@ Frontend,
 .. code-block:: bash
     :linenos:
 
-    $ php app/console cache:clear --env=prod
+    $ php bin/console cache:clear --env=prod
     $ php bin/console --env=prod pim:installer:assets --symlink --clean
     $ yarn run webpack
 
@@ -50,7 +50,7 @@ Installation,
     :linenos:
 
     $ bin/console --env=prod pim:install --force --symlink --clean
-    $ php app/console pim:install --env=prod
+    $ php bin/console pim:install --env=prod
     $ yarn run webpack
 
 .. note::

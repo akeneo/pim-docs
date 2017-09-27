@@ -27,7 +27,7 @@ Here follow the recommended steps to restore a backup:
     .. code-block:: php
 
         cd <application_root_folder>
-        php app/console cache:clear --env=prod
+        php bin/console cache:clear --env=prod
 
   * Reopen access to application users
 

@@ -129,7 +129,7 @@ You can now create your template ``/src/Acme/Bundle/EnrichBundle/Resources/views
 
     {{ dump(form) }}
 
-After a cache clear (``app/console cache:clear``) you should see something like this on the category edit form:
+After a cache clear (``bin/console cache:clear``) you should see something like this on the category edit form:
 
 As you can see, you will have to translate the tab title in your translations file (see https://symfony.com/doc/2.7/translation.html).
 

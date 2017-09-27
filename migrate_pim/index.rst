@@ -35,8 +35,8 @@ Then clean the cache, re-install assets and warmup the cache:
 .. code-block:: bash
 
     rm -rf app/cache/* ./web/bundles/* ./web/css/* ./web/js/*
-    app/console --env=prod pim:installer:assets
-    app/console --env=prod cache:warmup
+    bin/console --env=prod pim:installer:assets
+    bin/console --env=prod cache:warmup
 
 If the patch is a javascript fix, please clear your browser cache before testing.
 
@@ -92,8 +92,8 @@ Then follow the same process as the one for the community edition:
 .. code-block:: bash
 
     rm -rf app/cache/*
-    app/console --env=prod pim:installer:assets
-    app/console --env=prod cache:warmup
+    bin/console --env=prod pim:installer:assets
+    bin/console --env=prod cache:warmup
 
 
 Minor Version

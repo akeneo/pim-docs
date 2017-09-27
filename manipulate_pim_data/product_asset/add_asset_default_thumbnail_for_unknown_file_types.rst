@@ -47,7 +47,7 @@ Override the ``pim_enrich.guesser.file_type`` service and ``pim_enrich.provider.
                 - acme_custom_file_audio: ['audio/*']
 
 Then remove Symfony cache and reinstall PIM assets:
-``php app/console cache:clear``
-``php app/console pim:install:assets``
+``php bin/console cache:clear``
+``php bin/console pim:install:assets``
 
 Now, you can add a mp3 file in an asset and in the grid you'll see your new thumbnail.
