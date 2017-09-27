@@ -19,7 +19,7 @@ To add an element at the root of the tree you can reuse the tab module provided 
         config:
             title: pim_menu.item.import_profile        # You can define a translation key for the tab name
 
-After running the command ``app/console pim:install:asset`` your new item should appear at the root of the menu
+After running the command ``bin/console pim:install:asset`` your new item should appear at the root of the menu
 
 Define a simple node inside a tab of the menu
 *********************************************
@@ -39,7 +39,7 @@ Now if you want to add an element inside the menu, you can use the item module:
             title: pim_menu.item.import_profile        # You can define a translation key for the item name
             to: pim_importexport_import_profile_index  # The route to redirect to
 
-After running the command ``app/console pim:install:asset`` your new item should appear in the menu
+After running the command ``bin/console pim:install:asset`` your new item should appear in the menu
 
 Use you own menu extension item
 *******************************

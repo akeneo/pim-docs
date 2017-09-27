@@ -1,7 +1,7 @@
 vendor/
 app/config/*
-app/cache/*
-app/logs/*
-web/bundles/*
-web/css/*
+!app/parameters.yml.dist
+var/
+web/*
+!web/.gitkeep
 _build/

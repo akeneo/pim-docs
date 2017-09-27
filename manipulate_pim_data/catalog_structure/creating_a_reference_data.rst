@@ -171,7 +171,7 @@ To check if the entities are correctly set up, use the following command:
 
 .. code-block:: bash
 
-    php app/console doctrine:mapping:info
+    php bin/console doctrine:mapping:info
 
 
 Overriding the ProductValue
@@ -185,6 +185,8 @@ This task is documented here :doc:`overriding_the_orm_product_value`.
 
 Don't forget to check the mapping of the product value and to register the custom class in the container.
 
+
+.. _reference-data-configuration:
 
 Configuring the Reference Data
 ------------------------------
@@ -218,7 +220,7 @@ To check the setup and the configuration of a reference data, use the following 
 
 .. code-block:: bash
 
-    php app/console pim:reference-data:check
+    php bin/console pim:reference-data:check
 
 If everything is green, the reference data is correctly configured and may be linked to the products within the PIM,
 and displayed in the Back Office.

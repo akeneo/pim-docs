@@ -136,4 +136,4 @@ You can run the job from the UI or you can use following command:
 
 .. code-block:: bash
 
-    php app/console akeneo:batch:job my_job_code
+    php bin/console akeneo:batch:job my_job_code

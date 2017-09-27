@@ -7,11 +7,11 @@ The application needs the following tasks to be executed in background on a regu
     :linenos:
 
     # for community and enterprise editions
-    /path/to/php /path/to/installation/pim-community-standard/app/console pim:completeness:calculate --env=prod    # recalculates the products completeness
-    /path/to/php /path/to/installation/pim-community-standard/app/console pim:versioning:refresh --env=prod        # processes pending versions
+    /path/to/php /path/to/installation/pim-community-standard/bin/console pim:completeness:calculate --env=prod    # recalculates the products completeness
+    /path/to/php /path/to/installation/pim-community-standard/bin/console pim:versioning:refresh --env=prod        # processes pending versions
 
     # for enterprise edition only
-    path/to/php /path/to/installation/pim-community-standard/app/console akeneo:rule:run --env=prod               # executes rules on products
+    path/to/php /path/to/installation/pim-community-standard/bin/console akeneo:rule:run --env=prod               # executes rules on products
 
 Edit your crontab with ``crontab -e`` and configure each task. For example, the following line will run the completeness calculation every 15 minutes:
 
@@ -19,7 +19,7 @@ Edit your crontab with ``crontab -e`` and configure each task. For example, the 
     :linenos:
 
     # m  h  dom  mon  dow  command
-    */15 *  *    *    *    /path/to/php /path/to/installation/pim-community-standard/app/console pim:completeness:calculate --env=prod > /path/to/installation/pim-community-standard/app/logs/calculate_completeness.log 2>&1
+    */15 *  *    *    *    /path/to/php /path/to/installation/pim-community-standard/bin/console pim:completeness:calculate --env=prod > /path/to/installation/pim-community-standard/app/logs/calculate_completeness.log 2>&1
 
 .. note::
 

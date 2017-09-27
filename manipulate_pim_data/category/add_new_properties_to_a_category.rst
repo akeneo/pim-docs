@@ -74,8 +74,8 @@ Now, you can run the following commands to update your database:
 
 .. code-block:: bash
 
-    php app/console doctrine:schema:update --dump-sql
-    php app/console doctrine:schema:update --force
+    php bin/console doctrine:schema:update --dump-sql
+    php bin/console doctrine:schema:update --force
 
 Define the Category Form
 ************************
@@ -221,8 +221,8 @@ Now, you can run the following commands to update your database:
 
 .. code-block:: bash
 
-    php app/console doctrine:schema:update --dump-sql
-    php app/console doctrine:schema:update --force
+    php bin/console doctrine:schema:update --dump-sql
+    php bin/console doctrine:schema:update --force
 
 Define the Category Form
 ************************

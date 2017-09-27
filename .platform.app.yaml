@@ -10,6 +10,11 @@ type: "python:2.7"
 build:
     flavor: "none"
 
+variables:
+    env:
+        PIM_VERSION: $PLATFORM_BRANCH
+        PIM_VERSIONS: $PLATFORM_BRANCH
+
 # The configuration of app when it is exposed to the web.
 web:
     # The public directory of the app, relative to its root.
@@ -55,9 +60,10 @@ hooks:
       . .virtualenv/bin/activate
       # Platform.sh currently sets PIP_USER=1.
       export PIP_USER=
-      export PIM_VERSION=PLATFORM_BRANCH
-      export PIM_VERSIONS=PLATFORM_BRANCH
       pip install sphinx~=1.5.3
       pip install git+https://github.com/fabpot/sphinx-php.git
       pip install git+https://github.com/mickaelandrieu/sphinxcontrib.youtube.git
-      sphinx-build -b html . ./build
+
+      export PIM_VERSION=$PLATFORM_BRANCH
+      export PIM_VERSIONS=$PLATFORM_BRANCH
+      sphinx-build -b html . ./build 

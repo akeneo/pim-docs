@@ -108,7 +108,15 @@ Then you will need to add the job parameters classes (they define the job config
    :language: php
    :linenos:
 
-For further information you can check the following cookbook: :doc:`/import_and_export_data/guides/create-connector`
+.. literalinclude:: ../../src/Acme/Bundle/XmlConnectorBundle/Resources/config/form_extensions/job_instance/xml_product_import_edit.yml
+  :language: yaml
+  :linenos:
+
+.. literalinclude:: ../../src/Acme/Bundle/XmlConnectorBundle/Resources/config/form_extensions/job_instance/xml_product_import_show.yml
+   :language: yaml
+   :linenos:
+
+For further information you can check the following cookbook: :doc:`/import_and_export_data/guides/create-connector`.
 
 .. important::
 
@@ -167,7 +175,7 @@ Now you can run the job from the UI or use the following command:
 
 .. code-block:: bash
 
-    php app/console akeneo:batch:job xml_product_import
+    php bin/console akeneo:batch:job xml_product_import
 
 Adding support for invalid items export
 ---------------------------------------

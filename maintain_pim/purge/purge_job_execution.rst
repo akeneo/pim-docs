@@ -11,7 +11,7 @@ Akeneo PIM provides a simple command to purge jobs executions:
 .. code-block:: bash
     :linenos:
 
-    app/console akeneo:batch:purge-job-execution [-d|--days DAYS]
+    bin/console akeneo:batch:purge-job-execution [-d|--days DAYS]
 
 .. tip::
     Don't forget to add --env=prod to avoid memory leaks in dev environment (the default environment for commands)
@@ -21,7 +21,7 @@ You can also provide a custom configuration for the job:
 .. code-block:: bash
     :linenos:
 
-    app/console akeneo:batch:purge-job-execution --days=30 --env=prod
+    bin/console akeneo:batch:purge-job-execution --days=30 --env=prod
 
 For example, with the option --days=30, the command will remove all jobs executions older than 30 days.
 
@@ -51,6 +51,6 @@ You can now add a new line at the end of the opened file:
 .. code-block:: bash
     :linenos:
 
-    0 0 * * * /home/akeneo/pim/app/console akeneo:batch:purge-job-execution --env=prod
+    0 0 * * * /home/akeneo/pim/bin/console akeneo:batch:purge-job-execution --env=prod
 
 With this cron configuration a purge of jobs executions older than 90 days, will be launched once a day.

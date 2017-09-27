@@ -202,7 +202,7 @@ Then, if you introduced BC Breaks in namespaces for example (but you should/must
 description of the BC Break.
 Moreover, you have to add in ``UPGRADE-1.x.md`` a way to fix this BC Break in files (like sed command for example).
 To finish, if you introduced database BC Break, you have to add migration files in `upgrades/schema/`.
-In most of the cases using `php app/console doctrine:migrations:diff` is enough to create a database migration class
+In most of the cases using `php bin/console doctrine:migrations:diff` is enough to create a database migration class
 (see `Doctrine migration documentation`_) but sometimes you will have to do it manually.
 
 When your patch is not about a bug fix (when you add a new feature or change
