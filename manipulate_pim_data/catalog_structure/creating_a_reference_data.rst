@@ -186,6 +186,8 @@ This task is documented here :doc:`overriding_the_orm_product_value`.
 Don't forget to check the mapping of the product value and to register the custom class in the container.
 
 
+.. _reference-data-configuration:
+
 Configuring the Reference Data
 ------------------------------
 

@@ -142,7 +142,7 @@ The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/proc
 
 The class ``Pim\Component\Connector\Processor\Normalization\ProductProcessor`` mainly delegates the transformation to the service ``pim_serializer.normalizer.product``.
 
-We can see here that we normalize each product into the ``standard`` format. It is the writer's responsibility to convert the standard format to the flat format. (cf :doc:`/import_and_export_data/guides/clean-csv-file-during-product-export`)
+We can see here that we normalize each product into the ``standard`` format. It is the writer's responsibility to convert the standard format to the flat format. (cf :doc:`/import_and_export_data/guides/clean-csv-file-during-product-import`)
 
 .. code-block:: php
 
