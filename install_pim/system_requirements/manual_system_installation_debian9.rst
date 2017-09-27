@@ -24,16 +24,16 @@ It's also recommended to disable all non desired tools, such as MySQL Workbench 
 
 .. code-block:: bash
 
-    # apt install lsb-release apt-transport-https ca-certificates
-    # wget -O mysql-apt-config.deb https://dev.mysql.com/get/mysql-apt-config_0.8.7-1_all.deb
-    # dpkg -i mysql-apt-config.deb
+    $ apt install lsb-release apt-transport-https ca-certificates
+    $ wget -O mysql-apt-config.deb https://dev.mysql.com/get/mysql-apt-config_0.8.7-1_all.deb
+    $ dpkg -i mysql-apt-config.deb
 
 Now is the time to install what has been configured in the step before:
 
 .. code-block:: bash
 
-    # apt update
-    # apt install mysql-server
+    $ apt update
+    $ apt install mysql-server
 
 PHP 7.1
 *******
@@ -44,22 +44,22 @@ First, install the `repository <https://packages.sury.org/php/README.txt>`_:
 
 .. code-block:: bash
 
-    # apt install apt-transport-https ca-certificates
-    # wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
-    # sh -c 'echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list'
-    # apt update
+    $ apt install apt-transport-https ca-certificates
+    $ wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+    $ sh -c 'echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list'
+    $ apt update
 
 Then, install PHP and the required extensions:
 
 .. code-block:: bash
 
-    # apt install php7.1-apcu php7.1-bcmath php7.1-cli php7.1-curl php7.1-fpm php7.1-gd php7.1-intl php7.1-mcrypt php7.1-mysql php7.1-soap php7.1-xml php7.1-zip
+    $ apt install php7.1-apcu php7.1-bcmath php7.1-cli php7.1-curl php7.1-fpm php7.1-gd php7.1-intl php7.1-mcrypt php7.1-mysql php7.1-soap php7.1-xml php7.1-zip
 
 For Enterprise Edition, please also install:
 
 .. code-block:: bash
 
-    # apt install php7.1-imagick
+    $ apt install php7.1-imagick
 
 Elasticsearch 5.5+
 ******************
@@ -71,21 +71,21 @@ The easiest way to install Elasticsearch 5.5+ is to use the `official vendor pac
 
 .. code-block:: bash
 
-    # apt install apt-transport-https
-    # wget -O - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
-    # echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-5.x.list
-    # apt update
-    # apt install openjdk-8-jre-headless
-    # apt install elasticsearch
+    $ apt install apt-transport-https
+    $ wget -O - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
+    $ echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-5.x.list
+    $ apt update
+    $ apt install openjdk-8-jre-headless
+    $ apt install elasticsearch
 
 Apache
 ******
 
 .. code-block:: bash
 
-    # apt install apache2
-    # a2enmod rewrite proxy_fcgi
-    # systemctl restart apache2
+    $ apt install apache2
+    $ a2enmod rewrite proxy_fcgi
+    $ systemctl restart apache2
 
 .. note::
 
@@ -93,6 +93,6 @@ Apache
 
 .. code-block:: bash
 
-    # a2dismod php5
+    $ a2dismod php5
 
 .. include:: system_configuration.rst.inc
