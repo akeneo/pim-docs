@@ -8,6 +8,7 @@ Once the requirements are fulfilled, you are ready to install Akeneo PIM. Otherw
 
     installation_ce_archive
     installation_ee_archive
+    installation_docker
 
 Here are the guidelines to set everything up according to your operating system:
 
