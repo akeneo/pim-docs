@@ -15,7 +15,7 @@ You can also download them directly from the command line:
 .. code-block:: bash
     :linenos:
 
-    $ wget https://download.akeneo.com/pim-community-standard-v1.8-latest-icecat.tar.gz #for icecat version
-    $ wget https://download.akeneo.com/pim-community-standard-v1.8-latest.tar.gz #for minimal version
+    $ wget https://download.akeneo.com/pim-community-standard-v2.0-latest-icecat.tar.gz #for icecat version
+    $ wget https://download.akeneo.com/pim-community-standard-v2.0-latest.tar.gz #for minimal version
 
 .. include:: ./installation_archive.rst.inc

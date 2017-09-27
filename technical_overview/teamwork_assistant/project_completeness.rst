@@ -109,7 +109,7 @@ _______________
 
 The drawback of this method is that the completeness is not really up-to-date. For the moment, the pre-processing data
 are computed once you save a project, when you save a product concerned by a project from the Product Edit Form and the
-sequential edit. Moreover, a command ``php app/console pimee:project:recalculate`` is provided to help you to
+sequential edit. Moreover, a command ``php bin/console pimee:project:recalculate`` is provided to help you to
 recalculate data according to your needs.
 
 .. _scalability guide: scalability_guide.html

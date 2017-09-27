@@ -21,5 +21,5 @@ To add a pack you have to:
 
  * rename the directories by following the rule ``src/Pim/Bundle/EnrichBundle`` to ``PimEnrichBundle``
  * move this directory to ``app/Resources/``
- * run ``php app/console oro:translation:dump fr de en --env=prod`` (if you use en, fr and de locales)
- * run ``php app/console cache:clear --env=prod``
+ * run ``php bin/console oro:translation:dump fr de en --env=prod`` (if you use en, fr and de locales)
+ * run ``php bin/console cache:clear --env=prod``

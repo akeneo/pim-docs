@@ -72,7 +72,7 @@ Now that our file is registered in `requirejs` configuration, we can add this ex
             aclResourceId: pim_enrich_product_categories_view  # The user will need this ACL for this extension to be registered
             position: 90                                       # The extension position
 
-After a cache clear (`app/console cache:clear`), you should see your new tab in the product edit form. If not, make sure that you ran the `app/console assets:install --symlink web` command
+After a cache clear (`bin/console cache:clear`), you should see your new tab in the product edit form. If not, make sure that you ran the `bin/console assets:install --symlink web` command
 
 Now that we have our extension loaded in our form, we can add some logic into it
 

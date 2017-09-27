@@ -5,15 +5,15 @@ Extracting the archive
     :linenos:
 
     $ mkdir -p /path/to/installation
-    $ tar -xvzf pim-community-standard-v1.8-latest-icecat.tar.gz -C /path/to/installation/
+    $ tar -xvzf pim-community-standard-v2.0-latest-icecat.tar.gz -C /path/to/installation/
 
 .. note::
     Replace */path/to/installation* by the path to the directory where you want to install the PIM.
 
 .. note::
-    * For Community Edition, replace *pim-community-standard-v1.8-latest-icecat.tar.gz* by the location and the name
+    * For Community Edition, replace *pim-community-standard-v2.0-latest-icecat.tar.gz* by the location and the name
       of the archive you have downloaded from https://www.akeneo.com/download
-    * For Enterprise Edition, replace *pim-community-standard-v1.8-latest-icecat.tar.gz* by the location and the name
+    * For Enterprise Edition, replace *pim-community-standard-v2.0-latest-icecat.tar.gz* by the location and the name
       of the archive you have downloaded from `Partner portal <https://partners.akeneo.com/login>`_
 
 .. note::
@@ -21,13 +21,37 @@ Extracting the archive
 
 Initializing Akeneo
 -------------------
+
 .. code-block:: bash
     :linenos:
 
     $ cd /path/to/installation/pim-community-standard
-    $ ../composer.phar install --optimize-autoloader --prefer-dist  # optional for community edition
-    $ php app/console cache:clear --env=prod
-    $ php app/console pim:install --env=prod
+
+Dependencies,
+
+.. code-block:: bash
+    :linenos:
+
+    $ ../composer.phar install --optimize-autoloader --prefer-dist memory_limit=3G
+    $ yarn install
+
+Frontend,
+
+.. code-block:: bash
+    :linenos:
+
+    $ php bin/console cache:clear --env=prod
+    $ php bin/console --env=prod pim:installer:assets --symlink --clean
+    $ yarn run webpack
+
+Installation,
+
+.. code-block:: bash
+    :linenos:
+
+    $ bin/console --env=prod pim:install --force --symlink --clean
+    $ php bin/console pim:install --env=prod
+    $ yarn run webpack
 
 .. note::
     The ``../composer.phar install`` command writes the database configuration to ``app/config/parameters.yml``

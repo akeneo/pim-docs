@@ -103,14 +103,14 @@ We can create an instance with the following command:
 .. code-block:: bash
 
     # akeneo:batch:create-job <connector> <job> <type> <code> <config> [<label>]
-    php app/console akeneo:batch:create-job 'Acme CSV Notify Connector' csv_product_export_notify export my_app_product_export '{"urlToNotify": "http://my-app.com/product-export-done"}'
+    php bin/console akeneo:batch:create-job 'Acme CSV Notify Connector' csv_product_export_notify export my_app_product_export '{"urlToNotify": "http://my-app.com/product-export-done"}'
 
 
 You can also list the existing job instances with the following command:
 
 .. code-block:: bash
 
-    php app/console akeneo:batch:list-jobs
+    php bin/console akeneo:batch:list-jobs
 
 Execute our new job instance
 ----------------------------
@@ -119,7 +119,7 @@ You can run the job with the following command:
 
 .. code-block:: bash
 
-    php app/console akeneo:batch:job my_app_product_export
+    php bin/console akeneo:batch:job my_app_product_export
 
     [2017-04-18 18:43:55] batch.DEBUG: Job execution starting: startTime=, endTime=, updatedTime=, status=2, exitStatus=[UNKNOWN] , exitDescription=[], job=[my_app_product_export] [] []
     [2017-04-18 18:43:55] batch.INFO: Step execution starting: id=0, name=[export], status=[2], exitCode=[EXECUTING], exitDescription=[] [] []
@@ -135,7 +135,7 @@ The ``--config`` option can be used to override the job instance parameters at r
 
 .. code-block:: bash
 
-    php app/console akeneo:batch:job my_app_product_export --config='{"filePath":"\/tmp\/new_path.csv"}'
+    php bin/console akeneo:batch:job my_app_product_export --config='{"filePath":"\/tmp\/new_path.csv"}'
 
 Configure the UI for our new job
 --------------------------------
@@ -290,7 +290,7 @@ Now that our file is registered in ``requirejs`` configuration, we can add this 
                 tabTitle: acme_enrich.form.job_instance.tab.mapping.title
                 tabCode: pim-job-instance-mapping
 
-After a cache clear (``app/console cache:clear``), you should see your new tab in the job edit form. If not, make sure that you ran the `app/console assets:install --symlink web` command.
+After a cache clear (``bin/console cache:clear``), you should see your new tab in the job edit form. If not, make sure that you ran the `bin/console assets:install --symlink web` command.
 
 Now that we have our extension loaded in our form, we can add some logic into it, check how to `customize the UI`_.
 

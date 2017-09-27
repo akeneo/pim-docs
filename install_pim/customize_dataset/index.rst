@@ -26,7 +26,7 @@ You can now (re)install your database by running:
 
 .. code-block:: bash
 
-    php app/console pim:installer:db --env=prod
+    php bin/console pim:installer:db --env=prod
 
 Using Your Own Dataset
 ----------------------
@@ -112,4 +112,4 @@ You can now (re)install your database by running:
 
 .. code-block:: bash
 
-    php app/console pim:installer:db --env=prod
+    php bin/console pim:installer:db --env=prod
