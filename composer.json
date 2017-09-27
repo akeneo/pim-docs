@@ -1,14 +1,22 @@
 {
     "name": "akeneo/pim-docs",
     "description": "Technical documentation of the Akeneo PIM",
-    "minimal-stability": "dev",
+    "license": "OSL-3.0",
     "require": {
         "fabpot/sphinx-php": "1.0.1",
-        "akeneo/pim-community-dev": "dev-master",
-        "symfony/console": "~2.0"
+        "akeneo/pim-community-dev": "2.0.x-dev@dev",
+        "symfony/console": "3.3.6"
     },
     "config": {
         "vendor-dir": "vendor"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        },
+        "psr-4": {
+        },
+        "classmap": [ "app/AppKernel.php" ]
     },
     "repositories": [
         {

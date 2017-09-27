@@ -8,7 +8,7 @@ We use `Crowdin`_ to translate the PIM.
 How to translate
 ----------------
 
-Don't hesitate to create an account and begin to translate on: https://crowdin.net/project/akeneo
+Don't hesitate to create an account and begin to translate on: https://crowdin.com/project/akeneo
 
 If your language is not enabled, don't hesitate to ask, we'll enable it with pleasure.
 

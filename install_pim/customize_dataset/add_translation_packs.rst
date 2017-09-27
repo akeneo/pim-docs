@@ -2,7 +2,7 @@
 How to Add Translation Packs
 ============================
 
-.. _Crowdin: https://crowdin.net/project/akeneo/
+.. _Crowdin: https://crowdin.com/project/akeneo/
 
 
 Akeneo PIM UI is translated through `Crowdin`_ (feel free to :doc:`/contribute_to_pim/translate`!).

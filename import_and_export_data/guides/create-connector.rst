@@ -142,12 +142,7 @@ Configure the UI for our new job
 
 At this point the job instance is usable in command line, but it cannot be configured via the UI.
 
-Like most of UI parts in the application now, the job instance forms are made of "form extensions".
-A form is defined by a configuration file that must be inside the ``Resource/config/form_extensions/`` directory of your bundle.
-There is no rule for the name of the file itself.
-
 Since our job is based on the native Product CSV export job, we can copy and paste the native configuration files, then customize it.
-
 
 We need to provide a form name to the frontend to be able to render it properly. If your connector doesn't require extra fields, you can use the basic forms shipped with Akeneo.
 There are actually two forms for each job: one for edit mode and one for view mode. This way we can tune very finely what is displayed for each mode.
@@ -165,9 +160,9 @@ Indeed, each key in form configuration files must be unique across the whole app
     We are aware that this is not an ideal solution and we're working on a more satisfactory way to handle relations between forms.
     If you have any idea feel free to propose it or even write a contribution!
 
-Each configuration file describes the tree of views that will be rendered in the frontend.
-When the frontend wants to render a form, it needs its root (the view declared without ``parent`` property, usually at the very beginning of the file).
-The children views are then rendered in cascade.
+.. note::
+
+    You can find details about frontend customization in this section: :doc:`/design_pim/overview`
 
 Now we need to declare a provider to link your job to the right form root:
 
@@ -197,16 +192,6 @@ To do that, we need to register a new view in our form, representing the new fie
     :language: yaml
     :linenos:
     :lines: 250-259
-
-What does it mean? First you must specify a key. As stated above it must be unique in your application.
-
-Then, each view has the following properties:
-
-- **module**: It's the view module that will be rendered. The value is the key declared in the ``requirejs.yml`` file for this module.
-- **parent**: As forms are trees, each view must declare its parent (except the root obviously). The value is the key of the parent, that's why keys must be unique.
-- **aclResourceId**: If the current user doesn't have this ACL granted, the view (and all its children) won't be included in the final tree.
-- **targetZone**: Views can have different zones. When a child wants to register itself in a parent, it can choose in which zone to be appended. Zones are defined by a ``data-drop-zone`` attribute in the DOM.
-- **position**: When several views are registered in the same parent for the same zone, they are ordered following their positions, in ascending order.
 
 Job form fields need special properties defined under the ``config`` key:
 
@@ -290,7 +275,7 @@ Now that our file is registered in ``requirejs`` configuration, we can add this 
             config:
                 tabTitle: acme_enrich.form.job_instance.tab.mapping.title
                 tabCode: pim-job-instance-mapping
-                
+
 
     # /src/Acme/Bundle/EnrichBundle/Resources/config/form_extensions/job_instance/csv_product_export_show.yml
 
@@ -308,5 +293,5 @@ Now that our file is registered in ``requirejs`` configuration, we can add this 
 After a cache clear (``app/console cache:clear``), you should see your new tab in the job edit form. If not, make sure that you ran the `app/console assets:install --symlink web` command.
 
 Now that we have our extension loaded in our form, we can add some logic into it, check how to `customize the UI`_.
-    
+
 .. _customize the UI: ../ui
