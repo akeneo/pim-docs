@@ -6,9 +6,9 @@ Once the requirements are fulfilled, you are ready to install Akeneo PIM. Otherw
 .. toctree::
     :maxdepth: 1
 
-    system_requirements/system_requirements
     installation_ce_archive
     installation_ee_archive
+    installation_docker
 
 Here are the guidelines to set everything up according to your operating system:
 
@@ -17,6 +17,7 @@ Here are the guidelines to set everything up according to your operating system:
 
     system_requirements/system_install_ubuntu_1604
     system_requirements/manual_system_installation_debian9
+    system_requirements/system_requirements
 
 
 .. toctree::

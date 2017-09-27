@@ -86,7 +86,7 @@ Then, install the database for this environment.
 
 .. code-block:: bash
 
-    $ php app/console pim:install --env=behat --force
+    $ php bin/console pim:install --env=behat --force
 
 Then, copy behat.yml.dist to behat.yml, edit base_url parameter to match your host:
 

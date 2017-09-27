@@ -267,10 +267,10 @@ Finally, check that your mapping override is correct by launching the following 
 
 .. code-block:: bash
 
-    php app/console doctrine:mapping:info
+    php bin/console doctrine:mapping:info
 
 Now you are ready to perform a Doctrine schema update and to use your own `ProductValue` class:
 
 .. code-block:: bash
 
-    php app/console doctrine:schema:update --dump-sql --force
+    php bin/console doctrine:schema:update --dump-sql --force

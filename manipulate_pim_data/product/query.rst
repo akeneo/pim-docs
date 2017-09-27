@@ -118,7 +118,7 @@ We introduced a new Command to execute a query through the Product Query Builder
 
 .. code-block:: bash
 
-    php app/console pim:product:query '[{"field":"completeness","operator":"=","value":"100","context":{"locale":"en_US","scope":"print"}}]' --page-size=20
+    php bin/console pim:product:query '[{"field":"completeness","operator":"=","value":"100","context":{"locale":"en_US","scope":"print"}}]' --page-size=20
 
 By default this command returns a table formatted list of products on the standard output.
 
@@ -147,7 +147,7 @@ To help you know which filters are available for your installation, you can run 
 
 .. code-block:: bash
 
-    php app/console pim:product:query-help
+    php bin/console pim:product:query-help
 
 Add a Custom Filter
 -------------------

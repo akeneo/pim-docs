@@ -60,7 +60,6 @@ The web server will also need the following libraries and modules:
 | php7.1-imagick | No specific configuration |
 +----------------+---------------------------+
 
-
 .. warning::
 
   function `exec()` is required in order to handle data import/export, check if it hasn't been disabled in your php.ini.
@@ -69,9 +68,18 @@ Besides these modules, the following configuration is the minimal configuration 
 
 .. include:: /technical_architecture/technical_information/php_ini.rst.inc
 
-** Extra dependencies
+**Extra dependencies**
+
 +----------------+---------------------------+
-| image magick   | ≥ 6.8                     |
+| Image magick   | ≥ 6.8                     |
++----------------+---------------------------+
+
+**Javascript**
+
++----------------+---------------------------+
+| nodejs         | ≥ 6.11.0 - 8.2.1          |
++----------------+---------------------------+
+| yarn           | 0.27.5                    |
 +----------------+---------------------------+
 
 .. _database-servers:

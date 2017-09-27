@@ -26,14 +26,20 @@
         }
     ],
     "scripts": {
-        "post-autoload-dump": [
-            "mkdir -p $(pwd)/app/config",
+        "symfony-scripts": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "ln -sf $(pwd)/vendor/akeneo/pim-community-dev/app/config/config.yml $(pwd)/app/config/",
             "ln -sf $(pwd)/vendor/akeneo/pim-community-dev/app/config/config_dev.yml $(pwd)/app/config/",
             "ln -sf $(pwd)/vendor/akeneo/pim-community-dev/app/config/security.yml $(pwd)/app/config/",
             "ln -sf $(pwd)/vendor/akeneo/pim-community-dev/app/config/pim_parameters.yml $(pwd)/app/config/",
             "php app/console asset:install || php app/console asset:install",
             "php app/console oro:assetic:dump"
+        ],
+        "post-install-cmd": [
+            "@symfony-scripts"
+        ],
+        "post-update-cmd": [
+            "@symfony-scripts"
         ]
     },
     "extra": {

@@ -156,7 +156,7 @@ If your installation is already set up, use the `akeneo:batch:create-job` comman
 
 .. code-block:: bash
 
-    php app/console akeneo:batch:create-job "Akeneo Mass Edit Connector" "mass_edit_capitalize_values" "mass_edit" "mass_edit_capitalize_values" '{}' "Mass capitalize product values"
+    php bin/console akeneo:batch:create-job "Akeneo Mass Edit Connector" "mass_edit_capitalize_values" "mass_edit" "mass_edit_capitalize_values" '{}' "Mass capitalize product values"
 
 .. warning::
 

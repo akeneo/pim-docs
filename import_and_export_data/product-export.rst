@@ -6,7 +6,7 @@ You can now natively export data into CSV and XLSX format.
 
 .. note::
 
-  Please note that the imports jobs have been widely re-worked in 1.6. The old import system has been removed, please refer to previous versions of this page if needed.
+  Please note that the export jobs have been widely re-worked in 1.6. The old export system has been removed, please refer to previous versions of this page if needed.
 
 Definition of the Job
 ---------------------

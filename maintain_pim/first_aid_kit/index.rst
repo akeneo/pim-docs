@@ -30,7 +30,7 @@ Maybe something has been changed in your server. You can check that by running t
 .. code-block:: bash
 
     cd /path/to/your/pim/
-    php app/console pim:installer:check-requirements
+    php bin/console pim:installer:check-requirements
 
 .. note::
 
@@ -93,7 +93,7 @@ Clear the PIM cache (also known as "Symfony cache") by running the following com
 .. code-block:: bash
 
     cd /path/to/your/pim/
-    php app/console cache:clear --env=prod
+    php bin/console cache:clear --env=prod
 
 Step 9: did you consider the volume of your catalog?
 ----------------------------------------------------

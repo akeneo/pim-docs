@@ -10,4 +10,11 @@ services:
         tags:
             - { name: akeneo_batch.job.job_parameters.constraint_collection_provider }
             - { name: akeneo_batch.job.job_parameters.default_values_provider }
-            - { name: pim_import_export.job_parameters.form_configuration_provider }
+
+    acme_xml_connector.job.job_parameters.provider.simple_xml_product_import:
+        class: '%pim_enrich.provider.form.job_instance.class%'
+        arguments:
+            -
+                xml_product_import: pim-job-instance-xml-product-import
+        tags:
+            - { name: pim_enrich.provider.form }

@@ -11,14 +11,14 @@ Akeneo PIM provides a simple command to launch jobs:
 .. code-block:: bash
     :linenos:
 
-    app/console akeneo:batch:job [-c|--config CONFIG] [--email EMAIL] [--no-log] [--] <code>
+    bin/console akeneo:batch:job [-c|--config CONFIG] [--email EMAIL] [--no-log] [--] <code>
 
 So to run the job csv_product_import you can run:
 
 .. code-block:: bash
     :linenos:
 
-    app/console akeneo:batch:job csv_product_import --env=prod
+    bin/console akeneo:batch:job csv_product_import --env=prod
 
 .. tip::
     Don't forget to add --env=prod to avoid memory leaks in dev environment (the default environment for commands)
@@ -28,7 +28,7 @@ You can also provide a custom configuration (in JSON format) for the job:
 .. code-block:: bash
     :linenos:
 
-    app/console akeneo:batch:job csv_product_import -c "{\"filePath\": \"/custom/path/to/product.csv\"}" --env=prod
+    bin/console akeneo:batch:job csv_product_import -c "{\"filePath\": \"/custom/path/to/product.csv\"}" --env=prod
 
 Scheduling the jobs
 -------------------
@@ -56,6 +56,6 @@ You can now add a new line at the end of the opened file:
 .. code-block:: bash
     :linenos:
 
-    0 * * * * /home/akeneo/pim/app/console akeneo:batch:job csv_product_import -c "{\"filePath\": \"/custom/path/to/product.csv\"}" --env=prod > /tmp/import.log
+    0 * * * * /home/akeneo/pim/bin/console akeneo:batch:job csv_product_import -c "{\"filePath\": \"/custom/path/to/product.csv\"}" --env=prod > /tmp/import.log
 
 With this cron configuration a product import will be launched every hour with the file `/custom/path/to/product.csv`

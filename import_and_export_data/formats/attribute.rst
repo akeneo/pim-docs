@@ -11,7 +11,6 @@ The import/export file follows this data structure:
     :delim: ;
 
 .. _MeasureBundle measures: https://github.com/akeneo/MeasureBundle/blob/master/Resources/config/measure.yml
-.. _Reference data configuration: ../../../manipulate_pim_data/catalog_structure/creating_a_reference_data.html#configuring-the-reference-data
 
 .. note::
 

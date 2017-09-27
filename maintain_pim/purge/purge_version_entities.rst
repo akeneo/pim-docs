@@ -98,7 +98,7 @@ You can add a few test versions in the PIM by modifying and saving a product or 
 
 .. code-block:: bash
 
-    app/console pim:versioning:purge --more-than-days 0 --env=prod
+    bin/console pim:versioning:purge --more-than-days 0 --env=prod
 
 .. warning::
 
