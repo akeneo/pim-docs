@@ -34,7 +34,7 @@ Then clean the cache, re-install assets and warmup the cache:
 
 .. code-block:: bash
 
-    rm -rf app/cache/* ./web/bundles/* ./web/css/* ./web/js/*
+    rm -rf var/cache/* ./web/bundles/* ./web/css/* ./web/js/*
     bin/console --env=prod pim:installer:assets
     bin/console --env=prod cache:warmup
 
@@ -91,7 +91,7 @@ Then follow the same process as the one for the community edition:
 
 .. code-block:: bash
 
-    rm -rf app/cache/*
+    rm -rf var/cache/*
     bin/console --env=prod pim:installer:assets
     bin/console --env=prod cache:warmup
 

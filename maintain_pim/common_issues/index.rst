@@ -57,7 +57,7 @@ You can revert this operation by running the following commands:
 
     cd /path/to/your/pim/
     rm ./web/js/oro.min.js
-    rm -rf ./app/cache/*
+    rm -rf ./var/cache/*
     php bin/console pim:install:asset --env=prod
     php bin/console assets:install --symlink web
 
