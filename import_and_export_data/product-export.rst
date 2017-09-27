@@ -6,7 +6,7 @@ You can now natively export data into CSV and XLSX format.
 
 .. note::
 
-  Please note that the imports jobs have been widely re-worked in 1.6. The old import system has been removed, please refer to previous versions of this page if needed.
+  Please note that the export jobs have been widely re-worked in 1.6. The old export system has been removed, please refer to previous versions of this page if needed.
 
 Definition of the Job
 ---------------------
@@ -142,7 +142,7 @@ The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/proc
 
 The class ``Pim\Component\Connector\Processor\Normalization\ProductProcessor`` mainly delegates the transformation to the service ``pim_serializer.normalizer.product``.
 
-We can see here that we normalize each product into the ``standard`` format. It is the writer's responsibility to convert the standard format to the flat format. (cf :doc:`/import_and_export_data/guides/clean-csv-file-during-product-import`)
+We can see here that we normalize each product into the ``standard`` format. It is the writer's responsibility to convert the standard format to the flat format. (cf :doc:`/import_and_export_data/guides/clean-csv-file-during-product-export`)
 
 .. code-block:: php
 
