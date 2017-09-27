@@ -149,3 +149,8 @@ a {
     overflow-y: auto;
     font-size:90%;
 }
+
+.akeneo-deprecated .last {
+    font-weight: bold;
+    font-size: 110%;
+}
