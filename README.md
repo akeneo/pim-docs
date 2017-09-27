@@ -10,6 +10,7 @@ Clone this repository.
 
 Install [Sphinx](http://sphinx-doc.org/).
 ```bash
+    $ sudo apt-get install python-pip
     $ sudo pip install --upgrade pip
     $ sudo pip install sphinx~=1.5.3
     $ sudo pip install git+https://github.com/fabpot/sphinx-php.git
