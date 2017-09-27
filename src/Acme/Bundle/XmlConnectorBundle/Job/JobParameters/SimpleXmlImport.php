@@ -22,7 +22,6 @@ class SimpleXmlImport implements
     /** @var DefaultValuesProviderInterface */
     protected $defaultValuesProvider;
 
-
     /**
      * {@inheritdoc}
      */
