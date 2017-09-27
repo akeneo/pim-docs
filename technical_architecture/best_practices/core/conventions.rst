@@ -43,10 +43,9 @@ Repositories
 
 Repository Interfaces are defined in Component under /Repository directory
 
-The implementations of Repositories (Doctrine ORM or MongoDBODM) are located in Bundle in:
+The implementations of Repositories (Doctrine ORM) are located in Bundle in:
 
-* /Doctrine/ORM/Repository or
-* /Doctrine/MongoDBODM/Repository
+* /Doctrine/ORM/Repository
 
 Except classes from Doctrine/Common, we should never use Doctrine classes in a class which is not located in /Doctrine.
 

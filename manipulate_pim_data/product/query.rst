@@ -8,11 +8,6 @@ The Akeneo PIM project introduces services to help you manage your product objec
 
 The ProductQueryBuilder (PQB) allows you to build and execute complex queries with a simple API.
 
-In Akeneo PIM, products can be stored and accessed through Doctrine ORM (EAV like model) or Doctrine MongoDBODM
-(Document model).
-
-The PQB aims to abstract the used persistence storage to provide the same operations in both cases.
-
 Instantiate a New Product Query Builder
 ---------------------------------------
 
