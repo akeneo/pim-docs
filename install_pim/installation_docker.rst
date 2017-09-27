@@ -109,9 +109,7 @@ the service name in the compose file (``elasticsearch``) and the output port of 
 
 .. note::
 
-  You only need to set ``parameters_test.yml`` if you are using ``akeneo/pim-community-dev`` or ``akeneo/pim-enterprise-dev``. It is not mandatory for using the ``standard`` edition.
-
-For more details on Akeneo configuration, don't hesitate to look at `Akeneo official documentation on the subject <https://docs.akeneo.com/latest/developer_guide/installation/index.html>`_.
+   You only need to set ``parameters_test.yml`` if you are using ``akeneo/pim-community-dev`` or ``akeneo/pim-enterprise-dev``. It is not mandatory for using the ``standard`` edition.
 
 
 Install Akeneo

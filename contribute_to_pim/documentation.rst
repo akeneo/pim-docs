@@ -8,8 +8,8 @@ How to contribute
 
 Want to help improve the Documentation?
 
-The Akeneo PIM documentation uses `reStructuredText`_ as its markup language and
-`Sphinx`_ for building the output (HTML, PDF, ...).
+The Akeneo PIM documentation uses ``reStructuredText`` as its markup language and
+``Sphinx`` for building the output (HTML, PDF, ...).
 
 We're very interested in tutorials or cookbooks to explain how to customize the PIM to fit your project's needs.
 
@@ -45,7 +45,7 @@ similar but different:
 Sphinx
 ------
 
-Sphinx is a build system that adds some nice tools to create documentation
+`Sphinx`_ is a build system that adds some nice tools to create documentation
 from reStructuredText documents. As such, it adds new directives and
 interpreted text roles to standard reST `markup`_.
 
@@ -172,7 +172,6 @@ You can also add links to the PHP documentation:
 
     :phpfunction:`iterator_to_array`
 
-.. _reStructuredText:        http://docutils.sourceforge.net/rst.html
 .. _Sphinx:                  http://www.sphinx-doc.org/en/stable/
 .. _documents:               https://github.com/akeneo/pim-docs
 .. _reStructuredText Primer: http://www.sphinx-doc.org/en/stable/rest.html
