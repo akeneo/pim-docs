@@ -86,7 +86,7 @@ There are two ways of defining the ACL:
 
 For a more complete explanation of the ACL options, refer to `OroSecurityBundle`_.
 
-.. _OroSecurityBundle: https://github.com/orocrm/platform/tree/master/src/Oro/Bundle/SecurityBundle
+.. _OroSecurityBundle: https://github.com/oroinc/platform/tree/master/src/Oro/Bundle/SecurityBundle
 
 
 Enforcing the permissions

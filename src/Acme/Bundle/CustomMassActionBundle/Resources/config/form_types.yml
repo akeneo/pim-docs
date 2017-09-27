@@ -1,7 +1,5 @@
 services:
     acme_custom_mass_action.form.type.capitalize_values:
         class: Acme\Bundle\CustomMassActionBundle\Form\Type\MassEditAction\CapitalizeValuesType
-        arguments:
-            - Acme\Bundle\CustomMassActionBundle\MassEditAction\Operation\CapitalizeValues
         tags:
             - { name: form.type, alias: acme_custom_mass_action_operation_capitalize_values }

@@ -4,7 +4,7 @@ Options data structure
 Options are exported in a CSV file with the following structure:
 
 - **attribute** (required): the linked attribute code
-- **code** (required): the category code
+- **code** (required): the option code
 - **sort_order**: Option rank in the dropdown lists
 - **label-<locale_code>**: each label in a dedicated column (See :doc:`localized-labels`)
 

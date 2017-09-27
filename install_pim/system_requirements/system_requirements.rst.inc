@@ -30,33 +30,36 @@ The web server will also need the following libraries and modules:
 
 **PHP required modules and configuration**
 
-+---------------+---------------------------+
-| PHP           | 7.1                       |
-+---------------+---------------------------+
-| php-apcu      | apc.enable_cli=1          |
-+---------------+---------------------------+
-| php7.1-bcmath | No specific configuration |
-+---------------+---------------------------+
-| php7.1-curl   | No specific configuration |
-+---------------+---------------------------+
-| php7.1 fpm    | No specific configuration |
-+---------------+---------------------------+
-| php7.1-gd     | No specific configuration |
-+---------------+---------------------------+
-| php7.1-intl   | No specific configuration |
-+---------------+---------------------------+
-| php7.1-mcrypt | No specific configuration |
-+---------------+---------------------------+
-| php7.1-mysql  | No specific configuration |
-+---------------+---------------------------+
-| php7.1-soap   | No specific configuration |
-+---------------+---------------------------+
-| php7.1-xml    | No specific configuration |
-+---------------+---------------------------+
-| php7.1-zip    | No specific configuration |
-+---------------+---------------------------+
-| php-exif      | No specific configuration |
-+---------------+---------------------------+
++----------------+---------------------------+
+| PHP            | 7.1                       |
++----------------+---------------------------+
+| php-apcu       | apc.enable_cli=1          |
++----------------+---------------------------+
+| php7.1-bcmath  | No specific configuration |
++----------------+---------------------------+
+| php7.1-curl    | No specific configuration |
++----------------+---------------------------+
+| php7.1-fpm     | No specific configuration |
++----------------+---------------------------+
+| php7.1-gd      | No specific configuration |
++----------------+---------------------------+
+| php7.1-intl    | No specific configuration |
++----------------+---------------------------+
+| php7.1-mcrypt  | No specific configuration |
++----------------+---------------------------+
+| php7.1-mysql   | No specific configuration |
++----------------+---------------------------+
+| php7.1-soap    | No specific configuration |
++----------------+---------------------------+
+| php7.1-xml     | No specific configuration |
++----------------+---------------------------+
+| php7.1-zip     | No specific configuration |
++----------------+---------------------------+
+| php-exif       | No specific configuration |
++----------------+---------------------------+
+| php7.1-imagick | No specific configuration |
++----------------+---------------------------+
+
 
 .. warning::
 
@@ -66,13 +69,18 @@ Besides these modules, the following configuration is the minimal configuration 
 
 .. include:: /technical_architecture/technical_information/php_ini.rst.inc
 
+** Extra dependencies
++----------------+---------------------------+
+| image magick   | ≥ 6.8                     |
++----------------+---------------------------+
+
 .. _database-servers:
 
 **Database server**
 
-+-----------------+-----+
-| MySQL (SQL)     | 5.7 |
-+-----------------+-----+
++-----------------+----------+
+| MySQL (SQL)     | >= 5.7.8 |
++-----------------+----------+
 
 To use this database you will also require the distribution package:
 
@@ -89,7 +97,7 @@ and the following PHP modules:
 **Search engine**
 
 +---------------+---------------------+
-| Elasticsearch | 5.4 ≤ version < 6.0 |
+| Elasticsearch | 5.5 ≤ version < 6.0 |
 +---------------+---------------------+
 
 and the following Java Runtime Environment version
@@ -114,7 +122,7 @@ The following ports should be opened on the server host for the PIM to work prop
 
 **Files and folders access rights**
 
-Most of the application folders and files require only read access. Here is a list of folders that also need write access for the Apache user:
+Most of the application folders and files require only read access. Here is a list of folders that also need write access for the FPM user:
 
 +-------------+--------------------------------------------------------------------------------+
 | var/cache   | Contains application cache files                                               |
@@ -136,12 +144,3 @@ The ``var/uploads`` folder could be located elsewhere depending on the configura
 
     Please note that neither the Apache user or the CLI should be the root user of the system.
 
-**For Enterprise Edition only**
-
-The Enterprise Edition ships with a few special features that require extra dependencies.
-
-+----------------+---------------------------+
-| image magick   | ≥ 6.8                     |
-+----------------+---------------------------+
-| php7.1-imagick | No specific configuration |
-+----------------+---------------------------+
