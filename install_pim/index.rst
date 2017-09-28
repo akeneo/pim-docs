@@ -19,7 +19,6 @@ Here are the guidelines to set everything up according to your operating system:
     system_requirements/manual_system_installation_debian9
     system_requirements/system_requirements
 
-
 .. toctree::
     :maxdepth: 2
     :hidden:
