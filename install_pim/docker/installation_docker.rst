@@ -180,7 +180,7 @@ The version in ``akeneo/pim-community-standard`` or ``akeneo/pim-enterprise-stan
 Run imports and exports
 ***********************
 
-Akeneo 2.x implements a queue for the jobs, as a PHP daemon. This daemon is a Symfony command, that can only executes one job at a time. It does not consume any other job until the job is finished.
+Akeneo 2.x implements a queue for the jobs, as a PHP daemon. This daemon is a Symfony command, that can only execute one job at a time. It does not consume any other job until the job is finished.
 
 You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every 5 seconds the queue, so it's not real time.
 
@@ -205,6 +205,16 @@ If you want to execute only one job:
 .. note::
 
    There is no need to launch a daemon for behat and integration tests. It is performed automatically, the daemon being killed once the test is finished.
+
+.. warning::
+
+   Before stopping or destroying your containers, remember to first stop this daemon if you launched it in background, or you'll end up with a stuck FPM container, and will need to completely restart Docker.
+   The easiest way to do that is to use ``ps`` to find the process ID of your daemon, then kill it with the ``kill`` command as follow (1234 is here just an example):
+
+   .. code-block:: bash
+
+      $ docker-compose exec fpm ps x
+      $ docker-compose exec fpm kill 1234
 
 
 Xdebug
