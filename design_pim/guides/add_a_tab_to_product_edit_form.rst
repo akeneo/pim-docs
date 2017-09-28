@@ -206,4 +206,7 @@ Again, we need to register it and create the template:
     # /src/Acme/Bundle/EnrichBundle/Resources/public/templates/product/panel/warehouse.html
     <%= supplyLevel %>
 
-Remember to clear your cache and you are good to go!
+To see your changes you need to clear the PIM cache and run webpack again
+.. code-block:: bash
+
+    yarn run webpack

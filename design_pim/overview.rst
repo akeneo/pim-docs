@@ -102,7 +102,7 @@ After that the last step is to build the bundle.js file
 
 .. code-block:: bash
 
-    npm run webpack
+    yarn run webpack
 
 
 This command will compile and minify all the pim files into web files and dump them in the public folder.
@@ -111,7 +111,7 @@ You can also use the watch command which will recompile this file each time you 
 
 .. code-block:: bash
 
-    npm run webpack-watch
+    yarn run webpack-watch
 
 
 Summary

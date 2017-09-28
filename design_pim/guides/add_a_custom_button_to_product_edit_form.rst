@@ -21,7 +21,7 @@ First, we need to create our button:
         [
             'underscore',
             'pim/form',
-            'text!pim/template/product/export-csv',
+            'pim/template/product/export-csv',
             'routing'
         ],
         function (
@@ -151,4 +151,7 @@ And add it to our product form:
             targetZone: meta
             position: 90                                     # The extension position
 
-As always, don't forget to clear your cache to see your new metadata!
+To see your changes you need to clear the PIM cache and run webpack again
+.. code-block:: bash
+
+    yarn run webpack

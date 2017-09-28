@@ -88,4 +88,7 @@ And register your extension to the product edit form:
             targetZone: self
             position: 100
 
-Don't forget to clear your cache and you are good to go!
+To see your changes you need to clear the PIM cache and run webpack again
+.. code-block:: bash
+
+    yarn run webpack
