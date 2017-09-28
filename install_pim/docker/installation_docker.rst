@@ -1,5 +1,5 @@
-Installing Akeneo PIM with Docker
-=================================
+Install Akeneo PIM with Docker
+==============================
 
 Akeneo maintains its own Docker images in https://github.com/akeneo/Dockerfiles. This document provides step by step instructions to install the PIM with Docker, using these images.
 
@@ -38,9 +38,28 @@ Otherwise ``docker-compose`` will create it, but only with root accesses. Then f
 Run and stop the containers
 ---------------------------
 
-**All "docker-compose" commands are to be ran from the folder containing the compose file.**
+.. note::
 
-To start your containers, just run:
+   All "docker-compose" commands are to be run from the folder containing the compose file.
+
+.. warning::
+
+   To run the Elasticsearch container, you might need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode>`_.
+   Proceed as follows (first command will affect your current session, second one every boot of your machine):
+
+   .. code-block:: bash
+
+      $ sudo sysctl -w vm.max_map_count=262144
+      $ echo "vm.max_map_count=262144" | sudo tee /etc/sysctl.d/elasticsearch.conf
+
+
+Ensure you have the last versions of the images by running:
+
+.. code-block:: bash
+
+   $ docker-compose pull
+
+To start your containers, run:
 
 .. code-block:: bash
 
@@ -156,6 +175,47 @@ The version in ``akeneo/pim-community-standard`` or ``akeneo/pim-enterprise-stan
    $ docker-compose exec fpm bin/console --env=prod pim:install --force --symlink --clean
 
    $ docker-compose run --rm node yarn run webpack
+
+
+Run imports and exports
+***********************
+
+Akeneo 2.x implements a queue for the jobs, as a PHP daemon. This daemon is a Symfony command, that can only execute one job at a time. It does not consume any other job until the job is finished.
+
+You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every 5 seconds the queue, so it's not real time.
+
+To launch a daemon, run the following command:
+
+.. code-block:: bash
+
+   docker-compose exec fpm bin/console --env=prod akeneo:batch:job-queue-consumer-daemon
+
+If you want to launch the daemon in background:
+
+.. code-block:: bash
+
+   docker-compose exec fpm bin/console --env=prod akeneo:batch:job-queue-consumer-daemon &
+
+If you want to execute only one job:
+
+.. code-block:: bash
+
+   docker-compose exec fpm bin/console --env=prod akeneo:batch:job-queue-consumer-daemon --run-once
+
+.. note::
+
+   There is no need to launch a daemon for behat and integration tests. It is performed automatically, the daemon being killed once the test is finished.
+
+.. warning::
+
+   Before stopping or destroying your containers, remember to first stop this daemon if you launched it in background, or you'll end up with a stuck FPM container, and will need to completely restart Docker.
+   The easiest way to do that is to use ``ps`` to find the process ID of your daemon, then kill it with the ``kill`` command as follow (1234 is here just an example):
+
+   .. code-block:: bash
+
+      $ docker-compose exec fpm ps x
+      $ docker-compose exec fpm kill 1234
+
 
 Xdebug
 ******
