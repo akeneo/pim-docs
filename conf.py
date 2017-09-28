@@ -56,7 +56,7 @@ copyright = u'2013-'+ current_year +', Akeneo SAS'
 # built documents.
 #
 # The short X.Y version.
-version = os.getenv('PIM_VERSION', 'master')
+version = os.getenv('PIM_VERSION', '2.0')
 
 # Warning: These versions will be deleted on documentation deploy.
 versions = os.getenv('PIM_VERSIONS', 'master 2.0 1.7 1.6 1.5 1.4 1.3 1.2 1.1 1.0')
