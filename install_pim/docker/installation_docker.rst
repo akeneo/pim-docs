@@ -1,5 +1,5 @@
-Installing Akeneo PIM with Docker
-=================================
+Install Akeneo PIM with Docker
+==============================
 
 Akeneo maintains its own Docker images in https://github.com/akeneo/Dockerfiles. This document provides step by step instructions to install the PIM with Docker, using these images.
 
@@ -40,12 +40,12 @@ Run and stop the containers
 
 .. note::
 
-   All "docker-compose" commands are to be ran from the folder containing the compose file.
+   All "docker-compose" commands are to be run from the folder containing the compose file.
 
 .. warning::
 
-   To run the Elasticsearch container, you will probably need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode>`_.
-   Proceed as follow (first command will affect your current session, second one every boot of your machine):
+   To run the Elasticsearch container, you might need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode>`_.
+   Proceed as follows (first command will affect your current session, second one every boot of your machine):
 
    .. code-block:: bash
 
@@ -180,7 +180,7 @@ The version in ``akeneo/pim-community-standard`` or ``akeneo/pim-enterprise-stan
 Run imports and exports
 ***********************
 
-Akeneo 2.x implement a queue for the jobs, as a PHP daemon. This daemon is a Symfony command, that can only executes one job at a time. It does not consume any other job until the job is finished.
+Akeneo 2.x implements a queue for the jobs, as a PHP daemon. This daemon is a Symfony command, that can only executes one job at a time. It does not consume any other job until the job is finished.
 
 You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every 5 seconds the queue, so it's not real time.
 

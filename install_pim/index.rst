@@ -1,27 +1,20 @@
 Install Akeneo PIM
 ==================
 
-Once the requirements are fulfilled, you are ready to install Akeneo PIM. Otherwise, check the *Setup System Requirements* pages.
+You can choose either to install Akeneo PIM through Docker or to perform a classic, manual installation on a server.
+
 
 .. toctree::
-    :maxdepth: 1
+   :maxdepth: 1
+   :hidden:
 
-    installation_ce_archive
-    installation_ee_archive
-    installation_docker
+   docker/installation_docker
+   manual/index
 
-Here are the guidelines to set everything up according to your operating system:
-
-.. toctree::
-    :maxdepth: 1
-
-    system_requirements/system_install_ubuntu_1604
-    system_requirements/manual_system_installation_debian9
-    system_requirements/system_requirements
 
 .. toctree::
-    :maxdepth: 2
-    :hidden:
+   :maxdepth: 1
+   :hidden:
 
-    customize_dataset/index
-    customize_dataset/add_translation_packs
+   customize_dataset/index
+   customize_dataset/add_translation_packs
