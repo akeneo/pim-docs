@@ -290,7 +290,14 @@ Now that our file is registered in ``requirejs`` configuration, we can add this 
                 tabTitle: acme_enrich.form.job_instance.tab.mapping.title
                 tabCode: pim-job-instance-mapping
 
-After a cache clear (``bin/console cache:clear``), you should see your new tab in the job edit form. If not, make sure that you ran the `bin/console assets:install --symlink web` command.
+To see your changes in the new tab in the job edit form you need to run:
+
+.. code-block:: bash
+
+    bin/console cache:clear
+    yarn run webpack
+
+If you don't see your changes, make sure you have run (``bin/console assets:install --symlink web``).
 
 Now that we have our extension loaded in our form, we can add some logic into it, check how to `customize the UI`_.
 

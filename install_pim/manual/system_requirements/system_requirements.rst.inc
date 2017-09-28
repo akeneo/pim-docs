@@ -79,7 +79,7 @@ Besides these modules, the following configuration is the minimal configuration 
 +----------------+---------------------------+
 | nodejs         | ≥ 6.11.0 - 8.2.1          |
 +----------------+---------------------------+
-| yarn           | 0.27.5                    |
+| yarn           | ≥ 1.0.0                   |
 +----------------+---------------------------+
 
 .. _database-servers:

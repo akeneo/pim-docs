@@ -5,7 +5,7 @@ Here is a quick guide to setup the :doc:`system_requirements` on Ubuntu 16.04. T
 the packages and modules needed for Akeneo PIM on a freshly installed Ubuntu 16.04 system and then configure the
 application to match your local installation.
 
-.. note::
+.. warning::
 
     Please perform the following commands as root.
 
@@ -60,6 +60,17 @@ The easiest way to install Elasticsearch 5.5+ is to use the `official vendor pac
     $ apt install openjdk-8-jre-headless
     $ apt install elasticsearch
 
+.. warning::
+
+   You will probably need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html#deb-configuring>`_.
+   Proceed as follow (first command will affect your current session, second one every boot of your machine):
+
+   .. code-block:: bash
+
+      $ sysctl -w vm.max_map_count=262144
+      $ echo "vm.max_map_count=262144" | tee /etc/sysctl.d/elasticsearch.conf
+      $ systemctl restart elasticsearch
+
 Apache
 ******
 
@@ -77,14 +88,14 @@ Apache
 
     $ a2dismod php5
 
-.. include:: system_configuration.rst.inc
+.. include:: /install_pim/manual/system_requirements/system_configuration.rst.inc
 
 Node
 ****
 
 .. code-block:: bash
 
-    $ curl -sL https://deb.nodesource.com/setup_8.x | -E bash -
+    $ curl -sL https://deb.nodesource.com/setup_8.x | bash -
     $ apt-get install -y nodejs
 
 Yarn

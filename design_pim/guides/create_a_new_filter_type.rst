@@ -70,7 +70,7 @@ Now that we have a filter provider, we can create the filter itself:
         'underscore',
         'oro/translator',
         'pim/filter/attribute/attribute',
-        'text!acme/template/product/filter/range',
+        'acme/template/product/filter/range',
         'jquery.select2'
     ], function (
         _,
@@ -142,6 +142,12 @@ You can now register this module into our requirejs configuration:
             acme/range-filter: acmecustom/js/product/filter/range-filter
 
             acme/template/product/filter/range: acmecustom/templates/product/filter/range.html
+
+After registering this module you must build the frontend with webpack:
+
+.. code-block:: bash
+
+    yarn run webpack
 
 Then, last operation, match the filter type (`acme-range-filter`) with the requirejs module (`acme/range-filter`):
 
