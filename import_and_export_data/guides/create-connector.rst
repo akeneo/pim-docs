@@ -292,6 +292,7 @@ Now that our file is registered in ``requirejs`` configuration, we can add this 
 
 To see your changes in the new tab in the job edit form you need to run:
 .. code-block:: bash
+
     bin/console cache:clear
     yarn run webpack
 
