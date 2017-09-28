@@ -134,6 +134,7 @@ You can now register this module into your requirejs configuration:
             acme/template/product/field/range: acmecustom/templates/product/field/range.html
 
 After registering this module you must build the frontend with webpack:
+
 .. code-block:: bash
 
     yarn run webpack

@@ -84,7 +84,8 @@ And add it to our product form:
             targetZone: buttons
             position: 90                             # The extension position (lower will be first)
 
-To see your changes you need to clear the PIM cache and run webpack again
+To see your changes you need to clear the PIM cache and run webpack again:
+
 .. code-block:: bash
 
     rm -rf ./var/cache/*
@@ -156,7 +157,8 @@ And add it to our product form:
             targetZone: meta
             position: 90                                     # The extension position
 
-To see your changes you need to clear the PIM cache and run webpack again
+To see your changes you need to clear the PIM cache and run webpack again:
+
 .. code-block:: bash
 
     rm -rf ./var/cache/*

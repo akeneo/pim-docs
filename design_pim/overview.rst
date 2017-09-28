@@ -98,7 +98,7 @@ You can also decide to symlink those assets instead of copying them:
     bin/console assets:install --symlink web
 
 
-After that the last step is to build the bundle.js file
+After that the last step is to build the bundle.js file:
 
 .. code-block:: bash
 

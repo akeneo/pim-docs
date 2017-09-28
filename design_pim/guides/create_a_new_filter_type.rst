@@ -144,6 +144,7 @@ You can now register this module into our requirejs configuration:
             acme/template/product/filter/range: acmecustom/templates/product/filter/range.html
 
 After registering this module you must build the frontend with webpack:
+
 .. code-block:: bash
 
     yarn run webpack
