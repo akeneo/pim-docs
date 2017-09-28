@@ -84,7 +84,12 @@ And add it to our product form:
             targetZone: buttons
             position: 90                             # The extension position (lower will be first)
 
-You can now clear your cache and admire your brand new button!
+To see your changes you need to clear the PIM cache and run webpack again
+.. code-block:: bash
+
+    rm -rf ./var/cache/*
+    yarn run webpack
+
 
 How to add a meta section
 -------------------------
