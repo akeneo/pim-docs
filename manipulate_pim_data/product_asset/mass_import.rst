@@ -31,4 +31,9 @@ The job accepts a CSV file in the same format as the one below (delimiters and e
 In the profile configuration of the import job, you can specify the path to the assets CSV file on the server, so that this file is imported when the job is executed.
 
 Then, the job can be can ran with:
-``php bin/console akeneo:batch:job assets_mass_upload --env=prod``
+``php bin/console akeneo:batch:publish-job-to-queue assets_mass_upload --env=prod``
+
+.. warning::
+
+    One daemon or several daemon processes have to be started to execute the jobs.
+    Please follow the documentation :doc:`/install_pim/manual/daemon_queue` if it's not the case.

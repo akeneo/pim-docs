@@ -209,12 +209,10 @@ If you want to execute only one job:
 .. warning::
 
    Before stopping or destroying your containers, remember to first stop this daemon if you launched it in background, or you'll end up with a stuck FPM container, and will need to completely restart Docker.
-   The easiest way to do that is to use ``ps`` to find the process ID of your daemon, then kill it with the ``kill`` command as follow (1234 is here just an example):
 
    .. code-block:: bash
 
-      $ docker-compose exec fpm ps x
-      $ docker-compose exec fpm kill 1234
+      $ docker-compose exec fpm pkill -f job-queue-consumer-daemon
 
 
 Xdebug
