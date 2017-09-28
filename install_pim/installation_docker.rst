@@ -38,7 +38,20 @@ Otherwise ``docker-compose`` will create it, but only with root accesses. Then f
 Run and stop the containers
 ---------------------------
 
-**All "docker-compose" commands are to be ran from the folder containing the compose file.**
+.. note::
+
+   All "docker-compose" commands are to be ran from the folder containing the compose file.
+
+.. warning::
+
+   To run the Elasticsearch container, you will probably need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode>`_.
+   Proceed as follow (first command will affect your current session, second one every boot of your machine):
+
+   .. code-block:: bash
+
+      $ sudo sysctl -w vm.max_map_count=262144
+      $ echo "vm.max_map_count=262144" | sudo tee /etc/sysctl.d/elasticsearch.conf
+
 
 Ensure you have the last versions of the images by running:
 
