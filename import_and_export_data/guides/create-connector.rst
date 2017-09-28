@@ -137,6 +137,17 @@ The ``--config`` option can be used to override the job instance parameters at r
 
     php bin/console akeneo:batch:job my_app_product_export --config='{"filePath":"\/tmp\/new_path.csv"}'
 
+.. warning::
+
+    In production, use this command instead:
+
+    .. code-block:: bash
+
+        php bin/console akeneo:batch:publish-job-to-queue my_app_product_export --env=prod
+
+    One daemon or several daemon processes have to be started to execute the jobs.
+    Please follow the documentation :doc:`/install_pim/manual/daemon_queue` if it's not the case.
+
 Configure the UI for our new job
 --------------------------------
 

@@ -136,4 +136,9 @@ You can run the job from the UI or you can use following command:
 
 .. code-block:: bash
 
-    php bin/console akeneo:batch:job my_job_code
+    php bin/console akeneo:batch:publish-job-to-queue my_job_code --env=prod
+
+.. warning::
+
+    One daemon or several daemon processes have to be started to execute the jobs.
+    Please follow the documentation :doc:`/install_pim/manual/daemon_queue` if it's not the case.
