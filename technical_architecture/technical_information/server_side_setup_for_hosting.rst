@@ -20,4 +20,4 @@ Here is the minimum server configuration to run Akeneo PIM application:
 Software
 --------
 
-.. include:: /install_pim/system_requirements/system_requirements.rst.inc
+.. include:: /install_pim/manual/system_requirements/system_requirements.rst

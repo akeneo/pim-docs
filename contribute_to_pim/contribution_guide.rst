@@ -21,7 +21,7 @@ Install the Software Stack
 Before working on Akeneo PIM, set a Symfony2 friendly environment up with the following software:
 
 * Git
-* Follow the technical requirements :doc:`/install_pim/system_requirements/system_requirements`
+* Follow the technical requirements :doc:`/install_pim/manual/system_requirements/system_requirements`
 
 Configure Git
 ~~~~~~~~~~~~~

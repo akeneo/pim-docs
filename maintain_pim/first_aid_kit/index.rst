@@ -35,7 +35,7 @@ Maybe something has been changed in your server. You can check that by running t
 .. note::
 
     All our system requirements can also be found in this documentation:
-    :doc:`/install_pim/system_requirements/system_requirements`.
+    :doc:`/install_pim/manual/system_requirements/system_requirements`.
 
 In addition, check that:
 
