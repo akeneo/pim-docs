@@ -91,4 +91,5 @@ And register your extension to the product edit form:
 To see your changes you need to clear the PIM cache and run webpack again
 .. code-block:: bash
 
+    rm -rf ./var/cache/*
     yarn run webpack

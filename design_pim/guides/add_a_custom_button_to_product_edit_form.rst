@@ -154,4 +154,5 @@ And add it to our product form:
 To see your changes you need to clear the PIM cache and run webpack again
 .. code-block:: bash
 
+    rm -rf ./var/cache/*
     yarn run webpack

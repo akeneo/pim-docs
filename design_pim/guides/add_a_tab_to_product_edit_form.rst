@@ -209,4 +209,5 @@ Again, we need to register it and create the template:
 To see your changes you need to clear the PIM cache and run webpack again
 .. code-block:: bash
 
+    rm -rf ./var/cache/*
     yarn run webpack
