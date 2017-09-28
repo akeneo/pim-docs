@@ -5,16 +5,16 @@ Extracting the archive
     :linenos:
 
     $ mkdir -p /path/to/installation
-    $ tar -xvzf pim-community-standard-v2.0-latest-icecat.tar.gz -C /path/to/installation/
+    $ tar -xvzf pim-enterprise-standard-v2.0.tar.gz -C /path/to/installation/
 
 .. note::
     Replace */path/to/installation* by the path to the directory where you want to install the PIM.
 
 .. note::
-    * Replace *pim-community-standard-v2.0-latest-icecat.tar.gz* by the location and the name of the archive you have downloaded from https://www.akeneo.com/download
+    Replace *pim-enterprise-standard-v2.0.tar.gz* by the location and the name of the archive you have downloaded from `Partner portal <https://partners.akeneo.com/login>`_
 
 .. note::
-    The PIM will be extracted in the folder /path/to/installation/pim-community-standard.
+    The PIM will be extracted in the folder /path/to/installation/pim-enterprise-standard.
 
 Initializing Akeneo
 -------------------
@@ -23,10 +23,11 @@ Initializing Akeneo
 
     Remember that ``dev`` is the default environment. So when you launch a Symfony command, always add ``--env=prod`` in prod environment to avoid useless logging and profiling.
 
+
 .. code-block:: bash
     :linenos:
 
-    $ cd /path/to/installation/pim-community-standard
+    $ cd /path/to/installation/pim-enterprise-standard
 
 Dependencies,
 
@@ -55,7 +56,7 @@ Installation,
 .. note::
     The ``../composer.phar install`` command writes the database configuration to ``app/config/parameters.yml``
 
-.. include:: ./crontab_tasks.rst.inc
+.. include:: ./crontab_tasks_ee.rst.inc
 
 Testing your installation
 -------------------------
