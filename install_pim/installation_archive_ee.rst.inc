@@ -21,7 +21,7 @@ Initializing Akeneo
 
 .. note::
 
-    Remember that ``dev`` is the default environment. So when you launch a Symfony command, always add ``--env=prod`` in prod environment to avoid useless logging and profiling.
+    Remember that ``dev`` is the default and slowness environment. So when you launch a Symfony command, always add ``--env=prod`` in prod environment to avoid useless logging and profiling.
 
 
 .. code-block:: bash
@@ -60,7 +60,7 @@ Installation,
 
 Testing your installation
 -------------------------
-Access the `web` folder using your favorite web browser and log in with *admin/admin*. If you see the dashboard, congratulations, you have successfully installed Akeneo PIM! You can also access the dev environment on using `app_dev.php` as index.
+Access the `web` folder using your favorite web browser and log in with *admin/admin*. If you see the dashboard, congratulations, you have successfully installed Akeneo PIM! You can also access the dev environment using `app_dev.php` as index.
 
 If an error occurs, it means that something went wrong in one of the previous steps. Please check error outputs of all the steps.
 
@@ -71,7 +71,7 @@ Known issues
 
  * not enough memory can cause the JS routing bundle to fail with a segmentation fault. Please check with ``php -i | grep memory`` that you have enough memory according to the requirements
 
- * If you do an install the PIM twice, ensure all the PIM cron tasks are stopped before the installation of the database, to avoid `Base table or view not found` errors.
+ * If you do install the PIM twice, ensure all the PIM cron tasks are stopped before the installation of the database, to avoid `Base table or view not found` errors.
 
 What's next?
 ------------

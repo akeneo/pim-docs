@@ -7,9 +7,9 @@ Edit your crontab with ``crontab -e`` and configure your tasks.
 
 .. warning::
 
-    Be sure to update the cron of the same user you installed the PIM, to be able to run the command
+    Be sure to update the cron of the user used to install the PIM, to be able to run the command
 
-You have add add these 2 commands to your local installation:
+You have to add these 2 commands to your local installation:
 
 .. code-block:: bash
     :linenos:
