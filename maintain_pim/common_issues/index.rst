@@ -34,6 +34,7 @@ To fix this issue, just run the following commands:
     cd /path/to/your/pim/
     rm -rf web/translations/*
     php bin/console oro:translation:dump
+    yarn run webpack
 
 Some Javascript, CSS or media files are not taken into account
 --------------------------------------------------------------
@@ -60,6 +61,7 @@ You can revert this operation by running the following commands:
     rm -rf ./var/cache/*
     php bin/console pim:install:asset --env=prod
     php bin/console assets:install --symlink web
+    yarn run webpack
 
 I cannot export my products "An exception occurred during the export"
 ---------------------------------------------------------------------

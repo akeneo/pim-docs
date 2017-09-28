@@ -89,7 +89,7 @@ Now that we have a field provider, we can create the field itself:
     define([
             'pim/field',
             'underscore',
-            'text!acme/template/product/field/range'
+            'acme/template/product/field/range'
         ], function (
             Field,
             _,
@@ -132,6 +132,12 @@ You can now register this module into your requirejs configuration:
             acme/range-field: acmecustom/js/product/field/range-field
 
             acme/template/product/field/range: acmecustom/templates/product/field/range.html
+
+After registering this module you must build the frontend with webpack:
+
+.. code-block:: bash
+
+    yarn run webpack
 
 Then, last operation, match the field type (`acme-range-field`) with the requirejs module (`acme/range-field`):
 
