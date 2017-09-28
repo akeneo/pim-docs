@@ -40,7 +40,13 @@ Run and stop the containers
 
 **All "docker-compose" commands are to be ran from the folder containing the compose file.**
 
-To start your containers, just run:
+Ensure you have the last versions of the images by running:
+
+.. code-block:: bash
+
+   $ docker-compose pull
+
+To start your containers, run:
 
 .. code-block:: bash
 
@@ -156,6 +162,37 @@ The version in ``akeneo/pim-community-standard`` or ``akeneo/pim-enterprise-stan
    $ docker-compose exec fpm bin/console --env=prod pim:install --force --symlink --clean
 
    $ docker-compose run --rm node yarn run webpack
+
+
+Run imports and exports
+***********************
+
+Akeneo 2.x implement a queue for the jobs, as a PHP daemon. This daemon is a Symfony command, that can only executes one job at a time. It does not consume any other job until the job is finished.
+
+You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every 5 seconds the queue, so it's not real time.
+
+To launch a daemon, run the following command:
+
+.. code-block:: bash
+
+   docker-compose exec fpm bin/console --env=prod akeneo:batch:job-queue-consumer-daemon
+
+If you want to launch the daemon in background:
+
+.. code-block:: bash
+
+   docker-compose exec fpm bin/console --env=prod akeneo:batch:job-queue-consumer-daemon &
+
+If you want to execute only one job:
+
+.. code-block:: bash
+
+   docker-compose exec fpm bin/console --env=prod akeneo:batch:job-queue-consumer-daemon --run-once
+
+.. note::
+
+   There is no need to launch a daemon for behat and integration tests. It is performed automatically, the daemon being killed once the test is finished.
+
 
 Xdebug
 ******
