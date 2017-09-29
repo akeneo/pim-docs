@@ -177,6 +177,17 @@ Now you can run the job from the UI or use the following command:
 
     php bin/console akeneo:batch:job xml_product_import
 
+.. warning::
+
+    In production, use this command instead:
+
+    .. code-block:: bash
+
+        php bin/console akeneo:batch:publish-job-to-queue my_app_product_export --env=prod
+
+    One daemon or several daemon processes have to be started to execute the jobs.
+    Please follow the documentation :doc:`/install_pim/manual/daemon_queue` if it's not the case.
+
 Adding support for invalid items export
 ---------------------------------------
 
