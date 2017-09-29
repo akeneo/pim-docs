@@ -11,15 +11,47 @@ Akeneo maintains its own Docker images in https://github.com/akeneo/Dockerfiles.
 
    These instructions are valid for community edition as well as the enterprise edition.
 
-.. note::
 
-   These instructions assume you already have Docker and Docker Compose installed, in their most recent version. If not, please refer `to this documentation <https://github.com/akeneo/Dockerfiles/blob/master/Docs/getting-started.md>`_.
+System requirements
+-------------------
 
+Docker and Docker Compose
+*************************
+
+If you don't already have Docker and Docker Compose installed on your system, please refer to `the documentation of the GitHub repository <https://github.com/akeneo/Dockerfiles/blob/master/Docs/getting-started.md>`_.
+
+Setting up your host user
+*************************
+
+The PIM is shared with the containers as `a volume <https://docs.docker.com/engine/admin/volumes/volumes/>`_.
+The *fpm* and *node* containers will have write access to the PIM folder, and they will do so through their respective users: ``docker`` for *fpm* and ``node`` for *node*.
+
+These users UID and GID are both 1000:1000, so on Linux hosts **it is mandatory that the user of your host machine have 1000:1000 as UID and GID too**, otherwise you'll end up with a non working PIM.
+
+You won't face this problem on Mac OS and Windows hosts, as those systems use a VM between the host and Docker, which already operates with appropriate UIG/GID.
+
+Mandatory folders
+*****************
+
+To accelerate the installation of the PIM dependencies, `Composer cache <https://github.com/akeneo/pim-community-dev/blob/master/docker-compose.yml.dist#L17>`_ and `Yarn cache <https://github.com/akeneo/pim-community-dev/blob/master/docker-compose.yml.dist#L31>`_ are shared between the host and the containers.
+
+You need to be sure these folders exist on your host before launching the containers. If not, Docker will create them for you, but with root permissions, preventing the containers from accessing it. As a result, dependencies installation will fail.
+
+Elasticsearch
+*************
+
+To run the Elasticsearch container, you will need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode>`_.
+Proceed as follows (first command will affect your current session, second one will make the change permanent):
+
+.. code-block:: bash
+
+   $ sudo sysctl -w vm.max_map_count=262144
+   $ echo "vm.max_map_count=262144" | sudo tee /etc/sysctl.d/elasticsearch.conf
 
 Getting Akeneo PIM
-------------------
+******************
 
-You first need to download Akeneo PIM. This can be done by downloading the archive from our download page https://www.akeneo.com/download,
+You need to download Akeneo PIM. This can be done by downloading the archive from our download page https://www.akeneo.com/download,
 or from our partner portal if you have access to the enterprise edition. It can also be by cloning it from GitHub
 (https://github.com/akeneo/pim-community-standard for projects or https://github.com/akeneo/pim-community-dev to contribute).
 
@@ -36,22 +68,11 @@ Otherwise ``docker-compose`` will create it, but only with root accesses. Then f
 
 
 Run and stop the containers
----------------------------
+***************************
 
 .. note::
 
    All "docker-compose" commands are to be run from the folder containing the compose file.
-
-.. warning::
-
-   To run the Elasticsearch container, you might need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode>`_.
-   Proceed as follows (first command will affect your current session, second one every boot of your machine):
-
-   .. code-block:: bash
-
-      $ sudo sysctl -w vm.max_map_count=262144
-      $ echo "vm.max_map_count=262144" | sudo tee /etc/sysctl.d/elasticsearch.conf
-
 
 Ensure you have the last versions of the images by running:
 
@@ -176,6 +197,14 @@ The version in ``akeneo/pim-community-standard`` or ``akeneo/pim-enterprise-stan
 
    $ docker-compose run --rm node yarn run webpack
 
+**You should now be able to access Akeneo development environment from your host through ``http://localhost:8080/`` and behat environment through ``http://localhost:8081/``**.
+
+Of course, you can change the host port in the compose file. If you do so, don't forget to run again:
+
+.. code-block:: bash
+
+   $ docker-compose up -d
+
 
 Run imports and exports
 ***********************
@@ -223,8 +252,6 @@ Xdebug
 Also, you can configure two things on Xdebug through environment variables on ``akeneo/fpm`` image. These environment variables are all optional.
 - ``PHP_XDEBUG_IDE_KEY``: the IDE KEY you want to use (by default ``XDEBUG_IDE_KEY``)
 - ``PHP_XDEBUG_REMOTE_HOST``: your host IP address (by default it allows all IPs)
-
-You should now be able to access Akeneo development environment from your host through ``http://localhost:8080/`` and behat environment through ``http://localhost:8081/`` (of course, you can change the host port in the compose file).
 
 
 Run behat tests
