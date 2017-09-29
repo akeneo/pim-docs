@@ -58,6 +58,12 @@ Installation,
 
 .. include:: ./crontab_tasks_ee.rst.inc
 
+Launching the daemon for job execution
+--------------------------------------
+
+Launch a daemon in order to execute the jobs.
+Please follow this documentation: :doc:`/install_pim/manual/daemon_queue`.
+
 Testing your installation
 -------------------------
 Access the `web` folder using your favorite web browser and log in with *admin/admin*. If you see the dashboard, congratulations, you have successfully installed Akeneo PIM! You can also access the dev environment using `app_dev.php` as index.
