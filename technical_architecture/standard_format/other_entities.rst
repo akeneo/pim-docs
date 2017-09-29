@@ -316,17 +316,19 @@ Family
 
 .. code-block:: php
 
-    array:5 [
+    array:6 [
       "code" => "my_family"
       "labels" => array:1 [
         "en_US" => "My family"
       ]
-      "attributes" => array:3 [
+      "attributes" => array:4 [
         0 => "a_number_float"
         1 => "a_price"
-        2 => "sku"
+        2 => "a_picture"
+        3 => "sku"
       ]
       "attribute_as_label" => "sku"
+      "attribute_as_image" => "a_picture"
       "attribute_requirements" => array:1 [
         "ecommerce" => array:2 [
           0 => "a_price"
@@ -348,6 +350,9 @@ Family
 +------------------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
 | attribute_as_label     | string         | ``"sku"``                                                                  | | it represents the `code` of the object                            |
 |                        |                |                                                                            | | ``Pim\Component\Catalog\Model\AttributeInterface``                |
++------------------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
+| attribute_as_image     | string         | ``"a_picture"``                                                            | | it represents the `code` of the object                            |
+|                        |                |                                                                            | | ``Pim\Component\Catalog\Model\AttributeInterface``. Can be null.  |
 +------------------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
 | attribute_requirements | array          | ``["ecommerce" => [0 => "sku", "a_text_area"], "tablet" => [0 => "sku"]]`` | | each element of the array represents the `code` of the            |
 |                        |                |                                                                            | | ``Pim\Component\Catalog\Model\AttributeInterface``                |
