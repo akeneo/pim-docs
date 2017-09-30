@@ -155,8 +155,8 @@ Translate Job and Step labels in the UI
 Behind the scene, the service ``Pim\Bundle\ImportExportBundle\JobLabel\TranslatedLabelProvider`` provides translated Job and Step labels to be used in the UI.
 
 This service uses the following conventions:
- - for a job label, given a %%jobName%%, "batch_jobs.%%jobName%%.label"
- - for a step label, given a %%jobName%% and a %%stepName%%, "batch_jobs.%%jobName%%.%%stepName%%.label"
+- for a job label, given a %%jobName%%, "batch_jobs.%%jobName%%.label"
+- for a step label, given a %%jobName%% and a %%stepName%%, "batch_jobs.%%jobName%%.%%stepName%%.label"
 
 Create a file ``Resources/translations/messages.en.yml`` in the Bundle to translate label keys.
 

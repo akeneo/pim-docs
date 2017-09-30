@@ -26,12 +26,16 @@ import sys, os, datetime
 sys.path.insert(0, os.path.abspath('vendor/fabpot/sphinx-php'))
 from sphinx.highlighting import lexers
 from pygments.lexers.web import PhpLexer
+from pygments.lexers.web import HtmlLexer
+from pygments.lexers.shell import BashLexer
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = ['sensio.sphinx.refinclude', 'sensio.sphinx.configurationblock', 'sensio.sphinx.phpcode' , 'sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.coverage', 'sphinx.ext.ifconfig', 'sphinxcontrib.youtube']
 lexers['php'] = PhpLexer(startinline=True)
 lexers['php-annotations'] = PhpLexer(startinline=True)
+lexers['html'] = HtmlLexer()
+lexers['bash'] = BashLexer()
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -104,7 +108,7 @@ exclude_patterns = ['vendor/**/*']
 #show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'monokai'
+#pygments_style = 'monokai'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
