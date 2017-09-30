@@ -24,6 +24,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
     <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <style>
+        /* TODO Add this into the api-docs CSS */
+        .highlighttable {width: 100%}
+        .hljs { font-size: 12.5px; }
+        .hljs-comment, .hljs-quote { color: #a1a9b7; }
+        .hljs-string, .hljs-title, .hljs-name, .hljs-type, .hljs-symbol, .hljs-bullet, .hljs-addition, .hljs-variable, .hljs-template-tag, .hljs-template-variable, .hljs-regexp { font-weight: bold; }
+        img { max-width: 100%; }
+    </style>
 </head>
 <body data-spy="scroll" data-target="#navbar">
 <nav class="navbar navbar-default navbar-fixed-top scroll">
@@ -201,6 +209,15 @@
     $('.docutils').addClass('table');
     $('.docutils').removeAttr('border');
 
+    // Update code
+    $('.linenos').remove();
+    $('.highlight pre').addClass('hljs');
+    $('.s, .s1').addClass('hljs-string');
+    $('.cm, .c1, .sd').addClass('hljs-comment');
+    $('.k, .kd, .nt').addClass('hljs-keyword');
+    $('.l').addClass('hljs-literal');
+    $('.p, .o').addClass(''); // Punctuation
+    $('.nx, .nc').addClass('hljs-variable');
 </script>
 
 <script>//<![CDATA[
