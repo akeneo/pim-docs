@@ -11,19 +11,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>REST API documentation</title>
+    {{ metatags }}
+    {% block htmltitle %}
+    <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+    {% endblock %}
     <meta name="description" content="Description">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    {% for cssfile in css_files %}
+    <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
+    {% endfor %}
+
+    {% for cssfile in extra_css_files %}
+    <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
+    {% endfor %}
+
+    {%- for scriptfile in script_files %}
+    <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+    {%- endfor %}
+
+    {# FAVICON #}
+    {% if favicon %}
+    <link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1) }}"/>
+    {% endif %}
+
     <script async="" src="https://www.google-analytics.com/analytics.js"></script>
-    <script src="http://localhost:8000/js/jquery.min.js"></script>
-    <script src="http://localhost:8000/js/bootstrap.min.js"></script>
-    <link rel="icon" type="image/png" href="http://localhost:8000/img/akene36.png">
-    <link rel="stylesheet" href="http://localhost:8000/css/variables-43bf553955.css">
-    <link rel="stylesheet" href="http://localhost:8000/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
     <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
     <style>
         /* TODO Add this into the api-docs CSS */
         .highlighttable {width: 100%}
@@ -45,9 +60,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">
-                <img height="18" src="http://localhost:8000/img/akeneo.svg">
-            </a>
+            {% if logo %}
+                <a href="{{ pathto(master_doc) }}" class="navbar-brand">
+                    <img height="18" src="{{ pathto('_static/' + logo, 1) }}"/>
+                </a>
+            {% endif %}
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -55,31 +72,14 @@
             </ul>
             <form class="navbar-form navbar-right">
                 <div class="form-group form-search">
-                    <span class="algolia-autocomplete"
-                          style="position: relative; display: inline-block; direction: ltr;"><input id="algolia-search"
-                                                                                                    class="form-control ds-input"
-                                                                                                    placeholder="Search whole doc"
-                                                                                                    autocomplete="off"
-                                                                                                    spellcheck="false"
-                                                                                                    role="combobox"
-                                                                                                    aria-autocomplete="list"
-                                                                                                    aria-expanded="false"
-                                                                                                    aria-labelledby="algolia-search"
-                                                                                                    aria-owns="algolia-autocomplete-listbox-0"
-                                                                                                    dir="auto"
-                                                                                                    style="position: relative; vertical-align: top;"><pre
-                            aria-hidden="true"
-                            style="position: absolute; visibility: hidden; white-space: pre; font-family: Lato, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 300; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
-                            class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0"
-                            style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div
-                            class="ds-dataset-1"></div></span></span>
+                    <input id="algolia-search" class="form-control" placeholder="Search whole doc">
                 </div>
             </form>
         </div>
     </div>
 </nav>
 
-<div id="mainContent">
+<div id="mainContent" style="display: none">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -88,7 +88,7 @@
         </div>
         <div class="row">
             <div id="navbar" class="col-sm-3 hidden-xs">
-                <nav role="tablist" id="navbar-nav" data-spy="affix" data-offset-top="80" class="affix" style="display:none">
+                <nav role="tablist" id="navbar-nav" data-spy="affix" data-offset-top="80" class="affix">
                     {% block menu %}
                     {% set toctree = toctree(maxdepth=4, collapse=theme_collapse_navigation, includehidden=True) %}
                     {% if toctree %}
@@ -110,31 +110,38 @@
             <div class="col-xs-12">
                 <p class="text-muted text-right">
                     <i class="fa fa-pencil"></i> Found a typo or a hole in the documentation and feel like contributing?<br>
-                    <a href="https://github.com/akeneo/pim-api-docs">Join us on Github!</a>
+                    <a href="https://github.com/akeneo/pim-docs">Join us on Github!</a>
                 </p>
             </div>
         </div>
     </div>
 </div>
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+{# ALGOLIA #}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
 <script type="text/javascript">
-    docsearch({
-        apiKey: '2d54ec0583367835496f9b24eb99de62',
-        indexName: 'akeneo-api',
-        inputSelector: '#algolia-search',
-        debug: false // Set debug to true if you want to inspect the dropdown
-    });
+  docsearch({
+    apiKey: '90e155c70f9456125f229cc924db6000',
+    indexName: 'akeneo',
+    inputSelector: '#algolia-search',
+    algoliaOptions: {
+      hitsPerPage: 15,
+//      'facetFilters': ["version:{{ version|e }}"],
+    }
+  });
 </script>
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-35417741-5', 'auto');
-    ga('send', 'pageview');
+{# Google analytics #}
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35417741-6', 'auto');
+  ga('send', 'pageview');
 </script>
+
 <script>
     $(function(){
         var navbar = $('.navbar');
@@ -185,9 +192,6 @@
     $('#navbar-nav > ul').addClass('nav-stacked');
     $('#navbar-nav li.current').addClass('active');
 
-    // Show the result
-    $('#navbar-nav').show();
-
     // Updates anchors
     $('h1, h2, h3, h4, h5, h6').each(function (i, title) {
         var anchorLink = $(title).find('.headerlink');
@@ -219,6 +223,9 @@
     $('.l').addClass('hljs-literal');
     $('.p, .o').addClass(''); // Punctuation
     $('.nx, .nc').addClass('hljs-variable');
+
+    // Show result
+    $('#mainContent').show();
 </script>
 
 <script>//<![CDATA[

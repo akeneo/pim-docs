@@ -134,12 +134,13 @@ Now that the Color entity is updated, look at the following configuration:
                 default:
                     code: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'
 
-In the exemple above:
-- In the ``properties`` section
-  - The ``customEntityName`` tells the grid to call the ``getCustomEntityName`` method
-       in order to get the entity name needed to generate the route.
-       You therefore need a method on the entity class to return the entity name.
-  - The ``id`` will work the same way, it will call the getId of the Entity.
+In the exemple above, in the ``properties`` section:
+
+- The ``customEntityName`` tells the grid to call the ``getCustomEntityName`` method
+  in order to get the entity name needed to generate the route.
+  You therefore need a method on the entity class to return the entity name.
+
+- The ``id`` will work the same way, it will call the getId of the Entity.
 
 Creating the Form Type for creation and edition
 -----------------------------------------------

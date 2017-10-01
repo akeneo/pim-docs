@@ -68,7 +68,12 @@ html_context = {
     'versions': versions.split(' '),
     'css_files': [
         'https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css',
-        '_static/css/akeneo.css',
+        '_static/css/font-awesome.min.css',
+        '_static/css/variables-43bf553955.css',
+    ],
+    'script_files': [
+        '_static/js/jquery.min.js',
+        '_static/js/bootstrap.min.js'
     ],
     'display_github': True,
     'github_user': 'akeneo',
@@ -140,7 +145,7 @@ html_title = project + ' documentation'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = '_themes/akeneo_rtd/static/img/logo.png'
+html_logo = '_themes/akeneo/static/img/akeneo.svg'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
