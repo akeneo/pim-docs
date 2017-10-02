@@ -26,7 +26,7 @@ Setting up your host user
 The PIM is shared with the containers as `a volume <https://docs.docker.com/engine/admin/volumes/volumes/>`_.
 The *fpm* and *node* containers will have write access to the PIM folder, and they will do so through their respective users: ``docker`` for *fpm* and ``node`` for *node*.
 
-These users UID and GID are both 1000:1000, so on Linux hosts **it is mandatory that the user of your host machine have 1000:1000 as UID and GID too**, otherwise you'll end up with a non working PIM.
+These users UID and GID are both 1000:1000, so on Linux hosts **it is mandatory that the user of your host machine has 1000:1000 as UID and GID too**, otherwise you'll end up with a non working PIM.
 
 You won't face this problem on Mac OS and Windows hosts, as those systems use a VM between the host and Docker, which already operates with appropriate UIG/GID.
 
@@ -52,16 +52,16 @@ Getting Akeneo PIM
 ******************
 
 You need to download Akeneo PIM. This can be done by downloading the archive from our download page https://www.akeneo.com/download,
-or from our partner portal if you have access to the enterprise edition. It can also be by cloning it from GitHub
+or from our partner portal if you have access to the enterprise edition. It can also be downloaded by cloning it from GitHub
 (https://github.com/akeneo/pim-community-standard for projects or https://github.com/akeneo/pim-community-dev to contribute).
 
 
 Using the Docker images
 -----------------------
 
-Every flavor (dev or standard, community or enterprise) come with a Docker Compose file template ``docker-compose.yml.dist``, ready to be used.
+Every flavor (dev or standard, community or enterprise) comes with a Docker Compose file template ``docker-compose.yml.dist``, ready to be used.
 Copy it as ``docker-compose.yml`` and keep it at the root of your project. You may modify it at your convenience, to change the mapping of the ports
-if you want Apache to be accessible from port other that 8080, for instance).
+if you want Apache to be accessible from a port other that 8080, for instance.
 
 If you intend to run behat tests, create on your host a folder ``/tmp/behat/screenshots`` (or anywhere else according to your compose file) with full read/write access to your user.
 Otherwise ``docker-compose`` will create it, but only with root accesses. Then failing behats will be unable to create reports and screenshots.
@@ -74,7 +74,7 @@ Run and stop the containers
 
    All "docker-compose" commands are to be run from the folder containing the compose file.
 
-Ensure you have the last versions of the images by running:
+Make sure you have the last versions of the images by running:
 
 .. code-block:: bash
 
@@ -108,7 +108,7 @@ Configure Akeneo
 ****************
 
 First, make sure that Akeneo database settings are as the containers expect.
-As you can see below, the ``database_host`` is the name of your MySQL service in the compose file.
+As you can see below, the ``database_host`` parameter is the name of your MySQL service in the compose file.
 For Elasticsearch, ``index_hosts`` is the association of the login and password (``elastic`` and ``changeme``, respectively) of the container,
 the service name in the compose file (``elasticsearch``) and the output port of Elasticsearch (``9200``).
 
@@ -177,7 +177,7 @@ This is what the script contains in ``akeneo/pim-community-dev`` or ``akeneo/pim
 
 .. code-block:: bash
 
-   $ docker-compose exec fpm bin/console --env=prod cache:clear --no-warmup    # Those 4 commands clears all the caches of Symfony 3
+   $ docker-compose exec fpm bin/console --env=prod cache:clear --no-warmup    # Those 4 commands clear all the caches of Symfony 3
    $ docker-compose exec fpm bin/console --env=dev cache:clear --no-warmup     # You could also just perform a "rm -rf var/cache/*"
    $ docker-compose exec fpm bin/console --env=behat cache:clear --no-warmup
    $ docker-compose exec fpm bin/console --env=test cache:clear --no-warmup
@@ -247,9 +247,10 @@ If you want to execute only one job:
 Xdebug
 ******
 
-*Xdebug* is deactivated by default. If you want to activate it, you can turn the environment variable ``PHP_XDEBUG_ENABLED`` to 1. Then you just have to run ``docker-compose up -d`` again.
+*Xdebug* is deactivated by default. If you want to activate it, you can change the environment variable ``PHP_XDEBUG_ENABLED`` to 1. Then you just have to run ``docker-compose up -d`` again.
 
-Also, you can configure two things on Xdebug through environment variables on ``akeneo/fpm`` image. These environment variables are all optional.
+Also, you can configure two things on Xdebug through environment variables on ``akeneo`` images. These environment variables are all optional:
+
 - ``PHP_XDEBUG_IDE_KEY``: the IDE KEY you want to use (by default ``XDEBUG_IDE_KEY``)
 - ``PHP_XDEBUG_REMOTE_HOST``: your host IP address (by default it allows all IPs)
 
@@ -257,34 +258,31 @@ Also, you can configure two things on Xdebug through environment variables on ``
 Run behat tests
 ---------------
 
-The tests are to be run inside the containers. Start by configuring Behat as follows:
+The tests are to be run inside the containers. Start by configuring Behat, by copying the file ``behat.yml.dist`` to ``behat.yml``. Then make the following changes:
+
+- Replace any occurrence of ``http://akeneo/`` by ``http://httpd-behat/`` (which is the name of the Apache service of the Compose file that will be used to run the behats).
+- Configure selenium as follow:
 
 .. code-block:: yaml
 
    # /host/path/to/your/pim/behat.yml
    default:
-       paths:
-           features: features
-       context:
-           class:  Context\FeatureContext
-           parameters:
-               base_url: 'http://httpd-behat/'
-               timeout: 10000
-               window_width: 1280
-               window_height: 1024
+       ...
        extensions:
-           Behat\MinkExtension\Extension:
+           Behat\ChainedStepsExtension: ~
+           Behat\MinkExtension:
                default_session: symfony2
+               javascript_session: selenium2
                show_cmd: chromium-browser %s
-               selenium2:
-                   wd_host: 'http://selenium:4444/wd/hub'
+               sessions:
+                   symfony2:
+                       symfony2: ~
+                   selenium2:
+                       selenium2:
+                           wd_host: 'http://selenium:4444/wd/hub'
                base_url: 'http://httpd-behat/'
                files_path: 'features/Context/fixtures/'
-           Behat\Symfony2Extension\Extension:
-               kernel:
-                   env: behat
-                   debug: false
-           SensioLabs\Behat\PageObjectExtension\Extension: ~
+           ...
 
 You are now able to run behat tests.
 
