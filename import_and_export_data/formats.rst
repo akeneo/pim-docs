@@ -23,7 +23,6 @@ CSV formats used for import/export profiles in a default Akeneo PIM installation
     formats/group
     formats/option
     formats/product
-    formats/variant-group
 
 .. note::
 
