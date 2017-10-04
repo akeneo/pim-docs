@@ -26,7 +26,6 @@ Its standard format would be the following:
         0 => "groupA"
         1 => "groupB"
       ]
-      "variant_group" => "variantA"
       "categories" => array:2 [
         0 => "categoryA"
         1 => "categoryB"
@@ -136,7 +135,6 @@ Let's now consider a catalog with all attribute types possible and a foo product
     * an identifier
     * a family
     * several groups
-    * a variant group
     * several categories
     * several associations related to groups and/or other products
 
@@ -151,7 +149,6 @@ Its standard format would be the following:
         0 => "groupA"
         1 => "groupB"
       ]
-      "variant_group" => "variantA"
       "categories" => array:2 [
         0 => "categoryA1"
         1 => "categoryB"
