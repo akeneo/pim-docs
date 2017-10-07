@@ -17,25 +17,24 @@ For a recap, here is the process of a product import job execution:
 
 1. Starting the job and reading the first product
 
-    - The job opens the file to import, it reads the first product in the file and converts it into a standard format.
-    - If an error or a warning is thrown during this step, the product is marked as invalid.
+   - The job opens the file to import, it reads the first product in the file and converts it into a standard format.
+   - If an error or a warning is thrown during this step, the product is marked as invalid.
 
 2. Process the product and check the product values
 
-    - If no errors have been thrown in the previous step, the read and converted product is then processed by a product processor.
-    - If an error is thrown while processing, the product is marked as invalid.
+   - If no errors have been thrown in the previous step, the read and converted product is then processed by a product processor.
+   - If an error is thrown while processing, the product is marked as invalid.
 
-.. note::
-
-    At this point, an error could be that the the family code does not exist or that the currency set for a price attribute does not match the currency configured in the PIM for this attribute.
+   .. note::
+       At this point, an error could be that the the family code does not exist or that the currency set for a price attribute does not match the currency configured in the PIM for this attribute.
 
 3. Save the product in database
 
-    - The processed product is written in the database using a product writer.
+   - The processed product is written in the database using a product writer.
 
 4. Collect the invalid products found and export them into a separate file
 
-    - When all products have been read, processed and written into the database, the job collects all the errors found in the file at each step and writes them back into a separate file of invalid items.
+   - When all products have been read, processed and written into the database, the job collects all the errors found in the file at each step and writes them back into a separate file of invalid items.
 
 
 In this cookbook, our use case is to import new products from the following XML file ``products.xml``:

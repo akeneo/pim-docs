@@ -73,6 +73,7 @@ html_context = {
     ],
     'script_files': [
         '_static/js/jquery.min.js',
+        '_static/js/akeneostyle.js',
         '_static/js/bootstrap.min.js'
     ],
     'display_github': True,
