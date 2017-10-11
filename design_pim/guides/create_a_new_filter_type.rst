@@ -89,9 +89,6 @@ Now that we have a filter provider, we can create the filter itself:
                 'change [name="filter-value"]': 'updateState'
             },
 
-            /**
-             * {@inheritdoc}
-             */
             configure: function () {
                 this.listenTo(this.getRoot(), 'pim_enrich:form:entity:pre_update', function (data) {
                     // Before the set data, we define the defaults values of our field
@@ -101,9 +98,6 @@ Now that we have a filter provider, we can create the filter itself:
                 return AttributeFilter.prototype.configure.apply(this, arguments);
             },
 
-            /**
-             * {@inherit}
-             */
             renderInput: function (templateContext) {
                 // It's time to render our field
                 return this.template(_.extend({}, templateContext, {
@@ -128,7 +122,14 @@ And its template:
     :linenos:
 
     <!-- src/Acme/Bundle/CustomBundle/Resources/public/templates/product/filter/range.html -->
-    <input type="range" name="filter-value" value="<%= value %>" min="<%= attribute.number_min %>" max="<%= attribute.number_max %>" <%- editable ? '' : 'disabled' %>/>
+    <input
+        type="range"
+        name="filter-value"
+        value="<%= value %>"
+        min="<%= attribute.number_min %>"
+        max="<%= attribute.number_max %>"
+        <%- editable ? '' : 'disabled' %>
+    />
 
 You can now register this module into our requirejs configuration:
 
@@ -136,7 +137,6 @@ You can now register this module into our requirejs configuration:
     :linenos:
 
     # Acme/Bundle/CustomBundle/Resources/config/requirejs.yml
-
     config:
         paths:
             acme/range-filter: acmecustom/js/product/filter/range-filter
@@ -155,7 +155,6 @@ Then, last operation, match the filter type (`acme-range-filter`) with the requi
     :linenos:
 
     # Acme/Bundle/CustomBundle/Resources/config/form_extensions.yml
-
     extensions:
         acme-range-filter:
             module: acme/range-filter

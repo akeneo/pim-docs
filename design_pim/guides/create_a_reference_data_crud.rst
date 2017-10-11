@@ -16,7 +16,7 @@ Instead of extending ``AbstractReferenceData``, it needs to extends ``AbstractCu
 .. code-block:: php
 
     <?php
-    # /src/Acme/Bundle/AppBundle/Entity/Color.php
+    // /src/Acme/Bundle/AppBundle/Entity/Color.php
 
     namespace Acme\Bundle\AppBundle\Entity;
 
@@ -97,20 +97,23 @@ Now that the Color entity is updated, look at the following configuration:
                         - customEntityName
             actions:
                 show:
+                    launcherOptions:
+                        className: AknIconButton AknIconButton--small AknIconButton--view
                     type:      navigate
                     label:     Show the reference data
-                    icon:      eye-open
                     link:      show_link
                 edit:
+                    launcherOptions:
+                        className: AknIconButton AknIconButton--small AknIconButton--edit
                     type:      navigate
                     label:     Edit the reference data
-                    icon:      edit
                     link:      edit_link
                     rowAction: true
                 delete:
+                    launcherOptions:
+                        className: AknIconButton AknIconButton--small AknIconButton--trash
                     type:  delete
                     label: Delete the reference data
-                    icon:  trash
                     link:  delete_link
             filters:
                 columns:
