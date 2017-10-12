@@ -1,17 +1,21 @@
-How to add a tab or a panel to the product edit form
-====================================================
+How to add a tab to a form
+==========================
 
-The most common UI customization on the Akeneo PIM is to add a tab to the product edit form. With the new product edit form introduced in 1.4 we splitted tabs in distinct elements:
+The most common UI customization on the Akeneo PIM is to add a tab in your form. With the form extensions introduced in 1.4 we splitted tabs in distinct elements:
 
- - Tabs hold all edit features on the entity (attributes edit, classification, associations)
- - Panels hold all meta information about the entity (history, completeness, comments)
+- Vertical tabs updates the main content of the page, keeping the same entity context. You can find vertical tabs on the product edit form.
+- Horizontal tabs show several information, by staying in the same page. You can find horizontal tabs in a lot of forms (e.g. edit import profile).
 
-Add a tab to the product edit form
-----------------------------------
+In this next image, you can see the difference between a vertical tab and an horizontal tab.
+
+.. image:: ./tabs.png
+
+Add a vertical tab to the product edit form
+-------------------------------------------
 
 Let's say that we would like to add a custom tab to our product edit form in order to manage packages of the product.
 
-First, we need to create a Form extension in our bundle:
+First, we need to create a form extension in our bundle:
 
 .. code-block:: javascript
     :linenos:
@@ -44,6 +48,8 @@ First, we need to create a Form extension in our bundle:
         }
     );
 
+The triggered event `tag:register` automatically register a new tab and will add it to the product edit form column.
+
 For now this is a dummy extension, but this is a good start!
 
 Let's register this file in the `requirejs` configuration
@@ -67,12 +73,11 @@ Now that our file is registered in `requirejs` configuration, we can add this ex
     extensions:
         pim-product-edit-form-packages:                        # The form extension code (can be whatever you want)
             module: pim/product-edit-form/packages             # The requirejs module we just created
-            parent: pim-product-edit-form-form-tabs            # The parent extension in the form where we want to be regisetred
-            targetZone: container
-            aclResourceId: pim_enrich_product_categories_view  # The user will need this ACL for this extension to be registered
+            parent: pim-product-edit-form-column-tabs          # The parent extension in the form where we want to be registered
+            targetZone: container                              # The name of the target zone where the element have to be placed
             position: 90                                       # The extension position
 
-After a cache clear (`bin/console cache:clear`), you should see your new tab in the product edit form. If not, make sure that you ran the `bin/console assets:install --symlink web` command
+After a cache clear (`bin/console cache:clear`), you should see your new tab in the product edit form. If not, make sure that you ran the `bin/console assets:install --symlink web` command.
 
 Now that we have our extension loaded in our form, we can add some logic into it
 
@@ -83,15 +88,15 @@ Now that we have our extension loaded in our form, we can add some logic into it
     /*
      * /src/Acme/Bundle/EnrichBundle/Resources/public/js/product/form/packages.js
      */
-    define(['underscore', 'pim/form', 'text!pim/template/product/tab/packages'],
-        function (_, BaseForm, template) {
+    define(['underscore', 'oro/translator', 'pim/form', 'pim/template/product/tab/packages'],
+        function (_, __, BaseForm, template) {
             return BaseForm.extend({
                 template: _.template(template),
                 configure: function () {
                     this.trigger('tab:register', {
                         code: this.code,
                         isVisible: this.isVisible.bind(this),
-                        label: _.__('pim_enrich.form.product.tab.packages.title')
+                        label: __('pim_enrich.form.product.tab.packages.title')
                     });
 
                     return BaseForm.prototype.configure.apply(this, arguments);
@@ -104,7 +109,7 @@ Now that we have our extension loaded in our form, we can add some logic into it
                     return this;
                 },
                 isVisible: function () {
-                    return true; //You can define visibility of the tab at runtime with the return of this method
+                    return true; // You can define visibility of the tab at runtime with the return of this method
                 }
             });
         }
@@ -134,10 +139,10 @@ And here is our template to list every package:
     <% }) %>
     </ul>
 
-Add a panel to the product edit form
-------------------------------------
+Add an horizontal tab
+---------------------
 
-Now that we added a tab to the product edit form, adding a panel will be very easy as it's a quite similar system. For this cookbook we will create a panel to display the supply level of the product in our warehouse.
+Now that we added a tab to the product edit form, adding an horizontal tab will be very easy as it's a quite similar system. For this cookbook we will create a tab to display additional information of an attribute.
 
 Lets start by creating a form extension:
 
@@ -146,22 +151,22 @@ Lets start by creating a form extension:
 
     'use strict';
     /*
-     * /src/Acme/Bundle/EnrichBundle/Resources/public/js/product/form/panel/warehouse.js
+     * /src/Acme/Bundle/EnrichBundle/Resources/public/js/attribute/form/tab/additional.js
      */
-    define(['jquery', 'underscore', 'pim/form', 'text!pim/template/product/panel/warehouse'],
-        function ($, _, BaseForm, template) {
+    define(['jquery', 'underscore', 'oro/translator', 'pim/form', 'pim/template/attribute/tab/additional'],
+        function ($, _, __, BaseForm, template) {
             return BaseForm.extend({
                 template: _.template(template),
                 configure: function () {
-                    this.trigger('panel:register', {
+                    this.trigger('tab:register', {
                         code: this.code,
-                        label: _.__('pim_enrich.form.product.panel.warehouse.title')
+                        label: __('pim_enrich.form.attribute.tab.additional.title')
                     });
 
                     return BaseForm.prototype.configure.apply(this, arguments);
                 },
                 render: function () {
-                    $.getJSON('http://my_wharehouse_api.com/product/id')
+                    $.getJSON('http://my_wharehouse_api.com/attribute/id')
                         .then(function (supplyLevel) {
                             this.$el.html(this.template({
                                 supplyLevel: supplyLevel
@@ -177,34 +182,34 @@ Lets start by creating a form extension:
 
 Again, we need to register it and create the template:
 
+.. code-block:: text
+    :linenos:
+
+        # /src/Acme/Bundle/EnrichBundle/Resources/public/templates/attributes/tab/additional.html
+        <%= supplyLevel %>
+
 .. code-block:: yaml
     :linenos:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/config/requirejs.yml
     config:
         paths:
-            pim/product-edit-form/panel/warehouse: acmeenrich/js/product/form/panel/warehouse
+            pim/attributes/tab/additional: acmeenrich/js/attributes/form/tab/additional
 
-            pim/template/product/panel/warehouse: acmeenrich/templates/product/panel/warehouse.html
+            pim/template/attribute/tab/additional: acmeenrich/templates/attributes/tab/additional.html
 
 
 .. code-block:: yaml
     :linenos:
 
-    # /src/Acme/Bundle/EnrichBundle/Resources/config/form_extensions/product_edit.yml
+    # /src/Acme/Bundle/EnrichBundle/Resources/config/form_extensions/attribute/edit.yml
 
     extensions:
-        pim-product-edit-form-warehouse:                  # The form extension code (can be whatever you want)
-            module: pim/product-edit-form/panel/warehouse # The requirejs module we just created
-            parent: pim-product-edit-form-panels          # The parent extension in the form where we want to be regisetred
-            targetZone: panel-content
-            position: 90                                  # The extension position
-
-.. code-block:: text
-    :linenos:
-
-    # /src/Acme/Bundle/EnrichBundle/Resources/public/templates/product/panel/warehouse.html
-    <%= supplyLevel %>
+        pim-attribute-edit-form-additional:           # The form extension code (can be whatever you want)
+            module: pim/attributes/tab/additional:    # The requirejs module we just created
+            parent: pim-attribute-edit-form-form-tabs # The parent extension in the form where we want to be regisetred
+            targetZone: container
+            position: 90                              # The extension position
 
 To see your changes you need to clear the PIM cache and run webpack again:
 

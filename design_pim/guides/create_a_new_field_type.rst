@@ -118,7 +118,15 @@ And its template:
     :linenos:
 
     <!-- src/Acme/Bundle/CustomBundle/Resources/public/templates/product/field/range.html -->
-    <input type="range" data-locale="<%= value.locale %>" data-scope="<%= value.scope %>" value="<%= value.data %>" <%= editMode === 'view' ? 'disabled' : '' %> min="<%= attribute.number_min %>" max="<%= attribute.number_max %>"/>
+    <input
+        type="range"
+        data-locale="<%= value.locale %>"
+        data-scope="<%= value.scope %>"
+        value="<%= value.data %>"
+        <%= editMode === 'view' ? 'disabled' : '' %>
+        min="<%= attribute.number_min %>"
+        max="<%= attribute.number_max %>"
+    />
 
 You can now register this module into your requirejs configuration:
 

@@ -18,7 +18,7 @@ The best way (and the one we recommend) is to extend the abstract class `Pim\\Co
 .. code-block:: php
 
     <?php
-    # /src/Acme/Bundle/AppBundle/Entity/Color.php
+    // /src/Acme/Bundle/AppBundle/Entity/Color.php
 
     namespace Acme\Bundle\AppBundle\Entity;
 
