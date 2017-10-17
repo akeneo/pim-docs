@@ -23,7 +23,6 @@ Listener Class Name                                               Priority
 ================================================================  ===============
 `ChannelLocaleSubscriber`_                                        0
 `CheckChannelsOnDeletionSubscriber`_                              0
-`ProductTemplateAttributeSubscriber`_                             0
 `AddRemoveVersionSubscriber`_                                     0
 RuleRelationSubscriber (Enterprise edition)                       0
 RemoveChannelSubscriber (Enterprise edition)                      0
@@ -35,7 +34,6 @@ CheckPublishedProductOnRemovalSubscriber (Enterprise edition)     0
 ================================================================  ===============
 
 .. _CheckChannelsOnDeletionSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/Category/CheckChannelsOnDeletionSubscriber.php
-.. _ProductTemplateAttributeSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/ProductTemplateAttributeSubscriber.php
 .. _AddRemoveVersionSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/VersioningBundle/EventSubscriber/AddRemoveVersionSubscriber.php
 
 ``akeneo.storage.post_remove``
@@ -85,7 +83,6 @@ Listener Class Name                                            Priority
 =============================================================  ===============
 `CurrencyDisablingSubscriber`_                                 0
 `ComputeEntityRawValuesSubscriber`_                            0
-`ComputeProductTemplateRawValuesSubscriber`_                   0
 `ChannelLocaleSubscriber`_                                     0
 MergeNotGrantedProductDataSubscriber (Enterprise edition)      0
 ProjectSubscriber (Enterprise edition)                         0
@@ -94,7 +91,6 @@ EnsureProductDraftGlobalStatusSubscriber (Enterprise edition)  0
 
 .. _CurrencyDisablingSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/CurrencyDisablingSubscriber.php
 .. _ComputeEntityRawValuesSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/ComputeEntityRawValuesSubscriber.php
-.. _ComputeProductTemplateRawValuesSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/CatalogBundle/EventSubscriber/ComputeProductTemplateRawValuesSubscriber.php
 .. _ChannelLocaleSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/EnrichBundle/EventListener/Storage/ChannelLocaleSubscriber.php
 
 ``akeneo.storage.post_save``
