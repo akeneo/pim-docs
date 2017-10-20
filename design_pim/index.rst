@@ -17,6 +17,7 @@ This chapter gives details on how to customize existing UI to fit your customer'
     guides/create_a_new_field_type
     guides/create_a_new_filter_type
     guides/create_a_reference_data_crud
+    guides/add_new_page
     guides/how_to_customize_menu
 
 .. toctree::
