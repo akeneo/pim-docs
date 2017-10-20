@@ -4,19 +4,19 @@ How to add a new page
 In this document, we will see the basics on how to add a new page in Akeneo PIM. We will
 - create a new route to this page
 - fill this page with some information
-- create a link to this one
+- create a link to this page
 
 Create a new route
 ------------------
 
-First, create a new back-end route to access to your new page
+First, create a new back-end route to access your new page.
+Even if the routing is done by front-end, we keep the legacy route declarations in the back-end because they still are dumped from it.
 
 .. code-block:: yaml
 
     # /src/Acme/Bundle/AppBundle/Resources/config/routing.yml
     acme_custom_index:
         path: /acme/custom/
-
 
 Create the page content
 -----------------------
@@ -35,8 +35,7 @@ Then, you have to create an empty page as a form extension. This will create a s
 Create the controller
 ---------------------
 
-Then, create your controller and register it. This controller will simply render a complete form extension.
-This controller will simply load the extension declared above.
+Then, create your controller and register it. This controller will render a page form extension, with the extension declared above.
 
 .. code-block:: javascript
 
@@ -69,7 +68,7 @@ This controller will simply load the extension declared above.
 
 .. note::
 
-    The name of the controller route (`acme_custom_index`) your define on the controller registry has to be the same than the one declared in back-end routes.
+    The name of the controller route (`acme_custom_index`) you defined in the controller registry has to be the same as the one you declared in back-end routes.
 
 Link it
 -------
@@ -90,13 +89,14 @@ Finally, add a new item in the menu to access your page. You can have more infor
                 iconModifier: iconCard
                 to: acme_custom_index
 
-To show your last changes, you have to dump new routes and recompute assets:
+To view your changes, you have to dump new routes and rebuild assets:
 
 .. code-block:: bash
 
     $ bin/console pim:installer:dump-require-paths
     $ bin/console pim:install:assets
-    $ npm run webpack-watch
+    $ bin/console assets:install --symlink
+    $ yarn run webpack
 
-You will have your new item on the main menu, and when you will on it, it will display an empty page. You can now add
-some extensions under `acme-custom-index` to display your custom elements.
+You will have your new item on the main menu, and when you click on it, it will display an empty page. You can now add
+some extensions with `acme-custom-index` as parent to display your custom elements.
