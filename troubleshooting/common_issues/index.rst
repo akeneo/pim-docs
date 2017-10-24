@@ -35,6 +35,9 @@ To fix this issue, just run the following commands:
     rm -rf web/translations/*
     php app/console oro:translation:dump
 
+If you see English words instead of your current locale words, it means we are missing some translations. If a word is not translated in a specific locale, its english translation will be displayed.
+In this case, feel free to contribute and help translate the PIM! To find more information about `Crowdin`_ and add new translations: :doc:`contributing/translate.html#translate-the-user-interface`.
+
 Some Javascript, CSS or media files are not taken into account
 --------------------------------------------------------------
 
@@ -78,3 +81,5 @@ If you need to export medias, unfortunately there is no out of the box solution 
 If the issue remains, you need to follow our qualification guide: :doc:`/troubleshooting/bug_qualification/index`.
 
 Regarding data export volumetry, please note that we have clients exporting more than 270K at once and the PIM handles such exports. See our Scalability guide for more informations about our tests: :doc:`/reference/scalability_guide/index`
+
+.. _Crowdin: https://crowdin.com/project/akeneo
