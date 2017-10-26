@@ -1,7 +1,7 @@
 How to add a new tab in System / Configuration
 ==============================================
 
-To add or override a tab in the System Configuration page, you can use our form extensions system. The first step is to create a form extension in your custom bundle.
+To add or override a tab in the System Configuration page, you can use our form extensions system. The first step is to create a form extension in your custom bundle. This new extension defines and registers a tab with a label and some content:
 
 .. code-block:: javascript
     :linenos:
@@ -23,7 +23,7 @@ To add or override a tab in the System Configuration page, you can use our form 
                     return BaseForm.prototype.configure.apply(this, arguments);
                 },
                 render: function () {
-                    this.$el.html('Hello world');
+                    this.$el.html('<br> Hello world');
 
                     return this;
                 },
@@ -50,6 +50,8 @@ Now that your file is registered, you can add the extension to the Configuration
 
 .. code-block:: yaml
     :linenos:
+
+    # /src/Acme/Bundle/BlogBundle/Resources/config/form_extensions.yml
 
     extensions:
         oro-system-config-tab-acme:
