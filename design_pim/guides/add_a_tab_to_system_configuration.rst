@@ -34,7 +34,7 @@ To add or override a tab in the System Configuration page, you can use our form 
         }
     );
 
-Once you create your new tab extension, you have register it in the requirejs.yml file for your bundle:
+Once you create your new tab extension, you have to register it in the requirejs.yml file for your bundle:
 
 .. code-block:: yaml
     :linenos:
