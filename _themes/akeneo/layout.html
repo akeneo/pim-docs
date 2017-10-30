@@ -36,8 +36,12 @@
     {% endif %}
 
     <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
 
     <style>
         /* TODO Add this into the api-docs CSS */
@@ -48,6 +52,7 @@
         .hljs-string, .hljs-title, .hljs-name, .hljs-type, .hljs-symbol, .hljs-bullet, .hljs-addition, .hljs-variable, .hljs-template-tag, .hljs-template-variable, .hljs-regexp { font-weight: bold; }
         nav { transition: box-shadow 0.2s ease-in-out; }
         .dropdown .dropdown-menu { left: -120px; }
+        .algolia-docsearch-suggestion--category-header { background-color: white; }
     </style>
 </head>
 <body data-spy="scroll" data-target="#navbar">
@@ -99,7 +104,7 @@
                     {% endblock %}
                 </nav>
             </div>
-            <div class="col-xs-12 col-sm-9">
+            <div class="section col-xs-12 col-sm-9">
                 {% block body %}{% endblock %}
             </div>
         </div>
@@ -120,15 +125,14 @@
 </div>
 
 {# ALGOLIA #}
-<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
 <script type="text/javascript">
   docsearch({
     apiKey: '90e155c70f9456125f229cc924db6000',
     indexName: 'akeneo',
     inputSelector: '#algolia-search',
     algoliaOptions: {
-      hitsPerPage: 15,
-//      'facetFilters': ["version:{{ version|e }}"],
+      hitsPerPage: 8,
+      'facetFilters': ["version:{{ version|e }}"],
     }
   });
 </script>
