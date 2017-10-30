@@ -51,7 +51,8 @@
         .hljs-comment, .hljs-quote { color: #a1a9b7; }
         .hljs-string, .hljs-title, .hljs-name, .hljs-type, .hljs-symbol, .hljs-bullet, .hljs-addition, .hljs-variable, .hljs-template-tag, .hljs-template-variable, .hljs-regexp { font-weight: bold; }
         nav { transition: box-shadow 0.2s ease-in-out; }
-        .dropdown .dropdown-menu { left: -120px; }
+        .nav .dropdown:first-child { float: right; }
+        .nav .dropdown:nth-child(2) .dropdown-menu { left: -175px; }
         .algolia-docsearch-suggestion--category-header { background-color: white; }
     </style>
 </head>
@@ -68,7 +69,7 @@
             </button>
             {% if logo %}
                 <a href="{{ pathto(master_doc) }}" class="navbar-brand">
-                    <img height="22" src="{{ pathto('_static/' + logo, 1) }}"/>
+                    <img height="18" src="{{ pathto('_static/' + logo, 1) }}"/>
                 </a>
             {% endif %}
         </div>
