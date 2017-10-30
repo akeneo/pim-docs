@@ -1,6 +1,6 @@
 var menus = [
-    'Documentation',
-    'Technical'
+    'Guides',
+    'Advanced'
 ];
 
 $(function() {
