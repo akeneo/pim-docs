@@ -18,8 +18,8 @@ The version purger is able to retrieve the versions from the database and to run
 
 The advisor's responsibility is to indicate whether a version should be purged or not.
 
-- If all advisors registered within the version purger agree on purging, the version will be removed
-- If one advisor indicates the version should be kept it is not removed
+ - If all advisors registered within the version purger agree on purging, the version will be removed
+ - If one advisor indicates the version should be kept it is not removed
 
 We can customize the purge process by registering a new advisor within the version purger.
 

@@ -56,10 +56,10 @@ The execution of a Job is configured through a JobParameters which represents th
 
 Several business services help to manipulate the JobParameters,
 
-- ``Akeneo\Component\Batch\Job\JobParametersFactory`` to create a JobParameters for a given Job
-- ``Akeneo\Component\Batch\Job\JobParametersValidator`` to validate the JobParameters to be used within a Job
-- ``Akeneo\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface`` to provide the default values used to create a JobParameters
-- ``Akeneo\Component\Batch\Job\JobParameters\ConstraintCollectionProviderInterface`` to provide the constraints used to validate a JobParameters
+ - ``Akeneo\Component\Batch\Job\JobParametersFactory`` to create a JobParameters for a given Job
+ - ``Akeneo\Component\Batch\Job\JobParametersValidator`` to validate the JobParameters to be used within a Job
+ - ``Akeneo\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface`` to provide the default values used to create a JobParameters
+ - ``Akeneo\Component\Batch\Job\JobParameters\ConstraintCollectionProviderInterface`` to provide the constraints used to validate a JobParameters
 
 Step
 ----
