@@ -118,7 +118,7 @@ Now that we have a filter provider, we can create the filter itself:
 
 And its template:
 
-.. code-block:: text
+.. code-block:: html
     :linenos:
 
     <!-- src/Acme/Bundle/CustomBundle/Resources/public/templates/product/filter/range.html -->

@@ -129,7 +129,7 @@ Remember to register your template in your requirejs file:
 
 And here is our template to list every package:
 
-.. code-block:: text
+.. code-block:: html
     :linenos:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/public/templates/product/tab/packages.html
