@@ -1,0 +1,166 @@
+{# TEMPLATE VAR SETTINGS #}
+{%- set url_root = pathto('', 1) %}
+{%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
+{%- if not embedded and docstitle %}
+{%- set titlesuffix = " &mdash; "|safe + docstitle|e %}
+{%- else %}
+{%- set titlesuffix = "" %}
+{%- endif %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {{ metatags }}
+    {% block htmltitle %}
+    <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+    {% endblock %}
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    {% for cssfile in css_files %}
+    <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
+    {% endfor %}
+
+    {% for cssfile in extra_css_files %}
+    <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
+    {% endfor %}
+
+    {%- for scriptfile in script_files %}
+    <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+    {%- endfor %}
+
+    {# FAVICON #}
+    {% if favicon %}
+    <link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1) }}"/>
+    {% endif %}
+
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+
+    <style>
+        /* TODO Add this into the api-docs CSS */
+        .highlighttable { width: 100%; }
+        .highlight-yaml { width: 100%; overflow: auto; }
+        .hljs { font-size: 12.5px; }
+        .hljs-comment, .hljs-quote { color: #a1a9b7; }
+        .hljs-string, .hljs-title, .hljs-name, .hljs-type, .hljs-symbol, .hljs-bullet, .hljs-addition, .hljs-variable, .hljs-template-tag, .hljs-template-variable, .hljs-regexp { font-weight: bold; }
+        nav { transition: box-shadow 0.2s ease-in-out; }
+        .nav .dropdown:first-child { float: right; }
+        .nav .dropdown:nth-child(2) .dropdown-menu { left: -175px; }
+        .algolia-docsearch-suggestion--category-header { background-color: white; }
+    </style>
+</head>
+<body data-spy="scroll" data-target="#navbar">
+<nav class="navbar navbar-default navbar-fixed-top scroll">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {% if logo %}
+                <a href="{{ pathto(master_doc) }}" class="navbar-brand">
+                    <img height="18" src="{{ pathto('_static/' + logo, 1) }}"/>
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                {% include "_versions.html" %}
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group form-search">
+                    <input id="algolia-search" class="form-control" placeholder="Search whole doc">
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div id="mainContent" style="display: none">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>&nbsp;</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div id="navbar" class="col-sm-3 hidden-xs">
+                <nav role="tablist" id="navbar-nav" data-spy="affix" data-offset-top="80">
+                    {% block menu %}
+                    {% set toctree = toctree(maxdepth=4, collapse=theme_collapse_navigation, includehidden=True) %}
+                    {% if toctree %}
+                    {{ toctree }}
+                    {% endif %}
+                    {% endblock %}
+                </nav>
+            </div>
+            <div class="section col-xs-12 col-sm-9">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-9">
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-muted text-right">
+                    <i class="fa fa-pencil"></i> Found a typo or a hole in the documentation and feel like contributing?<br>
+                    {% include "_github.html" %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ALGOLIA #}
+<script type="text/javascript">
+  docsearch({
+    apiKey: '90e155c70f9456125f229cc924db6000',
+    indexName: 'akeneo',
+    inputSelector: '#algolia-search',
+    algoliaOptions: {
+      hitsPerPage: 8,
+      'facetFilters': ["version:{{ version|e }}"],
+    }
+  });
+</script>
+
+{# Google analytics #}
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35417741-6', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<script>
+    $(function(){
+        var navbar = $('.navbar');
+        $(window).scroll(function(){
+            if($(window).scrollTop() <= 40){
+                navbar.removeClass('scroll');
+            } else {
+                navbar.addClass('scroll');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
