@@ -7,10 +7,10 @@ Let's say we want to have a slider to represent each "number attribute" having a
 
 Before diving into code, we need to understand what's going on under the hood:
 
-- In akeneo, we have attributes with properties and an attribute type. In 1.3 the rendering of an attribute was driven by its attribute type. In 1.4 we introduced a field provider.
-- This field provider gets an attribute and returns a field type
-- In the `form_extensions.yml` or in the `form_extensions` folder of your `Resources/config` bundle's folder you can map this field to the actual requirejs module
-- The requirejs module contains the field's logic
+ - In akeneo, we have attributes with properties and an attribute type. In 1.3 the rendering of an attribute was driven by its attribute type. In 1.4 we introduced a field provider.
+ - This field provider gets an attribute and returns a field type
+ - In the `form_extensions.yml` or in the `form_extensions` folder of your `Resources/config` bundle's folder you can map this field to the actual requirejs module
+ - The requirejs module contains the field's logic
 
 
 Here is a representation of this architecture:
@@ -114,7 +114,7 @@ Now that we have a field provider, we can create the field itself:
 
 And its template:
 
-.. code-block:: html
+.. code-block:: text
     :linenos:
 
     <!-- src/Acme/Bundle/CustomBundle/Resources/public/templates/product/field/range.html -->

@@ -28,12 +28,12 @@ One table to rule them all
 __________________________
 
 From this introduction, let's recap which data we need:
-- For each locale,
-- For each channel,
-- For each user,
-- Does the product
-- have at least an attribute filled in?
-- or is it complete?
+ - For each locale,
+ - For each channel,
+ - For each user,
+ - Does the product
+ - have at least an attribute filled in?
+ - or is it complete?
 
 Creating a table to gather all data we need to compute the completeness seems to be a good idea but we need some
 adjustments. It can't be scalable if we do this for each user.
@@ -49,7 +49,7 @@ problem is resolved by linking user groups to project and not directly to users.
 Some data are still missing. User groups permissions are not only about products but also about attribute groups.
 
 Here is the final structure we needed (only data that are relevant for the demonstration are shown):
-- Pre-processing table:
+ - Pre-processing table:
 
   - For each locale,
   - For each channel,
@@ -58,7 +58,7 @@ Here is the final structure we needed (only data that are relevant for the demon
   - have at least an attribute filled in?
   - or is it complete?
 
-- Project model:
+ - Project model:
  
   - locale
   - channel

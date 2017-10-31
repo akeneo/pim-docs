@@ -50,9 +50,9 @@ declaration of selectors extensions:
             position: 200
 
 Which position to choose?
-- To add your extension at the far left the position must be lower than 100.
-- To add your extension between the project selector and the contributor selector the position must be between 100 and 200.
-- To add your extension at the far right the position must be above 200.
+ - To add your extension at the far left the position must be lower than 100.
+ - To add your extension between the project selector and the contributor selector the position must be between 100 and 200.
+ - To add your extension at the far right the position must be above 200.
 
 .. _`how to customize the PEF`: ../..//add_a_custom_button_to_product_edit_form.html
 
@@ -65,8 +65,8 @@ Events
 
 The list of events used in the widget and their descriptions:
 
-- ``teamwork-assistant:widget:contributor-selected`` is triggered when a user selects a user in the contributor selector. Parameter is the user code.
-- ``teamwork-assistant:widget:project-selected`` is triggered when a user selects a project in the project selector. Parameter is the project code.
+ - ``teamwork-assistant:widget:contributor-selected`` is triggered when a user selects a user in the contributor selector. Parameter is the user code.
+ - ``teamwork-assistant:widget:project-selected`` is triggered when a user selects a project in the project selector. Parameter is the project code.
 
 Form model
 __________

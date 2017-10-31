@@ -3,8 +3,8 @@ How to add a tab or a panel to the product edit form
 
 The most common UI customization on the Akeneo PIM is to add a tab to the product edit form. With the new product edit form introduced in 1.4 we splitted tabs in distinct elements:
 
-- Tabs hold all edit features on the entity (attributes edit, classification, associations)
-- Panels hold all meta information about the entity (history, completeness, comments)
+ - Tabs hold all edit features on the entity (attributes edit, classification, associations)
+ - Panels hold all meta information about the entity (history, completeness, comments)
 
 Add a tab to the product edit form
 ----------------------------------
@@ -124,7 +124,7 @@ Remember to register your template in your requirejs file:
 
 And here is our template to list every package:
 
-.. code-block:: html
+.. code-block:: text
     :linenos:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/public/templates/product/tab/packages.html
@@ -200,7 +200,7 @@ Again, we need to register it and create the template:
             targetZone: panel-content
             position: 90                                  # The extension position
 
-.. code-block:: html
+.. code-block:: text
     :linenos:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/public/templates/product/panel/warehouse.html
