@@ -2,13 +2,13 @@ How to register a new bulk action
 =================================
 
 In this cookbook, you will learn how to create a new bulk action. We will create a bulk action for products to add a comment for a set of products.
-Following this cookbook, you will be able to create any bulk action for any entities of the PIM.
+Following this cookbook, you will be able to create any bulk action for any entity of the PIM.
 
 To create a new bulk action on a product, you need to
 
 - create a new processor to process a product,
 - create a job with this processor,
-- create the screens for the new bulk action.
+- create the page for the new bulk action.
 
 Create the processor
 --------------------
@@ -18,12 +18,13 @@ Any processor should have a ``process($item)`` method to process an entity. Here
 
 .. note::
 
-    Each bulk actions has a set of ``actions`` to do. Here, we register in the ``actions`` array a unique action containing the comment and the username.
+    Each bulk action has a set of ``actions`` to do. Here, we register in the ``actions`` array a unique action containing the comment and the username.
 
 .. code-block:: php
 
     // src/Acme/Bundle/AppBundle/Connector/Processor/MassEdit/Product/AddCommentProcessor.php
     <?php
+    'use strict';
 
     namespace Acme\Bundle\AppBundle\Connector\Processor\MassEdit\Product;
 
@@ -50,7 +51,7 @@ Any processor should have a ``process($item)`` method to process an entity. Here
             $this->userRepository = $userRepository;
         }
 
-        public function process($product)
+        public function process($product): void
         {
             $actions = $this->getConfiguredActions();
 
@@ -65,7 +66,7 @@ Any processor should have a ``process($item)`` method to process an entity. Here
     }
 
 
-Then, register this class in a processor configuration file:
+Then, declare a service in a processor configuration file:
 
 .. code-block:: yaml
 
@@ -107,9 +108,9 @@ Don't forget to load this new configuration file in your dependency injection:
 Create the job
 --------------
 
-A job will be run in background to process the entities with the processor defined above.
-The job we will create have a single step, and this step is the default step.
-The default step is composed of a reader (reading the products from database, already existing), a processor and a writer (writing products in database, already existing).
+The job will be run in background to process the entities with the processor defined above.
+The job that we'll create has one single step, and this step is the default step.
+The default step is composed of a reader (reading the products from the database, already exists), a processor and a writer (writing products to the database, already exists).
 As there is no need to redefine any class for this job, we simply add configuration files:
 
 .. code-block:: yaml
@@ -162,7 +163,7 @@ As there is no need to redefine any class for this job, we simply add configurat
             tags:
                 - { name: akeneo_batch.job.job_parameters.constraint_collection_provider }
 
-As we've done previously, add these files to the dependency injection:
+Just like we did above, load these files to the dependency injection:
 
 .. code-block:: php
 
@@ -172,7 +173,7 @@ As we've done previously, add these files to the dependency injection:
     $loader->load('steps.yml');
     [...]
 
-Finally, add this new job instance in the database to be able to run it:
+Finally, add this new job instance to the database to be able to run it:
 
 .. code-block:: bash
 
@@ -182,7 +183,8 @@ Create the UI
 -------------
 
 The UI of this mass action is simple: we just have to create a textarea field.
-When user updates this textarea, the data will be put in the form data.
+When a user updates this textarea, the data will be put in the form data.
+The new module is composed of a template and a form extension.
 
 .. code-block:: html
 
@@ -238,7 +240,7 @@ When user updates this textarea, the data will be put in the form data.
         }
     );
 
-Then, register these new modules and add a new bulk action to the current list:
+Then, register these new modules and add a new bulk action to the current list of bulk actions:
 
 .. code-block:: yaml
 
@@ -277,4 +279,4 @@ Finally, you have to reinstall your assets:
     bin/console assets:install --symlink
     npm run webpack
 
-That's it! If you select several products then click on Bulk actions, your will be able to use your new feature.
+That's it! If you select several products then click "Bulk actions", your will be able to use your new feature.
