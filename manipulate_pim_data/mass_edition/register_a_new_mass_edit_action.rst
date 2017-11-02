@@ -192,7 +192,7 @@ You have to get your job instance (job profile) code from the first table, get t
 execute an insert SQL query to add these permissions.
 It will be something like:
 
-.. code-block:: mySQL
+.. code-block:: sql
 
     INSERT INTO pimee_security_job_profile_access VALUES ('', <job_profile_id>, <user_group_id>, 1, 1);
 
