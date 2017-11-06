@@ -33,7 +33,7 @@ list. Each rule is referred to by a code and can contain a list of conditions an
                   operator: CONTAINS
                   value: Canon
             actions:
-                - type: set_value
+                - type: set
                   field: camera_brand
                   value: canon_brand
         camera_copy_name_to_model:
@@ -43,8 +43,7 @@ list. Each rule is referred to by a code and can contain a list of conditions an
                   operator: IN
                   value:
                     - camcorders
-            actions:
-                - type: copy_value
+            actions:_value
                   from_field: name
                   to_field: camera_model_name
 
