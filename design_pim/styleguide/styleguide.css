@@ -1,211 +1,42 @@
 body {
-    height: 100%;
-    width: 100%;
-    background: #eee;
+    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    min-width: inherit;
+    padding-top: 60px;
     overflow: auto;
-    color: #404040;
-    line-height: normal;
-    font-size: 16px;
+    font-weight: normal;
 }
 
-.AknStyleGuide-title {
-    font-weight: 100;
-    color: white;
-    text-align: center;
-    display: block;
-    border-bottom: 1px solid #888;
-    padding-bottom: 20px;
+ul.nav.nav-stacked li > ul li > a {
+    font-weight: normal;
 }
 
-.AknStyleGuide-leftPanel {
-    position: fixed;
-    height: 100%;
-    width: 300px;
-    background: #282b2e;
-}
-
-.AknStyleGuide-rightPanel {
-    padding: 30px 30px 30px 330px;
-}
-
-.AknStyleGuide-element {
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 15px;
-    margin-bottom: 30px;
-}
-
-.AknStyleGuide-elementTitle {
-    display: flex;
-    justify-content: space-between;
-    font-size: 28px;
-    color: #404040;
-}
-
-.AknStyleGuide-modifiersTitle {
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 20px;
-    margin: 30px 0 10px 0;
-    padding: 0 0 10px 0;
-    border-bottom: 1px solid #ccc;
-}
-
-.AknStyleGuide-modifier {
-    border: solid #ddd;
-    border-width: 1px 1px 1px 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 2px;
-}
-
-.AknStyleGuide-description {
-    font-weight: 300;
-    font-size: 15px;
-    color: #777;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 10px;
-    margin: 10px 0;
-    background: #fff9ef;
-}
-
-.AknStyleGuide-modifierTitle {
-    font-weight: 300;
-    font-size: 15px;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 0 10px 0;
-    align-items: center;
-}
-
-.AknStyleGuide-showCode {
-    font-size: 15px;
-}
-
-.AknStyleGuide-showCode:hover {
-    background: #fafafa;
-}
-
-.AknStyleGuide-subMenu {
-    display: none;
-}
-
-.AknStyleGuide-menuItem--current .AknStyleGuide-subMenu {
-    display: block;
-}
-
-.AknStyleGuide-menuItem--current .AknStyleGuide-groupLink {
-    font-weight: bold;
-}
-
-.AknStyleGuide-groupLink {
-    color: #ccc;
-    padding: 5px 20px;
-    display: block;
-    font-size: 15px;
-}
-
-code.html.hljs.xml {
-    color: #a9b7c6;
-    background: #282b2e;
-    white-space: pre;
-    padding: 0.5em;
-    font-size: 14px;
-}
-
-label {
-    margin: 0;
-    color: #404040;
-}
-
-:not(.reset-bem) p {
-    margin-bottom: 24px;
-}
-
-:not(.reset-bem) ul {
-    font-size: 16px;
-}
-
-.reset-bem h1 {
-    font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.wy-menu.wy-menu-vertical.affix,
-.wy-breadcrumbs,
-.rst-footer-buttons {
-    font-size: 16px;
-}
-
-.wy-menu-vertical li a span.toctree-expand {
-    display: none;
-}
-
-.wy-menu-vertical li.on a span.toctree-expand,
-.wy-menu-vertical li.current>a span.toctree-expand {
-    display: none;
-}
-
-.wy-plain-list-decimal li,
-.rst-content .section ol li,
-.rst-content ol.arabic li,
-article ol li {
-    list-style: none;
-    margin-left: 0;
-}
-
-.wy-plain-list-disc li,
-.rst-content .section ul li,
-.rst-content .toctree-wrapper ul li,
-article ul li {
-    list-style: none;
-    margin-left: 0;
-}
-
-.wy-plain-list-disc,
-.rst-content .section ul,
-.rst-content .toctree-wrapper ul,
-article ul {
-    margin-bottom: 0;
-}
-
-.wy-plain-list-disc li li,
-.rst-content .section ul li li,
-.rst-content .toctree-wrapper ul li li,
-article ul li li,
-.wy-plain-list-disc li li li,
-.rst-content .section ul li li li,
-.rst-content .toctree-wrapper ul li li li,
-article ul li li li {
-    list-style: none;
+p {
+    margin: 0 0 13.5px;
 }
 
 .reset-bem {
-    font-size: 12.132px;
-    color: #67768A;
+    background: #f2f4f9a6;
+    position: relative;
+    padding: 10px;
+    border-radius: 2px;
+    border: 1px solid #F1F4F9;
 }
 
 .reset-bem.dark {
-    padding: 10px;
+    background: #1b4d76;
+    border-color: #1b4d76;
 }
 
-.reset-bem .AknList--withDisc .AknList-item {
-    list-style: disc !important;
+.highlight-html {
+    margin-top: 20px;
 }
 
-.reset-bem .AknMainMenu-link {
-    color: white !important;
+.AknStyleGuide-modifierTitle {
+    margin: 15px 0 40px 0;
 }
 
-.reset-bem .AknMainMenu-item:hover .AknMainMenu-link {
-    color: #515d6d !important;
-}
-
-.reset-bem .AknHeader-logoImage {
-    height: 50px !important;
-}
-
-.reset-bem .AknHeader-userMenu {
-    line-height: 50px !important;
+.AknStyleGuide-modifier {
+    border-top: 1px solid #ccc;
 }
