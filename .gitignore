@@ -5,3 +5,4 @@ var/
 web/*
 !web/.gitkeep
 _build/
+app/cache/
