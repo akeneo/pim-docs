@@ -9,7 +9,8 @@ $twig = new \Twig_Environment($loader);
 $renderCodeFunction = new Twig_SimpleFunction('render_code', function ($template, $code, $args = []) {
     global $twig;
 
-    $result = '<div class="reset-bem' . (array_key_exists('dark', $args) ? ' dark' : '') . '">';
+
+    $result = '<div class="reset-bem' . ((array_key_exists('dark', $args) && $args['dark'] == true) ? ' dark' : '') . '">';
     $htmlCode = $twig->render($template, $args);
     $result .= $htmlCode;
     $result .= '</div>';

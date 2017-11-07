@@ -16,12 +16,17 @@ p {
     margin: 0 0 13.5px;
 }
 
+table {
+    font-weight: normal;
+}
+
 .reset-bem {
     background: #f2f4f9a6;
     position: relative;
     padding: 10px;
     border-radius: 2px;
     border: 1px solid #F1F4F9;
+    font-size: 12px;
 }
 
 .reset-bem.dark {
