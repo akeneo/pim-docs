@@ -1,9 +1,23 @@
-<div style="width: 1px"><!-- Used to simulate a little container, don't copy it -->
-    <div class="AknFilterChoice">
-        <div class="AknFilterChoice-operator">
-            {% include 'AknActionButton/base.html.twig' with { 'class': 'AknActionButton--big AknActionButton--noRightBorder' } %}
+<div class="AknFilterChoice choicefilter">
+    <div class="AknFilterChoice-header">
+        <div class="AknFilterChoice-title">Title</div>
+        <div class="AknDropdown operator">
+            <div class="AknActionButton AknActionButton--withoutBorder" data-toggle="dropdown">
+                <span class="AknActionButton-highlight">Label</span>
+                <span class="AknActionButton-caret"></span>
+            </div>
+            <div class="AknDropdown-menu">
+                <div class="AknDropdown-menuTitle">Operator</div>
+                <div class="AknDropdown-menuLink AknDropdown-menuLink--active active">
+                    <span class="label operator_choice" data-value="<%= operator %>">Label</span>
+                </div>
+            </div>
         </div>
-        {% include 'AknTextField/base.html.twig' with { 'class' : 'AknFilterChoice-field AknTextField--noRadius' } only %}
-        <button class="AknFilterChoice-button AknButton AknButton--apply AknButton--noLeftRadius">Update</button>
+    </div>
+    <div>
+        <input type="text" name="value" class="AknTextField select-field"/>
+    </div>
+    <div class="AknFilterChoice-button">
+        <button type="button" class="AknButton AknButton--apply filter-update">Button</button>
     </div>
 </div>

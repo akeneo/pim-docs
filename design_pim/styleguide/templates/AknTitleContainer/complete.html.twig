@@ -1,6 +1,8 @@
 <header class="AknTitleContainer">
     <div class="AknTitleContainer-line">
-        <div class="AknTitleContainer-imageContainer"></div>
+        <div class="AknTitleContainer-imageContainer" data-drop-zone="main-image">
+            <img class="AknTitleContainer-image" src="../../web/bundles/pimui/images/info-user.png">
+        </div>
         <div class="AknTitleContainer-mainContainer">
             <div>
                 <div class="AknTitleContainer-line">
@@ -43,15 +45,39 @@
             </div>
             <div>
                 <div class="AknTitleContainer-line">
-                    <div class="AknTitleContainer-context AknButtonList"></div>
+                    <div class="AknTitleContainer-context AknButtonList">
+                        <div class="AknDropdown AknButtonList-item">
+                            <a class="AknActionButton AknActionButton--withoutBorder">
+                                Channel:
+                                <span class="AknActionButton-highlight">Ecommerce</span>
+                                <span class="AknActionButton-caret"></span>
+                            </a>
+                        </div>
+                        <div class="AknDropdown AknButtonList-item locale-switcher">
+                            <a class="AknActionButton AknActionButton--withoutBorder">
+                                Locale:
+                                <span class="AknActionButton-highlight">
+                                    <span class="flag-language"><i class="flag flag-us"></i></span>
+                                    English
+                                </span>
+                                <span class="AknActionButton-caret"></span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="AknTitleContainer-line">
-                    <div class="AknTitleContainer-meta"></div>
+                    <div class="AknTitleContainer-meta">
+                        <div class="AknDropdown">
+                            <div class="AknBadge AknBadge--big AknBadge--warning">
+                                Complete: 42%
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="AknTitleContainer-line">
-        <div data-drop-zone="navigation" class="AknTitleContainer-navigation"></div>
+        <div class="AknTitleContainer-navigation"></div>
     </div>
 </header>
