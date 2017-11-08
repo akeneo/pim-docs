@@ -24,7 +24,8 @@ Any processor should have a ``process($item)`` method to process an entity. Here
 
     // src/Acme/Bundle/AppBundle/Connector/Processor/MassEdit/Product/AddCommentProcessor.php
     <?php
-    'use strict';
+
+    declare(strict_types=1);
 
     namespace Acme\Bundle\AppBundle\Connector\Processor\MassEdit\Product;
 
@@ -277,6 +278,6 @@ Finally, you have to reinstall your assets:
     rm -rf var/cache/
     bin/console pim:install:assets
     bin/console assets:install --symlink
-    npm run webpack
+    yarn run webpack
 
 That's it! If you select several products then click "Bulk actions", your will be able to use your new feature.
