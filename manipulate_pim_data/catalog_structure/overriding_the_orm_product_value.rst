@@ -97,9 +97,10 @@ Finally, add your custom relations to the mapping:
         # the link to the simple Color object
         color:
             targetEntity: Acme\Bundle\AppBundle\Entity\Color
-            joinColumn:
-                name: color_id
-                referencedColumnName: id
+            joinColumns:
+                color_id:
+                    referencedColumnName: id
+                    onDelete: CASCADE
 
 .. note::
     The link between a product value and a simple object is defined by a *many-to-one* relationship.
