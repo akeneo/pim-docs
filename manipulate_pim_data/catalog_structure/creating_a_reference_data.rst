@@ -180,8 +180,6 @@ Configuring the ProductValue
 Depending on the needs, a product can be linked to several colors or just one.
 The first case will be called *simple reference data*, while the second one will be referred to as *multiple reference data*.
 
-This task is documented here :doc:`overriding_the_orm_product_value`.
-
 Don't forget to check the mapping of the product value and to register the custom class in the container.
 
 
