@@ -174,7 +174,7 @@ To check if the entities are correctly set up, use the following command:
     php bin/console doctrine:mapping:info
 
 
-Overriding the ProductValue
+Configuring the ProductValue
 ---------------------------
 
 Depending on the needs, a product can be linked to several colors or just one.
