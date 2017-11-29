@@ -175,7 +175,7 @@ To check if the entities are correctly set up, use the following command:
 
 
 Configuring the ProductValue
----------------------------
+----------------------------
 
 Depending on the needs, a product can be linked to several colors or just one.
 The first case will be called *simple reference data*, while the second one will be referred to as *multiple reference data*.
