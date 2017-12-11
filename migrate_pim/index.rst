@@ -12,9 +12,9 @@ We frequently release patch versions, in order to provides security and bug fixe
 
 When fixing these issues, we take extreme care to avoid any backward compatibility break.
 
-In the following example, Akeneo PIM version 1.7.2 has just been released and we are using an Akeneo PIM version 1.7.0.
+In the following example, Akeneo PIM version 2.0.2 has just been released and we are using an Akeneo PIM version 2.0.0.
 
-You can check the CHANGELOG-1.7.md which lists the changes provided by each version.
+You can check the CHANGELOG-2.0.md which lists the changes provided by each version.
 
 **Community Edition**
 
@@ -24,7 +24,7 @@ Run the composer update command:
 
     php composer.phar --prefer-dist update
 
-Double check in the output of this command that the 1.7.2 version has been fetched, you can also check it by using the following command:
+Double check in the output of this command that the 2.0.2 version has been fetched, you can also check it by using the following command:
 
 .. code-block:: bash
 
@@ -32,11 +32,19 @@ Double check in the output of this command that the 1.7.2 version has been fetch
 
 Then clean the cache, re-install assets and warmup the cache:
 
+
+.. note::
+
+    Before launching the following commands, remember to stop the daemon to avoid generating outdated cache.
+
+
 .. code-block:: bash
 
+    service php7.1-fpm restart
     rm -rf var/cache/* ./web/bundles/* ./web/css/* ./web/js/*
     bin/console --env=prod pim:installer:assets
     bin/console --env=prod cache:warmup
+    yarn run webpack
 
 If the patch is a javascript fix, please clear your browser cache before testing.
 
@@ -50,23 +58,6 @@ If the patch is a javascript fix, please clear your browser cache before testing
 
     If you get a 500 error after upgrading and clear cache isn't working try to clear the apc cache with a php script or restart Apache/Web server.
 
-Restart Apache:
-
-.. code-block:: bash
-
-    service apache2 graceful
-
-or call this script from a dedicated page. "yourdomain.local/clear_apc.php":
-
-.. code-block:: php
-
-    <?php
-        //clear_apc.php
-        apc_clear_cache();
-        apc_clear_cache('user');
-        apc_clear_cache('opcode');
-    ?>
-
 
 **Enterprise Edition**
 
@@ -78,22 +69,30 @@ To upgrade, please change the composer.json to:
 
     {
         ...
-        "akeneo/pim-enterprise-dev": "1.7.0",
-        "akeneo/pim-community-dev": "1.7.0",
+        "akeneo/pim-enterprise-dev": "2.0.2",
+        "akeneo/pim-community-dev": "2.0.2",
         ...
     }
 
-We always tag both community and enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 1.7.0 fix may depend on CE 1.7.0.
+We always tag both community and enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 2.0.2 fix may depend on CE 2.0.2.
 
 Using the exact patch version will avoid any local composer cache issue.
 
 Then follow the same process as the one for the community edition:
 
+
+.. note::
+
+    Before launching the following commands, remember to stop the daemon to avoid generating outdated cache.
+
+
 .. code-block:: bash
 
-    rm -rf var/cache/*
+    service php7.1-fpm restart
+    rm -rf var/cache/* ./web/bundles/* ./web/css/* ./web/js/*
     bin/console --env=prod pim:installer:assets
     bin/console --env=prod cache:warmup
+    yarn run webpack
 
 
 Minor Version

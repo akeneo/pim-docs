@@ -1,5 +1,5 @@
 <?php
-require_once("./vendor/autoload.php");
+require_once("../../vendor/autoload.php");
 
 use Symfony\Component\Yaml\Yaml;
 
@@ -9,11 +9,12 @@ $twig = new \Twig_Environment($loader);
 $renderCodeFunction = new Twig_SimpleFunction('render_code', function ($template, $code, $args = []) {
     global $twig;
 
-    $result = '<div class="reset-bem' . (array_key_exists('dark', $args) ? ' dark' : '') . '">';
+
+    $result = '<div class="reset-bem' . ((array_key_exists('dark', $args) && $args['dark'] == true) ? ' dark' : '') . '">';
     $htmlCode = $twig->render($template, $args);
     $result .= $htmlCode;
     $result .= '</div>';
-    $result .= '<pre style="display:none;" data-code="' . $code . '"><code class="html">' . htmlspecialchars($htmlCode) . '</code></pre>';
+    $result .= '<div class="highlight-html"><div class="highlight"><pre class="hljs" style="display:none;" data-code="' . $code . '"><code class="html">' . htmlspecialchars($htmlCode) . '</code></pre></div></div>';
 
     return $result;
 });
@@ -22,129 +23,150 @@ $twig->addFunction($renderCodeFunction);
 $yaml = Yaml::parse(file_get_contents('config.yml'));
 
 ?><!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akeneo PIM Documentation &mdash; Akeneo PIM styleguide</title>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/css/akeneo.css" type="text/css" />
-    <link rel="top" title="Akeneo PIM styleguide" href="#"/>
-    <link rel="next" title="Installation" href="install_pim/index.html"/>
-    <script src="../_static/js/modernizr.min.js"></script>
-
-    <!-- Styleguide -->
-    <link rel="stylesheet" href="styleguide.css" type="text/css" />
-    <link rel="stylesheet" href="//highlightjs.org/static/demo/styles/androidstudio.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
-    <script src="../web/bundles/pimui/lib/jquery/jquery-1.10.2.js"></script>
-    <script src="../web/bundles/pimui/lib/bootstrap/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="../web/css/pim.css" type="text/css" />
-    <script src="styleguide.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>Akeneo Styleguides</title>
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" type="text/css">
+    <link rel="stylesheet" href="../../_static/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../../_static/css/variables-43bf553955.css" type="text/css">
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="styleguide.js"></script>
+    <script type="text/javascript" src="../../_static/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico">
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    <link rel="stylesheet" href="../../web/css/pim.css">
+    <link rel="stylesheet" href="styleguide.css">
+    <style>
+        .highlighttable { width: 100%; }
+        .highlight-yaml { width: 100%; overflow: auto; }
+        .hljs { font-size: 12.5px; }
+        .hljs-comment, .hljs-quote { color: #a1a9b7; }
+        .hljs-string, .hljs-title, .hljs-name, .hljs-type, .hljs-symbol, .hljs-bullet, .hljs-addition, .hljs-variable, .hljs-template-tag, .hljs-template-variable, .hljs-regexp { font-weight: bold; }
+        nav { transition: box-shadow 0.2s ease-in-out; }
+        .nav .dropdown:first-child { float: right; }
+        .nav .dropdown:nth-child(2) .dropdown-menu { left: -175px; }
+        .algolia-docsearch-suggestion--category-header { background-color: white; }
+    </style>
 </head>
-
-<body class="wy-body-for-nav" role="document">
-<div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-        <div class="wy-side-scroll">
-            <div class="wy-side-nav-search">
-                <a href="index.php">
-                    <img src="akeneo-style-guide.png" class="logo" />
+<body data-spy="scroll" data-target="#navbar">
+<nav class="navbar navbar-default navbar-fixed-top scroll">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">
+                <img height="18" src="../../_static/akeneo.svg">
+            </a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="../../" class="collapse navbar-collapse">
+                    Back to docs
                 </a>
-            </div>
-            <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                    <li class="AknStyleGuide-menuItem" data-group="">
-                        <a href="../" class="toctree-l1">Back to the documentation</a>
-                    </li>
-                    <li class="AknStyleGuide-menuItem" data-group="Overview">
-                        <a href="#" class="toctree-l1" onclick="setAnchor('Overview'); return false;">Overview</a>
-                    </li>
-                    <?php
-                    foreach ($yaml['groups'] as $groupName => $elements) {
-                        echo '<li class="AknStyleGuide-menuItem" data-group="' . $groupName . '">';
-                        echo '<a href="#" class="toctree-l1" onclick="setAnchor(\'' . $groupName . '\'); return false;">' . $groupName . '</a>';
-                        echo '<ul class="AknStyleGuide-subMenu toctree-l1">';
-                        foreach ($elements as $elementName => $elementConfig) {
-                            echo '<li class="AknStyleGuide-subMenuItem toctree-l2" data-module="' . $elementName . '"><a onclick="setAnchor(\'' . $groupName . '-' . $elementName . '\'); return false;">' . $elementName . '</a></li>';
-                        }
-                        echo '</ul>';
-                        echo '</li>';
-                    }
-                    ?>
-                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div id="mainContent" style="">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Akeneo styleguides</h1>
             </div>
         </div>
-    </nav>
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-        <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-            <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-            <a href="#">Akeneo PIM</a>
-        </nav>
-        <div class="wy-nav-content">
-            <div class="rst-content">
-                <div role="navigation" aria-label="breadcrumbs navigation">
-                    <ul class="wy-breadcrumbs">
-                        <li><a href="../">Docs</a> &raquo;</li>
-                        <li>Akeneo style guide</li>
-                        <li class="wy-breadcrumbs-aside">
-                            <a href="https://github.com/akeneo/pim-docs/blob/master/index.rst" class="fa fa-github"> Edit on GitHub</a>
+        <div class="row">
+            <div id="navbar" class="col-sm-3 hidden-xs">
+                <nav role="tablist" id="navbar-nav" data-spy="affix" data-offset-top="80" class="affix-top">
+                    <ul class="nav nav-stacked">
+                        <li class="toctree-l2" data-group="Overview">
+                            <a href="#" class="reference internal" onclick="setAnchor('Overview'); return false;">Overview</a>
                         </li>
-                    </ul>
-                    <hr/>
-                </div>
-                <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-                    <div itemprop="articleBody">
-                        <div class="section" id="akeneo-pim-documentation">
-                            <?php
-                            echo $twig->render('overview.html.twig');
-
-                            foreach ($yaml['groups'] as $groupName => $elements) {
-                                foreach ($elements as $elementName => $elementConfig) {
-                                    $baseTemplate = $elementName . '/base.html.twig';
-
-                                    echo $twig->render('element.html.twig', [
-                                        'groupName'     => $groupName,
-                                        'elementName'   => $elementName,
-                                        'elementConfig' => $elementConfig,
-                                        'template'      => $baseTemplate,
-                                    ]);
-                                }
+                        <?php
+                        foreach ($yaml['groups'] as $groupName => $elements) {
+                            echo '<li class="toctree-l2 AknStyleGuide-menuItem" data-group="' . $groupName . '">';
+                            echo '<a href="#" class="reference internal" onclick="setAnchor(\'' . $groupName . '\'); return false;">' . $groupName . '</a>';
+                            echo '<ul class="nav AknStyleGuide-subMenu toctree-l1">';
+                            foreach ($elements as $elementName => $elementConfig) {
+                                echo '<li class="AknStyleGuide-subMenuItem toctree-l3" data-module="' . $elementName . '"><a href="#" onclick="setAnchor(\'' . $groupName . '-' . $elementName . '\'); return false;">' . $elementName . '</a></li>';
                             }
-                            ?>
-                        </div>
+                            echo '</ul>';
+                            echo '</li>';
+                        }
+                        ?>
+                    </ul>
+                </nav>
+            </div>
+            <div class="section col-xs-12 col-sm-9">
+                <a class="anchor" id="design-the-user-interfaces"></a><div class="section">
+                    <div class="section" id="akeneo-pim-documentation">
+                        <?php
+                        echo $twig->render('overview.html.twig');
+
+                        foreach ($yaml['groups'] as $groupName => $elements) {
+                            foreach ($elements as $elementName => $elementConfig) {
+                                $baseTemplate = $elementName . '/base.html.twig';
+
+                                echo $twig->render('element.html.twig', [
+                                    'groupName'     => $groupName,
+                                    'elementName'   => $elementName,
+                                    'elementConfig' => $elementConfig,
+                                    'template'      => $baseTemplate,
+                                ]);
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
-                <footer>
-                    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-                        <a href="install_pim/index.html" class="btn btn-neutral float-right" title="Installation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-                    </div>
-                    <hr/>
-                    <div role="contentinfo">
-                        <p>
-                            &copy; Copyright 2016, Akeneo SAS.
-                        </p>
-                    </div>
-                </footer>
             </div>
         </div>
-    </section>
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-9">
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-muted text-right">
+                    <i class="fa fa-pencil"></i> Found a typo or a hole in the documentation and feel like contributing?<br>
+                    <a href="https://github.com/akeneo/pim-docs/blob/2.0/design_pim/styleguide"><i class="fa fa-github"></i> Join us on Github!</a>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
 
-<script type="text/javascript">
-    DOCUMENTATION_OPTIONS = [];
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35417741-6', 'auto');
+    ga('send', 'pageview');
 </script>
-<script type="text/javascript" src="../_static/jquery.js"></script>
-<script type="text/javascript" src="../_static/underscore.js"></script>
-<script type="text/javascript" src="../_static/doctools.js"></script>
-<script type="text/javascript" src="../_static/js/theme.js"></script>
-<script type="text/javascript">
-    jQuery(function () {
-        SphinxRtdTheme.StickyNav.enable();
+
+<script>
+    $(function(){
+        var navbar = $('.navbar');
+        $(window).scroll(function(){
+            if($(window).scrollTop() <= 40){
+                navbar.removeClass('scroll');
+            } else {
+                navbar.addClass('scroll');
+            }
+        });
     });
 </script>
 

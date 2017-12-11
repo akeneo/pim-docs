@@ -16,7 +16,7 @@ Instead of extending ``AbstractReferenceData``, it needs to extends ``AbstractCu
 .. code-block:: php
 
     <?php
-    # /src/Acme/Bundle/AppBundle/Entity/Color.php
+    // /src/Acme/Bundle/AppBundle/Entity/Color.php
 
     namespace Acme\Bundle\AppBundle\Entity;
 
@@ -97,20 +97,23 @@ Now that the Color entity is updated, look at the following configuration:
                         - customEntityName
             actions:
                 show:
+                    launcherOptions:
+                        className: AknIconButton AknIconButton--small AknIconButton--view
                     type:      navigate
                     label:     Show the reference data
-                    icon:      eye-open
                     link:      show_link
                 edit:
+                    launcherOptions:
+                        className: AknIconButton AknIconButton--small AknIconButton--edit
                     type:      navigate
                     label:     Edit the reference data
-                    icon:      edit
                     link:      edit_link
                     rowAction: true
                 delete:
+                    launcherOptions:
+                        className: AknIconButton AknIconButton--small AknIconButton--trash
                     type:  delete
                     label: Delete the reference data
-                    icon:  trash
                     link:  delete_link
             filters:
                 columns:
@@ -131,12 +134,13 @@ Now that the Color entity is updated, look at the following configuration:
                 default:
                     code: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'
 
-In the exemple above:
- - In the ``properties`` section
-     - The ``customEntityName`` tells the grid to call the ``getCustomEntityName`` method
-       in order to get the entity name needed to generate the route.
-       You therefore need a method on the entity class to return the entity name.
-     - The ``id`` will work the same way, it will call the getId of the Entity.
+In the exemple above, in the ``properties`` section:
+
+- The ``customEntityName`` tells the grid to call the ``getCustomEntityName`` method
+  in order to get the entity name needed to generate the route.
+  You therefore need a method on the entity class to return the entity name.
+
+- The ``id`` will work the same way, it will call the getId of the Entity.
 
 Creating the Form Type for creation and edition
 -----------------------------------------------
@@ -206,10 +210,10 @@ the last step is to declare the reference data as a "custom entity":
                     form_type: app_enrich_color
 
 In the yml above:
- - The `color` is the name of the custom entity.
- - The method `getCustomEntityName` of the Color Entity must return `color` as well so that the grid can generate proper url from the routes.
+- The `color` is the name of the custom entity.
+- The method `getCustomEntityName` of the Color Entity must return `color` as well so that the grid can generate proper url from the routes.
 
- - The list of available actions can be found here : :doc:`/technical_architecture/bundles/custom_entity_bundle/index`.
+- The list of available actions can be found here : :doc:`/technical_architecture/bundles/custom_entity_bundle/index`.
 
 .. note::
 

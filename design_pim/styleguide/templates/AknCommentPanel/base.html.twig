@@ -1,26 +1,43 @@
-<div class="AknCommentPanel">
-    <ol class="AknCommentPanel-thread">
-        <li class="AknCommentPanel-item">
-            <div class="AknCommentPanel-header">
-                <img class="AknCommentPanel-avatar" src="../web/bundles/pimui/images/info-user.png" alt="admin">
-                <span class="AknCommentPanel-author"><strong>John Doe</strong></span>
-                <span class="AknCommentPanel-date">2016-12-20T11:43:44+01:00</span>
-                <span class="AknCommentPanel-icon AknIconButton AknIconButton--small AknIconButton--grey">
-                    <i class="icon-trash"></i>
-                </span>
-            </div>
-            <span class="AknCommentPanel-message message">Comment</span>
-        </li>
-        <li class="AknCommentPanel-item">
-            <div class="AknCommentPanel-header">
-                <img class="AknCommentPanel-avatar" src="../web/bundles/pimui/images/info-user.png" alt="admin">
-                <span class="AknCommentPanel-author"><strong>John Doe</strong></span>
-                <span class="AknCommentPanel-date">2016-12-20T11:43:54+01:00</span>
-                <span class="AknCommentPanel-icon AknIconButton AknIconButton--small AknIconButton--grey">
-                    <i class="icon-trash"></i>
-                </span>
-            </div>
-            <span class="AknCommentPanel-message">Comment reply</span>
+<div class="AknCommentPanel comment-threads">
+    <ol>
+        <li>
+            <ol class="AknCommentPanel-thread">
+                <li class="AknCommentPanel-item">
+                    <div class="AknCommentPanel-header">
+                        <img class="AknCommentPanel-avatar" src="../../web/bundles/pimui/images/info-user.png">
+                        <span class="AknCommentPanel-title">
+                            <span class="AknCommentPanel-author author">John Doe</span> comments the product
+                            <span class="AknCommentPanel-icon AknIconButton remove-comment">
+                                <i class="icon-trash"></i>
+                            </span>
+                        </span>
+                        <span class="AknCommentPanel-date date">11/07/2017 10:27 AM</span>
+                    </div>
+                    <div class="AknCommentPanel-message">
+                        <span>Foo bar</span>
+                        <div class="AknCommentPanel-replyContainer">
+                            <textarea class="AknTextareaField AknTextareaField--small" name="body" required="required" placeholder="Reply to this comment..."></textarea>
+                            <span class="AknButtonList AknButtonList--hide AknButtonList--right">
+                               <button class="AknButtonList-item AknButton AknButton--important AknButton--small">Cancel</button>
+                               <button class="AknButtonList-item AknButton AknButton--apply AknButton--small">Reply</button>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="AknCommentPanel-item AknCommentPanel-item--reply">
+                    <div class="AknCommentPanel-header">
+                        <img class="AknCommentPanel-avatar" src="../../web/bundles/pimui/images/info-user.png">
+                        <span class="AknCommentPanel-title">
+                            <span class="AknCommentPanel-author author">John Doe</span> replies to the comment
+                            <span class="AknCommentPanel-icon AknIconButton remove-comment" title="Delete" data-comment-id="2">
+                                <i class="icon-trash"></i>
+                            </span>
+                        </span>
+                        <span class="AknCommentPanel-date date">11/07/2017 10:27 AM</span>
+                    </div>
+                    <div class="AknCommentPanel-message message">foo baz</div>
+                </li>
+            </ol>
         </li>
     </ol>
 </div>
