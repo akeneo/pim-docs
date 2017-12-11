@@ -408,9 +408,10 @@ You also need to override the rule file for the datagrid with your template.
                         - id
             actions:
                 execute:
+                    launcherOptions:
+                        className: AknIconButton AknIconButton--small AknIconButton--play
                     type: ajax
                     label: pimee_catalog_rule.datagrid.rule-grid.actions.execute
-                    icon: play
                     link: execute_link
                     acl_resource: pimee_catalog_rule_rule_execute_permissions
                     confirmation: true
@@ -419,9 +420,10 @@ You also need to override the rule file for the datagrid with your template.
                         confirm_content: pimee_catalog_rule.datagrid.rule-grid.actions.execute.confirm_content
                         confirm_ok: pimee_catalog_rule.datagrid.rule-grid.actions.execute.confirm_ok
                 delete:
+                    launcherOptions:
+                        className: AknIconButton AknIconButton--small AknIconButton--trash
                     type: delete
                     label: pimee_catalog_rule.datagrid.rule-grid.actions.delete
-                    icon: trash
                     link: delete_link
                     acl_resource:  pimee_catalog_rule_rule_delete_permissions
             filters:

@@ -35,9 +35,9 @@ For the need of the cookbook, we'll add a watermark transformation.
 
 In order to create your transformation, you have to follow these rules:
 
- * your transformation has to implement ``Akeneo\Component\FileTransformer\Transformation\TransformationInterface``.
- * your transformation must have a unique name.
- * your transformation service must be tagged ``akeneo_file_transformer.transformation``.
+* your transformation has to implement ``Akeneo\Component\FileTransformer\Transformation\TransformationInterface``.
+* your transformation must have a unique name.
+* your transformation service must be tagged ``akeneo_file_transformer.transformation``.
 
 .. code-block:: php
 
@@ -109,7 +109,7 @@ In order to create your transformation, you have to follow these rules:
 
 In order to rely on options you can add an OptionsResolver, for this you need to follow this rule:
 
- * your OptionsResolver must implement the ``Akeneo\Component\FileTransformer\Options\TransformationOptionsResolverInterface``.
+* your OptionsResolver must implement the ``Akeneo\Component\FileTransformer\Options\TransformationOptionsResolverInterface``.
 
 .. code-block:: php
 

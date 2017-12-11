@@ -155,13 +155,12 @@ It does not matter if you can't handle millions of products but you have to docu
 
 Keep in mind that some users will use your bundle with a data volume you never thought could be possible (true story!).
 
-You can test your bundle with the `representative catalogs`_ we provide: https://github.com/akeneo/catalogs
+You can test your bundle with the :doc:`representative catalogs </maintain_pim/scalability_guide/representative_catalogs>` we provide: https://github.com/akeneo/catalogs
 
 Remember never to use the `findAll()` method from a repository as you don't know how many entities will be retrieved.
 
 On batch processes, don't forget to detach your objects from the Doctrine UnitOfWork and check the memory usage.
 You can use `blackfire`_ and `php-meminfo`_ to help you track memory leaks.
 
-.. _representative catalogs: `/maintain_pim/scalability_guide/representative_catalogs`
 .. _blackfire: https://blackfire.io/docs/introduction
 .. _php-meminfo: https://github.com/BitOne/php-meminfo

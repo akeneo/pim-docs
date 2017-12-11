@@ -12,4 +12,3 @@ Manipulate the Akeneo PIM data
     catalog_structure/index
     product_asset/index
     teamwork_assistant/index
-    validation/customize_validation

@@ -103,11 +103,6 @@ Available Mass Edit Operation Jobs Without Rules
 - ``edit_common_attributes_with_permission``: Edit common attributes with EE permission check (EE Only)
 - ``edit_common_attributes_with_permission_and_rules``: Edit common attributes with EE permission check & rules application (EE Only, EE Default)
 
-**Add to Variant Groups**:
-
-- ``add_to_variant_group``: Edit common attributes (CE Default)
-- ``add_to_variant_group_with_rules``: Edit common attributes (EE Only, EE Default)
-
 .. note::
 
   All mass edit operation jobs are in the minimal data fixtures and declared in ``src/PimEnterprise/Bundle/InstallerBundle/Resources/fixtures/minimal/jobs.yml``
