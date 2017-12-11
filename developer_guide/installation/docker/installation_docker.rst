@@ -153,6 +153,20 @@ If you want to use MongoDB storage, add the following to your PIM parameters (li
        mongodb_server: 'mongodb://mongodb-behat:27017'
        mongodb_database: akeneo_pim
 
+Then activate the ``DoctrineMongoDBBundle`` by uncommenting the following line in ``app/AppKernel.php`` to enable the MongoDB configuration:
+
+.. code-block:: bash
+
+    $ gedit app/AppKernel.php
+    new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
+
+Finally, install the required dependency if you are using Akeneo standard edition (it is already included in the development dependencies of the dev edition):
+
+.. code-block:: bash
+
+        $ cd /path/to/installation/pim-community-standard
+        $ php -d memory_limit=3G ../composer.phar --prefer-dist require doctrine/mongodb-odm-bundle 3.2.0
+
 
 Install Akeneo
 **************
