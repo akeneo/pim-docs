@@ -1,7 +1,7 @@
 Product data structure
 ======================
 
-Products are exported in a file with the following fields:
+Products are exported in a file with the following fields.
 
 Attributes fields can be one of these:
 
@@ -18,7 +18,7 @@ Attributes fields can be one of these:
 Associations fields:
 
 - **<association-type-code>-groups**: groups list for the <association-type-code> association type
-- **<association-type-code>-product_models**: list of product models identifiers in this association type
+- **<association-type-code>-product_models**: list of product models codes in this association type
 - **<association-type-code>-products**: list of products identifiers in this association type
 
 Product properties fields:
@@ -27,7 +27,7 @@ Product properties fields:
 - **enabled**: boolean
 - **family**: family code
 - **groups**: list of product group codes
-- **parent**: list of product models codes
+- **parent**: product model code
 
 
 .. note::
