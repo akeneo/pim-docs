@@ -30,6 +30,13 @@ First, install the `repository <https://launchpad.net/~ondrej/+archive/ubuntu/ph
 
     $ add-apt-repository ppa:ondrej/php
     $ apt update
+    
+If you get an error it may be because of non-UTF-8 locales, try
+
+.. code-block:: bash
+
+    $ LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
+    $ apt update
 
 Then, install PHP and the required extensions:
 
