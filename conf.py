@@ -62,7 +62,7 @@ copyright = u'2013-'+ current_year +', Akeneo SAS'
 version = os.getenv('PIM_VERSION', '1.4')
 
 # Warning: These versions will be deleted on documentation deploy.
-versions = os.getenv('PIM_VERSIONS', 'master 2.0 1.7 1.6 1.5 1.4 1.3 1.2 1.1 1.0')
+versions = os.getenv('PIM_VERSIONS', 'master 2.1 2.0 1.7 1.6 1.5 1.4 1.3 1.2 1.1 1.0')
 html_context = {
     'versions': versions.split(' '),
     'css_files': [
