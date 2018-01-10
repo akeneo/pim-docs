@@ -1,11 +1,11 @@
 Getting your Akeneo Partners Portal or Customers Portal Access
 **************************************************************
-Akeneo Portals login credentials are sent to you by email. If case you haven't received it you can request one at: http://helpdesk.akeneo.com/
+Akeneo Portals login credentials are sent to you by email. If you haven't received it you can request one at: http://helpdesk.akeneo.com/
 
 * If you are a customer, you will use the `Customers Portal <https://customers.akeneo.com/login>`_
 * If you are a system integrator or a partner, you will use the `Partners Portal <https://partners.akeneo.com/login>`_
 
-Once connected, it's important to know that portal users can be member of two kinds of group:
+Once connected, it's important to know that portal users can be members of two types of roles:
 
 * Supervisor: to manage the project and give access to developers
 * Developers: to request a bootstrap archive, and have access to the enterprise source code distribution
