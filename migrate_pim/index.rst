@@ -24,6 +24,10 @@ Run the composer update command:
 
     php composer.phar --prefer-dist update
 
+Be aware that your composer.json won't be updated and some dependencies might be missing or from an outdated version. 
+
+You have to check whether the latest composer.json is different from your own. In this case you should backup your current composer.json and download the newest one beforehand.
+
 Double check in the output of this command that the 2.0.2 version has been fetched, you can also check it by using the following command:
 
 .. code-block:: bash
