@@ -37,17 +37,6 @@ To accelerate the installation of the PIM dependencies, `Composer cache <https:/
 
 You need to be sure these folders exist on your host before launching the containers. If not, Docker will create them for you, but with root permissions, preventing the containers from accessing it. As a result, dependencies installation will fail.
 
-Elasticsearch
-*************
-
-To run the Elasticsearch container, you will need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode>`_.
-Proceed as follows (first command will affect your current session, second one will make the change permanent):
-
-.. code-block:: bash
-
-   $ sudo sysctl -w vm.max_map_count=262144
-   $ echo "vm.max_map_count=262144" | sudo tee /etc/sysctl.d/elasticsearch.conf
-
 Getting Akeneo PIM
 ******************
 
