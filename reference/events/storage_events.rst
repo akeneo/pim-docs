@@ -19,14 +19,12 @@ These are the built-in PIM subscribers registered to this event:
 Listener Class Name                                               Priority
 ================================================================  ===============
 `CheckChannelsOnDeletionSubscriber`_                              0
-`ProductTemplateAttributeSubscriber`_                             0
 RuleRelationSubscriber (Enterprise edition)                       0
 RemoveChannelSubscriber (Enterprise edition)                      0
 CheckPublishedProductOnRemovalSubscriber (Enterprise edition)     0
 ================================================================  ===============
 
 .. _CheckChannelsOnDeletionSubscriber: https://github.com/akeneo/pim-community-dev/blob/1.7/src/Pim/Bundle/CatalogBundle/EventSubscriber/Category/CheckChannelsOnDeletionSubscriber.php
-.. _ProductTemplateAttributeSubscriber: https://github.com/akeneo/pim-community-dev/blob/1.7/src/Pim/Bundle/CatalogBundle/EventSubscriber/ProductTemplateAttributeSubscriber.php
 
 ``akeneo.storage.post_remove``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

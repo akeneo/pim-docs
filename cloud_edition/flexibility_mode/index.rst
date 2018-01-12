@@ -16,5 +16,6 @@ Flexibility Mode
     docs/environments_access
     docs/pim_application
     docs/data_file_transfer
+    docs/backups_management
     docs/partners
     docs/system_components
