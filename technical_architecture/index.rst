@@ -5,7 +5,7 @@ Akeneo PIM is an OOP application, based on the framework Symfony 2, it also wide
 If you are not familiar with one of these, the best move is to start by reading the `Symfony documentation`_ and `Doctrine documentation`_
 
 .. _Symfony documentation: https://symfony.com/doc/current/index.html
-.. _Doctrine documentation: http://doctrine-orm.readthedocs.org/en/latest/
+.. _Doctrine documentation: http://doctrine-orm.readthedocs.io/en/latest/
 
 .. toctree::
     :maxdepth: 2
