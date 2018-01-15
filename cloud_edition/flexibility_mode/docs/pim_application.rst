@@ -32,3 +32,8 @@ As we don’t provide (yet) a tools to deploy your own custom code on the enviro
 | You can use these credentials to directly access the databases with their respective client (mysql, mongodb).
 | You don’t need to specify an host, as the database server are directly accessible on the local environment.
 |
+
+6. Upload limits
+----------------
+| Maximum file size upload is set to 500MB
+| 

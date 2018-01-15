@@ -8,4 +8,3 @@ Akeneo Cloud Edition
     :maxdepth: 2
 
     flexibility_mode/index
-    serenity_mode/index
