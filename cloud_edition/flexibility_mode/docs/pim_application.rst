@@ -35,6 +35,11 @@ Default CRONs are setted as below:
 | bin/console akeneo:batch:purge-job-execution --env=prod | 20 0 1 \* \*      | At 12:20 AM, on day 1 of the month         |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
 
+.. warning::
+
+    If you plan to customize CRON frequencies, please notice us as we first have to remove this default configuration.
+    Default crontab will be fully cleared and you will be able to define it by your own.
+
 4. Deployment
 -------------
 As we don’t provide (yet) a tools to deploy your own custom code on the environments, you are free to use the tools needed (git and rsync are available on the environments).
@@ -45,3 +50,8 @@ As we don’t provide (yet) a tools to deploy your own custom code on the enviro
 |
 | You can use these credentials to directly access the databases with their respective client (mysql).
 | You don’t need to specify an host, as the database server are directly accessible on the local environment.
+
+6. Upload limits
+----------------
+| Maximum file size upload is set to 100MB
+| 
