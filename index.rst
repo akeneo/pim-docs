@@ -21,3 +21,4 @@ efficient answers to their multichannel needs.
     contributing/index
     troubleshooting/index
     styleguide/index
+    cloud_edition/index
