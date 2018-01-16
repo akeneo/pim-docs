@@ -20,8 +20,6 @@
     "scripts": {
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "sed -i 's/database_user: root/database_user: akeneo_pim/' $(pwd)/app/config/parameters.yml",
-            "sed -i 's/database_password: null/database_password: akeneo_pim/' $(pwd)/app/config/parameters.yml",
             "ln -sf $(pwd)/vendor/akeneo/pim-community-dev/app/config/config.yml $(pwd)/app/config/",
             "ln -sf $(pwd)/vendor/akeneo/pim-community-dev/app/config/config_dev.yml $(pwd)/app/config/",
             "ln -sf $(pwd)/vendor/akeneo/pim-community-dev/app/config/security.yml $(pwd)/app/config/",
