@@ -37,34 +37,35 @@ if [ "$DEPLOY" == true ]; then
 fi
 
 if [ "$ASSET_CHECK" != false ]; then
-    wget https://github.com/akeneo/pim-community-dev/archive/1.6.zip -P /tmp/
+    wget https://github.com/akeneo/pim-community-dev/archive/1.7.zip -P /tmp/
 
-    md5original=`md5sum /home/akeneo/pim-docs/1.6.zip | cut -f 1 -d " "`
-    md5current=`md5sum /tmp/1.6.zip | cut -f 1 -d " "`
+    md5original=`md5sum /home/akeneo/pim-docs/1.7.zip | cut -f 1 -d " "`
+    md5current=`md5sum /tmp/1.7.zip | cut -f 1 -d " "`
 
     if [ "$md5original" = "$md5current" ]
     then
         echo "Akeneo PIM does not change."
-        rm /tmp/1.6.zip
+        rm /tmp/1.7.zip
     else
         echo "Rebuild Akeneo PIM assets..."
-        rm -rf /home/akeneo/pim-docs/1.6.zip
-        mv /tmp/1.6.zip /home/akeneo/pim-docs/1.6.zip
-        rm -rf /home/akeneo/pim-docs/pim-community-dev-1.6
-        unzip /home/akeneo/pim-docs/1.6.zip -d /home/akeneo/pim-docs/
-        cd /home/akeneo/pim-docs/pim-community-dev-1.6/ && php -d memory_limit=3G ../composer.phar install --no-dev --no-suggest
+        rm -rf /home/akeneo/pim-docs/1.7.zip
+        mv /tmp/1.7.zip /home/akeneo/pim-docs/1.7.zip
+        rm -rf /home/akeneo/pim-docs/pim-community-dev-1.7
+        unzip /home/akeneo/pim-docs/1.7.zip -d /home/akeneo/pim-docs/
+        cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php -d memory_limit=3G ../composer.phar install --no-dev --no-suggest
         service mysql start && \
-        cd /home/akeneo/pim-docs/pim-community-dev-1.6/ && php app/console pim:installer:assets --env=prod
+        cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php app/console pim:installer:assets --env=prod
     fi
 fi
 
 rm -rf /home/akeneo/pim-docs/data/pim-docs-build/web
 rm -rf /home/akeneo/pim-docs/data/pim-docs-build/vendor
-sed -i -e "s/^version =.*/version = '1.6'/" /home/akeneo/pim-docs/data/conf.py
+sed -i -e "s/^version =.*/version = '1.7'/" /home/akeneo/pim-docs/data/conf.py
 sphinx-build -b html /home/akeneo/pim-docs/data /home/akeneo/pim-docs/data/pim-docs-build
-cp -r /home/akeneo/pim-docs/pim-community-dev-1.6/web /home/akeneo/pim-docs/data/pim-docs-build/
-cp -r /home/akeneo/pim-docs/pim-community-dev-1.6/vendor /home/akeneo/pim-docs/data/pim-docs-build/
+cp -r /home/akeneo/pim-docs/pim-community-dev-1.7/web /home/akeneo/pim-docs/data/pim-docs-build/
+cp -r /home/akeneo/pim-docs/pim-community-dev-1.7/vendor /home/akeneo/pim-docs/data/pim-docs-build/
+cp -r /home/akeneo/pim-docs/data/styleguide /home/akeneo/pim-docs/data/pim-docs-build/
 
 if [ "$DEPLOY" == true ]; then
-    rsync -e "ssh -p $PORT" -avz /home/akeneo/pim-docs/data/pim-docs-build/* $USERNAME@$HOST:/var/www/1.6
+    rsync -e "ssh -p $PORT" -avz /home/akeneo/pim-docs/data/pim-docs-build/* $USERNAME@$HOST:/var/www/1.7
 fi

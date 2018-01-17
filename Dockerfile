@@ -21,15 +21,15 @@ RUN apt-get update && \
 RUN echo "memory_limit = 768M" >> /etc/php5/cli/php.ini && \
     echo "date.timezone = Etc/UTC" >> /etc/php5/cli/php.ini
 
-RUN wget https://github.com/akeneo/pim-community-dev/archive/1.6.zip -P /home/akeneo/pim-docs/ && \
-    unzip /home/akeneo/pim-docs/1.6.zip -d /home/akeneo/pim-docs/ && \
+RUN wget https://github.com/akeneo/pim-community-dev/archive/1.7.zip -P /home/akeneo/pim-docs/ && \
+    unzip /home/akeneo/pim-docs/1.7.zip -d /home/akeneo/pim-docs/ && \
     wget https://getcomposer.org/download/1.6.2/composer.phar -P /home/akeneo/pim-docs/ && \
-    cd /home/akeneo/pim-docs/pim-community-dev-1.6/ && php -d memory_limit=3G ../composer.phar install --no-dev --no-suggest && \
+    cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php -d memory_limit=3G ../composer.phar install --no-dev --no-suggest && \
     service mysql start && \
     mysql -u root -e "CREATE DATABASE akeneo_pim" && \
     mysql -u root -e "GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim'" && \
-    cd /home/akeneo/pim-docs/pim-community-dev-1.6/ && php app/console doctrine:schema:create --env=prod && \
-    cd /home/akeneo/pim-docs/pim-community-dev-1.6/ && php app/console pim:installer:assets --env=prod
+    cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php app/console doctrine:schema:create --env=prod && \
+    cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php app/console pim:installer:assets --env=prod
 
 COPY build.sh /home/akeneo/pim-docs/build.sh
 RUN chmod +x /home/akeneo/pim-docs/build.sh
