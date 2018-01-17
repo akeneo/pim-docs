@@ -89,11 +89,11 @@ sed -i -e "s/^\(.*\)'versions': .*,\(.*\)$/\1'versions': ['$(git branch -l|grep 
 From the `./pim-docs` directory, run:
 
 ```bash
-    $ docker build . --tag pim-docs:1.6
+    $ docker build . --tag pim-docs:1.7
     $ rm -rf pim-docs-build && mkdir pim-docs-build
     $ docker run --rm \
         -v $(pwd):/home/akeneo/pim-docs/data \
-        pim-docs:1.6 \
+        pim-docs:1.7 \
         ./build.sh --uid $(id -u) --gid $(id -g)
 ```
 
