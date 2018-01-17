@@ -34,3 +34,27 @@ Install pim-community
 Then go on Akeneo PIM `src/` directory and create a symlink `Acme` pointing on `pim-docs/src/Acme`.
 
 Add all Acme bundles in `app/AppKernel.php` file.
+
+Build the documentation with Docker
+-----------------------------------
+
+Install [Docker](https://docs.docker.com/engine/installation/).
+
+[optional] To update the branch list with the current pim-docs branches, use
+
+```
+sed -i -e "s/^\(.*\)'versions': .*,\(.*\)$/\1'versions': ['$(git branch -l|grep -x "\(^[ *]\+[0-9]\+\.[0-9]\+.*\)\|\(^[ *]\+master\)" | cut -c 3- | sort -r | paste -sd " ")'],\2/" conf.py
+```
+
+From the `./pim-docs` directory, run:
+
+```bash
+    $ docker build . --tag pim-docs:1.0
+    $ rm -rf pim-docs-build && mkdir pim-docs-build
+    $ docker run --rm \
+        -v $(pwd):/home/akeneo/pim-docs/data \
+        pim-docs:1.0 \
+        ./build.sh --uid $(id -u) --gid $(id -g)
+```
+
+The docs will be built into `./pim-docs-build`.
