@@ -7,3 +7,4 @@ web/*
 _build/
 app/cache/
 app/logs/
+pim-docs-build/
