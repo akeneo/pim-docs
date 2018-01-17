@@ -5,3 +5,6 @@ app/logs/*
 web/bundles/*
 web/css/*
 _build/
+_exts/
+composer.lock
+pim-docs-build/
