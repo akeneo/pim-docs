@@ -39,10 +39,10 @@ if [ "$DEPLOY" == true ]; then
     echo "Connection OK"
 fi
 
-sed -i -e "s/^version =.*/version = '1.5'/" /home/akeneo/pim-docs/data/conf.py
+sed -i -e "s/^version =.*/version = '1.6'/" /home/akeneo/pim-docs/data/conf.py
 sphinx-build -b html /home/akeneo/pim-docs/data /home/akeneo/pim-docs/data/pim-docs-build
 find /home/akeneo/pim-docs/data/pim-docs-build/ -exec chown $CUSTOM_UID:$CUSTOM_GID {} \;
 
 if [ "$DEPLOY" == true ]; then
-    rsync -e "ssh -p $PORT" -avz /home/akeneo/pim-docs/data/pim-docs-build/* $USERNAME@$HOST:/var/www/1.5
+    rsync -e "ssh -p $PORT" -avz /home/akeneo/pim-docs/data/pim-docs-build/* $USERNAME@$HOST:/var/www/1.6
 fi
