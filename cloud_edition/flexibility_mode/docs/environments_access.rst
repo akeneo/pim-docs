@@ -2,7 +2,7 @@ Environments Access
 ===================
 
 | The system user dedicated to integrators on both environments is akeneo.
-| To access the environment, you will the SSH command:
+| To access the environment, run the SSH command:
 
 .. code-block:: shell
 
