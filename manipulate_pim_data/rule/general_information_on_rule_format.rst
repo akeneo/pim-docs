@@ -60,17 +60,17 @@ Enrichment Rule Structure
 -------------------------
 
 Structure’s elements which define a rule are:
-- rule code (dynamic)
-- priority*
-- conditions
-- actions
+ - rule code (dynamic)
+ - priority*
+ - conditions
+ - actions
 
 Structure's elements which define a condition are:
-- field
-- locale​*
-- scope​*
-- operator
-- value
+ - field
+ - locale​*
+ - scope​*
+ - operator
+ - value
 
 An enrichment rule is structured as follows:
 
@@ -208,12 +208,12 @@ This action copies an attribute value into another.
     be copied.
 
 Two parameters are required and four other are optional:
-- from_field: code of the attribute to be copied.
-- from_locale: locale code of the value to be copied (optional).
-- from_scope: channel code of the value to be copied (optional).
-- to_field: attribute code the value will be copied into.
-- to_locale: locale code the value will be copied into (optional).
-- to_scope: channel code the value will be copied into (optional).
+ - from_field: code of the attribute to be copied.
+ - from_locale: locale code of the value to be copied (optional).
+ - from_scope: channel code of the value to be copied (optional).
+ - to_field: attribute code the value will be copied into.
+ - to_locale: locale code the value will be copied into (optional).
+ - to_scope: channel code the value will be copied into (optional).
 
 .. tip::
 
@@ -237,10 +237,10 @@ ___
 This action assigns values to an attribute.
 
 Two parameters are required, two other are optional.
-- field: attribute code.
-- locale: local code for which value is assigned (optional).
-- scope: channel code for which value is assigned (optional).
-- value: attribute value.
+ - field: attribute code.
+ - locale: locale code for which value is assigned (optional).
+ - scope: channel code for which value is assigned (optional).
+ - value: attribute value.
 
 .. tip::
 
@@ -262,10 +262,10 @@ ___
 This action allows to add values to a multi-select attribute or a product to categories.
 
 Two parameters are required, two other are optional.
-- field: attribute code.
-- locale: local code for which value is assigned (optional).
-- scope: channel code for which value is assigned (optional).
-- items: attribute values to add.
+ - field: attribute code.
+ - locale: locale code for which value is assigned (optional).
+ - scope: channel code for which value is assigned (optional).
+ - items: attribute values to add.
 
 .. tip::
 
@@ -282,13 +282,13 @@ Two parameters are required, two other are optional.
 Remove
 ______
 
-This action removes values to a multiselect, a category or a collection.
+This action removes values from a multiselect, a category or a collection.
 
 Two parameters are required, two other are optional.
-- field: attribute code.
-- locale: local code for which value is assigned (optional).
-- scope: channel code for which value is assigned (optional).
-- items: attribute values to remove.
+ - field: attribute code.
+ - locale: locale code for which value is assigned (optional).
+ - scope: channel code for which value is assigned (optional).
+ - items: attribute values to remove.
 
 .. tip::
 
