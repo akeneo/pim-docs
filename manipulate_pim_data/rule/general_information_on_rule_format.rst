@@ -289,7 +289,7 @@ Two parameters are required, three other are optional.
  - locale: locale code for which value is assigned (optional).
  - scope: channel code for which value is assigned (optional).
  - items: attribute values to remove.
- - include_children: apply the removal to the subtree of the given categories. Only appliable if ``field`` is set to "**categories**" (optional, defaults to ``false``)
+ - include_children: if ``true``, then also apply the removal to the children of the given categories. Only appliable if ``field`` is set to "**categories**" (optional, defaults to ``false``).
 
 .. tip::
 
@@ -312,6 +312,17 @@ Two parameters are required, three other are optional.
               field: categories
               items:
                 - clothing
+              include_children: true
+
+    Unclassify from the whole "Master catalog" tree will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: remove
+              field: categories
+              items:
+                - master
               include_children: true
 
     .. warning::
