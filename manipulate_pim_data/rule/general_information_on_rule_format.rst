@@ -250,7 +250,7 @@ Two parameters are required, two other are optional.
     .. code-block:: yaml
 
         actions:
-            ­ type:   set
+            - type:   set
               field:  description
               locale: en_US
               scope:  ecommerce
@@ -284,11 +284,12 @@ ______
 
 This action removes values from a multiselect, a category or a collection.
 
-Two parameters are required, two other are optional.
- - field: attribute code.
+Two parameters are required, three other are optional.
+ - field: attribute code or "categories".
  - locale: locale code for which value is assigned (optional).
  - scope: channel code for which value is assigned (optional).
  - items: attribute values to remove.
+ - include_children: apply the removal to the subtree of the given categories. Only appliable if ``field`` is set to "**categories**" (optional, defaults to ``false``)
 
 .. tip::
 
@@ -301,6 +302,29 @@ Two parameters are required, two other are optional.
               field: categories
               items:
                 - t-shirts
+
+    Removing category "clothing" and its children will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: remove
+              field: categories
+              items:
+                - clothing
+              include_children: true
+
+    .. warning::
+
+        In order to fully unclassify a product (i.e. remove all its categories, from every category tree), it is far more efficient to use a set action:
+
+
+        .. code-block:: yaml
+
+            actions:
+                - type: set
+                  field: categories
+                  value: []
 
 Fields
 ++++++
