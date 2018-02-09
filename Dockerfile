@@ -39,15 +39,15 @@ RUN apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf /var/lib/apt/lists/*
 
 # Compute assets
-RUN wget https://github.com/akeneo/pim-community-dev/archive/master.zip -P /home/akeneo/pim-docs/ && \
-    unzip /home/akeneo/pim-docs/master.zip -d /home/akeneo/pim-docs/ && \
+RUN wget https://github.com/akeneo/pim-community-dev/archive/2.2.zip -P /home/akeneo/pim-docs/ && \
+    unzip /home/akeneo/pim-docs/2.2.zip -d /home/akeneo/pim-docs/ && \
     wget https://getcomposer.org/download/1.6.2/composer.phar -P /home/akeneo/pim-docs/ && \
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && php -d memory_limit=3G ../composer.phar install --no-dev --no-suggest --ignore-platform-reqs && \
+    cd /home/akeneo/pim-docs/pim-community-dev-2.2/ && php -d memory_limit=3G ../composer.phar install --no-dev --no-suggest --ignore-platform-reqs && \
     service mysql start && \
     mysql -u root -e "CREATE DATABASE akeneo_pim" && \
     mysql -u root -e "GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim'" && \
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console doctrine:schema:create --env=prod && \
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console pim:installer:assets --env=prod
+    cd /home/akeneo/pim-docs/pim-community-dev-2.2/ && php bin/console doctrine:schema:create --env=prod && \
+    cd /home/akeneo/pim-docs/pim-community-dev-2.2/ && php bin/console pim:installer:assets --env=prod
 
 # Copy script
 COPY build.sh /home/akeneo/pim-docs/build.sh
