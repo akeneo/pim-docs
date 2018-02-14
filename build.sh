@@ -68,8 +68,8 @@ rm -rf /home/akeneo/pim-docs/data/pim-docs-build/web
 rm -rf /home/akeneo/pim-docs/data/pim-docs-build/vendor
 sed -i -e "s/^version =.*/version = '1.7'/" /home/akeneo/pim-docs/data/conf.py
 sphinx-build -b html /home/akeneo/pim-docs/data /home/akeneo/pim-docs/data/pim-docs-build
-cp -r /home/akeneo/pim-docs/pim-community-dev-1.7/web /home/akeneo/pim-docs/data/pim-docs-build/
-cp -r /home/akeneo/pim-docs/pim-community-dev-1.7/vendor /home/akeneo/pim-docs/data/pim-docs-build/
+cp -L -r /home/akeneo/pim-docs/pim-community-dev-1.7/web /home/akeneo/pim-docs/data/pim-docs-build/
+cp -L -r /home/akeneo/pim-docs/pim-community-dev-1.7/vendor /home/akeneo/pim-docs/data/pim-docs-build/
 cp -r /home/akeneo/pim-docs/data/styleguide /home/akeneo/pim-docs/data/pim-docs-build/
 find /home/akeneo/pim-docs/data/pim-docs-build/ -exec chown $CUSTOM_UID:$CUSTOM_GID {} \;
 
