@@ -284,12 +284,12 @@ ______
 
 This action removes values from a multiselect, a category or a collection.
 
-Two parameters are required, three other are optional.
+Two parameters are required, three others are optional.
  - field: attribute code or "categories".
  - locale: locale code for which value is assigned (optional).
  - scope: channel code for which value is assigned (optional).
- - items: attribute values to remove.
- - include_children: if ``true``, then also apply the removal to the children of the given categories. Only appliable if ``field`` is set to "**categories**" (optional, defaults to ``false``).
+ - items: values to remove.
+ - include_children: if ``true``, then also apply the removal to the children of the given categories. Only applicable if ``field`` is set to "**categories**" (optional, defaults to ``false``).
 
 .. tip::
 
