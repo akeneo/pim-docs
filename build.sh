@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 usage(){
-    echo "Usage: $0 [--uid <uid>] [--gid <gid] [ [--no-asset-check] [--deploy --host <host> --port <port> --username <username>]"
+    echo "Usage: $0 $1 [--uid <uid>] [--gid <gid] [ [--no-asset-check] [--deploy --host <host> --port <port> --username <username>]"
     echo "  --deploy              Deploy to the server"
     echo "  --no-asset-check      Do not check asset changes"
     echo "  --host <host>         Host used for deployment"
@@ -18,6 +18,9 @@ PORT=22
 USERNAME=pim-docs
 CUSTOM_UID=`id -u`
 CUSTOM_GID=`id -g`
+VERSION=$1
+
+shift
 
 while true; do
   case "$1" in
@@ -43,36 +46,36 @@ if [ "$DEPLOY" == true ]; then
 fi
 
 if [ "$ASSET_CHECK" != false ]; then
-    wget https://github.com/akeneo/pim-community-dev/archive/1.7.zip -P /tmp/
+    wget https://github.com/akeneo/pim-community-dev/archive/${VERSION}.zip -P /tmp/
 
-    md5original=`md5sum /home/akeneo/pim-docs/1.7.zip | cut -f 1 -d " "`
-    md5current=`md5sum /tmp/1.7.zip | cut -f 1 -d " "`
+    md5original=`md5sum /home/akeneo/pim-docs/${VERSION}.zip | cut -f 1 -d " "`
+    md5current=`md5sum /tmp/${VERSION}.zip | cut -f 1 -d " "`
 
     if [ "$md5original" = "$md5current" ]
     then
         echo "Akeneo PIM does not change."
-        rm /tmp/1.7.zip
+        rm /tmp/${VERSION}.zip
     else
         echo "Rebuild Akeneo PIM assets..."
-        rm -rf /home/akeneo/pim-docs/1.7.zip
-        mv /tmp/1.7.zip /home/akeneo/pim-docs/1.7.zip
-        rm -rf /home/akeneo/pim-docs/pim-community-dev-1.7
-        unzip /home/akeneo/pim-docs/1.7.zip -d /home/akeneo/pim-docs/
-        cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php -d memory_limit=3G ../composer.phar install --no-dev --no-suggest
+        rm -rf /home/akeneo/pim-docs/${VERSION}.zip
+        mv /tmp/${VERSION}.zip /home/akeneo/pim-docs/${VERSION}.zip
+        rm -rf /home/akeneo/pim-docs/pim-community-dev-${VERSION}
+        unzip /home/akeneo/pim-docs/${VERSION}.zip -d /home/akeneo/pim-docs/
+        cd /home/akeneo/pim-docs/pim-community-dev-${VERSION}/ && php -d memory_limit=3G ../composer.phar install --no-dev --no-suggest
         service mysql start && \
-        cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php app/console pim:installer:assets --env=prod
+        cd /home/akeneo/pim-docs/pim-community-dev-${VERSION}/ && php app/console pim:installer:assets --env=prod
     fi
 fi
 
 rm -rf /home/akeneo/pim-docs/data/pim-docs-build/web
 rm -rf /home/akeneo/pim-docs/data/pim-docs-build/vendor
-sed -i -e "s/^version =.*/version = '1.7'/" /home/akeneo/pim-docs/data/conf.py
+sed -i -e "s/^version =.*/version = '${VERSION}'/" /home/akeneo/pim-docs/data/conf.py
 sphinx-build -b html /home/akeneo/pim-docs/data /home/akeneo/pim-docs/data/pim-docs-build
-cp -r /home/akeneo/pim-docs/pim-community-dev-1.7/web /home/akeneo/pim-docs/data/pim-docs-build/
-cp -r /home/akeneo/pim-docs/pim-community-dev-1.7/vendor /home/akeneo/pim-docs/data/pim-docs-build/
+cp -r /home/akeneo/pim-docs/pim-community-dev-${VERSION}/web /home/akeneo/pim-docs/data/pim-docs-build/
+cp -r /home/akeneo/pim-docs/pim-community-dev-${VERSION}/vendor /home/akeneo/pim-docs/data/pim-docs-build/
 cp -r /home/akeneo/pim-docs/data/styleguide /home/akeneo/pim-docs/data/pim-docs-build/
 find /home/akeneo/pim-docs/data/pim-docs-build/ -exec chown $CUSTOM_UID:$CUSTOM_GID {} \;
 
 if [ "$DEPLOY" == true ]; then
-    rsync -e "ssh -p $PORT" -avz /home/akeneo/pim-docs/data/pim-docs-build/* $USERNAME@$HOST:/var/www/1.7
+    rsync -e "ssh -p $PORT" -avz /home/akeneo/pim-docs/data/pim-docs-build/* $USERNAME@$HOST:/var/www/${VERSION}
 fi
