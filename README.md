@@ -59,7 +59,7 @@ From the `./pim-docs` directory, run:
     $ docker run --rm \
         -v $(pwd):/home/akeneo/pim-docs/data \
         pim-docs:1.3 \
-        ./build.sh --uid $(id -u) --gid $(id -g)
+        ./build.sh 1.3 --uid $(id -u) --gid $(id -g)
 ```
 
 The docs will be built into `./pim-docs-build`.
