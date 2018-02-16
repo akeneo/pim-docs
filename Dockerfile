@@ -36,6 +36,19 @@ RUN apt-get update && \
     cd /tmp/sphinx-php-1.0.10/ && \
     python setup.py install && \
     #
+    # Download packages
+    apt-get update && \
+    apt-get install -y --no-install-recommends mysql-server php7.1-apcu php7.1-bcmath \
+        php7.1-cli php7.1-curl php7.1-fpm php7.1-gd php7.1-intl php7.1-mcrypt php7.1-mysql php7.1-soap php7.1-xml \
+        php7.1-zip php7.1-mbstring && \
+    #
+    # Configure PHP
+    echo "memory_limit = 1024M" >> /etc/php/7.1/cli/php.ini && \
+    echo "date.timezone = Etc/UTC" >> /etc/php/7.1/cli/php.ini && \
+    #
+    # Get composer
+    wget https://getcomposer.org/download/1.6.2/composer.phar -P /home/akeneo/pim-docs/ && \
+    #
     # Clean
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf /var/lib/apt/lists/* && \
@@ -49,10 +62,14 @@ COPY build.sh /home/akeneo/pim-docs/build.sh
 
 # Install Akeneo PIM Assets
 RUN chmod +x /home/akeneo/pim-docs/build.sh && \
+    #
+    # Download curent version
     wget https://github.com/akeneo/pim-community-dev/archive/1.7.zip -P /home/akeneo/pim-docs/ && \
     unzip /home/akeneo/pim-docs/1.7.zip -d /home/akeneo/pim-docs/ && \
-    wget https://getcomposer.org/download/1.6.2/composer.phar -P /home/akeneo/pim-docs/ && \
-    cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php -d memory_limit=3G ../composer.phar install --no-dev --no-suggest --ignore-platform-reqs && \
+    cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && \
+    #
+    # Install Akeneo PIM
+    php -d memory_limit=3G /home/akeneo/pim-docs/composer.phar install --no-dev --no-suggest --ignore-platform-reqs && \
     service mysql start && \
     mysql -u root -e "CREATE DATABASE akeneo_pim" && \
     mysql -u root -e "GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim'" && \

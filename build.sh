@@ -61,7 +61,7 @@ if [ "$ASSET_CHECK" != false ]; then
         mv /tmp/${VERSION}.zip /home/akeneo/pim-docs/${VERSION}.zip
         rm -rf /home/akeneo/pim-docs/pim-community-dev-${VERSION}
         unzip /home/akeneo/pim-docs/${VERSION}.zip -d /home/akeneo/pim-docs/
-        cd /home/akeneo/pim-docs/pim-community-dev-${VERSION}/ && php -d memory_limit=3G ../composer.phar install --no-dev --no-suggest
+        cd /home/akeneo/pim-docs/pim-community-dev-${VERSION}/ && php -d memory_limit=3G ../composer.phar install --no-dev --no-suggest --ignore-platform-reqs
         service mysql start && \
         cd /home/akeneo/pim-docs/pim-community-dev-${VERSION}/ && php app/console pim:installer:assets --env=prod
     fi
