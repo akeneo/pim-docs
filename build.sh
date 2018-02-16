@@ -1,7 +1,8 @@
 #!/bin/bash -e
 
 usage(){
-    echo "Usage: $0 [--uid <uid>] [--gid <gid] [ [--no-asset-check] [--deploy --host <host> --port <port> --username <username>]"
+    echo "Usage: $0 <version> [--uid <uid>] [--gid <gid] [--deploy --host <host> --port <port> --username <username>]"
+    echo "  version               The version to build (e.g. 1.7 or master)"
     echo "  --deploy              Deploy to the server"
     echo "  --host <host>         Host used for deployment"
     echo "  --port <port>         Port used for deployment"
@@ -16,6 +17,7 @@ PORT=22
 USERNAME=pim-docs
 CUSTOM_UID=`id -u`
 CUSTOM_GID=`id -g`
+VERSION=$1; shift; echo "Building version $VERSION..."
 
 while true; do
   case "$1" in
@@ -39,10 +41,10 @@ if [ "$DEPLOY" == true ]; then
     echo "Connection OK"
 fi
 
-sed -i -e "s/^version =.*/version = '1.2'/" /home/akeneo/pim-docs/data/conf.py
+sed -i -e "s/^version =.*/version = '${VERSION}'/" /home/akeneo/pim-docs/data/conf.py
 sphinx-build -b html /home/akeneo/pim-docs/data /home/akeneo/pim-docs/data/pim-docs-build
 find /home/akeneo/pim-docs/data/pim-docs-build/ -exec chown $CUSTOM_UID:$CUSTOM_GID {} \;
 
 if [ "$DEPLOY" == true ]; then
-    rsync -e "ssh -p $PORT" -avz /home/akeneo/pim-docs/data/pim-docs-build/* $USERNAME@$HOST:/var/www/1.2
+    rsync -e "ssh -p $PORT" -avz /home/akeneo/pim-docs/data/pim-docs-build/* $USERNAME@$HOST:/var/www/${VERSION}
 fi
