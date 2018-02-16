@@ -1,53 +1,50 @@
-FROM debian:9-slim AS pim
-MAINTAINER pierre.allard@akeneo.com
-WORKDIR /home/akeneo/pim-docs/
+#!/bin/bash -e
 
-# Sphinx installation
-RUN apt-get update && \
-    apt-get install -y python-pip git
-RUN pip install --upgrade pip
-RUN pip install sphinx~=1.5.3 && \
-    pip install git+https://github.com/fabpot/sphinx-php.git && \
-    pip install git+https://github.com/mickaelandrieu/sphinxcontrib.youtube.git
-RUN apt-get clean && apt-get --yes --quiet autoremove --purge && \
-    rm -rf /var/lib/apt/lists/*
+usage(){
+    echo "Usage: $0 <version> [--uid <uid>] [--gid <gid] [--deploy --host <host> --port <port> --username <username>]"
+    echo "  version               The version to build (e.g. 1.7 or master)"
+    echo "  --deploy              Deploy to the server"
+    echo "  --host <host>         Host used for deployment"
+    echo "  --port <port>         Port used for deployment"
+    echo "  --username <username> Username used for deployment"
+    echo "  --uid <user_id>       User id for documentation generation"
+    echo "  --gid <group_id>      Group id for documentation generation"
+}
 
-# Copy script
-COPY build.sh /home/akeneo/pim-docs/build.sh
-RUN chmod +x /home/akeneo/pim-docs/build.sh
+DEPLOY=false
+HOST=docs-staging.akeneo.com
+PORT=22
+USERNAME=pim-docs
+CUSTOM_UID=`id -u`
+CUSTOM_GID=`id -g`
+VERSION=$1; shift; echo "Building version $VERSION..."
 
-# Akeneo PIM installation
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && \
-    apt-get install -y wget unzip
+while true; do
+  case "$1" in
+    -d | --deploy ) echo "Enable deployment..."; DEPLOY=true; shift ;;
+    -h | --host ) echo "Set host to $2..."; HOST=$2; shift 2 ;;
+    -p | --port ) echo "Set port to $2..."; PORT=$2; shift 2 ;;
+    -u | --username ) echo "Set username to $2..."; USERNAME=$2; shift 2 ;;
+    --uid ) CUSTOM_UID=$2; shift 2 ;;
+    --gid ) CUSTOM_GID=$2; shift 2 ;;
+    -- ) shift; break ;;
+    * ) break ;;
+  esac
+done
 
-# Install mysql-server
-RUN apt-get install -y lsb-release apt-transport-https ca-certificates && \
-    wget -O /tmp/mysql-apt-config.deb https://dev.mysql.com/get/mysql-apt-config_0.8.7-1_all.deb && \
-    dpkg -i /tmp/mysql-apt-config.deb && \
-    apt-get update && \
-    apt-get install -y mysql-server && \
-    rm /tmp/mysql-apt-config.deb
+if [ "$DEPLOY" == true ]; then
+    echo "Trying connection to $USERNAME@$HOST:$PORT..."
+    mkdir ~/.ssh/
+    touch ~/.ssh/known_hosts
+    ssh-keyscan -H -p $PORT $HOST >> ~/.ssh/known_hosts
+    ssh -p $PORT $USERNAME@$HOST exit || exit 0
+    echo "Connection OK"
+fi
 
-# Install php
-RUN apt-get install -y apt-transport-https ca-certificates && \
-    wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
-    sh -c 'echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list' && \
-    apt update && \
-    apt-get install -y php7.1-apcu php7.1-bcmath php7.1-cli php7.1-curl php7.1-fpm php7.1-gd php7.1-intl php7.1-mcrypt php7.1-mysql php7.1-soap php7.1-xml php7.1-zip php7.1-mbstring && \
-    echo "memory_limit = 1024M" >> /etc/php/7.1/cli/php.ini && \
-    echo "date.timezone = Etc/UTC" >> /etc/php/7.1/cli/php.ini
+sed -i -e "s/^version =.*/version = '${VERSION}'/" /home/akeneo/pim-docs/data/conf.py
+sphinx-build -b html /home/akeneo/pim-docs/data /home/akeneo/pim-docs/data/pim-docs-build
+find /home/akeneo/pim-docs/data/pim-docs-build/ -exec chown $CUSTOM_UID:$CUSTOM_GID {} \;
 
-# Purge apt
-RUN apt-get clean && apt-get --yes --quiet autoremove --purge && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN wget https://github.com/akeneo/pim-community-dev/archive/1.7.zip -P /home/akeneo/pim-docs/ && \
-    unzip /home/akeneo/pim-docs/1.7.zip -d /home/akeneo/pim-docs/ && \
-    wget https://getcomposer.org/download/1.6.2/composer.phar -P /home/akeneo/pim-docs/ && \
-    cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php -d memory_limit=3G ../composer.phar install --no-dev --no-suggest --ignore-platform-reqs && \
-    service mysql start && \
-    mysql -u root -e "CREATE DATABASE akeneo_pim" && \
-    mysql -u root -e "GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim'" && \
-    cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php app/console doctrine:schema:create --env=prod && \
-    cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php app/console pim:installer:assets --env=prod
+if [ "$DEPLOY" == true ]; then
+    rsync -e "ssh -p $PORT" -avz /home/akeneo/pim-docs/data/pim-docs-build/* $USERNAME@$HOST:/var/www/${VERSION}
+fi
