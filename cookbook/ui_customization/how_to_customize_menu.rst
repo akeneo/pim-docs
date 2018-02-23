@@ -93,13 +93,8 @@ Here is the list of all available options for a tree:
     tree:
         <menu_alias>                            # menu alias
             type: <menu_type>                   # menu type code. Link to menu template section.
-            scope_type: <string>                # menu scope type identifier
-            read_only: <boolean>                # disable ability to edit menu in UI
-            max_nesting_level: <integer>        # menu max nesting level
-            merge_strategy: <strategy>          # node merge strategy. possible strategies are append|replace|move
             extras:                             # extra parameters for container renderer
                 brand: <string>
                 brandLink: <string>
             children:                           # submenu items
                 <links to items hierarchy>
-                position: <integer>             # menu item position
