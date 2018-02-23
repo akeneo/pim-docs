@@ -27,10 +27,18 @@ Composer settings
 
 .. code-block:: json
 
-           "type": "vcs",
-           "url": "ssh://git@distribution.akeneo.com:443/pim-enterprise-dev-<who_i_am>.git",
-           "branch": "master"
-       }
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/akeneo/pim-community-dev.git",
+            "branch": "master"
+        },
+        {
+            "type": "vcs",
+            "url": "ssh://git@distribution.akeneo.com:443/pim-enterprise-dev-<who_i_am>.git",
+            "branch": "master"
+        }
+    ],
 
 | All details about Distribution System can be found in the documentation “Akeneo EE Distribution System - User guide” in `the Partner portal`_.
 
@@ -40,7 +48,13 @@ Composer and github api rate limit
 
 | The Community edition have many branches/tags and during a composer update process, you can reach easily the github api rate limit. Without OAuth token, github use the ip to manage api rate limit, and to limit to 60 requests per hour (https://developer.github.com/v3/#rate-limiting).
 
+<<<<<<< HEAD
 | In order to update your pim, you must setup a github token for composer, you can run composer follow the instructions to help you.
+||||||| parent of a024cb6... feedback from vincent
+| In order to update your pim, you must setup a github token for composer, you can run composer and follow instructions.
+=======
+| In order to update your pim, you must setup a github token for composer. You can run composer and follow the instructions to help you.
+>>>>>>> a024cb6... feedback from vincent
 
 .. code-block:: bash
 
