@@ -4,11 +4,11 @@ Composer settings
 
 
 | During the install process we used our own repository for the EE distribution. But you don't have any access to this repository after the install process.
-| We setup your own distribution repository in the composer file, also you can change it if you want.
+| We setup your own distribution repository in the composer file, so you can change it if you want.
 
 
-| To be able to pull from distribution, you must use a knowed ssh keypair from partner portal.
-| You can check your right to distribution repo with this command:
+| To be able to pull from distribution, you must use a known ssh keypair from partner portal.
+| You can check your access rights to the distribution repository with this command:
 
 .. code-block:: bash
 
@@ -32,15 +32,15 @@ Composer settings
            "branch": "master"
        }
 
-| All details about Distribution System can be find in the documentation “Akeneo EE Distribution System - User guide” in `the Partner portal`_.
+| All details about Distribution System can be found in the documentation “Akeneo EE Distribution System - User guide” in `the Partner portal`_.
 
 
 Composer and github api rate limit
 ----------------------------------
 
-| The Community edition have many branches/tags and during a composer update process, you can reach easily the github api rate limit. Without OAuth token, github use the ip for manage api rate limit, and limit to 60 requests per hour (https://developer.github.com/v3/#rate-limiting).
+| The Community edition have many branches/tags and during a composer update process, you can reach easily the github api rate limit. Without OAuth token, github use the ip to manage api rate limit, and to limit to 60 requests per hour (https://developer.github.com/v3/#rate-limiting).
 
-| In order to update your pim, you must setup a github token for composer, you can run composer and follow instructions.
+| In order to update your pim, you must setup a github token for composer, you can run composer follow the instructions to help you.
 
 .. code-block:: bash
 
