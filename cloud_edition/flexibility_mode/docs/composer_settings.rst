@@ -39,9 +39,9 @@ Composer settings
 Composer and github api rate limit
 ----------------------------------
 
-The Community edition have many branches/tags and during a composer update process, you can reach easily the github api rate limit. Without OAuth token, github use the ip for manage api rate limit, and limit to 60 requests per hour (https://developer.github.com/v3/#rate-limiting).
+| The Community edition have many branches/tags and during a composer update process, you can reach easily the github api rate limit. Without OAuth token, github use the ip for manage api rate limit, and limit to 60 requests per hour (https://developer.github.com/v3/#rate-limiting).
 
-In order to update your pim, you must setup a github token for composer, you can run composer and follow instructions.
+| In order to update your pim, you must setup a github token for composer, you can run composer and follow instructions.
 
 .. code-block:: bash
 
