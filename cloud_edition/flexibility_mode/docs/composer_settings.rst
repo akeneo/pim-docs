@@ -20,7 +20,6 @@ Composer settings
     R  	ElasticSearchBundle
     R 	    InnerVariationBundle
     R 	    LdapAuthenticationBundle
-    R 	    gitolite-admin
     R 	    pim-enterprise-dev-partner
 
 
