@@ -25,7 +25,7 @@ list. Each rule is referred to by a code and can contain a list of conditions an
         camera_set_canon_brand:
             priority: 0
             conditions:
-                - field: family.code
+                - field: family
                   operator: IN
                   value:
                     - camcorders
@@ -43,7 +43,7 @@ list. Each rule is referred to by a code and can contain a list of conditions an
         camera_copy_name_to_model:
             priority: 0
             conditions:
-                - field: family.code
+                - field: family
                   operator: IN
                   value:
                     - camcorders
@@ -122,7 +122,7 @@ Don't forget to add conditions to not execute the rules at each execution.
         camera_set_canon_brand:
             priority: 0
             conditions:
-                - field: family.code
+                - field: family
                   operator: IN
                   value:
                     - camcorders
@@ -146,7 +146,7 @@ Don't forget to add conditions to not execute the rules at each execution.
         camera_set_autofocus_point:
             priority: 0
             conditions:
-                - field: family.code
+                - field: family
                   operator: IN
                   value:
                     - camcorders
@@ -169,7 +169,7 @@ Don't forget to add conditions to not execute the rules at each execution.
         copy_description_us_to_ecommerce_us:
             priority: 0
             conditions:
-                - field: family.code
+                - field: family
                   operator: IN
                   value:
                     - camcorders
