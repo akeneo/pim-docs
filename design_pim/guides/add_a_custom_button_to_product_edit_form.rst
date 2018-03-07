@@ -20,23 +20,25 @@ First, we need to create our button:
     define(
         [
             'underscore',
+            'oro/translator',
             'pim/form',
             'pim/template/product/export-csv',
             'routing'
         ],
         function (
             _,
+            __,
             BaseForm,
             template,
             Routing
         ) {
             return BaseForm.extend({
-                className: 'btn-group',
                 template: _.template(template),
                 render: function () {
                     this.$el.html(
                         this.template({
-                            path: Routing.generate('acme_csv_product_export', {id: this.getFormData().meta.id})
+                            path: Routing.generate('acme_csv_product_export', {id: this.getFormData().meta.id}),
+                            label: __('pim_enrich.entity.product.btn.csv_export')
                         })
                     );
 
@@ -48,13 +50,12 @@ First, we need to create our button:
 
 With its attached template:
 
-.. code-block:: text
+.. code-block:: html
     :linenos:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/public/templates/product/export-csv.html
-    <a class="btn no-hash btn-download" href="<%= path %>">
-        <i class="icon-csv"></i>
-        <%= _.__('pim_enrich.entity.product.btn.csv_export') %>
+    <a class="AknButton AknButton--apply" href="<%= path %>">
+        <%- label %>
     </a>
 
 Now we need to register it in the requirejs configuration:
@@ -76,7 +77,6 @@ And add it to our product form:
     :linenos:
 
     # /src/Acme/Bundle/EnrichBundle/Resources/config/form_extensions/product_edit.yml
-
     extensions:
         pim-product-edit-form-export-csv:            # The form extension code (can be whatever you want)
             module: pim/product-edit-form/export-csv # The requirejs module we just created
@@ -109,15 +109,17 @@ As before, we will add our meta section and register it:
     define(
         [
             'underscore',
-            'pim/form'
+            'pim/form',
+            'pim/template/product/export-status'
         ],
         function (
             _,
-            BaseForm
+            BaseForm,
+            template
         ) {
             return BaseForm.extend({
-                tagName: 'span',
-                template: _.template('<span><%= exportStatus %></span>'),
+                className: 'AknTitleContainer-metaItem',
+                template: _.template(template),
                 render: function () {
                     this.$el.html(
                         this.template({
@@ -132,6 +134,16 @@ As before, we will add our meta section and register it:
         }
     );
 
+With its attached template:
+
+.. code-block:: text
+    :linenos:
+
+        # /src/Acme/Bundle/EnrichBundle/Resources/public/templates/product/form/meta/export-status.html
+        <span title="<%- exportStatus %>">
+            <%- exportStatus %>
+        </span>
+
 Now, we need to register it in the requirejs configuration:
 
 .. code-block:: yaml
@@ -141,6 +153,8 @@ Now, we need to register it in the requirejs configuration:
     config:
         paths:
             pim/product-edit-form/meta/export-status: acmeenrich/js/product/form/meta/export-status
+
+            pim/template/product/export-status: acmeenrich/templates/product/form/meta/export-status.html
 
 
 And add it to our product form:

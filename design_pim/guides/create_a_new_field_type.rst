@@ -7,10 +7,10 @@ Let's say we want to have a slider to represent each "number attribute" having a
 
 Before diving into code, we need to understand what's going on under the hood:
 
- - In akeneo, we have attributes with properties and an attribute type. In 1.3 the rendering of an attribute was driven by its attribute type. In 1.4 we introduced a field provider.
- - This field provider gets an attribute and returns a field type
- - In the `form_extensions.yml` or in the `form_extensions` folder of your `Resources/config` bundle's folder you can map this field to the actual requirejs module
- - The requirejs module contains the field's logic
+- In akeneo, we have attributes with properties and an attribute type. In 1.3 the rendering of an attribute was driven by its attribute type. In 1.4 we introduced a field provider.
+- This field provider gets an attribute and returns a field type
+- In the `form_extensions.yml` or in the `form_extensions` folder of your `Resources/config` bundle's folder you can map this field to the actual requirejs module
+- The requirejs module contains the field's logic
 
 
 Here is a representation of this architecture:
@@ -49,7 +49,7 @@ To create a custom field, first we need to create a FieldProvider for our new fi
         {
             //We only support number fields that have a number min and max property
             return $element instanceof AttributeInterface &&
-                $element->getAttributeType() === 'pim_catalog_number' &&
+                $element->getType() === 'pim_catalog_number' &&
                 null !== $element->getNumberMin() &&
                 null !== $element->getNumberMax();
         }
@@ -114,11 +114,19 @@ Now that we have a field provider, we can create the field itself:
 
 And its template:
 
-.. code-block:: text
+.. code-block:: html
     :linenos:
 
     <!-- src/Acme/Bundle/CustomBundle/Resources/public/templates/product/field/range.html -->
-    <input type="range" data-locale="<%= value.locale %>" data-scope="<%= value.scope %>" value="<%= value.data %>" <%= editMode === 'view' ? 'disabled' : '' %> min="<%= attribute.number_min %>" max="<%= attribute.number_max %>"/>
+    <input
+        type="range"
+        data-locale="<%= value.locale %>"
+        data-scope="<%= value.scope %>"
+        value="<%= value.data %>"
+        <%= editMode === 'view' ? 'disabled' : '' %>
+        min="<%= attribute.number_min %>"
+        max="<%= attribute.number_max %>"
+    />
 
 You can now register this module into your requirejs configuration:
 

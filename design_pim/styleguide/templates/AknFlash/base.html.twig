@@ -1,4 +1,13 @@
-<div class="AknFlash{% if class is defined %} {{ class }}{% endif %}">
-    <button class="AknFlash-closeButton">&times;</button>
-    Flash message
+<div class="AknFlash AknFlash--visible{% if class is defined %} {{ class }}{% endif %}">
+    <img class="AknFlash-icon" src="../../web/bundles/pimui/images/{% if icon is defined %}{{ icon }}{% else %}icon-infos.svg{% endif %}"/>
+    <div class="AknFlash-message">
+        <div class="AknFlash-messageTitle">
+            Message Title
+        </div>
+        <div class="AknFlash-messageContent">
+            Message content
+        </div>
+    </div>
+    <img class="AknFlash-closeButton close" src="../../web/bundles/pimui/images/{% if closeIcon is defined %}{{ closeIcon }}{% else %}icon-delete-bluedark.svg{% endif %}"/>
+    <div class="AknFlash-timer">42s</div>
 </div>

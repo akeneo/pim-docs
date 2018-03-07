@@ -238,7 +238,7 @@ This action assigns values to an attribute.
 
 Two parameters are required, two other are optional.
  - field: attribute code.
- - locale: local code for which value is assigned (optional).
+ - locale: locale code for which value is assigned (optional).
  - scope: channel code for which value is assigned (optional).
  - value: attribute value.
 
@@ -250,7 +250,7 @@ Two parameters are required, two other are optional.
     .. code-block:: yaml
 
         actions:
-            ­ type:   set
+            - type:   set
               field:  description
               locale: en_US
               scope:  ecommerce
@@ -263,7 +263,7 @@ This action allows to add values to a multi-select attribute or a product to cat
 
 Two parameters are required, two other are optional.
  - field: attribute code.
- - locale: local code for which value is assigned (optional).
+ - locale: locale code for which value is assigned (optional).
  - scope: channel code for which value is assigned (optional).
  - items: attribute values to add.
 
@@ -282,13 +282,14 @@ Two parameters are required, two other are optional.
 Remove
 ______
 
-This action removes values to a multiselect, a category or a collection.
+This action removes values from a multiselect, a category or a collection.
 
-Two parameters are required, two other are optional.
- - field: attribute code.
- - locale: local code for which value is assigned (optional).
+Two parameters are required, three others are optional.
+ - field: attribute code or "categories".
+ - locale: locale code for which value is assigned (optional).
  - scope: channel code for which value is assigned (optional).
- - items: attribute values to remove.
+ - items: values to remove.
+ - include_children: if ``true``, then also apply the removal to the children of the given categories. Only applicable if ``field`` is set to "**categories**" (optional, defaults to ``false``).
 
 .. tip::
 
@@ -301,6 +302,40 @@ Two parameters are required, two other are optional.
               field: categories
               items:
                 - t-shirts
+
+    Removing category "clothing" and its children will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: remove
+              field: categories
+              items:
+                - clothing
+              include_children: true
+
+    Unclassify from the whole "Master catalog" tree will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: remove
+              field: categories
+              items:
+                - master
+              include_children: true
+
+    .. warning::
+
+        In order to fully unclassify a product (i.e. remove all its categories, from every category tree), it is far more efficient to use a set action:
+
+
+        .. code-block:: yaml
+
+            actions:
+                - type: set
+                  field: categories
+                  value: []
 
 Fields
 ++++++

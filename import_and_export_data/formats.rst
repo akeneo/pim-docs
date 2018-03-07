@@ -20,10 +20,11 @@ CSV formats used for import/export profiles in a default Akeneo PIM installation
     formats/attribute
     formats/category
     formats/family
+    formats/family_variant
     formats/group
     formats/option
     formats/product
-    formats/variant-group
+    formats/product_model
 
 .. note::
 
