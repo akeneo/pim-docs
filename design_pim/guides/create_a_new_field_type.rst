@@ -49,7 +49,7 @@ To create a custom field, first we need to create a FieldProvider for our new fi
         {
             //We only support number fields that have a number min and max property
             return $element instanceof AttributeInterface &&
-                $element->getAttributeType() === 'pim_catalog_number' &&
+                $element->getType() === 'pim_catalog_number' &&
                 null !== $element->getNumberMin() &&
                 null !== $element->getNumberMax();
         }
