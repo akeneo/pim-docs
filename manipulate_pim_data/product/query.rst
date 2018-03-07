@@ -37,9 +37,11 @@ Add filters:
         // filter on description which is localizable and scopable by using 'fr_FR' locale and 'mobile' scope
         ->addFilter('description', 'STARTS WITH', 'My desc', ['locale' => 'fr_FR', 'scope' => 'mobile'])
         // filter on price
-        ->addFilter('price', '>', ['data' => 70, 'currency' => 'EUR'])
+        ->addFilter('price', '>', ['amount' => 70, 'currency' => 'EUR'])
         // filter on a metric
-        ->addFilter('weight', '<', ['data' => 1, 'unit' => 'KILOGRAM']);
+        ->addFilter('weight', '<', ['amount' => 1, 'unit' => 'KILOGRAM']);
+
+Note that you can also use `Pim\Component\Catalog\Query\Filter\Operators` to access all appropriate operator constants.
 
 Add sorters:
 
@@ -50,6 +52,8 @@ Add sorters:
         ->addSorter('sku', 'DESC')
         // to sort by completeness, the locale and the scope are expected, if not provided, the default ones are used
         ->addSorter('completeness', 'DESC', ['locale' => 'fr_FR', 'scope' => 'mobile']);
+
+Note that you can also use `Pim\Component\Catalog\Query\Sorter\Directions` to access all appropriate sort constants.
 
 Execute the Query to Get a Cursor
 ---------------------------------

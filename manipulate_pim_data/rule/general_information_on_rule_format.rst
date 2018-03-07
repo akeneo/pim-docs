@@ -25,7 +25,7 @@ list. Each rule is referred to by a code and can contain a list of conditions an
         camera_set_canon_brand:
             priority: 0
             conditions:
-                - field: family.code
+                - field: family
                   operator: IN
                   value:
                     - camcorders
@@ -43,7 +43,7 @@ list. Each rule is referred to by a code and can contain a list of conditions an
         camera_copy_name_to_model:
             priority: 0
             conditions:
-                - field: family.code
+                - field: family
                   operator: IN
                   value:
                     - camcorders
@@ -60,17 +60,17 @@ Enrichment Rule Structure
 -------------------------
 
 Structure’s elements which define a rule are:
- - rule code (dynamic)
- - priority*
- - conditions
- - actions
+- rule code (dynamic)
+- priority*
+- conditions
+- actions
 
 Structure's elements which define a condition are:
- - field
- - locale​*
- - scope​*
- - operator
- - value
+- field
+- locale​*
+- scope​*
+- operator
+- value
 
 An enrichment rule is structured as follows:
 
@@ -122,7 +122,7 @@ Don't forget to add conditions to not execute the rules at each execution.
         camera_set_canon_brand:
             priority: 0
             conditions:
-                - field: family.code
+                - field: family
                   operator: IN
                   value:
                     - camcorders
@@ -146,7 +146,7 @@ Don't forget to add conditions to not execute the rules at each execution.
         camera_set_autofocus_point:
             priority: 0
             conditions:
-                - field: family.code
+                - field: family
                   operator: IN
                   value:
                     - camcorders
@@ -169,7 +169,7 @@ Don't forget to add conditions to not execute the rules at each execution.
         copy_description_us_to_ecommerce_us:
             priority: 0
             conditions:
-                - field: family.code
+                - field: family
                   operator: IN
                   value:
                     - camcorders
@@ -208,12 +208,12 @@ This action copies an attribute value into another.
     be copied.
 
 Two parameters are required and four other are optional:
- - from_field: code of the attribute to be copied.
- - from_locale: locale code of the value to be copied (optional).
- - from_scope: channel code of the value to be copied (optional).
- - to_field: attribute code the value will be copied into.
- - to_locale: locale code the value will be copied into (optional).
- - to_scope: channel code the value will be copied into (optional).
+- from_field: code of the attribute to be copied.
+- from_locale: locale code of the value to be copied (optional).
+- from_scope: channel code of the value to be copied (optional).
+- to_field: attribute code the value will be copied into.
+- to_locale: locale code the value will be copied into (optional).
+- to_scope: channel code the value will be copied into (optional).
 
 .. tip::
 
@@ -237,10 +237,10 @@ ___
 This action assigns values to an attribute.
 
 Two parameters are required, two other are optional.
- - field: attribute code.
- - locale: local code for which value is assigned (optional).
- - scope: channel code for which value is assigned (optional).
- - value: attribute value.
+- field: attribute code.
+- locale: local code for which value is assigned (optional).
+- scope: channel code for which value is assigned (optional).
+- value: attribute value.
 
 .. tip::
 
@@ -262,10 +262,10 @@ ___
 This action allows to add values to a multi-select attribute or a product to categories.
 
 Two parameters are required, two other are optional.
- - field: attribute code.
- - locale: local code for which value is assigned (optional).
- - scope: channel code for which value is assigned (optional).
- - items: attribute values to add.
+- field: attribute code.
+- locale: local code for which value is assigned (optional).
+- scope: channel code for which value is assigned (optional).
+- items: attribute values to add.
 
 .. tip::
 
@@ -285,10 +285,10 @@ ______
 This action removes values to a multiselect, a category or a collection.
 
 Two parameters are required, two other are optional.
- - field: attribute code.
- - locale: local code for which value is assigned (optional).
- - scope: channel code for which value is assigned (optional).
- - items: attribute values to remove.
+- field: attribute code.
+- locale: local code for which value is assigned (optional).
+- scope: channel code for which value is assigned (optional).
+- items: attribute values to remove.
 
 .. tip::
 
@@ -410,7 +410,7 @@ ______
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
-|              |   field: family.code   |
+|              |   field: family        |
 |              |   operator: IN         |
 |              |   value:               |
 |              |    - camcorders        |
