@@ -99,3 +99,4 @@ That's it! You now have the basic knowledge to start an Akeneo project.
 
     technical_overview/index
     technical_architecture/index
+    cloud_edition/index
