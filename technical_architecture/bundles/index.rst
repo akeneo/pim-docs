@@ -32,8 +32,4 @@ Akeneo Labs bundles
   You can also use our "`AkeneoLabs`_" bundles, they could be integrated later in the core of the PIM, we do experiments here
 
 .. _AkeneoLabs: https://github.com/akeneo-labs
-
-.. toctree::
-    :maxdepth: 2
-
-    custom_entity_bundle/index
+    
