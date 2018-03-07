@@ -258,12 +258,25 @@ Then, don't forget to add your new field to the twig template:
 .. code-block:: jinja
 
     # /src/Acme/Bundle/EnrichBundle/Resources/views/CategoryTree/Tab/property.html.twig
-    <!-- ... -->
-    {% set nodeValues %}
-        {{ form_row(form.label) }}
-        {{ form_row(form.description) }}
-    {% endset %}
-    <!-- ... -->
+    <div class="tab-pane tab-property {{ viewElement.loop.first ? 'active' : '' }}" id="{{ viewElement.alias|replace({' ': '-', '.': '-'})|lower }}">
+        {% set generalProperties %}
+            {{ form_row(form.code) }}
+        {% endset %}
+
+        {% set nodeValues %}
+            {{ form_row(form.label) }}
+        {% endset %}
+
+        {% set description %}
+            {{ form_row(form.description) }}
+        {% endset %}
+
+        {{ elements.tabSections({ 'pane.accordion.general_properties': generalProperties, 'pane.accordion.node_values': nodeValues, 'pane.accordion.description': description }) }}
+    </div>
+
+Add translation for the title of the description field for the form:
+    # /src/Acme/Bundle/EnrichBundle/Resources/translations/messages.en.yml
+    pane.accordion.description: Category description 
 
 Make sure you've registered the template properly inside ``form_types.yml``:
 
