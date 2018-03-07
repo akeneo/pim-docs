@@ -1,11 +1,14 @@
-Getting Akeneo Partners Portal Access
-*************************************
-Akeneo Partners Portal login credentials are sent to you by email. If case you haven't recieved it you can request one at: http://helpdesk.akeneo.com/
+Getting your Akeneo Partners Portal or Customers Portal Access
+**************************************************************
+Akeneo Portals login credentials are sent to you by email. If you haven't received it you can request one at: http://helpdesk.akeneo.com/
 
-It’s important to know that there’re 2 types of users that can do this action:
+* If you are a customer, you will use the `Customers Portal <https://customers.akeneo.com/login>`_
+* If you are a system integrator or a partner, you will use the `Partners Portal <https://partners.akeneo.com/login>`_
 
-* Supervisor
-* Developers
+Once connected, it's important to know that portal users can be members of two types of roles:
+
+* Supervisor: to manage the project and give access to developers
+* Developers: to request a bootstrap archive, and have access to the enterprise source code distribution
 
 Only Supervisors can create new Developers (user assigned to Developer group) by going to My Company > Contacts > Add Contact > Saving > Activating it (by clicking on the red X).
 
@@ -35,7 +38,7 @@ Sharing your Public SSH Key
 ***************************
 Each user wanting to get the bootstrap archive has to share their SSH public key with Akeneo first.
 
-* Login to the `Partners Portal <https://partners.akeneo.com/login>`_:
+* Login to your portal
 
 * Click over you User name in the upper right corner.
  
@@ -53,8 +56,8 @@ Each user wanting to get the bootstrap archive has to share their SSH public key
 
 .. image:: ./papo/add_public_key_2.png
 
-Requesting an Archive on the Partners Portal
-********************************************
+Requesting an Archive on the Portal
+***********************************
 Once the users are authorized under the Permissions in the project, they will be able to see the download button on the project.
 
 * Go to Projects under Activities menu.
