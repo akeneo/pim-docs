@@ -136,7 +136,7 @@ For your own model classes, create your class and its interface.
 Then you can rely on your interface and use the `Akeneo target resolver`_ which is based on the `Doctrine target entity resolver`_.
 
 .. _oneToOne unidirectional association: https://doctrine-orm.readthedocs.io/projects/doctrine-orm/en/latest/reference/association-mapping.html#one-to-one-unidirectional
-.. _Akeneo target resolver: https://github.com/akeneo/pim-community-dev/blob/1.5/src/Pim/Bundle/CatalogBundle/DependencyInjection/Compiler/ResolveDoctrineTargetModelPass.php
+.. _Akeneo target resolver: https://github.com/akeneo/pim-community-dev/blob/2.0/src/Pim/Bundle/CatalogBundle/DependencyInjection/Compiler/ResolveDoctrineTargetModelPass.php
 .. _Doctrine target entity resolver: https://symfony.com/doc/2.7/doctrine/resolve_target_entity.html
 
 
@@ -155,13 +155,12 @@ It does not matter if you can't handle millions of products but you have to docu
 
 Keep in mind that some users will use your bundle with a data volume you never thought could be possible (true story!).
 
-You can test your bundle with the `representative catalogs`_ we provide: https://github.com/akeneo/catalogs
+You can test your bundle with the :doc:`representative catalogs </maintain_pim/scalability_guide/representative_catalogs>` we provide: https://github.com/akeneo/catalogs
 
 Remember never to use the `findAll()` method from a repository as you don't know how many entities will be retrieved.
 
 On batch processes, don't forget to detach your objects from the Doctrine UnitOfWork and check the memory usage.
 You can use `blackfire`_ and `php-meminfo`_ to help you track memory leaks.
 
-.. _representative catalogs: `/maintain_pim/scalability_guide/representative_catalogs`
 .. _blackfire: https://blackfire.io/docs/introduction
 .. _php-meminfo: https://github.com/BitOne/php-meminfo

@@ -20,18 +20,18 @@ For instance, let's say we want to store cars in Akeneo.
 
 A Car has multiple properties (or attributes):
 
- - A color
- - A manufacturer
- - A price (a value and a currency)
- - ...
+- A color
+- A manufacturer
+- A price (a value and a currency)
+- ...
 
 We build the Car *Family* (or "product type") using *Attributes*.
 Akeneo is shipped with common attribute types:
 
- - text;
- - price;
- - picture;
- - date...
+- text;
+- price;
+- picture;
+- date...
 
 Once a Family is created, you can create products organized in one or multiples *Categories*,
 for example "Tesla Model X" in "electrical motorization" category.
@@ -60,15 +60,15 @@ A Job defines a series of steps to execute to do a task.
 
 To import data in Akeneo, we need:
 
- - to read data and convert it into an understandable format;
- - to map and validate this data into products;
- - to save them into database.
+- to read data and convert it into an understandable format;
+- to map and validate this data into products;
+- to save them into database.
 
 To export data from Akeneo, we need:
 
- - to read data from database;
- - to process it into an understandable format (XML, JSON, CSV...);
- - to export data into plain files or through a web service.
+- to read data from database;
+- to process it into an understandable format (XML, JSON, CSV...);
+- to export data into plain files or through a web service.
 
 Because Akeneo PIM is open source, multiple connectors - or modules - already exist both for importing or exporting data.
 
@@ -99,3 +99,4 @@ That's it! You now have the basic knowledge to start an Akeneo project.
 
     technical_overview/index
     technical_architecture/index
+    cloud_edition/index

@@ -8,12 +8,13 @@ groups:
         Micro button: { class: 'AknButton--micro' }
         Apply button: { class: 'AknButton--apply' }
         Grey button: { class: 'AknButton--grey' }
+        Grey light button: { class: 'AknButton--greyLight' }
         Important button: { class: 'AknButton--important' }
         Action button: { class: 'AknButton--action' }
         Disabled button: { class: 'AknButton--disabled' }
-        Button without left radius: { class: 'AknButton--noLeftRadius' }
-        Uppercase button: { class: 'AknButton--uppercase' }
-        Button with icon: { template: 'withIcon' }
+        Dropdown button: { class: 'AknButton--action AknButton--dropdown' }
+        Glued buttons: { template: 'glued' }
+        Square icon: { class: 'AknButton-squareIcon AknButton-squareIcon--id', text: '' }
     AknButtonList:
       description: "Prints a list of buttons. This can be used with a single button. By default, buttons are left-aligned."
       modifiers:
@@ -24,13 +25,11 @@ groups:
       description: "The action buttons are used for all the secondary actions on a page (it should not change or reload the current page)."
       modifiers:
         Action Button with caret: { template: 'withCaret' }
-        Action Button without left border: { class: 'AknActionButton--noLeftBorder' }
-        Action Button without right border: { class: 'AknActionButton--noRightBorder' }
-        Action Button containing button: { template: 'withButton' }
         Big action button: { class: 'AknActionButton--big' }
-        Glued: { template: 'glued' }
+        Without border: { class: 'AknActionButton--withoutBorder' }
+        With highlight: { template: 'withHighlight' }
         Disabled: { class: 'AknActionButton--disabled' }
-        Square: { class: 'AknActionButton--square', text: '>' }
+        Unclickable action button: { class: 'AknActionButton--unclickable' }
     AknSeveralActionsButton:
       description: "Prints a button with several actions: a primary action and secondary actions. The text of the primary action is displayed on the button, and a caret is available to display the other actions."
       modifiers:
@@ -53,16 +52,21 @@ groups:
         Important icon button: { class: 'AknIconButton--important', dark: true }
         Apply icon button: { class: 'AknIconButton--apply', dark: true }
         Small icon button: { class: 'AknIconButton--small', dark: true }
-    AknDashboardButtons:
-      description: "Prints a set of big buttons with an image."
+    AknSelectButton:
+      description: "Displays a checkbox"
+      dark: true
+      modifiers:
+        Selected: { class: 'AknSelectButton--selected' }
+        Partial: { class: 'AknSelectButton--partial' }
+        Disabled: { class: 'AknSelectButton--disabled' }
 
   Filters:
     AknFilterBox:
-      description: "The filter box contains several filters, and a left primary button."
+      description: "The filter box contains a set of filters."
+      modifiers:
+        With search: { template: 'search' }
     AknFilterChoice:
-      description: "Prints an inline filter with an action and a field."
-    AknFilterDate:
-      description: "Prints a filter to manage dates. The first and secondary fields can be hidden."
+      description: "Prints a complete filter with an action and a field."
 
   Grids:
     AknGrid:
@@ -73,15 +77,17 @@ groups:
         With carets: { template: 'withCarets' }
         Condensed: { class: 'AknGrid--condensed' }
         Unclickable: { class: 'AknGrid--unclickable' }
-    AknGridsLine:
-      description: "Prints a set of grids in one line."
-    AknGridContainer: ~
+    AknGridContainer:
+      description: "This is a container for a grid. The goal is to display the empty set."
+    AknGridToolbar: ~
 
   Forms:
     AknFormContainer:
       description: "Prints a fixed-width container for listing form elements vertically."
       modifiers:
         With padding: { class: 'AknFormContainer--withPadding' }
+        Centered: { class: 'AknFormContainer--centered' }
+        Expanded: { class: 'AknFormContainer--expanded' }
     AknFieldContainer:
       description: "A Field container is mainly composed of a label and an input. You can create a very simple field container with these 2 elements. You can also add a footer (for validation errors, for example), add icons next to the input, etc. Basically, a field container will take all the width of the parent container. To resize it, use the AknFormContainer module."
       modifiers:
@@ -102,28 +108,25 @@ groups:
       description: "Prints an inline field containing a text field and a dropdown menu to choose a unit."
     AknPriceList:
       description: "Prints a list of prices. The width of each price is computed to display 3 inline prices on an AknFormContainer"
-    AknMediaField:
-      modifiers:
-        With media: { template: 'withMedia' }
+    AknMediaField: ~
     AknComparableFields:
       description: "Displays 2 FieldContainer side by side, with a checkbox in between."
+    AknState: ~
 
   Navigation:
+    AknSubsection: ~
     AknHorizontalNavtab: ~
-    AknTabHeader: ~
     AknVerticalNavtab:
       modifiers:
         Condensed: { class: 'AknVerticalNavtab--condensed' }
-    AknBreadcrumb: ~
-    AknMainMenu:
-      dark: true
+    AknBreadcrumb:
+      modifiers:
+        Final: { template: 'final', class: 'AknBreadcrumb-item--final' }
+        Routable: { template: 'final', class: 'AknBreadcrumb-item--routable' }
+    AknSteps: ~
+    AknVariantNavigation: ~
 
   Templates:
-    AknGridToolbar: ~
-    AknAttributeActions:
-      modifiers:
-        Comparison mode: { template: 'comparisonMode' }
-    AknBreadcrumbContainer: ~
     AknColumnConfigurator: ~
     AknFooter:
       description: "Prints a discreet list of information."
@@ -135,25 +138,22 @@ groups:
     AknNotificationList: ~
     AknProjectWidget: ~
     AknSequentialEdit: ~
-    AknTitleContainer: ~
+    AknTitleContainer:
+      modifiers:
+        Complete: { template: 'complete' }
     AknWidget:
       modifiers:
         withPadding: { contentClass: 'AknWidget-content--withPadding' }
     AknInfoBlock:
       description: "Prints a centered text for additional information."
-
-  Panels:
-    AknPanelContainer:
-      description: "Prints a panel for lateral information. The PanelContainer has a height of 100% of the page."
     AknCommentPanel: ~
-    AknCompletenessBlock: ~
-    AknTabContainer:
-      modifiers:
-        Right panel closed: { panelClass: 'AknTabContainer-panels--closed' }
 
   Other:
     AknBadge:
       modifiers:
+        Big: { class: 'AknBadge--big' }
+        Large: { class: 'AknBadge--large' }
+        Small: { class: 'AknBadge--small', text: '' }
         With icon: { template: 'withIcon' }
         Success: { class: 'AknBadge--success' }
         Important: { class: 'AknBadge--important' }
@@ -161,18 +161,11 @@ groups:
         Grey: { class: 'AknBadge--grey' }
         Highlight: { class: 'AknBadge--highlight' }
         Light: { class: 'AknBadge--light' }
-    AknBell:
-      dark: true
-    AknCaret:
-      modifiers:
-        Big: { class: 'AknCaret--big' }
-        Important: { class: 'AknCaret--important' }
-        Apply: { class: 'AknCaret--apply' }
-        Inverse: { class: 'AknCaret--inverse', dark: true }
     AknFlash:
       modifiers:
-        Success: { class: 'AknFlash--success' }
-        Danger: { class: 'AknFlash--danger' }
+        Success: { class: 'AknFlash--success', closeIcon: 'icon-delete-greendark.svg', icon: 'icon-check.svg' }
+        Warning: { class: 'AknFlash--warning', closeIcon: 'icon-delete-orangedark.svg', icon: 'icon-warning-orangelight.svg' }
+        Danger: { class: 'AknFlash--error', closeIcon: 'icon-delete-reddark.svg', icon: 'icon-warning-redlight.svg' }
     AknLoadingMask:
       description: "The loading mask is used when an element is being loaded. Please note than all the style attributes in the source example are automatically generated by the application, you don't need to add them."
     AknMessageBox:
@@ -206,3 +199,4 @@ groups:
     AknList:
       modifiers:
         With discs: { class: 'AknList--withDisc' }
+    AknSquareList: ~

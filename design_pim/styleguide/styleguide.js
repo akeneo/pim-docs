@@ -39,10 +39,10 @@ function toggleBlocks(group, module) {
 }
 
 function toggleMenu(group, module) {
-    var items = document.querySelectorAll('.AknStyleGuide-menuItem[data-group]');
+    var items = document.querySelectorAll('.toctree-l2[data-group]');
     for (var i = 0; i < items.length; i++) {
         if (items[i].getAttribute('data-group') === group) {
-            items[i].className = 'AknStyleGuide-menuItem AknStyleGuide-menuItem--current current reference internal';
+            items[i].className = 'toctree-l2 active';
             var subItems = items[i].querySelectorAll('.AknStyleGuide-subMenuItem[data-module]');
             for (var j = 0; j < subItems.length; j++) {
                 if (subItems[j].getAttribute('data-module') === module)  {
@@ -52,7 +52,7 @@ function toggleMenu(group, module) {
                 }
             }
         } else {
-            items[i].className = 'AknStyleGuide-menuItem';
+            items[i].className = 'toctree-l2';
         }
     }
 }
