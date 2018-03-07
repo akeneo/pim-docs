@@ -165,9 +165,10 @@ Then you have to create one or several commits of your code
   more difficult (submit CS fixes as a separate patch).
 
 It will help us to:
- - Speed up the reviewing process
- - Revert a single commit if needed
- - Cherry pick a commit if needed
+
+- Speed up the reviewing process
+- Revert a single commit if needed
+- Cherry pick a commit if needed
 
 Example of a well formed commit message (from `Git documentation <https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project>`_).
 

@@ -26,12 +26,16 @@ import sys, os, datetime
 sys.path.insert(0, os.path.abspath('vendor/fabpot/sphinx-php'))
 from sphinx.highlighting import lexers
 from pygments.lexers.web import PhpLexer
+from pygments.lexers.web import HtmlLexer
+from pygments.lexers.shell import BashLexer
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = ['sensio.sphinx.refinclude', 'sensio.sphinx.configurationblock', 'sensio.sphinx.phpcode' , 'sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.coverage', 'sphinx.ext.ifconfig', 'sphinxcontrib.youtube']
 lexers['php'] = PhpLexer(startinline=True)
 lexers['php-annotations'] = PhpLexer(startinline=True)
+lexers['html'] = HtmlLexer()
+lexers['bash'] = BashLexer()
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -59,12 +63,18 @@ copyright = u'2013-'+ current_year +', Akeneo SAS'
 version = os.getenv('PIM_VERSION', 'master')
 
 # Warning: These versions will be deleted on documentation deploy.
-versions = os.getenv('PIM_VERSIONS', 'master 2.0 1.7 1.6 1.5 1.4 1.3 1.2 1.1 1.0')
+versions = os.getenv('PIM_VERSIONS', 'master 2.2 2.1 2.0 1.7 1.6 1.5 1.4 1.3 1.2 1.1 1.0')
 html_context = {
     'versions': versions.split(' '),
     'css_files': [
         'https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css',
-        '_static/css/akeneo.css',
+        '_static/css/font-awesome.min.css',
+        '_static/css/variables-43bf553955.css',
+    ],
+    'script_files': [
+        '_static/js/jquery.min.js',
+        '_static/js/akeneostyle.js',
+        '_static/js/bootstrap.min.js'
     ],
     'display_github': True,
     'github_user': 'akeneo',
@@ -104,7 +114,7 @@ exclude_patterns = ['vendor/**/*']
 #show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'monokai'
+#pygments_style = 'monokai'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -117,7 +127,7 @@ keep_warnings = True
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'akeneo_rtd'
+html_theme = 'akeneo'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -136,7 +146,7 @@ html_title = project + ' documentation'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = '_themes/akeneo_rtd/static/img/logo.png'
+html_logo = '_themes/akeneo/static/img/akeneo.svg'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32

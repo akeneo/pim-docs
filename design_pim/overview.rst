@@ -8,7 +8,7 @@ Akeneo PIM uses RequireJS and Backbone to manage modules and views in our applic
 
 .. note::
 
-    Since the 1.8 version, we migrated to webpack to manage our front dependencies. To ease the migration we decided to keep the historicals ``requirejs.yml`` files to give the community enough time to migrate their configuration.
+    Since the 2.0 version, we migrated to webpack to manage our front dependencies. To ease the migration we decided to keep the historicals ``requirejs.yml`` files to give the community enough time to migrate their configuration.
 
 Create our first RequireJS module
 =================================
@@ -18,9 +18,9 @@ RequireJS modules are the equivalent of php classes. They provide a way to decla
 Simple business logic
 +++++++++++++++++++++
 
-As an example, we will create a module that will display in the console the current UI locale
+As an example, we will create a module that will display in the console the current UI locale.
 
-To begin here is the business logic of our component:
+To begin, here is the business logic of our component:
 
 .. code-block:: javascript
     :linenos:
@@ -61,7 +61,7 @@ The ``define`` method takes two arguments: the first one is an array of the depe
 Register it
 +++++++++++
 
-Now that we have this small module, we would like to use it somewhere else. To do so, we need to register it in the RequireJS configuration file.
+Now that we have this small module, we would like to use it somewhere. To do so, we need to register it in the RequireJS configuration file.
 
 .. code-block:: yaml
 

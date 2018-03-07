@@ -1,25 +1,57 @@
 <header class="AknTitleContainer">
-    <div class="AknTitleContainer-backContainer">
-        <a class="AknTitleContainer-backLink" href="#"><i class="icon-chevron-left"></i></a>
+    <div class="AknTitleContainer-line">
+        <div class="AknTitleContainer-imageContainer"></div>
+        <div class="AknTitleContainer-mainContainer">
+            <div>
+                <div class="AknTitleContainer-line">
+                    <div class="AknTitleContainer-breadcrumbs">
+                        <div class="AknBreadcrumb">
+                            <span class="AknBreadcrumb-item AknBreadcrumb-item--routable">Products</span>
+                        </div>
+                    </div>
+                    <div class="AknTitleContainer-buttonsContainer">
+                        <div class="user-menu" data-drop-zone="user-menu">
+                            <div class="AknTitleContainer-userMenu">
+                                <div class="AknDropdown">
+                                    <div class="AknTitleContainer-userIcon" style="background-image:url('../../web/bundles/pimui/images/info-user.png')"></div>
+                                    <div class="AknDropdown-menu AknDropdown-menu--right">
+                                        <div class="AknDropdown-menuTitle">John Doe</div>
+                                        <div class="AknDropdown-menuLink user-account">My Account</div>
+                                        <div class="AknDropdown-menuLink logout">Logout</div>
+                                    </div>
+                                </div>
+                                <div class="AknNotificationMenu AknDropdown">
+                                    <div class="AknNotificationMenu-link">
+                                        <span class="AknNotificationMenu-countContainer">
+                                            <span class="AknNotificationMenu-count ">1</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="AknButtonList">
+                            <div>
+                                <a class="AknButton AknButton--apply AknButtonList-item">Create</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="AknTitleContainer-line">
+                    <div class="AknTitleContainer-title"><div>Title</div></div>
+                    <div class="AknTitleContainer-state"></div>
+                </div>
+            </div>
+            <div>
+                <div class="AknTitleContainer-line">
+                    <div class="AknTitleContainer-context AknButtonList"></div>
+                </div>
+                <div class="AknTitleContainer-line">
+                    <div class="AknTitleContainer-meta"></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="AknTitleContainer-contentContainer">
-        <div class="AknTitleContainer-mainLine">
-            <div class="AknTitleContainer-titleContainer">
-                {% include 'AknButtonList/base.html.twig' with { 'class': 'AknTitleContainer-titleButtons' } only %}
-                <h1 class="AknTitleContainer-title">Acer S 240HL Abid</h1>
-            </div>
-            <div class="AknTitleContainer-rightButtons">
-                {% include 'AknButtonList/base.html.twig' with { 'class': 'AknTitleContainer-titleButtons' } only %}
-            </div>
-        </div>
-        <div class="AknTitleContainer-metaLine">
-            <div class="AknTitleContainer-meta">
-                <span class="AknTitleContainer-metaItem">Meta item 1</span>
-                <span class="AknTitleContainer-metaItem">Meta item 2</span>
-            </div>
-            <div class="AknTitleContainer-state">
-                {% include 'AknBadge/withIcon.html.twig' with { 'class': 'AknBadge--warning' } only %}
-            </div>
-        </div>
+    <div class="AknTitleContainer-line">
+        <div data-drop-zone="navigation" class="AknTitleContainer-navigation"></div>
     </div>
 </header>

@@ -1,11 +1,22 @@
 <div class="AknFilterBox">
-    <div class="AknFilterBox-addFilterButton">Add filter</div>
-    <div class="AknFilterBox-filter">
-        {% include 'AknActionButton/base.html.twig' only %}
-        <a href="#" class="AknFilterBox-disableFilter"><i class="icon-remove hide-text"></i></a>
-    </div>
-    <div class="AknFilterBox-filter">
-        {% include 'AknActionButton/base.html.twig' only %}
-        <a href="#" class="AknFilterBox-disableFilter"><i class="icon-remove hide-text"></i></a>
+    <div class="AknFilterBox-list filter-box">
+        <div class="AknFilterBox-filterContainer">
+            <div class="AknFilterBox-filter">
+                <span class="AknFilterBox-filterLabel">Type</span>
+                <button type="button" class="AknFilterBox-filterCriteria ui-multiselect">
+                    <span>All</span>
+                    <span class="AknFilterBox-filterCaret"></span>
+                </button>
+            </div>
+        </div>
+        <div class="AknFilterBox-filterContainer">
+            <div class="AknFilterBox-filter">
+                <span class="AknFilterBox-filterLabel">Name</span>
+                <button type="button" class="AknFilterBox-filterCriteria ui-multiselect">
+                    <span>All</span>
+                    <span class="AknFilterBox-filterCaret"></span>
+                </button>
+            </div>
+        </div>
     </div>
 </div>
