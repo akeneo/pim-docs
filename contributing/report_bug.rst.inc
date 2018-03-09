@@ -28,4 +28,4 @@ Report a Bug
 * Gather as much information as possible by following our :doc:`/troubleshooting/bug_qualification/index` guide
 * Raise an issue by using your `Service Desk Account <http://helpdesk.akeneo.com/>`_
 * Attach the PIM system information file to your request (it is available under System > System information > TXT)
-* Our support team will handle your request
+* Submit your request on our Helpdesk
