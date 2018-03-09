@@ -382,7 +382,7 @@ ____________
 |              | - <                   |
 +--------------+-----------------------+
 | Value        | Percentage.           |
-|              | /!\ locale and scope  |
+|              | /!\\ locale and scope |
 |              | are mandatory         |
 +--------------+-----------------------+
 | Example      | .. code-block:: yaml  |
