@@ -151,7 +151,7 @@ Lets start by creating a form extension:
 
     'use strict';
     /*
-     * /src/Acme/Bundle/EnrichBundle/Resources/public/js/attribute/form/tab/additional.js
+     * /src/Acme/Bundle/EnrichBundle/Resources/public/js/attributes/form/tab/additional.js
      */
     define(['jquery', 'underscore', 'oro/translator', 'pim/form', 'pim/template/attribute/tab/additional'],
         function ($, _, __, BaseForm, template) {
@@ -206,7 +206,7 @@ Again, we need to register it and create the template:
 
     extensions:
         pim-attribute-edit-form-additional:           # The form extension code (can be whatever you want)
-            module: pim/attributes/tab/additional:    # The requirejs module we just created
+            module: pim/attributes/tab/additional     # The requirejs module we just created
             parent: pim-attribute-edit-form-form-tabs # The parent extension in the form where we want to be regisetred
             targetZone: container
             position: 90                              # The extension position
