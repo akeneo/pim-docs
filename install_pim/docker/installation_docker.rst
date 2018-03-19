@@ -186,7 +186,7 @@ The version in ``akeneo/pim-community-standard`` or ``akeneo/pim-enterprise-stan
 
    $ docker-compose run --rm node yarn run webpack
 
-**You should now be able to access Akeneo development environment from your host through ``http://localhost:8080/`` and behat environment through ``http://localhost:8081/``**.
+**You should now be able to access Akeneo development environment from your host through ``http://localhost:8080/`` and behat environment through ``http://localhost:8081/``. The default username and password are both ``admin``.**
 
 Of course, you can change the host port in the compose file. If you do so, don't forget to run again:
 
