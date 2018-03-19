@@ -24,13 +24,13 @@ In the following example, these lines will run the completeness, versioning and 
     :linenos:
 
     # m  h  dom  mon  dow  command
-    */15 *  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console pim:completeness:calculate --env=prod > /path/to/installation/pim-enterprise-standard/app/logs/calculate_completeness.log 2>&1
-    */15 *  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod > /path/to/installation/pim-enterprise-standard/app/logs/refresh_versioning.log 2>&1
-    */15 *  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod > /path/to/installation/pim-enterprise-standard/app/logs/rule_run.log 2>&1
+    */15 *  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console pim:completeness:calculate --env=prod > /path/to/installation/pim-enterprise-standard/var/logs/calculate_completeness.log 2>&1
+    */15 *  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod > /path/to/installation/pim-enterprise-standard/var/logs/refresh_versioning.log 2>&1
+    */15 *  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod > /path/to/installation/pim-enterprise-standard/var/logs/rule_run.log 2>&1
 
 .. note::
 
-    ``> /path/to/installation/pim-enterprise-standard/app/logs/calculate_completeness.log 2>&1`` is to redirect both stdout and stderr to your log file.
+    ``> /path/to/installation/pim-enterprise-standard/var/logs/calculate_completeness.log 2>&1`` is to redirect both stdout and stderr to your log file.
 
 .. warning::
 

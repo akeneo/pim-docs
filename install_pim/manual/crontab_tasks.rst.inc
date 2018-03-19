@@ -23,12 +23,12 @@ In the following example, these lines will run the completeness and versioning c
     :linenos:
 
     # m  h  dom  mon  dow  command
-    */15 *  *    *    *    php /path/to/installation/pim-community-standard/bin/console pim:completeness:calculate --env=prod > /path/to/installation/pim-community-standard/app/logs/calculate_completeness.log 2>&1
-    */15 *  *    *    *    php /path/to/installation/pim-community-standard/bin/console pim:versioning:refresh --env=prod > /path/to/installation/pim-community-standard/app/logs/refresh_versioning.log 2>&1
+    */15 *  *    *    *    php /path/to/installation/pim-community-standard/bin/console pim:completeness:calculate --env=prod > /path/to/installation/pim-community-standard/var/logs/calculate_completeness.log 2>&1
+    */15 *  *    *    *    php /path/to/installation/pim-community-standard/bin/console pim:versioning:refresh --env=prod > /path/to/installation/pim-community-standard/var/logs/refresh_versioning.log 2>&1
 
 .. note::
 
-    ``> /path/to/installation/pim-community-standard/app/logs/calculate_completeness.log 2>&1`` is to redirect both stdout and stderr to your log file.
+    ``> /path/to/installation/pim-community-standard/var/logs/calculate_completeness.log 2>&1`` is to redirect both stdout and stderr to your log file.
 
 .. warning::
 
