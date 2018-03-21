@@ -32,7 +32,7 @@ To fix this issue, just run the following commands:
 .. code-block:: bash
 
     cd /path/to/your/pim/
-    rm -rf web/translations/*
+    rm -rf web/js/translations/*
     php bin/console oro:translation:dump
     yarn run webpack
 

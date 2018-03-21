@@ -44,11 +44,11 @@ Create a file ``Resources/config/measure.yml`` in our Bundle to configure the un
 .. code-block:: yaml
 
     measures_config:
-    Length:
-        units:
-            MICROMETER:
-                convert: [{'mul': 0.000001}]
-                symbol: μm
+        Length:
+            units:
+                MICROMETER:
+                    convert: [{'mul': 0.000001}]
+                    symbol: μm
 
 Here, we just add the "MICROMETER" unit with its conversion rules to a standard unit. To have equivalent to 1 micrometer in meters, you must multiply by 0,000001. A symbol is also required to define the unit format to display.
 
@@ -69,7 +69,7 @@ These two files contain this translation:
 Clear the cache and try it out
 ---------------------------------
 
-Delete all translation files inside of ``/web/js/translations/``.
+Delete all translation files inside of ``/web/js/translation/``.
 
 Clear app cache with this command:
 

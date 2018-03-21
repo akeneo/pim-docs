@@ -103,7 +103,7 @@ Edit the file ``app/config/parameters.yml`` and add the line
 
 .. code-block:: yaml
 
-    installer_data: 'AcmeInstallerBundle:mydataset'
+    installer_data: 'AcmeAppBundle:mydataset'
 
 You can now (re)install your database by running:
 
