@@ -54,11 +54,11 @@ Composer and github api rate limit
 
     $ composer update --prefer-dist --no-dev
     Loading composer repositories with package information
-    Reading composer.json of akeneo/pim-community-dev (v2.0.2) 
+    Reading composer.json of akeneo/pim-community-dev (v2.0.2)
     Could not fetch https://api.github.com/repos/akeneo/pim-community-dev/commits/xxxxxxxxxxxxxxxxxxxxxxxxxxxxx, please create a GitHub OAuth token to go over the API rate limit
     Head to https://github.com/settings/tokens/new?scopes=repo&description=Composer+on+myinstance-2x+2018-02-23+1000
     to retrieve a token. It will be stored in "/home/akeneo/.composer/auth.json" for future use by Composer.
-    Token (hidden): 
+    Token (hidden):
 
 
 
