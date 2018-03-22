@@ -14,6 +14,7 @@ Flexibility Mode
     docs/overview
     docs/requirements
     docs/environments_access
+    docs/composer_settings
     docs/pim_application
     docs/data_file_transfer
     docs/backups_management
