@@ -58,39 +58,58 @@ As you can see, the tag needs several parameters:
 
     The alias will be used in the URL (``/enrich/mass-edit-action/capitalize-values/configure``)
 
-Phase 2: Create the FormType
-----------------------------
+Phase 2: Create the Form extension
+----------------------------------
 
-.. tip::
+For this step, you'll need to register a new form extension in ``/src/Acme/Bundle/CustomMassActionBundle/Ressources/config/form_extensions/mass_edit/product.yml``:
 
-    As the **Operation** is used to build configuration, we could need a ``FormType`` that will be shown during the configuration step in the UI. Use it to show whatever is useful to you: Select, Input...
+.. code-block:: yml
 
-For this cookbook, we do not need the user to configure this action, so we'll use an empty ``FormType``:
+    extensions:
+        pim-mass-product-edit-product-custom:
+            module: pim/mass-edit-form/product/custom
+            parent: pim-mass-product-edit
+            position: 210
+            targetZone: custom
+            config:
+                title: pim_enrich.mass_edit.product.step.custom.title
 
-.. literalinclude:: ../../src/Acme/Bundle/CustomMassActionBundle/Form/Type/MassEditAction/CapitalizeValuesType.php
-  :language: php
-  :prepend: // /src/Acme/Bundle/CustomMassActionBundle/Form/Type/MassEditAction/CapitalizeValuesType.php
-  :linenos:
+Then, you will have to create a requirejs module for this extension (``/src/Acme/Bundle/CustomMassActionBundle/Ressources/public/js/mass-edit/form/product/custom.js``) :
 
-Don't forget to register it as a service in the DI:
+.. code-block:: js
 
-.. literalinclude:: ../../src/Acme/Bundle/CustomMassActionBundle/Resources/config/form_types.yml
-  :language: yaml
-  :prepend: # /src/Acme/Bundle/CustomMassActionBundle/Resources/config/form_types.yml
-  :linenos:
+    'use strict';
 
-The ``FormType`` is now linked to the Operation with its name.
-You need to create a template to render your Mass Edit Action form:
+    define(
+        [
+            'underscore',
+            'pim/mass-edit-form/product/operation',
+            'pim/template/mass-edit/product/change-status'
+        ],
+        function (
+            _,
+            BaseOperation,
+            template
+        ) {
+            return BaseOperation.extend({
+                template: _.template(template),
+                events: {},
 
-.. literalinclude::
-   ../../app/Resources/PimEnrichBundle/views/MassEditAction/product/configure/capitalize-values.html.twig
-   :language: jinja
-   :prepend: {# /app/Resources/PimEnrichBundle/views/MassEditAction/product/configure/capitalize-values.html.twig #}
-   :linenos:
+                /**
+                 * {@inheritdoc}
+                 */
+                render: function () {},
+            });
+        }
+    );
 
-.. note::
+Finally, you will have to require your custom module into the ``/src/Acme/Bundle/CustomMassActionBundle/Ressources/config/requirejs.yml``.
 
-    It will be visible in the **configure** step of the mass edit.
+.. code-block:: yml
+
+    config:
+        paths:
+            pim/mass-edit-form/product/custom: pimacme/js/mass-edit/form/product/custom
 
 Phase 3: Create the Processor
 -----------------------------
