@@ -73,6 +73,16 @@ For this step, you'll need to register a new form extension in ``/src/Acme/Bundl
             targetZone: custom
             config:
                 title: pim_enrich.mass_edit.product.step.custom.title
+                label: pim_enrich.mass_edit.product.operation.custom.label
+                labelCount: pim_enrich.mass_edit.product.custom.label_count
+                description: pim_enrich.mass_edit.product.operation.custom.description
+                code: custom
+                jobInstanceCode: custom
+                icon: icon-custom
+
+The Mass Edit should be defined with at least ``code``, ``label``, ``icon`` and ``jobInstanceCode`` in the config array.
+The combination of the ``code``, ``label`` and ``icon`` define the Operation.
+The ``jobInstanceCode`` is the code of the background job.
 
 Then, you will have to create a requirejs module for this extension (``/src/Acme/Bundle/CustomMassActionBundle/Ressources/public/js/mass-edit/form/product/custom.js``) :
 
@@ -93,12 +103,15 @@ Then, you will have to create a requirejs module for this extension (``/src/Acme
         ) {
             return BaseOperation.extend({
                 template: _.template(template),
-                events: {},
 
                 /**
                  * {@inheritdoc}
                  */
-                render: function () {},
+                render: function () {
+                    this.$el.html(this.template());
+
+                    return this;
+                },
             });
         }
     );
