@@ -10,14 +10,15 @@ To add an element at the root of the tree you can reuse the tab module provided 
 
 .. code-block:: yaml
 
-    # src/Acme/Bundle/AppBundle/Resources/form_extension/menu.yml
-    acme-custom-root-element:                          # The unique key of your extension
-        module: pim/menu/tab                           # The module provided by akeneo for root elements
-        parent: pim-menu                               # The parent is the root of the menu
-        aclResourceId: my_custom_acl_key               # [optional] You can define a acl check
-        position: 110                                  # [optional] The position in the tree where you want to add the item
-        config:
-            title: pim_menu.item.import_profile        # You can define a translation key for the tab name
+    # src/Acme/Bundle/AppBundle/Resources/form_extensions/menu.yml
+    extensions:
+        acme-custom-root-element:                          # The unique key of your extension
+            module: pim/menu/tab                           # The module provided by akeneo for root elements
+            parent: pim-menu                               # The parent is the root of the menu
+            aclResourceId: my_custom_acl_key               # [optional] You can define a acl check
+            position: 110                                  # [optional] The position in the tree where you want to add the item
+            config:
+                title: pim_menu.item.import_profile        # You can define a translation key for the tab name
 
 After running the command ``rm -rf var/cache; bin/console pim:install:asset; yarn run webpack`` your new item should appear at the root of the menu.
 
@@ -28,16 +29,17 @@ Now if you want to add an element inside the menu, you can use the item module:
 
 .. code-block:: yaml
 
-    # src/Acme/Bundle/AppBundle/Resources/form_extension/menu.yml
-    acme-custom-sub-element:                           # The unique key of your extension
-        module: pim/menu/item                          # The module provided by akeneo for sub elements
-        parent: acme-custom-root-element               # The parent is the tab we just created
-        targetZone: item
-        aclResourceId: my_custom_acl_key               # [optional] You can define a acl check
-        position: 110                                  # [optional] The position in the tree where you want to add the item
-        config:
-            title: pim_menu.item.import_profile        # You can define a translation key for the item name
-            to: pim_importexport_import_profile_index  # The route to redirect to
+    # src/Acme/Bundle/AppBundle/Resources/form_extensions/menu.yml
+    extensions:
+        acme-custom-sub-element:                           # The unique key of your extension
+            module: pim/menu/item                          # The module provided by akeneo for sub elements
+            parent: acme-custom-root-element               # The parent is the tab we just created
+            targetZone: item
+            aclResourceId: my_custom_acl_key               # [optional] You can define a acl check
+            position: 110                                  # [optional] The position in the tree where you want to add the item
+            config:
+                title: pim_menu.item.import_profile        # You can define a translation key for the item name
+                to: pim_importexport_import_profile_index  # The route to redirect to
 
 After running the command ``rm -rf var/cache; bin/console pim:install:asset; yarn run webpack`` your new item should appear in the menu.
 
@@ -49,17 +51,18 @@ This module will both display the breadcrumbs and highlight the menu. You simply
 
 .. code-block:: yaml
 
-    # src/Acme/Bundle/AppBundle/Resources/form_extension/custom_page.yml
-    acme-custom-page:
-        module: acme/custom_page
+    # src/Acme/Bundle/AppBundle/Resources/form_extensions/custom_page.yml
+    extensions:
+        acme-custom-page:
+            module: acme/custom_page
 
-    acme-custom-page-breadcrumbs:
-        module: pim/common/breadcrumbs
-        parent: acme-custom-page
-        targetZone: breadcrumbs
-        config:
-            tab: acme-custom-root-element
-            item: acme-custom-sub-element
+        acme-custom-page-breadcrumbs:
+            module: pim/common/breadcrumbs
+            parent: acme-custom-page
+            targetZone: breadcrumbs
+            config:
+                tab: acme-custom-root-element
+                item: acme-custom-sub-element
 
 After running the command ``rm -rf var/cache; bin/console pim:install:asset; yarn run webpack`` the menu will be highlited when you will open your custom page.
 

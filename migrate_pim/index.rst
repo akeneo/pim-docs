@@ -94,6 +94,10 @@ Then follow the same process as the one for the community edition:
     bin/console --env=prod cache:warmup
     yarn run webpack
 
+.. note::
+
+    For Akeneo Cloud environments, you can run the ``partners_clear_cache`` command available on :doc:`/cloud_edition/flexibility_mode/docs/partners`.
+
 
 Minor Version
 -------------
@@ -118,13 +122,13 @@ Here are the migration guides:
 * `From v1.1 to v1.2`_
 * `From v1.0 to v1.1`_
 
-.. _From v1.6 to v1.7: https://github.com/akeneo/pim-community-standard/blob/1.7/UPGRADE-1.7.md
-.. _From v1.5 to v1.6: https://github.com/akeneo/pim-community-standard/blob/1.6/UPGRADE-1.6.md
-.. _From v1.4 to v1.5: https://github.com/akeneo/pim-community-standard/blob/1.5/UPGRADE-1.5.md
-.. _From v1.3 to v1.4: https://github.com/akeneo/pim-community-standard/blob/1.4/UPGRADE-1.4.md
-.. _From v1.2 to v1.3: https://github.com/akeneo/pim-community-standard/blob/1.3/UPGRADE-1.3.md
-.. _From v1.1 to v1.2: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.1.md
-.. _From v1.0 to v1.1: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.2.md
+.. _From v1.6 to v1.7: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.7.md
+.. _From v1.5 to v1.6: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.6.md
+.. _From v1.4 to v1.5: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.5.md
+.. _From v1.3 to v1.4: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.4.md
+.. _From v1.2 to v1.3: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.3.md
+.. _From v1.1 to v1.2: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.2.md
+.. _From v1.0 to v1.1: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.1.md
 
 **Enterprise Edition**
 
