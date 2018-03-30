@@ -94,6 +94,10 @@ Then follow the same process as the one for the community edition:
     bin/console --env=prod cache:warmup
     yarn run webpack
 
+.. note::
+
+    For Akeneo Cloud environments, you can run the ``partners_clear_cache`` command available on :doc:`/cloud_edition/flexibility_mode/docs/partners`.
+
 
 Minor Version
 -------------
