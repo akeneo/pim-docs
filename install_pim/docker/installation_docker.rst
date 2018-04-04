@@ -54,6 +54,38 @@ Copy the override file as ``docker-compose.override.yml`` and keep it at the roo
 
 However, **you need at least one mapping for ``httpd`` ``httpd-behat`` containers**. We should set the default mapping in the root ``docker-compose`` file, but it is currently not possible to repplace array values in the override. You can read more here: https://docs.docker.com/compose/extends/#adding-and-overriding-configuration.
 
+```yml
+version: '2'
+
+services:
+  fpm:
+    environment:
+      PHP_IDE_CONFIG: 'serverName=pim-ce-cli'
+      PHP_XDEBUG_ENABLED: 0
+      PHP_XDEBUG_IDE_KEY: 'XDEBUG_IDE_KEY'
+      XDEBUG_CONFIG: 'remote_host=xxx.xxx.xxx.xxx'
+
+  mysql:
+    ports:
+      - '33006:3306'
+
+  elasticsearch:
+    ports:
+      - '9210:9200'
+
+  httpd-behat:
+    environment:
+      PHP_IDE_CONFIG: 'serverName=pim-ce-behat'
+
+  selenium:
+    ports:
+      - '5910:5900'
+
+  mysql-behat:
+    ports:
+      - '33007:3306'
+```
+
 If you intend to run behat tests, create on your host a folder ``/tmp/behat/screenshots`` (or anywhere else according to your compose file) with full read/write access to your user.
 Otherwise ``docker-compose`` will create it, but only with root accesses. Then failing behats will be unable to create reports and screenshots.
 
