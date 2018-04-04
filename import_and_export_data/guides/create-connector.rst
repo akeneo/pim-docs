@@ -312,4 +312,4 @@ If you don't see your changes, make sure you have run (``bin/console assets:inst
 
 Now that we have our extension loaded in our form, we can add some logic into it, check how to `customize the UI`_.
 
-.. _customize the UI: ../ui
+.. _customize the UI: ../../design_pim
