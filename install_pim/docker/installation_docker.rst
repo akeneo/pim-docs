@@ -52,7 +52,7 @@ Every flavor (dev or standard, community or enterprise) comes with a Docker Comp
 
 Copy the override file as ``docker-compose.override.yml`` and keep it at the root of your project. You may modify it at your convenience. It defines some ports mapping by default and you can change them if you need, if you want Apache to be accessible from a port other that 8080, for instance.
 
-However, **you need at least one mapping for ``fpm`` container**. We should set the default mapping in the root ``docker-compose`` file, but it is currently not possible to repplace array values in the override. You can read more here: https://docs.docker.com/compose/extends/#adding-and-overriding-configuration.
+However, **you need at least one mapping for ``httpd`` ``httpd-behat`` containers**. We should set the default mapping in the root ``docker-compose`` file, but it is currently not possible to repplace array values in the override. You can read more here: https://docs.docker.com/compose/extends/#adding-and-overriding-configuration.
 
 If you intend to run behat tests, create on your host a folder ``/tmp/behat/screenshots`` (or anywhere else according to your compose file) with full read/write access to your user.
 Otherwise ``docker-compose`` will create it, but only with root accesses. Then failing behats will be unable to create reports and screenshots.
