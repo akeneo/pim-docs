@@ -48,11 +48,11 @@ or from our partner portal if you have access to the enterprise edition. It can 
 Using the Docker images
 -----------------------
 
-Every flavor (dev or standard, community or enterprise) comes with a Docker Compose file ``docker-compose.yml`` and a ``docker-compose.override.yml.dist``, ready to be used. The ``docker-compose.yml`` file configures all the necessary containers with the default settings to run Akeneo PIM. The ``docker-compose.override.yml.dist`` defines the custom parameters you may change depending on your development environment.
+Every flavor (dev or standard, community or enterprise) comes with a Docker Compose file ``docker-compose.yml`` ready to be used. The ``docker-compose.yml`` file configures all the necessary containers with the default settings to run Akeneo PIM.
 
-Copy the override file as ``docker-compose.override.yml`` and keep it at the root of your project. You may modify it at your convenience. It defines some ports mapping by default and you can change them if you need, if you want Apache to be accessible from a port other that 8080, for instance.
+You can override any values in a ``docker-compose.override.yml`` file depending on your development environment. It could define some ports mapping if you want Apache to be accessible from a port other that 8080, for instance.
 
-However, **you need at least one mapping for ``httpd`` ``httpd-behat`` containers**. We should set the default mapping in the root ``docker-compose`` file, but it is currently not possible to repplace array values in the override. You can read more here: https://docs.docker.com/compose/extends/#adding-and-overriding-configuration.
+Be aware that it is currently not possible to replace array values in the override. You can read more here: https://docs.docker.com/compose/extends/#adding-and-overriding-configuration.
 
 Here is a ``docker-compose.override.yml`` example:
 
@@ -272,7 +272,7 @@ If you want to execute only one job:
 Xdebug
 ******
 
-*Xdebug* is deactivated by default. If you want to activate it, you can change the environment variable ``PHP_XDEBUG_ENABLED`` to 1. Then you just have to run ``docker-compose up -d`` again.
+*Xdebug* is deactivated by default. If you want to activate it, you can add the environment variable ``PHP_XDEBUG_ENABLED`` in an override file and set its value to 1. Then you just have to run ``docker-compose up -d`` again.
 
 Also, you can configure two things on Xdebug through environment variables on ``akeneo`` images. These environment variables are all optional:
 
