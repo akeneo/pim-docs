@@ -48,9 +48,45 @@ or from our partner portal if you have access to the enterprise edition. It can 
 Using the Docker images
 -----------------------
 
-Every flavor (dev or standard, community or enterprise) comes with a Docker Compose file template ``docker-compose.yml.dist``, ready to be used.
-Copy it as ``docker-compose.yml`` and keep it at the root of your project. You may modify it at your convenience, to change the mapping of the ports
-if you want Apache to be accessible from a port other that 8080, for instance.
+Every flavor (dev or standard, community or enterprise) comes with a Docker Compose file ``docker-compose.yml`` ready to be used. The ``docker-compose.yml`` file configures all the necessary containers with the default settings to run Akeneo PIM.
+
+You can override any values in a ``docker-compose.override.yml`` file depending on your development environment. It could define some ports mapping if you want Apache to be accessible from a port other that 8080, for instance.
+
+Be aware that it is currently not possible to replace array values in the override. You can read more here: https://docs.docker.com/compose/extends/#adding-and-overriding-configuration.
+
+Here is a ``docker-compose.override.yml`` example:
+
+.. code-block:: yaml
+
+   version: '2'
+
+   services:
+     fpm:
+       environment:
+         PHP_IDE_CONFIG: 'serverName=pim-ce-cli'
+         PHP_XDEBUG_ENABLED: 0
+         PHP_XDEBUG_IDE_KEY: 'XDEBUG_IDE_KEY'
+         XDEBUG_CONFIG: 'remote_host=xxx.xxx.xxx.xxx'
+
+     mysql:
+       ports:
+         - '33006:3306'
+
+     elasticsearch:
+       ports:
+         - '9210:9200'
+
+     httpd-behat:
+       environment:
+         PHP_IDE_CONFIG: 'serverName=pim-ce-behat'
+
+     selenium:
+       ports:
+         - '5910:5900'
+
+     mysql-behat:
+       ports:
+         - '33007:3306'
 
 If you intend to run behat tests, create on your host a folder ``/tmp/behat/screenshots`` (or anywhere else according to your compose file) with full read/write access to your user.
 Otherwise ``docker-compose`` will create it, but only with root accesses. Then failing behats will be unable to create reports and screenshots.
@@ -236,7 +272,7 @@ If you want to execute only one job:
 Xdebug
 ******
 
-*Xdebug* is deactivated by default. If you want to activate it, you can change the environment variable ``PHP_XDEBUG_ENABLED`` to 1. Then you just have to run ``docker-compose up -d`` again.
+*Xdebug* is deactivated by default. If you want to activate it, you can add the environment variable ``PHP_XDEBUG_ENABLED`` in an override file and set its value to 1. Then you just have to run ``docker-compose up -d`` again.
 
 Also, you can configure two things on Xdebug through environment variables on ``akeneo`` images. These environment variables are all optional:
 
