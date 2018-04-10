@@ -35,7 +35,7 @@ In Akeneo PIM, all the processors implement ``Akeneo\Component\Batch\Item\ItemPr
 
 For an import, all processor receive items in the standard array format.
 
-Processors are similar, the most use ``Pim\Component\Connector\Processor\Denormalization\SimpleProcessor``. This SimpleProcessor needs parameters:
+Processors are similar, the most use ``Pim\Component\Connector\Processor\Denormalization\Processor``. This SimpleProcessor needs parameters:
 
 - An ``IdentifiableObjectRepositoryInterface``: The repository fetches the object by its identifier from the database if it already exists.
 - A ``SimpleFactoryInterface``: When the object does not exist, the processor uses the factory to create the object. The ``SimpleFactoryInterface`` provides this default object creation behavior.
