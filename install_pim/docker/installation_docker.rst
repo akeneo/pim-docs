@@ -33,7 +33,7 @@ You won't face this problem on Mac OS and Windows hosts, as those systems use a 
 Mandatory folders
 *****************
 
-To accelerate the installation of the PIM dependencies, `Composer cache <https://github.com/akeneo/pim-community-dev/blob/master/docker-compose.yml#L7>`_ and `Yarn cache <https://github.com/akeneo/pim-community-dev/blob/master/docker-compose.yml#L22>`_ are shared between the host and the containers.
+To accelerate the installation of the PIM dependencies, `Composer cache <https://github.com/akeneo/pim-community-dev/blob/master/docker-compose.yml.dist#L8>`_ and `Yarn cache <https://github.com/akeneo/pim-community-dev/blob/master/docker-compose.yml.dist#L26>`_ are shared between the host and the containers.
 
 You need to be sure these folders exist on your host before launching the containers. If not, Docker will create them for you, but with root permissions, preventing the containers from accessing it. As a result, dependencies installation will fail.
 

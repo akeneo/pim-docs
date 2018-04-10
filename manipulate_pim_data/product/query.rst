@@ -60,8 +60,6 @@ Execute the Query to Get a Cursor
 
 It will return an `Akeneo\Component\StorageUtils\CursorInterface` on the products collection.
 
-This interface is "storage agnostic" and allows to iterate over the products in the same way for Doctrine ORM and MongoDBODM.
-
 As it implements a Cursor, it avoids to load all the products in memory and uses an internal pagination to load them page per page.
 
 We strongly advise to use this method to execute queries on products.
@@ -88,10 +86,6 @@ Then you can use a "classic" Doctrine execute (with custom hydration, etc),
     // my custom code which manipulates the query builder
     // ...
     $queryBuilder->getQuery()->execute();
-
-.. warning::
-
-    This should be reserved for special cases, when you want to use operations only available in the real storage mechanism (ex: MongoDB aggregate) or expressions not supported by the PQB.
 
 Use the Product Repositories
 ----------------------------
