@@ -313,7 +313,7 @@ Don't forget to add these classes in your service definition and to tag them wit
         acme.action_applier.pattern:
             class: Acme\Bundle\CustomBundle\ActionApplier\PatternActionApplier
             arguments:
-                - '@pim_catalog.updater.product_property_setter'
+                - '@pim_catalog.updater.property_setter'
             tags:
                 - { name: akeneo_rule_engine.action_applier, priority: 100 }
 
