@@ -27,14 +27,14 @@ Classic folders are:
 Controllers
 -----------
 
-Controllers are implemented in the /Controller directory.
+Controllers are implemented in the /Controller directory. We created also a /Rest directory inside the /Controller directory to have all the REST Controller in the same directory.
 
 We define them as services, these classes don't extend the BaseController and are not ContainerAware.
 
-Entities or Documents
----------------------
+Entities
+--------
 
-Entities or Documents (depending on used Storage) are defined in Component under the /Model directory.
+Entities are defined in Component under the /Model directory.
 
 An Interface is created for each model and, from outside, we rely only on the interface.
 

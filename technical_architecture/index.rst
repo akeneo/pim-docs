@@ -1,7 +1,7 @@
 Technical architecture
 ======================
 
-Akeneo PIM is an OOP application, based on the framework Symfony 2, it also widely uses Doctrine ORM.
+Akeneo PIM is an OOP application, based on the framework Symfony 3, it also widely uses Doctrine ORM.
 If you are not familiar with one of these, the best move is to start by reading the `Symfony documentation`_ and `Doctrine documentation`_
 
 .. _Symfony documentation: https://symfony.com/doc/current/index.html
