@@ -28,7 +28,6 @@ There are two existing distributions: `Community`_ (CE) and `Enterprise`_ (EE) w
 Many attribute types are managed (14 in CE and one more in EE). Make sure you do not forget any use cases for an attribute type.
 
 Try your bundle with other catalogs. Don't forget use cases with many locales, many channels and various catalog volumes.
-You can use our `data generator bundle`_ to generate a catalog with random data.
 
 .. _Community: https://github.com/akeneo/pim-community-standard
 .. _Enterprise: https://www.akeneo.com/enterprise-edition/
