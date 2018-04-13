@@ -1,7 +1,7 @@
 Partners Starterkit
 ===================
 
-After the Flexibility setup, thanks you for taking notice of these followings points.
+After the Flexibility setup, you will need to take notice of the following points:
 
 A. Deploy your ssh keys
 -----------------------
@@ -22,7 +22,7 @@ Now you can connect through ssh to your instance, follow this documentation `Env
 
 C. Setup composer
 -----------------
-To be able to update akeneo pim, you must setup your `composer into instance`_
+To be able to update Akeneo PIM, you must setup your `composer into instance`_
 
 D. Akeneo info
 ------------------
