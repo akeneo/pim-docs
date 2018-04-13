@@ -28,7 +28,7 @@ The *akeneo* and *akeneo-behat* containers will have write access to the PIM fol
 
 This user UID and GID are both 1000:1000, so on Linux hosts **it is mandatory that the user of your host machine has 1000:1000 as UID and GID too**, otherwise you'll end up with a non working PIM.
 
-You won't face this problem on Mac OS and Windows hosts, as those systems use a VM between the host and Docker, which already operates with appropriate UIG/GID.
+You won't face this problem on Mac OS and Windows hosts, as those systems use a VM between the host and Docker, which already operates with appropriate UID/GID.
 
 Mandatory folders
 *****************

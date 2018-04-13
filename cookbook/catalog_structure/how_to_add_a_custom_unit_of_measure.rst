@@ -69,7 +69,7 @@ These two files contain this translation:
 Finaly clear cache and try it out
 ---------------------------------
 
-Delete all translation files inside of ``/web/js/translations/``.
+Delete all translation files inside of ``/web/js/translation/``.
 
 Clear app cache with this command:
 
