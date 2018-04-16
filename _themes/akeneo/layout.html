@@ -54,9 +54,14 @@
         .nav .dropdown:first-child { float: right; }
         .nav .dropdown:nth-child(2) .dropdown-menu { left: -175px; }
         .algolia-docsearch-suggestion--category-header { background-color: white; }
-        .table { overflow: auto; display: block; }
+        .table { overflow: auto; display: block; width: 100%; }
+        table.table tbody { display: table; width: 100%; }
         code.docutils.literal.table, tt.docutils.literal.table { display: inline; }
         strong { font-weight: bold; }
+        /* Uncomment to activate deprecation
+        .deprecation-notice { margin-top: 5px; margin-bottom: 20px; }
+        @media all and (max-width: 768px) { .deprecation-notice { margin-top: 60px; margin-bottom: 10px; }}
+        */
     </style>
 </head>
 <body data-spy="scroll" data-target="#navbar">
@@ -87,6 +92,14 @@
                 </div>
             </form>
         </div>
+        <!-- Uncomment to activate deprecation
+        <div class="alert alert-warning warning deprecation-notice">
+            <div class="bg-warning text-center">
+                Caution! You are browsing the documentation for Akeneo in version <b>{{ version }}</b>, which is not maintained anymore.<br>
+                <strong>Consider upgrading to the <a href="https://docs.akeneo.com/latest/">latest version</a>.</strong>
+            </div>
+        </div>
+        -->
     </div>
 </nav>
 

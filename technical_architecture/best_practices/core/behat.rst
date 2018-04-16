@@ -22,14 +22,14 @@ Install Selenium Server
 -----------------------
 Download Selenium server 2.43.1 `here`_.
 
-.. _here: http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar
+.. _here: http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar
 
 
 Install Firefox
 ---------------
 In order to use Selenium RC, you must actually install `firefox`_.
 
-.. _firefox: http://ftp.mozilla.org/pub/firefox/releases/32.0/
+.. _firefox: http://ftp.mozilla.org/pub/firefox/releases/45.0/
 
 
 Create a VirtualHost
