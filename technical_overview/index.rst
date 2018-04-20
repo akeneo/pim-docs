@@ -6,5 +6,4 @@ Technical overview
     :hidden:
 
     product_information/index
-    teamwork_assistant/index
     workflow/index

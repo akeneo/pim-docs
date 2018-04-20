@@ -11,4 +11,3 @@ Manipulate the Akeneo PIM data
     define-acl
     catalog_structure/index
     product_asset/index
-    teamwork_assistant/index
