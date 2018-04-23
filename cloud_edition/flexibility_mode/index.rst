@@ -12,7 +12,7 @@ Flexibility Mode
     :maxdepth: 1
 
     docs/overview
-    docs/requirements
+    docs/partner_starterkit
     docs/environments_access
     docs/composer_settings
     docs/pim_application
