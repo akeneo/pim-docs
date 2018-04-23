@@ -63,7 +63,7 @@ Phase 2: Create the Form extension
 
 For this step, you'll need to register a new form extension in ``/src/Acme/Bundle/CustomMassActionBundle/Ressources/config/form_extensions/mass_edit/product.yml``:
 
-.. code-block:: yml
+.. code-block:: yaml
 
     extensions:
         pim-mass-product-edit-product-custom:
@@ -118,7 +118,7 @@ Then, you will have to create a requirejs module for this extension (``/src/Acme
 
 Finally, you will have to require your custom module into the ``/src/Acme/Bundle/CustomMassActionBundle/Ressources/config/requirejs.yml``.
 
-.. code-block:: yml
+.. code-block:: yaml
 
     config:
         paths:
