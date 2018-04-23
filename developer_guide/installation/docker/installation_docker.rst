@@ -33,7 +33,7 @@ You won't face this problem on Mac OS and Windows hosts, as those systems use a 
 Mandatory folders
 *****************
 
-To accelerate the installation of the PIM dependencies, `Composer cache <https://github.com/akeneo/pim-community-dev/blob/1.6/docker-compose.yml.dist#L19>`_ is shared between host and container.
+To accelerate the installation of the PIM dependencies, `Composer cache <https://github.com/akeneo/pim-community-dev/blob/v1.6.23/docker-compose.yml.dist#L19>`_ is shared between host and container.
 
 You need to be sure the folder ``~/.config/composer`` exists on your host before launching the containers. If not, Docker will create it for you, but with root permissions, preventing the container from accessing it. As a result, dependencies installation will fail.
 
