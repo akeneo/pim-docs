@@ -1,7 +1,7 @@
 Crontasks settings
 ==================
 
-You'll find here some infos about crontasks management in Akeneo PIM Flexibility Edition:
+You'll find here some info about crontasks management in Akeneo PIM Flexibility Edition:
 
 1. Default provided CRON tasks use a custom wrapper script defined by *SHELL* that calls the PIM `bin/console` command.
 
