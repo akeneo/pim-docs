@@ -40,6 +40,11 @@ Default CRONs are setted as below:
     If you plan to customize CRON frequencies, please notice us as we first have to remove this default configuration.
     Default crontab will be fully cleared and you will be able to define it by your own.
 
+    If you want add crontasks, you can follow this documentation about `Cron tasks`_
+
+
+follow this documentation `Environments access`_
+
 4. Deployment
 -------------
 As we don’t provide (yet) a tools to deploy your own custom code on the environments, you are free to use the tools needed (git and rsync are available on the environments).
@@ -55,3 +60,5 @@ As we don’t provide (yet) a tools to deploy your own custom code on the enviro
 ----------------
 | Maximum file size upload is set to 100MB
 | 
+
+.. _`Cron tasks`: ./crontasks.html

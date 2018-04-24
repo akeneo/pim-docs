@@ -1,19 +1,17 @@
 Crontasks settings
 ==================
 
-You find here, some good practices about crontasks management in Akeneo PIM Flexibility Edition :
+You'll find here some infos about crontasks management in Akeneo PIM Flexibility Edition:
 
-1. CRONs we provide by default uses a custom wrapper script defined by *SHELL* that call the PIM "bin/console" command.
+1. Default provided CRON tasks use a custom wrapper script defined by *SHELL* that calls the PIM `bin/console` command.
 
-   It avoid us to write on each cron line the full script path to call and the redirection of logs.
+   It avoids us to write on each cron line the full script path to call and to redirect logs.
 
-   Adding your own cron lines failes because it tries to run your command with our wrapper.
+   Adding your own cron line fails because it tries to run your command with our wrapper.
    
-   To run your own script normally (without our wrapper), you just have to redefine the shell variable like this "SHELL=/bin/bash" before them
+   To normally run your own scripts (without our wrapper), you just have to redefine the shell variable like this `SHELL=/bin/bash` before yours tasks
     
-2. We would like to remind you that all servers are using UTC time (and so on for CRON).
-   
-   Think to convert you desired local time to UTC time.
+2. We would like to remind you that all servers use UTC time, don't forget to convert you desired local time to UTC time.
 
 .. code-block:: bash
 
@@ -28,11 +26,11 @@ You find here, some good practices about crontasks management in Akeneo PIM Flex
     # * * * * *  command to execute
 
 
-4. To be notify about CRONs executions (errors only), "MAILTO" variable should be changed and set with someone concerned of your company.
-   i.e.: MAILTO="projectmanager@acme.com"
+4. To be notified about CRONs executions (errors only), `MAILTO` variable should be changed and set with someone concerned in your company.
+   i.e.: `MAILTO="projectmanager@acme.com"`
 
 
-You can find below a full example of the crontab that you could use:
+You can find below a full example of the crontab that you can use:
 
 .. code-block:: bash
 
