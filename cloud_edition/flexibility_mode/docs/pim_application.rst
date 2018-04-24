@@ -42,9 +42,6 @@ Default CRONs are setted as below:
 
     If you want add crontasks, you can follow this documentation about `Cron tasks`_
 
-
-follow this documentation `Environments access`_
-
 4. Deployment
 -------------
 As we don’t provide (yet) a tools to deploy your own custom code on the environments, you are free to use the tools needed (git and rsync are available on the environments).
