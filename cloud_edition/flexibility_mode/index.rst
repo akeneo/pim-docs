@@ -15,6 +15,7 @@ Flexibility Mode
     docs/partner_starterkit
     docs/environments_access
     docs/composer_settings
+    docs/crontasks
     docs/pim_application
     docs/data_file_transfer
     docs/backups_management
