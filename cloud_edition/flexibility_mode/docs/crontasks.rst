@@ -9,7 +9,7 @@ You'll find here some info about crontasks management in Akeneo PIM Flexibility 
 
    Adding your own cron line fails because it tries to run your command with our wrapper.
    
-   To normally run your own scripts (without our wrapper), you just have to redefine the shell variable like this `SHELL=/bin/bash` before yours tasks
+   To normally run your own scripts (without our wrapper), you just have to redefine the shell variable like this `SHELL=/bin/bash` before your tasks
     
 2. We would like to remind you that all servers use UTC time, don't forget to convert you desired local time to UTC time.
 
