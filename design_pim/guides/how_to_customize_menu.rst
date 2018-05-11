@@ -10,7 +10,7 @@ To add an element at the root of the tree you can reuse the tab module provided 
 
 .. code-block:: yaml
 
-    # src/Acme/Bundle/AppBundle/Resources/form_extensions/menu.yml
+    # src/Acme/Bundle/AppBundle/Resources/config/form_extensions/menu.yml
     extensions:
         acme-custom-root-element:                          # The unique key of your extension
             module: pim/menu/tab                           # The module provided by akeneo for root elements
