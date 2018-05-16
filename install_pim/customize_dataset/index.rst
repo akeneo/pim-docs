@@ -114,7 +114,7 @@ You can now (re)install your database by running:
 
     php bin/console pim:installer:db --env=prod
 
-What we couldn't have in the Dataset
+What you cannot have in the Dataset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For the product or the product model export job configuration, it's not possible to create a filter on the updated date field with the operator 'SINCE LAST JOB'.
