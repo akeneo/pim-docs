@@ -1,7 +1,7 @@
 How to Create Non-Product Objects
 =================================
 
-.. _SimpleFactoryInterface: https://github.com/akeneo/pim-community-dev/tree/v2.2.0/src/Akeneo/Component/StorageUtils/Factory/SimpleFactoryInterface.php
+.. _SimpleFactoryInterface: https://github.com/akeneo/pim-community-dev/tree/v2.3.0/src/Akeneo/Component/StorageUtils/Factory/SimpleFactoryInterface.php
 
 To create common objects, we rely on different methods depending on the complexity of the object. There are some examples on how to use these services.
 
