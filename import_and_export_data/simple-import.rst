@@ -1,8 +1,8 @@
 How import works
 ================
 
-.. _minimal: https://github.com/akeneo/pim-community-dev/blob/2.3/src/Pim/Bundle/InstallerBundle/Resources/fixtures/minimal
-.. _icecat: https://github.com/akeneo/pim-community-dev/blob/2.3/src/Pim/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev
+.. _minimal: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/InstallerBundle/Resources/fixtures/minimal
+.. _icecat: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev
 
 At any time, a set of data can be imported: products, attributes, users, etc.
 

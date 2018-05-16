@@ -2,7 +2,7 @@ Storage events
 ==============
 
 .. _GenericEvent: http://api.symfony.com/3.3/Symfony/Component/EventDispatcher/GenericEvent.html
-.. _RemoveEvent: https://github.com/akeneo/pim-community-dev/blob/2.0/src/Akeneo/Component/StorageUtils/Event/RemoveEvent.php
+.. _RemoveEvent: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Tool/Component/StorageUtils/Event/RemoveEvent.php
 
 Storage events are dispatched in the PIM when you manipulate data using the savers and removers services.
 They are basically useful if you want to add your business logic before or after an object is saved or removed.
