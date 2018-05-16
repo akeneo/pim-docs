@@ -36,7 +36,7 @@ We provide some aliases to do some `superuser tasks`_
 
 
 .. _`Partners Portal`: https://partners.akeneo.com
-.. _`Create a new cloud ticket to the support`: https://helpdesk.akeneo.com 
+.. _`Create a new cloud ticket to the support`: https://akeneo.atlassian.net/servicedesk/customer/portal/8/group/23 
 .. _`Environments access`: ./environments_access.html
 .. _`composer into instance`: ./composer_settings.html
 .. _`our own akeneo setup`: ./pim_application.html
