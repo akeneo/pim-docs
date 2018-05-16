@@ -1,8 +1,8 @@
-.. _BatchBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Bundle/BatchBundle
-.. _ClassificationBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Bundle/ClassificationBundle
-.. _FileStorageBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Bundle/FileStorageBundle
+.. _BatchBundle: https://github.com/akeneo/pim-community-dev/tree/v2.0.0/src/Akeneo/Bundle/BatchBundle
+.. _ClassificationBundle: https://github.com/akeneo/pim-community-dev/tree/v2.0.0/src/Akeneo/Bundle/ClassificationBundle
+.. _FileStorageBundle: https://github.com/akeneo/pim-community-dev/tree/v2.0.0/src/Akeneo/Bundle/FileStorageBundle
 .. _MeasureBundle: https://github.com/akeneo/MeasureBundle
-.. _StorageUtilsBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Bundle/StorageUtilsBundle
+.. _StorageUtilsBundle: https://github.com/akeneo/pim-community-dev/tree/v2.0.0/src/Akeneo/Bundle/StorageUtilsBundle
 
 +-------------------------+--------------------------------------------------------------------------------------------------------------------+
 | **Bundle**              | **Scope**                                                                                                          |
