@@ -39,5 +39,5 @@ We provide some aliases to do some `superuser tasks`_
 .. _`Environments access`: ./environments_access.html
 .. _`composer into instance`: ./composer_settings.html
 .. _`our own akeneo setup`: ./pim_application.html
-.. _`superuser tasks`: ./partners.rst.html
+.. _`superuser tasks`: ./partners.html
 

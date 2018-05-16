@@ -34,6 +34,12 @@ You can also provide a custom configuration (in JSON format) for the job:
 
     One daemon or several daemon processes have to be started to execute the jobs.
     Please follow the documentation :doc:`/install_pim/manual/daemon_queue` if it's not the case.
+    
+.. tip::   
+
+    Don’t forget to add `--username` if you want to see the job in the history of a given user.
+    Example for user ‘admin’:
+    `bin/console akeneo:batch:publish-job-to-queue csv_product_import --env=prod --username admin`
 
 Scheduling the jobs
 -------------------

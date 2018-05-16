@@ -1,6 +1,6 @@
-.. _Connector: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Component/Connector
-.. _Catalog: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Component/Catalog
-.. _ReferenceData: https://github.com/akeneo/pim-community-dev/tree/master/src/Pim/Component/ReferenceData
+.. _Connector: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Component/Connector
+.. _Catalog: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Component/Catalog
+.. _ReferenceData: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Component/ReferenceData
 
 +------------------+--------------------------------------------------------------------------------------------------------------------+
 | **Component**    | **Scope**                                                                                                          |
