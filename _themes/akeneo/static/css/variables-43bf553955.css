@@ -6722,8 +6722,7 @@ button.close {
   }
 }
 body {
-  /*padding-top: 180px; Uncomment to activate deprecation and remove the line after */
-  padding-top: 60px;
+  padding-top: 180px; /* Set to 60px when deactivating pre-version notice */
   height: 100%;
   overflow-y: scroll;
   font-weight: 300;
