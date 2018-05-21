@@ -1,4 +1,4 @@
-.. _BatchBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Bundle/BatchBundle
+.. _BatchBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Akeneo/Bundle/BatchBundle
 .. _ClassificationBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Bundle/ClassificationBundle
 .. _FileStorageBundle: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Bundle/FileStorageBundle
 .. _MeasureBundle: https://github.com/akeneo/MeasureBundle
