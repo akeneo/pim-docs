@@ -64,6 +64,12 @@ We always tag both community and enterprise versions with aligned version number
 
 Using the exact patch version will avoid any local composer cache issue.
 
+Then run the composer update command:
+
+.. code-block:: bash
+
+    php composer.phar --prefer-dist update
+
 Then follow the same process as the one for the community edition:
 
 .. code-block:: bash
