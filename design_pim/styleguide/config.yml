@@ -9,6 +9,7 @@ groups:
         Apply button: { class: 'AknButton--apply' }
         Grey button: { class: 'AknButton--grey' }
         Grey light button: { class: 'AknButton--greyLight' }
+        Slate grey button: { class: 'AknButton--slateGrey' }
         Important button: { class: 'AknButton--important' }
         Action button: { class: 'AknButton--action' }
         Disabled button: { class: 'AknButton--disabled' }
