@@ -47,6 +47,9 @@ This is achieved by `bind mounting <https://docs.docker.com/storage/bind-mounts/
 
 .. note::
 
+Getting Akeneo PIM
+******************
+
    The following compose file example is intentionally incomplete, focusing on cache directories only.
    Check the complete file directly `in the PIM <https://github.com/akeneo/pim-community-dev/blob/master/docker-compose.yml>`_.
 
@@ -66,6 +69,7 @@ This is achieved by `bind mounting <https://docs.docker.com/storage/bind-mounts/
          YARN_CACHE_FOLDER: '/home/node/.yarn-cache' # Declare where the Yarn cache folder will be IN THE CONTAINER
        volumes:
          - ~/.cache/yarn:/home/node/.yarn-cache      # Bind mount the Yarn cache folder of your host machine with the one of the Node container
+
 
 You need to be sure these folders exist **on your host** before launching the containers. If not, Docker will create them for you, but with root permissions, preventing the containers from accessing it. As a result, dependencies installation will fail.
 
