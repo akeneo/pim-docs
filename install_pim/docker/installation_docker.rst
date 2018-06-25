@@ -109,7 +109,7 @@ Here is a ``docker-compose.override.yml`` example:
          PHP_IDE_CONFIG: 'serverName=pim-ce-cli'
          PHP_XDEBUG_ENABLED: 0
          PHP_XDEBUG_IDE_KEY: 'XDEBUG_IDE_KEY'
-         XDEBUG_CONFIG: 'remote_host=172.10.0.1' # This is Docker default IP, this should allow CLI debugging on most Linux system.
+         XDEBUG_CONFIG: 'remote_host=172.17.0.1' # This is Docker default IP, this should allow CLI debugging on most Linux system.
 
      mysql:
        ports:
