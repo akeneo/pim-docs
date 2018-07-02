@@ -52,7 +52,7 @@ The web server will also need the following libraries and modules:
 
 .. warning::
 
-  To avoid a security vulnerability please be sure that you use PHP >= 5.6.24, please have a look to https://github.com/FriendsOfPHP/security-advisories/issues/259#issuecomment-369274526 and https://github.com/php/php-src/commit/0e2447cd11f4b72257e5d2609f923177e9736c3c
+  To avoid a security vulnerability, please make sure you are using PHP >= 5.6.24. More details available at: https://github.com/FriendsOfPHP/security-advisories/issues/259#issuecomment-369274526 and https://github.com/php/php-src/commit/0e2447cd11f4b72257e5d2609f923177e9736c3c
 
 Besides these modules, the following configuration is the minimal configuration required:
 
