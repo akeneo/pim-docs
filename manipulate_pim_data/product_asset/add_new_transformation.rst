@@ -87,8 +87,8 @@ In order to create your transformation, you have to follow these rules:
 
             $fontPart = '-font ' . $options['font'];
             $sizePart = '-pointsize ' . $options['size'];
-            $blackWatermarkPart = 'fill black text ' . $options['position'] . ' \'' . $options['watermark'] . '\'';
-            $whiteWatermarkPart = 'fill white text ' . $options['position'] . ' \'' . $options['watermark'] . '\'';
+            $blackWatermarkPart = 'fill black text ' . $options['positionBlack'] . ' \'' . $options['watermark'] . '\'';
+            $whiteWatermarkPart = 'fill white text ' . $options['positionWhite'] . ' \'' . $options['watermark'] . '\'';
             $drawPart = '-draw "gravity south ' . $blackWatermarkPart . ' ' . $whiteWatermarkPart . '"';
             $cmd = $fontPart . ' ' . $sizePart . ' ' . $drawPart;
 
