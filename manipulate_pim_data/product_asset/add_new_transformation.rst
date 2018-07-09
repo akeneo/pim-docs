@@ -48,7 +48,8 @@ In order to create your transformation, you have to follow these rules:
 
     use Akeneo\Component\FileTransformer\Options\TransformationOptionsResolverInterface;
     use Akeneo\Component\FileTransformer\Transformation\AbstractTransformation;
-
+    use Akeneo\Component\FileTransformer\Transformation\Image\ImageMagickLauncher;
+    
     /**
      * Watermark transformation
      */
