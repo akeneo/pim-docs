@@ -86,9 +86,9 @@ Besides these modules, the following configuration is the minimal configuration 
 
 **Database server**
 
-+-----------------+----------+
-| MySQL (SQL)     | >= 5.7.8 |
-+-----------------+----------+
++-----------------+-----------+
+| MySQL (SQL)     | >= 5.7.22 |
++-----------------+-----------+
 
 To use this database you will also require the distribution package:
 
