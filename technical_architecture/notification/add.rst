@@ -111,7 +111,7 @@ Note that ``$object`` is ``mixed``, so feel free to give anything useful to buil
         $routeParams = ['id' => $jobExecutionId];
 
 6) Context (``array``)
-    The context allows to store some extra data in the notification, it is not displayed in the UI by default. Some important extra data you may use:
+    The context allows to store some extra data in the notification, it is not displayed in the UI by default. Some important extra data you may use are:
         - ``actionType`` (``string``): this will be used to guess the icon to display on the notification
         - ``showReportButton`` (``bool``): to hide/display the "report" label on the notification
 
@@ -159,7 +159,7 @@ Inject Services
 Now that our Notification Factory is created and registered, we can build our own notifications!
 
 .. warning::
-    The Notification Factory we just created is **not responsible of sending notifications**, only to build them.
+    The Notification Factory we just created is **not responsible for sending notifications**, only to build them.
     To send notification, we need to **call the Notifier**.
 
 To send our notifications, we'll need to:
@@ -206,7 +206,7 @@ Then, let's add it to our constructor as follows:
 Notify Users
 ------------
 
-Now everything is plugged together, let send some notifications!
+Now everything is plugged together, let's send some notifications!
 
 .. code-block:: php
 
