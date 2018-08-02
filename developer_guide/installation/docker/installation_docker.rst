@@ -130,6 +130,24 @@ As you can see below, the ``database_host`` parameter is the name of your MySQL 
 
    You only need to set ``parameters_test.yml`` if you are using ``akeneo/pim-community-dev`` or ``akeneo/pim-enterprise-dev``. It is not mandatory for using the ``standard`` edition.
 
+ElasticSearch
+*******
+To use ElasticSearch, add following lines to `parameters.yml` 
+
+.. code-block:: yaml
+
+   # /host/path/to/you/pim/app/config/parameters.yml
+   parameters:
+       (...)
+       product_index_name: akeneo_pim_product
+       product_model_index_name: akeneo_pim_product_model
+       product_and_product_model_index_name: akeneo_pim_product_and_product_model
+       index_hosts: 'elastic:changeme@elasticsearch:9200'
+
+.. note::
+
+
+
 MongoDB
 *******
 
