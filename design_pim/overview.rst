@@ -83,6 +83,11 @@ To make your module available you need to clear your cache:
 
     rm -rf ./var/cache/*
 
+Dump the paths for all the requirejs.yml files for each bundle:
+
+.. code-block:: bash
+
+    bin/console pim:installer:dump-require-paths
 
 dump the assets in the web folder
 
