@@ -16,4 +16,10 @@ Environments Access
 
     ssh-add
 
+If you are using putty, follow those steps to enable "Agent forwarding":
+
+    - Open PuTTY
+    - Under "Connection" -> "SSH" -> "Auth"
+    - Check the "Allow agent forwarding"
+
 For more information, please consult the following `Github documentation <https://developer.github.com/guides/using-ssh-agent-forwarding>`_
