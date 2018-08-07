@@ -25,7 +25,7 @@ Composer settings
 
 | After that, you can set up your composer.json like that
 
-.. code-block:: json
+.. code-block:: text
 
     "repositories": [
         {
