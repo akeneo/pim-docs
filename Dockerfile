@@ -64,8 +64,9 @@ COPY build.sh /home/akeneo/pim-docs/build.sh
 RUN chmod +x /home/akeneo/pim-docs/build.sh && \
     #
     # Download curent version
-    wget https://github.com/akeneo/pim-community-dev/archive/2.1.zip -P /home/akeneo/pim-docs/ && \
+    wget https://github.com/akeneo/pim-community-dev/archive/v2.1.9.zip -O /home/akeneo/pim-docs/2.1.zip && \
     unzip /home/akeneo/pim-docs/2.1.zip -d /home/akeneo/pim-docs/ && \
+    mv /home/akeneo/pim-docs/pim-community-dev-2.1.9 /home/akeneo/pim-docs/pim-community-dev-2.1 && \
     cd /home/akeneo/pim-docs/pim-community-dev-2.1/ && \
     #
     # Install Akeneo PIM
