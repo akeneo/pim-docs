@@ -8,13 +8,16 @@ Prerequisites
 
 If you need to send a custom message for an existing notification type (like import/export, mass edit, etc.)
 you can go to the `Inject Services`_ step.
-If you want to create your own notification type for a custom bundle, you will need to create your notification factory.
 
-This cookbook assumes that you already created a new bundle to add your new Notification. Let's assume its namespace is
-`Acme\\CustomBundle`.
+If you want to create **your own notification type for a custom bundle**, you will need to create your notification factory.
+
+.. note::
+    This cookbook assumes that you already created a new bundle to add your new Notification. Let's assume its namespace is ``Acme\CustomBundle``.
 
 Create a Notification Factory
 -----------------------------
+
+First we'll need to create the Notification Factory that will build our own notifications. This class should implement ``Pim\Bundle\NotificationBundle\Factory\NotificationFactoryInterface``.
 
 .. code-block:: php
 
@@ -42,18 +45,9 @@ Create a Notification Factory
         /**
          * {@inheritdoc}
          */
-        public function create($status, $message, $messageParams, $route, $routeParams, $type)
+        public function create($object)
         {
-            // Here is a simple implementation of the create method, you can add your custom code.
-            $notification = new Notification();
-
-            $notification
-                ->setType($status)                 // The notification type ('success', 'warning' or 'error')
-                ->setMessage($message)             // The message translation key
-                ->setMessageParams($messageParams) // Parameters for the message
-                ->setRoute($route)
-                ->setRouteParams($routeParams)
-                ->setContext(['actionType' => $type]);
+            $notification = new Notification(); // we'll setup it just after
 
             return $notification;
         }
@@ -67,30 +61,85 @@ Create a Notification Factory
         }
     }
 
-Adding a route will redirect users to this route when the notification is clicked.
-
-For example, the route of the show export profile page is:
-
-.. code-block:: yaml
-
-    pim_importexport_export_profile_show:
-        path: /{id}
-        defaults: { _controller: pim_import_export.controller.export_profile:showAction }
-        requirements:
-            id: \d+
-
-The optional route parameter will be:
+Let's take a look at what's important here, the ``create`` method of this factory:
 
 .. code-block:: php
 
-    $route = 'pim_importexport_export_execution_show';
-    $routeParams = ['id' => $jobExecutionId];
+    public function create($object)
+    {
+        $notification = new Notification();
 
-If the messageParams option is provided, it will be passed to the message when translating it.
+        $notification->setType($type);
+        $notification->setMessage($message);
+        $notification->setMessageParams($messageParams);
+        $notification->setRoute($route);
+        $notification->setRouteParams($routeParams);
+        $notification->setContext($context);
 
-The context allows to store some extra data in the notification, it is not displayed in the UI by default.
+        return $notification;
+    }
 
-Now register your new factory with the proper tag:
+Note that ``$object`` is ``mixed``, so feel free to give anything useful to build your notification. For instance, in our internal job notifications, we directly send the JobExecution to the ``create`` method of our Notification Factories.
+
+
+1) Type (``string``)
+    Type of the notification. Can be ``success``, ``warning`` or ``error``.
+2) Message (``string``)
+    The message to display in the notification. It can be a simple string, or a translation key, eg. ``pim_import_export.notification.export.success``
+3) MessageParams (``array``)
+    The message parameters to give to the translation key, if any. Eg. ``['%label%' => 'Product export']``
+    If provided, it will be passed to the message when translating it.
+4) Route (``string``)
+    The route the user will be redirected to if the notification is clicked.
+5) RouteParams (``array``)
+    The parameters to that given route.
+    For example, the route of the show export profile page is:
+
+    .. code-block:: yaml
+
+        pim_importexport_export_profile_show:
+            path: /{id}
+            defaults: { _controller: pim_import_export.controller.export_profile:showAction }
+            requirements:
+                id: \d+
+
+    The optional route parameter will be:
+
+    .. code-block:: php
+
+        $route = 'pim_importexport_export_execution_show';
+        $routeParams = ['id' => $jobExecutionId];
+
+6) Context (``array``)
+    The context allows to store some extra data in the notification, it is not displayed in the UI by default. Some important extra data you may use are:
+        - ``actionType`` (``string``): this will be used to guess the icon to display on the notification
+        - ``showReportButton`` (``bool``): to hide/display the "report" label on the notification
+
+.. note::
+    You can see available notification icons on the `styleguide website <https://docs.akeneo.com/2.3/design_pim/styleguide/index.php#Templates-AknNotification>`_.
+
+For example, the ``create`` method of the NotificationFactory for mass edit notifications looks like that:
+
+.. code-block:: php
+
+    public function create($jobExecution)
+    {
+        $notification = new Notification();
+        $type = $jobExecution->getJobInstance()->getType();
+        $status = $this->getJobStatus($jobExecution);
+
+        $notification
+            ->setType($status)
+            ->setMessage(sprintf('pim_mass_edit.notification.%s.%s', $type, $status))
+            ->setMessageParams(['%label%' => $jobExecution->getJobInstance()->getLabel()])
+            ->setRoute('pim_enrich_job_tracker_show')
+            ->setRouteParams(['id' => $jobExecution->getId()])
+            ->setContext(['actionType' => $type]);
+
+        return $notification;
+    }
+
+Well, now we created our very own Notification Factory, **we need to register it** with the proper tag:
 
 .. code-block:: yaml
 
@@ -98,17 +147,27 @@ Now register your new factory with the proper tag:
         acme_custom.notification.factory.custom_notification_factory:
             class: 'Acme\CustomBundle\Notification\CustomNotificationFactory'
             arguments:
-                - ['my_custom_name']
+                - ['my_custom_notification_name']
             tags:
                 - { name: pim_notification.factory.notification }
 
-With this tag you will be able to get your new factory from the dedicated registry.
+With this tag we will be able to get our new factory from the dedicated registry.
 
 Inject Services
 ---------------
 
-The notifier service is called: ``@pim_notification.notifier`` and the factory registry is
-``@pim_notification.registry.factory.notification``.
+Now that our Notification Factory is created and registered, we can build our own notifications!
+
+.. warning::
+    The Notification Factory we just created is **not responsible for sending notifications**, only to build them.
+    To send notification, we need to **call the Notifier**.
+
+To send our notifications, we'll need to:
+    1) Retrieve our factory with the notification factory registry (``@pim_notification.registry.factory.notification``)
+    2) Build the notification
+    3) Give it to the Notifier (``@pim_notification.notifier``) to actually notify users
+
+So we'll need 2 services:
 
 .. code-block:: php
 
@@ -121,9 +180,8 @@ The notifier service is called: ``@pim_notification.notifier`` and the factory r
             tags:
                 - { name: kernel.event_subscriber }
 
-Here, we inject services in an event subscriber, but you can inject them wherever you have an action which notifies a user.
-
-Then, add it to your constructor as follows:
+Here, we inject services in an event subscriber, but we can inject them wherever we have an action which notifies a user.
+Then, let's add it to our constructor as follows:
 
 .. code-block:: php
 
@@ -148,11 +206,17 @@ Then, add it to your constructor as follows:
 Notify Users
 ------------
 
+Now everything is plugged together, let's send some notifications!
+
 .. code-block:: php
 
-    $factory = $this->factoryRegistry->get('my_custom_name');
+    // 1) retrieve our factory with the notification factory registry
+    $factory = $this->factoryRegistry->get('my_custom_notification_name');
+
+    // 2) build the notification
     $notification = $factory->create($status, $message, $messageParams, $route, $routeParams, $type);
 
+    // 3) give it to the Notifier to actually notify users
     $this->notifier->notify(
         $notification,
         [$user1, $user2] // An array of users (UserInterface or just the username)
