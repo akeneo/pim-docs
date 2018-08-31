@@ -48,7 +48,7 @@ First, we need to create a form extension in our bundle:
         }
     );
 
-The triggered event `tag:register` automatically register a new tab and will add it to the product edit form column.
+The triggered event `tab:register` automatically register a new tab and will add it to the product edit form column.
 
 For now this is a dummy extension, but this is a good start!
 
