@@ -17,6 +17,7 @@ Flexibility Mode
     docs/composer_settings
     docs/crontasks
     docs/pim_application
+    docs/pim_updates_and_migrations
     docs/data_file_transfer
     docs/backups_management
     docs/partners
