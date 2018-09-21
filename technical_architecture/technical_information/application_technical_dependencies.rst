@@ -12,7 +12,7 @@ The application relies on Symfony framework. This web framework allows Akeneo PI
 This means that Akeneo PIM  installation process will use composer to install or update all these dependencies easily.
 
 +---------+-----------------------------------------------------+------------------+
-| PHP     | 7.1 (Apache Fast CGI with FPM, no CGI, nor mod_php) | Required         |
+| PHP     | 7.2 (Apache Fast CGI with FPM, no CGI, nor mod_php) | Required         |
 +---------+-----------------------------------------------------+------------------+
 | Symfony | 3.4                                                 | Shipped with PIM |
 +---------+-----------------------------------------------------+------------------+
