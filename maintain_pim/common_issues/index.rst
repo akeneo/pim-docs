@@ -94,11 +94,11 @@ Elasticsearch defines a ``index.mapping.total_fields.limit`` `parameter <https:/
           "root_cause":[
              {
                 "type":"illegal_argument_exception",
-                "reason":"Limit of total fields [5000] in index [akeneo_pim_product_and_product_model] has been exceeded"
+                "reason":"Limit of total fields [10000] in index [akeneo_pim_product_and_product_model] has been exceeded"
              }
           ],
           "type":"illegal_argument_exception",
-          "reason":"Limit of total fields [5000] in index [akeneo_pim_product_and_product_model] has been exceeded"
+          "reason":"Limit of total fields [10000] in index [akeneo_pim_product_and_product_model] has been exceeded"
        },
        "status":400
     }
@@ -110,7 +110,7 @@ To do so, create a ``my_index_configuration.yml`` file with the following conten
     settings:
         mapping:
             total_fields:
-                limit: 6000 # fix your own limit here
+                limit: 12000 # fix your own limit here
 
 Then, load the ``my_index_configuration.yml`` by adding it to the Symfony ``elasticsearch_index_configuration_files`` parameter that is present in the file ``parameters.yml`` or ``pim_parameters.yml``.
 
