@@ -143,11 +143,11 @@ This parameter is set by the PIM at the index creation. If you want to apply it 
 
     curl -XPUT 'localhost:9200/akeneo_pim_product/_settings' -H 'Content-Type: application/json' -d'
           {
-          "index" : {
-          "mapping" : {
-          "total_fields" : {
-          "limit" : "12000"
-          }
-          }
-          }
+              "index" : {
+                  "mapping" : {
+                      "total_fields" : {
+                          "limit" : "12000"
+                      }
+                  }
+              }
           }'
