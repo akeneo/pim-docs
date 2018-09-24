@@ -94,11 +94,11 @@ Elasticsearch defines a ``index.mapping.total_fields.limit`` `parameter <https:/
           "root_cause":[
              {
                 "type":"illegal_argument_exception",
-                "reason":"Limit of total fields [5000] in index [akeneo_pim_product_and_product_model] has been exceeded"
+                "reason":"Limit of total fields [10000] in index [akeneo_pim_product_and_product_model] has been exceeded"
              }
           ],
           "type":"illegal_argument_exception",
-          "reason":"Limit of total fields [5000] in index [akeneo_pim_product_and_product_model] has been exceeded"
+          "reason":"Limit of total fields [10000] in index [akeneo_pim_product_and_product_model] has been exceeded"
        },
        "status":400
     }
@@ -110,7 +110,7 @@ To do so, create a ``my_index_configuration.yml`` file with the following conten
     settings:
         mapping:
             total_fields:
-                limit: 6000 # fix your own limit here
+                limit: 12000 # fix your own limit here
 
 Then, load the ``my_index_configuration.yml`` by adding it to the Symfony ``elasticsearch_index_configuration_files`` parameter that is present in the file ``parameters.yml`` or ``pim_parameters.yml``.
 
@@ -119,18 +119,35 @@ For instance, if you have a *Community* edition:
 .. code-block:: yaml
 
     # parameters.yml
-    # ...
-    elasticsearch_index_configuration_files:
-        - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Pim/Bundle/CatalogBundle/Resources/elasticsearch/index_configuration.yml'
-        - '/path/to/my_index_configuration.yml'
+    parameters:
+        # ...
+        elasticsearch_index_configuration_files:
+            - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Pim/Bundle/CatalogBundle/Resources/elasticsearch/index_configuration.yml'
+            - '/path/to/my_index_configuration.yml'
 
 If you have the *Enterprise* edition:
 
 .. code-block:: yaml
 
     # parameters.yml
-    # ...
-    elasticsearch_index_configuration_files:
-        - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Pim/Bundle/CatalogBundle/Resources/elasticsearch/index_configuration.yml'
-        - '%kernel.root_dir%/../vendor/akeneo/pim-enterprise-dev/src/PimEnterprise/Bundle/WorkflowBundle/Resources/elasticsearch/index_configuration.yml'
-        - '/path/to/my_index_configuration.yml'
+    parameters:
+        # ...
+        elasticsearch_index_configuration_files:
+            - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Pim/Bundle/CatalogBundle/Resources/elasticsearch/index_configuration.yml'
+            - '%kernel.root_dir%/../vendor/akeneo/pim-enterprise-dev/src/PimEnterprise/Bundle/WorkflowBundle/Resources/elasticsearch/index_configuration.yml'
+            - '/path/to/my_index_configuration.yml'
+
+This parameter is set by the PIM at the index creation. If you want to apply it on an existing index you may use the following command:
+
+.. code-block:: bash
+
+    curl -XPUT 'localhost:9200/akeneo_pim_product/_settings' -H 'Content-Type: application/json' -d'
+          {
+              "index" : {
+                  "mapping" : {
+                      "total_fields" : {
+                          "limit" : "12000"
+                      }
+                  }
+              }
+          }'
