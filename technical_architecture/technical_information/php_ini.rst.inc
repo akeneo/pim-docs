@@ -1,8 +1,8 @@
-* Setup *CLI php.ini* file ``/etc/php/7.1/cli/php.ini``
+* Setup *CLI php.ini* file ``/etc/php/7.2/cli/php.ini``
 
 .. code-block:: yaml
 
-    $ sudo vim /etc/php/7.1/cli/php.ini
+    $ sudo vim /etc/php/7.2/cli/php.ini
     memory_limit = 1024M
     date.timezone = Etc/UTC
 
@@ -10,7 +10,7 @@
 
     Use the time zone matching your location, for example *America/Los_Angeles* or *Europe/Berlin*. See http://www.php.net/timezones for the list of all available timezones.
 
-* Setup *FPM php.ini* file ``/etc/php/7.1/fpm/php.ini``
+* Setup *FPM php.ini* file ``/etc/php/7.2/fpm/php.ini``
 
 .. note::
 
@@ -18,7 +18,7 @@
 
 .. code-block:: yaml
 
-    $ sudo vim /etc/php/7.1/fpm/php.ini
+    $ sudo vim /etc/php/7.2/fpm/php.ini
     memory_limit = 512M
     date.timezone = Etc/UTC
 
@@ -42,17 +42,17 @@ In this example, the user is *my_user* and the group is *my_group*.
 
 .. code-block:: bash
 
-    $ sudo service php7.1-fpm stop
+    $ sudo service php7.2-fpm stop
 
-* Open the file ``/etc/php/7.1/fpm/pool.d/www.conf`` with your favorite text editor:
+* Open the file ``/etc/php/7.2/fpm/pool.d/www.conf`` with your favorite text editor:
 
 .. code-block:: bash
 
-    $ sudo vi /etc/php/7.1/fpm/pool.d/www.conf
+    $ sudo vi /etc/php/7.2/fpm/pool.d/www.conf
     # replace these environment variables:
     user = my_user
     group = my_group
-    listen = /run/php/php7.1-fpm.sock
+    listen = /run/php/php7.2-fpm.sock
     listen.user = www-data
     listen.group = www-data
 
@@ -60,10 +60,10 @@ In this example, the user is *my_user* and the group is *my_group*.
 
     On the default installation, FPM user and group are ``www-data``.
     ``listen.user`` and ``listen.group`` must be set on the same user than your Apache server.
-    ``/run/php/php7.1-fpm.sock`` is the default socket path. If you changed it in ``/etc/php/7.1/fpm/pool.d/www.conf``, change it in the Apache virtual host too.
+    ``/run/php/php7.2-fpm.sock`` is the default socket path. If you changed it in ``/etc/php/7.2/fpm/pool.d/www.conf``, change it in the Apache virtual host too.
 
 * Restart FPM
 
 .. code-block:: bash
 
-    $ sudo systemctl restart php7.1-fpm
+    $ sudo systemctl restart php7.2-fpm
