@@ -1,12 +1,12 @@
-.. _Analytics: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Component/Analytics
-.. _Batch: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Component/Batch
-.. _Buffer: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Component/Buffer
-.. _Classification: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Component/Classification
-.. _Console: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Component/Console
-.. _FileStorage: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Component/FileStorage
-.. _Localization: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Component/Localization
-.. _StorageUtils: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Component/StorageUtils
-.. _Versioning: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Component/Versioning
+.. _Analytics: https://github.com/akeneo/pim-community-dev/tree/v2.2.0/src/Akeneo/Component/Analytics
+.. _Batch: https://github.com/akeneo/pim-community-dev/tree/v2.2.0/src/Akeneo/Component/Batch
+.. _Buffer: https://github.com/akeneo/pim-community-dev/tree/v2.2.0/src/Akeneo/Component/Buffer
+.. _Classification: https://github.com/akeneo/pim-community-dev/tree/v2.2.0/src/Akeneo/Component/Classification
+.. _Console: https://github.com/akeneo/pim-community-dev/tree/v2.2.0/src/Akeneo/Component/Console
+.. _FileStorage: https://github.com/akeneo/pim-community-dev/tree/v2.2.0/src/Akeneo/Component/FileStorage
+.. _Localization: https://github.com/akeneo/pim-community-dev/tree/v2.2.0/src/Akeneo/Component/Localization
+.. _StorageUtils: https://github.com/akeneo/pim-community-dev/tree/v2.2.0/src/Akeneo/Component/StorageUtils
+.. _Versioning: https://github.com/akeneo/pim-community-dev/tree/v2.2.0/src/Akeneo/Component/Versioning
 
 +-------------------+------------------------------------------------------------------------------------------------------------------------------+
 | **Component**     | **Scope**                                                                                                                    |

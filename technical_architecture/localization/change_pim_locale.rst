@@ -18,6 +18,14 @@ If you want to allow more locales, you can change the limit by overriding the pa
 
 In this example, you allow locales translated to more than 70%.
 
+You can set this parameter directly in your ``app/config/parameters.yml`` file or in one of your custom bundle resource file (for instance ``Acme/Bundle/AppBundle/Resources/config/one_of_your_config_file.yml``).
+
+The last thing you need to do to take this change into account is to clear the symfony cache.
+
+.. code-block:: php
+
+    bin/console cache:clear --env=prod
+
 How to improve translations
 ---------------------------
 
