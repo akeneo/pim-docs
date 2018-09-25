@@ -124,6 +124,7 @@ Here are the migration guides:
 
 **Community Edition**
 
+* `From v2.2 to v2.3`_
 * `From v2.1 to v2.2`_
 * `From v2.0 to v2.1`_
 * `From v1.6 to v1.7`_
@@ -134,7 +135,8 @@ Here are the migration guides:
 * `From v1.1 to v1.2`_
 * `From v1.0 to v1.1`_
 
-.. _From v2.1 to v2.2: https://github.com/akeneo/pim-community-standard/blob/2.3/UPGRADE-2.2.md
+.. _From v2.2 to v2.3: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-2.3.md
+.. _From v2.1 to v2.2: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-2.2.md
 .. _From v2.0 to v2.1: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-2.1.md
 .. _From v1.6 to v1.7: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.7.md
 .. _From v1.5 to v1.6: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.6.md
@@ -150,6 +152,7 @@ Standard Enterprise Edition (EE) archives are now available on a `dedicated Part
 
 Then, follow the migration guides located in your archive to upgrade your project.
 
+* From EE v2.2 to EE v2.3: UPGRADE-2.3.md
 * From EE v2.1 to EE v2.2: UPGRADE-2.2.md
 * From EE v2.0 to EE v2.1: UPGRADE-2.1.md
 * From EE v1.6 to EE v1.7: UPGRADE-1.7.md
