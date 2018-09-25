@@ -8,7 +8,7 @@ on selected products.
 Prerequisite
 ------------
 The mass edit action uses the `BatchBundle
-<https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Bundle/BatchBundle>`_ in order to run mass edit in the background. Readers and Writers are already
+<https://github.com/akeneo/pim-community-dev/tree/v2.2.0/src/Akeneo/Bundle/BatchBundle>`_ in order to run mass edit in the background. Readers and Writers are already
 created so in this cookbook we will focus on how to create a Mass Edit Action and create a Processor.
 For more information on how to create Jobs, Readers, Processors, or Writers please see :doc:`/import_and_export_data/index`.
 
@@ -63,7 +63,7 @@ Phase 2: Create the Form extension
 
 For this step, you'll need to register a new form extension in ``/src/Acme/Bundle/CustomMassActionBundle/Ressources/config/form_extensions/mass_edit/product.yml``:
 
-.. code-block:: yml
+.. code-block:: yaml
 
     extensions:
         pim-mass-product-edit-product-custom:
@@ -118,7 +118,7 @@ Then, you will have to create a requirejs module for this extension (``/src/Acme
 
 Finally, you will have to require your custom module into the ``/src/Acme/Bundle/CustomMassActionBundle/Ressources/config/requirejs.yml``.
 
-.. code-block:: yml
+.. code-block:: yaml
 
     config:
         paths:

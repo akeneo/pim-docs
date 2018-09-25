@@ -1,7 +1,7 @@
 Configuring tasks via crontab
 -----------------------------
 
-The application needs the following tasks to be executed in background on a regular basis.
+The application needs the following tasks to be executed in background on a regular basis. The frequency has to be adapted according to your data volume.
 
 Edit your crontab with ``crontab -e`` and configure your tasks.
 
@@ -18,19 +18,23 @@ You have to add these 3 commands to your local installation:
     php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod        # processes pending versions
     php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod               # executes rules on products
 
-In the following example, these lines will run the completeness, versioning and rules calculation every 15 minutes:
+In the following example, these lines will run the completeness calculation at 11pm, the versioning calculation at 5am and the rules calculation at 6pm every day:
 
 .. code-block:: bash
     :linenos:
 
     # m  h  dom  mon  dow  command
-    */15 *  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console pim:completeness:calculate --env=prod > /path/to/installation/pim-enterprise-standard/var/logs/calculate_completeness.log 2>&1
-    */15 *  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod > /path/to/installation/pim-enterprise-standard/var/logs/refresh_versioning.log 2>&1
-    */15 *  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod > /path/to/installation/pim-enterprise-standard/var/logs/rule_run.log 2>&1
+    0 23  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console pim:completeness:calculate --env=prod > /path/to/installation/pim-enterprise-standard/var/logs/calculate_completeness.log 2>&1
+    0 5  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod > /path/to/installation/pim-enterprise-standard/var/logs/refresh_versioning.log 2>&1
+    0 18  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod > /path/to/installation/pim-enterprise-standard/var/logs/rule_run.log 2>&1
 
 .. note::
 
     ``> /path/to/installation/pim-enterprise-standard/var/logs/calculate_completeness.log 2>&1`` is to redirect both stdout and stderr to your log file.
+
+.. note::
+
+    The completeness is already recalculated automatically after an import, a mass action, after the rules are executed, after a family edition and after a product is saved.
 
 .. warning::
 

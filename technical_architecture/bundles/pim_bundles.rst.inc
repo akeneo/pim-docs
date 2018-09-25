@@ -1,22 +1,22 @@
-.. _AnalyticsBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/AnalyticsBundle
-.. _CatalogBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/CatalogBundle
-.. _CommentBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/CommentBundle
-.. _ConnectorBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/ConnectorBundle
-.. _DashboardBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/DashboardBundle
-.. _DataGridBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/DataGridBundle
-.. _EnrichBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/EnrichBundle
-.. _FilterBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/FilterBundle
-.. _ImportExportBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/ImportExportBundle
-.. _InstallerBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/InstallerBundle
-.. _JsFormValidationBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/JsFormValidationBundle
-.. _LocalizationBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/LocalizationBundle
-.. _NavigationBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/NavigationBundle
-.. _NotificationBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/NotificationBundle
-.. _PdfGeneratorBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/PdfGeneratorBundle
-.. _ReferenceDataBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/ReferenceDataBundle
-.. _UIBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/UIBundle
-.. _UserBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/UserBundle
-.. _VersioningBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/VersioningBundle
+.. _AnalyticsBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/AnalyticsBundle
+.. _CatalogBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/CatalogBundle
+.. _CommentBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/CommentBundle
+.. _ConnectorBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/ConnectorBundle
+.. _DashboardBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/DashboardBundle
+.. _DataGridBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/DataGridBundle
+.. _EnrichBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/EnrichBundle
+.. _FilterBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/FilterBundle
+.. _ImportExportBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/ImportExportBundle
+.. _InstallerBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/InstallerBundle
+.. _JsFormValidationBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/JsFormValidationBundle
+.. _LocalizationBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/LocalizationBundle
+.. _NavigationBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/NavigationBundle
+.. _NotificationBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/NotificationBundle
+.. _PdfGeneratorBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/PdfGeneratorBundle
+.. _ReferenceDataBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/ReferenceDataBundle
+.. _UIBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/UIBundle
+.. _UserBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/UserBundle
+.. _VersioningBundle: https://github.com/akeneo/pim-community-dev/tree/v1.7.0/src/Pim/Bundle/VersioningBundle
 
 +---------------------------+--------------------------------------------------------------------------------------------------------------------+
 | **Bundle**                | **Scope**                                                                                                          |
