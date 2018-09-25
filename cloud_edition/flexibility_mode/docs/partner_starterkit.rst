@@ -29,7 +29,7 @@ D. Akeneo info
 
 We provide some information about `our own akeneo setup`_
 
-E. Usefull commands
+E. Useful commands
 -------------------
 
 We provide some aliases to do some `superuser tasks`_
