@@ -78,7 +78,7 @@ It's available as a service, you can fetch it from the container.
 
 .. code-block:: php
 
-    $propertySetter = $this->getContainer()->get('pim_catalog.updater.product_property_setter');
+    $propertySetter = $this->getContainer()->get('pim_catalog.updater.property_setter');
 
 Use the PropertySetterInterface
 -------------------------------
