@@ -20,7 +20,7 @@ Akeneo PIM CE changelog is available on our GitHub repository:
 
 * Go to our `Community Repository <https://github.com/akeneo/pim-community-dev/>`_. 
 * Select your branch in the drop down menu, for instance select 2.3 branch.
-* Then scroll down the page, and select the desire Changelog in the list, for instance `Changelog 2.3 version <https://github.com/akeneo/pim-community-dev/blob/2.3/CHANGELOG-2.3.md>`_.
+* Then scroll down the page, and select the desired Changelog in the list, for instance `Changelog 2.3 version <https://github.com/akeneo/pim-community-dev/blob/2.3/CHANGELOG-2.3.md>`_.
 
 .. note::
 
@@ -180,7 +180,7 @@ Then, follow the migration guides located in your archive to upgrade your projec
 How to upgrade to a major version?
 ----------------------------------
 
-We release a major version each year, these new major version brings new features and larger changes to answer clients growing needs.
+We release a major version each year, these new major versions bring new features and larger changes to answer clients growing needs.
 
 To migrate from 1.7 to 2.0, we recommend the use of our brand new migration tool `Transporteo`_.
 
