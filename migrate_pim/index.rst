@@ -6,7 +6,7 @@ This chapter describes how to apply a patch on your current version or how to up
 As a prerequisite, we assume that you are using a project installed from a Community Standard (:doc:`/install_pim/index`).
 
 How to apply a patch?
--------------
+---------------------
 
 We frequently release patches for all supported versions - you can find the list of supported versions in this article 
 `How many PIM Enterprise Edition versions are maintained by Akeneo? <https://www.akeneo.com/fr/knowledge-base/how-many-pim-versions-are-maintained-by-akeneo/>`_      
@@ -124,7 +124,7 @@ Then follow the same process as the one for the community edition:
 
 
 How to upgrade to a minor version?
--------------
+----------------------------------
 
 We release a minor version every 3 months, these versions bring new features.
 
@@ -178,7 +178,7 @@ Then, follow the migration guides located in your archive to upgrade your projec
 
 
 How to upgrade to a major version?
--------------
+----------------------------------
 
 We release a major version each year, these new major version brings new features and larger changes to answer to clients growing needs.
 
