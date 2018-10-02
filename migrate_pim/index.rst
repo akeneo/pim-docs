@@ -14,7 +14,7 @@ We frequently release patches for all supported versions - you can find the list
 Each patch contains bug fixes and sometimes improvements or security fixes, **that is why it is very important to always have the latest patch installed on your PIM.** 
 Also for support purposes, if you experience an issue, make sure your PIM is up-to-date before raising a ticket to our Support team.
  
-When our maintenance team takes care of issues, they take extreme care to avoid any backward compatibility break, but it might happen. If it is the case, the BC break is mentioned in the version's changelog. 
+When our maintenance team works on issues, they take extreme care to avoid any backward compatibility break, but it might happen. If it is the case, the BC break is mentioned in the changelog of the version.
  
 Akeneo PIM CE changelog is available on our GitHub repository: 
 
@@ -180,7 +180,7 @@ Then, follow the migration guides located in your archive to upgrade your projec
 How to upgrade to a major version?
 ----------------------------------
 
-We release a major version each year, these new major version brings new features and larger changes to answer to clients growing needs.
+We release a major version each year, these new major version brings new features and larger changes to answer clients growing needs.
 
 To migrate from 1.7 to 2.0, we recommend the use of our brand new migration tool `Transporteo`_.
 
