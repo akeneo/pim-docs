@@ -10,3 +10,4 @@ app/logs/
 _exts/
 composer.lock
 pim-docs-build/
+docker-compose.override.yml
