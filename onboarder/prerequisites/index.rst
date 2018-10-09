@@ -47,6 +47,9 @@ The parameters package provided by the akeneo cloud team must contain:
 Synchronization
 ---------------
 
+Parameters package
+^^^^^^^^^^^^^^^^^^
+
 The parameters package provided by the akeneo cloud team must contain:
 
 * A `serviceAccount.json` file that contains authentication values to be able to use the Google PubSub and Google Cloud Storage services
@@ -57,9 +60,12 @@ The parameters package provided by the akeneo cloud team must contain:
 * `ONBOARDER_RETAILER_URL` -> url of the onboarder retailer, needed for SSO implementation
 * `ONBOARDER_CLOUD_STORAGE_BUCKET_NAME` -> name of the bucket where the assets will be synchronized
 
+Worker
+^^^^^^
 | The synchronization of the catalog structure and the catalog data is handle in a asynchronous way using the Google Cloud PubSub service.
 | The messages that are part of the synchronization process are queued. 
 | The queue is consumed by a command line process called `worker`.
 | 
 | The worker have to be always launched as it poll the queue waiting for new messages to handle.
 | The akeneo/pim-onboarder extension comes with a `supervisor <http://supervisord.org/>` configuration example to manage this worker to be always running but it's up to you to manage this another way.
+
