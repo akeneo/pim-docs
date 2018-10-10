@@ -282,7 +282,7 @@ Two parameters are required, two other are optional.
 Remove
 ______
 
-This action removes values to a multiselect or a product category.
+This action removes values from a multiselect or a product category.
 
 Two parameters are required, two other are optional.
 - field: attribute code.
