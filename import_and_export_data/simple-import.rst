@@ -1,8 +1,8 @@
 How import works
 ================
 
-.. _minimal: https://github.com/akeneo/pim-community-dev/tree/v2.0.0/src/Pim/Bundle/InstallerBundle/Resources/fixtures/minimal
-.. _icecat: https://github.com/akeneo/pim-community-dev/tree/v2.0.0/src/Pim/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev
+.. _minimal: https://github.com/akeneo/pim-community-dev/blob/2.3/src/Pim/Bundle/InstallerBundle/Resources/fixtures/minimal
+.. _icecat: https://github.com/akeneo/pim-community-dev/blob/2.3/src/Pim/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev
 
 At any time, a set of data can be imported: products, attributes, users, etc.
 
@@ -35,7 +35,7 @@ In Akeneo PIM, all the processors implement ``Akeneo\Component\Batch\Item\ItemPr
 
 For an import, all processor receive items in the standard array format.
 
-Processors are similar, the most use ``Pim\Component\Connector\Processor\Denormalization\SimpleProcessor``. This SimpleProcessor needs parameters:
+Processors are similar, the most use ``Pim\Component\Connector\Processor\Denormalization\Processor``. This SimpleProcessor needs parameters:
 
 - An ``IdentifiableObjectRepositoryInterface``: The repository fetches the object by its identifier from the database if it already exists.
 - A ``SimpleFactoryInterface``: When the object does not exist, the processor uses the factory to create the object. The ``SimpleFactoryInterface`` provides this default object creation behavior.

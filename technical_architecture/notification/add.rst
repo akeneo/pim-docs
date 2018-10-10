@@ -116,7 +116,7 @@ Note that ``$object`` is ``mixed``, so feel free to give anything useful to buil
         - ``showReportButton`` (``bool``): to hide/display the "report" label on the notification
 
 .. note::
-    You can see available notification icons on the `styleguide website <https://docs.akeneo.com/2.0/design_pim/styleguide/index.php#Templates-AknNotification>`_.
+    You can see available notification icons on the `styleguide website <https://docs.akeneo.com/2.3/design_pim/styleguide/index.php#Templates-AknNotification>`_.
 
 For example, the ``create`` method of the NotificationFactory for mass edit notifications looks like that:
 

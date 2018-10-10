@@ -60,17 +60,17 @@ Enrichment Rule Structure
 -------------------------
 
 Structure’s elements which define a rule are:
-- rule code (dynamic)
-- priority*
-- conditions
-- actions
+ - rule code (dynamic)
+ - priority*
+ - conditions
+ - actions
 
 Structure's elements which define a condition are:
-- field
-- locale​*
-- scope​*
-- operator
-- value
+ - field
+ - locale​*
+ - scope​*
+ - operator
+ - value
 
 An enrichment rule is structured as follows:
 
@@ -208,12 +208,12 @@ This action copies an attribute value into another.
     be copied.
 
 Two parameters are required and four other are optional:
-- from_field: code of the attribute to be copied.
-- from_locale: locale code of the value to be copied (optional).
-- from_scope: channel code of the value to be copied (optional).
-- to_field: attribute code the value will be copied into.
-- to_locale: locale code the value will be copied into (optional).
-- to_scope: channel code the value will be copied into (optional).
+ - from_field: code of the attribute to be copied.
+ - from_locale: locale code of the value to be copied (optional).
+ - from_scope: channel code of the value to be copied (optional).
+ - to_field: attribute code the value will be copied into.
+ - to_locale: locale code the value will be copied into (optional).
+ - to_scope: channel code the value will be copied into (optional).
 
 .. tip::
 
@@ -237,10 +237,10 @@ ___
 This action assigns values to an attribute.
 
 Two parameters are required, two other are optional.
-- field: attribute code.
-- locale: local code for which value is assigned (optional).
-- scope: channel code for which value is assigned (optional).
-- value: attribute value.
+ - field: attribute code.
+ - locale: locale code for which value is assigned (optional).
+ - scope: channel code for which value is assigned (optional).
+ - value: attribute value.
 
 .. tip::
 
@@ -250,7 +250,7 @@ Two parameters are required, two other are optional.
     .. code-block:: yaml
 
         actions:
-            ­ type:   set
+            - type:   set
               field:  description
               locale: en_US
               scope:  ecommerce
@@ -262,10 +262,10 @@ ___
 This action allows to add values to a multi-select attribute or a product to categories.
 
 Two parameters are required, two other are optional.
-- field: attribute code.
-- locale: local code for which value is assigned (optional).
-- scope: channel code for which value is assigned (optional).
-- items: attribute values to add.
+ - field: attribute code.
+ - locale: locale code for which value is assigned (optional).
+ - scope: channel code for which value is assigned (optional).
+ - items: attribute values to add.
 
 .. tip::
 
@@ -282,13 +282,14 @@ Two parameters are required, two other are optional.
 Remove
 ______
 
-This action removes values to a multiselect, a category or a collection.
+This action removes values from a multiselect or a product category.
 
-Two parameters are required, two other are optional.
-- field: attribute code.
-- locale: local code for which value is assigned (optional).
-- scope: channel code for which value is assigned (optional).
-- items: attribute values to remove.
+Two parameters are required, three others are optional.
+ - field: attribute code or "categories".
+ - locale: locale code for which value is assigned (optional).
+ - scope: channel code for which value is assigned (optional).
+ - items: values to remove.
+ - include_children: if ``true``, then also apply the removal to the children of the given categories. Only applicable if ``field`` is set to "**categories**" (optional, defaults to ``false``).
 
 .. tip::
 
@@ -301,6 +302,40 @@ Two parameters are required, two other are optional.
               field: categories
               items:
                 - t-shirts
+
+    Removing category "clothing" and its children will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: remove
+              field: categories
+              items:
+                - clothing
+              include_children: true
+
+    Unclassify from the whole "Master catalog" tree will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: remove
+              field: categories
+              items:
+                - master
+              include_children: true
+
+    .. warning::
+
+        In order to fully unclassify a product (i.e. remove all its categories, from every category tree), it is far more efficient to use a set action:
+
+
+        .. code-block:: yaml
+
+            actions:
+                - type: set
+                  field: categories
+                  value: []
 
 Fields
 ++++++

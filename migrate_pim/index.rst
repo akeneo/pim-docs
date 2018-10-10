@@ -1,20 +1,32 @@
 Migrate Akeneo PIM projects
 ===========================
 
-This chapter describes how to upgrade from a patch or minor version to a more recent one.
+This chapter describes how to apply a patch on your current version or how to upgrade from a minor/major version to a more recent one.
 
 As a prerequisite, we assume that you are using a project installed from a Community Standard (:doc:`/install_pim/index`).
 
-Patch Version
--------------
+How to apply a patch?
+---------------------
 
-We frequently release patch versions, in order to provides security and bug fixes.
+We frequently release patches for all supported versions - you can find the list of supported versions in this article 
+`How many PIM Enterprise Edition versions are maintained by Akeneo? <https://www.akeneo.com/fr/knowledge-base/how-many-pim-versions-are-maintained-by-akeneo/>`_      
+ 
+Each patch contains bug fixes and sometimes improvements or security fixes, **that is why it is very important to always have the latest patch installed on your PIM.** 
+Also for support purposes, if you experience an issue, make sure your PIM is up-to-date before raising a ticket to our Support team.
+ 
+When our maintenance team works on issues, they take extreme care to avoid any backward compatibility break, but it might happen. If it is the case, the BC break is mentioned in the changelog of the version.
+ 
+Akeneo PIM CE changelog is available on our GitHub repository: 
 
-When fixing these issues, we take extreme care to avoid any backward compatibility break.
+* Go to our `Community Repository <https://github.com/akeneo/pim-community-dev/>`_. 
+* Select your branch in the drop down menu, for instance select 2.3 branch.
+* Then scroll down the page, and select the desired Changelog in the list, for instance `Changelog 2.3 version <https://github.com/akeneo/pim-community-dev/blob/2.3/CHANGELOG-2.3.md>`_.
 
-In the following example, Akeneo PIM version 2.0.2 has just been released and we are using an Akeneo PIM version 2.0.0.
+.. note::
 
-You can check the CHANGELOG-2.0.md which lists the changes provided by each version.
+    Akeneo provides 2 changelogs: one for CE edition available the Community repo and one for EE edition which is only available in the latest archive. If you want to check the latest fixes for the Enterprise Edition, download the last archive or contact us.
+ 
+In the following example, Akeneo PIM version 2.3.10 has just been released and we are using an Akeneo PIM version 2.3.9.
 
 **Community Edition**
 
@@ -24,7 +36,11 @@ Run the composer update command:
 
     php composer.phar --prefer-dist update
 
-Double check in the output of this command that the 2.0.2 version has been fetched, you can also check it by using the following command:
+Be aware that your composer.json won't be updated and some dependencies might be missing or from an outdated version.
+
+You have to check whether the latest composer.json is different from your own. In this case you should backup your current composer.json and download the newest one beforehand.
+
+Double check in the output of this command that the 2.3.10 version has been fetched, you can also check it by using the following command:
 
 .. code-block:: bash
 
@@ -61,6 +77,8 @@ If the patch is a javascript fix, please clear your browser cache before testing
 
 **Enterprise Edition**
 
+Please follow Community steps and then Enterprise Edition steps.
+
 In your enterprise standard project, the composer.json will reference both community and enterprise bundles repositories.
 
 To upgrade, please change the composer.json to:
@@ -69,12 +87,12 @@ To upgrade, please change the composer.json to:
 
     {
         ...
-        "akeneo/pim-enterprise-dev": "2.0.2",
-        "akeneo/pim-community-dev": "2.0.2",
+        "akeneo/pim-enterprise-dev": "2.3.10",
+        "akeneo/pim-community-dev": "2.3.10",
         ...
     }
 
-We always tag both community and enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 2.0.2 fix may depend on CE 2.0.2.
+We always tag both community and enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 2.3.10 fix may depend on CE 2.3.10.
 
 Using the exact patch version will avoid any local composer cache issue.
 
@@ -105,10 +123,10 @@ Then follow the same process as the one for the community edition:
     For Akeneo Cloud environments, you can run the ``partners_clear_cache`` command available on :doc:`/cloud_edition/flexibility_mode/docs/partners`.
 
 
-Minor Version
--------------
+How to upgrade to a minor version?
+----------------------------------
 
-We release minor versions every 3 months, these versions bring new features.
+We release a minor version every 3 months, these versions bring new features.
 
 Depending on these features and on the custom code you've added in your project, the migration can be more or less straightforward.
 
@@ -120,6 +138,9 @@ Here are the migration guides:
 
 **Community Edition**
 
+* `From v2.2 to v2.3`_
+* `From v2.1 to v2.2`_
+* `From v2.0 to v2.1`_
 * `From v1.6 to v1.7`_
 * `From v1.5 to v1.6`_
 * `From v1.4 to v1.5`_
@@ -128,6 +149,9 @@ Here are the migration guides:
 * `From v1.1 to v1.2`_
 * `From v1.0 to v1.1`_
 
+.. _From v2.2 to v2.3: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-2.3.md
+.. _From v2.1 to v2.2: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-2.2.md
+.. _From v2.0 to v2.1: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-2.1.md
 .. _From v1.6 to v1.7: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.7.md
 .. _From v1.5 to v1.6: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.6.md
 .. _From v1.4 to v1.5: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.5.md
@@ -142,17 +166,21 @@ Standard Enterprise Edition (EE) archives are now available on a `dedicated Part
 
 Then, follow the migration guides located in your archive to upgrade your project.
 
-* From EE v1.0 to EE v1.3: UPGRADE-1.3.md
-* From EE v1.3 to EE v1.4: UPGRADE-1.4.md
-* From CE v1.4 to EE v1.4: UPGRADE-CE-1.4-EE-1.4.md
-* From EE v1.4 to EE v1.5: UPGRADE-1.5.md
-* From EE v1.5 to EE v1.6: UPGRADE-1.6.md
+* From EE v2.2 to EE v2.3: UPGRADE-2.3.md
+* From EE v2.1 to EE v2.2: UPGRADE-2.2.md
+* From EE v2.0 to EE v2.1: UPGRADE-2.1.md
 * From EE v1.6 to EE v1.7: UPGRADE-1.7.md
+* From EE v1.5 to EE v1.6: UPGRADE-1.6.md
+* From EE v1.4 to EE v1.5: UPGRADE-1.5.md
+* From CE v1.4 to EE v1.4: UPGRADE-CE-1.4-EE-1.4.md
+* From EE v1.3 to EE v1.4: UPGRADE-1.4.md
+* From EE v1.0 to EE v1.3: UPGRADE-1.3.md
 
-Major Version
--------------
 
-We release major versions every year, these versions bring new features and larger changes to answer to growing needs.
+How to upgrade to a major version?
+----------------------------------
+
+We release a major version each year, these new major versions bring new features and larger changes to answer clients growing needs.
 
 To migrate from 1.7 to 2.0, we recommend the use of our brand new migration tool `Transporteo`_.
 

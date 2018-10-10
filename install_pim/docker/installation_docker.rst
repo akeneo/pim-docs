@@ -1,7 +1,7 @@
 Install Akeneo PIM with Docker
 ==============================
 
-Akeneo maintains its own Docker images in https://github.com/akeneo/Dockerfiles. This document provides step by step instructions to install the PIM with Docker, using these images.
+Akeneo maintains its own Docker images in a `dedicated repository <https://github.com/akeneo/Dockerfiles>`_. This document provides step by step instructions to install the PIM with Docker, using these images.
 
 .. warning::
 
@@ -10,6 +10,15 @@ Akeneo maintains its own Docker images in https://github.com/akeneo/Dockerfiles.
 .. note::
 
    These instructions are valid for community edition as well as the enterprise edition.
+
+Getting Akeneo PIM
+------------------
+
+As our Docker image does not contain Akeneo PIM, you need to download it first.
+This can be done by downloading the archive from our `download page <https://www.akeneo.com/download>`_, or from our partner portal if you have access to the enterprise edition.
+It can also be downloaded by cloning it from GitHub (using the `standard edition <https://github.com/akeneo/pim-community-standard>`_ for projects or the `development edition <https://github.com/akeneo/pim-community-dev>`_ to contribute).
+
+Every flavor (dev or standard, community or enterprise) comes with a `Docker Compose <https://docs.docker.com/compose/>`_ file template ``docker-compose.yml.dist``, ready to be used.
 
 
 System requirements
@@ -33,22 +42,59 @@ You won't face this problem on Mac OS and Windows hosts, as those systems use a 
 Mandatory folders
 *****************
 
-To accelerate the installation of the PIM dependencies, `Composer cache <https://github.com/akeneo/pim-community-dev/blob/2.0/docker-compose.yml.dist#L16>`_ and `Yarn cache <https://github.com/akeneo/pim-community-dev/blob/2.0/docker-compose.yml.dist#L30>`_ are shared between the host and the containers.
+To accelerate the installation of the PIM dependencies, Composer cache and Yarn cache are shared between the host and the containers.
+This is achieved by `bind mounting <https://docs.docker.com/storage/bind-mounts/>`_ the cache folders of your host machine with the containers as follows:
 
-You need to be sure these folders exist on your host before launching the containers. If not, Docker will create them for you, but with root permissions, preventing the containers from accessing it. As a result, dependencies installation will fail.
+.. note::
 
-Getting Akeneo PIM
-******************
+   The following compose file example is intentionally incomplete, focusing on cache directories only.
+   Check the complete file directly `in the PIM <https://github.com/akeneo/pim-community-dev/blob/master/docker-compose.yml>`_.
 
-You need to download Akeneo PIM. This can be done by downloading the archive from our download page https://www.akeneo.com/download,
-or from our partner portal if you have access to the enterprise edition. It can also be downloaded by cloning it from GitHub
-(https://github.com/akeneo/pim-community-standard for projects or https://github.com/akeneo/pim-community-dev to contribute).
+.. code-block:: yaml
+
+   version: '2'
+
+   services:
+     fpm:
+       environment:
+         COMPOSER_HOME: '/home/docker/.composer' # Declare where the Composer home folder will be IN THE CONTAINER
+       volumes:
+         - ~/.composer:/home/docker/.composer    # Bind mount the Composer home folder of your host machine with the one of the FPM container
+
+     node:
+       environment:
+         YARN_CACHE_FOLDER: '/home/node/.yarn-cache' # Declare where the Yarn cache folder will be IN THE CONTAINER
+       volumes:
+         - ~/.cache/yarn:/home/node/.yarn-cache      # Bind mount the Yarn cache folder of your host machine with the one of the Node container
+
+You need to be sure these folders exist **on your host** before launching the containers. If not, Docker will create them for you, but with root permissions, preventing the containers from accessing it. As a result, dependencies installation will fail.
+
+The cache of composer is usually in its home folder, in a ``cache`` subdirectory (in other words, in ``~/.composer/cache``). However, on some Linux systems, the Composer cache and configuration are separated in different folders:
+- composer home will be in ``~/.config/composer`` (it contains your GitHub token, mandatory to install the dependencies of ``akeneo/pim-community-standard`` or of the Enterprise Edition),
+- composer cache will be in ``~/.cache/composer``.
+
+If you are in this case, you need to update your compose file as follows:
+
+.. code-block:: yaml
+
+   version: '2'
+
+   services:
+     fpm:
+       environment:
+         COMPOSER_CACHE_DIR: '/home/docker/.cache/composer'
+         COMPOSER_HOME: '/home/docker/.config/composer'
+       volumes:
+         - ~/.cache/composer:/home/docker/.cache/composer
+         - ~/.config/composer:/home/docker/.config/composer
 
 
 Using the Docker images
 -----------------------
 
-Every flavor (dev or standard, community or enterprise) comes with a Docker Compose file template ``docker-compose.yml.dist``, ready to be used.
+Prepare the compose file
+************************
+
 Copy it as ``docker-compose.yml`` and keep it at the root of your project. You may modify it at your convenience, to change the mapping of the ports
 if you want Apache to be accessible from a port other that 8080, for instance.
 
@@ -250,7 +296,7 @@ Run behat tests
 The tests are to be run inside the containers. Start by configuring Behat, by copying the file ``behat.yml.dist`` to ``behat.yml``. Then make the following changes:
 
 - Replace any occurrence of ``http://akeneo/`` by ``http://httpd-behat/`` (which is the name of the Apache service of the Compose file that will be used to run the behats).
-- Configure selenium as follow:
+- Configure selenium as follows:
 
 .. code-block:: yaml
 

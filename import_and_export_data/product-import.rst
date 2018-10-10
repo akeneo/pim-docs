@@ -99,25 +99,6 @@ The constructor of the ``CharsetValidator`` shows that it's configured to check 
 
 You can define your own service with the same class to validate other kinds of files or encodings.
 
-The ``getConfigurationFields()`` method indicates that this service needs to be configured with a ``filePath``.
-
-.. code-block:: php
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfigurationFields()
-    {
-        return [
-            'filePath' => [
-                'options' => [
-                    'label' => 'pim_connector.import.filePath.label',
-                    'help'  => 'pim_connector.import.filePath.help'
-                ]
-            ],
-        ];
-    }
-
 As it implements ``Akeneo\Component\Batch\Step\StepExecutionAwareInterface``, the step execution will be injected and usable during the execution.
 
 The ``Akeneo\Component\Batch\Model\StepExecution`` allows to add information, messages and counters during the execution.
@@ -173,7 +154,7 @@ This step is a default step, an ``Akeneo\Component\Batch\Step\ItemStep`` is inst
 
 An ``ItemStep`` always contains 3 elements, a ``Akeneo\Component\Batch\Item\ItemReaderInterface``, a ``Akeneo\Component\Batch\Item\ItemProcessorInterface`` and a ``Akeneo\Component\Batch\Item\ItemWriterInterface``.
 
-We provide here specific implementations for these elements, the services are declared with aliases ``pim_connector.reader.file.csv_product``, ``pim_connector.processor.denormalization.product.flat``, ``pim_connector.writer.doctrine.product``.
+We provide here specific implementations for these elements, the services are declared with aliases ``pim_connector.processor.denormalization.product.flat``.
 
 Product Reader
 --------------
@@ -266,8 +247,6 @@ This service allows to transform the CSV array of items to the Standard Format a
             ['data' => 'Very Nice Akeneo T-Shirt', 'locale' => 'en_US', 'scope' => 'ecommerce'],
         ]
     ]
-
-The class ``Pim\Component\Connector\ArrayConverter\Flat\ProductStandardConverter`` provides a specific implementation to handle product data.
 
 .. note:
 

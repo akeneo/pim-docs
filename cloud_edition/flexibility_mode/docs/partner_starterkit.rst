@@ -8,7 +8,7 @@ A. Deploy your ssh keys
 To get access to the environments, you need to follow this procedure:
 
 #. Make sure that the SSH keys you want to grant access are registered in the `Partners Portal`_
-#. Create a new cloud ticket to the support with following items :
+#. `Create a new cloud ticket to the support`_ with following items :
 
     - Name of your Akeneo Cloud Project (i.e. <my-project>)
     - List of the SSH keys owners (if you have several keys, you must put in your request the content of the right one) on the Partners Portal, and for each key the environment you want to provide access to (you may not want to give access to the production environment to everybody)
@@ -29,13 +29,14 @@ D. Akeneo info
 
 We provide some information about `our own akeneo setup`_
 
-E. Usefull commands
+E. Useful commands
 -------------------
 
 We provide some aliases to do some `superuser tasks`_
 
 
 .. _`Partners Portal`: https://partners.akeneo.com
+.. _`Create a new cloud ticket to the support`: https://akeneo.atlassian.net/servicedesk/customer/portal/8/group/23 
 .. _`Environments access`: ./environments_access.html
 .. _`composer into instance`: ./composer_settings.html
 .. _`our own akeneo setup`: ./pim_application.html

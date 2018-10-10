@@ -51,7 +51,7 @@ From the `./pim-docs` directory, run:
 
 ## Make documentation code work with pim-community-dev or standard
 
-Install pim-community
+Install pim-community.
 
 Then, go to Akeneo PIM `src/` directory and create a symlink `Acme` pointing to `pim-docs/src/Acme`.
 
@@ -69,7 +69,7 @@ to redirect to `/styleguide/index.php`:
 
 ## Contribution
 
-Don't hesitate to suggest cookbook ideas via https://github.com/akeneo/pim-docs/issues
+Don't hesitate to suggest cookbook ideas via https://github.com/akeneo/pim-docs/issues.
 
 ## Developer's notes
 
@@ -80,7 +80,7 @@ updated on 2016-07. If you want to customize the Akeneo theme, please only updat
 
 Install [Docker](https://docs.docker.com/engine/installation/).
 
-[optional] To update the branch list with the current pim-docs branches, use
+[optional] To update the branch list with the current pim-docs branches, use:
 
 ```
 sed -i -e "s/^\(.*\)'versions': .*,\(.*\)$/\1'versions': ['$(git branch -l|grep -x "\(^[ *]\+[0-9]\+\.[0-9]\+.*\)\|\(^[ *]\+master\)" | cut -c 3- | sort -r | paste -sd " ")'],\2/" conf.py
@@ -89,12 +89,12 @@ sed -i -e "s/^\(.*\)'versions': .*,\(.*\)$/\1'versions': ['$(git branch -l|grep 
 From the `./pim-docs` directory, run:
 
 ```bash
-    $ docker build . --tag pim-docs:2.0
+    $ docker build . --tag pim-docs:2.3
     $ rm -rf pim-docs-build && mkdir pim-docs-build
     $ docker run --rm \
         -v $(pwd):/home/akeneo/pim-docs/data \
-        pim-docs:2.0 \
-        ./build.sh 2.0 --uid $(id -u) --gid $(id -g) --no-asset-check
+        pim-docs:2.3 \
+        ./build.sh 2.3 --uid $(id -u) --gid $(id -g) --no-asset-check
 ```
 
 The docs will be built into `./pim-docs-build`.

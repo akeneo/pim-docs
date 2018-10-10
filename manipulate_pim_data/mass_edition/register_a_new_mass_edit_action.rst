@@ -8,7 +8,7 @@ on selected products.
 Prerequisite
 ------------
 The mass edit action uses the `BatchBundle
-<https://github.com/akeneo/pim-community-dev/tree/v2.0.0/src/Akeneo/Bundle/BatchBundle>`_ in order to run mass edit in the background. Readers and Writers are already
+<https://github.com/akeneo/pim-community-dev/blob/2.3/src/Akeneo/Bundle/BatchBundle>`_ in order to run mass edit in the background. Readers and Writers are already
 created so in this cookbook we will focus on how to create a Mass Edit Action and create a Processor.
 For more information on how to create Jobs, Readers, Processors, or Writers please see :doc:`/import_and_export_data/index`.
 
@@ -58,39 +58,71 @@ As you can see, the tag needs several parameters:
 
     The alias will be used in the URL (``/enrich/mass-edit-action/capitalize-values/configure``)
 
-Phase 2: Create the FormType
-----------------------------
+Phase 2: Create the Form extension
+----------------------------------
 
-.. tip::
+For this step, you'll need to register a new form extension in ``/src/Acme/Bundle/CustomMassActionBundle/Ressources/config/form_extensions/mass_edit/product.yml``:
 
-    As the **Operation** is used to build configuration, we could need a ``FormType`` that will be shown during the configuration step in the UI. Use it to show whatever is useful to you: Select, Input...
+.. code-block:: yaml
 
-For this cookbook, we do not need the user to configure this action, so we'll use an empty ``FormType``:
+    extensions:
+        pim-mass-product-edit-product-custom:
+            module: pim/mass-edit-form/product/custom
+            parent: pim-mass-product-edit
+            position: 210
+            targetZone: custom
+            config:
+                title: pim_enrich.mass_edit.product.step.custom.title
+                label: pim_enrich.mass_edit.product.operation.custom.label
+                labelCount: pim_enrich.mass_edit.product.custom.label_count
+                description: pim_enrich.mass_edit.product.operation.custom.description
+                code: custom
+                jobInstanceCode: custom
+                icon: icon-custom
 
-.. literalinclude:: ../../src/Acme/Bundle/CustomMassActionBundle/Form/Type/MassEditAction/CapitalizeValuesType.php
-  :language: php
-  :prepend: // /src/Acme/Bundle/CustomMassActionBundle/Form/Type/MassEditAction/CapitalizeValuesType.php
-  :linenos:
+The Mass Edit should be defined with at least ``code``, ``label``, ``icon`` and ``jobInstanceCode`` in the config array.
+The combination of the ``code``, ``label`` and ``icon`` define the Operation.
+The ``jobInstanceCode`` is the code of the background job.
 
-Don't forget to register it as a service in the DI:
+Then, you will have to create a requirejs module for this extension (``/src/Acme/Bundle/CustomMassActionBundle/Ressources/public/js/mass-edit/form/product/custom.js``) :
 
-.. literalinclude:: ../../src/Acme/Bundle/CustomMassActionBundle/Resources/config/form_types.yml
-  :language: yaml
-  :prepend: # /src/Acme/Bundle/CustomMassActionBundle/Resources/config/form_types.yml
-  :linenos:
+.. code-block:: js
 
-The ``FormType`` is now linked to the Operation with its name.
-You need to create a template to render your Mass Edit Action form:
+    'use strict';
 
-.. literalinclude::
-   ../../app/Resources/PimEnrichBundle/views/MassEditAction/product/configure/capitalize-values.html.twig
-   :language: jinja
-   :prepend: {# /app/Resources/PimEnrichBundle/views/MassEditAction/product/configure/capitalize-values.html.twig #}
-   :linenos:
+    define(
+        [
+            'underscore',
+            'pim/mass-edit-form/product/operation',
+            'pim/template/mass-edit/product/change-status'
+        ],
+        function (
+            _,
+            BaseOperation,
+            template
+        ) {
+            return BaseOperation.extend({
+                template: _.template(template),
 
-.. note::
+                /**
+                 * {@inheritdoc}
+                 */
+                render: function () {
+                    this.$el.html(this.template());
 
-    It will be visible in the **configure** step of the mass edit.
+                    return this;
+                },
+            });
+        }
+    );
+
+Finally, you will have to require your custom module into the ``/src/Acme/Bundle/CustomMassActionBundle/Ressources/config/requirejs.yml``.
+
+.. code-block:: yaml
+
+    config:
+        paths:
+            pim/mass-edit-form/product/custom: pimacme/js/mass-edit/form/product/custom
 
 Phase 3: Create the Processor
 -----------------------------

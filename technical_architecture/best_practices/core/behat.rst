@@ -1,7 +1,7 @@
 Setup Behat
 ===========
 
-The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-community-dev/tree/v2.0.0/features
+The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-community-dev/blob/2.3/tests/legacy/features
 
 These scenarios allow to:
 
@@ -22,14 +22,14 @@ Install Selenium Server
 -----------------------
 Download Selenium server 2.43.1 `here`_.
 
-.. _here: http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar
+.. _here: http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar
 
 
 Install Firefox
 ---------------
 In order to use Selenium RC, you must actually install `firefox`_.
 
-.. _firefox: http://ftp.mozilla.org/pub/firefox/releases/32.0/
+.. _firefox: http://ftp.mozilla.org/pub/firefox/releases/45.0/
 
 
 Create a VirtualHost
