@@ -40,6 +40,7 @@ Default CRONs are setted as below:
 +-----------------------------------------------------------------+-------------------+--------------------------------------------+
 | bin/console pim:asset:send-expiration-notification  --env=prod  | 0 1 \* \* \*      | At 1:00 AM every day                       |
 +-----------------------------------------------------------------+-------------------+--------------------------------------------+
+
 .. warning::
 
     If you plan to customize CRON frequencies, please notice us as we first have to remove this default configuration.
