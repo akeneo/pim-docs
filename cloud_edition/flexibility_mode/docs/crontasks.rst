@@ -62,7 +62,7 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     #Ansible: pim:asset:send-expiration-notification
     0 1 * * * pim:asset:send-expiration-notification --env=prod
     #Ansible: pimee:project:recalculate
-    0 20 * * * pimee:project:recalculate --env=prod
+    0 2 * * * pimee:project:recalculate --env=prod
 
     # My custom jobs
     SHELL=/bin/bash
