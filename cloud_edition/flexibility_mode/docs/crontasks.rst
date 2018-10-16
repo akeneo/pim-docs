@@ -6,6 +6,7 @@ As the frequency of those cronjob and the usage will vary depending on the proje
 A common case is when you upgrade the PIM, you will somtimes need to update the crontab for the PIM to perform as intended.
 
 .. warning::
+
     It is the responsibility of the integrator the tune the cronjob according to the project needs and version during upgrade
 
 Usage
@@ -14,6 +15,7 @@ Usage
 The cronjobs are launched with the usual `akeneo` user so you can see the crontab using the following command:
 
 .. code-block:: bash
+
     me@localhost:$ ssh akeneo@my-instance.cloud.akeneo.com
     akeneo@my-instance:$ crontab -l # Show the crontab
     akeneo@my-instance:$ crontab -e # Edit the crontab
@@ -70,6 +72,7 @@ We would like to remind you that all our servers are configured with UTC time, d
 If your country uses "Daylight Saving Time" and you want to take that into consideration on your cronjob you can follow the following trick:
 
 .. code-block:: bash
+
     # The command /foo/bar will be executed at 02:15 UTC or 03:15 UTC 
     # depending on the DST settings of the CET timezone
     15 2 * * * [ `TZ=CET date +\%Z` = CET ] && sleep 3600; /foo/bar
