@@ -1,5 +1,5 @@
-Crontasks settings
-==================
+Periodic tasks / Crontab settings
+=================================
 
 With every Flexibility instance comes a default configuration of the cronjobs according to your PIM version.
 As the frequency of those cronjob and the usage will vary depending on the project, we do not manage cronjob changes beside the first setup.
