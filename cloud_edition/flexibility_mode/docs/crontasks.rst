@@ -1,9 +1,9 @@
 Periodic tasks / Crontab settings
 =================================
 
-With every Flexibility instance comes a default configuration of the cronjobs according to your PIM version.
-As the frequency of those cronjob and the usage will vary depending on the project, we do not manage cronjob changes beside the first setup.
-A common case is when you upgrade the PIM, you will somtimes need to update the crontab for the PIM to perform as intended.
+With every Flexibility instance comes a default configuration of the crontab according to your PIM version.
+As the frequency of those recurring tasks may vary depending the project needs, we do not manage cronjob changes beside the first setup.
+A common case is when you upgrade the PIM, you will probably need to update the crontab for the PIM to perform as intended.
 
 .. warning::
 
@@ -12,7 +12,7 @@ A common case is when you upgrade the PIM, you will somtimes need to update the 
 Usage
 -----
 
-The cronjobs are launched with the usual `akeneo` user so you can see the crontab using the following command:
+The cronjobs are launched with the usual `akeneo` user. You can see the crontab using the following command:
 
 .. code-block:: bash
 
@@ -61,15 +61,17 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
 Mail notification
 -----------------
 
-In case you want to be notified when something wrong happens doing cronjob execution we configure by default the *MAILTO* variable on top of the crontab.
-The default value will be set to the administrator email but you can tune it to fit your needs (by using a mailing list for example).
+In case you want to be notified when something wrong happens doing a task execution you can specify an email address via the *MAILTO* variable.
+The default value will be set to the administrator email but you can change it to fit your needs (by using a mailing list for example).
 
 Execution time
 --------------
 
-We would like to remind you that all our servers are configured with UTC time, don't forget to convert you desired local time to UTC time.
+We would like to remind you that all our servers are configured with UTC time, don't forget to convert the time from the desired local time to UTC time.
 
-If your country uses "Daylight Saving Time" and you want to take that into consideration on your cronjob you can follow the following trick:
+.. warning::
+
+    If your country uses "Daylight Saving Time" and you want to take that into consideration on your cronjob you can follow the following trick:
 
 .. code-block:: bash
 
