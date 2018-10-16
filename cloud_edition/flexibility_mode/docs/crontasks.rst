@@ -7,7 +7,7 @@ A common case is when you upgrade the PIM, you will probably need to update the 
 
 .. warning::
 
-    It is the responsibility of the integrator the tune the cronjob according to the project needs and version during upgrade
+    It is the responsibility of the integrator to tune the cronjob according to the project needs
 
 Usage
 -----
