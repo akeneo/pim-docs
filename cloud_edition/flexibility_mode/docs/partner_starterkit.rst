@@ -5,15 +5,7 @@ After the Flexibility setup, you will need to take notice of the following point
 
 A. Deploy your ssh keys
 -----------------------
-To get access to the environments, you need to follow this procedure:
-
-#. Make sure that the SSH keys you want to grant access are registered in the `Partners Portal`_
-#. Create a new cloud ticket to the support with following items :
-
-    - Name of your Akeneo Cloud Project (i.e. <my-project>)
-    - List of the SSH keys owners (if you have several keys, you must put in your request the content of the right one) on the Partners Portal, and for each key the environment you want to provide access to (you may not want to give access to the production environment to everybody)
-    - List of IP addresses from where the SSH communication will take place
-
+To get access to the environments, you need to follow this procedure: `Manage access to your Cloud Flexibility instance`_
 
 B. Use SSH
 ----------
@@ -35,7 +27,7 @@ E. Usefull commands
 We provide some aliases to do some `superuser tasks`_
 
 
-.. _`Partners Portal`: https://partners.akeneo.com
+.. _`Manage access to your Cloud Flexibility instance`:  https://help.akeneo.com/portal/articles/access-akeneo-flexibility.html
 .. _`Environments access`: ./environments_access.html
 .. _`composer into instance`: ./composer_settings.html
 .. _`our own akeneo setup`: ./pim_application.html
