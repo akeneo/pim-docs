@@ -456,7 +456,7 @@ __________
 +--------------+--------------------------+
 | Example      | .. code-block:: yaml     |
 |              |                          |
-|              |   field: categories.code |
+|              |   field: categories      |
 |              |   operator: IN           |
 |              |   value:                 |
 |              |    - C0056               |
