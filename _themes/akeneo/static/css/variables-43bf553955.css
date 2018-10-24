@@ -6722,7 +6722,7 @@ button.close {
   }
 }
 body {
-  padding-top: 180px; /* Set to 60px when deactivating pre-version notice */
+  padding-top: 80px; /* Set to 50px when deactivating pre-version notice */
   height: 100%;
   overflow-y: scroll;
   font-weight: 300;
@@ -6735,7 +6735,7 @@ strong {
 }
 p,
 li {
-  line-height: 2;
+  line-height: 1.5;
 }
 .container {
   margin-bottom: 60px;
@@ -7520,7 +7520,11 @@ hr.big {
 }
 h1 {
   font-weight: bold;
-  margin-top: 75px;
+  margin-top: 25px;
+}
+h1.super-title {
+  color: #e0e0e0;
+  border-bottom: 1px solid #f5f5f5;
 }
 h2 {
   margin-top: 45px;
