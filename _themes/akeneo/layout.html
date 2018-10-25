@@ -91,13 +91,14 @@
                 </div>
             </form>
         </div>
-        <!-- Remove to deactivate development version notice -->
-        <div class="alert alert-warning warning deprecation-notice">
-            <div class="bg-warning text-center">
-                Caution! You are browsing the documentation for Akeneo in version <b>{{ version }}</b>, which is a development version.<br>
-                <strong>Consider using the <a href="https://docs.akeneo.com/latest/">latest stable version</a>.</strong>
-            </div>
-        </div>
+    </div>
+
+    <!-- Remove to deactivate development version notice -->
+    <div class="bg-warning text-warning text-center small" style="padding: 5px 0;">
+        <i class="fa fa-warning"></i>
+        Caution! You are browsing the documentation for Akeneo in version <b>master</b>, which is a development
+        version. <strong>Consider using the <a href="https://docs.akeneo.com/latest/">latest stable
+        version</a>.</strong>
     </div>
 </nav>
 
@@ -105,7 +106,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h1>&nbsp;</h1>
+                <h1 class="super-title">&nbsp;</h1>
             </div>
         </div>
         <div class="row">
@@ -173,6 +174,7 @@
                 navbar.addClass('scroll');
             }
         });
+        $(window).scroll();
     });
 </script>
 
