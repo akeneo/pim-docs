@@ -7,7 +7,7 @@ A common case is when you upgrade the PIM, you will probably need to update the 
 
 .. warning::
 
-    It is the responsibility of the integrator to tune the cronjob according to the project needs
+    It is the responsibility of the integrator to tune the cronjob according to the project needs.
 
 Usage
 -----
@@ -75,7 +75,7 @@ We would like to remind you that all our servers are configured with UTC time, d
 
 .. code-block:: bash
 
-    # The command /foo/bar will be executed at 02:15 UTC or 03:15 UTC 
+    # The command /foo/bar will be executed at 02:15 UTC or 03:15 UTC
     # depending on the DST settings of the CET timezone
     15 2 * * * [ `TZ=CET date +\%Z` = CET ] && sleep 3600; /foo/bar
 
