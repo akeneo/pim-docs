@@ -7,7 +7,7 @@ A common case is when you upgrade the PIM, you will probably need to update the 
 
 .. warning::
 
-    It is the responsibility of the integrator to tune the cronjob according to the project needs
+    It is the responsibility of the integrator to tune the cronjob according to the project needs.
 
 Usage
 -----
@@ -49,8 +49,20 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     SHELL=“/usr/local/sbin/cron_wrapper.sh”
     MAILTO="projectmanager@acme.com"
 
-    # Default cronjobs
-    30 1 * * * a-default-command --env=prod
+    #Ansible: akeneo:rule:run
+    15 12,20 * * * akeneo:rule:run --env=prod
+    #Ansible: pim:versioning:refresh
+    30 16,23 * * * pim:versioning:refresh --env=prod
+    #Ansible: pim:completeness:calculate
+    45 */2 * * * pim:completeness:calculate --env=prod
+    #Ansible: akeneo:batch:purge-job-execution
+    20 0 1 * * akeneo:batch:purge-job-execution --env=prod
+    #Ansible: pimee:project:notify-before-due-date
+    20 0 * * * pimee:project:notify-before-due-date --env=prod
+    #Ansible: pim:asset:send-expiration-notification
+    0 1 * * * pim:asset:send-expiration-notification --env=prod
+    #Ansible: pimee:project:recalculate
+    0 2 * * * pimee:project:recalculate --env=prod
 
     # My custom jobs
     SHELL=/bin/bash
@@ -75,7 +87,7 @@ We would like to remind you that all our servers are configured with UTC time, d
 
 .. code-block:: bash
 
-    # The command /foo/bar will be executed at 02:15 UTC or 03:15 UTC 
+    # The command /foo/bar will be executed at 02:15 UTC or 03:15 UTC
     # depending on the DST settings of the CET timezone
     15 2 * * * [ `TZ=CET date +\%Z` = CET ] && sleep 3600; /foo/bar
 
