@@ -9,15 +9,18 @@ Edit your crontab with ``crontab -e`` and configure your tasks.
 
     Be sure to update the cron of the user used to install the PIM, to be able to run the command
 
-You have to add these 4 commands to your local installation:
+You have to add these 6 commands to your local installation:
 
 .. code-block:: bash
     :linenos:
 
-    php /path/to/installation/pim-enterprise-standard/bin/console pim:completeness:calculate --env=prod    # recalculates the products completeness
-    php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod        # processes pending versions
-    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod               # executes rules on products
-    php /path/to/installation/pim-community-standard/bin/console pim:volume:aggregate --env=prod           # recalculates the number of product values
+    php /path/to/installation/pim-enterprise-standard/bin/console pim:completeness:calculate --env=prod              # recalculates the products completeness
+    php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod                  # processes pending versions
+    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod                         # executes rules on products
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:notify-before-due-date --env=prod    # check and send notifications (TeamWork Assistant)
+    php /path/to/installation/pim-enterprise-standard/bin/console pim:asset:send-expiration-notification --env=prod  # check and send notifications for asset date delay
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:recalculate --env=prod               # recalculate project completeness (TeamWork Assistant)
+
 
 In the following example, these lines will run the completeness calculation at 11pm, the versioning calculation at 5am, the rules calculation at 6pm and the aggregate volume at 10pm every day:
 
