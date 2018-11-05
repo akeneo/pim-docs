@@ -7,7 +7,6 @@ A. Deploy your ssh keys
 -----------------------
 To get access to the environments, you need to follow this procedure: `Manage access to your Cloud Flexibility instance`_
 
-
 B. Use SSH
 ----------
 
