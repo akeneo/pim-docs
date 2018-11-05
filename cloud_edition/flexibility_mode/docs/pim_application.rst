@@ -62,3 +62,6 @@ As we don’t provide (yet) a tools to deploy your own custom code on the enviro
 6. Upload limits
 ----------------
 | Maximum file size upload is set to 100MB
+|
+
+.. _`Cron tasks`: ./crontasks.html
