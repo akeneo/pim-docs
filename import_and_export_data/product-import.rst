@@ -16,7 +16,7 @@ Take a look at this configuration based on ConnectorBundle (``src/Pim/Bundle/Con
 .. code-block:: yaml
 
     parameters:
-        pim_connector.job.simple_job.class: Akeneo\Component\Batch\Job\Job
+        pim_connector.job.simple_job.class: Akeneo\Tool\Component\Batch\Job\Job
 
     services:
         ## CSV product import
@@ -61,7 +61,7 @@ This step is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/steps.
 .. code-block:: yaml
 
     parameters:
-        pim_connector.step.validator.class: Pim\Component\Connector\Step\ValidatorStep
+        pim_connector.step.validator.class: Akeneo\Tool\Component\Connector\Step\ValidatorStep
 
     services
         pim_connector.step.charset_validator:
@@ -74,12 +74,12 @@ This step is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/steps.
 
 We can also see that we inject a service ``pim_connector.validator.item.charset_validator`` in this step.
 
-This service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\items.yml``.
+This service is defined in ``src\Akeneo\Tool\Bundle\ConnectorBundleBundle\Resources\config\items.yml``.
 
 .. code-block:: yaml
 
     parameters:
-        pim_connector.validator.item.charset_validator.class: Pim\Component\Connector\Item\CharsetValidator
+        pim_connector.validator.item.charset_validator.class: Akeneo\Tool\Component\Connector\Item\CharsetValidator
 
     services:
         pim_connector.validator.item.charset_validator:
@@ -99,9 +99,9 @@ The constructor of the ``CharsetValidator`` shows that it's configured to check 
 
 You can define your own service with the same class to validate other kinds of files or encodings.
 
-As it implements ``Akeneo\Component\Batch\Step\StepExecutionAwareInterface``, the step execution will be injected and usable during the execution.
+As it implements ``Akeneo\Tool\Component\Batch\Step\StepExecutionAwareInterface``, the step execution will be injected and usable during the execution.
 
-The ``Akeneo\Component\Batch\Model\StepExecution`` allows to add information, messages and counters during the execution.
+The ``Akeneo\Tool\Component\Batch\Model\StepExecution`` allows to add information, messages and counters during the execution.
 
 .. code-block:: php
 
@@ -117,19 +117,19 @@ The ``Akeneo\Component\Batch\Model\StepExecution`` allows to add information, me
 
 .. note::
 
-    The parsing of the bath_jobs.yml is quite `specific`, you can take a look at this class to understand it ``Akeneo\Bundle\BatchBundle\DependencyInjection\Compiler\RegisterJobsPass``.
+    The parsing of the bath_jobs.yml is quite `specific`, you can take a look at this class to understand it ``Akeneo\Tool\Bundle\BatchBundle\DependencyInjection\Compiler\RegisterJobsPass``.
 
 Product Import Step
 -------------------
 
 The purpose of this step is to read an input file, to transform lines into product objects, to validate and save them in the PIM.
 
-This step is a default step, an ``Akeneo\Component\Batch\Step\ItemStep`` is instantiated and injected.
+This step is a default step, an ``Akeneo\Tool\Component\Batch\Step\ItemStep`` is instantiated and injected.
 
 .. code-block:: yaml
 
     parameters:
-        pim_connector.step.item_step.class: Akeneo\Component\Batch\Step\ItemStep
+        pim_connector.step.item_step.class: Akeneo\Tool\Component\Batch\Step\ItemStep
 
     services:
         pim_connector.step.csv_product.import:
@@ -152,7 +152,7 @@ This step is a default step, an ``Akeneo\Component\Batch\Step\ItemStep`` is inst
             - '@pim_connector.processor.denormalization.product'
             - '@pim_connector.writer.database.product'
 
-An ``ItemStep`` always contains 3 elements, a ``Akeneo\Component\Batch\Item\ItemReaderInterface``, a ``Akeneo\Component\Batch\Item\ItemProcessorInterface`` and a ``Akeneo\Component\Batch\Item\ItemWriterInterface``.
+An ``ItemStep`` always contains 3 elements, a ``Akeneo\Tool\Component\Batch\Item\ItemReaderInterface``, a ``Akeneo\Tool\Component\Batch\Item\ItemProcessorInterface`` and a ``Akeneo\Tool\Component\Batch\Item\ItemWriterInterface``.
 
 We provide here specific implementations for these elements, the services are declared with aliases ``pim_connector.processor.denormalization.product.flat``.
 
@@ -191,7 +191,7 @@ The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/read
 .. code-block:: yaml
 
     parameters:
-        pim_connector.reader.file.xlsx_product.class: Pim\Component\Connector\Reader\File\Xlsx\ProductReader
+        pim_connector.reader.file.xlsx_product.class: Akeneo\Pim\Enrichment\Component\Product\Connector\Reader\File\Xlsx\ProductReader
         pim_connector.reader.file.csv.class: Pim\Component\Connector\Reader\File\Csv\Reader
 
     services:
@@ -268,7 +268,7 @@ data will be converted to transform comma to dot.
 
     $convertedItem = $this->convertLocalizedAttributes($convertedItem);
 
-The service uses the class ``Akeneo\Component\Localization\Localize\AttributeConverter``.
+The service uses the class ``Akeneo\Tool\Component\Localization\Localize\AttributeConverter``.
 
 .. note::
 
@@ -284,7 +284,7 @@ The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/proc
 .. code-block:: yaml
 
     parameters:
-        pim_connector.processor.denormalization.product.class: Pim\Component\Connector\Processor\Denormalization\ProductProcessor
+        pim_connector.processor.denormalization.product.class: Akeneo\Pim\Enrichment\Component\Product\Connector\Processor\Denormalizer\ProductProcessor
 
     services:
         pim_connector.processor.denormalization.product:
@@ -298,7 +298,7 @@ The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/proc
                 - '@pim_catalog.comparator.filter.product'
                 - '@pim_catalog.localization.localizer.converter'
 
-The class ``Pim\Component\Connector\Processor\Denormalization\ProductProcessor`` mainly delegates the operations to different technical and business services.
+The class ``Akeneo\Pim\Enrichment\Component\Product\Connector\Processor\Denormalizer\ProductProcessor`` mainly delegates the operations to different technical and business services.
 
 .. code-block:: php
 
@@ -330,7 +330,7 @@ This service allows to fetch a product by its identifier (SKU by default).
 
     $product = $this->repository->findOneByIdentifier($identifier);
 
-This is possible because the ``Pim\Bundle\CatalogBundle\Doctrine\ORM\Repository\ProductRepository`` implements ``Akeneo\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface``.
+This is possible because the ``Pim\Bundle\CatalogBundle\Doctrine\ORM\Repository\ProductRepository`` implements ``Akeneo\Tool\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface``.
 
 ProductBuilderInterface
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -356,7 +356,7 @@ This comparison mode can be enabled or disabled with the configuration parameter
 
     $filteredItem = $this->filterIdenticalData($product, $convertedItem);
 
-The service uses the class ``Pim\Component\Catalog\Comparator\Filter\ProductFilter``.
+The service uses the class ``Akeneo\Pim\Enrichment\Component\Product\Comparator\Filter\ProductFilter``.
 
 .. note::
 
@@ -381,7 +381,7 @@ An important point to understand is that the modifications are applied only in m
 
     $this->updater->update($product, $filteredItem);
 
-The service uses the class ``Pim\Component\Catalog\Updater\ProductUpdater``.
+The service uses the class ``Akeneo\Pim\Enrichment\Component\Product\Updater\ProductUpdater``.
 
 ValidatorInterface
 ^^^^^^^^^^^^^^^^^^
@@ -416,12 +416,12 @@ Product Writer
 
 This element receives the validated products and saves them to the database.
 
-The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\writers.yml``.
+The service is defined in ``src\Akeneo\Tool\Bundle\ConnectorBundleBundle\Resources\config\writers.yml``.
 
 .. code-block:: yaml
 
     parameters:
-        pim_connector.writer.database.product.class: Pim\Component\Connector\Writer\Database\ProductWriter
+        pim_connector.writer.database.product.class: Akeneo\Pim\Enrichment\Component\Product\Connector\Writer\Database\ProductWriter
 
     services:
         pim_connector.writer.database.product:
@@ -431,7 +431,7 @@ The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\writ
                 - '@pim_catalog.saver.product'
                 - '@akeneo_storage_utils.doctrine.object_detacher'
 
-The class ``Pim\Component\Connector\Writer\Database\ProductWriter`` mainly delegates the operations to different technical and business services.
+The class ``Akeneo\Pim\Enrichment\Component\Product\Connector\Writer\Database\ProductWriter`` mainly delegates the operations to different technical and business services.
 
 .. code-block:: php
 
@@ -475,7 +475,7 @@ We use a dedicated step to be sure that all valid products have already been sav
 
 The purpose of this step is to read the input file, to transform lines to product association objects, and to validate and save them in the PIM.
 
-This step is a default step, an ``Akeneo\Component\Batch\Step\ItemStep`` is instantiated and injected.
+This step is a default step, an ``Akeneo\Tool\Component\Batch\Step\ItemStep`` is instantiated and injected.
 
 .. code-block:: yaml
 

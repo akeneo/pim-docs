@@ -4,19 +4,19 @@ How To Log Memory Usage In Calculation Steps
 .. _calculation step: ../../technical_overview/teamwork_assistant/project_creation.html#calculation-steps
 
 We created the
-``PimEnterprise\Component\TeamworkAssistant\Job\ProjectCalculation\CalculationStep\LoggableStep`` for debug purposes.
+``Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Job\ProjectCalculation\CalculationStep\LoggableStep`` for debug purposes.
 It allows to log the memory usage for each loop of the
-``PimEnterprise\Component\TeamworkAssistant\Job\ProjectCalculation\ProjectCalculationTasklet``. It helped us to hunt
+``Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Job\ProjectCalculation\ProjectCalculationTasklet``. It helped us to hunt
 memory leaks. Don't hesitate to use it to check your custom `calculation step`_.
 
 .. code-block:: php
 
     <?php // src/PimEnterprise/Component/TeamworkAssistant/Job/ProjectCalculation/CalculationStep/LoggableStep.php
 
-    namespace PimEnterprise\Component\TeamworkAssistant\Job\ProjectCalculation\CalculationStep;
+    namespace Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Job\ProjectCalculation\CalculationStep;
 
-    use Pim\Component\Catalog\Model\ProductInterface;
-    use PimEnterprise\Component\TeamworkAssistant\Model\ProjectInterface;
+    use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
+    use Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Model\ProjectInterface;
 
     /**
      * Log the memory usage. Use it to debug.
@@ -53,7 +53,7 @@ You need to declare the ``LoggableStep`` as a service with the tag ``teamwork_as
 .. code-block:: yaml
 
     teamwork_assistant.calculation_step.loggable_step:
-        class: 'PimEnterprise\Component\TeamworkAssistant\Job\ProjectCalculation\CalculationStep\LoggableStep'
+        class: 'Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Job\ProjectCalculation\CalculationStep\LoggableStep'
         arguments:
             - '/your/custom/path/memory_leak_hunter.csv'
         public: false

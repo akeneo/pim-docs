@@ -41,7 +41,7 @@ Add filters:
         // filter on a metric
         ->addFilter('weight', '<', ['amount' => 1, 'unit' => 'KILOGRAM']);
 
-Note that you can also use `Pim\Component\Catalog\Query\Filter\Operators` to access all appropriate operator constants.
+Note that you can also use `Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators` to access all appropriate operator constants.
 
 Add sorters:
 
@@ -53,12 +53,12 @@ Add sorters:
         // to sort by completeness, the locale and the scope are expected, if not provided, the default ones are used
         ->addSorter('completeness', 'DESC', ['locale' => 'fr_FR', 'scope' => 'mobile']);
 
-Note that you can also use `Pim\Component\Catalog\Query\Sorter\Directions` to access all appropriate sort constants.
+Note that you can also use `Akeneo\Pim\Enrichment\Component\Product\Query\Sorter\Directions` to access all appropriate sort constants.
 
 Execute the Query to Get a Cursor
 ---------------------------------
 
-It will return an `Akeneo\Component\StorageUtils\CursorInterface` on the products collection.
+It will return an `Akeneo\Tool\Component\StorageUtils\CursorInterface` on the products collection.
 
 As it implements a Cursor, it avoids to load all the products in memory and uses an internal pagination to load them page per page.
 

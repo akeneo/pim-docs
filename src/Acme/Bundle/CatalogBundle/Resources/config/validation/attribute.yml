@@ -1,4 +1,4 @@
-Pim\Bundle\CatalogBundle\Entity\Attribute:
+Akeneo\Pim\Structure\Component\Model\Attribute:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: code
         - Pim\Bundle\CatalogBundle\Validator\Constraints\SingleIdentifierAttribute: ~
@@ -148,13 +148,13 @@ Pim\Bundle\CatalogBundle\Entity\Attribute:
             - NotBlank: ~
             - Valid: ~
 
-Pim\Bundle\CatalogBundle\Entity\AttributeTranslation:
+Akeneo\Pim\Structure\Component\Model\AttributeTranslation:
     properties:
         label:
             - Length:
                 max: 100
 
-Pim\Bundle\CatalogBundle\Entity\AttributeOption:
+Akeneo\Pim\Structure\Component\Model\AttributeOption:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             - code

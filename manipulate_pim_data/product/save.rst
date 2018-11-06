@@ -13,7 +13,7 @@ The product saver is a service, you can fetch it from the container.
 Save the Products
 -----------------
 
-It implements ``Akeneo\Component\StorageUtils\Saver\SaverInterface`` and ``Akeneo\Component\StorageUtils\Saver\BulkSaverInterface`` so you can save one or several products.
+It implements ``Akeneo\Tool\Component\StorageUtils\Saver\SaverInterface`` and ``Akeneo\Tool\Component\StorageUtils\Saver\BulkSaverInterface`` so you can save one or several products.
 
 .. code-block:: php
 

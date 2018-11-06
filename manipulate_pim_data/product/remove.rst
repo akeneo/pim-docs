@@ -13,7 +13,7 @@ The product remover is a service, you can fetch it from the container.
 Remove the Products
 -------------------
 
-It implements ``Akeneo\Component\StorageUtils\Remover\RemoverInterface`` and ``Akeneo\Component\StorageUtils\Remover\BulkRemoverInterface`` so you can remove one or several products.
+It implements ``Akeneo\Tool\Component\StorageUtils\Remover\RemoverInterface`` and ``Akeneo\Tool\Component\StorageUtils\Remover\BulkRemoverInterface`` so you can remove one or several products.
 
 .. code-block:: php
 

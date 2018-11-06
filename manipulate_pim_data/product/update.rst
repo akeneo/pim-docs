@@ -15,21 +15,21 @@ As the product model is the main object of the application, the use cases are mo
 
 We provide different services to allow you to assemble your custom "update logic".
 
-The default case is covered by ``Akeneo\Component\StorageUtils\Updater\ObjectUpdaterInterface``, used to apply a set of property updates on a product.
+The default case is covered by ``Akeneo\Tool\Component\StorageUtils\Updater\ObjectUpdaterInterface``, used to apply a set of property updates on a product.
 
 You'll also find some services to update a single doctrine field data or an attribute data of a product (we hide this implementation detail, attribute vs doctrine field, under the term 'property').
 
 There are four services to handle this case,
 
-* ``Akeneo\Component\StorageUtils\Updater\PropertySetterInterface``
-* ``Akeneo\Component\StorageUtils\Updater\PropertyAdderInterface``
-* ``Akeneo\Component\StorageUtils\Updater\PropertyRemoverInterface``
-* ``Akeneo\Component\StorageUtils\Updater\PropertyCopierInterface``
+* ``Akeneo\Tool\Component\StorageUtils\Updater\PropertySetterInterface``
+* ``Akeneo\Tool\Component\StorageUtils\Updater\PropertyAdderInterface``
+* ``Akeneo\Tool\Component\StorageUtils\Updater\PropertyRemoverInterface``
+* ``Akeneo\Tool\Component\StorageUtils\Updater\PropertyCopierInterface``
 
 Instantiate a New ObjectUpdaterInterface
 ----------------------------------------
 
-The product updater ``Pim\Component\Catalog\Updater\ProductUpdater`` implements ``Akeneo\Component\StorageUtils\Updater\ObjectUpdaterInterface``.
+The product updater ``Akeneo\Pim\Enrichment\Component\Product\Updater\ProductUpdater`` implements ``Akeneo\Tool\Component\StorageUtils\Updater\ObjectUpdaterInterface``.
 
 The product updater is available as a service, you can fetch it from the container.
 
@@ -72,7 +72,7 @@ Now we can apply many property updates on a product.
 Instantiate a New PropertySetterInterface
 -----------------------------------------
 
-The product property setter implements ``Akeneo\Component\StorageUtils\Updater\PropertySetterInterface``.
+The product property setter implements ``Akeneo\Tool\Component\StorageUtils\Updater\PropertySetterInterface``.
 
 It's available as a service, you can fetch it from the container.
 
@@ -102,12 +102,12 @@ The property setter replaces the data if it already exists.
 
     This service has been reviewed in the 1.4 and now supports doctrine fields (before the 1.4, it was only available for attribute values).
 
-    The method ``Pim\Bundle\CatalogBundle\Updater\ProductUpdater::setValue()`` is now deprecated, you should use ``Akeneo\Component\StorageUtils\Updater\PropertySetterInterface::setData()`` instead.
+    The method ``Pim\Bundle\CatalogBundle\Updater\ProductUpdater::setValue()`` is now deprecated, you should use ``Akeneo\Tool\Component\StorageUtils\Updater\PropertySetterInterface::setData()`` instead.
 
 Instantiate a New PropertyAdderInterface
 -----------------------------------------
 
-The product property adder implements ``Akeneo\Component\StorageUtils\Updater\PropertyAdderInterface``.
+The product property adder implements ``Akeneo\Tool\Component\StorageUtils\Updater\PropertyAdderInterface``.
 
 It's available as a service, you can fetch it from the container.
 
@@ -135,7 +135,7 @@ The property adder keeps the existing items and adds a new item to the set.
 Instantiate a New PropertyRemoverInterface
 ------------------------------------------
 
-The product property remover implements ``Akeneo\Component\StorageUtils\Updater\PropertyRemoverInterface``.
+The product property remover implements ``Akeneo\Tool\Component\StorageUtils\Updater\PropertyRemoverInterface``.
 
 It's available as a service, you can fetch it from the container.
 
@@ -163,7 +163,7 @@ The property remover keeps the existing items and removes only the provided item
 Instantiate a New PropertyCopierInterface
 -----------------------------------------
 
-The product property copier implements ``Akeneo\Component\StorageUtils\Updater\PropertyCopierInterface``.
+The product property copier implements ``Akeneo\Tool\Component\StorageUtils\Updater\PropertyCopierInterface``.
 
 It's available as a service, you can fetch it from the container.
 
@@ -192,20 +192,20 @@ The property copier allows to copy data from a property to another (doctrine fie
 
     This service has been reviewed in the 1.4 version and now supports doctrine fields (before the 1.4, it was only available for attribute values).
 
-    The method ``Pim\Bundle\CatalogBundle\Updater\ProductUpdater::copyValue()`` is now deprecated, you should use ``Akeneo\Component\StorageUtils\Updater\PropertyCopierInterface::copyData()``.
+    The method ``Pim\Bundle\CatalogBundle\Updater\ProductUpdater::copyValue()`` is now deprecated, you should use ``Akeneo\Tool\Component\StorageUtils\Updater\PropertyCopierInterface::copyData()``.
 
 Add a Custom FieldSetterInterface
 ---------------------------------
 
-If you create a new type of Attribute you need to implement the related ``Pim\Component\Catalog\Updater\Setter\AttributeSetterInterface``.
+If you create a new type of Attribute you need to implement the related ``Akeneo\Pim\Enrichment\Component\Product\Updater\Setter\AttributeSetterInterface``.
 
-If you add a doctrine field in the Product model, you need to implement the related ``Pim\Component\Catalog\Updater\Setter\FieldSetterInterface``.
+If you add a doctrine field in the Product model, you need to implement the related ``Akeneo\Pim\Enrichment\Component\Product\Updater\Setter\FieldSetterInterface``.
 
-Both of these interfaces extend ``Pim\Component\Catalog\Updater\Setter\SetterInterface``.
+Both of these interfaces extend ``Akeneo\Pim\Enrichment\Component\Product\Updater\Setter\SetterInterface``.
 
 A setter must implement this interface and be declared as a tagged service with the tag 'pim_catalog.updater.setter'.
 
-Through a compiler pass, this service is finally registered in the setter registry ``Pim\Component\Catalog\Updater\Setter\SetterRegistry``.
+Through a compiler pass, this service is finally registered in the setter registry ``Akeneo\Pim\Enrichment\Component\Product\Updater\Setter\SetterRegistry``.
 
 This registry is used by the product updater to know how to update a product property.
 

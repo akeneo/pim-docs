@@ -2,11 +2,11 @@
 
 namespace Acme\Bundle\XmlConnectorBundle\Job\JobParameters;
 
-use Akeneo\Component\Batch\Job\JobInterface;
-use Akeneo\Component\Batch\Job\JobParameters\ConstraintCollectionProviderInterface;
-use Akeneo\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface;
-use Akeneo\Component\Localization\Localizer\LocalizerInterface;
-use Pim\Component\Catalog\Validator\Constraints\FileExtension;
+use Akeneo\Tool\Component\Batch\Job\JobInterface;
+use Akeneo\Tool\Component\Batch\Job\JobParameters\ConstraintCollectionProviderInterface;
+use Akeneo\Tool\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface;
+use Akeneo\Tool\Component\Localization\Localizer\LocalizerInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Validator\Constraints\FileExtension;
 use Symfony\Component\Validator\Constraints\Collection;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\NotBlank;

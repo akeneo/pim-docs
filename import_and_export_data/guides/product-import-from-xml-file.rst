@@ -84,7 +84,7 @@ Configure the job in ``Resources/config/jobs.yml``:
    :linenos:
    :lines: 2-11
 
-The default step is ``Akeneo\Component\Batch\Step\ItemStep``.
+The default step is ``Akeneo\Tool\Component\Batch\Step\ItemStep``.
 
 An item step is configured with 3 elements, a reader, a processor and a writer.
 
@@ -151,7 +151,7 @@ And we introduce the following extension to load the services files in configura
 Translate Job and Step labels in the UI
 ---------------------------------------
 
-Behind the scene, the service ``Pim\Bundle\ImportExportBundle\JobLabel\TranslatedLabelProvider`` provides translated Job and Step labels to be used in the UI.
+Behind the scene, the service ``Akeneo\Platform\Bundle\ImportExportBundle\JobLabel\TranslatedLabelProvider`` provides translated Job and Step labels to be used in the UI.
 
 This service uses the following conventions:
 - for a job label, given a %%jobName%%, "batch_jobs.%%jobName%%.label"

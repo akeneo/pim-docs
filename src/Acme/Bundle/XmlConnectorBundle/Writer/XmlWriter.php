@@ -2,12 +2,12 @@
 
 namespace Acme\Bundle\XmlConnectorBundle\Writer;
 
-use Akeneo\Component\Batch\Item\FlushableInterface;
-use Akeneo\Component\Batch\Item\InitializableInterface;
-use Akeneo\Component\Batch\Item\ItemWriterInterface;
-use Akeneo\Component\Batch\Step\StepExecutionAwareInterface;
-use Pim\Component\Connector\Writer\File\AbstractFileWriter;
-use Pim\Component\Connector\Writer\File\ArchivableWriterInterface;
+use Akeneo\Tool\Component\Batch\Item\FlushableInterface;
+use Akeneo\Tool\Component\Batch\Item\InitializableInterface;
+use Akeneo\Tool\Component\Batch\Item\ItemWriterInterface;
+use Akeneo\Tool\Component\Batch\Step\StepExecutionAwareInterface;
+use Akeneo\Tool\Component\Connector\Writer\File\AbstractFileWriter;
+use Akeneo\Tool\Component\Connector\Writer\File\ArchivableWriterInterface;
 
 class XmlWriter extends AbstractFileWriter implements
     ItemWriterInterface,

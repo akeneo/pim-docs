@@ -18,7 +18,7 @@ The product export is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/conf
     parameters:
         pim_connector.connector_name.csv: 'Akeneo CSV Connector'
         pim_connector.connector_name.xlsx: 'Akeneo XLSX Connector'
-        pim_connector.job.simple_job.class: Akeneo\Component\Batch\Job\Job
+        pim_connector.job.simple_job.class: Akeneo\Tool\Component\Batch\Job\Job
         pim_connector.job_name.csv_product_export: 'csv_product_export'
         pim_connector.job_name.xlsx_product_export: 'xlsx_product_export'
         pim_connector.job.export_type: export
@@ -61,7 +61,7 @@ All steps service definitions are defined in ``src/Pim/Bundle/ConnectorBundle/Re
 .. code-block:: yaml
 
     parameters:
-        pim_connector.step.item_step.class: Akeneo\Component\Batch\Step\ItemStep
+        pim_connector.step.item_step.class: Akeneo\Tool\Component\Batch\Step\ItemStep
 
     services:
         pim_connector.step.csv_product.export:
@@ -88,9 +88,9 @@ All steps service definitions are defined in ``src/Pim/Bundle/ConnectorBundle/Re
 
 An ``ItemStep`` always contains 3 elements:
 
-- ``Akeneo\Bundle\BatchBundle\Item\ItemReaderInterface``
-- ``Akeneo\Bundle\BatchBundle\Item\ItemProcessorInterface``
-- ``Akeneo\Bundle\BatchBundle\Item\ItemWriterInterface``
+- ``Akeneo\Tool\Bundle\BatchBundle\Item\ItemReaderInterface``
+- ``Akeneo\Tool\Bundle\BatchBundle\Item\ItemProcessorInterface``
+- ``Akeneo\Tool\Bundle\BatchBundle\Item\ItemWriterInterface``
 
 We provide here specific implementations for these elements, the services are declared with aliases ``pim_connector.reader.database.product``, ``pim_connector.processor.normalization.product``, ``pim_connector.writer.file.csv_product``.
 
@@ -127,7 +127,7 @@ The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/proc
 .. code-block:: yaml
 
     parameters:
-        pim_connector.processor.normalization.product.class: Pim\Component\Connector\Processor\Normalization\ProductProcessor
+        pim_connector.processor.normalization.product.class: Akeneo\Pim\Enrichment\Component\Product\Connector\Processor\Normalization\ProductProcessor
 
     services:
         pim_connector.processor.normalization.product:
@@ -140,7 +140,7 @@ The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/proc
                 - '@akeneo_storage_utils.doctrine.object_detacher'
                 - '@pim_connector.processor.bulk_media_fetcher'
 
-The class ``Pim\Component\Connector\Processor\Normalization\ProductProcessor`` mainly delegates the transformation to the service ``pim_serializer.normalizer.product``.
+The class ``Akeneo\Pim\Enrichment\Component\Product\Connector\Processor\Normalization\ProductProcessor`` mainly delegates the transformation to the service ``pim_serializer.normalizer.product``.
 
 We can see here that we normalize each product into the ``standard`` format. It is the writer's responsibility to convert the standard format to the flat format. (cf :doc:`/import_and_export_data/guides/clean-csv-file-during-product-import`)
 
@@ -219,12 +219,12 @@ Product Writer
 
 This element receives products in the standard format, converts them in flat format with the converter and writes the lines in a csv file.
 
-The service is defined in ``src\Pim\Bundle\ConnectorBundle\Resources\config\writers.yml``.
+The service is defined in ``src\Akeneo\Tool\Bundle\ConnectorBundleBundle\Resources\config\writers.yml``.
 
 .. code-block:: yaml
 
     parameters:
-        pim_connector.writer.file.csv_product.class: Pim\Component\Connector\Writer\File\Csv\ProductWriter
+        pim_connector.writer.file.csv_product.class: Akeneo\Pim\Enrichment\Component\Product\Connector\Writer\File\Csv\ProductWriter
 
     services:
         pim_connector.writer.file.csv_product:

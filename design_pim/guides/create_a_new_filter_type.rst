@@ -16,7 +16,7 @@ To create a custom filter, first we need to create a FilterProvider for our new 
     namespace Acme\Bundle\CustomBundle\Enrich\Provider\Filter;
 
     use Pim\Bundle\EnrichBundle\Provider\Filter\FilterProviderInterface;
-    use Pim\Component\Catalog\Model\AttributeInterface;
+    use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 
     class RangeFilterProvider implements FilterProviderInterface
     {

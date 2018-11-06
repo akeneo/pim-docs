@@ -22,7 +22,7 @@ The best way (and the one we recommend) is to extend the abstract class `Pim\\Co
 
     namespace Acme\Bundle\AppBundle\Entity;
 
-    use Pim\Component\ReferenceData\Model\AbstractReferenceData;
+    use Akeneo\Pim\Enrichment\Component\Product\Model\AbstractReferenceData;
 
     /**
      * Acme Color entity
@@ -137,7 +137,7 @@ The best way (and the one we recommend) is to extend the abstract class `Pim\\Co
 
     # /src/Acme/Bundle/AppBundle/Resources/config/doctrine/Color.orm.yml
     Acme\Bundle\AppBundle\Entity\Color:
-        repositoryClass: Pim\Bundle\ReferenceDataBundle\Doctrine\ORM\Repository\ReferenceDataRepository
+        repositoryClass: Akeneo\Pim\Enrichment\Bundle\Doctrine\ORM\Repository\ReferenceDataRepository
         type: entity
         table: acme_catalog_color
         fields:

@@ -23,10 +23,10 @@ First let's see how to create the action. You need to create an ActionApplier ob
 
     namespace Acme\Bundle\CustomBundle\ActionApplier;
 
-    use Akeneo\Bundle\RuleEngineBundle\Model\ActionInterface;
+    use Akeneo\Bundle\Tool\RuleEngineBundle\Model\ActionInterface;
     use Acme\Bundle\CustomBundle\Model\ProductPatternAction;
-    use Akeneo\Component\RuleEngine\ActionApplier\ActionApplierInterface;
-    use Akeneo\Component\StorageUtils\Updater\PropertySetterInterface;
+    use Akeneo\Tool\Component\RuleEngine\ActionApplier\ActionApplierInterface;
+    use Akeneo\Tool\Component\StorageUtils\Updater\PropertySetterInterface;
 
     class PatternActionApplier implements ActionApplierInterface
     {
@@ -90,8 +90,8 @@ Then we need to create the object that will handle the data.
 
     namespace Acme\Bundle\CustomBundle\Model;
 
-    use Akeneo\Bundle\RuleEngineBundle\Model\ActionInterface;
-    use PimEnterprise\Component\CatalogRule\Model\FieldImpactActionInterface;
+    use Akeneo\Bundle\Tool\RuleEngineBundle\Model\ActionInterface;
+    use Akeneo\Pim\Automation\RuleEngine\Component\Model\FieldImpactActionInterface;
 
     class ProductPatternAction implements ActionInterface, FieldImpactActionInterface
     {
@@ -222,7 +222,7 @@ For our example we need to create an `ExistingAttributeValidator` that will chec
 
     namespace Acme\Bundle\CustomBundle\Validator\Constraints;
 
-    use Pim\Component\Catalog\Repository\AttributeRepositoryInterface;
+    use Akeneo\Pim\Structure\Component\Repository\AttributeRepositoryInterface;
     use Symfony\Component\Validator\Constraint;
     use Symfony\Component\Validator\ConstraintValidator;
 
@@ -282,7 +282,7 @@ Here is the constraint message and its associated validation file:
     #/src/Acme/Bundle/CustomBundle/Resources/config/validation/ProductPatternAction.yml
     Acme\Bundle\CustomBundle\Model\ProductPatternAction:
         constraints:
-            - PimEnterprise\Bundle\CatalogRuleBundle\Validator\Constraint\PropertyAction: ~
+            - Akeneo\Pim\Automation\RuleEngine\Bundle\Validator\Constraint\PropertyAction: ~
         properties:
             field:
                - Type:
@@ -290,7 +290,7 @@ Here is the constraint message and its associated validation file:
                - NotBlank: ~
                - Length:
                    max: 255
-               - PimEnterprise\Bundle\CatalogRuleBundle\Validator\Constraint\ExistingSetField: ~
+               - Akeneo\Pim\Automation\RuleEngine\Bundle\Validator\Constraint\ExistingSetField: ~
             attributes:
                 - Type:
                     type: array

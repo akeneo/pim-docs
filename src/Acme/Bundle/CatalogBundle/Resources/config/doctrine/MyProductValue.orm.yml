@@ -78,7 +78,7 @@ Acme\Bundle\CatalogBundle\Entity\MyProductValue:
                     onDelete: CASCADE
                     nullable: false
         option:
-            targetEntity: Pim\Bundle\CatalogBundle\Entity\AttributeOption
+            targetEntity: Akeneo\Pim\Structure\Component\Model\AttributeOption
             cascade:
                 - persist
                 - refresh
@@ -95,7 +95,7 @@ Acme\Bundle\CatalogBundle\Entity\MyProductValue:
                     onDelete: CASCADE
     manyToMany:
         options:
-            targetEntity: Pim\Bundle\CatalogBundle\Entity\AttributeOption
+            targetEntity: Akeneo\Pim\Structure\Component\Model\AttributeOption
             cascade:
                 - refresh
             joinTable:

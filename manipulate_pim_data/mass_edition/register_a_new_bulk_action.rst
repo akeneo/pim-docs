@@ -13,7 +13,7 @@ To create a new bulk action on a product, you need to
 Create the processor
 --------------------
 
-A processor inherits from ``Pim\Bundle\EnrichBundle\Connector\Processor\AbstractProcessor``.
+A processor inherits from ``Akeneo\Pim\Enrichment\Component\Product\Connector\Processor\MassEdit\AbstractProcessor``.
 Any processor should have a ``process($item)`` method to process an entity. Here, the ``process`` method will add a comment for a product.
 
 .. note::
@@ -29,11 +29,11 @@ Any processor should have a ``process($item)`` method to process an entity. Here
 
     namespace Acme\Bundle\AppBundle\Connector\Processor\MassEdit\Product;
 
-    use Akeneo\Component\StorageUtils\Saver\SaverInterface;
-    use Pim\Bundle\CommentBundle\Builder\CommentBuilder;
-    use Pim\Bundle\CommentBundle\Model\CommentInterface;
-    use Pim\Bundle\EnrichBundle\Connector\Processor\AbstractProcessor;
-    use Pim\Bundle\UserBundle\Repository\UserRepositoryInterface;
+    use Akeneo\Tool\Component\StorageUtils\Saver\SaverInterface;
+    use Akeneo\Pim\Enrichment\Component\Comment\Builder\CommentBuilder;
+    use Akeneo\Pim\Enrichment\Component\Comment\Model\CommentInterface;
+    use Akeneo\Pim\Enrichment\Component\Product\Connector\Processor\MassEdit\AbstractProcessor;
+    use Akeneo\UserManagement\Bundle\Repository\UserRepositoryInterface;
     use Symfony\Component\Validator\Validator\ValidatorInterface;
 
     class AddCommentProcessor extends AbstractProcessor

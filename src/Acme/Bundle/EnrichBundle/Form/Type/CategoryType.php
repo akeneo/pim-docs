@@ -4,7 +4,7 @@ namespace Acme\Bundle\EnrichBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 
-use Pim\Bundle\EnrichBundle\Form\Type\CategoryType as BaseCategoryType;
+use Akeneo\Pim\Enrichment\Bundle\Form\Type\CategoryType as BaseCategoryType;
 
 /**
  * Type for category properties

@@ -28,7 +28,7 @@ In order to do that you can create an event listener that will send the email.
     namespace Acme\Bundle\AppBundle\EventListener;
 
     use Symfony\Component\EventDispatcher\GenericEvent;
-    use Pim\Component\Catalog\Model\ProductInterface;
+    use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
 
     class ProductModificationListener
     {

@@ -74,16 +74,16 @@ Its standard format would be the following:
 |               |                |                                                                            |                                                              |
 +---------------+----------------+----------------------------------------------------------------------------+--------------------------------------------------------------+
 | family        | string         | ``"familyA"``                                                              | | it represents the code of the                              |
-|               |                |                                                                            | | ``Pim\Component\Catalog\Model\FamilyInterface``            |
+|               |                |                                                                            | | ``Akeneo\Pim\Structure\Component\Model\FamilyInterface``            |
 +---------------+----------------+----------------------------------------------------------------------------+--------------------------------------------------------------+
 | groups        | array          | ``[0 => "groupA", 1 => "groupB"]``                                         | | it represents the code of the                              |
-|               |                |                                                                            | | ``Pim\Component\Catalog\Model\GroupInterface``             |
+|               |                |                                                                            | | ``Akeneo\Pim\Enrichment\Component\Category\Model\GroupInterface``             |
 +---------------+----------------+----------------------------------------------------------------------------+--------------------------------------------------------------+
 | variant_group | string         | ``"variantA"``                                                             | | it represents the code of the                              |
-|               |                |                                                                            | | ``Pim\Component\Catalog\Model\GroupInterface``             |
+|               |                |                                                                            | | ``Akeneo\Pim\Enrichment\Component\Category\Model\GroupInterface``             |
 +---------------+----------------+----------------------------------------------------------------------------+--------------------------------------------------------------+
 | categories    | array          | ``[0 => "categoryA", 1 => "categoryB"]``                                   | | it represents the code of the object                       |
-|               |                |                                                                            | | ``Akeneo\Component\Classification\Model\CategoryInterface``|
+|               |                |                                                                            | | ``Akeneo\Tool\Component\Classification\Model\CategoryInterface``|
 +---------------+----------------+----------------------------------------------------------------------------+--------------------------------------------------------------+
 | enabled       | boolean        | ``true``                                                                   |                                                              |
 |               |                |                                                                            |                                                              |
@@ -119,11 +119,11 @@ The structure of the array is composed as below:
       ]
     ]
 
-"X_SELL" represents the code of the ``Pim\Component\Catalog\Model\AssociationTypeInterface``.
+"X_SELL" represents the code of the ``Akeneo\Pim\Structure\Component\Model\AssociationTypeInterface``.
 
-Each element in the array "groups" represents the code of the ``Pim\Component\Catalog\Model\GroupInterface``.
+Each element in the array "groups" represents the code of the ``Akeneo\Pim\Enrichment\Component\Category\Model\GroupInterface``.
 
-Each element in the array "products" represents the identifier of the ``Pim\Component\Catalog\Model\ProductInterface``.
+Each element in the array "products" represents the identifier of the ``Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface``.
 
 
 Product values
@@ -452,27 +452,27 @@ Depending on the type of the product value, the data key can have different stru
 | identifier     | string         | ``"foo"``                                                                                             |                                                                 |
 +----------------+----------------+-------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
 | file           | string         | ``"f/2/e/6/f2e6674e076ad6fafa12012e8fd026acdc70f814_fileA.txt"``                                      | | it represents the key of the object                           |
-|                |                |                                                                                                       | | ``Akeneo\Component\FileStorage\Model\FileInfoInterface``      |
+|                |                |                                                                                                       | | ``Akeneo\Tool\Component\FileStorage\Model\FileInfoInterface``      |
 +----------------+----------------+-------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
 | image          | string         | ``"f/4/d/1/f4d12ffbdbe628ba8e0b932c27f425130cc23535_imageA.jpg"``                                     | | it represents the key of the object                           |
-|                |                |                                                                                                       | | ``Akeneo\Component\FileStorage\Model\FileInfoInterface``      |
+|                |                |                                                                                                       | | ``Akeneo\Tool\Component\FileStorage\Model\FileInfoInterface``      |
 +----------------+----------------+-------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
 | date           | string         | ``"2016-06-13T00:00:00+02:00"``                                                                       | | formatted to ISO-8601 (see above)                             |
 +----------------+----------------+-------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
 | multi select   | string[]       | ``[0 => "optionA", 1 => "optionB"]``                                                                  | | each element of the array represents the `code` of the        |
-|                |                |                                                                                                       | | ``Pim\Component\Catalog\Model\AttributeOptionInterface``      |
+|                |                |                                                                                                       | | ``Akeneo\Pim\Structure\Component\Model\AttributeOptionInterface``      |
 +----------------+----------------+-------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
 | number         | string         | ``"-99.8732"``                                                                                        | | formatted as a string to avoid the floating point precision   |
 |                |                |                                                                                                       | | problem of PHP (see above)                                    |
 +----------------+----------------+-------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
 | reference data | string[]       | ``[0 => "fabricA",1 => "fabricB"]``                                                                   | | each element of the array represents the `code` of the        |
-| multi select   |                |                                                                                                       | | ``Pim\Component\ReferenceData\Model\ReferenceDataInterface``  |
+| multi select   |                |                                                                                                       | | ``Akeneo\Pim\Enrichment\Component\Product\Model\ReferenceDataInterface``  |
 +----------------+----------------+-------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
 | simple select  | string         | ``"optionB"``                                                                                         | | it represents the `code` of the                               |
-|                |                |                                                                                                       | | ``Pim\Component\Catalog\Model\AttributeOptionInterface``      |
+|                |                |                                                                                                       | | ``Akeneo\Pim\Structure\Component\Model\AttributeOptionInterface``      |
 +----------------+----------------+-------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
 | reference data | string         | ``"colorB"``                                                                                          | | it represents the `code` of the                               |
-| simple select  |                |                                                                                                       | | ``Pim\Component\ReferenceData\Model\ReferenceDataInterface``  |
+| simple select  |                |                                                                                                       | | ``Akeneo\Pim\Enrichment\Component\Product\Model\ReferenceDataInterface``  |
 +----------------+----------------+-------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
 | text           | string         | ``"this is a text"``                                                                                  |                                                                 |
 +----------------+----------------+-------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
@@ -489,8 +489,8 @@ Depending on the type of the product value, the data key can have different stru
 
 The following product values data, that represents decimal values are represented with strings (when the ``decimal_allowed`` attribute property is set to false) in the standard format:
 
-    * metric (class Pim\Component\Catalog\Model\Metric)
-    * price (class Pim\Component\Catalog\Model\ProductPriceInterface)
-    * number (class Pim\Component\Catalog\Model\ProductValueInterface, property getDecimal)
+    * metric (class Akeneo\Pim\Enrichment\Component\Product\Model\Metric)
+    * price (class Akeneo\Pim\Enrichment\Component\Product\Model\ProductPriceInterface)
+    * number (class Akeneo\Pim\Enrichment\Component\Product\Model\ProductValueInterface, property getDecimal)
 
 When the ``decimal_allowed`` attribute property is set to true, they are represented with integers in the standard format.
