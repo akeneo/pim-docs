@@ -33,8 +33,8 @@ ProjectSubscriber (Enterprise edition)                            0
 CheckPublishedProductOnRemovalSubscriber (Enterprise edition)     0
 ================================================================  ===============
 
-.. _CheckChannelsOnDeletionSubscriber: https://github.com/akeneo/pim-community-dev/blob/2.0/src/Pim/Bundle/CatalogBundle/EventSubscriber/Category/CheckChannelsOnDeletionSubscriber.php
-.. _AddRemoveVersionSubscriber: https://github.com/akeneo/pim-community-dev/blob/2.0/src/Pim/Bundle/VersioningBundle/EventSubscriber/AddRemoveVersionSubscriber.php
+.. _CheckChannelsOnDeletionSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/Category/CheckChannelsOnDeletionSubscriber.php
+.. _AddRemoveVersionSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Tool/Bundle/VersioningBundle/EventSubscriber/AddRemoveVersionSubscriber.php
 
 ``akeneo.storage.post_remove``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -52,8 +52,8 @@ Listener Class Name                                  Priority
 `IndexProductsSubscriber`_                           0
 ===================================================  ===============
 
-.. _IndexProductModelsSubscriber: https://github.com/akeneo/pim-community-dev/blob/2.0/src/Pim/Bundle/CatalogBundle/EventSubscriber/IndexProductModelsSubscriber.php
-.. _IndexProductsSubscriber: https://github.com/akeneo/pim-community-dev/blob/2.0/src/Pim/Bundle/CatalogBundle/EventSubscriber/IndexProductsSubscriber.php
+.. _IndexProductModelsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/IndexProductModelsSubscriber.php
+.. _IndexProductsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/IndexProductsSubscriber.php
 
 ``akeneo.storage.pre_remove_all``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -89,9 +89,9 @@ ProjectSubscriber (Enterprise edition)                         0
 EnsureProductDraftGlobalStatusSubscriber (Enterprise edition)  0
 =============================================================  ===============
 
-.. _CurrencyDisablingSubscriber: https://github.com/akeneo/pim-community-dev/blob/2.0/src/Pim/Bundle/CatalogBundle/EventSubscriber/CurrencyDisablingSubscriber.php
-.. _ComputeEntityRawValuesSubscriber: https://github.com/akeneo/pim-community-dev/blob/2.0/src/Pim/Bundle/CatalogBundle/EventSubscriber/ComputeEntityRawValuesSubscriber.php
-.. _ChannelLocaleSubscriber: https://github.com/akeneo/pim-community-dev/blob/2.0/src/Pim/Bundle/EnrichBundle/EventListener/Storage/ChannelLocaleSubscriber.php
+.. _CurrencyDisablingSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Channel/Bundle/EventListener/CurrencyDisablingSubscriber.php
+.. _ComputeEntityRawValuesSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/ComputeEntityRawValuesSubscriber.php
+.. _ChannelLocaleSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Channel/Bundle/EventListener/ChannelLocaleSubscriber.php
 
 ``akeneo.storage.post_save``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
