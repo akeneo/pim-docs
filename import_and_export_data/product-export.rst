@@ -11,7 +11,7 @@ You can now natively export data into CSV and XLSX format.
 Definition of the Job
 ---------------------
 
-The product export is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/jobs.yml``.
+The product export is defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/jobs.yml``.
 
 .. code-block:: yaml
 
@@ -56,7 +56,7 @@ Product Export Step
 
 The purpose of this step is to read products from database, to transform product objects to array and write lines in a csv file.
 
-All steps service definitions are defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/steps.yml``.
+All steps service definitions are defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/steps.yml``.
 
 .. code-block:: yaml
 
@@ -99,7 +99,7 @@ Product Reader
 
 This element reads products from database and returns objects one by one.
 
-The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/readers.yml``.
+The service is defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/readers.yml``.
 
 The product reader now uses the ProductQueryBuilder, it means that you can now finely select which products to export with the ProductQueryBuilder filters.
 
@@ -122,7 +122,7 @@ Product Processor
 
 This element receives product objects one by one, transforms each product object into an array and returns the array.
 
-The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/processors.yml``.
+The service is defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/processors.yml``.
 
 .. code-block:: yaml
 

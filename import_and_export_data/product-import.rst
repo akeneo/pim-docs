@@ -11,7 +11,7 @@ You can now natively import data into CSV and XLSX format.
 Definition of the Job
 ---------------------
 
-Take a look at this configuration based on ConnectorBundle (``src/Pim/Bundle/ConnectorBundle/Resources/config/jobs.yml``).
+Take a look at this configuration based on ConnectorBundle (``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/jobs.yml``).
 
 .. code-block:: yaml
 
@@ -56,7 +56,7 @@ The purpose of this step is to validate that the input file has the expected enc
 
 This step is a custom step, not a default ``ItemStep``.
 
-This step is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/steps.yml``
+This step is defined in ``src/Akeneo/Tool/Bundle/ConnectorBundle/Resources/config/steps.yml``
 
 .. code-block:: yaml
 
@@ -74,7 +74,7 @@ This step is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/steps.
 
 We can also see that we inject a service ``pim_connector.validator.item.charset_validator`` in this step.
 
-This service is defined in ``src\Akeneo\Tool\Bundle\ConnectorBundleBundle\Resources\config\items.yml``.
+This service is defined in ``src/Akeneo/Tool/Bundle/ConnectorBundle/Resources/config/items.yml``.
 
 .. code-block:: yaml
 
@@ -186,7 +186,7 @@ This element reads a file and converts items one by one into standard format (it
             ],
     ]
 
-The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/readers.yml``.
+The service is defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/readers.yml``.
 
 .. code-block:: yaml
 
@@ -279,7 +279,7 @@ Product Processor
 
 This element receives items one by one, creates (or fetches if it already exists) the related product, updates and validates it.
 
-The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/processors.yml``.
+The service is defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/processors.yml``.
 
 .. code-block:: yaml
 

@@ -122,7 +122,7 @@ For instance, if you have a *Community* edition:
     parameters:
         # ...
         elasticsearch_index_configuration_files:
-            - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Pim/Bundle/CatalogBundle/Resources/elasticsearch/index_configuration.yml'
+            - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Akeneo/Pim/Enrichment/Bundle/Resources/elasticsearch/index_configuration.yml'
             - '/path/to/my_index_configuration.yml'
 
 If you have the *Enterprise* edition:
@@ -133,8 +133,8 @@ If you have the *Enterprise* edition:
     parameters:
         # ...
         elasticsearch_index_configuration_files:
-            - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Pim/Bundle/CatalogBundle/Resources/elasticsearch/index_configuration.yml'
-            - '%kernel.root_dir%/../vendor/akeneo/pim-enterprise-dev/src/PimEnterprise/Bundle/WorkflowBundle/Resources/elasticsearch/index_configuration.yml'
+            - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Akeneo/Pim/Enrichment/Bundle/Resources/elasticsearch/index_configuration.yml'
+            - '%kernel.root_dir%/../vendor/akeneo/pim-enterprise-dev/src/Akeneo/Pim/WorkOrganization/Workflow/Bundle/Resources/elasticsearch/index_configuration.yml'
             - '/path/to/my_index_configuration.yml'
 
 This parameter is set by the PIM at the index creation. If you want to apply it on an existing index you may use the following command:
