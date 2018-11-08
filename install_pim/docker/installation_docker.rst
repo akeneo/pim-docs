@@ -231,6 +231,9 @@ The version in ``akeneo/pim-community-standard`` or ``akeneo/pim-enterprise-stan
    $ docker-compose exec fpm bin/console --env=prod pim:install --force --symlink --clean
 
    $ docker-compose run --rm node yarn run webpack
+   
+.. note::
+   If you are using Docker for Windows, there may be issues with symlinks that lead to errors during ``yarn run webpack``. If you encounter these issues, try leaving out the --symlink parameter from the ``pim:install`` commands.
 
 **You should now be able to access Akeneo development environment from your host through ``http://localhost:8080/`` and behat environment through ``http://localhost:8081/``. The default username and password are both ``admin``.**
 
