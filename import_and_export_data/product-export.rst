@@ -115,8 +115,6 @@ The product reader now uses the ProductQueryBuilder, it means that you can now f
                 - '@pim_catalog.converter.metric'
                 - true
 
-    To know more about how we load different configuration depending on the storage driver, you can take a look at ``Pim\Bundle\CatalogBundle\DependencyInjection\PimCatalogExtension``
-
 Product Processor
 -----------------
 

@@ -1,8 +1,8 @@
 Akeneo\Pim\Structure\Component\Model\Attribute:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: code
-        - Pim\Bundle\CatalogBundle\Validator\Constraints\SingleIdentifierAttribute: ~
-        - Pim\Bundle\CatalogBundle\Validator\Constraints\Immutable:
+        - Akeneo\Pim\Structure\Component\Validator\Constraints\SingleIdentifierAttribute: ~
+        - Akeneo\Tool\Component\StorageUtils\Validator\Constraints:
             properties:
                 - code
                 - attributeType
@@ -10,13 +10,13 @@ Akeneo\Pim\Structure\Component\Model\Attribute:
                 - localizable
                 - metricFamily
                 - unique
-        - Pim\Bundle\CatalogBundle\Validator\Constraints\ValidMetric:
+        - Akeneo\Pim\Structure\Component\Validator\Constraints\ValidMetric:
             groups:
                 - pim_catalog_metric
-        - Pim\Bundle\CatalogBundle\Validator\Constraints\ValidDateRange:
+        - Akeneo\Pim\Structure\Component\Validator\Constraints\ValidDateRange:
             groups:
                 - pim_catalog_date
-        - Pim\Bundle\CatalogBundle\Validator\Constraints\ValidNumberRange:
+        - Akeneo\Pim\Structure\Component\Validator\Constraints\ValidNumberRange:
             groups:
                 - pim_catalog_number
                 - pim_catalog_price_collection
@@ -57,7 +57,7 @@ Akeneo\Pim\Structure\Component\Model\Attribute:
             - Type: bool
         maxCharacters:
             - Type: numeric
-            - Pim\Bundle\CatalogBundle\Validator\Constraints\NotDecimal: {}
+            - Akeneo\Pim\Enrichment\Component\Product\Validator\Constraints\NotDecimal: {}
             - GreaterThanOrEqual:
                 value: 0
             - Range:
@@ -134,7 +134,7 @@ Akeneo\Pim\Structure\Component\Model\Attribute:
                     - pim_catalog_file
                     - pim_catalog_image
                     - pim_catalog_metric
-            - Pim\Bundle\CatalogBundle\Validator\Constraints\ValidRegex:
+            - Akeneo\Pim\Structure\Component\Validator\Constraints\ValidRegex:
                 groups:
                     - pim_catalog_text
                     - pim_catalog_identifier

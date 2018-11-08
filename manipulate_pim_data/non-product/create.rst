@@ -14,7 +14,7 @@ Akeneo PIM provides a Factory for almost every simple objects. Each factory inhe
 Use the AttributeFactory to Create a New Attribute
 --------------------------------------------------
 
-The ``Pim\Bundle\CatalogBundle\Factory\AttributeFactory`` is available as a service, you can fetch it from the container.
+The ``Akeneo\Pim\Structure\Component\Factory\AttributeFactory`` is available as a service, you can fetch it from the container.
 
 .. code-block:: php
 
@@ -27,12 +27,12 @@ The ``Pim\Bundle\CatalogBundle\Factory\AttributeFactory`` is available as a serv
 
 .. note::
 
-    ``Pim\Bundle\CatalogBundle\Resources\config\attribute_types.yml`` contains the list of the default attribute types. The alias of a service tagged with ``pim_catalog.attribute_type`` can be used here, for instance, ``pim_catalog_identifier``, ``pim_catalog_text``, ``pim_catalog_textarea``, etc.
+    ``src/Akeneo/Pim/Structure/Bundle/Resources/config/attribute_types.yml`` contains the list of the default attribute types. The alias of a service tagged with ``pim_catalog.attribute_type`` can be used here, for instance, ``pim_catalog_identifier``, ``pim_catalog_text``, ``pim_catalog_textarea``, etc.
 
 Use the FamilyFactory to Create a New Family
 --------------------------------------------
 
-The ``Pim\Bundle\CatalogBundle\Factory\FamilyFactory`` is available as a service, you can fetch it from the container.
+The ``Pim\Component\Catalog\Factory\FamilyFactory`` is available as a service, you can fetch it from the container.
 
 .. code-block:: php
 
@@ -46,7 +46,7 @@ The ``Pim\Bundle\CatalogBundle\Factory\FamilyFactory`` is available as a service
 Use the CategoryFactory to Create a New Category
 ------------------------------------------------
 
-The ``Pim\Bundle\CatalogBundle\Factory\CategoryFactory`` is available as a service, you can fetch it from the container.
+The category factory ``Akeneo\Tool\Component\StorageUtils\Factory\SimpleFactory`` is available as a service, you can fetch it from the container.
 
 .. code-block:: php
 

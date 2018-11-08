@@ -30,7 +30,7 @@ To create a custom field, first we need to create a FieldProvider for our new fi
     namespace Acme\Bundle\CustomBundle\Enrich\Provider\Field;
 
     use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
-    use Pim\Bundle\EnrichBundle\Provider\Field\FieldProviderInterface;
+    use Akeneo\Platform\Bundle\UIBundle\Provider\Field\FieldProviderInterface;
 
     class RangeFieldProvider implements FieldProviderInterface
     {

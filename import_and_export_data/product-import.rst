@@ -192,7 +192,7 @@ The service is defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/re
 
     parameters:
         pim_connector.reader.file.xlsx_product.class: Akeneo\Pim\Enrichment\Component\Product\Connector\Reader\File\Xlsx\ProductReader
-        pim_connector.reader.file.csv.class: Pim\Component\Connector\Reader\File\Csv\Reader
+        pim_connector.reader.file.csv.class: Akeneo\Tool\Component\Connector\Reader\File\Csv\Reader
 
     services:
         # CSV Reader
@@ -330,7 +330,7 @@ This service allows to fetch a product by its identifier (SKU by default).
 
     $product = $this->repository->findOneByIdentifier($identifier);
 
-This is possible because the ``Pim\Bundle\CatalogBundle\Doctrine\ORM\Repository\ProductRepository`` implements ``Akeneo\Tool\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface``.
+This is possible because the ``Akeneo\Pim\Enrichment\Bundle\Doctrine\ORM\Repository\ProductRepository`` implements ``Akeneo\Tool\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface``.
 
 ProductBuilderInterface
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -341,7 +341,7 @@ If the product doesn't exist yet, we use this service to create one with provide
 
     $product = $this->builder->createProduct($identifier, $familyCode);
 
-The service uses the class ``̀Pim\Bundle\CatalogBundle\Builder\ProductBuilder``.
+The service uses the class ``Akeneo\Pim\Enrichment\Component\Product\Builder\ProductBuilder``.
 
 ProductFilterInterface
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -455,7 +455,7 @@ BulkSaverInterface
 
 This service allows to save several objects to the database at once.
 
-For products, the implementation of ``Pim\Bundle\CatalogBundle\Doctrine\Common\Saver\ProductSaver`` is used.
+For products, the implementation of ``Akeneo\Pim\Enrichment\Bundle\Doctrine\Common\Saver\ProductSaver`` is used.
 
 A dedicated chapter explains how it works :doc:`/manipulate_pim_data/product/save`.
 

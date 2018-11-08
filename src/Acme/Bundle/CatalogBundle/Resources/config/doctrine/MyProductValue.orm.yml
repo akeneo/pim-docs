@@ -71,7 +71,7 @@ Acme\Bundle\CatalogBundle\Entity\MyProductValue:
                     referencedColumnName: id
                     onDelete: 'SET NULL'
         attribute:
-            targetEntity: Pim\Bundle\CatalogBundle\Model\AbstractAttribute
+            targetEntity: Akeneo\Pim\Structure\Component\Model\AbstractAttribute
             joinColumns:
                 attribute_id:
                     referencedColumnName: id
@@ -87,7 +87,7 @@ Acme\Bundle\CatalogBundle\Entity\MyProductValue:
                     referencedColumnName: id
                     onDelete: 'SET NULL'
         entity:
-            targetEntity: Pim\Bundle\CatalogBundle\Model\ProductInterface
+            targetEntity: Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface
             inversedBy: values
             joinColumns:
                 entity_id:
@@ -122,7 +122,7 @@ Acme\Bundle\CatalogBundle\Entity\MyProductValue:
                     referencedColumnName: id
                     onDelete: CASCADE
         metric:
-            targetEntity: Pim\Bundle\CatalogBundle\Model\Metric
+            targetEntity: Akeneo\Pim\Enrichment\Component\Product\Model\Metric
             cascade:
                 - persist
                 - refresh
@@ -132,7 +132,7 @@ Acme\Bundle\CatalogBundle\Entity\MyProductValue:
                     onDelete: 'SET NULL'
     oneToMany:
         prices:
-            targetEntity: Pim\Bundle\CatalogBundle\Model\ProductPrice
+            targetEntity: Akeneo\Pim\Enrichment\Component\Product\Model\ProductPrice
             cascade:
                 - remove
                 - persist

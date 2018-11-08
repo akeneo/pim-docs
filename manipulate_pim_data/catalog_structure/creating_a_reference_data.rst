@@ -12,8 +12,8 @@ Creating the Reference Data Entity
 As Akeneo relies heavily on standard tools like Doctrine, creating the entity is
 quite straightforward for any developer with Doctrine experience.
 
-To create a reference data, an Entity has to implement `Pim\\Component\\ReferenceData\\Model\\ReferenceDataInterface`.
-The best way (and the one we recommend) is to extend the abstract class `Pim\\Component\\ReferenceData\\Model\\AbstractReferenceData`.
+To create a reference data, an Entity has to implement `Akeneo\Pim\Enrichment\Component\Product\Model\ReferenceDataInterface`.
+The best way (and the one we recommend) is to extend the abstract class `Akeneo\Pim\Enrichment\Component\Product\Model\AbstractReferenceData`.
 
 .. code-block:: php
 

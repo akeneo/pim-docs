@@ -5,7 +5,7 @@ namespace Acme\Bundle\XmlConnectorBundle\Archiver;
 use Akeneo\Tool\Component\Batch\Job\JobParameters;
 use Akeneo\Tool\Component\Batch\Model\JobExecution;
 use Akeneo\Tool\Component\Batch\Model\StepExecution;
-use Pim\Component\Connector\Archiver\AbstractInvalidItemWriter;
+use Akeneo\Tool\Component\Connector\Archiver\AbstractInvalidItemWriter;
 
 class XmlInvalidItemWriter extends AbstractInvalidItemWriter
 {
