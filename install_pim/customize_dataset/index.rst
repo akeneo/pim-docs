@@ -1,7 +1,7 @@
 How to customize the Dataset
 ============================
 
-Akeneo PIM ships with two datasets. They are located in ``vendor/akeneo/pim-community-dev/src/Pim/Bundle/InstallerBundle/Resources/fixtures``:
+Akeneo PIM ships with two datasets. They are located in ``vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures``:
 * *icecat_demo_dev* to be able to take a look and play with the PIM with already preset families, categories, products, etc..
 * *minimal* to start a brand new blank PIM project
 
@@ -93,8 +93,8 @@ You should also make sure that:
 
 .. tip::
 
-  Check ``Pim/Bundle/InstallerBundle/Resources/fixtures/minimal`` to see what the mandatory format is and which
-  fixtures are absolutely needed, then you can draw heavily on ``Pim/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev`` to add optional objects.
+  Check ``Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/minimal`` to see what the mandatory format is and which
+  fixtures are absolutely needed, then you can draw heavily on ``Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev`` to add optional objects.
 
 Install the DB
 ^^^^^^^^^^^^^^

@@ -43,7 +43,7 @@ How can we add our notification behaviour to this job? The simplest way is to wr
 Add a new step
 --------------
 
-A step class needs two things: extend ``Akeneo\Component\Batch\Step\AbstractStep`` and implement a ``doExecute()`` method. This method will contain your custom behavior:
+A step class needs two things: extend ``Akeneo\Tool\Component\Batch\Step\AbstractStep`` and implement a ``doExecute()`` method. This method will contain your custom behavior:
 
 .. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Step/NotifyStep.php
    :language: php
@@ -77,7 +77,7 @@ A job instance can be executed, modified or deleted using the UI or the ``akeneo
 
 A job also needs a way to get default values for parameters and a way to validate this parameters.
 
-Let's write it! For convenience reasons we can use the same class for both roles, it must then implement both ``Akeneo\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface`` and ``Akeneo\Component\Batch\Job\JobParameters\ConstraintCollectionProviderInterface``.
+Let's write it! For convenience reasons we can use the same class for both roles, it must then implement both ``Akeneo\Tool\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface`` and ``Akeneo\Tool\Component\Batch\Job\JobParameters\ConstraintCollectionProviderInterface``.
 
 We want also to keep the default values and validation constraints needed by the native export step. The easiest way to do that is to use the decoration pattern:
 
@@ -87,7 +87,7 @@ We want also to keep the default values and validation constraints needed by the
 
 .. tip::
 
-    If the job doesn't need any particular parameters, it's possible to use directly the classes ``Akeneo\Component\Batch\Job\JobParameters\EmptyDefaultValuesProvider`` and ``Akeneo\Component\Batch\Job\JobParameters\EmptyConstraintCollectionProvider``.
+    If the job doesn't need any particular parameters, it's possible to use directly the classes ``Akeneo\Tool\Component\Batch\Job\JobParameters\EmptyDefaultValuesProvider`` and ``Akeneo\Tool\Component\Batch\Job\JobParameters\EmptyConstraintCollectionProvider``.
 
 .. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Resources/config/job_parameters.yml
     :language: yaml

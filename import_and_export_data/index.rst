@@ -41,9 +41,9 @@ Job
 
 Being the main batch domain object, a job is an explicit abstraction representing its configuration specified by a developer.
 
-``Akeneo\Component\Batch\Job\JobRepositoryInterface`` handles how jobs are stored, updated and retrieved.
+``Akeneo\Tool\Component\Batch\Job\JobRepositoryInterface`` handles how jobs are stored, updated and retrieved.
 
-``Akeneo\Bundle\BatchBundle\Launcher\JobLauncherInterface`` allows to run a Job.
+``Akeneo\Tool\Bundle\BatchBundle\Launcher\JobLauncherInterface`` allows to run a Job.
 
 Each Job has a name, its unique identifier.
 Each Job can be composed of different Steps.
@@ -56,17 +56,17 @@ The execution of a Job is configured through a JobParameters which represents th
 
 Several business services help to manipulate the JobParameters,
 
-- ``Akeneo\Component\Batch\Job\JobParametersFactory`` to create a JobParameters for a given Job
-- ``Akeneo\Component\Batch\Job\JobParametersValidator`` to validate the JobParameters to be used within a Job
-- ``Akeneo\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface`` to provide the default values used to create a JobParameters
-- ``Akeneo\Component\Batch\Job\JobParameters\ConstraintCollectionProviderInterface`` to provide the constraints used to validate a JobParameters
+- ``Akeneo\Tool\Component\Batch\Job\JobParametersFactory`` to create a JobParameters for a given Job
+- ``Akeneo\Tool\Component\Batch\Job\JobParametersValidator`` to validate the JobParameters to be used within a Job
+- ``Akeneo\Tool\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface`` to provide the default values used to create a JobParameters
+- ``Akeneo\Tool\Component\Batch\Job\JobParameters\ConstraintCollectionProviderInterface`` to provide the constraints used to validate a JobParameters
 
 Step
 ----
 
-The default class used for a Step is the ``Akeneo\Component\Batch\Step\ItemStep``.
+The default class used for a Step is the ``Akeneo\Tool\Component\Batch\Step\ItemStep``.
 
-It contains a ``Akeneo\Component\Batch\Item\ItemReaderInterface``, a ``Akeneo\Component\Batch\Item\ItemProcessorInterface`` and a ``Akeneo\Component\Batch\Item\ItemWriterInterface``.
+It contains a ``Akeneo\Tool\Component\Batch\Item\ItemReaderInterface``, a ``Akeneo\Tool\Component\Batch\Item\ItemProcessorInterface`` and a ``Akeneo\Tool\Component\Batch\Item\ItemWriterInterface``.
 
 .. image:: ./batch-item-step.png
 
@@ -78,7 +78,7 @@ For instance, when we import a CSV file of products,
 
 .. note::
 
-  You can use your own Step by implementing ``Akeneo\Component\Batch\Step\StepInterface``.
+  You can use your own Step by implementing ``Akeneo\Tool\Component\Batch\Step\StepInterface``.
 
 
 .. toctree::

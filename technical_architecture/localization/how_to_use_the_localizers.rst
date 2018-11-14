@@ -9,7 +9,7 @@ How to Register a New Localizer
 
 The Akeneo PIM comes with several native localizers, but provides also a flexible way to define your own localizers.
 
-To add your own localizer, you need to create a class implementing ``Akeneo\Component\Localization\Localizer\LocalizerInterface`` and declare it as a service:
+To add your own localizer, you need to create a class implementing ``Akeneo\Tool\Component\Localization\Localizer\LocalizerInterface`` and declare it as a service:
 
 .. code-block:: yaml
 

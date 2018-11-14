@@ -40,7 +40,7 @@ You also need to configure the mapping override in your application configuratio
     akeneo_storage_utils:
         mapping_overrides:
             -
-                original: Pim\Bundle\CatalogBundle\Entity\Category
+                original: Akeneo\Pim\Enrichment\Component\Category\Model\Category
                 override: Acme\Bundle\CatalogBundle\Entity\Category
 
 Define the Category Class
@@ -184,10 +184,10 @@ You also need to configure the mapping override in your application configuratio
     akeneo_storage_utils:
         mapping_overrides:
             -
-                original: Pim\Bundle\CatalogBundle\Entity\Category
+                original: Akeneo\Pim\Enrichment\Component\Category\Model\Category
                 override: Acme\Bundle\CatalogBundle\Entity\Category
             -
-                original: Pim\Bundle\CatalogBundle\Entity\CategoryTranslation
+                original: Akeneo\Pim\Enrichment\Component\Category\Model\CategoryTranslation
                 override: Acme\Bundle\CatalogBundle\Entity\CategoryTranslation
 
 Define the Category Class

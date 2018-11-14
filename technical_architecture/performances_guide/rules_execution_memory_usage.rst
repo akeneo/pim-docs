@@ -81,4 +81,4 @@ Our product entities tracking policy is set to "DEFFERED_EXPLICIT". It means tha
 When we notice Doctrine that an entity changed even when it has not, the library keeps a reference to this object internally.
 
 Unfortunately, when we try to ``flush()`` the entity manager, those objects are not detached. As we iterate and load more and more products, the number of references keeps growing until all memory is used.
-We decided to manually clean these unused references in ``Akeneo\Bundle\StorageUtilsBundle\Doctrine\Common\Detacher\ObjectDetacher`` to avoid this memory leak.
+We decided to manually clean these unused references in ``Akeneo\Tool\Bundle\StorageUtilsBundle\Doctrine\Common\Detacher\ObjectDetacher`` to avoid this memory leak.

@@ -102,7 +102,7 @@ This organization is very helpful to quickly find the context you are looking fo
 
 We are working on permissions that are localized in the system main menu. So let's see the
 `\\Pim\\Behat\\Context\\Domain\\System\\PermissionsContext
-<https://github.com/akeneo/pim-community-dev/blob/master/tests/legacy/features/Pim/Behat/Context/Domain/System/PermissionsContext.php>`_.
+<https://github.com/akeneo/pim-community-dev/blob/master/tests/legacy/features/Behat/Context/Domain/System/PermissionsContext.php>`_.
 
 .. image:: images/PermissionsContext.png
 
@@ -241,13 +241,13 @@ and clean as the code is dispatched into several methods inside single responsib
 Decorator
 _________
 
-All decorators are classified in the *features/Pim/Behat/Decorator/* folder. Each sub-folder represents the element that
+All decorators are classified in the *tests/legacy/features/Behat/Decorator/* folder. Each sub-folder represents the element that
 it decorates. You can find inside folders like *Completeness*, *Field*, *Tab* or for our example *Permission*.
 The name of the sub-folder is only the representative name of the element, no prefix, no suffix. Also, decorators classes
 have to be suffixed by "Decorator" like *DecoratedElementDecorator*.
 
 The `Pim\\Behat\\Decorator\\Permission\\PermissionDecorator
-<https://github.com/akeneo/pim-community-dev/blob/master/tests/legacy/features/Pim/Behat/Decorator/Permission/PermissionDecorator.php>`_
+<https://github.com/akeneo/pim-community-dev/blob/master/tests/legacy/features/Behat/Context/Domain/System/PermissionsContext.php>`_
 adds behaviors to an Element to be able to navigate between groups and grant or revoke permissions for resources or groups.
 
 .. image:: images/decorator.png
@@ -303,7 +303,7 @@ The method *$this->find()* is neither in the decorator nor in the abstract class
 
 That's how we can call methods from the Element class inside decorators. And obviously, that's why all decorators must
 extend `Pim\\Behat\\Decorator\\ElementDecorator
-<https://github.com/akeneo/pim-community-dev/blob/master/tests/legacy/features/Pim/Behat/Decorator/ElementDecorator.php>`_.
+<https://github.com/akeneo/pim-community-dev/blob/master/tests/legacy/features/Behat/Decorator/ElementDecorator.php>`_.
 
 .. note::
 

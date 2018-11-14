@@ -10,7 +10,7 @@ The update of an object can be done through the usage of classic setters directl
 
 The version 1.4 introduces a new internal API to simplify these updates, it especially helps when you need to change relations between objects because it relies on unique code of related objects.
 
-These updaters implement ``Akeneo\Component\StorageUtils\Updater\ObjectUpdaterInterface`` to apply a set of property updates on an object.
+These updaters implement ``Akeneo\Tool\Component\StorageUtils\Updater\ObjectUpdaterInterface`` to apply a set of property updates on an object.
 
 We strongly recommend using this internal API for your developments, and here are a few examples on how to use these dedicated updaters.
 

@@ -8,7 +8,7 @@ Overview
 
 The data model is structured as Entity - Attribute - Value (i.e. Product - Attribute - ProductValue).
 
-The **Product** entity (``Pim\Component\Catalog\Model\Product``) has many **ProductValues** (``Pim\Component\Catalog\Model\ProductValue``) that are linked to different **Attributes** and hold value information depending on specific attribute they are related too.
+The **Product** entity (``Akeneo\Pim\Enrichment\Component\Product\Model\Product``) has many **ProductValues** (``Akeneo\Pim\Enrichment\Component\Product\Model\ProductValue``) that are linked to different **Attributes** and hold value information depending on specific attribute they are related too.
 
 Product
 -------

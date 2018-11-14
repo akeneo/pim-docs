@@ -2,7 +2,7 @@
 
 namespace Acme\Bundle\CsvCleanerConnectorBundle\ArrayConverter\StandardToFlat;
 
-use Pim\Component\Connector\ArrayConverter\ArrayConverterInterface;
+use Akeneo\Tool\Component\Connector\ArrayConverter\ArrayConverterInterface;
 
 class Product implements ArrayConverterInterface
 {

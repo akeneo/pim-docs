@@ -13,9 +13,9 @@ Each Variation is a transformation of a Reference.
 Php5-gd is used in Akeneo PIM but you can add you own library to transform your file. The supported file formats are jpg, png and gif.
 
 As Transformations are not specific PIM elements, they are located in `\\Akeneo` and not `\\PimEnterprise`.
-Then, you can find in ``Akeneo\Component\FileTransformer`` all business code and in ``Akeneo\Bundle\FileTransformerBundle`` all Symfony2 specific implementation.
+Then, you can find in ``Akeneo\Tool\Component\FileTransformer`` all business code and in ``Akeneo\Tool\Bundle\FileTransformerBundle`` all Symfony2 specific implementation.
 
-Transformation runs with the registry pattern. You have to create your own Transformation implementing ``Akeneo\Component\FileTransformer\Transformation\TransformationInterface`` and register the service with the ``akeneo_file_transformer.transformation`` tag.
+Transformation runs with the registry pattern. You have to create your own Transformation implementing ``Akeneo\Tool\Component\FileTransformer\Transformation\TransformationInterface`` and register the service with the ``akeneo_file_transformer.transformation`` tag.
 Then, compiler pass will inject your tagged Transformation in the registry which will make it available.
 
 .. _registry: https://martinfowler.com/eaaCatalog/registry.html
@@ -35,7 +35,7 @@ For the need of the cookbook, we'll add a watermark transformation.
 
 In order to create your transformation, you have to follow these rules:
 
-* your transformation has to implement ``Akeneo\Component\FileTransformer\Transformation\TransformationInterface``.
+* your transformation has to implement ``Akeneo\Tool\Component\FileTransformer\Transformation\TransformationInterface``.
 * your transformation must have a unique name.
 * your transformation service must be tagged ``akeneo_file_transformer.transformation``.
 
@@ -46,8 +46,8 @@ In order to create your transformation, you have to follow these rules:
 
     namespace Acme\CustomBundle\FileTransformer\Transformation\Image;
 
-    use Akeneo\Component\FileTransformer\Options\TransformationOptionsResolverInterface;
-    use Akeneo\Component\FileTransformer\Transformation\AbstractTransformation;
+    use Akeneo\Tool\Component\FileTransformer\Options\TransformationOptionsResolverInterface;
+    use Akeneo\Tool\Component\FileTransformer\Transformation\AbstractTransformation;
 
     /**
      * Watermark transformation
@@ -105,11 +105,11 @@ In order to create your transformation, you have to follow these rules:
     }
 
 .. note::
-    To see how the imagemagick command is launched, you can take a look at the ``Akeneo\Component\FileTransformer\Transformation\Image\ImageMagickLauncher`` class.
+    To see how the imagemagick command is launched, you can take a look at the ``Akeneo\Tool\Component\FileTransformer\Transformation\Image\ImageMagickLauncher`` class.
 
 In order to rely on options you can add an OptionsResolver, for this you need to follow this rule:
 
-* your OptionsResolver must implement the ``Akeneo\Component\FileTransformer\Options\TransformationOptionsResolverInterface``.
+* your OptionsResolver must implement the ``Akeneo\Tool\Component\FileTransformer\Options\TransformationOptionsResolverInterface``.
 
 .. code-block:: php
 
@@ -118,8 +118,8 @@ In order to rely on options you can add an OptionsResolver, for this you need to
 
     namespace Acme\CustomBundle\FileTransformer\Options\Image;
 
-    use Akeneo\Component\FileTransformer\Exception\InvalidOptionsTransformationException;
-    use Akeneo\Component\FileTransformer\Options\TransformationOptionsResolverInterface;
+    use Akeneo\Tool\Component\FileTransformer\Exception\InvalidOptionsTransformationException;
+    use Akeneo\Tool\Component\FileTransformer\Options\TransformationOptionsResolverInterface;
     use Symfony\Component\OptionsResolver\OptionsResolver;
 
     /**

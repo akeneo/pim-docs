@@ -26,7 +26,7 @@ We can now create our own ParsedFilename:
 
     namespace Acme\CustomBundle\ProductAsset\Upload;
 
-    use PimEnterprise\Component\ProductAsset\Upload\UploadChecker as BaseUploadChecker;
+    use Akeneo\Asset\Component\Upload\UploadChecker as BaseUploadChecker;
 
     class UploadChecker extends BaseUploadChecker
     {
@@ -52,7 +52,7 @@ You can now implement your own custom logic in your own ParsedFilenameInterface 
 
     namespace Acme\CustomBundle\ProductAsset\Upload;
 
-    use PimEnterprise\Component\ProductAsset\Upload\ParsedFilename as BaseParsedFilename;
+    use Akeneo\Asset\Component\Upload\ParsedFilename as BaseParsedFilename;
     use Pim\Bundle\CatalogBundle\Model\LocaleInterface;
 
     /**

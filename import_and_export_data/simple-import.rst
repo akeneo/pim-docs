@@ -1,8 +1,8 @@
 How import works
 ================
 
-.. _minimal: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/InstallerBundle/Resources/fixtures/minimal
-.. _icecat: https://github.com/akeneo/pim-community-dev/blob/master/src/Pim/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev
+.. _minimal: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/minimal
+.. _icecat: https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev
 
 At any time, a set of data can be imported: products, attributes, users, etc.
 
@@ -20,7 +20,7 @@ Reader
 
 The goal of the Reader is to read data which can be a simple file (CSV, XSLS, YML, etc) or another external source (a database, a web service, etc).
 
-In Akeneo PIM, all the readers implement ``Akeneo\Component\Batch\Item\ItemReaderInterface``.
+In Akeneo PIM, all the readers implement ``Akeneo\Tool\Component\Batch\Item\ItemReaderInterface``.
 
 File readers are pretty similar, and use the following parameter,
 
@@ -31,11 +31,11 @@ Processor
 
 The goal of the processor is to transform array data to PIM Object and validate it (write is the responsibility of the writer).
 
-In Akeneo PIM, all the processors implement ``Akeneo\Component\Batch\Item\ItemProcessorInterface``.
+In Akeneo PIM, all the processors implement ``Akeneo\Tool\Component\Batch\Item\ItemProcessorInterface``.
 
 For an import, all processor receive items in the standard array format.
 
-Processors are similar, the most use ``Pim\Component\Connector\Processor\Denormalization\Processor``. This SimpleProcessor needs parameters:
+Processors are similar, the most use ``Akeneo\Tool\Component\Connector\Processor\Denormalization\Processor``. This SimpleProcessor needs parameters:
 
 - An ``IdentifiableObjectRepositoryInterface``: The repository fetches the object by its identifier from the database if it already exists.
 - A ``SimpleFactoryInterface``: When the object does not exist, the processor uses the factory to create the object. The ``SimpleFactoryInterface`` provides this default object creation behavior.
@@ -47,5 +47,5 @@ Writer
 ------
 
 The goal of the Writer is to write the processed objects into to database.
-In Akeneo PIM, all the writers implement ``Akeneo\Component\Batch\Item\ItemWriterInterface``.
+In Akeneo PIM, all the writers implement ``Akeneo\Tool\Component\Batch\Item\ItemWriterInterface``.
 We use ``BaseWriter`` which uses ``BulkSaverInterface`` to save, and ``BulkObjectDetacherInterface`` to detach all objects already written from the Doctrine UOW.

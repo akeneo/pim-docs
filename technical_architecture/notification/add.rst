@@ -17,7 +17,7 @@ If you want to create **your own notification type for a custom bundle**, you wi
 Create a Notification Factory
 -----------------------------
 
-First we'll need to create the Notification Factory that will build our own notifications. This class should implement ``Pim\Bundle\NotificationBundle\Factory\NotificationFactoryInterface``.
+First we'll need to create the Notification Factory that will build our own notifications. This class should implement ``Akeneo\Platform\Bundle\NotificationBundle\Factory\NotificationFactoryInterface``.
 
 .. code-block:: php
 
@@ -26,8 +26,8 @@ First we'll need to create the Notification Factory that will build our own noti
 
     namespace Acme\CustomBundle\Notification;
 
-    use Pim\Bundle\NotificationBundle\Entity\Notification
-    use Pim\Bundle\NotificationBundle\Factory\NotificationFactoryInterface;
+    use Akeneo\Platform\Bundle\NotificationBundle\Entity\Notification
+    use Akeneo\Platform\Bundle\NotificationBundle\Factory\NotificationFactoryInterface;
 
     class CustomNotificationFactory implements NotificationFactoryInterface
     {

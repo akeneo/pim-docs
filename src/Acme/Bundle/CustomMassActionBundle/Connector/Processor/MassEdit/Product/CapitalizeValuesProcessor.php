@@ -2,10 +2,10 @@
 
 namespace Acme\Bundle\CustomMassActionBundle\Connector\Processor\MassEdit\Product;
 
-use Akeneo\Component\StorageUtils\Updater\PropertySetterInterface;
-use Pim\Bundle\EnrichBundle\Connector\Processor\AbstractProcessor;
-use Pim\Component\Catalog\Exception\InvalidArgumentException;
-use Pim\Component\Catalog\Model\ProductInterface;
+use Akeneo\Tool\Component\StorageUtils\Updater\PropertySetterInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Connector\Processor\MassEdit\AbstractProcessor;
+use Akeneo\Pim\Enrichment\Component\Product\Exception\InvalidArgumentException;
+use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class CapitalizeValuesProcessor extends AbstractProcessor

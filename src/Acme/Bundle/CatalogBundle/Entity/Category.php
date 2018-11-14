@@ -2,7 +2,7 @@
 
 namespace Acme\Bundle\CatalogBundle\Entity;
 
-use Pim\Bundle\CatalogBundle\Entity\Category as BaseCategory;
+use Akeneo\Pim\Enrichment\Component\Category\Model\Category as BaseCategory;
 
 class Category extends BaseCategory
 {

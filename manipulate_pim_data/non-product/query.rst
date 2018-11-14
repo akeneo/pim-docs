@@ -51,7 +51,7 @@ The following methods are available.
 
     Don't hesitate to have a look at Doctrine documentation for further information.
 
-Each dedicated repository also implements its own business interface, for instance, ``Pim\Bundle\CatalogBundle\Repository\AttributeRepositoryInterface``.
+Each dedicated repository also implements its own business interface, for instance, ``Akeneo\Pim\Structure\Component\Repository\AttributeRepositoryInterface``.
 
 This business interface provides several dedicated methods and we strongly recommend to rely on this interface in your developments.
 

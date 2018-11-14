@@ -2,7 +2,7 @@
 
 namespace Acme\Bundle\XmlConnectorBundle\Reader\File;
 
-use Pim\Component\Connector\Reader\File\FileIteratorInterface;
+use Akeneo\Tool\Component\Connector\Reader\File\FileIteratorInterface;
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 
 class XmlFileIterator implements FileIteratorInterface

@@ -115,7 +115,7 @@ As for the ``jobs.yml``, this service file ``job_parameters.yml`` must be loaded
 Translate Job and Step labels in the UI
 ---------------------------------------
 
-Behind the scene, the service ``Pim\Bundle\ImportExportBundle\JobLabel\TranslatedLabelProvider`` provides translated Job and Step labels to be used in the UI.
+Behind the scene, the service ``Akeneo\Platform\Bundle\ImportExportBundle\JobLabel\TranslatedLabelProvider`` provides translated Job and Step labels to be used in the UI.
 
 This service uses following conventions:
 - for a job label, given a $jobName, "batch_jobs.$jobName.label"

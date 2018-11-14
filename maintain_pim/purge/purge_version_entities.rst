@@ -37,8 +37,8 @@ First, we define a new class within our bundle.
 
     namespace Acme\Bundle\AppBundle\VersionPurger;
 
-    use Akeneo\Component\Versioning\Model\VersionInterface;
-    use Pim\Bundle\VersioningBundle\Purger\VersionPurgerAdvisorInterface;
+    use Akeneo\Tool\Component\Versioning\Model\VersionInterface;
+    use Akeneo\Tool\Bundle\VersioningBundle\Purger\VersionPurgerAdvisorInterface;
 
     class SkipPairVersionPurgerAdvisor implements VersionPurgerAdvisorInterface
     {

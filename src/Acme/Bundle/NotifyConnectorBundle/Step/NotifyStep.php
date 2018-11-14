@@ -2,8 +2,8 @@
 
 namespace Acme\Bundle\NotifyConnectorBundle\Step;
 
-use Akeneo\Component\Batch\Step\AbstractStep;
-use Akeneo\Component\Batch\Model\StepExecution;
+use Akeneo\Tool\Component\Batch\Step\AbstractStep;
+use Akeneo\Tool\Component\Batch\Model\StepExecution;
 
 class NotifyStep extends AbstractStep
 {

@@ -9,9 +9,9 @@ Akeneo PIM already manages its own catalog updates. The list is available in Tea
 How does It Work?
 _________________
 
-A subscriber handles catalog structure updates by listening to ``Akeneo\Component\StorageUtils\StorageEvents::POST_SAVE``
-and ``Akeneo\Component\StorageUtils\StorageEvents::PRE_REMOVE`` on all entities and by dispatching them to the
-``PimEnterprise\Component\TeamworkAssistant\Remover\ChainedProjectRemover``. This chained project remover contains all
+A subscriber handles catalog structure updates by listening to ``Akeneo\Tool\Component\StorageUtils\StorageEvents::POST_SAVE``
+and ``Akeneo\Tool\Component\StorageUtils\StorageEvents::PRE_REMOVE`` on all entities and by dispatching them to the
+``Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Remover\ChainedProjectRemover``. This chained project remover contains all
 project removers and guesses which one has the responsibility to handle both the entity and the action it received.
 
 A `ProjectRemover` has the responsibility to find and to remove all projects impacted by an entity and action pair.
@@ -23,7 +23,7 @@ Reference data will be a good example to demonstrate how to add a `ProjectRemove
 Color reference data which is provided by default. See pim-community-dev repository ``app/config.yml`` and
 ``app/AppKernel.php`` to enable it.
 
-Each project remover must implement the ``PimEnterprise\Component\TeamworkAssistant\Remover\ProjectRemoverInterface``
+Each project remover must implement the ``Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Remover\ProjectRemoverInterface``
 interface and be tagged ``pimee_activity_manager.project_remover``.
 
 .. code-block:: php
@@ -33,12 +33,12 @@ interface and be tagged ``pimee_activity_manager.project_remover``.
     namespace AcmeEnterprise\Bundle\AppBundle\Remover;
 
     use AcmeEnterprise\Bundle\AppBundle\Entity\Color;
-    use Akeneo\Component\StorageUtils\Detacher\ObjectDetacherInterface;
-    use Akeneo\Component\StorageUtils\Remover\RemoverInterface;
-    use Akeneo\Component\StorageUtils\StorageEvents;
+    use Akeneo\Tool\Component\StorageUtils\Detacher\ObjectDetacherInterface;
+    use Akeneo\Tool\Component\StorageUtils\Remover\RemoverInterface;
+    use Akeneo\Tool\Component\StorageUtils\StorageEvents;
     use Doctrine\Common\Persistence\ObjectRepository;
-    use PimEnterprise\Component\TeamworkAssistant\Model\ProjectInterface;
-    use PimEnterprise\Component\TeamworkAssistant\Remover\ProjectRemoverInterface;
+    use Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Model\ProjectInterface;
+    use Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Remover\ProjectRemoverInterface;
 
     class ColorProjectRemover implements ProjectRemoverInterface
     {
@@ -94,7 +94,7 @@ interface and be tagged ``pimee_activity_manager.project_remover``.
         {
             /**
              * Don't be afraid to use `projectRepository->findAll()` as this method has been rewritten in
-             * our repository to return a `Akeneo\Component\StorageUtils\Cursor\CursorInterface`. It does not hydrate
+             * our repository to return a `Akeneo\Tool\Component\StorageUtils\Cursor\CursorInterface`. It does not hydrate
              * all projects at the same time. But don't forget to detach projects that are not removed to avoid
              * memory leaks.
              */

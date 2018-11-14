@@ -2,7 +2,7 @@
 
 namespace Acme\Bundle\CatalogBundle\Entity;
 
-use Pim\Bundle\CatalogBundle\Entity\CategoryTranslation as BaseCategoryTranslation;
+use Akeneo\Pim\Enrichment\Component\Category\Model\CategoryTranslation as BaseCategoryTranslation;
 
 class CategoryTranslation extends BaseCategoryTranslation
 {

@@ -1,7 +1,7 @@
 How to Remove Non-Product Objects
 =================================
 
-To remove one or many objects, we provide a service which implements methods 'remove' and 'removeAll' through the implementation of ``Akeneo\Component\StorageUtils\Remover\RemoverInterface`` and ``Akeneo\Component\StorageUtils\Remover\BulkRemoverInterface``.
+To remove one or many objects, we provide a service which implements methods 'remove' and 'removeAll' through the implementation of ``Akeneo\Tool\Component\StorageUtils\Remover\RemoverInterface`` and ``Akeneo\Tool\Component\StorageUtils\Remover\BulkRemoverInterface``.
 
 Use the Remover to Remove a Single Object
 -----------------------------------------
@@ -10,7 +10,7 @@ You can remove one or many objects of a kind with a special service, the remover
 
 We define these different services to simplify future changes, and to allow you to override only one of them to add specific business logic (for instance, override only attribute remover but not the family remover).
 
-Some services already use specific classes but most of these services use the class ``Akeneo\Bundle\StorageUtilsBundle\Doctrine\Common\Remover\BaseRemover``.
+Some services already use specific classes but most of these services use the class ``Akeneo\Tool\Bundle\StorageUtilsBundle\Doctrine\Common\Remover\BaseRemover``.
 
 .. code-block:: php
 
