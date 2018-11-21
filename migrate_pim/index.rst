@@ -146,7 +146,7 @@ Here are the migration guides:
 
 **Enterprise Edition**
 
-Standard Enterprise Edition (EE) archives are now available on a `dedicated Partner portal <https://partners.akeneo.com/login>`_. You will be able to download your EE archive directly from it. If you do not have access to this interface, please contact your Customer Success or Channel Manager.
+Standard Enterprise Edition (EE) archives are available from `the Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=migration>`_.
 
 Then, follow the migration guides located in your archive to upgrade your project.
 
