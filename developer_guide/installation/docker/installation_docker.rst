@@ -41,7 +41,7 @@ Getting Akeneo PIM
 ******************
 
 You need to download Akeneo PIM. This can be done by downloading the archive from our download page https://www.akeneo.com/download,
-or from our partner portal if you have access to the enterprise edition. It can also be downloaded by cloning it from GitHub
+or from our `Portal if you have access to the enterprise edition <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs>`_. It can also be downloaded by cloning it from GitHub
 (https://github.com/akeneo/pim-community-standard for projects or https://github.com/akeneo/pim-community-dev to contribute).
 
 
