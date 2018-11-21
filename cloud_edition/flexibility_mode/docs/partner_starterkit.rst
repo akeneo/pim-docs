@@ -27,7 +27,7 @@ E. Usefull commands
 We provide some aliases to do some `superuser tasks`_
 
 
-.. _`Manage access to your Cloud Flexibility instance`:  https://help.akeneo.com/portal/articles/access-akeneo-flexibility.html
+.. _`Manage access to your Cloud Flexibility instance`:  https://help.akeneo.com/portal/articles/access-akeneo-flexibility.html?utm_source=akeneo-docs&utm_campaign=flexibility_partner_starterkit
 .. _`Environments access`: ./environments_access.html
 .. _`composer into instance`: ./composer_settings.html
 .. _`our own akeneo setup`: ./pim_application.html
