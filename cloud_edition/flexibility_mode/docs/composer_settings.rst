@@ -7,7 +7,7 @@ Composer settings
 | We setup your own distribution repository in the composer file, so you can change it if you want.
 
 
-| To be able to pull from distribution, you must use a known ssh keypair from partner portal.
+| To be able to pull from distribution, you must use a known ssh keypair from `the Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=composer_settings>`_.
 | You can check your access rights to the distribution repository with this command:
 
 .. code-block:: bash
@@ -40,7 +40,7 @@ Composer settings
         }
     ],
 
-| All details about Distribution System can be found in the documentation “Akeneo EE Distribution System - User guide” in `the Partner portal`_.
+| All details about Distribution System can be found in the `Portal section of the Help center <https://help.akeneo.com/portal/?utm_source=akeneo-docs&utm_campaign=composer_settings>`_.
 
 
 Composer and github api rate limit
@@ -60,7 +60,3 @@ Composer and github api rate limit
     to retrieve a token. It will be stored in "/home/akeneo/.composer/auth.json" for future use by Composer.
     Token (hidden):
 
-
-
-
-.. _`the Partner portal`: https://partners.akeneo.com/toolbox/technical/

@@ -18,3 +18,4 @@ Thank you to contact us when your use case is not covered, we could handle it in
     rules_execution_memory_usage
     work_with_wysiwyg
     php7_hhvm
+    batch_page_size
