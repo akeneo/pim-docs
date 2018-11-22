@@ -54,8 +54,9 @@ that belongs to the project. The job `Job`_ contains steps.
 The main step of the job is the `CalculationStep` which is used to execute an action between Project and Products.
 The main goal of this step is to extract data from the product to add information to the project.
 
-.. _Item Step: ../import_export/main-concepts.html#step
-.. _Add a calculation step: ../../cookbook/teamwork_assistant/calculation_step.html
+.. _Item Step: ../../import_and_export_data/guides/create-connector.html#add-a-new-step
+
+.. _Add a calculation step: ../../manipulate_pim_data/teamwork_assistant/calculation_step.html#add-a-calculation-step
 
 .. note::
 
@@ -68,7 +69,7 @@ The main goal of this step is to extract data from the product to add informatio
 Project Creation Event
 ______________________
 
-.. _add notifications: ../../cookbook/teamwork_assistant/customize_notification.html
+.. _add notifications: ../../manipulate_pim_data/teamwork_assistant/customize_notification.html#customize-notifications
 
 The PIM offers event on which you can plug listeners to add custom behaviors. For example to `add notifications`_,
 or to trigger special actions. This event is located in the class
