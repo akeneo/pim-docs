@@ -4,7 +4,7 @@ Project creation
 Overview
 --------
 
-Projects are the heart of the Teamwork Assistant. They allow users to know what they have to fill in a selection of
+Projects are the heart of Akeneo Teamwork Assistant. They allow users to know which information they have to fill in a selection of
 products. In this section, we will understand how a project is created and what are the important steps it goes through
 during creation.
 
@@ -44,7 +44,7 @@ _________________
 Once a project is saved, a job is launched in background. The purpose of this job is to compute the completeness and to
 notify users concerned by the project.
 
-For each product we need to identify the user groups that have the rights to edit the product, once all the products
+For each product we need to identify the user groups that have the rights to edit the products. Once all the products
 have been checked, we send a notification to the concerned users (aka the contributors).
 
 .. _Job: ../import_export/main-concepts.html#job
@@ -71,7 +71,7 @@ ______________________
 
 .. _add notifications: ../../manipulate_pim_data/teamwork_assistant/customize_notification.html#customize-notifications
 
-The PIM offers event on which you can plug listeners to add custom behaviors. For example to `add notifications`_,
+The PIM offers an event on which you can plug listeners to add custom behaviors. For example to `add notifications`_,
 or to trigger special actions. This event is located in the class
 ``Akeneo\TeamworkAssistant\Component\Event\ProjectCreationEvents``.
 
