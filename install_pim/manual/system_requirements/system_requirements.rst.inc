@@ -30,35 +30,37 @@ The web server will also need the following libraries and modules:
 
 **PHP required modules and configuration**
 
-+----------------+---------------------------+
-| PHP            | 7.1                       |
-+----------------+---------------------------+
-| php-apcu       | apc.enable_cli=1          |
-+----------------+---------------------------+
-| php7.1-bcmath  | No specific configuration |
-+----------------+---------------------------+
-| php7.1-curl    | No specific configuration |
-+----------------+---------------------------+
-| php7.1-fpm     | No specific configuration |
-+----------------+---------------------------+
-| php7.1-gd      | No specific configuration |
-+----------------+---------------------------+
-| php7.1-intl    | No specific configuration |
-+----------------+---------------------------+
-| php7.1-mcrypt  | No specific configuration |
-+----------------+---------------------------+
-| php7.1-mysql   | No specific configuration |
-+----------------+---------------------------+
-| php7.1-soap    | No specific configuration |
-+----------------+---------------------------+
-| php7.1-xml     | No specific configuration |
-+----------------+---------------------------+
-| php7.1-zip     | No specific configuration |
-+----------------+---------------------------+
-| php-exif       | No specific configuration |
-+----------------+---------------------------+
-| php7.1-imagick | No specific configuration |
-+----------------+---------------------------+
++----------------+----------------------------+
+| PHP             | 7.1                       |
++----------------+----------------------------+
+| php-apcu        | apc.enable_cli=1          |
++----------------+----------------------------+
+| php7.1-bcmath   | No specific configuration |
++----------------+----------------------------+
+| php7.1-curl     | No specific configuration |
++----------------+----------------------------+
+| php7.1-fpm      | No specific configuration |
++----------------+----------------------------+
+| php7.1-gd       | No specific configuration |
++----------------+----------------------------+
+| php7.1-intl     | No specific configuration |
++----------------+----------------------------+
+| php7.1-mcrypt   | No specific configuration |
++----------------+----------------------------+
+| php7.1-mysql    | No specific configuration |
++----------------+----------------------------+
+| php7.1-soap     | No specific configuration |
++----------------+----------------------------+
+| php7.1-xml      | No specific configuration |
++----------------+----------------------------+
+| php7.1-zip      | No specific configuration |
++----------------+----------------------------+
+| php-exif        | No specific configuration |
++----------------+----------------------------+
+| php7.1-imagick  | No specific configuration |
++----------------+----------------------------+
+| php7.1-mbstring | No specific configuration |
++----------------+----------------------------+
 
 .. warning::
 
