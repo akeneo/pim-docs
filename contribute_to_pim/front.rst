@@ -26,7 +26,7 @@ After this step you will be able to launch the pim asset install command:
 
 .. code-block:: bash
 
-    bin/console --env=prod pim:install:assets --symlink
+    bin/console --env=prod pim:installer:assets --symlink
 
 With this command, symfony will symlink the assets located in the `Resources/public` folder of every registered bundles to their respective `web/bundles` folders. We recommand to always use the symlink option when developing on the PIM.
 
