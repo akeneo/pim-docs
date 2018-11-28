@@ -110,7 +110,7 @@ run this command:
 
 .. code-block:: bash
 
-    rm -rf ./var/cache/*; rm -rf ./web/js/*; rm -rf ./web/css/*; php bin/console pim:install:ass --env=prod --symlink;
+    rm -rf ./var/cache/*; rm -rf ./web/js/*; rm -rf ./web/css/*; php bin/console pim:installer:assets --env=prod --symlink;
 
 We strongly advise you to create an alias
 
