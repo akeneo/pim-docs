@@ -37,8 +37,9 @@ RUN apt-get update && \
     python setup.py install && \
     #
     # Download packages
+    # TODO Do not pull-up the apc update on versions >= 2.0 and remove this comment
     apt-get update && \
-    apt-get install -y --no-install-recommends mysql-server php7.1-apcu php7.1-bcmath \
+    apt-get install -y --no-install-recommends mysql-server php7.1-apc php7.1-bcmath \
         php7.1-cli php7.1-curl php7.1-fpm php7.1-gd php7.1-intl php7.1-mcrypt php7.1-mysql php7.1-soap php7.1-xml \
         php7.1-zip php7.1-mbstring && \
     #
