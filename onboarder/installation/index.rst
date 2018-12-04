@@ -15,7 +15,7 @@ Add the following dependency to your ``composer.json`` file
 .. code-block:: json
 
     "require": {
-        "akeneo/pim-onboarder": "dev-master@dev"
+        "akeneo/pim-onboarder": "1.1.*"
     },
     "repositories": {
         "pim-onboarder": {
@@ -114,22 +114,32 @@ Here are two example in order to define environment variables:
 
 **Mandatory variables**
 
-The following variables must be set in order to configure the onboarder correctly.
+The following variables must be set in order to configure the Onboarder correctly.
 
 Variables provided by the Akeneo technical team :   
 
 | ``GOOGLE_APPLICATION_CREDENTIALS`` : Absolute filesystem path to the serviceAccount.json file provided by the Akeneo team. We advise to use it only in production.
-| ``ONBOARDER_TOPIC_NAME_FOR_PUBLICATION`` : Pub/Sub topic name to send messages to the retailer onboarder.
-| ``ONBOARDER_TOPIC_NAME_FOR_CONSUMPTION`` : Pub/Sub topic name to receive messages from the retailer onboarder.
+| ``ONBOARDER_TOPIC_NAME_FOR_PUBLICATION`` : Pub/Sub topic name to send messages to the retailer Onboarder.
+| ``ONBOARDER_TOPIC_NAME_FOR_CONSUMPTION`` : Pub/Sub topic name to receive messages from the retailer Onboarder.
 | ``ONBOARDER_QUEUE_NAME`` : Pub/Sub queue name.
-| ``ONBOARDER_RETAILER_URL`` : URL to the onboarder retailer. Example : https://retailer-onboarder.akeneo.com
-| ``ONBOARDER_CLOUD_STORAGE_BUCKET_NAME`` : Identifier of the bucket used to share files between your PIM and the retailer onboarder.
+| ``ONBOARDER_RETAILER_URL`` : URL to the Onboarder retailer. Example : https://retailer-onboarder.akeneo.com
+| ``ONBOARDER_CLOUD_STORAGE_BUCKET_NAME`` : Identifier of the bucket used to share files between your PIM and the retailer Onboarder.
 
 
 Variables defined by you :
 
 | ``PUBSUB_EMULATOR_HOST`` : Use this if you want to use a Pub/Sub emulator during development. See the documention here. In this case you don't need the serviceAccount.json file neither set the GOOGLE_APPLICATION_CREDENTIALS variable.
 | ``SIMPLESAMLPHP_CONFIG_DIR`` : Absolute filesystem path to the SSO Identity Provider config directory located in the bundle. Example : /srv/pim/vendor/akeneo/pim-onboarder/src/Infrastructure/Security/SimpleSamlPhp/Configuration
-| ``ONBOARDER_PIMMASTER_URL`` : Public url of your akeneo PIM instance
-| ``ONBOARDER_SSO_CERTS_PATH`` : Absolute path to the sso certificates. Example: /var/www/sso-certs
+| ``ONBOARDER_PIMMASTER_URL`` : Public url of your Akeneo PIM instance
+| ``ONBOARDER_SSO_CERTS_PATH`` : Absolute path to the SSO certificates. Example: /var/www/sso-certs
 | ``ONBOARDER_SSO_IDP_PUBLIC_KEY`` : Content of the public key
+
+
+Setup database tables
+---------------------
+
+The akeneo/pim-onboarder extension needs some extra tables. Please run the following command to install them:
+
+.. code-block:: bash
+
+    $ php bin/console akeneo:onboarder:setup-database --env=prod
