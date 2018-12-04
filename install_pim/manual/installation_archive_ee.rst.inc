@@ -5,13 +5,13 @@ Extracting the archive
     :linenos:
 
     $ mkdir -p /path/to/installation
-    $ tar -xvzf pim-enterprise-standard-v2.0.tar.gz -C /path/to/installation/
+    $ tar -xvzf pim-enterprise-standard-v2.3.tar.gz -C /path/to/installation/
 
 .. note::
     Replace */path/to/installation* by the path to the directory where you want to install the PIM.
 
 .. note::
-    Replace *pim-enterprise-standard-v2.0.tar.gz* by the location and the name of the archive you have downloaded from `Partner portal <https://partners.akeneo.com/login>`_
+    Replace *pim-enterprise-standard-v2.3.tar.gz* by the location and the name of the archive you have downloaded from the Portal. Instructions on how to download this archive are available `from the Help Center <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=installation_archive>`_
 
 .. note::
     The PIM will be extracted in the folder /path/to/installation/pim-enterprise-standard.
