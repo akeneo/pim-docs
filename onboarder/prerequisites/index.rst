@@ -8,7 +8,7 @@ All the Prerequisites listed below have to be fulfilled before the installation 
 +================================================+========================================================================================================+
 | :ref:`PIM <onboarder-prereq-pim>`              | Your Akeneo PIM is an enterprise edition                                                               |
 +                                                +--------------------------------------------------------------------------------------------------------+
-|                                                | Your Akeneo PIM version is above 2.3.9                                                                 |
+|                                                | Your Akeneo PIM version is >= 2.3.9 and <3.0                                                           |
 +------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 | :ref:`SSO <onboarder-prereq-pim>`              | Your Akeneo PIM instance is accessible through public internet network                                 |
 +                                                +--------------------------------------------------------------------------------------------------------+
@@ -60,13 +60,3 @@ The parameters package provided by the akeneo cloud team must contain:
     * ``ONBOARDER_QUEUE_NAME``: the queue where the Akeneo PIM will consume synchronization messages
 * ``ONBOARDER_RETAILER_URL``: url of the Onboarder retailer, needed for SSO implementation
 * ``ONBOARDER_CLOUD_STORAGE_BUCKET_NAME``: name of the bucket where the assets will be synchronized
-
-Worker
-^^^^^^
-| The synchronization of the catalog structure and the catalog data is handle in a asynchronous way using the Google Cloud PubSub service.
-| The messages that are part of the synchronization process are queued. 
-| The queue is consumed by a command line process called ``worker``.
-| 
-| The worker have to be always launched as it poll the queue waiting for new messages to handle.
-| The akeneo/pim-onboarder extension comes with a `supervisor <http://supervisord.org/>`_ configuration example to manage this worker to be always running but it's up to you to manage this another way.
-
