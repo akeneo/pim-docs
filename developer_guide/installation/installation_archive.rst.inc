@@ -14,7 +14,7 @@ Extracting the archive
     * For Community Edition, replace *pim-community-standard-v1.7-latest-icecat.tar.gz* by the location and the name
       of the archive you have downloaded from https://www.akeneo.com/download
     * For Enterprise Edition, replace *pim-community-standard-v1.7-latest-icecat.tar.gz* by the location and the name
-      of the archive you have downloaded from `Partner portal <https://partners.akeneo.com/login>`_
+      of the archive you have downloaded from `the Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=installation_archive>`_
 
 .. note::
     The PIM will be extracted in the folder /path/to/installation/pim-community-standard.
