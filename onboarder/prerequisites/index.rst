@@ -52,7 +52,7 @@ Parameters package
 
 The parameters package provided by the akeneo cloud team must contain:
 
-* A ``serviceAccount.json`` file that contains authentication values to be able to use the Google PubSub and Google Cloud Storage services
+* A ``serviceAccount.json`` file that contains authentication values to be able to use the Google PubSub and Google Cloud Storage services.
 * Several environments variables values that you will configure in the install process in order to communicate with Google Cloud PubSub instance
 *
     * ``ONBOARDER_TOPIC_NAME_FOR_PUBLICATION``: the topic where the Akeneo PIM will publish synchronization messages
@@ -60,3 +60,4 @@ The parameters package provided by the akeneo cloud team must contain:
     * ``ONBOARDER_QUEUE_NAME``: the queue where the Akeneo PIM will consume synchronization messages
 * ``ONBOARDER_RETAILER_URL``: url of the Onboarder retailer, needed for SSO implementation
 * ``ONBOARDER_CLOUD_STORAGE_BUCKET_NAME``: name of the bucket where the assets will be synchronized
+* ``ONBOARDER_SSO_IDP_PUBLIC_KEY``: content of the public key (pimmaster.crt)
