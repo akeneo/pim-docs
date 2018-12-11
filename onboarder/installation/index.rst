@@ -8,27 +8,13 @@ Installation
 Add the extension dependency to your PIM
 ----------------------------------------
 
-Add the following dependency to your ``composer.json`` file
-
-#TODO retrieve the distribution.akeneo.com package name
-
-.. code-block:: json
-
-    "require": {
-        "akeneo/pim-onboarder": "1.1.*"
-    },
-    "repositories": {
-        "pim-onboarder": {
-            "type": "vcs",
-            "url": "https://github.com/akeneo/pim-onboarder.git"
-        }
-    },
-
-Then update the composer dependencies
+Execute the following composer commands to require the bundle:
 
 .. code-block:: bash
 
-   $ composer update akeneo/pim-onboarder
+    composer config repositories.onboarder '{"type": "vcs", "url": "ssh://git@distribution.akeneo.com:443/pim-onboarder", "branch": "master"}'
+    composer config repositories.simplesamlphp '{"type": "vcs", "url": "ssh://git@distribution.akeneo.com:443/simplesamlphp-module-pimonboarder", "branch": "master"}'
+    composer require "akeneo/pim-onboarder" "1.1.*"
 
 
 Enable the extension
