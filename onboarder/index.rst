@@ -14,3 +14,10 @@ Akeneo Onboarder
     prerequisites/index
     installation/index
     synchronization/index
+
+.. toctree::
+    :hidden:
+    :titlesonly:
+    :includehidden:
+
+    installation/define_environment_variables/index
