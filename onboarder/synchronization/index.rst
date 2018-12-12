@@ -15,8 +15,8 @@ Data synchronized are: attribute groups, attributes, attribute option, categorie
 
 .. note::
 
-    You will have to run this command only one time.
-    Once the extension correctly installed, all data mentioned above will be synchronized automatically when they will be saved.
+    You will have to run this command only once.
+    Once the extension is correctly installed, all data mentioned above will be synchronized automatically when they will be saved.
 
 
 Launch the message worker
@@ -26,7 +26,7 @@ Launch the message worker
 | The messages that are part of the synchronization process are queued.
 | The queue is consumed by a command line process called ``worker``.
 |
-| The worker has to be always launched as it poll the queue waiting for new messages to handle.
+| The worker has to always be launched as it polls the queue waiting for new messages to handle.
 
 
 You want a supervised worker

@@ -20,7 +20,7 @@ Execute the following composer commands to require the bundle:
 Enable the extension
 --------------------
 
-Register the following two new bundle in your ``app/AppKernel.php``
+Register the following two new bundles in your ``app/AppKernel.php``
 
 .. code-block:: php
 
@@ -89,13 +89,13 @@ Import the extension configuration in the ``app/config/config.yml`` file
 Make the credential files accessible to Akeneo PIM software
 -----------------------------------------------------------
 
-In the parameters package the Akeneo cloud team put 3 credential files:
+In the parameters package the Akeneo team put 3 credential files:
 
 * A ``pimmaster.crt`` file that is the public key used for SSO authentication
 * A ``pimmaster.pem`` file that is the private key used for SSO authentication
 * A ``serviceAccount.json`` file that is used for Google Cloud PubSub and Google Cloud Storage authentication
 
-Make sure that those 3 files are shipped to the server that host your PIM.
+Make sure those 3 files are shipped to the server that host your PIM.
 
 Those 3 files must be accessible (read rights) by the system user that runs the pim (example: www-data).
 
@@ -106,7 +106,7 @@ To configure your PIM to work with the Onboarder, we use environment variables.
 
 **How to define environment variables**
 
-Here are two example in order to define environment variables:
+Here are two examples in order to define environment variables:
 
 * :doc:`Using Dotenv symfony component </onboarder/installation/define_environment_variables/dot_env_component>`
 * :doc:`Using system environment variables </onboarder/installation/define_environment_variables/system_environment_variables>`
@@ -117,7 +117,7 @@ Here are two example in order to define environment variables:
     All the following variables must be set in order to configure the Onboarder correctly.
 
 
-**Variables provided by the Akeneo cloud team**
+**Variables provided by the Akeneo team**
 
 +--------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | GOOGLE_APPLICATION_CREDENTIALS       | Absolute filesystem path to the ``serviceAccount.json`` file provided by the Akeneo team. We advise to use it only in production. |
@@ -144,12 +144,12 @@ Here are two example in order to define environment variables:
 +--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ONBOARDER_PIMMASTER_URL  | Public URL of your Akeneo PIM instance                                                                                                                                                                      |
 +--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_SSO_CERTS_PATH | Absolute path to the SSO certificates that the cloud team provided you in the parameters package. Example: ``/var/www/sso-certs``                                                                           |
+| ONBOARDER_SSO_CERTS_PATH | Absolute path to the SSO certificates that the Akeneo team provided you in the parameters package. Example: ``/var/www/sso-certs``                                                                          |
 +--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 | 
 
-**Optionnal variables**
+**Optional variables**
 
 +----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | PUBSUB_EMULATOR_HOST | Use this if you want to use a Pub/Sub emulator during development. In this case you don't need the serviceAccount.json file neither set the GOOGLE_APPLICATION_CREDENTIALS variable. |
