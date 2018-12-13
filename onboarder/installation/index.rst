@@ -74,7 +74,7 @@ Then modify the access control rules :
         - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED }
 
 .. note::
-    If you had specific access controls needed by some other extension or customization, you can keep it. But please note that it can be imcompatible with this new setting and that for Symfony, the order is important (the first rule matched is applied).
+    If you had specific access controls needed by some other extension or customization, you can keep it. But please note that it can be imcompatible with this new setting. Also for Symfony, the order is important (the first rule matched is applied).
 
 Load the extension configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
