@@ -13,6 +13,11 @@ Data synchronized are: attribute groups, attributes, attribute option, categorie
     $ php bin/console akeneo:synchronization:push-catalog-to-onboarder --env=prod
 
 
+.. warning::
+
+    Please not that the synchronization can take time.
+
+
 .. note::
 
     You will have to run this command only once.

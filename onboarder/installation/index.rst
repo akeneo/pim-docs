@@ -41,7 +41,7 @@ Modify your security configuration
 
 SSO authentication process works quite differently than the classic login form method, it needs specific firewall and access control configuration.
 
-First, modify the configuration of the main firewall as follows :
+First, replace the ``main`` firewall in the configuration file ``app/config/security.yml`` :
 
 .. code-block:: yaml
 
@@ -56,7 +56,7 @@ First, modify the configuration of the main firewall as follows :
             path:                       '/saml/logout'
         anonymous:                      true
 
-Then modify the access control rules :
+Then, update the access control rules :
 
 .. code-block:: yaml
 
@@ -79,7 +79,7 @@ Then modify the access control rules :
 Load the extension configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Import the extension configuration in the ``app/config/config.yml`` file
+Import the extension configuration in the ``app/config/config.yml`` file (after all other imports)
 
 .. code-block:: yaml
 
@@ -159,8 +159,17 @@ Here are two examples in order to define environment variables:
 Setup database tables
 ---------------------
 
+Before setup the database, please run the following command to clear your cache and install new assets:
+
+.. code-block:: bash
+
+    $ rm -rf var/cache; bin/console pim:install:asset --env=prod; yarn run webpack
+
+
 The akeneo/pim-onboarder extension needs some extra tables. Please run the following command to install them:
 
 .. code-block:: bash
 
     $ php bin/console akeneo:onboarder:setup-database --env=prod
+
+Once the installation done, please read the documenation about the :doc:`synchronization </onboarder/synchronization/index>`.
