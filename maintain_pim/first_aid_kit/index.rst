@@ -93,7 +93,7 @@ Clear the PIM cache (also known as "Symfony cache") by running the following com
 .. code-block:: bash
 
     cd /path/to/your/pim/
-    php bin/console cache:clear --env=prod
+    php bin/console cache:clear --env=prod --no-warmup
 
 Step 9: did you consider the volume of your catalog?
 ----------------------------------------------------
