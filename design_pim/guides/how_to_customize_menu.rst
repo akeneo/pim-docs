@@ -19,6 +19,7 @@ To add an element at the root of the tree you can reuse the tab module provided 
             position: 110                                  # [optional] The position in the tree where you want to add the item
             config:
                 title: pim_menu.item.import_profile        # You can define a translation key for the tab name
+                to: pim_importexport_import_profile_index  # The route to redirect to
 
 After running the command ``rm -rf var/cache; bin/console pim:install:asset; yarn run webpack`` your new item should appear at the root of the menu.
 
