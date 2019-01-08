@@ -286,7 +286,9 @@ What if?
 I want to see my tests running
 ******************************
 
-The docker image ``selenium/standalone-firefox-debug`` comes with a VNC server in it. You need a VNC client, and to connect to ``localhost:5900``. You will then be able to see you browser and your tests running in it!
+The docker image ``selenium/standalone-firefox-debug`` comes with a VNC server in it. You need a VNC client, and to connect to ``localhost:5900``. The VNC password is : `secret`.
+
+You will then be able to see you browser and your tests running in it!
 
 
 I never want to see my tests running
