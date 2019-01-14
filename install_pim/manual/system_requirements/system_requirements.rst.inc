@@ -47,8 +47,6 @@ The web server will also need the following libraries and modules:
 +----------------+---------------------------+
 | php7.2-mysql   | No specific configuration |
 +----------------+---------------------------+
-| php7.2-soap    | No specific configuration |
-+----------------+---------------------------+
 | php7.2-xml     | No specific configuration |
 +----------------+---------------------------+
 | php7.2-zip     | No specific configuration |
