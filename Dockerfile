@@ -66,13 +66,15 @@ RUN chmod +x /home/akeneo/pim-docs/build.sh && \
     # Download curent version
     wget https://github.com/akeneo/pim-community-dev/archive/master.zip -P /home/akeneo/pim-docs/ && \
     unzip /home/akeneo/pim-docs/master.zip -d /home/akeneo/pim-docs/ && \
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && \
     #
     # Install Akeneo PIM
+    cd /home/akeneo/pim-docs/pim-community-dev-master/ && \
     php -d memory_limit=3G /home/akeneo/pim-docs/composer.phar install --no-dev --no-suggest --ignore-platform-reqs && \
+    chown -R mysql:mysql /var/lib/mysql /var/run/mysqld && \
     service mysql start && \
     mysql -u root -e "CREATE DATABASE akeneo_pim" && \
     mysql -u root -e "GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim'" && \
+    cp /home/akeneo/pim-docs/pim-community-dev-master/app/config/parameters.yml.dist /home/akeneo/pim-docs/pim-community-dev-master/app/config/parameters.yml && \
     cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console doctrine:schema:create --env=prod && \
     cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console pim:installer:assets --env=prod && \
     service mysql stop && \

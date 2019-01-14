@@ -6,13 +6,7 @@ For information, here follows a quite standard configuration, and therefore the 
 Hardware Minimum Configuration
 ------------------------------
 
-+-----------+-------------------------------+
-| Processor | Quad Core, Intel Xeon 1220+   |
-+-----------+-------------------------------+
-| Memory    | 8GB                           |
-+-----------+-------------------------------+
-| Storage   | SAS HDD, 15k RPM, 20GB, RAID1 |
-+-----------+-------------------------------+
+The required configuration depends on your volume and your usage. As we are based on Elasticsearch and MySQL, please check their dedicated documentation to define your server size.
 
 Software
 --------
