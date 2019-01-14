@@ -254,7 +254,7 @@ Now that we created our form extension we need to register it:
             parent: pim-product-edit-form-meta # The parent of your extension (the meta section of the product edit form in this case)
 
 
-A fiew words about this small configuration:
+A few words about this small configuration:
 
 - the key ``my_form_extension`` should be a unique key to represent your form extension.
 - you can declare multiple form extensions with the same RequireJS module.
