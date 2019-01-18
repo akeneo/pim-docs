@@ -70,7 +70,7 @@ Besides these modules, the following configuration is the minimal configuration 
 | Image magick   | ≥ 6.8                     |
 +----------------+---------------------------+
 
-**Javascript**
+**Javascript** (required only for development purposes)
 
 +----------------+---------------------------+
 | nodejs         | ≥ 10.15.0                 |
