@@ -1,7 +1,7 @@
 System installation on Ubuntu 16.04 (Xenial Xerus)
 ==================================================
 
-Here is a quick guide to setup the :doc:`system_requirements` on Ubuntu 16.04. This guide will help you to install all
+Here is a quick guide to set up the :doc:`system_requirements` on Ubuntu 16.04. This guide will help you to install all
 the packages and modules needed for Akeneo PIM on a freshly installed Ubuntu 16.04 system and then configure the
 application to match your local installation.
 
@@ -22,7 +22,7 @@ MySQL 5.7
 PHP 7.2
 *******
 
-The easiest way to install PHP 7.2 is to use `Ond?ej Sur? <https://deb.sury.org/>`_ packages.
+The easiest way to install PHP 7.2 is to use `Ondrej Sury <https://deb.sury.org/>`_ packages.
 
 First, install the `repository <https://launchpad.net/~ondrej/+archive/ubuntu/php/>`_:
 
