@@ -113,8 +113,15 @@ Node
 
 .. code-block:: bash
 
-    $ curl -sL https://deb.nodesource.com/setup_8.x | bash -
+    $ curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+    $ bash nodesource_setup.sh
     $ apt-get install -y nodejs
+
+To check which version of Node.js you have installed after these initial steps, type:
+
+.. code-block:: bash
+
+    $ nodejs -v
 
 Yarn
 ****
