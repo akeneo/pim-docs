@@ -50,10 +50,10 @@ For Enterprise Edition, please also install:
 
     $ apt install php7.2-imagick
 
-Elasticsearch 5.5 or 5.6
-************************
+Elasticsearch 6.5
+*****************
 
-The easiest way to install Elasticsearch 5 is to use the `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/5.5/deb.html#deb>`_:
+The easiest way to install Elasticsearch 6 is to use the `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/6.5/deb.html#deb>`_:
 
 - first install the PGP key
 - then install the package via the official repository
@@ -61,15 +61,15 @@ The easiest way to install Elasticsearch 5 is to use the `official vendor packag
 .. code-block:: bash
 
     $ apt install apt-transport-https
-    $ wget -O - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
-    $ echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-5.x.list
+    $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
+    $ echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-6.x.list
     $ apt update
     $ apt install openjdk-8-jre-headless
     $ apt install elasticsearch
 
 .. warning::
 
-   You will probably need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/5.5/deb.html#deb-configuring>`_.
+   You will probably need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/6.5/deb.html#deb-configuring>`_.
    Proceed as follow (first command will affect your current session, second one every boot of your machine):
 
    .. code-block:: bash
