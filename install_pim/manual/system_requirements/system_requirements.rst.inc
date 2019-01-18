@@ -70,7 +70,7 @@ Besides these modules, the following configuration is the minimal configuration 
 | Image magick   | ≥ 6.8                     |
 +----------------+---------------------------+
 
-**Javascript**
+**Javascript** (required only for development purposes)
 
 +----------------+---------------------------+
 | nodejs         | ≥ 10.15.0                 |
@@ -101,7 +101,7 @@ and the following PHP modules:
 **Search engine**
 
 +---------------+------------+
-| Elasticsearch | 5.5 or 5.6 |
+| Elasticsearch | 6.5        |
 +---------------+------------+
 
 and the following Java Runtime Environment version
