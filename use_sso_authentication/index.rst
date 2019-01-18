@@ -19,10 +19,10 @@ The ``Identity Provider`` offers user authentication as a service, and the ``Ser
 
 The content exchanged between the IdP and the SP must be signed, that's why we have to configure those entities with ``Certificates`` and ``Private keys``.
 
-All the exchanges, redirections between the browser, the Service Provider and the Identity Provider could be represented as follows
+All the exchanges, redirections between the browser, the Service Provider and the Identity Provider could be represented as follows:
 
-.. image:: https://upload.wikimedia.org/wikipedia/en/0/04/Saml2-browser-sso-redirect-post.png
-
+.. image:: ./common/images/wikimedia-saml2-browser-sso-redirect-post.png
+    :width: 1000px
 
 Setting up the Identity Provider (IdP)
 --------------------------------------
