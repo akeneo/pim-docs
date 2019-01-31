@@ -1,7 +1,7 @@
 code;;all types;"| Must be unique
 | Must only contain letters, numbers and underscores
 | Must be less than 255 characters long
-| Cannot be one of: id, associationTypes, categories, categoryId, completeness, enabled, family, groups, associations, products, scope, treeId, values, category
+| Cannot be one of: id, associationTypes, categories, categoryId, completeness, enabled, family, groups, associations, products, scope, treeId, values, category, attributes, parent, label, entity_type
 | Cannot end with “_products” or “_groups”"
 type;;all types;Must be a valid type (see table below)
 label-<locale_code>;;;

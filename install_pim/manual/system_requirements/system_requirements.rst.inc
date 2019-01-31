@@ -47,8 +47,6 @@ The web server will also need the following libraries and modules:
 +----------------+---------------------------+
 | php7.2-mysql   | No specific configuration |
 +----------------+---------------------------+
-| php7.2-soap    | No specific configuration |
-+----------------+---------------------------+
 | php7.2-xml     | No specific configuration |
 +----------------+---------------------------+
 | php7.2-zip     | No specific configuration |
@@ -72,10 +70,10 @@ Besides these modules, the following configuration is the minimal configuration 
 | Image magick   | ≥ 6.8                     |
 +----------------+---------------------------+
 
-**Javascript**
+**Javascript** (required only for development purposes)
 
 +----------------+---------------------------+
-| nodejs         | ≥ 6.11.0 - 8.2.1          |
+| nodejs         | ≥ 10.15.0                 |
 +----------------+---------------------------+
 | yarn           | ≥ 1.0.0                   |
 +----------------+---------------------------+
@@ -103,7 +101,7 @@ and the following PHP modules:
 **Search engine**
 
 +---------------+------------+
-| Elasticsearch | 5.5 or 5.6 |
+| Elasticsearch | 6.5        |
 +---------------+------------+
 
 and the following Java Runtime Environment version
