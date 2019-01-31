@@ -8,24 +8,24 @@ As a prerequisite, we assume that you are using a project installed from a Commu
 How to apply a patch?
 ---------------------
 
-We frequently release patches for all supported versions - you can find the list of supported versions in this article 
-`How many PIM Enterprise Edition versions are maintained by Akeneo? <https://www.akeneo.com/fr/knowledge-base/how-many-pim-versions-are-maintained-by-akeneo/>`_      
- 
-Each patch contains bug fixes and sometimes improvements or security fixes, **that is why it is very important to always have the latest patch installed on your PIM.** 
-Also for support purposes, if you experience an issue, make sure your PIM is up-to-date before raising a ticket to our Support team.
- 
-When our maintenance team works on issues, they take extreme care to avoid any backward compatibility break, but it might happen. If it is the case, the BC break is mentioned in the changelog of the version.
- 
-Akeneo PIM CE changelog is available on our GitHub repository: 
+We frequently release patches for all supported versions - you can find the list of supported versions in this article
+`How many PIM Enterprise Edition versions are maintained by Akeneo? <https://www.akeneo.com/fr/knowledge-base/how-many-pim-versions-are-maintained-by-akeneo/>`_
 
-* Go to our `Community Repository <https://github.com/akeneo/pim-community-dev/>`_. 
+Each patch contains bug fixes and sometimes improvements or security fixes, **that is why it is very important to always have the latest patch installed on your PIM.**
+Also for support purposes, if you experience an issue, make sure your PIM is up-to-date before raising a ticket to our Support team.
+
+When our maintenance team works on issues, they take extreme care to avoid any backward compatibility break, but it might happen. If it is the case, the BC break is mentioned in the changelog of the version.
+
+Akeneo PIM CE changelog is available on our GitHub repository:
+
+* Go to our `Community Repository <https://github.com/akeneo/pim-community-dev/>`_.
 * Select your branch in the drop down menu, for instance select 2.3 branch.
 * Then scroll down the page, and select the desired Changelog in the list, for instance `Changelog 2.3 version <https://github.com/akeneo/pim-community-dev/blob/2.3/CHANGELOG-2.3.md>`_.
 
 .. note::
 
     Akeneo provides 2 changelogs: one for CE edition available the Community repo and one for EE edition which is only available in the latest archive. If you want to check the latest fixes for the Enterprise Edition, download the last archive or contact us.
- 
+
 In the following example, Akeneo PIM version 2.3.10 has just been released and we are using an Akeneo PIM version 2.3.9.
 
 **Community Edition**
@@ -118,10 +118,19 @@ Then follow the same process as the one for the community edition:
     bin/console --env=prod cache:warmup
     yarn run webpack
 
+**For Akeneo Cloud environments**
+
+You can follow this process:
+
+.. code-block:: bash
+
+    partners_clear_cache
+    bin/console --env=prod pim:installer:assets
+    yarn run webpack
+
 .. note::
 
-    For Akeneo Cloud environments, you can run the ``partners_clear_cache`` command available on :doc:`/cloud_edition/flexibility_mode/docs/partners`.
-
+    Use the ``partners_clear_cache`` command available on :doc:`/cloud_edition/flexibility_mode/docs/partners`.
 
 How to upgrade to a minor version?
 ----------------------------------
