@@ -3,15 +3,8 @@ Server side set up for hosting
 
 Hardware
 --------
-Here is the minimum server configuration to run Akeneo PIM application:
 
-+------------+------------------------------------------------------------+
-| CPU        | Quad-core, type Intel Xeon 1220 or above                   |
-+------------+------------------------------------------------------------+
-| Memory     |  8GB minimum                                               |
-+------------+------------------------------------------------------------+
-| Hard drive | SAS HDD 15k RPM, 20GB minimum (RAID 1 minimum recommended) |
-+------------+------------------------------------------------------------+
+The required configuration depends on your volume and your usage. As we are based on Elasticsearch and MySQL, please check their dedicated documentation to define your server size.
 
 .. warning::
 

@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+    apache:
+        image: httpd:2.4
+        volumes:
+          - ./pim-docs-build/:/usr/local/apache2/htdocs/
+        working_dir: /usr/local/apache2/htdocs/

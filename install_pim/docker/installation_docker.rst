@@ -15,7 +15,7 @@ Getting Akeneo PIM
 ------------------
 
 As our Docker image does not contain Akeneo PIM, you need to download it first.
-This can be done by downloading the archive from our `download page <https://www.akeneo.com/download>`_, or from our partner portal if you have access to the enterprise edition.
+This can be done by downloading the archive from the `Website <https://www.akeneo.com/download>`_, or from the `Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=installation_archive>`_ if you have access to the enterprise edition.
 It can also be downloaded by cloning it from GitHub (using the `standard edition <https://github.com/akeneo/pim-community-standard>`_ for projects or the `development edition <https://github.com/akeneo/pim-community-dev>`_ to contribute).
 
 Every flavor (dev or standard, community or enterprise) comes with a `Docker Compose <https://docs.docker.com/compose/>`_ file template ``docker-compose.yml.dist``, ready to be used.
@@ -335,7 +335,9 @@ What if?
 I want to see my tests running
 ******************************
 
-The docker image ``selenium/standalone-firefox-debug`` comes with a VNC server in it. You need a VNC client, and to connect to ``localhost:5900``. You will then be able to see you browser and your tests running in it!
+The docker image ``selenium/standalone-firefox-debug`` comes with a VNC server in it. You need a VNC client, and to connect to ``localhost:5900``. The VNC password is : `secret`.
+
+You will then be able to see you browser and your tests running in it!
 
 
 I never want to see my tests running

@@ -11,4 +11,5 @@ We gladly welcome any kind of contribution on Akeneo PIM!
     documentation
     create_connector
     contribution_guide
+    front
     tests/index
