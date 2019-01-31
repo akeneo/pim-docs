@@ -2,6 +2,7 @@ How to customize the Dataset
 ============================
 
 Akeneo PIM ships with two datasets. They are located in ``vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures``:
+
 * *icecat_demo_dev* to be able to take a look and play with the PIM with already preset families, categories, products, etc..
 * *minimal* to start a brand new blank PIM project
 
