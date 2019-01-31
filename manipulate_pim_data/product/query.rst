@@ -71,22 +71,6 @@ We strongly advise to use this method to execute queries on products.
         // your custom logic
     }
 
-Execute the Query ("classic" Doctrine mode)
--------------------------------------------
-
-Once filters and sorters are applied, you can still access the internal QueryBuilder to manipulate it before executing the query.
-
-Then you can use a "classic" Doctrine execute (with custom hydration, etc),
-
-.. code-block:: php
-
-    // can be a `Doctrine\ORM\QueryBuilder` or `Doctrine\ODM\MongoDB\Query\Builder`
-    $queryBuilder = $pqb->getQueryBuilder();
-    // ...
-    // my custom code which manipulates the query builder
-    // ...
-    $queryBuilder->getQuery()->execute();
-
 Use the Product Repositories
 ----------------------------
 
