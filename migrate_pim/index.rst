@@ -19,14 +19,14 @@ When our maintenance team works on issues, they take extreme care to avoid any b
 Akeneo PIM CE changelog is available on our GitHub repository:
 
 * Go to our `Community Repository <https://github.com/akeneo/pim-community-dev/>`_.
-* Select your branch in the drop down menu, for instance select 2.3 branch.
-* Then scroll down the page, and select the desired Changelog in the list, for instance `Changelog 2.3 version <https://github.com/akeneo/pim-community-dev/blob/2.3/CHANGELOG-2.3.md>`_.
+* Select your branch in the drop down menu, for instance select 3.0 branch.
+* Then scroll down the page, and select the desired Changelog in the list, for instance `Changelog 3.0 version <https://github.com/akeneo/pim-community-dev/blob/3.0/CHANGELOG-3.0.md>`_.
 
 .. note::
 
     Akeneo provides 2 changelogs: one for CE edition available the Community repo and one for EE edition which is only available in the latest archive. If you want to check the latest fixes for the Enterprise Edition, download the last archive or contact us.
 
-In the following example, Akeneo PIM version 2.3.10 has just been released and we are using an Akeneo PIM version 2.3.9.
+In the following example, Akeneo PIM version 3.0.10 has just been released and we are using an Akeneo PIM version 3.0.9.
 
 **Community Edition**
 
@@ -40,7 +40,7 @@ Be aware that your composer.json won't be updated and some dependencies might be
 
 You have to check whether the latest composer.json is different from your own. In this case you should backup your current composer.json and download the newest one beforehand.
 
-Double check in the output of this command that the 2.3.10 version has been fetched, you can also check it by using the following command:
+Double check in the output of this command that the 3.0.10 version has been fetched, you can also check it by using the following command:
 
 .. code-block:: bash
 
@@ -87,12 +87,12 @@ To upgrade, please change the composer.json to:
 
     {
         ...
-        "akeneo/pim-enterprise-dev": "2.3.10",
-        "akeneo/pim-community-dev": "2.3.10",
+        "akeneo/pim-enterprise-dev": "3.0.10",
+        "akeneo/pim-community-dev": "3.0.10",
         ...
     }
 
-We always tag both community and enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 2.3.10 fix may depend on CE 2.3.10.
+We always tag both community and enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 3.0.10 fix may depend on CE 3.0.10.
 
 Using the exact patch version will avoid any local composer cache issue.
 
@@ -147,6 +147,7 @@ Here are the migration guides:
 
 **Community Edition**
 
+* `From v2.3 to v3.0`_
 * `From v2.2 to v2.3`_
 * `From v2.1 to v2.2`_
 * `From v2.0 to v2.1`_
@@ -158,6 +159,7 @@ Here are the migration guides:
 * `From v1.1 to v1.2`_
 * `From v1.0 to v1.1`_
 
+.. _From v2.3 to v3.0: https://github.com/akeneo/pim-community-standard/blob/3.0/UPGRADE-3.0.md
 .. _From v2.2 to v2.3: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-2.3.md
 .. _From v2.1 to v2.2: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-2.2.md
 .. _From v2.0 to v2.1: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-2.1.md
@@ -175,6 +177,7 @@ Standard Enterprise Edition (EE) archives are available from `the Portal <https:
 
 Then, follow the migration guides located in your archive to upgrade your project.
 
+* From EE v2.3 to EE v3.0: UPGRADE-3.0.md
 * From EE v2.2 to EE v2.3: UPGRADE-2.3.md
 * From EE v2.1 to EE v2.2: UPGRADE-2.2.md
 * From EE v2.0 to EE v2.1: UPGRADE-2.1.md
