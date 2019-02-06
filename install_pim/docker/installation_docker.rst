@@ -48,7 +48,7 @@ This is achieved by `bind mounting <https://docs.docker.com/storage/bind-mounts/
 .. note::
 
    The following compose file example is intentionally incomplete, focusing on cache directories only.
-   Check the complete file directly `in the PIM <https://github.com/akeneo/pim-community-dev/3.0/master/docker-compose.yml>`_.
+   Check the complete file directly `in the PIM <https://github.com/akeneo/pim-community-dev/blob/3.0/docker-compose.yml>`_.
 
 .. code-block:: yaml
 
@@ -270,7 +270,7 @@ The version in ``akeneo/pim-community-standard`` or ``akeneo/pim-enterprise-stan
    $ docker-compose exec fpm bin/console --env=prod pim:install --force --symlink --clean
 
    $ docker-compose run --rm node yarn run webpack
-   
+
 .. note::
    If you are using Docker for Windows, there may be issues with symlinks that lead to errors during ``yarn run webpack``. If you encounter these issues, try leaving out the --symlink parameter from the ``pim:install`` commands.
 
