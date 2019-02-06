@@ -172,10 +172,10 @@ You can also add links to the PHP documentation:
 
     :phpfunction:`iterator_to_array`
 
-.. _Sphinx:                  http://www.sphinx-doc.org/en/stable/
+.. _Sphinx:                  https://www.sphinx-doc.org/
 .. _documents:               https://github.com/akeneo/pim-docs
-.. _reStructuredText Primer: http://www.sphinx-doc.org/en/stable/rest.html
-.. _markup:                  http://www.sphinx-doc.org/en/stable/markup/
+.. _reStructuredText Primer: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
+.. _markup:                  https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html
 .. _Pygments website:        http://pygments.org/languages/
 .. _source:                  https://github.com/fabpot/sphinx-php
-.. _Sphinx quick setup:      http://www.sphinx-doc.org/en/stable/tutorial.html#setting-up-the-documentation-sources
+.. _Sphinx quick setup:      https://www.sphinx-doc.org/en/master/usage/quickstart.html#setting-up-the-documentation-sources
