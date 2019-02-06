@@ -128,7 +128,7 @@ Here are two examples in order to define environment variables:
 +--------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | ONBOARDER_QUEUE_NAME                 | Pub/Sub queue name.                                                                                                               |
 +--------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_RETAILER_URL               | URL to the Onboarder retailer. Example : https://retailer-onboarder.akeneo.com                                                    |
+| ONBOARDER_RETAILER_URL               | URL to the Onboarder retailer. Example : ``https://retailer-onboarder.akeneo.com``                                                |
 +--------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | ONBOARDER_CLOUD_STORAGE_BUCKET_NAME  | Identifier of the bucket used to share files between your PIM and the retailer Onboarder.                                         |
 +--------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
@@ -147,7 +147,7 @@ Here are two examples in order to define environment variables:
 | ONBOARDER_SSO_CERTS_PATH | Absolute path to the SSO certificates that the Akeneo team provided you in the parameters package. Example: ``/var/www/sso-certs``                                                                          |
 +--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-| 
+|
 
 **Optional variables**
 
