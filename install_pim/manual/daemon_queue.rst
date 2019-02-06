@@ -50,7 +50,7 @@ Supervisor
 It's strongly recommended to use a Process Control System to launch a daemon in production.
 This is not useful in development though.
 
-In this documentation, we will describe how to configure the Process Control System `supervisor <http://supervisord.org/index.html>`, to run a daemon process.
+In this documentation, we will describe how to configure the Process Control System `supervisor <https://github.com/Supervisor/supervisor>`_, to run a daemon process.
 These instructions are valid for Debian 9 and Ubuntu 16.04.
 
 Installing supervisor
@@ -64,7 +64,7 @@ Install `supervisor`:
     $ apt update
     $ apt install supervisor
 
-For the other platforms, you can follow the `official documentation <http://supervisord.org/installing.html>`_.
+For the other platforms, you can follow the install section of the `official documentation <https://github.com/Supervisor/supervisor#documentation>`_.
 
 Configuring supervisor
 **********************
