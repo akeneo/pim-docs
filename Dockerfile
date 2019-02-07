@@ -64,22 +64,22 @@ COPY build.sh /home/akeneo/pim-docs/build.sh
 RUN chmod +x /home/akeneo/pim-docs/build.sh && \
     #
     # Download curent version
-    wget https://github.com/akeneo/pim-community-dev/archive/3.0.zip -P /home/akeneo/pim-docs/ && \
-    unzip /home/akeneo/pim-docs/3.0.zip -d /home/akeneo/pim-docs/ && \
+    wget https://github.com/akeneo/pim-community-dev/archive/master.zip -P /home/akeneo/pim-docs/ && \
+    unzip /home/akeneo/pim-docs/master.zip -d /home/akeneo/pim-docs/ && \
     #
     # Install Akeneo PIM
-    cd /home/akeneo/pim-docs/pim-community-dev-3.0/ && \
+    cd /home/akeneo/pim-docs/pim-community-dev-master/ && \
     php -d memory_limit=3G /home/akeneo/pim-docs/composer.phar install --no-dev --no-suggest --ignore-platform-reqs && \
     chown -R mysql:mysql /var/lib/mysql /var/run/mysqld && \
     service mysql start && \
     mysql -u root -e "CREATE DATABASE akeneo_pim" && \
     mysql -u root -e "GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim'" && \
-    cp /home/akeneo/pim-docs/pim-community-dev-3.0/app/config/parameters.yml.dist /home/akeneo/pim-docs/pim-community-dev-3.0/app/config/parameters.yml && \
-    cd /home/akeneo/pim-docs/pim-community-dev-3.0/ && php bin/console doctrine:schema:create --env=prod && \
-    cd /home/akeneo/pim-docs/pim-community-dev-3.0/ && php bin/console pim:installer:assets --env=prod && \
+    cp /home/akeneo/pim-docs/pim-community-dev-master/app/config/parameters.yml.dist /home/akeneo/pim-docs/pim-community-dev-master/app/config/parameters.yml && \
+    cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console doctrine:schema:create --env=prod && \
+    cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console pim:installer:assets --env=prod && \
     service mysql stop && \
     #
     # Clean
     rm -rf /root/.composer/cache && \
-    cd /home/akeneo/pim-docs/pim-community-dev-3.0/ && ls | grep -v "vendor\|web" | xargs rm -rf && \
+    cd /home/akeneo/pim-docs/pim-community-dev-master/ && ls | grep -v "vendor\|web" | xargs rm -rf && \
     rm /var/lib/mysql/ibdata1 /var/lib/mysql/ib_logfile1 /var/lib/mysql/ib_logfile0
