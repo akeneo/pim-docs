@@ -11,8 +11,6 @@ If you are not familiar with one of these, the best move is to start by reading 
     :maxdepth: 2
 
     best_practices/index
-    bundles/index
-    components/index
     event/index
     events/index
     localization/index
