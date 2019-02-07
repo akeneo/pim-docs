@@ -30,13 +30,11 @@ Composer settings
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/akeneo/pim-community-dev.git",
-            "branch": "master"
+            "url": "https://github.com/akeneo/pim-community-dev.git"
         },
         {
             "type": "vcs",
-            "url": "ssh://git@distribution.akeneo.com:443/pim-enterprise-dev-<who_i_am>.git",
-            "branch": "master"
+            "url": "ssh://git@distribution.akeneo.com:443/pim-enterprise-dev-<who_i_am>.git"
         }
     ],
 

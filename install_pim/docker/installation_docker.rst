@@ -270,7 +270,7 @@ The version in ``akeneo/pim-community-standard`` or ``akeneo/pim-enterprise-stan
    $ docker-compose exec fpm bin/console --env=prod pim:install --force --symlink --clean
 
    $ docker-compose run --rm node yarn run webpack
-   
+
 .. note::
    If you are using Docker for Windows, there may be issues with symlinks that lead to errors during ``yarn run webpack``. If you encounter these issues, try leaving out the --symlink parameter from the ``pim:install`` commands.
 

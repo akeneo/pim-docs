@@ -134,9 +134,9 @@ Two options:
 For your own model classes, create your class and its interface.
 Then you can rely on your interface and use the `Akeneo target resolver`_ which is based on the `Doctrine target entity resolver`_.
 
-.. _oneToOne unidirectional association: https://doctrine-orm.readthedocs.io/projects/doctrine-orm/en/latest/reference/association-mapping.html#one-to-one-unidirectional
+.. _oneToOne unidirectional association: https://www.doctrine-project.org/projects/doctrine-orm/en/2.5/reference/association-mapping.html#one-to-one-unidirectional
 .. _Akeneo target resolver: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Tool/Bundle/StorageUtilsBundle/DependencyInjection/Compiler/AbstractResolveDoctrineTargetModelPass.php
-.. _Doctrine target entity resolver: https://symfony.com/doc/2.7/doctrine/resolve_target_entity.html
+.. _Doctrine target entity resolver: https://symfony.com/doc/3.4/doctrine/resolve_target_entity.html
 
 
 Repositories

@@ -17,9 +17,9 @@ RUN apt-get update && \
     sh -c 'echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list' && \
     #
     # Add sphinx
-    wget -O /tmp/sphinx.zip https://github.com/sphinx-doc/sphinx/archive/v1.5.6.zip && \
+    wget -O /tmp/sphinx.zip https://github.com/sphinx-doc/sphinx/archive/v1.8.4.zip && \
     unzip /tmp/sphinx.zip -d /tmp/ && \
-    cd /tmp/sphinx-1.5.6/ && \
+    cd /tmp/sphinx-1.8.4/ && \
     python setup.py install && \
     #
     # Add youtube-sphinx extension

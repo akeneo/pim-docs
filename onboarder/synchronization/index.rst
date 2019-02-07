@@ -50,7 +50,7 @@ Add the following supervisor configuration (update the following example to your
 
 .. note::
 
-    Supervisor documentation: http://supervisord.org/index.html
+    Supervisor documentation: https://github.com/Supervisor/supervisor#documentation
 
 You want an infinite worker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
