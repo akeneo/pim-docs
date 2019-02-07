@@ -43,7 +43,7 @@ You can access the IdP administration page at the following url: http://localhos
 | They are defined in the ``docker/sso_authsources.php``.
 
 
-The configuration of the Service Provider is automatically provided by environment variables in the `docker-compose.yml file <https://github.com/akeneo/pim-enterprise-dev/blob/3.0/docker-compose.yml#L93>`_
+The configuration of the Service Provider is automatically provided by environment variables in the ``docker-compose.yml`` file line 58 (``SIMPLESAMLPHP_SP_ENTITY_ID``) of your standard archive.
 
 
 Without Docker
