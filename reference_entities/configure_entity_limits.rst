@@ -5,7 +5,7 @@ For the Reference Entities feature (*introduced in 3.0*), some limits about numb
 However, as your catalog is very unique, **you may need to raise those values**, this chapter explains how.
 
 .. warning::
-   If you hit those limits, this could reflect that **you may need to change your modelisation**. If it's the case, we can't guarantee that the PIM is functional and runs smoothly, be sure to test performances with your new limits.
+   If you hit those limits, this could reflect that **you may need to change your modelling**. If it's the case, we can't guarantee that the PIM is functional and runs smoothly, be sure to test performance with your new limits.
 
 All those limits are defined as parameters that you can override like any other `Symfony config parameter <https://symfony.com/doc/3.4/best_practices/configuration.html>`_.
 
