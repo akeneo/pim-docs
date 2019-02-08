@@ -5,7 +5,7 @@ Create a new Reference Entity Attribute type
 
    Reference Entities feature is only available for the **Enterprise Edition**.
 
-This cookbook will present you how to create your own Attribute Type for Reference Entities.
+This cookbook will present how to create your own Attribute Type for Reference Entities.
 Currently, there are 6 types of Attribute for Reference Entities:
 
 - Text
