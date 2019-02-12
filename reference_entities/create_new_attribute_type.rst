@@ -24,12 +24,19 @@ Create the Attribute
 --------------------
 
 For this tutorial, we will create a **custom boolean attribute** type for reference entity.
-For the reference entities, we followed the Hexagonal architecture.
+In addition to its common properties (code, label, value per locale...), we will add a custom property, which will be its "default value" for records.
 
-We'll see we need several classes in multiple "layers" (Domain, Application & Infrastructure).
-- First we'll create Domain classes (the new custom Attribute itself and its Value Object)
-- Then Application classes (only commands (from CQRS principle (https://martinfowler.com/bliki/CQRS.html))
-- And to finish Infrastructure classes (an Hydrator to hydrate our Attribute coming from SQL)
+.. note::
+
+   **A small word on our architecture:**
+
+   For the reference entities, we followed the Hexagonal architecture. So we split our classes in 3 different layers: Domain, Application & Infrastructure.
+
+   - First we'll create **Domain** classes (the new custom ``BooleanAttribute`` itself and its ``Value Object``)
+   - Then **Application** classes (only Commands from CQRS principle (https://martinfowler.com/bliki/CQRS.html) and regular updaters)
+   - And to finish **Infrastructure** classes (an Hydrator to hydrate our ``BooleanAttribute`` coming from SQL)
+
+   It's not mandatory to respect this architecture in your custom project, but for the sake of this example, we'll respect it.
 
 
 1) Domain Layer
@@ -55,7 +62,7 @@ Let's start with our new custom Attribute. It must extends the ``\Akeneo\Referen
     class BooleanAttribute extends AbstractAttribute
     {
         /** @var AttributeDefaultValue */
-        private $defaultValue;
+        private $defaultValue; // This is our custom property for this attribute.
 
         protected function __construct(
             AttributeIdentifier $identifier,
@@ -106,6 +113,14 @@ Let's start with our new custom Attribute. It must extends the ``\Akeneo\Referen
             );
         }
 
+        public function setDefaultValue(AttributeDefaultValue $defaultValue): void
+        {
+            $this->defaultValue = $defaultValue;
+        }
+
+        /**
+         * {@inheritdoc}
+         */
         protected function getType(): string
         {
             return 'boolean';
@@ -113,7 +128,7 @@ Let's start with our new custom Attribute. It must extends the ``\Akeneo\Referen
     }
 
 
-Now we need to create its value object for the property "DefaultValue":
+Now that we have our custom attribute class, we need to create its Value Object class for the property "DefaultValue":
 
 .. code-block:: php
 
@@ -144,6 +159,66 @@ Now we need to create its value object for the property "DefaultValue":
 2) Application Layer
 ^^^^^^^^^^^^^^^^^^^^
 
+First, let's create a factory to create our brand new ``BooleanAttribute``:
+
+.. code-block:: php
+
+    <?php
+    namespace Acme\CustomBundle\Application\Attribute\CreateAttribute\AttributeFactory;
+
+    use Acme\CustomBundle\Application\Attribute\CreateAttribute\CreateBooleanAttributeCommand;
+    use Acme\CustomBundle\Domain\Model\Attribute\AttributeDefaultValue;
+    use Acme\CustomBundle\Domain\Model\Attribute\BooleanAttribute;
+    use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand;
+    use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AttributeFactory\AttributeFactoryInterface;
+    use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
+    use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeCode;
+    use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeIdentifier;
+    use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeIsRequired;
+    use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeOrder;
+    use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeValuePerChannel;
+    use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeValuePerLocale;
+    use Akeneo\ReferenceEntity\Domain\Model\LabelCollection;
+    use Akeneo\ReferenceEntity\Domain\Model\ReferenceEntity\ReferenceEntityIdentifier;
+
+    class BooleanAttributeFactory implements AttributeFactoryInterface
+    {
+        public function supports(AbstractCreateAttributeCommand $command): bool
+        {
+            return $command instanceof CreateBooleanAttributeCommand;
+        }
+
+        public function create(
+            AbstractCreateAttributeCommand $command,
+            AttributeIdentifier $identifier,
+            AttributeOrder $order
+        ): AbstractAttribute {
+            if (!$this->supports($command)) {
+                throw new \RuntimeException(
+                    sprintf(
+                        'Expected command of type "%s", "%s" given',
+                        CreateBooleanAttributeCommand::class,
+                        get_class($command)
+                    )
+                );
+            }
+
+            return BooleanAttribute::createBoolean(
+                $identifier,
+                ReferenceEntityIdentifier::fromString($command->referenceEntityIdentifier),
+                AttributeCode::fromString($command->code),
+                LabelCollection::fromArray($command->labels),
+                $order,
+                AttributeIsRequired::fromBoolean($command->isRequired),
+                AttributeValuePerChannel::fromBoolean($command->valuePerChannel),
+                AttributeValuePerLocale::fromBoolean($command->valuePerLocale),
+                AttributeDefaultValue::fromBoolean($command->defaultValue)
+            );
+        }
+    }
+
+
+The Domain classes were quite simple objects. Now we need to add some logic
 Now that we have our Attribute class, we need to create classes to handle its creation and edition.
 
 We'll need first to add the "Creation command", it needs to extend ``\Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand``.
@@ -179,6 +254,62 @@ We'll need first to add the "Creation command", it needs to extend ``\Akeneo\Ref
             $this->defaultValue = $defaultValue;
         }
     }
+
+To build this creation command, we need a factory:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Acme\CustomBundle\Application\Attribute\CreateAttribute\CommandFactory;
+
+    use Acme\CustomBundle\Application\Attribute\CreateAttribute\CreateBooleanAttributeCommand;
+    use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand;
+    use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\CommandFactory\AbstractCreateAttributeCommandFactory;
+
+    class CreateBooleanAttributeCommandFactory extends AbstractCreateAttributeCommandFactory
+    {
+        public function supports(array $normalizedCommand): bool
+        {
+            return isset($normalizedCommand['type']) && 'boolean' === $normalizedCommand['type'];
+        }
+
+        public function create(array $normalizedCommand): AbstractCreateAttributeCommand
+        {
+            $this->checkCommonProperties($normalizedCommand);
+
+            $command = new CreateBooleanAttributeCommand(
+                $normalizedCommand['reference_entity_identifier'],
+                $normalizedCommand['code'],
+                $normalizedCommand['labels'] ?? [],
+                $normalizedCommand['is_required'] ?? false,
+                $normalizedCommand['value_per_channel'],
+                $normalizedCommand['value_per_locale'],
+                $normalizedCommand['default_value'] ?? false
+            );
+
+            return $command;
+        }
+    }
+
+And we also need to register it with a specific tag:
+
+.. code-block:: yaml
+
+    acme.application.factory.create_boolean_attribute_command_factory:
+        class: Acme\CustomBundle\Application\Attribute\CreateAttribute\CommandFactory\CreateBooleanAttributeCommandFactory
+        tags:
+        - { name: akeneo_referenceentity.create_attribute_command_factory }
+
+
+And its declaration:
+
+.. code-block:: yaml
+
+    acme.application.factory.boolean_attribute_factory:
+        class: Acme\CustomBundle\Application\Attribute\CreateAttribute\AttributeFactory\BooleanAttributeFactory
+        tags:
+        - { name: akeneo_referenceentity.attribute_factory }
 
 For the edition of this attribute, we'll need to create a command to edit the property of our attribute (default value):
 
@@ -240,10 +371,60 @@ This factory needs to be a service with a specific tag:
     # src/Acme/CustomBundle/Resources/config/services.yml
 
     services:
-        akeneo_referenceentity.application.factory.edit_default_value_command_factory:
+        acme.application.factory.edit_default_value_command_factory:
             class: Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory\EditDefaultValueCommandFactory
             tags:
-                - { name: akeneo_referenceentity.create_attribute_command_factory }
+            - { name: akeneo_referenceentity.edit_attribute_command_factory, priority: 120 }
+
+Now that we have our command, we need a dedicated updater to handle the change on the actual attribute:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Acme\CustomBundle\Application\Attribute\EditAttribute\AttributeUpdater;
+
+    use Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory\EditDefaultValueCommand;
+    use Acme\CustomBundle\Domain\Model\Attribute\AttributeDefaultValue;
+    use Acme\CustomBundle\Domain\Model\Attribute\BooleanAttribute;
+    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\AttributeUpdater\AttributeUpdaterInterface;
+    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\AbstractEditAttributeCommand;
+    use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
+
+    class DefaultValueUpdater implements AttributeUpdaterInterface
+    {
+        public function supports(AbstractAttribute $attribute, AbstractEditAttributeCommand $command): bool
+        {
+            return $command instanceof EditDefaultValueCommand && $attribute instanceof BooleanAttribute;
+        }
+
+        public function __invoke(AbstractAttribute $attribute, AbstractEditAttributeCommand $command): AbstractAttribute
+        {
+            if (!$command instanceof EditDefaultValueCommand) {
+                throw new \RuntimeException(
+                    sprintf(
+                        'Expected command of type "%s", "%s" given',
+                        EditDefaultValueCommand::class,
+                        get_class($command)
+                    )
+                );
+            }
+
+            $attribute->setDefaultValue(AttributeDefaultValue::fromBoolean($command->defaultValue));
+
+            return $attribute;
+        }
+    }
+
+This updater needs to be registered to be retrieved by a registry:
+
+.. code-block:: yaml
+
+    acme.application.edit_attribute.attribute_updater.default_value:
+        class: Acme\CustomBundle\Application\Attribute\EditAttribute\AttributeUpdater\DefaultValueUpdater
+        tags:
+        - { name: akeneo_referenceentity.attribute_updater, priority: 120 }
+
 
 3) Infrastructure Layer
 ^^^^^^^^^^^^^^^^^^^^^^^
