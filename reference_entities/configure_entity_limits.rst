@@ -33,9 +33,9 @@ If you want to create more, you have to edit the ``reference_entity_maximum_attr
     parameters:
         reference_entity_maximum_attribute: 130
 
-Raise the limit of Options per List Attribute
----------------------------------------------
-By default, you can't create more than **100** **Options per List Attribute**.
+Raise the limit of Options for "Simple Option" and "Multiple Option" Attributes
+-------------------------------------------------------------------------------
+By default, you can't create more than **100** options for each **"Simple Option" and "Multiple Option"**.
 If you want to create more, you have to edit the ``reference_entity_option_limit_per_list_attribute`` parameter, for example:
 
 .. code-block:: yaml

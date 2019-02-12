@@ -8,12 +8,12 @@ Create a new Reference Entity Attribute type
 This cookbook will present how to create your own Attribute Type for Reference Entities.
 Currently, there are 6 types of Attribute for Reference Entities:
 
-- Text
 - Image
-- Record (*Link Record to another Record*)
-- Record Collection (*Link Record to several Records*)
-- Option
-- Option Collection
+- Text
+- Reference entity single link
+- Reference entity multiple links
+- Single Option
+- Multiple Options
 
 Requirements
 ------------
@@ -299,7 +299,7 @@ And we also need to register it with a specific tag:
     acme.application.factory.create_boolean_attribute_command_factory:
         class: Acme\CustomBundle\Application\Attribute\CreateAttribute\CommandFactory\CreateBooleanAttributeCommandFactory
         tags:
-        - { name: akeneo_referenceentity.create_attribute_command_factory }
+            - { name: akeneo_referenceentity.create_attribute_command_factory }
 
 
 And its declaration:
@@ -309,7 +309,7 @@ And its declaration:
     acme.application.factory.boolean_attribute_factory:
         class: Acme\CustomBundle\Application\Attribute\CreateAttribute\AttributeFactory\BooleanAttributeFactory
         tags:
-        - { name: akeneo_referenceentity.attribute_factory }
+            - { name: akeneo_referenceentity.attribute_factory }
 
 For the edition of this attribute, we'll need to create a command to edit the property of our attribute (default value):
 
@@ -374,7 +374,7 @@ This factory needs to be a service with a specific tag:
         acme.application.factory.edit_default_value_command_factory:
             class: Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory\EditDefaultValueCommandFactory
             tags:
-            - { name: akeneo_referenceentity.edit_attribute_command_factory, priority: 120 }
+                - { name: akeneo_referenceentity.edit_attribute_command_factory, priority: 120 }
 
 Now that we have our command, we need a dedicated updater to handle the change on the actual attribute:
 
@@ -423,7 +423,7 @@ This updater needs to be registered to be retrieved by a registry:
     acme.application.edit_attribute.attribute_updater.default_value:
         class: Acme\CustomBundle\Application\Attribute\EditAttribute\AttributeUpdater\DefaultValueUpdater
         tags:
-        - { name: akeneo_referenceentity.attribute_updater, priority: 120 }
+            - { name: akeneo_referenceentity.attribute_updater, priority: 120 }
 
 
 3) Infrastructure Layer
@@ -501,6 +501,17 @@ Now that we have our custom Attribute and commands to create/edit it, we'll need
             return isset($result['attribute_type']) && 'boolean' === $result['attribute_type'];
         }
     }
+
+And to register it:
+
+.. code-block:: yaml
+
+    acme.infrastructure.persistence.hydrator.attribute.text_attribute_hydrator:
+        class: Acme\CustomBundle\Infrastructure\Persistence\Sql\Attribute\Hydrator\BooleanAttributeHydrator
+        arguments:
+            - '@database_connection'
+        tags:
+            - { name: akeneo_referenceentity.attribute_hydrator }
 
 .. note::
 
