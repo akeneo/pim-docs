@@ -531,14 +531,14 @@ To keep this example simple, we will create everything in this file :
 ``src/Acme/CustomBundle/Resources/public/reference-entity/attribute/boolean.tsx``
 
 If you create a new attribute type, Akeneo will need three things to manage it in the frontend:
- - A model: a representation of your attribute, it's properties and overall behaviour
- - A reducer: to be able to know how to modify it's custom properties and react to the user intentions (see https://redux.js.org/)
+ - A model: a representation of your attribute, those properties and overall behaviour
+ - A reducer: to be able to know how to modify those custom properties and react to the user intentions (see https://redux.js.org/)
  - A view: as a React component to be able to render a user interface and dispatch events to the application
 
 1) Model
 ^^^^^^^^
 
-The model of your custom attribute will contains the common properties of an attribute (code, labels, scope, etc) but also it's custom properties
+The model of your custom attribute will contain the common properties of an attribute (code, labels, scope, etc) but also those custom properties
 and behaviours. To interface it with the rest of the PIM, your attribute needs to implement the Attribute interface and provide a denormalizer.
 
 This is the purpose of this section: provide a denormalizer capable of creating your custom attribute implementing Attribute interface.
@@ -685,14 +685,14 @@ This is the purpose of this section: provide a denormalizer capable of creating 
     }
 
     /**
-     * The only required part of this part of the file: exporting a denormalize method returning a custom attribute implementing Attribute interface
+     * The only required part of the file: exporting a denormalize method returning a custom attribute implementing Attribute interface
      */
     export const denormalize = ConcreteBooleanAttribute.createFromNormalized;
 
 2) Reducer
 ^^^^^^^^^^
 
-Now that we have our attribute model in the frontend, we need to define our Reducer to know how to modify it's custom properties and react to the user intentions.
+Now that we have our attribute model in the frontend, we need to define our Reducer to know how to modify those custom properties and react to the user intentions.
 
 .. code-block:: javascript
 
@@ -718,7 +718,7 @@ Now that we have our attribute model in the frontend, we need to define our Redu
     };
 
     /**
-     * The only required part of this part of the file: exporting the custom attribute reducer.
+     * The only required part of the file: exporting the custom attribute reducer.
      */
     export const reducer = booleanAttributeReducer;
 
@@ -814,14 +814,14 @@ The last part we need to do, it's to create the React component to be able to re
     };
 
     /**
-     * The only required part of this part of the file: exporting the custom attribute view.
+     * The only required part of the file: exporting the custom attribute view.
      */
     export const view = BooleanAttributeView;
 
 4) Register our custom attribute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To be able to have everything working, we need register our custom attribute in the ``src/Acme/CustomBundle/Resources/config/requirejs.yml`` :
+To be able to have everything working, we need to register our custom attribute in the ``src/Acme/CustomBundle/Resources/config/requirejs.yml`` :
 
 .. code-block:: yaml
 

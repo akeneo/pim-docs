@@ -240,10 +240,209 @@ And register it for the registry:
 
    Note that if you want to validate the ``EditBooleanValueCommand``, you simply have to create a regular Symfony validator.
 
+Frontend Part of The New Record Value
+-------------------------------------
 
-Enrich Records with your new Attribute
---------------------------------------
+To be able to create your brand new Boolean Record Value, we need to add some code in the frontend part.
 
-- Domain Record (Data of the Value)
-- Application Record (Edit)
-- Infra Record (Validation, Hydrator)
+To do so, you can put all needed code in one single file but you can (and are encouraged) to split it into multiple
+files if needed.
+
+To keep this example simple, we will create everything in this file :
+
+``src/Acme/CustomBundle/Resources/public/reference-entity/record/boolean.tsx``
+
+If you create a new Record Value, Akeneo will need three things to manage it in the frontend:
+ - A model: a representation of your Record Value, those properties and overall behaviour
+ - A view: as a React component to be able to render a user interface in the Record Form and dispatch events to the application
+ - A cell: as a React component to be able to render a cell in the Record Grid
+
+1) Model
+^^^^^^^^
+
+The model of your custom Record Value will contain those properties and behaviours.
+To interface it with the rest of the PIM, your Record Value needs to extend the ValueData and provide a denormalizer.
+
+This is the purpose of this section: provide a denormalizer capable of creating your custom Record Value extending the ValueData.
+
+.. code-block:: javascript
+
+    /**
+     * ## Import section
+     *
+     * This is where sits your dependencies to external modules using the standard import method (see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+     * The paths are absolute and the root is the web/bundles folder (at the root of your PIM project)
+     */
+    import ValueData from 'akeneoreferenceentity/domain/model/record/data';
+
+    class InvalidTypeError extends Error {}
+
+    /**
+     * Here we are implementing our custom Record Value model.
+     */
+    export type NormalizedBooleanData = boolean | null;
+    class BooleanData extends ValueData {
+      private constructor(private booleanData: boolean) {
+        super();
+
+        if ('boolean' !== typeof booleanData) {
+          throw new InvalidTypeError('BooleanData expects a boolean as parameter to be created');
+        }
+
+        Object.freeze(this);
+      }
+
+      public static createFromNormalized(booleanData: NormalizedBooleanData): BooleanData {
+        return new BooleanData(null === booleanData ? false : booleanData);
+      }
+
+      public isEmpty(): boolean {
+        return false;
+      }
+
+      public equals(data: ValueData): boolean {
+        return data instanceof BooleanData && this.booleanData === data.booleanData;
+      }
+
+      public stringValue(): string {
+        return (this.booleanData) ? 'true' : 'false';
+      }
+
+      public normalize(): boolean {
+        return this.booleanData;
+      }
+    }
+
+    /**
+     * The only required part of the file: exporting a denormalize method returning a boolean Record Value.
+     */
+    export const denormalize = BooleanData.createFromNormalized;
+
+2) View
+^^^^^^^
+
+Now that we have our custom Record Value model , it's to create the React component to be able to render a user interface in the Record Form and dispatch events to the application (https://reactjs.org/docs/react-component.html).
+
+.. code-block:: javascript
+
+    import * as React from 'react';
+    import Value from 'akeneoreferenceentity/domain/model/record/value';
+    import {ConcreteBooleanAttribute} from 'custom/reference-entity/attribute/boolean.tsx';
+    import Key from "akeneoreferenceentity/tools/key";
+
+    /**
+     * Here we define the React Component as a function with the following props :
+     *    - the custom Record Value
+     *    - the callback function to update the Record Value
+     *    - the callback for the submit
+     *    - the right to edit the Record Value
+     *
+     * It returns the JSX View to display the field of the custom Record Value.
+     */
+    const View = ({
+      value,
+      onChange,
+      onSubmit,
+      canEditData,
+    }: {
+      value: Value;
+      onChange: (value: Value) => void;
+      onSubmit: () => void;
+      canEditData: boolean;
+    }) => {
+      if (!(value.data instanceof BooleanData && value.attribute instanceof ConcreteBooleanAttribute)) {
+        return null;
+      }
+
+      const onValueChange = (boolean: boolean) => {
+        const newData = denormalize(boolean);
+        if (newData.equals(value.data)) {
+          return;
+        }
+
+        const newValue = value.setData(newData);
+
+        onChange(newValue);
+      };
+
+      // We need to have single quotes around the React.Fragment tag for displaying well the JSX in the documentation but you have to remove it in your code.
+      return (
+        '<React.Fragment>
+          <label
+            className={`AknSwitch ${!canEditData ? 'AknSwitch--disabled' : ''}`}
+            tabIndex={!canEditData ? -1 : 0}
+            role="checkbox"
+            aria-checked={value.data.normalize()}
+            onKeyPress={event => {
+              if ([' '].includes(event.key) && !canEditData) onValueChange(!value.data.normalize());
+              if (Key.Enter === event.key) onSubmit();
+            }}
+          >
+            <input
+              id={"pim_reference_entity.record.edit.input.default_value"}
+              type="checkbox"
+              className="AknSwitch-input"
+              checked={value.data.normalize()}
+              onChange={() => {
+                if (canEditData) onValueChange(!value.data.normalize());
+              }}
+            />
+            <span className="AknSwitch-slider" />
+          </label>
+        </React.Fragment>'
+      );
+    };
+
+    /**
+     * The only required part of the file: exporting the custom Record Value view.
+     */
+    export const view = View;
+
+3) Cell
+^^^^^^^
+
+The last part we need to do, it's to create the React component to be able to render a cell in the Record Grid.
+
+.. code-block:: javascript
+
+    import {NormalizedValue} from 'akeneoreferenceentity/domain/model/record/value';
+    import {CellView} from 'akeneoreferenceentity/application/configuration/value';
+    const memo = (React as any).memo;
+
+    /**
+     * Here we define the React Component as a function with the following props :
+     *    - the custom Record Value
+     *
+     * It returns the JSX View to display the cell of your custom Record Value in the grid.
+     */
+    const BooleanCellView: CellView = memo(({value}: {value: NormalizedValue}) => {
+      const booleanData = denormalize(value.data);
+
+      // We need to have single quotes around the div tag for displaying well the JSX in the documentation but you have to remove it in your code.
+      return (
+        '<div className="AknGrid-bodyCellContainer" title={booleanData.stringValue()}>
+          {booleanData.stringValue()}
+        </div>'
+      );
+    });
+
+    /**
+     * The only required part of the file: exporting the custom Record Value cell.
+     */
+    export const cell = BooleanCellView;
+
+4) Register our custom Record Value
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To be able to have everything working, we need to register our custom Record Value in the ``src/Acme/CustomBundle/Resources/config/requirejs.yml`` :
+
+.. code-block:: yaml
+
+    config:
+        config:
+            akeneoreferenceentity/application/configuration/value:
+                boolean:
+                    denormalize: '@custom/reference-entity/record/boolean.tsx'
+                    view: '@custom/reference-entity/record/boolean.tsx'
+                    cell: '@custom/reference-entity/record/boolean.tsx'
+
