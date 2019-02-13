@@ -522,13 +522,306 @@ Frontend Part of The New Attribute Type
 ---------------------------------------
 
 To be able to create your brand new Boolean attribute on a Reference Entity, we need to add some code in the frontend part.
-To do so, you can put all needed code in one single file:
 
-``src/Acme/CustomBundle/Resources/public/reference-entity/attribute/template.tsx``
+To do so, you can put all needed code in one single file but you can (and are encouraged) to split it into multiple
+files if needed.
 
-https://github.com/akeneo/pim-enterprise-dev/pull/5673/files#diff-9f58f66bb7130d11a4234cbcb39917bd
+To keep this example simple, we will create everything in this file :
 
-``src/Acme/CustomBundle/Resources/config/requirejs.yml``
+``src/Acme/CustomBundle/Resources/public/reference-entity/attribute/boolean.tsx``
+
+If you create a new attribute type, Akeneo will need three things to manage it in the frontend:
+ - A model: a representation of your attribute, it's properties and overall behaviour
+ - A reducer: to be able to know how to modify it's custom properties and react to the user intentions (see https://redux.js.org/)
+ - A view: as a React component to be able to render a user interface and dispatch events to the application
+
+1) Model
+^^^^^^^^
+
+The model of your custom attribute will contains the common properties of an attribute (code, labels, scope, etc) but also it's custom properties
+and behaviours. To interface it with the rest of the PIM, your attribute needs to implement the Attribute interface and provide a denormalizer.
+
+This is the purpose of this section: provide a denormalizer capable of creating your custom attribute implementing Attribute interface.
+
+.. code-block:: javascript
+
+    /**
+     * ## Import section
+     *
+     * This is where sits your dependencies to external modules using the standard import method (see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+     * The paths are absolute and the root is the web/bundles folder (at the root of your PIM project)
+     */
+    import Identifier, {createIdentifier} from 'akeneoreferenceentity/domain/model/attribute/identifier';
+    import ReferenceEntityIdentifier, {
+      createIdentifier as createReferenceEntityIdentifier,
+    } from 'akeneoreferenceentity/domain/model/reference-entity/identifier';
+    import LabelCollection, {createLabelCollection} from 'akeneoreferenceentity/domain/model/label-collection';
+    import AttributeCode, {createCode} from 'akeneoreferenceentity/domain/model/attribute/code';
+    import {
+      NormalizedAttribute,
+      Attribute,
+      ConcreteAttribute,
+    } from 'akeneoreferenceentity/domain/model/attribute/attribute';
+
+    /**
+     * This type is an aggregate of all the custom properties. Here we only have one so it could seems useless but
+     * here is an example with multiple properties:
+     *
+     *     export type TextAdditionalProperty = MaxLength | IsTextarea | IsRichTextEditor | ValidationRule | RegularExpression;
+     *
+     * In the example above, a additional property of a text attribute could be a Max length, is textarea, is rich text editor, ...
+     */
+    export type BooleanAdditionalProperty = DefaultValue;
+
+    /**
+     * Same for the non normalized form
+     */
+    export type NormalizedBooleanAdditionalProperty = NormalizedDefaultValue;
+
+    /**
+     * This interface will represent your normalized attribute (usually coming from the backend but also used in the reducer)
+     */
+    export interface NormalizedBooleanAttribute extends NormalizedAttribute {
+      type: 'boolean';
+      default_value: NormalizedDefaultValue;
+    }
+
+    /**
+     * Here we define the interface for our concrete class (our model) extending the base attribute interface
+     */
+    export interface BooleanAttribute extends Attribute {
+      defaultValue: DefaultValue;
+      normalize(): NormalizedBooleanAttribute;
+    }
+
+    /**
+     * Here we are starting to implement our custom attribute class.
+     * Note that most of the code is due to the custom property (defaultValue). If you don't need to add a
+     * custom property to your attribute, the code can be stripped to it's minimal
+     */
+    export class ConcreteBooleanAttribute extends ConcreteAttribute implements BooleanAttribute {
+      /**
+       * Here, our constructor is private to be sure that our model will be created through a named constructor
+       */
+      private constructor(
+        identifier: Identifier,
+        referenceEntityIdentifier: ReferenceEntityIdentifier,
+        code: AttributeCode,
+        labelCollection: LabelCollection,
+        valuePerLocale: boolean,
+        valuePerChannel: boolean,
+        order: number,
+        is_required: boolean,
+        readonly defaultValue: DefaultValue
+      ) {
+        super(
+          identifier,
+          referenceEntityIdentifier,
+          code,
+          labelCollection,
+          'boolean',
+          valuePerLocale,
+          valuePerChannel,
+          order,
+          is_required
+        );
+
+        /**
+         * Always ensure that your object is well formed from it's constructor to avoid crash of the application
+         */
+        if (!(defaultValue instanceof DefaultValue)) {
+          throw new Error('Attribute expect a DefaultValue as defaultValue');
+        }
+
+        /**
+         * This will ensure that your model is not modified after it's creation (see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
+         */
+        Object.freeze(this);
+      }
+
+      /**
+       * Here, we denormalize our attribute
+       */
+      public static createFromNormalized(normalizedBooleanAttribute: NormalizedBooleanAttribute) {
+        return new ConcreteBooleanAttribute(
+          createIdentifier(normalizedBooleanAttribute.identifier),
+          createReferenceEntityIdentifier(normalizedBooleanAttribute.reference_entity_identifier),
+          createCode(normalizedBooleanAttribute.code),
+          createLabelCollection(normalizedBooleanAttribute.labels),
+          normalizedBooleanAttribute.value_per_locale,
+          normalizedBooleanAttribute.value_per_channel,
+          normalizedBooleanAttribute.order,
+          normalizedBooleanAttribute.is_required,
+          new DefaultValue(normalizedBooleanAttribute.default_value)
+        );
+      }
+
+      /**
+       * The only method to implement here: the normalize method. Here you need to provide a serializable object (see https://developer.mozilla.org/en-US/docs/Glossary/Serialization)
+       */
+      public normalize(): NormalizedBooleanAttribute {
+        return {
+          ...super.normalize(),
+          type: 'boolean',
+          default_value: this.defaultValue.normalize()
+        };
+      }
+    }
+
+    /**
+     * This part is not mandatory but we advise you to create value object to represent your custom properties (see https://en.wikipedia.org/wiki/Value_object)
+     */
+    type NormalizedDefaultValue = boolean;
+    class DefaultValue {
+      public constructor(readonly defaultValue: boolean) {}
+
+      public normalize() {
+        return this.defaultValue;
+      }
+
+      public stringValue(): string {
+        return this.defaultValue ? '1' : '0';
+      }
+    }
+
+    /**
+     * The only required part of this part of the file: exporting a denormalize method returning a custom attribute implementing Attribute interface
+     */
+    export const denormalize = ConcreteBooleanAttribute.createFromNormalized;
+
+2) Reducer
+^^^^^^^^^^
+
+Now that we have our attribute model in the frontend, we need to define our Reducer to know how to modify it's custom properties and react to the user intentions.
+
+.. code-block:: javascript
+
+    /**
+    * Our custom attribute reducer needs to receive as input the normalized custom attribute, the code of the additional property and the value of the additional property.
+    * It returns the normalized custom attribute with the values of the additional properties updated.
+    */
+    const booleanAttributeReducer = (
+      normalizedAttribute: NormalizedBooleanAttribute,
+      propertyCode: string,
+      propertyValue: NormalizedBooleanAdditionalProperty
+    ): NormalizedBooleanAttribute => {
+      switch (propertyCode) {
+        case 'default_value':
+          const default_value = propertyValue as NormalizedDefaultValue;
+          return {...normalizedAttribute, default_value};
+
+        default:
+          break;
+      }
+
+      return normalizedAttribute;
+    };
+
+    /**
+     * The only required part of this part of the file: exporting the custom attribute reducer.
+     */
+    export const reducer = booleanAttributeReducer;
+
+3) View
+^^^^^^^
+
+The last part we need to do, it's to create the React component to be able to render a user interface and dispatch events to the application (https://reactjs.org/docs/react-component.html).
+
+.. code-block:: javascript
+
+    import * as React from 'react';
+    import __ from 'akeneoreferenceentity/tools/translator';
+    import {getErrorsView} from 'akeneoreferenceentity/application/component/app/validation-error';
+    import ValidationError from "akeneoreferenceentity/domain/model/validation-error";
+    import Key from "akeneoreferenceentity/tools/key";
+
+    /**
+    * Here we define the React Component as a function with the following props :
+    *    - the custom attribute
+    *    - the callback function to update the additional property
+    *    - the callback for the submit
+    *    - the validation errors
+    *    - the attribute rights
+    *
+    * It returns the JSX View to display the additional properties of your custom attribute.
+    */
+    const BooleanAttributeView = ({
+       attribute,
+       onAdditionalPropertyUpdated,
+       onSubmit,
+       errors,
+       rights,
+     }: {
+      attribute: BooleanAttribute;
+      onAdditionalPropertyUpdated: (property: string, value: BooleanAdditionalProperty) => void;
+      onSubmit: () => void;,
+      errors: ValidationError[];
+      rights: {
+        attribute: {
+          create: boolean;
+          edit: boolean;
+          delete: boolean;
+        };
+      }
+    }) => {
+      const value = attribute.defaultValue.normalize();
+
+      // We need to have single quotes around the React.Fragment tag for displaying well the JSX in the documentation but you have to remove it in your code.
+      return (
+        '<React.Fragment>
+          <div className="AknFieldContainer AknFieldContainer--packed" data-code="defaultValue">
+            <div className="AknFieldContainer-header">
+              <label className="AknFieldContainer-label" htmlFor="pim_reference_entity.attribute.edit.input.default_value">
+                <div
+                  className={`AknCheckbox AknCheckbox--inline ${value ? 'AknCheckbox--checked' : ''} ${
+                    !rights.attribute.edit ? 'AknCheckbox--disabled' : ''
+                    }`}
+                  data-checked={value ? 'true' : 'false'}
+                  tabIndex={!rights.attribute.edit ? -1 : 0}
+                  id="pim_reference_entity.attribute.edit.input.default_value"
+                  role="checkbox"
+                  aria-checked={value ? 'true' : 'false'}
+                  onKeyPress={(event: React.KeyboardEvent<HTMLSpanElement>) => {
+                    if ([' '].includes(event.key) && rights.attribute.edit) {
+                      onAdditionalPropertyUpdated('default_value', new DefaultValue(!value));
+                    }
+                    if (Key.Enter === event.key) onSubmit();
+                    event.preventDefault();
+                  }}
+                  onClick={() => {
+                    if (rights.attribute.edit) onAdditionalPropertyUpdated('default_value', new DefaultValue(!value));
+                  }}
+                >
+                  <svg width={16} height={16}>
+                    <path
+                      className=""
+                      fill="none"
+                      stroke="#FFFFFF"
+                      strokeWidth={1}
+                      strokeLinejoin="round"
+                      strokeMiterlimit={10}
+                      d="M1.7 8l4.1 4 8-8"
+                    />
+                  </svg>
+                </div>
+                {__('acme_custom.attribute.edit.input.default_value')}
+              </label>
+            </div>
+            {getErrorsView(errors, 'defaultValue')}
+          </div>
+        </React.Fragment>'
+      );
+    };
+
+    /**
+     * The only required part of this part of the file: exporting the custom attribute view.
+     */
+    export const view = BooleanAttributeView;
+
+4) Register our custom attribute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To be able to have everything working, we need register our custom attribute in the ``src/Acme/CustomBundle/Resources/config/requirejs.yml`` :
 
 .. code-block:: yaml
 
@@ -540,11 +833,3 @@ https://github.com/akeneo/pim-enterprise-dev/pull/5673/files#diff-9f58f66bb7130d
                     denormalize: '@acmecustom/reference-entity/attribute/boolean.tsx'
                     reducer: '@acmecustom/reference-entity/attribute/boolean.tsx'
                     view: '@acmecustom/reference-entity/attribute/boolean.tsx'
-
-
-Enrich Records with your new Attribute
---------------------------------------
-
-- Domain Record (Data of the Value)
-- Application Record (Edit)
-- Infra Record (Validation, Hydrator)
