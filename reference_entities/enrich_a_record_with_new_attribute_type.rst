@@ -188,7 +188,7 @@ Of course, we need to register this updater to be recognized by our registry:
 
 .. code-block:: yaml
 
-    acme.application.edit_record.record_value_updater.text_updater:
+    acme.application.edit_record.record_value_updater.boolean_updater:
         class: Acme\CustomBundle\Application\Record\EditRecord\ValueUpdater\BooleanUpdater
         tags:
         - { name: akeneo_referenceentity.record_value_updater }

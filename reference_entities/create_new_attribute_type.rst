@@ -125,6 +125,16 @@ Let's start with our new custom Attribute. It must extends the ``\Akeneo\Referen
         {
             return 'boolean';
         }
+
+        public function normalize(): array
+        {
+            return array_merge(
+                parent::normalize(),
+                [
+                    'default_value' => $this->defaultValue->normalize(),
+                ]
+            );
+        }
     }
 
 
