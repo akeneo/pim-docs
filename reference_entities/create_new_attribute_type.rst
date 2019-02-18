@@ -23,8 +23,8 @@ During this chapter, we assume that you already created a new bundle to add your
 Create the Attribute
 --------------------
 
-For this tutorial, we will create a **custom boolean attribute** type for reference entity.
-In addition to its common properties (code, label, value per locale...), we will add a custom property, which will be its "default value" for records.
+For this tutorial, we will create a **custom simple metric attribute** type for reference entity.
+In addition to its common properties (code, label, value per locale...), we will add a custom property, which will be its "unit".
 
 .. note::
 
@@ -32,9 +32,9 @@ In addition to its common properties (code, label, value per locale...), we will
 
    For the reference entities, we followed the Hexagonal architecture. So we split our classes in 3 different layers: Domain, Application & Infrastructure.
 
-   - First we'll create **Domain** classes (the new custom ``BooleanAttribute`` itself and its ``Value Object``)
+   - First we'll create **Domain** classes (the new custom ``SimpleMetricAttribute`` itself and its ``Value Object``)
    - Then **Application** classes (only Commands from CQRS principle (https://martinfowler.com/bliki/CQRS.html) and regular updaters)
-   - And to finish **Infrastructure** classes (an Hydrator to hydrate our ``BooleanAttribute`` coming from SQL)
+   - And to finish **Infrastructure** classes (an Hydrator to hydrate our ``SimpleMetricAttribute`` coming from SQL)
 
    It's not mandatory to respect this architecture in your custom project, but for the sake of this example, we'll respect it.
 
@@ -59,10 +59,10 @@ Let's start with our new custom Attribute. It must extends the ``\Akeneo\Referen
     use Akeneo\ReferenceEntity\Domain\Model\LabelCollection;
     use Akeneo\ReferenceEntity\Domain\Model\ReferenceEntity\ReferenceEntityIdentifier;
 
-    class BooleanAttribute extends AbstractAttribute
+    class SimpleMetricAttribute extends AbstractAttribute
     {
-        /** @var AttributeDefaultValue */
-        private $defaultValue; // This is our custom property for this attribute.
+        /** @var AttributeMetricUnit */
+        private $unit;
 
         protected function __construct(
             AttributeIdentifier $identifier,
@@ -73,7 +73,7 @@ Let's start with our new custom Attribute. It must extends the ``\Akeneo\Referen
             AttributeIsRequired $isRequired,
             AttributeValuePerChannel $valuePerChannel,
             AttributeValuePerLocale $valuePerLocale,
-            AttributeDefaultValue $defaultValue
+            AttributeMetricUnit $unit
         ) {
             parent::__construct(
                 $identifier,
@@ -86,10 +86,10 @@ Let's start with our new custom Attribute. It must extends the ``\Akeneo\Referen
                 $valuePerLocale
             );
 
-            $this->defaultValue = $defaultValue;
+            $this->unit = $unit;
         }
 
-        public static function createBoolean(
+        public static function createSimpleMetric(
             AttributeIdentifier $identifier,
             ReferenceEntityIdentifier $referenceEntityIdentifier,
             AttributeCode $code,
@@ -98,7 +98,7 @@ Let's start with our new custom Attribute. It must extends the ``\Akeneo\Referen
             AttributeIsRequired $isRequired,
             AttributeValuePerChannel $valuePerChannel,
             AttributeValuePerLocale $valuePerLocale,
-            AttributeDefaultValue $defaultValue
+            AttributeMetricUnit $unit
         ) {
             return new self(
                 $identifier,
@@ -109,13 +109,13 @@ Let's start with our new custom Attribute. It must extends the ``\Akeneo\Referen
                 $isRequired,
                 $valuePerChannel,
                 $valuePerLocale,
-                $defaultValue
+                $unit
             );
         }
 
-        public function setDefaultValue(AttributeDefaultValue $defaultValue): void
+        public function setUnit(AttributeMetricUnit $unit): void
         {
-            $this->defaultValue = $defaultValue;
+            $this->unit = $unit;
         }
 
         /**
@@ -123,7 +123,7 @@ Let's start with our new custom Attribute. It must extends the ``\Akeneo\Referen
          */
         protected function getType(): string
         {
-            return 'boolean';
+            return 'simple_metric';
         }
 
         public function normalize(): array
@@ -131,54 +131,140 @@ Let's start with our new custom Attribute. It must extends the ``\Akeneo\Referen
             return array_merge(
                 parent::normalize(),
                 [
-                    'default_value' => $this->defaultValue->normalize(),
+                    'unit' => $this->unit->normalize(),
                 ]
             );
         }
     }
 
 
-Now that we have our custom attribute class, we need to create its Value Object class for the property "DefaultValue":
+
+Now that we have our custom attribute class, we need to create its Value Object class for the property "MetricUnit":
 
 .. code-block:: php
 
     <?php
     namespace Acme\CustomBundle\Domain\Model\Attribute;
 
-    class AttributeDefaultValue
+    class AttributeMetricUnit
     {
-        /** @var bool */
-        private $defaultValue;
+        /** @var string */
+        private $metricUnit;
 
-        private function __construct(bool $defaultValue)
+        private function __construct(string $metricUnit)
         {
-            $this->defaultValue = $defaultValue;
+            $this->metricUnit = $metricUnit;
         }
 
-        public static function fromBoolean(bool $defaultBooleanValue): self
+        public static function fromString(string $metricUnit): self
         {
-            return new self($defaultBooleanValue);
+            return new self($metricUnit);
         }
 
-        public function normalize(): bool
+        public function normalize(): string
         {
-            return $this->defaultValue;
+            return $this->metricUnit;
         }
     }
 
 2) Application Layer
 ^^^^^^^^^^^^^^^^^^^^
 
-First, let's create a factory to create our brand new ``BooleanAttribute``:
+The Domain classes were quite simple objects. Now we need to add some logic
+Now that we have our Attribute class, we need to create classes to handle its creation and edition.
+
+We'll need first to add the "Creation command", it needs to extend ``\Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand``.
+
+.. code-block:: php
+
+    <?php
+    namespace Acme\CustomBundle\Application\Attribute\CreateAttribute;
+
+    use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand;
+
+    class CreateSimpleMetricAttributeCommand extends AbstractCreateAttributeCommand
+    {
+        /** @var string */
+        public $unit;
+
+        public function __construct(
+            string $referenceEntityIdentifier,
+            string $code,
+            array $labels,
+            bool $isRequired,
+            bool $valuePerChannel,
+            bool $valuePerLocale,
+            string $unit
+        ) {
+            parent::__construct(
+                $referenceEntityIdentifier,
+                $code,
+                $labels,
+                $isRequired,
+                $valuePerChannel,
+                $valuePerLocale
+            );
+
+            $this->unit = $unit;
+        }
+    }
+
+To build this creation command, we need a factory:
+
+.. code-block:: php
+
+    <?php
+
+    namespace Acme\CustomBundle\Application\Attribute\CreateAttribute\CommandFactory;
+
+    use Acme\CustomBundle\Application\Attribute\CreateAttribute\CreateSimpleMetricAttributeCommand;
+    use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand;
+    use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\CommandFactory\AbstractCreateAttributeCommandFactory;
+
+    class CreateSimpleMetricAttributeCommandFactory extends AbstractCreateAttributeCommandFactory
+    {
+        public function supports(array $normalizedCommand): bool
+        {
+            return isset($normalizedCommand['type']) && 'simple_metric' === $normalizedCommand['type'];
+        }
+
+        public function create(array $normalizedCommand): AbstractCreateAttributeCommand
+        {
+            $this->checkCommonProperties($normalizedCommand);
+
+            $command = new CreateSimpleMetricAttributeCommand(
+                $normalizedCommand['reference_entity_identifier'],
+                $normalizedCommand['code'],
+                $normalizedCommand['labels'] ?? [],
+                $normalizedCommand['is_required'] ?? false,
+                $normalizedCommand['value_per_channel'],
+                $normalizedCommand['value_per_locale'],
+                $normalizedCommand['unit'] ?? ''
+            );
+
+            return $command;
+        }
+    }
+
+And we also need to register it with a specific tag:
+
+.. code-block:: yaml
+
+    acme.application.factory.create_simple_metric_attribute_command_factory:
+        class: Acme\CustomBundle\Application\Attribute\CreateAttribute\CommandFactory\CreateSimpleMetricAttributeCommandFactory
+        tags:
+            - { name: akeneo_referenceentity.create_attribute_command_factory }
+
+Now that we have our command created, we need a factory to create our brand new ``SimpleMetricAttribute``:
 
 .. code-block:: php
 
     <?php
     namespace Acme\CustomBundle\Application\Attribute\CreateAttribute\AttributeFactory;
 
-    use Acme\CustomBundle\Application\Attribute\CreateAttribute\CreateBooleanAttributeCommand;
-    use Acme\CustomBundle\Domain\Model\Attribute\AttributeDefaultValue;
-    use Acme\CustomBundle\Domain\Model\Attribute\BooleanAttribute;
+    use Acme\CustomBundle\Application\Attribute\CreateAttribute\CreateSimpleMetricAttributeCommand;
+    use Acme\CustomBundle\Domain\Model\Attribute\AttributeMetricUnit;
+    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
     use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand;
     use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AttributeFactory\AttributeFactoryInterface;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
@@ -191,11 +277,11 @@ First, let's create a factory to create our brand new ``BooleanAttribute``:
     use Akeneo\ReferenceEntity\Domain\Model\LabelCollection;
     use Akeneo\ReferenceEntity\Domain\Model\ReferenceEntity\ReferenceEntityIdentifier;
 
-    class BooleanAttributeFactory implements AttributeFactoryInterface
+    class SimpleMetricAttributeFactory implements AttributeFactoryInterface
     {
         public function supports(AbstractCreateAttributeCommand $command): bool
         {
-            return $command instanceof CreateBooleanAttributeCommand;
+            return $command instanceof CreateSimpleMetricAttributeCommand;
         }
 
         public function create(
@@ -207,13 +293,13 @@ First, let's create a factory to create our brand new ``BooleanAttribute``:
                 throw new \RuntimeException(
                     sprintf(
                         'Expected command of type "%s", "%s" given',
-                        CreateBooleanAttributeCommand::class,
+                        CreateSimpleMetricAttributeCommand::class,
                         get_class($command)
                     )
                 );
             }
 
-            return BooleanAttribute::createBoolean(
+            return SimpleMetricAttribute::createSimpleMetric(
                 $identifier,
                 ReferenceEntityIdentifier::fromString($command->referenceEntityIdentifier),
                 AttributeCode::fromString($command->code),
@@ -222,106 +308,21 @@ First, let's create a factory to create our brand new ``BooleanAttribute``:
                 AttributeIsRequired::fromBoolean($command->isRequired),
                 AttributeValuePerChannel::fromBoolean($command->valuePerChannel),
                 AttributeValuePerLocale::fromBoolean($command->valuePerLocale),
-                AttributeDefaultValue::fromBoolean($command->defaultValue)
+                AttributeMetricUnit::fromString($command->unit)
             );
         }
     }
-
-
-The Domain classes were quite simple objects. Now we need to add some logic
-Now that we have our Attribute class, we need to create classes to handle its creation and edition.
-
-We'll need first to add the "Creation command", it needs to extend ``\Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand``.
-
-.. code-block:: php
-
-    <?php
-    namespace Acme\CustomBundle\Application\Attribute\CreateAttribute;
-
-    class CreateBooleanAttributeCommand extends AbstractCreateAttributeCommand
-    {
-        /** @var bool */
-        public $defaultValue; // Example of parameter for your creation command
-
-        public function __construct(
-            string $referenceEntityIdentifier,
-            string $code,
-            array $labels,
-            bool $isRequired,
-            bool $valuePerChannel,
-            bool $valuePerLocale,
-            bool $defaultValue
-        ) {
-            parent::__construct(
-                $referenceEntityIdentifier,
-                $code,
-                $labels,
-                $isRequired,
-                $valuePerChannel,
-                $valuePerLocale
-            );
-
-            $this->defaultValue = $defaultValue;
-        }
-    }
-
-To build this creation command, we need a factory:
-
-.. code-block:: php
-
-    <?php
-
-    namespace Acme\CustomBundle\Application\Attribute\CreateAttribute\CommandFactory;
-
-    use Acme\CustomBundle\Application\Attribute\CreateAttribute\CreateBooleanAttributeCommand;
-    use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand;
-    use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\CommandFactory\AbstractCreateAttributeCommandFactory;
-
-    class CreateBooleanAttributeCommandFactory extends AbstractCreateAttributeCommandFactory
-    {
-        public function supports(array $normalizedCommand): bool
-        {
-            return isset($normalizedCommand['type']) && 'boolean' === $normalizedCommand['type'];
-        }
-
-        public function create(array $normalizedCommand): AbstractCreateAttributeCommand
-        {
-            $this->checkCommonProperties($normalizedCommand);
-
-            $command = new CreateBooleanAttributeCommand(
-                $normalizedCommand['reference_entity_identifier'],
-                $normalizedCommand['code'],
-                $normalizedCommand['labels'] ?? [],
-                $normalizedCommand['is_required'] ?? false,
-                $normalizedCommand['value_per_channel'],
-                $normalizedCommand['value_per_locale'],
-                $normalizedCommand['default_value'] ?? false
-            );
-
-            return $command;
-        }
-    }
-
-And we also need to register it with a specific tag:
-
-.. code-block:: yaml
-
-    acme.application.factory.create_boolean_attribute_command_factory:
-        class: Acme\CustomBundle\Application\Attribute\CreateAttribute\CommandFactory\CreateBooleanAttributeCommandFactory
-        tags:
-            - { name: akeneo_referenceentity.create_attribute_command_factory }
-
 
 And its declaration:
 
 .. code-block:: yaml
 
-    acme.application.factory.boolean_attribute_factory:
-        class: Acme\CustomBundle\Application\Attribute\CreateAttribute\AttributeFactory\BooleanAttributeFactory
+    acme.application.factory.simple_metric_attribute_factory:
+        class: Acme\CustomBundle\Application\Attribute\CreateAttribute\AttributeFactory\SimpleMetricAttributeFactory
         tags:
             - { name: akeneo_referenceentity.attribute_factory }
 
-For the edition of this attribute, we'll need to create a command to edit the property of our attribute (default value):
+For the edition of this attribute, we'll need to create a command to edit the property of our attribute (MetricUnit):
 
 .. code-block:: php
 
@@ -330,16 +331,16 @@ For the edition of this attribute, we'll need to create a command to edit the pr
 
     use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\AbstractEditAttributeCommand;
 
-    class EditDefaultValueCommand extends AbstractEditAttributeCommand
+    class EditMetricUnitCommand extends AbstractEditAttributeCommand
     {
-        /** @var boolean */
-        public $defaultValue;
+        /** @var string */
+        public $metricUnit;
 
-        public function __construct(string $identifier, bool $defaultValue)
+        public function __construct(string $identifier, string $metricUnit)
         {
             parent::__construct($identifier);
 
-            $this->defaultValue = $defaultValue;
+            $this->metricUnit = $metricUnit;
         }
     }
 
@@ -351,23 +352,26 @@ It needs to implement ``Akeneo\ReferenceEntity\Application\Attribute\EditAttribu
     <?php
     namespace Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory;
 
-    class EditDefaultValueCommandFactory implements EditAttributeCommandFactoryInterface
+    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\AbstractEditAttributeCommand;
+    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\EditAttributeCommandFactoryInterface;
+
+    class EditMetricUnitCommandFactory implements EditAttributeCommandFactoryInterface
     {
         public function supports(array $normalizedCommand): bool
         {
-            return array_key_exists('default_value', $normalizedCommand)
+            return array_key_exists('unit', $normalizedCommand)
                 && array_key_exists('identifier', $normalizedCommand);
         }
 
         public function create(array $normalizedCommand): AbstractEditAttributeCommand
         {
             if (!$this->supports($normalizedCommand)) {
-                throw new \RuntimeException('Impossible to create an edit default value property command.');
+                throw new \RuntimeException('Impossible to create an edit unit property command.');
             }
 
-            $command = new EditDefaultValueCommand(
+            $command = new EditMetricUnitCommand(
                 $normalizedCommand['identifier'],
-                $normalizedCommand['default_value']
+                $normalizedCommand['unit']
             );
 
             return $command;
@@ -381,8 +385,8 @@ This factory needs to be a service with a specific tag:
     # src/Acme/CustomBundle/Resources/config/services.yml
 
     services:
-        acme.application.factory.edit_default_value_command_factory:
-            class: Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory\EditDefaultValueCommandFactory
+         acme.application.factory.edit_metric_unit_command_factory:
+            class: Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory\EditMetricUnitCommandFactory
             tags:
                 - { name: akeneo_referenceentity.edit_attribute_command_factory, priority: 120 }
 
@@ -394,33 +398,33 @@ Now that we have our command, we need a dedicated updater to handle the change o
 
     namespace Acme\CustomBundle\Application\Attribute\EditAttribute\AttributeUpdater;
 
-    use Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory\EditDefaultValueCommand;
-    use Acme\CustomBundle\Domain\Model\Attribute\AttributeDefaultValue;
-    use Acme\CustomBundle\Domain\Model\Attribute\BooleanAttribute;
+    use Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory\EditMetricUnitCommand;
+    use Acme\CustomBundle\Domain\Model\Attribute\AttributeMetricUnit;
+    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
     use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\AttributeUpdater\AttributeUpdaterInterface;
     use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\AbstractEditAttributeCommand;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
 
-    class DefaultValueUpdater implements AttributeUpdaterInterface
+    class MetricUnitUpdater implements AttributeUpdaterInterface
     {
         public function supports(AbstractAttribute $attribute, AbstractEditAttributeCommand $command): bool
         {
-            return $command instanceof EditDefaultValueCommand && $attribute instanceof BooleanAttribute;
+            return $command instanceof EditMetricUnitCommand && $attribute instanceof SimpleMetricAttribute;
         }
 
         public function __invoke(AbstractAttribute $attribute, AbstractEditAttributeCommand $command): AbstractAttribute
         {
-            if (!$command instanceof EditDefaultValueCommand) {
+            if (!$command instanceof EditMetricUnitCommand) {
                 throw new \RuntimeException(
                     sprintf(
                         'Expected command of type "%s", "%s" given',
-                        EditDefaultValueCommand::class,
+                        EditMetricUnitCommand::class,
                         get_class($command)
                     )
                 );
             }
 
-            $attribute->setDefaultValue(AttributeDefaultValue::fromBoolean($command->defaultValue));
+            $attribute->setUnit(AttributeMetricUnit::fromString($command->metricUnit));
 
             return $attribute;
         }
@@ -430,10 +434,13 @@ This updater needs to be registered to be retrieved by a registry:
 
 .. code-block:: yaml
 
-    acme.application.edit_attribute.attribute_updater.default_value:
-        class: Acme\CustomBundle\Application\Attribute\EditAttribute\AttributeUpdater\DefaultValueUpdater
-        tags:
-            - { name: akeneo_referenceentity.attribute_updater, priority: 120 }
+    # src/Acme/CustomBundle/Resources/config/services.yml
+
+    services:
+        acme.application.edit_attribute.attribute_updater.metric_unit:
+            class: Acme\CustomBundle\Application\Attribute\EditAttribute\AttributeUpdater\MetricUnitUpdater
+            tags:
+                - { name: akeneo_referenceentity.attribute_updater, priority: 120 }
 
 
 3) Infrastructure Layer
@@ -446,7 +453,8 @@ Now that we have our custom Attribute and commands to create/edit it, we'll need
     <?php
     namespace Acme\CustomBundle\Infrastructure\Persistence\Sql\Attribute\Hydrator;
 
-    use Acme\CustomBundle\Domain\Model\Attribute\AttributeDefaultValue;
+    use Acme\CustomBundle\Domain\Model\Attribute\AttributeMetricUnit;
+    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeCode;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeIdentifier;
@@ -461,7 +469,7 @@ Now that we have our custom Attribute and commands to create/edit it, we'll need
     use Doctrine\DBAL\Platforms\AbstractPlatform;
     use Doctrine\DBAL\Types\Type;
 
-    class BooleanAttributeHydrator extends AbstractAttributeHydrator
+    class SimpleMetricAttributeHydrator extends AbstractAttributeHydrator
     {
         protected function getExpectedProperties(): array
         {
@@ -476,14 +484,14 @@ Now that we have our custom Attribute and commands to create/edit it, we'll need
                 'value_per_channel',
                 'attribute_type',
                 // ↑ these are common properties for each reference entity attributes
-                'default_value'
+                'unit'
             ];
         }
 
         protected function convertAdditionalProperties(AbstractPlatform $platform, array $row): array
         {
-            $row['default_value'] = Type::getType(Type::BOOLEAN)->convertToPhpValue(
-                $row['additional_properties']['default_value'], $platform
+            $row['unit'] = Type::getType(Type::STRING)->convertToPhpValue(
+                $row['additional_properties']['unit'], $platform
             );
 
             return $row;
@@ -491,9 +499,9 @@ Now that we have our custom Attribute and commands to create/edit it, we'll need
 
         protected function hydrateAttribute(array $row): AbstractAttribute
         {
-            $defaultValue = AttributeDefaultValue::fromBoolean($row['default_value']);
+            $metricUnit = AttributeMetricUnit::fromString($row['unit']);
 
-            return TextAttribute::createText(
+            return SimpleMetricAttribute::createSimpleMetric(
                 AttributeIdentifier::fromString($row['identifier']),
                 ReferenceEntityIdentifier::fromString($row['reference_entity_identifier']),
                 AttributeCode::fromString($row['code']),
@@ -502,26 +510,30 @@ Now that we have our custom Attribute and commands to create/edit it, we'll need
                 AttributeIsRequired::fromBoolean($row['is_required']),
                 AttributeValuePerChannel::fromBoolean($row['value_per_channel']),
                 AttributeValuePerLocale::fromBoolean($row['value_per_locale']),
-                $defaultValue
+                $metricUnit
             );
         }
 
         public function supports(array $result): bool
         {
-            return isset($result['attribute_type']) && 'boolean' === $result['attribute_type'];
+            return isset($result['attribute_type']) && 'simple_metric' === $result['attribute_type'];
         }
     }
+
 
 And to register it:
 
 .. code-block:: yaml
 
-    acme.infrastructure.persistence.hydrator.attribute.text_attribute_hydrator:
-        class: Acme\CustomBundle\Infrastructure\Persistence\Sql\Attribute\Hydrator\BooleanAttributeHydrator
-        arguments:
-            - '@database_connection'
-        tags:
-            - { name: akeneo_referenceentity.attribute_hydrator }
+    # src/Acme/CustomBundle/Resources/config/services.yml
+
+    services:
+        acme.infrastructure.persistence.hydrator.attribute.simple_metric_attribute_hydrator:
+            class: Acme\CustomBundle\Infrastructure\Persistence\Sql\Attribute\Hydrator\SimpleMetricAttributeHydrator
+            arguments:
+                - '@database_connection'
+            tags:
+                - { name: akeneo_referenceentity.attribute_hydrator }
 
 .. note::
 
@@ -531,14 +543,14 @@ And to register it:
 Frontend Part of The New Attribute Type
 ---------------------------------------
 
-To be able to create your brand new Boolean attribute on a Reference Entity, we need to add some code in the frontend part.
+To be able to create your brand new Simple Metric attribute on a Reference Entity, we need to add some code in the frontend part.
 
 To do so, you can put all needed code in one single file but you can (and are encouraged) to split it into multiple
 files if needed.
 
 To keep this example simple, we will create everything in this file :
 
-``src/Acme/CustomBundle/Resources/public/reference-entity/attribute/boolean.tsx``
+``src/Acme/CustomBundle/Resources/public/reference-entity/attribute/simple_metric.tsx``
 
 If you create a new attribute type, Akeneo will need three things to manage it in the frontend:
  - A model: a representation of your attribute, those properties and overall behaviour
@@ -581,27 +593,27 @@ This is the purpose of this section: provide a denormalizer capable of creating 
      *
      * In the example above, a additional property of a text attribute could be a Max length, is textarea, is rich text editor, ...
      */
-    export type BooleanAdditionalProperty = DefaultValue;
+    export type SimpleMetricAdditionalProperty = MetricUnit;
 
     /**
      * Same for the non normalized form
      */
-    export type NormalizedBooleanAdditionalProperty = NormalizedDefaultValue;
+    export type NormalizedSimpleMetricAdditionalProperty = NormalizedMetricUnit;
 
     /**
      * This interface will represent your normalized attribute (usually coming from the backend but also used in the reducer)
      */
-    export interface NormalizedBooleanAttribute extends NormalizedAttribute {
-      type: 'boolean';
-      default_value: NormalizedDefaultValue;
+    export interface NormalizedSimpleMetricAttribute extends NormalizedAttribute {
+      type: 'simple_metric';
+      unit: NormalizedMetricUnit;
     }
 
     /**
      * Here we define the interface for our concrete class (our model) extending the base attribute interface
      */
-    export interface BooleanAttribute extends Attribute {
-      defaultValue: DefaultValue;
-      normalize(): NormalizedBooleanAttribute;
+    export interface SimpleMetricAttribute extends Attribute {
+      unit: MetricUnit;
+      normalize(): NormalizedSimpleMetricAttribute;
     }
 
     /**
@@ -609,7 +621,7 @@ This is the purpose of this section: provide a denormalizer capable of creating 
      * Note that most of the code is due to the custom property (defaultValue). If you don't need to add a
      * custom property to your attribute, the code can be stripped to it's minimal
      */
-    export class ConcreteBooleanAttribute extends ConcreteAttribute implements BooleanAttribute {
+    export class ConcreteSimpleMetricAttribute extends ConcreteAttribute implements SimpleMetricAttribute {
       /**
        * Here, our constructor is private to be sure that our model will be created through a named constructor
        */
@@ -622,14 +634,14 @@ This is the purpose of this section: provide a denormalizer capable of creating 
         valuePerChannel: boolean,
         order: number,
         is_required: boolean,
-        readonly defaultValue: DefaultValue
+        readonly unit: MetricUnit
       ) {
         super(
           identifier,
           referenceEntityIdentifier,
           code,
           labelCollection,
-          'boolean',
+          'simple_metric',
           valuePerLocale,
           valuePerChannel,
           order,
@@ -639,8 +651,8 @@ This is the purpose of this section: provide a denormalizer capable of creating 
         /**
          * Always ensure that your object is well formed from it's constructor to avoid crash of the application
          */
-        if (!(defaultValue instanceof DefaultValue)) {
-          throw new Error('Attribute expect a DefaultValue as defaultValue');
+        if (!(unit instanceof MetricUnit)) {
+          throw new Error('Attribute expect a MetricUnit as unit');
         }
 
         /**
@@ -652,28 +664,28 @@ This is the purpose of this section: provide a denormalizer capable of creating 
       /**
        * Here, we denormalize our attribute
        */
-      public static createFromNormalized(normalizedBooleanAttribute: NormalizedBooleanAttribute) {
-        return new ConcreteBooleanAttribute(
-          createIdentifier(normalizedBooleanAttribute.identifier),
-          createReferenceEntityIdentifier(normalizedBooleanAttribute.reference_entity_identifier),
-          createCode(normalizedBooleanAttribute.code),
-          createLabelCollection(normalizedBooleanAttribute.labels),
-          normalizedBooleanAttribute.value_per_locale,
-          normalizedBooleanAttribute.value_per_channel,
-          normalizedBooleanAttribute.order,
-          normalizedBooleanAttribute.is_required,
-          new DefaultValue(normalizedBooleanAttribute.default_value)
+      public static createFromNormalized(normalizedSimpleMetricAttribute: NormalizedSimpleMetricAttribute) {
+        return new ConcreteSimpleMetricAttribute(
+          createIdentifier(normalizedSimpleMetricAttribute.identifier),
+          createReferenceEntityIdentifier(normalizedSimpleMetricAttribute.reference_entity_identifier),
+          createCode(normalizedSimpleMetricAttribute.code),
+          createLabelCollection(normalizedSimpleMetricAttribute.labels),
+          normalizedSimpleMetricAttribute.value_per_locale,
+          normalizedSimpleMetricAttribute.value_per_channel,
+          normalizedSimpleMetricAttribute.order,
+          normalizedSimpleMetricAttribute.is_required,
+          new MetricUnit(normalizedSimpleMetricAttribute.unit)
         );
       }
 
       /**
        * The only method to implement here: the normalize method. Here you need to provide a serializable object (see https://developer.mozilla.org/en-US/docs/Glossary/Serialization)
        */
-      public normalize(): NormalizedBooleanAttribute {
+      public normalize(): NormalizedSimpleMetricAttribute {
         return {
           ...super.normalize(),
-          type: 'boolean',
-          default_value: this.defaultValue.normalize()
+          type: 'simple_metric',
+          unit: this.unit.normalize()
         };
       }
     }
@@ -681,23 +693,20 @@ This is the purpose of this section: provide a denormalizer capable of creating 
     /**
      * This part is not mandatory but we advise you to create value object to represent your custom properties (see https://en.wikipedia.org/wiki/Value_object)
      */
-    type NormalizedDefaultValue = boolean;
-    class DefaultValue {
-      public constructor(readonly defaultValue: boolean) {}
+    type NormalizedMetricUnit = string;
+    class MetricUnit {
+      public constructor(readonly unit: string) {}
 
       public normalize() {
-        return this.defaultValue;
-      }
-
-      public stringValue(): string {
-        return this.defaultValue ? '1' : '0';
+        return this.unit;
       }
     }
+
 
     /**
      * The only required part of the file: exporting a denormalize method returning a custom attribute implementing Attribute interface
      */
-    export const denormalize = ConcreteBooleanAttribute.createFromNormalized;
+    export const denormalize = ConcreteSimpleMetricAttribute.createFromNormalized;
 
 2) Reducer
 ^^^^^^^^^^
@@ -707,18 +716,18 @@ Now that we have our attribute model in the frontend, we need to define our Redu
 .. code-block:: javascript
 
     /**
-    * Our custom attribute reducer needs to receive as input the normalized custom attribute, the code of the additional property and the value of the additional property.
-    * It returns the normalized custom attribute with the values of the additional properties updated.
-    */
-    const booleanAttributeReducer = (
-      normalizedAttribute: NormalizedBooleanAttribute,
+     * Our custom attribute reducer needs to receive as input the normalized custom attribute, the code of the additional property and the value of the additional property.
+     * It returns the normalized custom attribute with the values of the additional properties updated.
+     */
+    const simpleMetricAttributeReducer = (
+      normalizedAttribute: NormalizedSimpleMetricAttribute,
       propertyCode: string,
-      propertyValue: NormalizedBooleanAdditionalProperty
-    ): NormalizedBooleanAttribute => {
+      propertyValue: NormalizedSimpleMetricAdditionalProperty
+    ): NormalizedSimpleMetricAttribute => {
       switch (propertyCode) {
-        case 'default_value':
-          const default_value = propertyValue as NormalizedDefaultValue;
-          return {...normalizedAttribute, default_value};
+        case 'unit':
+          const unit = propertyValue as NormalizedMetricUnit;
+          return {...normalizedAttribute, unit};
 
         default:
           break;
@@ -730,7 +739,7 @@ Now that we have our attribute model in the frontend, we need to define our Redu
     /**
      * The only required part of the file: exporting the custom attribute reducer.
      */
-    export const reducer = booleanAttributeReducer;
+    export const reducer = simpleMetricAttributeReducer;
 
 3) View
 ^^^^^^^
@@ -742,29 +751,29 @@ The last part we need to do, it's to create the React component to be able to re
     import * as React from 'react';
     import __ from 'akeneoreferenceentity/tools/translator';
     import {getErrorsView} from 'akeneoreferenceentity/application/component/app/validation-error';
-    import ValidationError from "akeneoreferenceentity/domain/model/validation-error";
-    import Key from "akeneoreferenceentity/tools/key";
+    import ValidationError from 'akeneoreferenceentity/domain/model/validation-error';
+    import Key from 'akeneoreferenceentity/tools/key';
 
     /**
-    * Here we define the React Component as a function with the following props :
-    *    - the custom attribute
-    *    - the callback function to update the additional property
-    *    - the callback for the submit
-    *    - the validation errors
-    *    - the attribute rights
-    *
-    * It returns the JSX View to display the additional properties of your custom attribute.
-    */
-    const BooleanAttributeView = ({
+     * Here we define the React Component as a function with the following props :
+     *    - the custom attribute
+     *    - the callback function to update the additional property
+     *    - the callback for the submit
+     *    - the validation errors
+     *    - the attribute rights
+     *
+     * It returns the JSX View to display the additional properties of your custom attribute.
+     */
+    const SimpleMetricAttributeView = ({
        attribute,
        onAdditionalPropertyUpdated,
        onSubmit,
        errors,
        rights,
      }: {
-      attribute: BooleanAttribute;
-      onAdditionalPropertyUpdated: (property: string, value: BooleanAdditionalProperty) => void;
-      onSubmit: () => void;,
+      attribute: SimpleMetricAttribute;
+      onAdditionalPropertyUpdated: (property: string, value: SimpleMetricAdditionalProperty) => void;
+      onSubmit: () => void;
       errors: ValidationError[];
       rights: {
         attribute: {
@@ -774,59 +783,46 @@ The last part we need to do, it's to create the React component to be able to re
         };
       }
     }) => {
-      const value = attribute.defaultValue.normalize();
+      const inputTextClassName = `AknTextField AknTextField--light ${
+        !rights.attribute.edit ? 'AknTextField--disabled' : ''
+        }`;
 
-      // We need to have single quotes around the React.Fragment tag for displaying well the JSX in the documentation but you have to remove it in your code.
       return (
-        '<React.Fragment>
-          <div className="AknFieldContainer AknFieldContainer--packed" data-code="defaultValue">
-            <div className="AknFieldContainer-header">
-              <label className="AknFieldContainer-label" htmlFor="pim_reference_entity.attribute.edit.input.default_value">
-                <div
-                  className={`AknCheckbox AknCheckbox--inline ${value ? 'AknCheckbox--checked' : ''} ${
-                    !rights.attribute.edit ? 'AknCheckbox--disabled' : ''
-                    }`}
-                  data-checked={value ? 'true' : 'false'}
-                  tabIndex={!rights.attribute.edit ? -1 : 0}
-                  id="pim_reference_entity.attribute.edit.input.default_value"
-                  role="checkbox"
-                  aria-checked={value ? 'true' : 'false'}
-                  onKeyPress={(event: React.KeyboardEvent<HTMLSpanElement>) => {
-                    if ([' '].includes(event.key) && rights.attribute.edit) {
-                      onAdditionalPropertyUpdated('default_value', new DefaultValue(!value));
-                    }
-                    if (Key.Enter === event.key) onSubmit();
-                    event.preventDefault();
-                  }}
-                  onClick={() => {
-                    if (rights.attribute.edit) onAdditionalPropertyUpdated('default_value', new DefaultValue(!value));
-                  }}
-                >
-                  <svg width={16} height={16}>
-                    <path
-                      className=""
-                      fill="none"
-                      stroke="#FFFFFF"
-                      strokeWidth={1}
-                      strokeLinejoin="round"
-                      strokeMiterlimit={10}
-                      d="M1.7 8l4.1 4 8-8"
-                    />
-                  </svg>
-                </div>
-                {__('acme_custom.attribute.edit.input.default_value')}
+        <React.Fragment>
+          <div className="AknFieldContainer" data-code="unit">
+            <div className="AknFieldContainer-header AknFieldContainer-header--light">
+              <label className="AknFieldContainer-label" htmlFor="pim_reference_entity.attribute.edit.input.unit">
+                {__('pim_reference_entity.attribute.edit.input.unit')}
               </label>
             </div>
-            {getErrorsView(errors, 'defaultValue')}
+            <div className="AknFieldContainer-inputContainer">
+              <input
+                type="text"
+                autoComplete="off"
+                className={inputTextClassName}
+                id="pim_reference_entity.attribute.edit.input.unit"
+                name="unit"
+                readOnly={!rights.attribute.edit}
+                value={attribute.unit.normalize()}
+                onKeyPress={(event: React.KeyboardEvent<HTMLInputElement>) => {
+                  if (Key.Enter === event.key) onSubmit();
+                }}
+                onChange={(event: React.FormEvent<HTMLInputElement>) => {
+                  onAdditionalPropertyUpdated('unit', new MetricUnit(event.currentTarget.value));
+                }}
+              />
+            </div>
+            {getErrorsView(errors, 'unit')}
           </div>
-        </React.Fragment>'
+        </React.Fragment>
       );
     };
 
     /**
      * The only required part of the file: exporting the custom attribute view.
      */
-    export const view = BooleanAttributeView;
+    export const view = SimpleMetricAttributeView;
+
 
 4) Register our custom attribute
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -838,8 +834,8 @@ To be able to have everything working, we need to register our custom attribute 
     config:
         config:
             akeneoreferenceentity/application/configuration/attribute:
-                boolean:
-                    icon: bundles/pimui/images/attribute/icon-boolean.svg
-                    denormalize: '@acmecustom/reference-entity/attribute/boolean.tsx'
-                    reducer: '@acmecustom/reference-entity/attribute/boolean.tsx'
-                    view: '@acmecustom/reference-entity/attribute/boolean.tsx'
+                simple_metric:
+                    icon: bundles/pimui/images/attribute/icon-metric.svg
+                    denormalize: '@custom/reference-entity/attribute/simple_metric.tsx'
+                    reducer: '@custom/reference-entity/attribute/simple_metric.tsx'
+                    view: '@custom/reference-entity/attribute/simple_metric.tsx'

@@ -17,7 +17,7 @@ Please be sure to follow the creation steps before following this guide.
 Enrich Records With the Attribute
 ---------------------------------
 
-In the previous tutorial, we've created a custom boolean attribute.
+In the previous tutorial, we've created a custom simple metric attribute.
 In this tutorial, we will be able to enrich this attribute directly in the records of the reference entity.
 
 1) Domain Layer
@@ -26,7 +26,7 @@ In this tutorial, we will be able to enrich this attribute directly in the recor
 To enrich an record, we will create a new Record Value for the brand new Attribute type.
 For example, we already have the ``TextData`` class for attribute type "Text".
 
-Let's create our own ``BooleanData`` that will handle the current data of the Record:
+Let's create our own ``SimpleMetricData`` that will handle the current data of the Record:
 
 .. code-block:: php
 
@@ -36,29 +36,36 @@ Let's create our own ``BooleanData`` that will handle the current data of the Re
     use Akeneo\ReferenceEntity\Domain\Model\Record\Value\ValueDataInterface;
     use Webmozart\Assert\Assert;
 
-    class BooleanData implements ValueDataInterface
+    class SimpleMetricData implements ValueDataInterface
     {
-        /** @var bool */
-        private $boolean;
+        /** @var string */
+        private $metricValue;
 
-        private function __construct(bool $boolean)
+        private function __construct(string $metricValue)
         {
-            $this->boolean = $boolean;
+            Assert::numeric($metricValue, 'The metric value should be a numeric string value');
+
+            $this->metricValue = $metricValue;
         }
 
         /**
-         * @return boolean
+         * @return string
          */
         public function normalize()
         {
-            return $this->boolean;
+            return $this->metricValue;
         }
 
         public static function createFromNormalize($normalizedData): ValueDataInterface
         {
-            Assert::boolean($normalizedData, 'Normalized data should be a boolean');
+            Assert::string($normalizedData, 'Normalized data should be a string');
 
             return new self($normalizedData);
+        }
+
+        public static function fromString(string $metricValue)
+        {
+            return new self($metricValue);
         }
     }
 
@@ -74,54 +81,49 @@ Regarding the Application Layer, we will create a command first:
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Record\EditRecord\CommandFactory;
+    namespace Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory;
 
-    use Acme\CustomBundle\Domain\Model\Attribute\BooleanAttribute;
-    use Akeneo\ReferenceEntity\Application\Record\EditRecord\CommandFactory\AbstractEditValueCommand;
+    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\AbstractEditAttributeCommand;
 
-    class EditBooleanValueCommand extends AbstractEditValueCommand
+    class EditMetricUnitCommand extends AbstractEditAttributeCommand
     {
-        /** @var bool */
-        public $boolean;
+        /** @var string */
+        public $metricUnit;
 
-        public function __construct(BooleanAttribute $attribute, ?string $channel, ?string $locale, bool $boolean)
+        public function __construct(string $identifier, string $metricUnit)
         {
-            parent::__construct($attribute, $channel, $locale);
+            parent::__construct($identifier);
 
-            $this->boolean = $boolean;
+            $this->metricUnit = $metricUnit;
         }
     }
 
-Then its factory:
+And its factory to build the command:
 
 .. code-block:: php
 
-    <?php
+    namespace Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory;
 
-    namespace Acme\CustomBundle\Application\Record\EditRecord\CommandFactory;
+    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\AbstractEditAttributeCommand;
+    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\EditAttributeCommandFactoryInterface;
 
-    use Acme\CustomBundle\Domain\Model\Attribute\BooleanAttribute;
-    use Akeneo\ReferenceEntity\Application\Record\EditRecord\CommandFactory\AbstractEditValueCommand;
-    use Akeneo\ReferenceEntity\Application\Record\EditRecord\CommandFactory\EditValueCommandFactoryInterface;
-    use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
-
-    class EditBooleanValueCommandFactory implements EditValueCommandFactoryInterface
+    class EditMetricUnitCommandFactory implements EditAttributeCommandFactoryInterface
     {
-        public function supports(AbstractAttribute $attribute, array $normalizedValue): bool
+        public function supports(array $normalizedCommand): bool
         {
-             return
-                 $attribute instanceof BooleanAttribute &&
-                '' !== $normalizedValue['data'] &&
-                is_bool($normalizedValue['data']);
+            return array_key_exists('unit', $normalizedCommand)
+                && array_key_exists('identifier', $normalizedCommand);
         }
 
-        public function create(AbstractAttribute $attribute, array $normalizedValue): AbstractEditValueCommand
+        public function create(array $normalizedCommand): AbstractEditAttributeCommand
         {
-            $command = new EditBooleanValueCommand(
-                $attribute,
-                $normalizedValue['channel'],
-                $normalizedValue['locale'],
-                $normalizedValue['data']
+            if (!$this->supports($normalizedCommand)) {
+                throw new \RuntimeException('Impossible to create an edit unit property command.');
+            }
+
+            $command = new EditMetricUnitCommand(
+                $normalizedCommand['identifier'],
+                $normalizedCommand['unit']
             );
 
             return $command;
@@ -132,55 +134,48 @@ Don't forget to register your factory to be recognized by our registry:
 
 .. code-block:: yaml
 
-    acme.application.factory.record.edit_boolean_value_command_factory:
-        class: Acme\CustomBundle\Application\Record\EditRecord\CommandFactory\EditBooleanValueCommandFactory
+    acme.application.factory.edit_metric_unit_command_factory:
+        class: Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory\EditMetricUnitCommandFactory
         tags:
-        - { name: akeneo_referenceentity.edit_record_value_command_factory }
+            - { name: akeneo_referenceentity.edit_attribute_command_factory, priority: 120 }
 
-Now that we have our command, we need a specific value updater that will be able to understand this command to update a boolean value:
+Now that we have our command, we need a specific value updater that will be able to understand this command to update a simple metric value:
 
 .. code-block:: php
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Record\EditRecord\ValueUpdater;
+    namespace Acme\CustomBundle\Application\Attribute\EditAttribute\AttributeUpdater;
 
-    use Acme\CustomBundle\Application\Record\EditRecord\CommandFactory\EditBooleanValueCommand;
-    use Acme\CustomBundle\Domain\Model\Record\Value\BooleanData;
-    use Akeneo\ReferenceEntity\Application\Record\EditRecord\CommandFactory\AbstractEditValueCommand;
-    use Akeneo\ReferenceEntity\Application\Record\EditRecord\ValueUpdater\ValueUpdaterInterface;
-    use Akeneo\ReferenceEntity\Domain\Model\ChannelIdentifier;
-    use Akeneo\ReferenceEntity\Domain\Model\LocaleIdentifier;
-    use Akeneo\ReferenceEntity\Domain\Model\Record\Record;
-    use Akeneo\ReferenceEntity\Domain\Model\Record\Value\ChannelReference;
-    use Akeneo\ReferenceEntity\Domain\Model\Record\Value\LocaleReference;
-    use Akeneo\ReferenceEntity\Domain\Model\Record\Value\Value;
+    use Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory\EditMetricUnitCommand;
+    use Acme\CustomBundle\Domain\Model\Attribute\AttributeMetricUnit;
+    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
+    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\AttributeUpdater\AttributeUpdaterInterface;
+    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\AbstractEditAttributeCommand;
+    use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
 
-    class BooleanUpdater implements ValueUpdaterInterface
+    class MetricUnitUpdater implements AttributeUpdaterInterface
     {
-        public function supports(AbstractEditValueCommand $command): bool
+        public function supports(AbstractAttribute $attribute, AbstractEditAttributeCommand $command): bool
         {
-            return $command instanceof EditBooleanValueCommand;
+            return $command instanceof EditMetricUnitCommand && $attribute instanceof SimpleMetricAttribute;
         }
 
-        public function __invoke(Record $record, AbstractEditValueCommand $command): void
+        public function __invoke(AbstractAttribute $attribute, AbstractEditAttributeCommand $command): AbstractAttribute
         {
-            if (!$this->supports($command)) {
-                throw new \RuntimeException('Impossible to update the value of the record with the given command.');
+            if (!$command instanceof EditMetricUnitCommand) {
+                throw new \RuntimeException(
+                    sprintf(
+                        'Expected command of type "%s", "%s" given',
+                        EditMetricUnitCommand::class,
+                        get_class($command)
+                    )
+                );
             }
 
-            $attribute = $command->attribute->getIdentifier();
-            $channelReference = (null !== $command->channel) ?
-                ChannelReference::fromChannelIdentifier(ChannelIdentifier::fromCode($command->channel)) :
-                ChannelReference::noReference();
-            $localeReference = (null !== $command->locale) ?
-                LocaleReference::fromLocaleIdentifier(LocaleIdentifier::fromCode($command->locale)) :
-                LocaleReference::noReference();
+            $attribute->setUnit(AttributeMetricUnit::fromString($command->metricUnit));
 
-            $boolean = BooleanData::createFromNormalize($command->boolean);
-
-            $value = Value::create($attribute, $channelReference, $localeReference, $boolean);
-            $record->setValue($value);
+            return $attribute;
         }
     }
 
@@ -188,10 +183,10 @@ Of course, we need to register this updater to be recognized by our registry:
 
 .. code-block:: yaml
 
-    acme.application.edit_record.record_value_updater.boolean_updater:
-        class: Acme\CustomBundle\Application\Record\EditRecord\ValueUpdater\BooleanUpdater
+    acme.application.edit_attribute.attribute_updater.metric_unit:
+        class: Acme\CustomBundle\Application\Attribute\EditAttribute\AttributeUpdater\MetricUnitUpdater
         tags:
-        - { name: akeneo_referenceentity.record_value_updater }
+            - { name: akeneo_referenceentity.attribute_updater, priority: 120 }
 
 
 3) Infrastructure Layer
@@ -205,22 +200,22 @@ Now that we can enrich our record with this new type of value, we need to create
 
     namespace Acme\CustomBundle\Infrastructure\Persistence\Sql\Record\Hydrator;
 
-    use Acme\CustomBundle\Domain\Model\Attribute\BooleanAttribute;
-    use Acme\CustomBundle\Domain\Model\Record\Value\BooleanData;
+    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
+    use Acme\CustomBundle\Domain\Model\Record\Value\SimpleMetricData;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
     use Akeneo\ReferenceEntity\Domain\Model\Record\Value\ValueDataInterface;
     use Akeneo\ReferenceEntity\Infrastructure\Persistence\Sql\Record\Hydrator\DataHydratorInterface;
 
-    class BooleanDataHydrator implements DataHydratorInterface
+    class SimpleMetricDataHydrator implements DataHydratorInterface
     {
         public function supports(AbstractAttribute $attribute): bool
         {
-            return $attribute instanceof BooleanAttribute;
+            return $attribute instanceof SimpleMetricAttribute;
         }
 
         public function hydrate($normalizedData): ValueDataInterface
         {
-            return BooleanData::createFromNormalize($normalizedData);
+            return SimpleMetricData::createFromNormalize($normalizedData);
         }
     }
 
@@ -228,29 +223,26 @@ And register it for the registry:
 
 .. code-block:: yaml
 
-    acme.infrastructure.persistence.record.hydrator.text_data:
-        class: Acme\CustomBundle\Infrastructure\Persistence\Sql\Record\Hydrator\BooleanDataHydrator
+    acme.infrastructure.persistence.record.hydrator.simple_metric_data:
+        class: Acme\CustomBundle\Infrastructure\Persistence\Sql\Record\Hydrator\SimpleMetricDataHydrator
         tags:
-        - { name: akeneo_referenceentity.data_hydrator }
-
-
-
+            - { name: akeneo_referenceentity.data_hydrator }
 
 .. note::
 
-   Note that if you want to validate the ``EditBooleanValueCommand``, you simply have to create a regular Symfony validator.
+   Note that if you want to validate the ``EditSimpleMetricValueCommand``, you simply have to create a regular Symfony validator.
 
 Frontend Part of The New Record Value
 -------------------------------------
 
-To be able to create your brand new Boolean Record Value, we need to add some code in the frontend part.
+To be able to create your brand new Simple Metric Record Value, we need to add some code in the frontend part.
 
 To do so, you can put all needed code in one single file but you can (and are encouraged) to split it into multiple
 files if needed.
 
 To keep this example simple, we will create everything in this file :
 
-``src/Acme/CustomBundle/Resources/public/reference-entity/record/boolean.tsx``
+``src/Acme/CustomBundle/Resources/public/reference-entity/record/simple-metric.tsx``
 
 If you create a new Record Value, Akeneo will need three things to manage it in the frontend:
  - A model: a representation of your Record Value, those properties and overall behaviour
@@ -280,20 +272,20 @@ This is the purpose of this section: provide a denormalizer capable of creating 
     /**
      * Here we are implementing our custom Record Value model.
      */
-    export type NormalizedBooleanData = boolean | null;
-    class BooleanData extends ValueData {
-      private constructor(private booleanData: boolean) {
+    export type NormalizedSimpleMetricData = string | null;
+    class SimpleMetricData extends ValueData {
+      private constructor(private simpleMetricData: string) {
         super();
 
-        if ('boolean' !== typeof booleanData) {
-          throw new InvalidTypeError('BooleanData expects a boolean as parameter to be created');
+        if ('string' !== typeof simpleMetricData) {
+          throw new InvalidTypeError('SimpleMetricData expects a string as parameter to be created');
         }
 
         Object.freeze(this);
       }
 
-      public static createFromNormalized(booleanData: NormalizedBooleanData): BooleanData {
-        return new BooleanData(null === booleanData ? false : booleanData);
+      public static createFromNormalized(simpleMetricData: NormalizedSimpleMetricData): SimpleMetricData {
+        return new SimpleMetricData(null === simpleMetricData ? '' : simpleMetricData);
       }
 
       public isEmpty(): boolean {
@@ -301,22 +293,18 @@ This is the purpose of this section: provide a denormalizer capable of creating 
       }
 
       public equals(data: ValueData): boolean {
-        return data instanceof BooleanData && this.booleanData === data.booleanData;
+        return data instanceof SimpleMetricData && this.simpleMetricData === data.simpleMetricData;
       }
 
-      public stringValue(): string {
-        return (this.booleanData) ? 'true' : 'false';
-      }
-
-      public normalize(): boolean {
-        return this.booleanData;
+      public normalize(): string {
+        return this.simpleMetricData;
       }
     }
 
     /**
-     * The only required part of the file: exporting a denormalize method returning a boolean Record Value.
+     * The only required part of the file: exporting a denormalize method returning a simple metric Record Value.
      */
-    export const denormalize = BooleanData.createFromNormalized;
+    export const denormalize = SimpleMetricData.createFromNormalized;
 
 2) View
 ^^^^^^^
@@ -327,8 +315,8 @@ Now that we have our custom Record Value model , it's to create the React compon
 
     import * as React from 'react';
     import Value from 'akeneoreferenceentity/domain/model/record/value';
-    import {ConcreteBooleanAttribute} from 'custom/reference-entity/attribute/boolean.tsx';
-    import Key from "akeneoreferenceentity/tools/key";
+    import {ConcreteSimpleMetricAttribute} from 'custom/reference-entity/attribute/simple_metric.tsx';
+    import Key from 'akeneoreferenceentity/tools/key';
 
     /**
      * Here we define the React Component as a function with the following props :
@@ -350,12 +338,12 @@ Now that we have our custom Record Value model , it's to create the React compon
       onSubmit: () => void;
       canEditData: boolean;
     }) => {
-      if (!(value.data instanceof BooleanData && value.attribute instanceof ConcreteBooleanAttribute)) {
+      if (!(value.data instanceof SimpleMetricData && value.attribute instanceof ConcreteSimpleMetricAttribute)) {
         return null;
       }
 
-      const onValueChange = (boolean: boolean) => {
-        const newData = denormalize(boolean);
+      const onValueChange = (text: string) => {
+        const newData = denormalize(text);
         if (newData.equals(value.data)) {
           return;
         }
@@ -365,31 +353,26 @@ Now that we have our custom Record Value model , it's to create the React compon
         onChange(newValue);
       };
 
-      // We need to have single quotes around the React.Fragment tag for displaying well the JSX in the documentation but you have to remove it in your code.
       return (
-        '<React.Fragment>
-          <label
-            className={`AknSwitch ${!canEditData ? 'AknSwitch--disabled' : ''}`}
-            tabIndex={!canEditData ? -1 : 0}
-            role="checkbox"
-            aria-checked={value.data.normalize()}
-            onKeyPress={event => {
-              if ([' '].includes(event.key) && !canEditData) onValueChange(!value.data.normalize());
+        <React.Fragment>
+          <input
+            id={`pim_reference_entity.record.enrich.${value.attribute.getCode().stringValue()}`}
+            autoComplete="off"
+            className={`AknTextField AknTextField--narrow AknTextField--light
+              ${value.attribute.valuePerLocale ? 'AknTextField--localizable' : ''}
+              ${!canEditData ? 'AknTextField--disabled' : ''}`}
+            value={value.data.normalize()}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              onValueChange(event.currentTarget.value);
+            }}
+            onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
               if (Key.Enter === event.key) onSubmit();
             }}
-          >
-            <input
-              id={"pim_reference_entity.record.edit.input.default_value"}
-              type="checkbox"
-              className="AknSwitch-input"
-              checked={value.data.normalize()}
-              onChange={() => {
-                if (canEditData) onValueChange(!value.data.normalize());
-              }}
-            />
-            <span className="AknSwitch-slider" />
-          </label>
-        </React.Fragment>'
+            disabled={!canEditData}
+            readOnly={!canEditData}
+          />
+          <span>{value.attribute.unit.normalize()}</span>
+        </React.Fragment>
       );
     };
 
@@ -407,6 +390,10 @@ The last part we need to do, it's to create the React component to be able to re
 
     import {NormalizedValue} from 'akeneoreferenceentity/domain/model/record/value';
     import {CellView} from 'akeneoreferenceentity/application/configuration/value';
+    import {denormalize as denormalizeAttribute} from "custom/reference-entity/attribute/simple_metric";
+    import {NormalizedSimpleMetricAttribute} from "../attribute/simple_metric";
+    import {Column} from "akeneoreferenceentity/application/reducer/grid";
+
     const memo = (React as any).memo;
 
     /**
@@ -415,21 +402,22 @@ The last part we need to do, it's to create the React component to be able to re
      *
      * It returns the JSX View to display the cell of your custom Record Value in the grid.
      */
-    const BooleanCellView: CellView = memo(({value}: {value: NormalizedValue}) => {
-      const booleanData = denormalize(value.data);
+    const SimpleMetricCellView: CellView = memo(({column, value}: {column: Column, value: NormalizedValue}) => {
+      const simpleMetricData = denormalize(value.data);
+      const simpleMetricAttribute = denormalizeAttribute(column.attribute as NormalizedSimpleMetricAttribute);
 
-      // We need to have single quotes around the div tag for displaying well the JSX in the documentation but you have to remove it in your code.
       return (
-        '<div className="AknGrid-bodyCellContainer" title={booleanData.stringValue()}>
-          {booleanData.stringValue()}
-        </div>'
+        <div className="AknGrid-bodyCellContainer" title={simpleMetricData.normalize()}>
+          {simpleMetricData.normalize()}
+          <span>{simpleMetricAttribute.unit.normalize()}</span>
+        </div>
       );
     });
 
     /**
      * The only required part of the file: exporting the custom Record Value cell.
      */
-    export const cell = BooleanCellView;
+    export const cell = SimpleMetricCellView;
 
 4) Register our custom Record Value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -441,8 +429,8 @@ To be able to have everything working, we need to register our custom Record Val
     config:
         config:
             akeneoreferenceentity/application/configuration/value:
-                boolean:
-                    denormalize: '@custom/reference-entity/record/boolean.tsx'
-                    view: '@custom/reference-entity/record/boolean.tsx'
-                    cell: '@custom/reference-entity/record/boolean.tsx'
+                simple_metric:
+                    denormalize: '@custom/reference-entity/record/simple_metric.tsx'
+                    view: '@custom/reference-entity/record/simple_metric.tsx'
+                    cell: '@custom/reference-entity/record/simple_metric.tsx'
 
