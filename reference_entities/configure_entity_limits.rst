@@ -2,7 +2,7 @@ Configure Entity Limits
 =======================
 
 For the Reference Entities feature (*introduced in 3.0*), some limits about number of entities have been defined to guarantee that the PIM is functional and runs smoothly.
-However, as your catalog is very unique, **you may need to raise those values**, this chapter explains how.
+However, as your catalog is unique, **you may need to raise those values**, this chapter explains how.
 
 .. warning::
    If you hit those limits, this could reflect that **you may need to change your modelling**. If it's the case, we can't guarantee that the PIM is functional and runs smoothly, be sure to test performance with your new limits.

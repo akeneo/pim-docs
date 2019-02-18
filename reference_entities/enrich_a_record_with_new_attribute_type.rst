@@ -23,7 +23,7 @@ In this tutorial, we will be able to enrich this attribute directly in the recor
 1) Domain Layer
 ^^^^^^^^^^^^^^^
 
-To enrich an record, we will create a new Record Value for the brand new Attribute type.
+To enrich a record, we will create a new Record Value for the brand new Attribute type.
 For example, we already have the ``TextData`` class for attribute type "Text".
 
 Let's create our own ``SimpleMetricData`` that will handle the current data of the Record:
@@ -245,14 +245,14 @@ To keep this example simple, we will create everything in this file :
 ``src/Acme/CustomBundle/Resources/public/reference-entity/record/simple-metric.tsx``
 
 If you create a new Record Value, Akeneo will need three things to manage it in the frontend:
- - A model: a representation of your Record Value, those properties and overall behaviour
+ - A model: a representation of your Record Value, it's properties and overall behaviour
  - A view: as a React component to be able to render a user interface in the Record Form and dispatch events to the application
  - A cell: as a React component to be able to render a cell in the Record Grid
 
 1) Model
 ^^^^^^^^
 
-The model of your custom Record Value will contain those properties and behaviours.
+The model of your custom Record Value will contain it's properties and behaviours.
 To interface it with the rest of the PIM, your Record Value needs to extend the ValueData and provide a denormalizer.
 
 This is the purpose of this section: provide a denormalizer capable of creating your custom Record Value extending the ValueData.
