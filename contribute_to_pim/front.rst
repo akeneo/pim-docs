@@ -33,7 +33,7 @@ With this command, symfony will symlink the assets located in the `Resources/pub
 This command also compiles the old requirejs configuration and translation files into javascript code later injected in the frontend modules.
 
 Compile less files
-+++++++++++
+++++++++++++++++++
 
 The .less files are compiled into a main css file with less.js.
 
