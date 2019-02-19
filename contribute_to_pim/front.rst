@@ -35,7 +35,7 @@ This command also compiles the old requirejs configuration and translation files
 Compile less files
 ++++++++++++++++++
 
-The .less files are compiled into a main css file with less.js.
+The .less files are compiled into a main CSS file with less.js.
 
 .. code-block:: bash
 
