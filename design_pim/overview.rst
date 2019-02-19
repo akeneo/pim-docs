@@ -97,7 +97,7 @@ You can also decide to symlink those assets instead of copying them:
 
     bin/console assets:install --symlink web
 
-Compile the .less files to css
+Compile the .less files to CSS
 
 .. code-block:: bash
 
