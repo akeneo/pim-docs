@@ -5,23 +5,21 @@ Enrich Records with a new Reference Entity Attribute type
 
    Reference Entities feature is only available for the **Enterprise Edition**.
 
-This cookbook will present how to enrich Records with a custom Reference Entity Attribute Type we just created in this step (create_new_attribute_type.rst).
+This cookbook will present how to enrich Records with a custom Reference Entity Attribute Type we just created `in a previous step`_.
 
-
-Requirements
-------------
-
-Please be sure to follow the creation steps before following this guide.
-
+.. _in a previous step: ./create_new_attribute_type.html
 
 Enrich Records With the Attribute
 ---------------------------------
 
 In the previous tutorial, we've created a custom simple metric attribute.
-In this tutorial, we will be able to enrich this attribute directly in the records of the reference entity.
+In this tutorial, we will be able to enrich this attribute directly in the records of the reference entity, for example here, the Surface attribute:
 
-1) Domain Layer
-^^^^^^^^^^^^^^^
+.. image:: ../_images/reference_entities/enrich_record_simple_metric_attribute.png
+  :alt: Enrich a Simple Metric value on a record
+
+1) Your New Record Value
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 To enrich a record, we will create a new Record Value for the brand new Attribute type.
 For example, we already have the ``TextData`` class for attribute type "Text".
@@ -31,6 +29,7 @@ Let's create our own ``SimpleMetricData`` that will handle the current data of t
 .. code-block:: php
 
     <?php
+
     namespace Acme\CustomBundle\Domain\Model\Record\Value;
 
     use Akeneo\ReferenceEntity\Domain\Model\Record\Value\ValueDataInterface;
@@ -43,8 +42,6 @@ Let's create our own ``SimpleMetricData`` that will handle the current data of t
 
         private function __construct(string $metricValue)
         {
-            Assert::numeric($metricValue, 'The metric value should be a numeric string value');
-
             $this->metricValue = $metricValue;
         }
 
@@ -70,60 +67,64 @@ Let's create our own ``SimpleMetricData`` that will handle the current data of t
     }
 
 
-That's all for the Domain Layer.
+2) Set a value for the new attribute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2) Application Layer
-^^^^^^^^^^^^^^^^^^^^
-
-Regarding the Application Layer, we will create a command first:
+Let's start by creating a command to represent the intent of updating the value:
 
 .. code-block:: php
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory;
+    namespace Acme\CustomBundle\Application\Record\EditRecord\CommandFactory;
 
-    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\AbstractEditAttributeCommand;
+    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
+    use Akeneo\ReferenceEntity\Application\Record\EditRecord\CommandFactory\AbstractEditValueCommand;
 
-    class EditMetricUnitCommand extends AbstractEditAttributeCommand
+    class EditSimpleMetricValueCommand extends AbstractEditValueCommand
     {
         /** @var string */
-        public $metricUnit;
+        public $metricValue;
 
-        public function __construct(string $identifier, string $metricUnit)
+        public function __construct(SimpleMetricAttribute $attribute, ?string $channel, ?string $locale, string $metricValue)
         {
-            parent::__construct($identifier);
+            parent::__construct($attribute, $channel, $locale);
 
-            $this->metricUnit = $metricUnit;
+            $this->metricValue = $metricValue;
         }
     }
+
 
 And its factory to build the command:
 
 .. code-block:: php
 
-    namespace Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory;
+    <?php
 
-    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\AbstractEditAttributeCommand;
-    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\EditAttributeCommandFactoryInterface;
+    namespace Acme\CustomBundle\Application\Record\EditRecord\CommandFactory;
 
-    class EditMetricUnitCommandFactory implements EditAttributeCommandFactoryInterface
+    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
+    use Akeneo\ReferenceEntity\Application\Record\EditRecord\CommandFactory\AbstractEditValueCommand;
+    use Akeneo\ReferenceEntity\Application\Record\EditRecord\CommandFactory\EditValueCommandFactoryInterface;
+    use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
+
+    class EditSimpleMetricValueCommandFactory implements EditValueCommandFactoryInterface
     {
-        public function supports(array $normalizedCommand): bool
+        public function supports(AbstractAttribute $attribute, array $normalizedValue): bool
         {
-            return array_key_exists('unit', $normalizedCommand)
-                && array_key_exists('identifier', $normalizedCommand);
+             return
+                 $attribute instanceof SimpleMetricAttribute &&
+                '' !== $normalizedValue['data'] &&
+                is_string($normalizedValue['data']);
         }
 
-        public function create(array $normalizedCommand): AbstractEditAttributeCommand
+        public function create(AbstractAttribute $attribute, array $normalizedValue): AbstractEditValueCommand
         {
-            if (!$this->supports($normalizedCommand)) {
-                throw new \RuntimeException('Impossible to create an edit unit property command.');
-            }
-
-            $command = new EditMetricUnitCommand(
-                $normalizedCommand['identifier'],
-                $normalizedCommand['unit']
+            $command = new EditSimpleMetricValueCommand(
+                $attribute,
+                $normalizedValue['channel'],
+                $normalizedValue['locale'],
+                $normalizedValue['data']
             );
 
             return $command;
@@ -134,10 +135,10 @@ Don't forget to register your factory to be recognized by our registry:
 
 .. code-block:: yaml
 
-    acme.application.factory.edit_metric_unit_command_factory:
-        class: Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory\EditMetricUnitCommandFactory
+    acme.application.factory.record.edit_simple_metric_value_command_factory:
+        class: Acme\CustomBundle\Application\Record\EditRecord\CommandFactory\EditSimpleMetricValueCommandFactory
         tags:
-            - { name: akeneo_referenceentity.edit_attribute_command_factory, priority: 120 }
+            - { name: akeneo_referenceentity.edit_record_value_command_factory }
 
 Now that we have our command, we need a specific value updater that will be able to understand this command to update a simple metric value:
 
@@ -145,37 +146,44 @@ Now that we have our command, we need a specific value updater that will be able
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Attribute\EditAttribute\AttributeUpdater;
+    namespace Acme\CustomBundle\Application\Record\EditRecord\ValueUpdater;
 
-    use Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory\EditMetricUnitCommand;
-    use Acme\CustomBundle\Domain\Model\Attribute\AttributeMetricUnit;
-    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
-    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\AttributeUpdater\AttributeUpdaterInterface;
-    use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\AbstractEditAttributeCommand;
-    use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
+    use Acme\CustomBundle\Application\Record\EditRecord\CommandFactory\EditSimpleMetricValueCommand;
+    use Acme\CustomBundle\Domain\Model\Record\Value\SimpleMetricData;
+    use Akeneo\ReferenceEntity\Application\Record\EditRecord\CommandFactory\AbstractEditValueCommand;
+    use Akeneo\ReferenceEntity\Application\Record\EditRecord\ValueUpdater\ValueUpdaterInterface;
+    use Akeneo\ReferenceEntity\Domain\Model\ChannelIdentifier;
+    use Akeneo\ReferenceEntity\Domain\Model\LocaleIdentifier;
+    use Akeneo\ReferenceEntity\Domain\Model\Record\Record;
+    use Akeneo\ReferenceEntity\Domain\Model\Record\Value\ChannelReference;
+    use Akeneo\ReferenceEntity\Domain\Model\Record\Value\LocaleReference;
+    use Akeneo\ReferenceEntity\Domain\Model\Record\Value\Value;
 
-    class MetricUnitUpdater implements AttributeUpdaterInterface
+    class SimpleMetricUpdater implements ValueUpdaterInterface
     {
-        public function supports(AbstractAttribute $attribute, AbstractEditAttributeCommand $command): bool
+        public function supports(AbstractEditValueCommand $command): bool
         {
-            return $command instanceof EditMetricUnitCommand && $attribute instanceof SimpleMetricAttribute;
+            return $command instanceof EditSimpleMetricValueCommand;
         }
 
-        public function __invoke(AbstractAttribute $attribute, AbstractEditAttributeCommand $command): AbstractAttribute
+        public function __invoke(Record $record, AbstractEditValueCommand $command): void
         {
-            if (!$command instanceof EditMetricUnitCommand) {
-                throw new \RuntimeException(
-                    sprintf(
-                        'Expected command of type "%s", "%s" given',
-                        EditMetricUnitCommand::class,
-                        get_class($command)
-                    )
-                );
+            if (!$this->supports($command)) {
+                throw new \RuntimeException('Impossible to update the value of the record with the given command.');
             }
 
-            $attribute->setUnit(AttributeMetricUnit::fromString($command->metricUnit));
+            $attribute = $command->attribute->getIdentifier();
+            $channelReference = (null !== $command->channel) ?
+                ChannelReference::fromChannelIdentifier(ChannelIdentifier::fromCode($command->channel)) :
+                ChannelReference::noReference();
+            $localeReference = (null !== $command->locale) ?
+                LocaleReference::fromLocaleIdentifier(LocaleIdentifier::fromCode($command->locale)) :
+                LocaleReference::noReference();
 
-            return $attribute;
+            $metricValue = SimpleMetricData::createFromNormalize($command->metricValue);
+
+            $value = Value::create($attribute, $channelReference, $localeReference, $metricValue);
+            $record->setValue($value);
         }
     }
 
@@ -183,14 +191,14 @@ Of course, we need to register this updater to be recognized by our registry:
 
 .. code-block:: yaml
 
-    acme.application.edit_attribute.attribute_updater.metric_unit:
-        class: Acme\CustomBundle\Application\Attribute\EditAttribute\AttributeUpdater\MetricUnitUpdater
-        tags:
-            - { name: akeneo_referenceentity.attribute_updater, priority: 120 }
+    acme.application.edit_record.record_value_updater.simple_metric_updater:
+            class: Acme\CustomBundle\Application\Record\EditRecord\ValueUpdater\SimpleMetricUpdater
+            tags:
+                - { name: akeneo_referenceentity.record_value_updater }
 
 
-3) Infrastructure Layer
-^^^^^^^^^^^^^^^^^^^^^^^
+3) Retrieve our record value
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now that we can enrich our record with this new type of value, we need to create a dedicated hydrator, to hydrate our new record value from the DB:
 
@@ -228,14 +236,10 @@ And register it for the registry:
         tags:
             - { name: akeneo_referenceentity.data_hydrator }
 
-.. note::
-
-   Note that if you want to validate the ``EditSimpleMetricValueCommand``, you simply have to create a regular Symfony validator.
-
 Frontend Part of The New Record Value
 -------------------------------------
 
-To be able to create your brand new Simple Metric Record Value, we need to add some code in the frontend part.
+To be able to enrich your records with this new attribute, we need to add some code in the frontend part.
 
 To do so, you can put all needed code in one single file but you can (and are encouraged) to split it into multiple
 files if needed.
@@ -244,10 +248,13 @@ To keep this example simple, we will create everything in this file :
 
 ``src/Acme/CustomBundle/Resources/public/reference-entity/record/simple-metric.tsx``
 
-If you create a new Record Value, Akeneo will need three things to manage it in the frontend:
- - A model: a representation of your Record Value, it's properties and overall behaviour
- - A view: as a React component to be able to render a user interface in the Record Form and dispatch events to the application
- - A cell: as a React component to be able to render a cell in the Record Grid
+.. note::
+
+    If you create a new Record Value, Akeneo will need three things to manage it in the frontend:
+
+    - A **model**: a representation of your Record Value, it's properties and overall behaviour
+    - A **view**: as a React component to be able to render a user interface in the Record Form and dispatch events to the application
+    - A **cell**: as a React component to be able to render a cell in the Record Grid
 
 1) Model
 ^^^^^^^^

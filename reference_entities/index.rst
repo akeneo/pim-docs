@@ -16,3 +16,4 @@ Reference entities are objects related to products with their own attributes and
     configure_entity_limits
     create_new_attribute_type
     enrich_a_record_with_new_attribute_type
+    add_custom_property_to_your_custom_attribute_type
