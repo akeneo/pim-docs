@@ -1,11 +1,11 @@
 Configure Entity Limits
 =======================
 
-For the Reference Entities feature (*introduced in 3.0*), some limits about number of entities have been defined to guarantee that the PIM is functional and runs smoothly.
+For the Reference Entities feature (*introduced in 3.0*), some limits about the number of entities have been defined to guarantee that the PIM is functional and runs smoothly.
 However, as your catalog is unique, **you may need to raise those values**, this chapter explains how.
 
 .. warning::
-   If you hit those limits, this could reflect that **you may need to change your modelling**. If it's the case, we can't guarantee that the PIM is functional and runs smoothly, be sure to test performance with your new limits.
+    If you hit those limits, this could reflect that **your modelization is not adapted**. If it's the case, we can't guarantee that the PIM will be functional and runs smoothly, be sure to test the performances with your new limits.
 
 All those limits are defined as parameters that you can override like any other `Symfony config parameter <https://symfony.com/doc/3.4/best_practices/configuration.html>`_.
 

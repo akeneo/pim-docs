@@ -51,7 +51,7 @@ And to edit its common properties:
 1) Your new Custom Attribute Entity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Let's start with our new custom Attribute. It must extends the ``\Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute``.
+Let's start with our new custom Attribute. It must extend the ``\Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute``.
 
 .. code-block:: php
 
@@ -346,14 +346,14 @@ To keep this example simple, we will create everything in this file :
 
     If you create a new attribute type, Akeneo will need three things to manage it in the frontend:
 
-    - A **model**: a representation of your attribute, it's properties and overall behaviour
-    - A **reducer**: to be able to know how to modify it's custom properties and react to the user intentions (see https://redux.js.org/)
+    - A **model**: a representation of your attribute, its properties and overall behaviour
+    - A **reducer**: to be able to know how to modify its custom properties and react to the user intentions (see https://redux.js.org/)
     - A **view**: as a React component to be able to render a user interface and dispatch events to the application
 
 1) Model
 ^^^^^^^^
 
-The model of your custom attribute will contain the common properties of an attribute (code, labels, scope, etc) but also it's custom properties
+The model of your custom attribute will contain the common properties of an attribute (code, labels, scope, etc) but also its custom properties
 and behaviours (*even if for now, our Simple Metric attribute doesn't have any*). To integrate it with the rest of the PIM, your attribute needs to implement the Attribute interface and provide a denormalizer.
 
 This is the purpose of this section: provide a denormalizer capable of creating your custom attribute implementing Attribute interface.
@@ -363,8 +363,8 @@ This is the purpose of this section: provide a denormalizer capable of creating 
     /**
      * ## Import section
      *
-     * This is where sits your dependencies to external modules using the standard import method (see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-     * The paths are absolute and the root is the web/bundles folder (at the root of your PIM project)
+     * This is where your dependencies to external modules are, using the standard import method (see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+     * The paths are relative to the web/bundles folder (at the root of your PIM project)
      */
     import Identifier, {createIdentifier} from 'akeneoreferenceentity/domain/model/attribute/identifier';
     import ReferenceEntityIdentifier, {
@@ -465,12 +465,12 @@ This is the purpose of this section: provide a denormalizer capable of creating 
 ^^^^^^^^^^
 
 Now that we have our attribute model in the frontend, we need to define our Reducer to know how to modify custom properties and react to the user intentions.
-We'll see later how to handle those custom properties, for now, it's gonna be a really simple reducer.
+We'll see later how to handle those custom properties, for now, it's going to be a really simple reducer.
 
 .. code-block:: javascript
 
     /**
-     * Our custom attribute reducer needs to receive as input the normalized custom attribute, the code of the additional property and the value of the additional property.
+     * Our custom attribute reducer needs to receive the normalized custom attribute as input, the code of the additional property and the value of the additional property.
      * It returns the normalized custom attribute.
      */
     const simpleMetricAttributeReducer = (

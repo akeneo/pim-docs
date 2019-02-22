@@ -565,7 +565,7 @@ Let's get back to our file located in ``src/Acme/CustomBundle/Resources/public/r
         }
 
         /**
-         * This will ensure that your model is not modified after it's creation (see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
+         * This will ensure that your model is not modified after its creation (see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
          */
         Object.freeze(this);
       }

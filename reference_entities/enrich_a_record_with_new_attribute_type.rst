@@ -252,7 +252,7 @@ To keep this example simple, we will create everything in this file :
 
     If you create a new Record Value, Akeneo will need three things to manage it in the frontend:
 
-    - A **model**: a representation of your Record Value, it's properties and overall behaviour
+    - A **model**: a representation of your Record Value, its properties and overall behaviour
     - A **view**: as a React component to be able to render a user interface in the Record Form and dispatch events to the application
     - A **cell**: as a React component to be able to render a cell in the Record Grid
 
@@ -269,7 +269,7 @@ This is the purpose of this section: provide a denormalizer capable of creating 
     /**
      * ## Import section
      *
-     * This is where sits your dependencies to external modules using the standard import method (see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+     * This is where your dependencies are to external modules using the standard import method (see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
      * The paths are absolute and the root is the web/bundles folder (at the root of your PIM project)
      */
     import ValueData from 'akeneoreferenceentity/domain/model/record/data';
@@ -316,7 +316,7 @@ This is the purpose of this section: provide a denormalizer capable of creating 
 2) View
 ^^^^^^^
 
-Now that we have our custom Record Value model , it's to create the React component to be able to render a user interface in the Record Form and dispatch events to the application (https://reactjs.org/docs/react-component.html).
+Now that we have our custom Record Value model we can now create the React component to be able to render a user interface in the Record Form and dispatch events to the application (https://reactjs.org/docs/react-component.html).
 
 .. code-block:: javascript
 
@@ -391,7 +391,7 @@ Now that we have our custom Record Value model , it's to create the React compon
 3) Cell
 ^^^^^^^
 
-The last part we need to do, it's to create the React component to be able to render a cell in the Record Grid.
+The last part we need to do is to create the React component to be able to render a cell in the Record Grid.
 
 .. code-block:: javascript
 
