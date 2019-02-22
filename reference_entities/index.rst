@@ -1,5 +1,5 @@
-Reference Entities
-==================
+Reference Entities (beta)
+=========================
 
 .. note::
 
