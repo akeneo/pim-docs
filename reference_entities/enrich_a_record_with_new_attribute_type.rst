@@ -38,11 +38,11 @@ Let's create our own ``SimpleMetricData`` that will handle the current data of t
     class SimpleMetricData implements ValueDataInterface
     {
         /** @var string */
-        private $newMetricValue;
+        private $metricValue;
 
-        private function __construct(string $newMetricValue)
+        private function __construct(string $metricValue)
         {
-            $this->newMetricValue = $newMetricValue;
+            $this->metricValue = $metricValue;
         }
 
         /**
@@ -50,7 +50,7 @@ Let's create our own ``SimpleMetricData`` that will handle the current data of t
          */
         public function normalize()
         {
-            return $this->newMetricValue;
+            return $this->metricValue;
         }
 
         public static function createFromNormalize($normalizedData): ValueDataInterface
@@ -60,9 +60,9 @@ Let's create our own ``SimpleMetricData`` that will handle the current data of t
             return new self($normalizedData);
         }
 
-        public static function fromString(string $newMetricValue)
+        public static function fromString(string $metricValue)
         {
-            return new self($newMetricValue);
+            return new self($metricValue);
         }
     }
 
@@ -84,13 +84,13 @@ Let's start by creating a command to represent the intent of updating the value:
     class EditSimpleMetricValueCommand extends AbstractEditValueCommand
     {
         /** @var string */
-        public $metricValue;
+        public $newMetricValue;
 
-        public function __construct(SimpleMetricAttribute $attribute, ?string $channel, ?string $locale, string $metricValue)
+        public function __construct(SimpleMetricAttribute $attribute, ?string $channel, ?string $locale, string $newMetricValue)
         {
             parent::__construct($attribute, $channel, $locale);
 
-            $this->metricValue = $metricValue;
+            $this->newMetricValue = $newMetricValue;
         }
     }
 
@@ -302,7 +302,7 @@ This is the purpose of this section: provide a denormalizer capable of creating 
        * Check the emptiness
        */
       public isEmpty(): boolean {
-        return false;
+        return '' === this.simpleMetricData;
       }
 
       /**
