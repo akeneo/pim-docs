@@ -5,11 +5,11 @@ Enrich Records with a new Reference Entity Attribute type
 
    Reference Entities feature is only available for the **Enterprise Edition**.
 
-This cookbook will present how to enrich Records with a custom Reference Entity Attribute Type we just created `in a previous step`_.
+This cookbook will present how to enrich Records with a custom Reference Entity attribute type we just created `in a previous step`_.
 
 .. _in a previous step: ./create_new_attribute_type.html
 
-Enrich Records With the Attribute
+Enrich Records with the Attribute
 ---------------------------------
 
 In the previous tutorial, we've created a custom simple metric attribute.
@@ -18,7 +18,7 @@ In this tutorial, we will be able to enrich this attribute directly in the recor
 .. image:: ../_images/reference_entities/enrich_record_simple_metric_attribute.png
   :alt: Enrich a Simple Metric value on a record
 
-1) Your New Record Value
+1) Your new Record value
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 To enrich a record, we will create a new Record Value for the brand new Attribute type.
@@ -38,11 +38,11 @@ Let's create our own ``SimpleMetricData`` that will handle the current data of t
     class SimpleMetricData implements ValueDataInterface
     {
         /** @var string */
-        private $metricValue;
+        private $newMetricValue;
 
-        private function __construct(string $metricValue)
+        private function __construct(string $newMetricValue)
         {
-            $this->metricValue = $metricValue;
+            $this->newMetricValue = $newMetricValue;
         }
 
         /**
@@ -50,7 +50,7 @@ Let's create our own ``SimpleMetricData`` that will handle the current data of t
          */
         public function normalize()
         {
-            return $this->metricValue;
+            return $this->newMetricValue;
         }
 
         public static function createFromNormalize($normalizedData): ValueDataInterface
@@ -60,9 +60,9 @@ Let's create our own ``SimpleMetricData`` that will handle the current data of t
             return new self($normalizedData);
         }
 
-        public static function fromString(string $metricValue)
+        public static function fromString(string $newMetricValue)
         {
-            return new self($metricValue);
+            return new self($newMetricValue);
         }
     }
 
@@ -187,7 +187,7 @@ Now that we have our command, we need a specific value updater that will be able
         }
     }
 
-Of course, we need to register this updater to be recognized by our registry:
+We need to register this updater to be known by our registry:
 
 .. code-block:: yaml
 
@@ -291,18 +291,30 @@ This is the purpose of this section: provide a denormalizer capable of creating 
         Object.freeze(this);
       }
 
+      /**
+       * Here, we denormalize our record value
+       */
       public static createFromNormalized(simpleMetricData: NormalizedSimpleMetricData): SimpleMetricData {
         return new SimpleMetricData(null === simpleMetricData ? '' : simpleMetricData);
       }
 
+      /**
+       * Check the emptiness
+       */
       public isEmpty(): boolean {
         return false;
       }
 
+      /**
+      * Check if the value is equal to the simple metric data
+      */
       public equals(data: ValueData): boolean {
         return data instanceof SimpleMetricData && this.simpleMetricData === data.simpleMetricData;
       }
 
+      /**
+       * The only method to implement here: the normalize method. Here you need to provide a serializable object (see https://developer.mozilla.org/en-US/docs/Glossary/Serialization)
+       */
       public normalize(): string {
         return this.simpleMetricData;
       }
@@ -437,7 +449,7 @@ To be able to have everything working, we need to register our custom Record Val
         config:
             akeneoreferenceentity/application/configuration/value:
                 simple_metric:
-                    denormalize: '@custom/reference-entity/record/simple_metric.tsx'
-                    view: '@custom/reference-entity/record/simple_metric.tsx'
-                    cell: '@custom/reference-entity/record/simple_metric.tsx'
+                    denormalize: '@custom/reference-entity/record/simple-metric.tsx'
+                    view: '@custom/reference-entity/record/simple-metric.tsx'
+                    cell: '@custom/reference-entity/record/simple-metric.tsx'
 

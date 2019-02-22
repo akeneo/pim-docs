@@ -302,13 +302,13 @@ The same goes for our Edit Command, as we will be able to edit the unit too:
     class EditMetricUnitCommand extends AbstractEditAttributeCommand
     {
         /** @var string */
-        public $metricUnit;
+        public $newMetricUnit;
 
-        public function __construct(string $identifier, string $metricUnit)
+        public function __construct(string $identifier, string $newMetricUnit)
         {
             parent::__construct($identifier);
 
-            $this->metricUnit = $metricUnit;
+            $this->newMetricUnit = $newMetricUnit;
         }
     }
 

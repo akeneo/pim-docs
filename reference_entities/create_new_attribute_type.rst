@@ -1,4 +1,4 @@
-Create and Edit a new Reference Entity Attribute type
+Create a new Reference Entity Attribute type
 =====================================================
 
 .. note::
@@ -18,12 +18,12 @@ Currently, there are 6 types of Attribute for Reference Entities:
 Requirements
 ------------
 
-During this chapter, we assume that you already created a new bundle to add your custom Reference Entity Attribute. Let's assume its namespace is ``Acme\\CustomBundle``.
+During this chapter, we assume that you already created and registered a new bundle to add your custom Reference Entity Attribute. Let's assume its namespace is ``Acme\\CustomBundle``.
 
 Create the Attribute
 --------------------
 
-For this tutorial, we will create a **custom simple metric attribute** type for reference entity.
+For this tutorial, we will create a **custom metric attribute** type for reference entity.
 So we'll be able to create this kind of attribute on any Reference Entity:
 
 .. image:: ../_images/reference_entities/create_simple_metric_attribute.png
@@ -106,7 +106,7 @@ Let's start with our new custom Attribute. It must extend the ``\Akeneo\Referenc
 2) Create the attribute
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Now that we have our Attribute class, we need to create classes to handle its creation.
+Now that we have our Attribute model class, we need to create classes to handle its creation.
 
 We'll need first to add the "Creation command", it needs to extend ``\Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand``.
 
@@ -353,7 +353,7 @@ To keep this example simple, we will create everything in this file :
 1) Model
 ^^^^^^^^
 
-The model of your custom attribute will contain the common properties of an attribute (code, labels, scope, etc) but also its custom properties
+The model of your custom attribute will contain the common properties of an attribute (code, labels, channel, etc) but also its custom properties
 and behaviours (*even if for now, our Simple Metric attribute doesn't have any*). To integrate it with the rest of the PIM, your attribute needs to implement the Attribute interface and provide a denormalizer.
 
 This is the purpose of this section: provide a denormalizer capable of creating your custom attribute implementing Attribute interface.
@@ -478,6 +478,7 @@ We'll see later how to handle those custom properties, for now, it's going to be
       propertyCode: string
     ): NormalizedSimpleMetricAttribute => {
       switch (propertyCode) {
+        // Our future custom behaviour will go there
         default:
           break;
       }
@@ -487,6 +488,7 @@ We'll see later how to handle those custom properties, for now, it's going to be
 
     /**
      * The only required part of the file: exporting the custom attribute reducer.
+     * Be aware that the export has to be named ``reducer``
      */
     export const reducer = simpleMetricAttributeReducer;
 
@@ -502,7 +504,7 @@ The last part we need to do, it's to create the React component to be able to re
     };
 
     /**
-     * The only required part of the file: exporting the custom attribute view.
+     * The only required part of the file: exporting the custom attribute view. Note that the export name has to be ``view``
      */
     export const view = SimpleMetricAttributeView;
 
