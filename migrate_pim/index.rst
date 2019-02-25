@@ -60,6 +60,7 @@ Then clean the cache, re-install assets and warmup the cache:
     rm -rf var/cache/* ./web/bundles/* ./web/css/* ./web/js/*
     bin/console --env=prod pim:installer:assets
     bin/console --env=prod cache:warmup
+    yarn run less
     yarn run webpack
 
 If the patch is a javascript fix, please clear your browser cache before testing.
@@ -116,6 +117,7 @@ Then follow the same process as the one for the community edition:
     rm -rf var/cache/* ./web/bundles/* ./web/css/* ./web/js/*
     bin/console --env=prod pim:installer:assets
     bin/console --env=prod cache:warmup
+    yarn run less
     yarn run webpack
 
 **For Akeneo Cloud environments**
@@ -126,6 +128,7 @@ You can follow this process:
 
     partners_clear_cache
     bin/console --env=prod pim:installer:assets
+    yarn run less
     yarn run webpack
 
 .. note::
