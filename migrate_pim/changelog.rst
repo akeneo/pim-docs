@@ -5,7 +5,7 @@ When our maintenance team works on issues, they take extreme care to avoid any b
 
 .. note::
 
-    Akeneo provides 2 changelogs: one for CE edition available the Community repo and one for EE edition which is only available in the latest archive.
+    Akeneo provides 2 changelogs: one for CE edition available the Community repo and one for EE edition which is only available in the latest Enterprise Edition archive.
 
 Akeneo PIM CE changelog is available on our GitHub repository:
 

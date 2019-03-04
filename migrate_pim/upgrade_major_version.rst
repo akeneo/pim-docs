@@ -15,7 +15,11 @@ We're continuously improving Transporteo to cover more and more use cases and au
 Migrate from 2.3 to 3.0
 ------------------------------
 
-To migrate from 2.0 to 3.0 version, you can simple follow the migration guides:
+To migrate from 2.0 to 3.0 version, you first need to go through minor versions.
+
+For instance, if you are on the 2.0 version, you will have to migrate to the 2.1, then the 2.2 and finally the 2.3.
+
+From the 2.3 version, you will be able to follow this migration guide:
 
 **Community Edition**
 

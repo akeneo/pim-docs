@@ -1,5 +1,5 @@
-Guide to apply patch for Community Edition
-============================================
+How to apply a patch - Community Edition
+=============================================
 
 Run the composer update command:
 
@@ -7,11 +7,11 @@ Run the composer update command:
 
     composer --prefer-dist update
 
-Be aware that your composer.json won't be updated and some dependencies might be missing or from an outdated version.
+Be aware that your composer.json won't be updated and some dependencies might be missing or coming from an outdated version.
 
-You have to check whether the latest composer.json is different from your own. In this case you should backup your current composer.json and download the newest one beforehand.
+You have to check whether the latest composer.json is different from yours. In this case you should backup your current composer.json and download the newest one beforehand.
 
-Double check in the output of this command that the 2.3.10 version has been fetched, you can also check it by using the following command:
+Double check in the output of this command that the latest version has been fetched, you can also check it by using the following command:
 
 .. code-block:: bash
 
@@ -33,15 +33,14 @@ Then clean the cache, re-install assets and warmup the cache:
     bin/console --env=prod cache:warmup
     yarn run webpack
 
-If the patch is a javascript fix, please **clear your browser cache** before testing.
+If the patch is a javascript fix, please **clear your browser's cache** before testing.
 
 .. note::
 
     We set any other dependencies to their exact patch versions to avoid compatibility issues.
-    We strongly advise you to add the composer.lock in your versioning system.
 
 
 .. note::
 
-    If you get a 500 error after upgrading and clear cache isn't working try to clear the apc cache with a php script or restart Apache/Web server.
+    If you get a 500 error after upgrading, and clear cache isn't working, try to clear the apc cache with a php script or restart Apache/Web server.
 

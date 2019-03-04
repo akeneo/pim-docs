@@ -11,12 +11,14 @@ Guides
 
 * :doc:`/migrate_pim/apply_patch/apply_patch_ce`
 
-* :doc:`/migrate_pim/apply_patch/apply_patch_ee`
+* :doc:`/migrate_pim/apply_patch/apply_patch_ee_on_premise`
 
+* :doc:`/migrate_pim/apply_patch/apply_patch_ee_flexibility`
 
 .. toctree::
     :maxdepth: 2
     :hidden:
 
     apply_patch_ce
-    apply_patch_ee
+    apply_patch_ee_on_premise
+    apply_patch_ee_flexibility
