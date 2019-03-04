@@ -9,7 +9,7 @@ Define the environment variables for CLI. Ensure these variables are always set 
 
 .. code-block:: bash
 
-    export ONBOARDER_TOPIC_NAME_FOR_PUBLICATION=a_topic_name
+    export ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE=a_topic_name
 
 **WEB**
 
@@ -18,5 +18,5 @@ Define the environment variables in your vhost using the SetEnv directive :
 .. code-block:: apache
 
     <VirtualHost *>
-        SetEnv ONBOARDER_TOPIC_NAME_FOR_PUBLICATION a_topic_name
+        SetEnv ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE a_topic_name
     </VirtualHost>
