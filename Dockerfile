@@ -77,4 +77,4 @@ RUN service mysql start && chmod +x /wait_for_mysql.sh && /wait_for_mysql.sh && 
     #
     # Clean
 RUN rm -rf /root/.composer/cache && \
-    cd /home/akeneo/pim-docs/pim-community-dev-3.0/ && ls | grep -v "vendor\|web" | xargs rm -rf && \
+    cd /home/akeneo/pim-docs/pim-community-dev-3.0/ && ls | grep -v "vendor\|web" | xargs rm -rf
