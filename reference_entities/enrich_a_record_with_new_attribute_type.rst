@@ -409,9 +409,9 @@ The last part we need to do is to create the React component to be able to rende
 
     import {NormalizedValue} from 'akeneoreferenceentity/domain/model/record/value';
     import {CellView} from 'akeneoreferenceentity/application/configuration/value';
-    import {denormalize as denormalizeAttribute} from "custom/reference-entity/attribute/simple_metric";
-    import {NormalizedSimpleMetricAttribute} from "../attribute/simple_metric";
-    import {Column} from "akeneoreferenceentity/application/reducer/grid";
+    import {denormalize as denormalizeAttribute} from 'custom/reference-entity/attribute/simple_metric';
+    import {NormalizedSimpleMetricAttribute} from 'custom/reference-entity/attribute/simple_metric';
+    import {Column} from 'akeneoreferenceentity/application/reducer/grid';
 
     const memo = (React as any).memo;
 
