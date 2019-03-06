@@ -57,7 +57,7 @@ Let's start with our new custom Attribute. It must extend the ``\Akeneo\Referenc
 
     <?php
 
-    namespace Acme\CustomBundle\Domain\Model\Attribute;
+    namespace Acme\CustomBundle\Attribute;
 
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeCode;
@@ -114,7 +114,7 @@ We'll need first to add the "Creation command", it needs to extend ``\Akeneo\Ref
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Attribute\CreateAttribute;
+    namespace Acme\CustomBundle\Attribute;
 
     use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand;
 
@@ -129,9 +129,9 @@ To build this creation command, we need a factory:
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Attribute\CreateAttribute\CommandFactory;
+    namespace Acme\CustomBundle\Attribute;
 
-    use Acme\CustomBundle\Application\Attribute\CreateAttribute\CreateSimpleMetricAttributeCommand;
+    use Acme\CustomBundle\Attribute\CreateSimpleMetricAttributeCommand;
     use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand;
     use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\CommandFactory\AbstractCreateAttributeCommandFactory;
 
@@ -165,7 +165,7 @@ And we also need to register it with a specific tag:
 .. code-block:: yaml
 
     acme.application.factory.create_simple_metric_attribute_command_factory:
-        class: Acme\CustomBundle\Application\Attribute\CreateAttribute\CommandFactory\CreateSimpleMetricAttributeCommandFactory
+        class: Acme\CustomBundle\Attribute\CreateSimpleMetricAttributeCommandFactory
         tags:
             - { name: akeneo_referenceentity.create_attribute_command_factory }
 
@@ -175,10 +175,10 @@ Now that we have our command created, we need a factory to create our brand new 
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Attribute\CreateAttribute\AttributeFactory;
+    namespace Acme\CustomBundle\Attribute;
 
-    use Acme\CustomBundle\Application\Attribute\CreateAttribute\CreateSimpleMetricAttributeCommand;
-    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
+    use Acme\CustomBundle\Attribute\CreateSimpleMetricAttributeCommand;
+    use Acme\CustomBundle\Attribute\SimpleMetricAttribute;
     use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand;
     use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AttributeFactory\AttributeFactoryInterface;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
@@ -232,7 +232,7 @@ Don't forget to register it:
 .. code-block:: yaml
 
     acme.application.factory.simple_metric_attribute_factory:
-        class: Acme\CustomBundle\Application\Attribute\CreateAttribute\AttributeFactory\SimpleMetricAttributeFactory
+        class: Acme\CustomBundle\Attribute\SimpleMetricAttributeFactory
         tags:
             - { name: akeneo_referenceentity.attribute_factory }
 
@@ -257,9 +257,9 @@ Now that we have our custom Attribute and commands to create/edit it, we'll need
 
     <?php
 
-    namespace Acme\CustomBundle\Infrastructure\Persistence\Sql\Attribute\Hydrator;
+    namespace Acme\CustomBundle\Attribute;
 
-    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
+    use Acme\CustomBundle\Attribute\SimpleMetricAttribute;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeCode;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeIdentifier;
@@ -323,7 +323,7 @@ And to register it:
 
     services:
         acme.infrastructure.persistence.hydrator.attribute.simple_metric_attribute_hydrator:
-            class: Acme\CustomBundle\Infrastructure\Persistence\Sql\Attribute\Hydrator\SimpleMetricAttributeHydrator
+            class: Acme\CustomBundle\Attribute\SimpleMetricAttributeHydrator
             arguments:
                 - '@database_connection'
             tags:

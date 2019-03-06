@@ -22,7 +22,7 @@ First we should create the object that will represent the Unit itself:
 
     <?php
 
-    namespace Acme\CustomBundle\Domain\Model\Attribute;
+    namespace Acme\CustomBundle\Attribute;
 
     class AttributeMetricUnit
     {
@@ -51,7 +51,7 @@ Now let's add this custom property to our existing custom attribute:
 
     <?php
 
-    namespace Acme\CustomBundle\Domain\Model\Attribute;
+    namespace Acme\CustomBundle\Attribute;
 
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeCode;
@@ -148,11 +148,11 @@ As we changed the constructor of our Attribute, we need to update the factory:
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Attribute\CreateAttribute\AttributeFactory;
+    namespace Acme\CustomBundle\Attribute;
 
-    use Acme\CustomBundle\Application\Attribute\CreateAttribute\CreateSimpleMetricAttributeCommand;
-    use Acme\CustomBundle\Domain\Model\Attribute\AttributeMetricUnit;
-    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
+    use Acme\CustomBundle\Attribute\CreateSimpleMetricAttributeCommand;
+    use Acme\CustomBundle\Attribute\AttributeMetricUnit;
+    use Acme\CustomBundle\Attribute\SimpleMetricAttribute;
     use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand;
     use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AttributeFactory\AttributeFactoryInterface;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
@@ -218,7 +218,7 @@ Remember for now they were empty.
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Attribute\CreateAttribute;
+    namespace Acme\CustomBundle\Attribute;
 
     use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand;
 
@@ -255,9 +255,9 @@ And obviously its factory too:
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Attribute\CreateAttribute\CommandFactory;
+    namespace Acme\CustomBundle\Attribute;
 
-    use Acme\CustomBundle\Application\Attribute\CreateAttribute\CreateSimpleMetricAttributeCommand;
+    use Acme\CustomBundle\Attribute\CreateSimpleMetricAttributeCommand;
     use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\AbstractCreateAttributeCommand;
     use Akeneo\ReferenceEntity\Application\Attribute\CreateAttribute\CommandFactory\AbstractCreateAttributeCommandFactory;
 
@@ -295,7 +295,7 @@ The same goes for our Edit Command, as we will be able to edit the unit too:
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory;
+    namespace Acme\CustomBundle\Attribute;
 
     use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\AbstractEditAttributeCommand;
 
@@ -318,7 +318,7 @@ And its factory:
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory;
+    namespace Acme\CustomBundle\Attribute;
 
     use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\AbstractEditAttributeCommand;
     use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\EditAttributeCommandFactoryInterface;
@@ -352,11 +352,11 @@ To take into account the change of the unit, we need to change the updater:
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Attribute\EditAttribute\AttributeUpdater;
+    namespace Acme\CustomBundle\Attribute;
 
-    use Acme\CustomBundle\Application\Attribute\EditAttribute\CommandFactory\EditMetricUnitCommand;
-    use Acme\CustomBundle\Domain\Model\Attribute\AttributeMetricUnit;
-    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
+    use Acme\CustomBundle\Attribute\EditMetricUnitCommand;
+    use Acme\CustomBundle\Attribute\AttributeMetricUnit;
+    use Acme\CustomBundle\Attribute\SimpleMetricAttribute;
     use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\AttributeUpdater\AttributeUpdaterInterface;
     use Akeneo\ReferenceEntity\Application\Attribute\EditAttribute\CommandFactory\AbstractEditAttributeCommand;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
@@ -396,10 +396,10 @@ Now that we have a custom property unit, we need to hydrate it when it comes fro
 
     <?php
 
-    namespace Acme\CustomBundle\Infrastructure\Persistence\Sql\Attribute\Hydrator;
+    namespace Acme\CustomBundle\Attribute;
 
-    use Acme\CustomBundle\Domain\Model\Attribute\AttributeMetricUnit;
-    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
+    use Acme\CustomBundle\Attribute\AttributeMetricUnit;
+    use Acme\CustomBundle\Attribute\SimpleMetricAttribute;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeCode;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AttributeIdentifier;
@@ -821,7 +821,7 @@ Now that we display the unit metric, we could only allow numeric values for our 
 
     <?php
 
-    namespace Acme\CustomBundle\Domain\Model\Record\Value;
+    namespace Acme\CustomBundle\Record;
 
     use Akeneo\ReferenceEntity\Domain\Model\Record\Value\ValueDataInterface;
     use Webmozart\Assert\Assert;
