@@ -259,7 +259,7 @@ Two parameters are required, two other are optional.
 Add
 ___
 
-This action allows to add values to a multi-select attribute or a product to categories.
+This action allows to add values to a multi-select attribute, a reference entity multiple links attribute or a product to categories.
 
 Two parameters are required, two other are optional.
  - field: attribute code.
@@ -282,7 +282,7 @@ Two parameters are required, two other are optional.
 Remove
 ______
 
-This action removes values from a multiselect or a product category.
+This action removes values from a multi-select attribute, a reference entity multiple links attribute or a product category.
 
 Two parameters are required, three others are optional.
  - field: attribute code or "categories".
@@ -573,8 +573,8 @@ _______
 |              |   value: false           |
 +--------------+--------------------------+
 
-Dropdown List
-_____________
+Simple select list / Reference entity single link
+_________________________________________________
 +--------------+------------------------+
 | Operator     | - IN                   |
 |              | - NOT IN               |
@@ -598,8 +598,8 @@ _____________
 +--------------+------------------------+
 
 
-Multiselect List
-________________
+Multiselect List / Reference entity multiple links
+__________________________________________________
 +--------------+------------------------+
 | Operator     | - IN                   |
 |              | - NOT IN               |
