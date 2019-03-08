@@ -30,7 +30,7 @@ Let's create our own ``SimpleMetricData`` that will handle the current data of t
 
     <?php
 
-    namespace Acme\CustomBundle\Domain\Model\Record\Value;
+    namespace Acme\CustomBundle\Record;
 
     use Akeneo\ReferenceEntity\Domain\Model\Record\Value\ValueDataInterface;
     use Webmozart\Assert\Assert;
@@ -76,9 +76,9 @@ Let's start by creating a command to represent the intent of updating the value:
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Record\EditRecord\CommandFactory;
+    namespace Acme\CustomBundle\Record;
 
-    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
+    use Acme\CustomBundle\Attribute\SimpleMetricAttribute;
     use Akeneo\ReferenceEntity\Application\Record\EditRecord\CommandFactory\AbstractEditValueCommand;
 
     class EditSimpleMetricValueCommand extends AbstractEditValueCommand
@@ -101,9 +101,9 @@ And its factory to build the command:
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Record\EditRecord\CommandFactory;
+    namespace Acme\CustomBundle\Record;
 
-    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
+    use Acme\CustomBundle\Attribute\SimpleMetricAttribute;
     use Akeneo\ReferenceEntity\Application\Record\EditRecord\CommandFactory\AbstractEditValueCommand;
     use Akeneo\ReferenceEntity\Application\Record\EditRecord\CommandFactory\EditValueCommandFactoryInterface;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
@@ -136,7 +136,7 @@ Don't forget to register your factory to be recognized by our registry:
 .. code-block:: yaml
 
     acme.application.factory.record.edit_simple_metric_value_command_factory:
-        class: Acme\CustomBundle\Application\Record\EditRecord\CommandFactory\EditSimpleMetricValueCommandFactory
+        class: Acme\CustomBundle\Record\EditSimpleMetricValueCommandFactory
         tags:
             - { name: akeneo_referenceentity.edit_record_value_command_factory }
 
@@ -146,10 +146,10 @@ Now that we have our command, we need a specific value updater that will be able
 
     <?php
 
-    namespace Acme\CustomBundle\Application\Record\EditRecord\ValueUpdater;
+    namespace Acme\CustomBundle\Record;
 
-    use Acme\CustomBundle\Application\Record\EditRecord\CommandFactory\EditSimpleMetricValueCommand;
-    use Acme\CustomBundle\Domain\Model\Record\Value\SimpleMetricData;
+    use Acme\CustomBundle\Record\EditSimpleMetricValueCommand;
+    use Acme\CustomBundle\Record\SimpleMetricData;
     use Akeneo\ReferenceEntity\Application\Record\EditRecord\CommandFactory\AbstractEditValueCommand;
     use Akeneo\ReferenceEntity\Application\Record\EditRecord\ValueUpdater\ValueUpdaterInterface;
     use Akeneo\ReferenceEntity\Domain\Model\ChannelIdentifier;
@@ -192,7 +192,7 @@ We need to register this updater to be known by our registry:
 .. code-block:: yaml
 
     acme.application.edit_record.record_value_updater.simple_metric_updater:
-            class: Acme\CustomBundle\Application\Record\EditRecord\ValueUpdater\SimpleMetricUpdater
+            class: Acme\CustomBundle\Record\SimpleMetricUpdater
             tags:
                 - { name: akeneo_referenceentity.record_value_updater }
 
@@ -206,10 +206,10 @@ Now that we can enrich our record with this new type of value, we need to create
 
     <?php
 
-    namespace Acme\CustomBundle\Infrastructure\Persistence\Sql\Record\Hydrator;
+    namespace Acme\CustomBundle\Record;
 
-    use Acme\CustomBundle\Domain\Model\Attribute\SimpleMetricAttribute;
-    use Acme\CustomBundle\Domain\Model\Record\Value\SimpleMetricData;
+    use Acme\CustomBundle\Attribute\SimpleMetricAttribute;
+    use Acme\CustomBundle\Record\SimpleMetricData;
     use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
     use Akeneo\ReferenceEntity\Domain\Model\Record\Value\ValueDataInterface;
     use Akeneo\ReferenceEntity\Infrastructure\Persistence\Sql\Record\Hydrator\DataHydratorInterface;
@@ -232,7 +232,7 @@ And register it for the registry:
 .. code-block:: yaml
 
     acme.infrastructure.persistence.record.hydrator.simple_metric_data:
-        class: Acme\CustomBundle\Infrastructure\Persistence\Sql\Record\Hydrator\SimpleMetricDataHydrator
+        class: Acme\CustomBundle\Record\SimpleMetricDataHydrator
         tags:
             - { name: akeneo_referenceentity.data_hydrator }
 
@@ -409,9 +409,9 @@ The last part we need to do is to create the React component to be able to rende
 
     import {NormalizedValue} from 'akeneoreferenceentity/domain/model/record/value';
     import {CellView} from 'akeneoreferenceentity/application/configuration/value';
-    import {denormalize as denormalizeAttribute} from "custom/reference-entity/attribute/simple_metric";
-    import {NormalizedSimpleMetricAttribute} from "../attribute/simple_metric";
-    import {Column} from "akeneoreferenceentity/application/reducer/grid";
+    import {denormalize as denormalizeAttribute} from 'custom/reference-entity/attribute/simple_metric';
+    import {NormalizedSimpleMetricAttribute} from 'custom/reference-entity/attribute/simple_metric';
+    import {Column} from 'akeneoreferenceentity/application/reducer/grid';
 
     const memo = (React as any).memo;
 
