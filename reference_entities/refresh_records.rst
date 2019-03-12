@@ -39,3 +39,7 @@ This command will go over all the records of the database and refresh all the re
 It is advised to program a crontab to run at least every day when the users are not using the PIM.
 
 Depending on your reference entities' size (number of records and number of attributes option, option collection, record link and record multiple link) you can run this command multiple times a day.
+
+.. note::
+
+   There are chances this command will be deprecated in 3.1 as we may be able to find a solution to refresh the records directly after an option or record deletion.
