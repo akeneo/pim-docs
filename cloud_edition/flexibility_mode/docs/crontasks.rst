@@ -63,7 +63,9 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     0 1 * * * pim:asset:send-expiration-notification --env=prod
     #Ansible: pimee:project:recalculate
     0 2 * * * pimee:project:recalculate --env=prod
+    #Ansible: akeneo:batch:publish-job-to-queue franklin_insights_fetch_products
     30 */1 * * * akeneo:batch:publish-job-to-queue franklin_insights_fetch_products --env=prod
+    #Ansible: akeneo:reference-entity:refresh-records --all
     0 23 * * * akeneo:reference-entity:refresh-records --all --env=prod
 
     # My custom jobs
