@@ -1,7 +1,17 @@
 How to upgrade to a minor version?
 ==================================
 
-We release a minor version every 3 months, these versions bring new features.
+We release a minor version 3 times a year:
+
+* the X.1 (STS: Short Term Support version)
+* the X.2 (also a STS - Short Term Support - version)
+* the X.3 (LTS: Long Term Support version)
+
+These versions bring new features.
+
+.. note::
+
+    To check the PIM version release date, check our `article <https://www.akeneo.com/knowledge-base/how-many-pim-versions-are-maintained-by-akeneo/>`_
 
 Depending on these features and on the custom code you've added in your project, the migration can be more or less straightforward.
 
@@ -11,7 +21,7 @@ We continue to improve this process to make every new migration easier than the 
 
 Here are the migration guides:
 
-**Community Edition**
+**If you are a Community Edition user**
 
 * `From v2.2 to v2.3`_
 * `From v2.1 to v2.2`_
@@ -35,7 +45,7 @@ Here are the migration guides:
 .. _From v1.1 to v1.2: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.2.md
 .. _From v1.0 to v1.1: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.1.md
 
-**Enterprise Edition**
+**If you are an Enterprise Edition client**
 
 Standard Enterprise Edition (EE) archives are available from `the Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=migration>`_.
 

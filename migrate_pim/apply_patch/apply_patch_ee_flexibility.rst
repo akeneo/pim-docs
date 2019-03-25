@@ -20,11 +20,6 @@ To upgrade, please change the composer.json to:
         ...
     }
 
-.. note::
-
-    Before launching the following commands, remember to stop the daemon to avoid generating outdated cache.
-
-
 Run the composer update command:
 
 .. code-block:: bash
@@ -43,11 +38,6 @@ Double check in the output of this command that the 2.3.10 version has been fetc
 
 
 Then clean the cache, re-install assets and warmup the cache:
-
-.. note::
-
-    Before launching the following commands, remember to stop the daemon to avoid generating outdated cache.
-
 
 .. code-block:: bash
 
@@ -68,6 +58,13 @@ If the patch is a javascript fix, please **clear your browser cache** before tes
     If you get a 500 error after upgrading and clear cache isn't working try to clear the apc cache with a php script or restart Apache/Web server.
 
 
+After that you can relaunch fpm to avoid generating outdated cache:
+
+.. code-block:: bash
+
+    partners_php7.1-fpm restart
+
+
 .. note::
 
-    The ``partners_clear_cache`` command is only available in Akeneo Cloud Offer. You can found more command in our :doc:`/cloud_edition/flexibility_mode/docs/partners` page.
+    The ``partners_clear_cache`` and the ``partners_php7.1-fpm`` commands are only available in Akeneo Cloud Offer. You can found more command in our :doc:`/cloud_edition/flexibility_mode/docs/partners` page.
