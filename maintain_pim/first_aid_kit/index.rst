@@ -106,8 +106,7 @@ Each catalog is unique. How many channels, locales, attributes, families, catego
 
 Most of this information can be found on the PIM under the system information screen (under System > System information). Since 2.3 version, you have a dedicated page available under Activity menu, called Catalog Volume Monitoring, see our `_Help Center article <https://help.akeneo.com/pim/v3/articles/catalog-volume-monitoring.html#a-dedicated-screen>`__ for more information about this page and how to read it. 
 
-You can also read this Medium article `_Because your product catalog typology matters
- <https://medium.com/akeneo-labs/because-your-product-catalog-typology-matters-e1a9af4c33e0>`__ to see the impacts of your catalog modeling on your PIM performances.
+You can also read this Medium article `_Because your product catalog typology matters <https://medium.com/akeneo-labs/because-your-product-catalog-typology-matters-e1a9af4c33e0>`__ to see the impacts of your catalog modeling on your PIM performances.
 
 Step 10: did you customize your PIM?
 ------------------------------------
