@@ -6,4 +6,5 @@ Serenity Mode
 .. toctree::
     :maxdepth: 1
 
+    docs/overview
     docs/pim_updates_and_migrations

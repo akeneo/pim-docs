@@ -6,7 +6,7 @@ You can now natively import data into CSV and XLSX format.
 
 .. note::
 
-  The import part has been widely re-worked in 1.6. Since 1.6. The old import system has been removed, please refer to previous versions of this page if needed.
+  The import part has been widely re-worked in 1.6 version of the PIM. Since 1.6 the old import system has been removed, please refer to previous versions of this page if needed.
 
 Definition of the Job
 ---------------------
@@ -277,7 +277,7 @@ The service uses the class ``Akeneo\Component\Localization\Localize\AttributeCon
 Product Processor
 -----------------
 
-This element receives items one by one, creates (or fetches if it already exists) the related product, updates it and validates it.
+This element receives items one by one, creates (or fetches if it already exists) the related product, updates and validates it.
 
 The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/processors.yml``.
 
@@ -324,18 +324,18 @@ The class ``Pim\Component\Connector\Processor\Denormalization\ProductProcessor``
 IdentifiableObjectRepositoryInterface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This service allows to fetch a product by its identifier (sku by default).
+This service allows to fetch a product by its identifier (SKU by default).
 
 .. code-block:: php
 
     $product = $this->repository->findOneByIdentifier($identifier);
 
-This is possible because the ``Pim\Bundle\CatalogBundle\Doctrine\ORM\Repository\ProductRepository`` implements ``Akeneo\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface``
+This is possible because the ``Pim\Bundle\CatalogBundle\Doctrine\ORM\Repository\ProductRepository`` implements ``Akeneo\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface``.
 
 ProductBuilderInterface
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-If the product doesn't exist yet, we use this service to create it with its identifier and family code.
+If the product doesn't exist yet, we use this service to create one with provided identifier and family code.
 
 .. code-block:: php
 
@@ -371,11 +371,11 @@ The service uses the class ``Pim\Component\Catalog\Comparator\Filter\ProductFilt
 ObjectUpdaterInterface
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Once fetched or created, this service allows to apply updates on the product.
+Once fetched or created, this service allows to apply changes to the product.
 
 The format used by the update method is the Standard Format array.
 
-An important point to understand is that the updates are applied only in memory, nothing is saved to the database yet.
+An important point to understand is that the modifications are applied only in memory, nothing is saved to the database yet.
 
 .. code-block:: php
 
@@ -407,7 +407,7 @@ When an item is skipped, or not returned by the processor, the writer doesn't re
 
 .. note::
 
-    You can notice here a very specific usage of the ``ObjectDetacherInterface``, it allows to detach the product from the Doctrine Unit Of Work to avoid issues with skipped product and the ProductAssociation Step.
+    You can notice here a very specific usage of the ``ObjectDetacherInterface``, it allows to detach the product from the Doctrine Unit Of Work to avoid issues with skipped products and the ProductAssociation Step.
 
     This detach operation is not the responsibility of the processor and the usage here is a workaround.
 
@@ -453,7 +453,7 @@ The class ``Pim\Component\Connector\Writer\Database\ProductWriter`` mainly deleg
 BulkSaverInterface
 ^^^^^^^^^^^^^^^^^^
 
-This service allows to save several objects to the database.
+This service allows to save several objects to the database at once.
 
 For products, the implementation of ``Pim\Bundle\CatalogBundle\Doctrine\Common\Saver\ProductSaver`` is used.
 
@@ -462,7 +462,7 @@ A dedicated chapter explains how it works :doc:`/manipulate_pim_data/product/sav
 BulkObjectDetacherInterface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This service allows to detach several objects from the Doctrine Unit Of Work to avoid keeping them in memory.
+This service allows to detach several objects from the Doctrine Unit Of Work at once to avoid keeping them in memory.
 
 In other terms, it avoids keeping all the processed objects in memory.
 
@@ -473,7 +473,7 @@ Once the products are imported, this step allows to handle associations between 
 
 We use a dedicated step to be sure that all valid products have already been saved when we link them.
 
-The purpose of this step is to read input file, to transform lines to product association objects, to validate and save them in the PIM.
+The purpose of this step is to read the input file, to transform lines to product association objects, and to validate and save them in the PIM.
 
 This step is a default step, an ``Akeneo\Component\Batch\Step\ItemStep`` is instantiated and injected.
 
