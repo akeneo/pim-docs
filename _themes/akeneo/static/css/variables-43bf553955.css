@@ -6909,7 +6909,6 @@ code {
   margin-bottom: 30px;
   background: #1a4d77;
   font-size: 12px;
-  max-height: 350px;
 }
 .hljs-function .hljs-keyword {
   color: #9452BA;
@@ -6965,6 +6964,10 @@ code {
 .hljs-selector-attr,
 .hljs-selector-pseudo {
   color: #F1F4F9;
+}
+.hll {
+  font-weight: bold;
+  background-color: steelblue;
 }
 nav.scroll {
   -webkit-box-shadow: 0 5px 25px 0 #A1A9B7;
