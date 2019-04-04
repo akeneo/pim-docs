@@ -1,16 +1,12 @@
-FROM debian:9-slim AS pim
+FROM mysql:5.7
 MAINTAINER pierre.allard@akeneo.com
 WORKDIR /home/akeneo/pim-docs/
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Create environment for build with php, python, mysql and composer
-RUN apt-get update && \
+RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends wget lsb-release apt-transport-https ca-certificates gnupg unzip \
         python python-setuptools ssh rsync && \
-    #
-    # Add source for mysql
-    wget -O /tmp/mysql-apt-config.deb https://dev.mysql.com/get/mysql-apt-config_0.8.7-1_all.deb && \
-    dpkg -i /tmp/mysql-apt-config.deb && \
     #
     # Add source for php
     wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
@@ -38,7 +34,7 @@ RUN apt-get update && \
     #
     # Download packages
     apt-get update && \
-    apt-get install -y --no-install-recommends mysql-server php7.2-apcu php7.2-bcmath \
+    apt-get install -y --no-install-recommends php7.2-apcu php7.2-bcmath \
         php7.2-cli php7.2-curl php7.2-fpm php7.2-gd php7.2-intl php7.2-mysql php7.2-xml \
         php7.2-zip php7.2-mbstring && \
     #
@@ -69,17 +65,16 @@ RUN chmod +x /home/akeneo/pim-docs/build.sh && \
     #
     # Install Akeneo PIM
     cd /home/akeneo/pim-docs/pim-community-dev-master/ && \
-    php -d memory_limit=3G /home/akeneo/pim-docs/composer.phar install --no-dev --no-suggest --ignore-platform-reqs && \
-    chown -R mysql:mysql /var/lib/mysql /var/run/mysqld && \
-    service mysql start && \
+    php -d memory_limit=3G /home/akeneo/pim-docs/composer.phar install --no-dev --no-suggest --ignore-platform-reqs
+
+COPY docker/wait_for_mysql.sh /wait_for_mysql.sh
+RUN service mysql start && chmod +x /wait_for_mysql.sh && /wait_for_mysql.sh && \
     mysql -u root -e "CREATE DATABASE akeneo_pim" && \
     mysql -u root -e "GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim'" && \
     cp /home/akeneo/pim-docs/pim-community-dev-master/app/config/parameters.yml.dist /home/akeneo/pim-docs/pim-community-dev-master/app/config/parameters.yml && \
     cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console doctrine:schema:create --env=prod && \
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console pim:installer:assets --env=prod && \
-    service mysql stop && \
+    cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console pim:installer:assets --env=prod
     #
     # Clean
-    rm -rf /root/.composer/cache && \
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && ls | grep -v "vendor\|web" | xargs rm -rf && \
-    rm /var/lib/mysql/ibdata1 /var/lib/mysql/ib_logfile1 /var/lib/mysql/ib_logfile0
+RUN rm -rf /root/.composer/cache && \
+    cd /home/akeneo/pim-docs/pim-community-dev-master/ && ls | grep -v "vendor\|web" | xargs rm -rf

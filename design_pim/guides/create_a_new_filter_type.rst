@@ -35,7 +35,7 @@ To create a custom filter, first we need to create a FilterProvider for our new 
         public function supports($element)
         {
             return $element instanceof AttributeInterface  &&
-                $element->getAttributeType() === 'pim_catalog_number' &&
+                $element->getType() === 'pim_catalog_number' &&
                 null !== $element->getNumberMin() &&
                 null !== $element->getNumberMax();
         }
