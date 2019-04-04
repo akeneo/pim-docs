@@ -8,7 +8,6 @@
 .. _FilterBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/FilterBundle
 .. _ImportExportBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/ImportExportBundle
 .. _InstallerBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/InstallerBundle
-.. _JsFormValidationBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/JsFormValidationBundle
 .. _LocalizationBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/LocalizationBundle
 .. _NavigationBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/NavigationBundle
 .. _NotificationBundle: https://github.com/akeneo/pim-community-dev/tree/1.7/src/Pim/Bundle/NotificationBundle
@@ -40,8 +39,6 @@
 | `ImportExportBundle`_     | (introduced v1.0) UI for import/export                                                                             |
 +---------------------------+--------------------------------------------------------------------------------------------------------------------+
 | `InstallerBundle`_        | (introduced v1.0) Installation system of the PIM                                                                   |
-+---------------------------+--------------------------------------------------------------------------------------------------------------------+
-| `JsFormValidationBundle`_ | (introduced v1.0) Override of APY/JsFormValidationBundle to provide javascript validation for dynamic models       |
 +---------------------------+--------------------------------------------------------------------------------------------------------------------+
 | `LocalizationBundle`_     | (introduced v1.5) Symfony implementation of localization features                                                  |
 +---------------------------+--------------------------------------------------------------------------------------------------------------------+
