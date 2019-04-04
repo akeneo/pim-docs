@@ -6,7 +6,7 @@ you can create your own `services`_ that interact with those objects whenever ce
 
 .. note::
 
-    We highly recommend you to implement your business code on listeners, this way you will not depends on Akeneo or Pim
+    We highly recommend you to implement your business code on listeners, this way you will not depend on Akeneo or Pim
     interfaces, you will keep your code easily testable and you will not fear backward compatibility break anymore.
 
 For more details about event listeners, you can read the `Symfony documentation`_
