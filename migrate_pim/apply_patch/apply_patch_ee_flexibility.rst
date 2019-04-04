@@ -62,7 +62,7 @@ After that you can relaunch fpm to avoid generating outdated cache:
 
 .. code-block:: bash
 
-    partners_php7.1-fpm restart
+    partners_php7.2-fpm restart
 
 
 .. note::
