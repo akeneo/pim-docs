@@ -47,11 +47,9 @@ Import the extension configuration in the ``app/config/config.yml`` file (after 
 Make the credential files accessible to Akeneo PIM software
 -----------------------------------------------------------
 
-In the parameters package the Akeneo team put 1 credential file:
+In the parameters package the Akeneo team put a ``serviceAccount.json`` credential file used for Google Cloud PubSub and Google Cloud Storage authentication
 
-* A ``serviceAccount.json`` file that is used for Google Cloud PubSub and Google Cloud Storage authentication
-
-Make sure this file is shipped to the server that host your PIM.
+Make sure this file is shipped to the server which is hosting your PIM.
 
 This file must be accessible (read rights) by the system user that runs the pim (example: www-data).
 
