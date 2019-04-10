@@ -60,7 +60,7 @@ You can use supervisor to run the ``worker`` as a daemonized process, supervisor
 
 .. note::
 
-    Supervisor documentation: http://supervisord.org/
+    Supervisor documentation: https://github.com/Supervisor/supervisor#documentation
 
 You want an infinite worker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
