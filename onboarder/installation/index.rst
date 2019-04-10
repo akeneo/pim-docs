@@ -68,8 +68,7 @@ Here are two examples in order to define environment variables:
 
 .. warning::
 
-    All the following variables must be set in order to configure the Onboarder correctly.
-
+    All the following variables must be set in order to configure the Onboarder correctly for all entrypoints, all processes that runs the PIM code source.
 
 **Variables provided by the Akeneo team**
 

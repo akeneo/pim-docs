@@ -31,13 +31,13 @@ Launch the message worker
 | The messages that are part of the synchronization process are queued.
 | The queue is consumed by a command line process called ``worker``.
 |
-| The worker has to always be launched as it polls the queue waiting for new messages to handle.
+| The worker as to always be launched as it polls the queue waiting for new messages to handle.
 
 
 You want a supervised worker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add the following supervisor configuration (update the following example to your needs)
+You can use supervisor to run the ``worker`` as a daemonized process, supervisor will monitor this process and according to the configuration you'll define it will be autostarted and autorestarted.
 
 .. code-block:: bash
 
@@ -48,9 +48,19 @@ Add the following supervisor configuration (update the following example to your
     autostart=true
     autorestart=true
 
+.. warning::
+
+    By default the environment variable of the shell that is running the supervisord process will not propagate the environment variables to the process it monitor.
+    You've to configure :doc:`the mandatory environment variables </onboarder/installation/index>` that the akeneo/pim-onboarder bundle requires in the ``/etc/supervisor.conf`` file.
+
+.. code-block:: bash
+
+    [supervisord]
+    environment=GOOGLE_APPLICATION_CREDENTIALS="/srv/pim/serviceAccount.json",ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE="middleware-topic-name",...
+
 .. note::
 
-    Supervisor documentation: https://github.com/Supervisor/supervisor#documentation
+    Supervisor documentation: http://supervisord.org/
 
 You want an infinite worker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
