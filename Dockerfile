@@ -1,16 +1,12 @@
-FROM debian:9-slim AS pim
+FROM mysql:5.7
 MAINTAINER pierre.allard@akeneo.com
 WORKDIR /home/akeneo/pim-docs/
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Create environment for build with php, python, mysql and composer
-RUN apt-get update && \
+RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends wget lsb-release apt-transport-https ca-certificates gnupg unzip \
         python python-setuptools ssh rsync && \
-    #
-    # Add source for mysql
-    wget -O /tmp/mysql-apt-config.deb https://dev.mysql.com/get/mysql-apt-config_0.8.7-1_all.deb && \
-    dpkg -i /tmp/mysql-apt-config.deb && \
     #
     # Add source for php
     wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
@@ -37,9 +33,8 @@ RUN apt-get update && \
     python setup.py install && \
     #
     # Download packages
-    # TODO Do not pull-up the apc update on versions >= 2.0 and remove this comment
     apt-get update && \
-    apt-get install -y --no-install-recommends mysql-server php7.1-apc php7.1-bcmath \
+    apt-get install -y --no-install-recommends php7.1-apc php7.1-bcmath \
         php7.1-cli php7.1-curl php7.1-fpm php7.1-gd php7.1-intl php7.1-mcrypt php7.1-mysql php7.1-soap php7.1-xml \
         php7.1-zip php7.1-mbstring && \
     #
@@ -66,19 +61,20 @@ RUN chmod +x /home/akeneo/pim-docs/build.sh && \
     #
     # Download curent version
     wget https://github.com/akeneo/pim-community-dev/archive/1.7.zip -P /home/akeneo/pim-docs/ && \
-    unzip /home/akeneo/pim-docs/1.7.zip -d /home/akeneo/pim-docs/ && \
-    cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && \
+    unzip /home/akeneo/pim-docs/1.7.zip -d /home/akeneo/pim-docs/
     #
     # Install Akeneo PIM
-    php -d memory_limit=3G /home/akeneo/pim-docs/composer.phar install --no-dev --no-suggest --ignore-platform-reqs && \
-    service mysql start && \
+RUN cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && \
+    php -d memory_limit=3G /home/akeneo/pim-docs/composer.phar install --no-dev --no-suggest --ignore-platform-reqs
+
+COPY docker/wait_for_mysql.sh /wait_for_mysql.sh
+RUN service mysql start && chmod +x /wait_for_mysql.sh && /wait_for_mysql.sh && \
     mysql -u root -e "CREATE DATABASE akeneo_pim" && \
     mysql -u root -e "GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim'" && \
+    cp /home/akeneo/pim-docs/pim-community-dev-1.7/app/config/parameters.yml.dist /home/akeneo/pim-docs/pim-community-dev-1.7/app/config/parameters.yml && \
     cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php app/console doctrine:schema:create --env=prod && \
-    cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php app/console pim:installer:assets --env=prod && \
-    service mysql stop && \
+    cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && php app/console pim:installer:assets --env=prod
     #
     # Clean
-    rm -rf /root/.composer/cache && \
-    cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && ls | grep -v "vendor\|web" | xargs rm -rf && \
-    rm /var/lib/mysql/ibdata1 /var/lib/mysql/ib_logfile1 /var/lib/mysql/ib_logfile0
+RUN rm -rf /root/.composer/cache && \
+    cd /home/akeneo/pim-docs/pim-community-dev-1.7/ && ls | grep -v "vendor\|web" | xargs rm -rf
