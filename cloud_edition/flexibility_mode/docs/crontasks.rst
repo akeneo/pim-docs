@@ -63,8 +63,8 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     0 1 * * * pim:asset:send-expiration-notification --env=prod
     #Ansible: pimee:project:recalculate
     0 2 * * * pimee:project:recalculate --env=prod
-    #Ansible: pimee:franklin-insights:launch-fetch-products-job-instance
-    30 */1 * * * pimee:franklin-insights:launch-fetch-products-job-instance --env=prod
+    #Ansible: pimee:franklin-insights:fetch-products
+    30 */1 * * * pimee:franklin-insights:fetch-products --env=prod
     #Ansible: akeneo:reference-entity:refresh-records --all
     0 23 * * * akeneo:reference-entity:refresh-records --all --env=prod
 
