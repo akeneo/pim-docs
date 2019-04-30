@@ -36,7 +36,7 @@ Here are the migration guides:
 * `From v1.1 to v1.2`_
 * `From v1.0 to v1.1`_
 
-.. _From v2.3 to v3.0: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-3.1.md
+.. _From v3.0 to v3.1: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-3.1.md
 .. _From v2.3 to v3.0: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-3.0.md
 .. _From v2.2 to v2.3: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-2.3.md
 .. _From v2.1 to v2.2: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-2.2.md
