@@ -39,7 +39,7 @@ This container will expose the ``8081`` port, you can override this value in the
 
 You can access the IdP administration page at the following url: http://localhost:8081/simplesaml.
 
-| Some users are already configured, the same that are in the `icecat_demo_dev fixtures <https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev/users.csv>`_.
+| Some users are already configured, the same that are in the `icecat_demo_dev fixtures <https://github.com/akeneo/pim-community-dev/blob/3.1/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev/users.csv>`_.
 | They are defined in the ``docker/sso_authsources.php``.
 
 

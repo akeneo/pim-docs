@@ -2,7 +2,7 @@ How behavior tests are architectured in the PIM?
 ================================================
 
 
-The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-community-dev/blob/master/tests/legacy/features
+The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-community-dev/blob/3.1/tests/legacy/features
 
 .. warning::
 

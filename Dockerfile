@@ -4,7 +4,7 @@ WORKDIR /home/akeneo/pim-docs/
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Create environment for build with php, python, mysql and composer
-RUN apt-get update && apt-get upgrade -y && \
+RUN apt-get update && \
     apt-get install -y --no-install-recommends wget lsb-release apt-transport-https ca-certificates gnupg unzip \
         python python-setuptools ssh rsync && \
     #
@@ -60,21 +60,21 @@ COPY build.sh /home/akeneo/pim-docs/build.sh
 RUN chmod +x /home/akeneo/pim-docs/build.sh && \
     #
     # Download curent version
-    wget https://github.com/akeneo/pim-community-dev/archive/master.zip -P /home/akeneo/pim-docs/ && \
-    unzip /home/akeneo/pim-docs/master.zip -d /home/akeneo/pim-docs/ && \
+    wget https://github.com/akeneo/pim-community-dev/archive/3.1.zip -P /home/akeneo/pim-docs/ && \
+    unzip /home/akeneo/pim-docs/3.1.zip -d /home/akeneo/pim-docs/ && \
     #
     # Install Akeneo PIM
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && \
+    cd /home/akeneo/pim-docs/pim-community-dev-3.1/ && \
     php -d memory_limit=3G /home/akeneo/pim-docs/composer.phar install --no-dev --no-suggest --ignore-platform-reqs
 
 COPY docker/wait_for_mysql.sh /wait_for_mysql.sh
 RUN service mysql start && chmod +x /wait_for_mysql.sh && /wait_for_mysql.sh && \
     mysql -u root -e "CREATE DATABASE akeneo_pim" && \
     mysql -u root -e "GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim'" && \
-    cp /home/akeneo/pim-docs/pim-community-dev-master/app/config/parameters.yml.dist /home/akeneo/pim-docs/pim-community-dev-master/app/config/parameters.yml && \
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console doctrine:schema:create --env=prod && \
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console pim:installer:assets --env=prod
+    cp /home/akeneo/pim-docs/pim-community-dev-3.1/app/config/parameters.yml.dist /home/akeneo/pim-docs/pim-community-dev-3.1/app/config/parameters.yml && \
+    cd /home/akeneo/pim-docs/pim-community-dev-3.1/ && php bin/console doctrine:schema:create --env=prod && \
+    cd /home/akeneo/pim-docs/pim-community-dev-3.1/ && php bin/console pim:installer:assets --env=prod
     #
     # Clean
 RUN rm -rf /root/.composer/cache && \
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && ls | grep -v "vendor\|web" | xargs rm -rf
+    cd /home/akeneo/pim-docs/pim-community-dev-3.1/ && ls | grep -v "vendor\|web" | xargs rm -rf
