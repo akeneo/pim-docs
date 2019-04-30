@@ -20,7 +20,7 @@ You have to add these 6 commands to your local installation:
     php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:notify-before-due-date --env=prod                       # check and send notifications (TeamWork Assistant)
     php /path/to/installation/pim-enterprise-standard/bin/console pim:asset:send-expiration-notification --env=prod                     # check and send notifications for asset date delay
     php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:recalculate --env=prod                                  # recalculate project completeness (TeamWork Assistant)
-    php /path/to/installation/pim-enterprise-standard/bin/console pimee:franklin-insights:launch-fetch-products-job-instance --env=prod # fetch suggested data for products subscribed to Franklin Insights
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:franklin-insights:fetch-products --env=prod # fetch suggested data for products subscribed to Franklin Insights
 
 .. note::
    **Note:** The command ``pimee:franklin-insights:launch-fetch-products-job-instance`` is to be set only if you activate Franklin Insights EE feature.
