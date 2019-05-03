@@ -40,8 +40,7 @@ Maintainability
 
 Keep in mind the five `SOLID principles`_ of Object Oriented Programming and especially the `Single Responsibility principle`_.
 
-You can use `PMD`_ to help make your code simple, flexible and easily testable.
-
+You can use PHP Mess Detector to help make your code simple, flexible and easily testable.
 
 In Akeneo PIM, we use `PhpSpec`_ as unit testing tool and `Behat`_ for behavior-oriented tests.
 
@@ -51,7 +50,6 @@ You can find some configuration examples on our `Akeneo-Labs`_ projects (`scruti
 
 .. _Single Responsibility principle: https://en.wikipedia.org/wiki/Single_responsibility_principle
 .. _SOLID principles: https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)
-.. _PMD: https://phpmd.org/
 .. _PhpSpec: http://phpspec.readthedocs.io/en/stable/
 .. _Behat: http://docs.behat.org/en/latest/
 .. _Travis: https://travis-ci.org/
