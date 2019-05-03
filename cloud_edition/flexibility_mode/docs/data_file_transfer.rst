@@ -11,7 +11,7 @@ By default, the username is **akeneosftp** and the port in use is **22**. Also n
 
 Permissions
 -----------
-If Akeneo, as an SSH user or as a PIM process creates files in the SFTP sub-directories, permissions have to be set so that SFTP users can rename or delete them.
+If Akeneo, as an SSH user or as a PIM process, creates files in the SFTP sub-directories, permissions have to be set so that SFTP users can rename or delete them.
 
 .. code-block:: bash
 
