@@ -101,7 +101,7 @@ Various errors can happen, those errors could be due to incorrect configuration 
 
 | Regarding the SP, on the SSO configuration page, you have a "download logs" button that will provide a ZIP of ``var/logs/authentication*.log``
 | You can also check these logs via CLI if your PIM installation is on premise or on PAAS.
-| 
+|
 
 Regarding the IdP:
 * For the one provided in docker-compose.yml, you can check logs outputed by the container ``docker logs -f your_sso-idp-server_container-name``
