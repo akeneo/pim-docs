@@ -98,6 +98,11 @@ and the following PHP modules:
 | php7.2-mysql | Required |
 +--------------+----------+
 
+.. warning::
+
+    Please note that if you're using a managed MySQL service (GCP, AWS, or Azure for example), make sure they provide the a MySQL version compatible with the above requirements.
+
+
 **Search engine**
 
 +---------------+------------+
