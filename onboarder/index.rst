@@ -14,6 +14,7 @@ Akeneo Onboarder
     prerequisites/index
     installation/index
     synchronization/index
+    troubleshooting/index
 
 .. toctree::
     :hidden:

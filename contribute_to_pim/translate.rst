@@ -45,7 +45,7 @@ If you use the Enterprise Edition, run this command too:
 
     cp -r crowdin_archive/3.0/Enterprise/* your_app/vendor/akeneo/pim-enterprise-dev/
 
-Then, update the parameters of `pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/config/locale_provider.yml` to change the minimum percentage and add your new language (here, 10% and Hungarian):
+Then, update the parameters of `your_app/vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/config/locale_provider.yml` to change the minimum percentage and add your new language (here, 10% and Hungarian):
 
 .. code-block:: yaml
 
@@ -58,7 +58,7 @@ Then, rebuild your front, and you will see the new languages available!
 
     rm -rf var/cache/* web/bundles web/dist
     bin/console --env=prod pim:installer:assets --symlink --clean
-    node yarn run webpack
+    yarn run webpack
 
 .. _Crowdin: https://crowdin.com/project/akeneo
 .. _Nelson: https://github.com/akeneo/nelson
