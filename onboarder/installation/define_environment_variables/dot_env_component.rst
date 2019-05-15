@@ -7,7 +7,7 @@ Copy the ``.env`` file at your project root directory and modify the values acco
 
 .. code-block:: bash
 
-    $ cp vendor/akeneo/pim-onboarder/doc/onboarder.env .env
+    $ cp vendor/akeneo/pim-onboarder/env.dist .env
 
 Add the following code to **each** PHP entry point (``bin/console``, ``web/app.php``, ``web/app_dev.php``, etc.) after the ``autoload.php`` require statement.
 
