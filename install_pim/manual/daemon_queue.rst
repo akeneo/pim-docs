@@ -30,7 +30,7 @@ You can also run the daemon to execute only one job and then exit. This is usefu
 
     $ /path/to/php /path/to/your/pim/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod --run-once
 
-Another possibility is to launch several daemons that will consume different jobs. This could be useful if you want specific job to be consume sooner.
+Another possibility is to launch several daemons that will consume different jobs. This could be useful if you want a specific job to be consume sooner.
 Here is an example with a few bulk actions:
 
 
