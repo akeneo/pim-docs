@@ -153,3 +153,7 @@ The ``var/uploads`` folder could be located elsewhere depending on the configura
 
     Please note that neither the Apache user or the CLI should be the root user of the system.
 
+**URL root path**
+
+We do not support Akeneo PIM in a non-root configuration. For example `http://example.com/pim/` is not supported whereas `http://example.com/` or `http://pim.example.com/` are supported.
+We strongly recommend to access the PIM through a root URL. Some parts of the application may misbehave when accessed through a subpath.
