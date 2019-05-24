@@ -112,3 +112,13 @@ The akeneo/pim-onboarder extension needs some extra tables. Please run the follo
     $ php bin/console akeneo:onboarder:setup-database --env=prod
 
 Once the installation done, please read the documenation about the :doc:`synchronization </onboarder/synchronization/index>`.
+
+
+Create Elasticsearch index for pre ref products
+-----------------------------------------------
+
+A new Elasticsearch index is needed for pre ref products. In order to create it, please run the following command:
+
+.. code-block:: bash
+
+    $ bin/console akeneo:elasticsearch:reset-indexes --index pim_onboarder_pre_ref_product --env=prod
