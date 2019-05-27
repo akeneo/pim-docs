@@ -6,7 +6,7 @@ This chapter describes how to enable the SSO authentication for development purp
 How SSO works ?
 ---------------
 
-| SSO means `Single Sign-On`, several SSO protocols exist.
+| SSO means `Single Sign-On`, that can be defined as a user experience, for which several SSO protocols exist.
 | We implemented the ``SAMLv2`` protocol as it is a popular standard in the industry.
 |
 
@@ -18,6 +18,12 @@ How SSO works ?
 The ``Identity Provider`` offers user authentication as a service, and the ``Service Provider`` could be considered as a client that will ask to authenticate a user.
 
 The content exchanged between the IdP and the SP must be signed, that's why we have to configure those entities with ``Certificates`` and ``Private keys``.
+
+
+Outbound single sign-on
+-----------------------
+
+Akeneo PIM is implementing *Outbound SAML*, that can also be called SP-initiated Single Sign-On (SSO) or traditional SAML. In an outbound SAML transaction a Service Provider (SP) like a website or an application redirects a user to a designated Identity Provider (IDP) for authentication and authorization. The IDP asks for the user's credentials and upon successful authentication redirects the user to the protected content.
 
 All the exchanges, redirections between the browser, the Service Provider and the Identity Provider could be represented as follows:
 
