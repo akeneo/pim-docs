@@ -19,6 +19,11 @@ The ``Identity Provider`` offers user authentication as a service, and the ``Ser
 
 The content exchanged between the IdP and the SP must be signed, that's why we have to configure those entities with ``Certificates`` and ``Private keys``.
 
+Outbound single sign-on
+-----------------------
+
+Akeneo PIM is implementing *Outbound SAML*, that can also be called SP-initiated Single Sign-On (SSO) or traditional SAML. In an outbound SAML transaction a Service Provider (SP) like a website or an application redirects a user to a designated Identity Provider (IDP) for authentication and authorization. The IDP asks for the user's credentials and upon successful authentication redirects the user to the protected content.
+
 All the exchanges, redirections between the browser, the Service Provider and the Identity Provider could be represented as follows:
 
 .. image:: ./common/images/wikimedia-saml2-browser-sso-redirect-post.png
