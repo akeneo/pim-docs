@@ -61,7 +61,6 @@ You can revert this operation by running the following commands:
     rm -rf ./var/cache/*
     php bin/console pim:install:asset --env=prod
     php bin/console assets:install --symlink web
-    yarn run less
     yarn run webpack
 
 I cannot export my products "An exception occurred during the export"

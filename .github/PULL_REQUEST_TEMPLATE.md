@@ -1,6 +1,6 @@
 <!--- (<3 Thanks for taking the time to contribute! You're awesome! <3) --->
 
-<!--- (If you've never contributed to this repository before, please read https://github.com/akeneo/pim-docs/blob/master/.github/CONTRIBUTING.md) --->
+<!--- (If you've never contributed to this repository before, please read https://github.com/akeneo/pim-docs/blob/3.0/.github/CONTRIBUTING.md) --->
 
 **Description**
 
