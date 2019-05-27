@@ -48,7 +48,7 @@ This is achieved by `bind mounting <https://docs.docker.com/storage/bind-mounts/
 .. note::
 
    The following compose file example is intentionally incomplete, focusing on cache directories only.
-   Check the complete file directly `in the PIM <https://github.com/akeneo/pim-community-dev/blob/master/docker-compose.yml>`_.
+   Check the complete file directly `in the PIM <https://github.com/akeneo/pim-community-dev/blob/3.0/docker-compose.yml>`_.
 
 .. code-block:: yaml
 
@@ -134,7 +134,7 @@ Here is a ``docker-compose.override.yml`` example:
 
 Be aware that it is currently not possible to replace array values in the override. You can read more here: https://docs.docker.com/compose/extends/#adding-and-overriding-configuration.
 
-This is why the mapping of the Apache port is already present in `docker-compose.yml <https://github.com/akeneo/pim-community-dev/blob/master/docker-compose.yml#L46>`_, as this mapping is mandatory to access the PIM from a web browser.
+This is why the mapping of the Apache port is already present in `docker-compose.yml <https://github.com/akeneo/pim-community-dev/blob/3.0/docker-compose.yml#L46>`_, as this mapping is mandatory to access the PIM from a web browser.
 It is configurable through an environment variable, wo you will not have any conflicts having several PIM running in parallel. Just copy the file ```.env.dist``` as ```.env``` and set the port you want to access Apache on.
 
 If you intend to run behat tests, create on your host a folder ``/tmp/behat/screenshots`` (or anywhere else according to your compose file) with full read/write access to your user.
