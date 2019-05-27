@@ -55,6 +55,13 @@ Installation,
 .. note::
     The ``../composer.phar install`` command writes the database configuration to ``app/config/parameters.yml``
 
+You can now create an administrator user via the command `pim:user:create`. For instance:
+
+.. code-block:: bash
+    :linenos:
+
+    $ bin/console pim:user:create kbeck secretp@ssw0rd kbeck@example.com Kent Beck en_US --admin -n --env=prod
+
 .. include:: ./crontab_tasks.rst.inc
 
 Launching the daemon for job execution
@@ -65,7 +72,7 @@ Please follow this documentation: :doc:`/install_pim/manual/daemon_queue`.
 
 Testing your installation
 -------------------------
-Access the `web` folder using your favorite web browser and log in with *admin/admin*. If you see the dashboard, congratulations, you have successfully installed Akeneo PIM! You can also access the dev environment using `app_dev.php` as index.
+Access the `web` folder using your favorite web browser and log in with the user you just created with the `pim:user:create` command . If you see the dashboard, congratulations, you have successfully installed Akeneo PIM! You can also access the dev environment using `app_dev.php` as index.
 
 If an error occurs, it means that something went wrong in one of the previous steps. Please check error outputs of all the steps.
 

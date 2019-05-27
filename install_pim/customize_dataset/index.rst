@@ -8,6 +8,11 @@ Akeneo PIM ships with two datasets. They are located in ``vendor/akeneo/pim-comm
 
 Akeneo PIM ships with *icecat_demo_dev* enabled.
 
+.. warning::
+   From version PIM 3.2, *minimal* catalog does NOT include any default admin user for security reasons.
+   This means you cannot connect anymore with the previous default `admin` account and the `admin` password.
+   You have to create it yourself with the command `pim:user:create` and give it a proper password.
+
 Switching From Icecat to Minimal
 --------------------------------
 
