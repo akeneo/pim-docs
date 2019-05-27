@@ -39,8 +39,7 @@ Maintainability
 
 Keep in mind the five `SOLID principles`_ of Object Oriented Programming and especially the `Single Responsibility principle`_.
 
-You can use `PHPMD`_ to help make your code simple, flexible and easily testable.
-
+You can use PHP Mess Detector to help make your code simple, flexible and easily testable.
 
 In Akeneo PIM, we use `PhpSpec`_ as unit testing tool and `Behat`_ for behavior-oriented tests.
 
@@ -56,8 +55,8 @@ You can find some configuration examples on our `Akeneo-Labs`_ projects (`scruti
 .. _Travis: https://travis-ci.org/
 .. _Scrutinizer: https://scrutinizer-ci.com/
 .. _Akeneo-Labs: https://github.com/akeneo-labs
-.. _scrutinizer.yml: https://github.com/akeneo-labs/CustomEntityBundle/blob/3.0/.scrutinizer.yml
-.. _travis.yml: https://github.com/akeneo-labs/CustomEntityBundle/blob/3.0/.travis.yml
+.. _scrutinizer.yml: https://github.com/akeneo-labs/CustomEntityBundle/blob/master/.scrutinizer.yml
+.. _travis.yml: https://github.com/akeneo-labs/CustomEntityBundle/blob/master/.travis.yml
 
 
 Another important point about maintainability is to rely on interfaces instead of concrete classes.
@@ -135,7 +134,7 @@ For your own model classes, create your class and its interface.
 Then you can rely on your interface and use the `Akeneo target resolver`_ which is based on the `Doctrine target entity resolver`_.
 
 .. _oneToOne unidirectional association: https://www.doctrine-project.org/projects/doctrine-orm/en/2.5/reference/association-mapping.html#one-to-one-unidirectional
-.. _Akeneo target resolver: https://github.com/akeneo/pim-community-dev/blob/3.0/src/Akeneo/Tool/Bundle/StorageUtilsBundle/DependencyInjection/Compiler/AbstractResolveDoctrineTargetModelPass.php
+.. _Akeneo target resolver: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Tool/Bundle/StorageUtilsBundle/DependencyInjection/Compiler/AbstractResolveDoctrineTargetModelPass.php
 .. _Doctrine target entity resolver: https://symfony.com/doc/3.4/doctrine/resolve_target_entity.html
 
 

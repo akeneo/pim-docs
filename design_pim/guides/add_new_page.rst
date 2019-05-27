@@ -96,6 +96,7 @@ To view your changes, you have to dump new routes and rebuild assets:
     $ bin/console pim:installer:dump-require-paths
     $ bin/console pim:install:assets
     $ bin/console assets:install --symlink
+    $ yarn run less
     $ yarn run webpack
 
 You will have your new item on the main menu, and when you click on it, it will display an empty page. You can now add
