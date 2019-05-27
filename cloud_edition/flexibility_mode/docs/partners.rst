@@ -1,8 +1,8 @@
 Partners
 ========
 
-| On Flexiblity Mode, you also have access to custom aliases.
-| Those one allowed you to run commands with higher privileges like starting/restarting system daemons.
+| On Flexiblity Mode, you also have access to custom aliases.  
+| Those ones allow you to run commands with higher privileges (to start/restart system daemons, for example).
 |
 | Below the list of aliases:
 
