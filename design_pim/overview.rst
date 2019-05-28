@@ -97,11 +97,6 @@ You can also decide to symlink those assets instead of copying them:
 
     bin/console assets:install --symlink web
 
-Compile the .less files to CSS
-
-.. code-block:: bash
-
-    yarn run less
 
 After that the last step is to build the bundle.js file:
 
@@ -183,7 +178,7 @@ In this code we do three things:
 - We declare an event listener to listen to the click events on our view to call the `clicked` method
 - The clicked method will log the DOM click event each time a click is triggered on our view.
 
-You can find more information about Backbone views on the `dedicated documentation <http://backbonejs.org/#View>`_
+You can find more information about Backbone views on the `dedicated documentation <https://backbonejs.org/#View>`_
 
 
 Register it

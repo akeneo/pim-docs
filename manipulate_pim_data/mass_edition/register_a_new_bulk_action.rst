@@ -278,7 +278,6 @@ Finally, you have to reinstall your assets:
     rm -rf var/cache/
     bin/console pim:install:assets
     bin/console assets:install --symlink
-    yarn run less
     yarn run webpack
 
 That's it! If you select several products then click "Bulk actions", your will be able to use your new feature.

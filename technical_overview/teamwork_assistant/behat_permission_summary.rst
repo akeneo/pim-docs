@@ -1,7 +1,7 @@
 Users permission summary for Behat tests
 ========================================
 
-.. _Setup Behat part: /technical_architecture/best_practices/core/behat.html
+.. _Setup Behat part: ../best_practices/core/behat.html
 
 In the case you extended the Teamwork Assistant, you may want to check that you didn't broke basics features. You can
 have a look to the `Setup Behat part`_ to learn more about how to run our functional tests.

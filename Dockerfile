@@ -4,18 +4,13 @@ WORKDIR /home/akeneo/pim-docs/
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Create environment for build with php, python, mysql and composer
-RUN apt-get update && \
+RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends wget lsb-release apt-transport-https ca-certificates gnupg unzip \
-        python python-setuptools ssh rsync curl software-properties-common && \
+        python python-setuptools ssh rsync && \
     #
     # Add source for php
-    curl -sL https://packages.sury.org/php/apt.gpg | apt-key add - && \
-    echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list && \
-    #
-    # Add sources for nodejs and yarn
-    curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
+    sh -c 'echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list' && \
     #
     # Add sphinx
     wget -O /tmp/sphinx.zip https://github.com/sphinx-doc/sphinx/archive/v1.8.4.zip && \
@@ -41,7 +36,7 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y --no-install-recommends php7.2-apcu php7.2-bcmath \
         php7.2-cli php7.2-curl php7.2-fpm php7.2-gd php7.2-intl php7.2-mysql php7.2-xml \
-        php7.2-zip php7.2-mbstring nodejs yarn && \
+        php7.2-zip php7.2-mbstring && \
     #
     # Configure PHP
     echo "memory_limit = 1024M" >> /etc/php/7.2/cli/php.ini && \
@@ -65,23 +60,21 @@ COPY build.sh /home/akeneo/pim-docs/build.sh
 RUN chmod +x /home/akeneo/pim-docs/build.sh && \
     #
     # Download curent version
-    wget https://github.com/akeneo/pim-community-dev/archive/3.1.zip -P /home/akeneo/pim-docs/ && \
-    unzip /home/akeneo/pim-docs/3.1.zip -d /home/akeneo/pim-docs/ && \
+    wget https://github.com/akeneo/pim-community-dev/archive/3.0.zip -P /home/akeneo/pim-docs/ && \
+    unzip /home/akeneo/pim-docs/3.0.zip -d /home/akeneo/pim-docs/ && \
     #
     # Install Akeneo PIM
-    cd /home/akeneo/pim-docs/pim-community-dev-3.1/ && \
+    cd /home/akeneo/pim-docs/pim-community-dev-3.0/ && \
     php -d memory_limit=3G /home/akeneo/pim-docs/composer.phar install --no-dev --no-suggest --ignore-platform-reqs
 
 COPY docker/wait_for_mysql.sh /wait_for_mysql.sh
 RUN service mysql start && chmod +x /wait_for_mysql.sh && /wait_for_mysql.sh && \
     mysql -u root -e "CREATE DATABASE akeneo_pim" && \
     mysql -u root -e "GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim'" && \
-    cp /home/akeneo/pim-docs/pim-community-dev-3.1/app/config/parameters.yml.dist /home/akeneo/pim-docs/pim-community-dev-3.1/app/config/parameters.yml && \
-    cd /home/akeneo/pim-docs/pim-community-dev-3.1/ && php bin/console doctrine:schema:create --env=prod && \
-    cd /home/akeneo/pim-docs/pim-community-dev-3.1/ && php bin/console pim:installer:assets --env=prod && \
-    cd /home/akeneo/pim-docs/pim-community-dev-3.1/ && sed -i "s#replace: '/bundles'#replace: '../bundles'#" frontend/build/compile-less.js && \
-    cd /home/akeneo/pim-docs/pim-community-dev-3.1/ && yarn install && yarn less
+    cp /home/akeneo/pim-docs/pim-community-dev-3.0/app/config/parameters.yml.dist /home/akeneo/pim-docs/pim-community-dev-3.0/app/config/parameters.yml && \
+    cd /home/akeneo/pim-docs/pim-community-dev-3.0/ && php bin/console doctrine:schema:create --env=prod && \
+    cd /home/akeneo/pim-docs/pim-community-dev-3.0/ && php bin/console pim:installer:assets --env=prod
     #
     # Clean
 RUN rm -rf /root/.composer/cache && \
-    cd /home/akeneo/pim-docs/pim-community-dev-3.1/ && ls | grep -v "vendor\|web" | xargs rm -rf
+    cd /home/akeneo/pim-docs/pim-community-dev-3.0/ && ls | grep -v "vendor\|web" | xargs rm -rf
