@@ -109,7 +109,7 @@ topic branch:
 
 .. code-block:: bash
 
-    $ git checkout -b BRANCH_NAME 3.0
+    $ git checkout -b BRANCH_NAME 3.1
 
 .. tip::
 
@@ -231,11 +231,11 @@ while to finish your changes):
 
 .. code-block:: bash
 
-    $ git checkout 3.0
+    $ git checkout 3.1
     $ git fetch upstream
-    $ git merge upstream/3.0
+    $ git merge upstream/3.1
     $ git checkout BRANCH_NAME
-    $ git rebase 3.0
+    $ git rebase 3.1
 
 When doing the ``rebase`` command, you might have to fix merge conflicts.
 ``git status`` will show you the *unmerged* files. Resolve all the conflicts,
@@ -346,11 +346,11 @@ Rework your Patch
 ~~~~~~~~~~~~~~~~~
 
 Based on the feedback on the pull request, you might need to rework your
-patch. Before re-submitting the patch, rebase with ``upstream/3.0``, don't merge; and force the push to the origin:
+patch. Before re-submitting the patch, rebase with ``upstream/3.1``, don't merge; and force the push to the origin:
 
 .. code-block:: bash
 
-    $ git rebase -f upstream/3.0
+    $ git rebase -f upstream/3.1
     $ git push --force origin BRANCH_NAME
 
 .. note::
@@ -364,7 +364,7 @@ convert many commits to one commit. To do this, use the rebase command:
 
 .. code-block:: bash
 
-    $ git rebase -i upstream/3.0
+    $ git rebase -i upstream/3.1
     $ git push --force origin BRANCH_NAME
 
 After you type this command, an editor will popup showing a list of commits:
