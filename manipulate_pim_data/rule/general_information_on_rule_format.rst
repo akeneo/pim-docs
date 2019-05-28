@@ -96,7 +96,7 @@ Elements with * are optional.
 
 .. tip::
 
-    For more details you can see the `YAML specifications <http://yaml.org/spec/>`_.
+    For more details you can see the `YAML specifications <https://yaml.org/spec/>`_.
 
 .. warning::
 
