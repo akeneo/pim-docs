@@ -133,14 +133,14 @@ The service is defined in ``src/Pim/Bundle/ConnectorBundle/Resources/config/proc
         pim_connector.processor.normalization.product:
             class: '%pim_connector.processor.normalization.product.class%'
             arguments:
-                - '@pim_serializer.normalizer.product'
+                - '@pim_catalog.normalizer.standard.product'
                 - '@pim_catalog.repository.channel'
                 - '@pim_catalog.repository.attribute'
                 - '@pim_catalog.builder.product'
                 - '@akeneo_storage_utils.doctrine.object_detacher'
                 - '@pim_connector.processor.bulk_media_fetcher'
 
-The class ``Pim\Component\Connector\Processor\Normalization\ProductProcessor`` mainly delegates the transformation to the service ``pim_serializer.normalizer.product``.
+The class ``Pim\Component\Connector\Processor\Normalization\ProductProcessor`` mainly delegates the transformation to the service ``pim_catalog.normalizer.standard.product``.
 
 We can see here that we normalize each product into the ``standard`` format. It is the writer's responsibility to convert the standard format to the flat format. (cf :doc:`/import_and_export_data/guides/clean-csv-file-during-product-import`)
 
@@ -154,7 +154,7 @@ We can see here that we normalize each product into the ``standard`` format. It 
         ),
     ]);
 
-This service ``pim_serializer.normalizer.product`` is declared in ``src/Pim/Bundle/CatalogBundle/Resources/config/serializers.yml`` and uses the Symfony ``Serializer`` class.
+This service ``pim_catalog.normalizer.standard.product`` is declared in ``src/Pim/Bundle/CatalogBundle/Resources/config/serializers.yml`` and uses the Symfony ``Serializer`` class.
 
 As a product may not have values for all attributes, depending on the product, the normalized array will contain different keys, for instance,
 
