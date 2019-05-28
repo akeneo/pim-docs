@@ -186,6 +186,6 @@ License
 
 * Some bundles, such as BatchBundle, are released under the MIT license, for these ones, please follow the repository convention.
 
-.. _`PSR-0`: http://www.php-fig.org/psr/psr-0/
-.. _`PSR-1`: http://www.php-fig.org/psr/psr-1/
-.. _`PSR-2`: http://www.php-fig.org/psr/psr-2/
+.. _`PSR-0`: https://www.php-fig.org/psr/psr-0/
+.. _`PSR-1`: https://www.php-fig.org/psr/psr-1/
+.. _`PSR-2`: https://www.php-fig.org/psr/psr-2/
