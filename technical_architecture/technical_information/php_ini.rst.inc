@@ -8,7 +8,7 @@
 
 .. note::
 
-    Use the time zone matching your location, for example *America/Los_Angeles* or *Europe/Berlin*. See http://www.php.net/timezones for the list of all available timezones.
+    Use the time zone matching your location, for example *America/Los_Angeles* or *Europe/Berlin*. See https://www.php.net/timezones for the list of all available timezones.
 
 * Setup *FPM php.ini* file ``/etc/php/7.2/fpm/php.ini``
 
