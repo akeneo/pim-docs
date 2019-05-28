@@ -19,6 +19,11 @@ The ``Identity Provider`` offers user authentication as a service, and the ``Ser
 
 The content exchanged between the IdP and the SP must be signed, that's why we have to configure those entities with ``Certificates`` and ``Private keys``.
 
+Outbound single sign-on
+-----------------------
+
+Akeneo PIM is implementing *Outbound SAML*, that can also be called SP-initiated Single Sign-On (SSO) or traditional SAML. In an outbound SAML transaction a Service Provider (SP) like a website or an application redirects a user to a designated Identity Provider (IDP) for authentication and authorization. The IDP asks for the user's credentials and upon successful authentication redirects the user to the protected content.
+
 All the exchanges, redirections between the browser, the Service Provider and the Identity Provider could be represented as follows:
 
 .. image:: ./common/images/wikimedia-saml2-browser-sso-redirect-post.png
@@ -39,7 +44,7 @@ This container will expose the ``8081`` port, you can override this value in the
 
 You can access the IdP administration page at the following url: http://localhost:8081/simplesaml.
 
-| Some users are already configured, the same that are in the `icecat_demo_dev fixtures <https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev/users.csv>`_.
+| Some users are already configured, the same that are in the `icecat_demo_dev fixtures <https://github.com/akeneo/pim-community-dev/blob/3.1/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev/users.csv>`_.
 | They are defined in the ``docker/sso_authsources.php``.
 
 
@@ -101,7 +106,7 @@ Various errors can happen, those errors could be due to incorrect configuration 
 
 | Regarding the SP, on the SSO configuration page, you have a "download logs" button that will provide a ZIP of ``var/logs/authentication*.log``
 | You can also check these logs via CLI if your PIM installation is on premise or on PAAS.
-|
+| 
 
 Regarding the IdP:
 * For the one provided in docker-compose.yml, you can check logs outputed by the container ``docker logs -f your_sso-idp-server_container-name``

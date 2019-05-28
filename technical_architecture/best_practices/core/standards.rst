@@ -5,7 +5,7 @@ When contributing code to Akeneo PIM, you must follow its coding standards (very
 
 Akeneo follows the standards defined in the `PSR-0`_, `PSR-1`_ and `PSR-2`_ documents.
 
-We use few extra rules defined in our configuration of php-cs-fixer https://github.com/akeneo/pim-community-dev/blob/master/.php_cs.php.
+We use few extra rules defined in our configuration of php-cs-fixer https://github.com/akeneo/pim-community-dev/blob/3.1/.php_cs.php.
 
 Example
 -------
@@ -186,6 +186,6 @@ License
 
 * Some bundles, such as BatchBundle, are released under the MIT license, for these ones, please follow the repository convention.
 
-.. _`PSR-0`: http://www.php-fig.org/psr/psr-0/
-.. _`PSR-1`: http://www.php-fig.org/psr/psr-1/
-.. _`PSR-2`: http://www.php-fig.org/psr/psr-2/
+.. _`PSR-0`: https://www.php-fig.org/psr/psr-0/
+.. _`PSR-1`: https://www.php-fig.org/psr/psr-1/
+.. _`PSR-2`: https://www.php-fig.org/psr/psr-2/

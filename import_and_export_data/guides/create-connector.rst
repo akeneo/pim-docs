@@ -160,8 +160,8 @@ There are actually two forms for each job: one for edit mode and one for view mo
 
 For our form we'll need to copy:
 
-- ``vendor/akeneo/pim-community-dev/src/Pim/Bundle/EnrichBundle/Resources/config/form_extensions/job_instance/csv_product_export_edit.yml`` to ``src/Acme/Bundle/NotifyConnectorBundle/Resources/config/form_extensions/csv_product_export_notify_edit.yml``
-- ``vendor/akeneo/pim-community-dev/src/Pim/Bundle/EnrichBundle/Resources/config/form_extensions/job_instance/csv_product_export_show.yml`` to ``src/Acme/Bundle/NotifyConnectorBundle/Resources/config/form_extensions/csv_product_export_notify_show.yml``
+- ``vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/config/form_extensions/job_instance/csv_product_export_edit.yml`` to ``src/Acme/Bundle/NotifyConnectorBundle/Resources/config/form_extensions/csv_product_export_notify_edit.yml``
+- ``vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/config/form_extensions/job_instance/csv_product_export_show.yml`` to ``src/Acme/Bundle/NotifyConnectorBundle/Resources/config/form_extensions/csv_product_export_notify_show.yml``
 
 Now replace all occurrence of ``csv-product-export`` in these files by, let's say, ``csv-product-export-notify``.
 Indeed, each key in form configuration files must be unique across the whole application.
