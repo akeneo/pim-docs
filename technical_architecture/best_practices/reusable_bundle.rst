@@ -50,7 +50,8 @@ You can find some configuration examples on our `Akeneo-Labs`_ projects (`scruti
 
 .. _Single Responsibility principle: https://en.wikipedia.org/wiki/Single_responsibility_principle
 .. _SOLID principles: https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)
-.. _PhpSpec: http://phpspec.readthedocs.io/en/stable/
+.. _PMD: https://github.com/phpmd/phpmd/
+.. _PhpSpec: https://phpspec.readthedocs.io/en/stable/
 .. _Behat: http://docs.behat.org/en/latest/
 .. _Travis: https://travis-ci.org/
 .. _Scrutinizer: https://scrutinizer-ci.com/
