@@ -23,7 +23,7 @@ For typo / quick fixes you can directly submit a `PullRequest`_.
 
 To test the rendering of the documentation you can follow this `HowTo`_.
 
-.. _HowTo: https://github.com/akeneo/pim-docs/blob/3.1/README.md
+.. _HowTo: https://github.com/akeneo/pim-docs/blob/master/README.md
 
 Once your Pull Request is merged, don't hesitate to claim your badge "Core contributor" on `Badger platform <http://badger.akeneo.com/login/>`_!
 
