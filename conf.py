@@ -69,6 +69,12 @@ html_context = {
         'https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css',
         '_static/css/akeneo.css',
     ],
+    'script_files': [
+        '_static/jquery.js',
+        '_static/underscore.js',
+        '_static/doctools.js',
+        '_static/js/versions.js'
+    ],
     'display_github': True,
     'github_user': 'akeneo',
     'github_repo': 'pim-docs',
