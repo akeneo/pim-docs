@@ -56,7 +56,7 @@ copyright = u'2013-'+ current_year +', Akeneo SAS'
 # built documents.
 #
 # The short X.Y version.
-version = os.getenv('PIM_VERSION', '1.7')
+version = '1.7'
 
 # Warning: These versions will be deleted on documentation deploy.
 versions = os.getenv('PIM_VERSIONS', 'master')
@@ -65,6 +65,12 @@ html_context = {
     'css_files': [
         'https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css',
         '_static/css/akeneo.css',
+    ],
+    'script_files': [
+        '_static/jquery.js',
+        '_static/underscore.js',
+        '_static/doctools.js',
+        '_static/js/versions.js'
     ],
     'display_github': True,
     'github_user': 'akeneo',
