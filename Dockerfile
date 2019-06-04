@@ -4,7 +4,8 @@ WORKDIR /home/akeneo/pim-docs/
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Create environment for build with php, python, mysql and composer
-RUN apt-get update && apt-get upgrade -y && \
+RUN apt-get update && apt-get install -y procps && \
+    apt-get update -y && \
     apt-get install -y --no-install-recommends wget lsb-release apt-transport-https ca-certificates gnupg unzip \
         python python-setuptools ssh rsync && \
     #
