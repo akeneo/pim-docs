@@ -1,3 +1,6 @@
+<script type="text/javascript">
+  updateVersions();
+</script>
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     <span class="fa fa-book"> {{ project }}</span>
@@ -5,8 +8,9 @@
     <span class="fa fa-caret-down"></span>
   </span>
   <div class="rst-other-versions">
-    <dl>
+    <dl id="versions">
       <dt>Versions</dt>
+      <!-- This will be dropped if a '/versions.json' is found -->
       {% for version in versions %}
         <dd><a href="/{{ version|e }}/index.html">{{ version|e }}</a></dd>
       {% endfor %}
