@@ -5,7 +5,7 @@ Akeneo maintains its own Docker images in a `dedicated repository <https://githu
 
 .. warning::
 
-   These images are built for development and testing purposes only, and are not intended for production.
+   These images are built for development and testing purposes only and are not intended for production.
 
 .. note::
 
@@ -35,7 +35,7 @@ Setting up your host user
 The PIM is shared with the containers as `a volume <https://docs.docker.com/engine/admin/volumes/volumes/>`_.
 The *fpm* and *node* containers will have write access to the PIM folder, and they will do so through their respective users: ``docker`` for *fpm* and ``node`` for *node*.
 
-These users UID and GID are both 1000:1000, so on Linux hosts **it is mandatory that the user of your host machine has 1000:1000 as UID and GID too**, otherwise you'll end up with a non working PIM.
+These users UID and GID are both 1000:1000, so on Linux hosts **it is mandatory that the user of your host machine has 1000:1000 as UID and GID too**, otherwise you'll end up with a non-working PIM.
 
 You won't face this problem on Mac OS and Windows hosts, as those systems use a VM between the host and Docker, which already operates with appropriate UID/GID.
 
@@ -65,7 +65,7 @@ This is achieved by `bind mounting <https://docs.docker.com/storage/bind-mounts/
        environment:
          YARN_CACHE_FOLDER: '/home/node/.yarn-cache' # Declare where the Yarn cache folder will be IN THE CONTAINER
        volumes:
-         - ~/.cache/yarn:/home/node/.yarn-cache      # Bind mount the Yarn cache folder of your host machine with the one of the Node container
+         - ~/.cache/yarn:/home/node/.yarn-cache      # Bind mount the Yarn cache folder of your host machine with the one of the Node containers.
 
 You need to be sure these folders exist **on your host** before launching the containers. If not, Docker will create them for you, but with root permissions, preventing the containers from accessing it. As a result, dependencies installation will fail.
 
@@ -135,10 +135,10 @@ Here is a ``docker-compose.override.yml`` example:
 Be aware that it is currently not possible to replace array values in the override. You can read more here: https://docs.docker.com/compose/extends/#adding-and-overriding-configuration.
 
 This is why the mapping of the Apache port is already present in `docker-compose.yml <https://github.com/akeneo/pim-community-dev/blob/3.0/docker-compose.yml#L46>`_, as this mapping is mandatory to access the PIM from a web browser.
-It is configurable through an environment variable, wo you will not have any conflicts having several PIM running in parallel. Just copy the file ```.env.dist``` as ```.env``` and set the port you want to access Apache on.
+It is configurable through an environment variable, so you will not have any conflicts having several PIM running in parallel. Just copy the file ``.env.dist`` as ``.env`` and set the port you want to access Apache on.
 
 If you intend to run behat tests, create on your host a folder ``/tmp/behat/screenshots`` (or anywhere else according to your compose file) with full read/write access to your user.
-Otherwise ``docker-compose`` will create it, but only with root accesses. Then failing behats will be unable to create reports and screenshots.
+Otherwise, ``docker-compose`` will create it, but only with root accesses. Then failing behats will be unable to create reports and screenshots.
 
 
 Run and stop the containers
@@ -296,7 +296,7 @@ To launch a daemon, run the following command:
 
    docker-compose exec fpm bin/console --env=prod akeneo:batch:job-queue-consumer-daemon
 
-If you want to launch the daemon in background:
+If you want to launch the daemon in the background:
 
 .. code-block:: bash
 
@@ -314,7 +314,7 @@ If you want to execute only one job:
 
 .. warning::
 
-   Before stopping or destroying your containers, remember to first stop this daemon if you launched it in background, or you'll end up with a stuck FPM container, and will need to completely restart Docker.
+   Before stopping or destroying your containers, remember to first stop this daemon if you launched it in the background, or you'll end up with a stuck FPM container, and will need to completely restart Docker.
 
    .. code-block:: bash
 
@@ -374,9 +374,9 @@ What if?
 I want to see my tests running
 ******************************
 
-The docker image ``selenium/standalone-firefox-debug`` comes with a VNC server in it. You need a VNC client, and to connect to ``localhost:5910``. The VNC password is : `secret`.
+The docker image ``selenium/standalone-firefox-debug`` comes with a VNC server in it. You need a VNC client, and to connect to ``localhost:5910``. The VNC password is `secret`.
 
-You will then be able to see you browser and your tests running in it!
+You will then be able to see your browser and your tests running in it!
 
 
 I never want to see my tests running
