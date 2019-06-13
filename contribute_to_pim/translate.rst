@@ -33,17 +33,17 @@ If you have access to the code of your application, you can however set your use
 
 Start by downloading the complete archive of all the managed translations in Crowdin `here <https://crowdin.com/backend/download/project/akeneo.zip>`_ and extract it.
 
-Then, copy the translations in the right folders. For example, if you are using 3.0 version:
+Then, copy the translations in the right folders. For example, if you are using 3.1 version:
 
 .. code-block:: bash
 
-    cp -r crowdin_archive/3.0/Community/* your_app/vendor/akeneo/pim-community-dev/
+    cp -r crowdin_archive/3.1/Community/* your_app/vendor/akeneo/pim-community-dev/
 
 If you use the Enterprise Edition, run this command too:
 
 .. code-block:: bash
 
-    cp -r crowdin_archive/3.0/Enterprise/* your_app/vendor/akeneo/pim-enterprise-dev/
+    cp -r crowdin_archive/3.1/Enterprise/* your_app/vendor/akeneo/pim-enterprise-dev/
 
 Then, update the parameters of `your_app/vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/config/locale_provider.yml` to change the minimum percentage and add your new language (here, 10% and Hungarian):
 
