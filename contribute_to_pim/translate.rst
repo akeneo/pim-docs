@@ -5,31 +5,60 @@ We use `Crowdin`_ to translate the PIM.
 
 .. image:: ./crowdin-logo.png
 
-How to translate
-----------------
+How to translate?
+-----------------
 
-Don't hesitate to create an account and begin to translate on: https://crowdin.com/project/akeneo
+You have to create an account and begin to translate in your favorite language on `Crowdin`_.
+You need a proofreading permission to validate the strings, so your translation will be included in the PIM.
+Each language with more than 80% of valid translations are automatically translated with `Nelson`_ each week, and will be available in the next patch.
+You will be able to claim your badge "El Translator" on `Badger platform <http://badger.akeneo.com/login/>`_!
 
-If your language is not enabled, don't hesitate to ask, we'll enable it with pleasure.
+Your language is not available on Crowdin?
+------------------------------------------
 
-If you want to become a proofreader and be able to validate translations for a language, don't hesitate to ask.
+As Akeneo PIM is Open Source, we will be glad to welcome new languages for our application.
+Don't hesitate to ask to a `Crowdin`_ administrator to add your language to the available languages list of Crowdin.
+We remind you that only languages validated in more than 80% will be synchronized in Akeneo PIM.
 
-Don't hesitate to claim your badge "El Translator" on `Badger platform <http://badger.akeneo.com/login/>`_!
+How to use a partially translated language in your application?
+---------------------------------------------------------------
 
-How it works
-------------
+.. note::
 
-When a new translation key is added in the code of the PIM, this key is sent to Crowdin.
+    We strongly encourage you to use the default way: validate translations in more than 80% and wait for the next patch.
+    Indeed, a partially translated PIM will contain a lot of non translated strings in many places of your application and can lead to a very bad user experience.
 
-Keys are translated by contributors, then validated by proof readers.
+By default, Akeneo PIM only displays and synchronizes languages validated in more than 80%.
+If you have access to the code of your application, you can however set your user interface with another language:
 
-Each week, we download validated translations from Crowdin to update the PIM.
+Start by downloading the complete archive of all the managed translations in Crowdin `here <https://crowdin.com/backend/download/project/akeneo.zip>`_ and extract it.
 
-We deliver the new translations in the next patch for each version.
+Then, copy the translations in the right folders. For example, if you are using 3.0 version:
 
-This workflow is handled by our open source tool Nelson: https://github.com/akeneo/nelson
+.. code-block:: bash
 
-.. image:: ./nelson.png
+    cp -r crowdin_archive/3.0/Community/* your_app/vendor/akeneo/pim-community-dev/
+
+If you use the Enterprise Edition, run this command too:
+
+.. code-block:: bash
+
+    cp -r crowdin_archive/3.0/Enterprise/* your_app/vendor/akeneo/pim-enterprise-dev/
+
+Then, update the parameters of `your_app/vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/config/locale_provider.yml` to change the minimum percentage and add your new language (here, 10% and Hungarian):
+
+.. code-block:: yaml
+
+    pim_localization.provider.ui_locale.min_percentage: 0.1
+    pim_localization.provider.ui_locale.locale_codes:   ['en_US', 'fr_FR', ... 'hu_HU']
+
+Then, rebuild your front, and you will see the new languages available!
+
+.. code-block:: bash
+
+    rm -rf var/cache/* web/bundles web/dist
+    bin/console --env=prod pim:installer:assets --symlink --clean
+    yarn run webpack
 
 .. _Crowdin: https://crowdin.com/project/akeneo
-
+.. _Nelson: https://github.com/akeneo/nelson
