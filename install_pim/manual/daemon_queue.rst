@@ -37,7 +37,7 @@ Here is an example with a few bulk actions:
 .. code-block:: bash
     :linenos:
 
-    $ /path/to/php /path/to/your/pim/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod -j update_product_value -p add_product_value -p remove_product_value	
+    $ /path/to/php /path/to/your/pim/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod -j update_product_value -j add_product_value -j remove_product_value	
 
 Logs
 ----
