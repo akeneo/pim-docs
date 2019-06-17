@@ -264,7 +264,7 @@ To interface it with the rest of the PIM, your Record Value needs to extend the 
 
 This is the purpose of this section: provide a denormalizer capable of creating your custom Record Value extending the ValueData.
 
-.. code-block:: javascript
+.. code-block:: text
 
     /**
      * ## Import section
@@ -330,7 +330,7 @@ This is the purpose of this section: provide a denormalizer capable of creating 
 
 Now that we have our custom Record Value model we can now create the React component to be able to render a user interface in the Record Form and dispatch events to the application (https://reactjs.org/docs/react-component.html).
 
-.. code-block:: javascript
+.. code-block:: text
 
     import * as React from 'react';
     import Value from 'akeneoreferenceentity/domain/model/record/value';
@@ -405,7 +405,7 @@ Now that we have our custom Record Value model we can now create the React compo
 
 The last part we need to do is to create the React component to be able to render a cell in the Record Grid.
 
-.. code-block:: javascript
+.. code-block:: text
 
     import {NormalizedValue} from 'akeneoreferenceentity/domain/model/record/value';
     import {CellView} from 'akeneoreferenceentity/application/configuration/value';
@@ -457,7 +457,6 @@ API Part of The New Record Value
 --------------------------------
 
 1) Json schema validator of a simple metric value when creating or updating a record
-
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In order to validate the format of the value when creating or editing a record, we have to create a Json Schema validator for the simple metric value.
 
