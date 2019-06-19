@@ -528,3 +528,171 @@ To be able to have everything working, we need to register our custom attribute 
     Note that in this tutorial, we don't have any custom property for this attribute, we'll cover this point in `another tutorial`_.
 
 .. _another tutorial: add_custom_property_to_your_custom_attribute_type.html
+
+
+API Part of The New Attribute Type
+---------------------------------------
+
+1) Json schema validator when creating an attribute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To be able to validate an attribute when creating it through the API, you have to create a Json Schema validator.
+
+
+.. code-block:: php
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace Acme\CustomBundle\Attribute\JsonSchema;
+
+    use JsonSchema\Validator;
+
+    class SimpleMetricAttributeCreationValidator implements AttributeValidatorInterface
+    {
+        private const API_SIMPLE_METRIC_ATTRIBUTE_TYPE = 'simple_metric';
+
+        public function validate(array $normalizedAttribute): array
+        {
+            $record = Validator::arrayToObjectRecursive($normalizedAttribute);
+            $validator = new Validator();
+            $validator->validate($record, $this->getJsonSchema());
+
+            return $validator->getErrors();
+        }
+
+        public function forAttributeTypes(): array
+        {
+            return [self::API_SIMPLE_METRIC_ATTRIBUTE_TYPE];
+        }
+
+        private function getJsonSchema(): array
+        {
+            return [
+                'type' => 'object',
+                'required' => ['code', 'type', 'value_per_locale', 'value_per_channel'],
+                'properties' => [
+                    'code' => [
+                        'type' => ['string'],
+                    ],
+                    'type' => [
+                        'type' => ['string'],
+                    ],
+                    'labels' => [
+                        'type' => 'object',
+                        'patternProperties' => [
+                            '.+' => ['type' => 'string'],
+                        ],
+                    ],
+                    'value_per_locale' => [
+                        'type' => [ 'boolean'],
+                    ],
+                    'value_per_channel' => [
+                        'type' => [ 'boolean'],
+                    ],
+                    'is_required_for_completeness' => [
+                        'type' => [ 'boolean'],
+                    ]
+                ],
+                'additionalProperties' => false,
+            ];
+        }
+    }
+
+
+And to register it:
+
+.. code-block:: yaml
+
+    # src/Acme/CustomBundle/Resources/config/services.yml
+
+    services:
+        acme.infrastructure.connector.api.create.simple_metric_attribute_validator:
+            class: Acme\CustomBundle\Attribute\JsonSchema\SimpleMetricAttributeCreationValidator
+            tags:
+                - { name: akeneo_referenceentity.connector.api.create.attribute_validator }
+
+2) Json schema validator when editing an attribute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The validation of the schema is not the same when editing an attribute through the API. Indeed, some properties are not mandatory.
+So, you will have to create a new Json schema validator.
+
+
+.. code-block:: php
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace Acme\CustomBundle\Attribute\JsonSchema;
+
+    use Akeneo\ReferenceEntity\Domain\Model\Attribute\AbstractAttribute;
+    use Acme\CustomBundle\Attribute\SimpleMetricAttribute;
+    use JsonSchema\Validator;
+
+    class SimpleMetricAttributeEditValidator implements AttributeValidatorInterface
+    {
+        public function validate(array $normalizedAttribute): array
+        {
+            $record = Validator::arrayToObjectRecursive($normalizedAttribute);
+            $validator = new Validator();
+            $validator->validate($record, $this->getJsonSchema());
+
+            return $validator->getErrors();
+        }
+
+        public function support(AbstractAttribute $attribute): bool
+        {
+            return $attribute instanceof SimpleMetricAttribute;
+        }
+
+        private function getJsonSchema(): array
+        {
+            return [
+                'type' => 'object',
+                'required' => ['code'],
+                'properties' => [
+                    'code' => [
+                        'type' => ['string'],
+                    ],
+                    'type' => [
+                        'type' => ['string'],
+                    ],
+                    'labels' => [
+                        'type' => 'object',
+                        'patternProperties' => [
+                            '.+' => ['type' => 'string'],
+                        ],
+                    ],
+                    'value_per_locale' => [
+                        'type' => [ 'boolean'],
+                    ],
+                    'value_per_channel' => [
+                        'type' => [ 'boolean'],
+                    ],
+                    'is_required_for_completeness' => [
+                        'type' => [ 'boolean'],
+                    ],
+                    '_links' => [
+                        'type' => 'object'
+                    ],
+                ],
+                'additionalProperties' => false,
+            ];
+        }
+    }
+
+
+And to register it:
+
+.. code-block:: yaml
+
+    # src/Acme/CustomBundle/Resources/config/services.yml
+
+    services:
+        acme.infrastructure.connector.api.edit.simple_metric_attribute_validator:
+            class: Acme\CustomBundle\Attribute\JsonSchema\SimpleMetricAttributeEditValidator
+            tags:
+                - { name: akeneo_referenceentity.connector.api.edit.attribute_validator }
