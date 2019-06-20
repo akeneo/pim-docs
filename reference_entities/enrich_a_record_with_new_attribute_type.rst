@@ -264,7 +264,7 @@ To interface it with the rest of the PIM, your Record Value needs to extend the 
 
 This is the purpose of this section: provide a denormalizer capable of creating your custom Record Value extending the ValueData.
 
-.. code-block:: javascript
+.. code-block:: text
     :linenos:
 
     /**
@@ -331,7 +331,7 @@ This is the purpose of this section: provide a denormalizer capable of creating 
 
 Now that we have our custom Record Value model we can now create the React component to be able to render a user interface in the Record Form and dispatch events to the application (https://reactjs.org/docs/react-component.html).
 
-.. code-block:: javascript
+.. code-block:: text
     :linenos:
 
     import * as React from 'react';
@@ -407,7 +407,7 @@ Now that we have our custom Record Value model we can now create the React compo
 
 The last part we need to do is to create the React component to be able to render a cell in the Record Grid.
 
-.. code-block:: javascript
+.. code-block:: text
     :linenos:
 
     import {NormalizedValue} from 'akeneoreferenceentity/domain/model/record/value';
@@ -456,3 +456,87 @@ To be able to have everything working, we need to register our custom Record Val
                     view: '@custom/reference-entity/record/simple-metric.tsx'
                     cell: '@custom/reference-entity/record/simple-metric.tsx'
 
+API Part of The New Record Value
+--------------------------------
+
+1) Json schema validator of a simple metric value when creating or updating a record
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In order to validate the format of the value when creating or editing a record, we have to create a Json Schema validator for the simple metric value.
+
+.. code-block:: php
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace Acme\CustomBundle\Record\JsonSchema;
+
+    use Acme\CustomBundle\Attribute\SimpleMetricAttribute;
+    use Akeneo\ReferenceEntity\Infrastructure\Connector\Api\Record\JsonSchema\RecordValueValidatorInterface;
+    use JsonSchema\Validator;
+
+    class SimpleMetricTypeValidator implements RecordValueValidatorInterface
+    {
+        /**
+         * {@inheritdoc}
+         */
+        public function validate(array $normalizedRecord): array
+        {
+            $record = Validator::arrayToObjectRecursive($normalizedRecord);
+            $validator = new Validator();
+            $validator->validate($record, $this->getJsonSchema());
+
+            return $validator->getErrors();
+        }
+
+        public function forAttributeType(): string
+        {
+            return SimpleMetricAttribute::class;
+        }
+
+        private function getJsonSchema(): array
+        {
+            return [
+                'type' => 'object',
+                'properties' => [
+                    'values' => [
+                        'type' => 'object',
+                        'patternProperties' => [
+                            '.+' => [
+                                'type'  => 'array',
+                                'items' => [
+                                    'type' => 'object',
+                                    'properties' => [
+                                        'locale' => [
+                                            'type' => ['string', 'null'],
+                                        ],
+                                        'channel' => [
+                                            'type' => ['string', 'null'],
+                                        ],
+                                        'data' => [
+                                            'type' => ['string', 'null'],
+                                        ],
+                                    ],
+                                    'required' => ['locale', 'channel', 'data'],
+                                    'additionalProperties' => false,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ];
+        }
+    }
+
+
+And to register it:
+
+.. code-block:: yaml
+
+    # src/Acme/CustomBundle/Resources/config/services.yml
+
+    services:
+        acme.infrastructure.connector.api.record_value_simple_metric_type_validator:
+            class: Acme\CustomBundle\Record\JsonSchema\SimpleMetricTypeValidator
+            tags:
+                - { name: akeneo_referenceentity.connector.api.record_value_validator }

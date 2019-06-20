@@ -236,11 +236,16 @@ Firstly, you have to create your custom type by inheriting the CategoryType clas
 
 Then, you have to override the service definition of your form:
 
-.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
-    :language: yaml
-    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
-    :lines: 1-2
-    :linenos:
+.. code-block:: yaml
+
+    # /src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
+    pim_enrich.form.type.category:
+        class: 'Acme\Bundle\EnrichBundle\Form\Type\CategoryType'
+        arguments:
+            - '%pim_catalog.entity.category.class%'
+            - '%pim_catalog.entity.category_translation.class%'
+        tags:
+            - { name: form.type, alias: pim_category }
 
 Then, add this new file to your dependency injection extension:
 
@@ -252,6 +257,25 @@ Then, add this new file to your dependency injection extension:
         /** ... **/
         $loader->load('form_types.yml');
     }
+
+You also need to update the controller dependency injection:
+
+.. code-block:: yaml
+
+    # /src/Akeneo/Pim/Enrichment/Bundle/Resources/config/controllers.yml
+    pim_enrich.controller.category_tree.product:
+        class: '%pim_enrich.controller.category_tree.class%'
+        arguments:
+            - '@event_dispatcher'
+            - '@pim_user.context.user'
+            - '@pim_catalog.saver.category'
+            - '@pim_catalog.remover.category'
+            - '@pim_catalog.factory.category'
+            - '@pim_catalog.repository.category'
+            - '@oro_security.security_facade'
+            - { related_entity: product, form_type: 'Acme\Bundle\EnrichBundle\Form\Type\CategoryType', acl: pim_enrich_product, route: pim_enrich }
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
 
 Then, don't forget to add your new field to the twig template:
 
