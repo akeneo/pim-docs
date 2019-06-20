@@ -10,8 +10,8 @@ When our maintenance team works on issues, they take extreme care to avoid any b
 Akeneo PIM CE changelog is available on our GitHub repository:
 
 * Go to our `Community Repository <https://github.com/akeneo/pim-community-dev/>`_.
-* Select your branch in the drop down menu, for instance select 3.0 branch.
-* Then scroll down the page, and select the desired Changelog in the list, for instance `Changelog 3.0 version <https://github.com/akeneo/pim-community-dev/blob/3.0/CHANGELOG-3.0.md>`_.
+* Select your branch in the drop down menu, for instance select 3.1 branch.
+* Then scroll down the page, and select the desired Changelog in the list, for instance `Changelog 3.1 version <https://github.com/akeneo/pim-community-dev/blob/3.1/CHANGELOG-3.1.md>`_.
 
 Akeneo PIM EE changelog is available in your last archive:
 

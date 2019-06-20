@@ -37,9 +37,13 @@ You can also provide a custom configuration (in JSON format) for the job:
     
 .. tip::   
 
-    Don’t forget to add `--username` if you want to see the job in the history of a given user.
-    Example for user ‘admin’:
-    `bin/console akeneo:batch:publish-job-to-queue csv_product_import --env=prod --username admin`
+    Add --username in the job if you want to see it in the User Interface (under the Process tracker page). User permissions are applied on this page: a user can only see the jobs he executed. Adding the username in the job, for instance ‘admin’ will allow the user ‘admin’ to see the cron tasks executed with its username. Below an example of a command using the username ‘admin’:
+    
+.. code-block:: bash
+    :linenos:
+    
+    bin/console akeneo:batch:publish-job-to-queue csv_product_import --env=prod --username admin
+
 
 Scheduling the jobs
 -------------------
