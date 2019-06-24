@@ -19,7 +19,7 @@ Browsers
 --------
 
 +------------------------+-------------------------+
-| Supported Browsers     | Chrome 30+, Firefox 29+ |
+| Supported Browsers     | Chrome 30+, Firefox 47+ |
 +------------------------+-------------------------+
 
 
