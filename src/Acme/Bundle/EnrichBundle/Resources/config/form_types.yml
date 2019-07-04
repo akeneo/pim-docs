@@ -1,5 +1,4 @@
 parameters:
-    pim_enrich.form.type.category.class: Acme\Bundle\EnrichBundle\Form\Type\CategoryType
     pim_enrich.view_element.category.tab.property.template: 'AcmeEnrichBundle:CategoryTree:Tab/property.html.twig'
 
 services:

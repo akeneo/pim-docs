@@ -4,10 +4,6 @@ How to upgrade to a major version?
 We release a major version each year.
 These new major versions bring new features and larger changes to answer clients growing needs.
 
-.. note::
-
-    To check the PIM version release date, check our `article <https://www.akeneo.com/knowledge-base/how-many-pim-versions-are-maintained-by-akeneo/>`_
-
 Migrate from 1.7 to 2.0
 ------------------------------
 
