@@ -5,7 +5,7 @@ A product catalog is unique to one's need. It is configured with a custom number
 
 This chapter explains how we audit the application's scalability, it lists the known issues and possible improvements as well as the bottlenecks already encountered by our partners with the PIM. It also shows best practices you should implement to ensure the success of your project.
 
-We improve the scalability in each new minor version. If you encounter any new limitation, please do not hesitate to contact us through `the forum <https://www.akeneo.com/forums>`_. We'll give you details about the roadmap for specific improvements and help you to find a suitable solution for your project.
+We improve the scalability in each new minor version.
 
 .. warning::
 

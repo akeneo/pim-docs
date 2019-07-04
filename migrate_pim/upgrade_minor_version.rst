@@ -9,10 +9,6 @@ We release a minor version 3 times a year:
 
 These versions bring new features.
 
-.. note::
-
-    To check the PIM version release date, check our `article <https://www.akeneo.com/knowledge-base/how-many-pim-versions-are-maintained-by-akeneo/>`_
-
 Depending on these features and on the custom code you've added in your project, the migration can be more or less straightforward.
 
 Each release is provided with a migration guide and a set of scripts to automate it as much as possible.
