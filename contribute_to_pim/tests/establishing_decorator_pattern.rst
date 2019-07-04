@@ -154,7 +154,7 @@ The current page is `Context\\Page\\Role\\Edit
 When you call *Pim\\Behat\\Context\\NavigationContext->getCurrentPage()* the method will match "Role edit" to
 *return new Context\\Page\\Role\\Edit()*. That's why all of our pages are located in a folder named after the name of
 the Entity. In this folder, each action has its dedicated page such as Index.php, Creation.php, Edit.php as you can see
-in the `Role folder <https://github.com/akeneo/pim-community-dev/blob/3.1/tests/legacy/features/Context/Page/Role>`_ for example.
+in the `Role folder <https://github.com/akeneo/pim-community-dev/tree/3.1/tests/legacy/features/Context/Page/Role>`_ for example.
 
 .. image:: images/edit.png
 
