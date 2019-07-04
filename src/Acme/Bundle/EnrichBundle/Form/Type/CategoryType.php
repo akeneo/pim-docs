@@ -2,6 +2,7 @@
 
 namespace Acme\Bundle\EnrichBundle\Form\Type;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 use Akeneo\Pim\Enrichment\Bundle\Form\Type\CategoryType as BaseCategoryType;
@@ -18,7 +19,7 @@ class CategoryType extends BaseCategoryType
     {
         parent::buildForm($builder, $options);
 
-        $builder->add('description', 'text',
+        $builder->add('description', TextType::class,
             [
                 'required' => true
             ]

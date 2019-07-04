@@ -2,6 +2,7 @@
 
 namespace Acme\Bundle\EnrichBundle\Form\Type;
 
+use Akeneo\Platform\Bundle\UIBundle\Form\Type\TranslatableFieldType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -19,7 +20,7 @@ class ColorType extends AbstractType
             ->add('code')
             ->add(
                 'label',
-                'pim_translatable_field',
+                TranslatableFieldType::class,
                 array(
                     'field'             => 'label',
                     'translation_class' => 'Acme\Bundle\CatalogBundle\Entity\ColorTranslation',
