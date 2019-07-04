@@ -6,14 +6,7 @@ Bug qualification is a very important step. The more relevant information you wi
 .. warning::
 
     * If you are an **Enterprise Edition Client**, be aware that the bug qualification is required when you submit a ticket on our `helpdesk <http://helpdesk.akeneo.com/>`_.
-    * This step is important as well if you are a **Community Edition user** and if you decide to share your issue on our `Slack user group <https://akeneopim-ug.slack.com/>`_, our `GitHub repository <https://github.com/akeneo/pim-community-dev/>`_, or our `forum <https://www.akeneo.com/forums/>`_.
-
-Prerequisite
-------------
-
-.. warning::
-
-    As a prerequisite, make sure you completed all the steps described in our :doc:`/maintain_pim/first_aid_kit/index`.
+    * This step is important as well if you are a **Community Edition user** and if you decide to share your issue on our `Slack user group <https://akeneopim-ug.slack.com/>`_ or our `GitHub repository <https://github.com/akeneo/pim-community-dev/>`_.
 
 Frontend bugs
 -------------

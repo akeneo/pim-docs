@@ -19,7 +19,7 @@ Before contributing on a new entry, please begin by creating an `Issue`_ on GitH
 
 For typo / quick fixes you can directly submit a `PullRequest`_.
 
-.. _PullRequest: https://help.github.com/articles/using-pull-requests/
+.. _PullRequest: https://help.github.com/en/articles/about-pull-requests
 
 To test the rendering of the documentation you can follow this `HowTo`_.
 

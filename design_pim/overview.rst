@@ -122,7 +122,7 @@ You can also use the watch command which will recompile this file each time you 
 Summary
 +++++++
 
-We just created our first module and made it available for other parts of the application. You can now use it by requirering ``my_locale_logger``. We cannot use it now but we will see that in a minute.
+We just created our first module and made it available for other parts of the application. You can now use it by requiring ``my_locale_logger``. We cannot use it now but we will see that in a minute.
 
 Create our first Backbone view
 ==============================
