@@ -64,7 +64,7 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     #Ansible: pimee:project:recalculate
     0 2 * * * pimee:project:recalculate --env=prod
     #Ansible: pimee:franklin-insights:fetch-products
-    30 */1 * * * pimee:franklin-insights:fetch-products --env=prod
+    0,30 * * * * pimee:franklin-insights:fetch-products --env=prod
     #Ansible: akeneo:reference-entity:refresh-records --all
     0 23 * * * akeneo:reference-entity:refresh-records --all --env=prod
 
@@ -125,7 +125,7 @@ Enterprise Edition specific crontab:
 +----------------------------------------------------------+-------------------+-------------------------------------------+
 | pimee:project:recalculate --env=prod                     | 0 2 \* \* \*      | At 02:00 AM                               |
 +----------------------------------------------------------+-------------------+-------------------------------------------+
-| pimee:franklin-insights:fetch-products --env=prod        | 30 \*/1 \* \* \*  | At 30 minutes past the hour, every 1 hour |
+| pimee:franklin-insights:fetch-products --env=prod        | 0,30 \* \* \* \*  | Every 30 minutes                          |
 +----------------------------------------------------------+-------------------+-------------------------------------------+
 | akeneo:reference-entity:refresh-records --all --env=prod | 0 23 \* \* \*     | At 11:00 PM                               |
 +----------------------------------------------------------+-------------------+-------------------------------------------+
