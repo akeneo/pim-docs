@@ -4,14 +4,15 @@ How to upgrade to a major version?
 We release a major version each year.
 These new major versions bring new features and larger changes to answer clients growing needs.
 
-Migrate from 1.7 to 2.0
+Migrate from 1.7 to 2.X
 ------------------------------
 
-To migrate from 1.7 to 2.0, we recommend the use of our brand new migration tool `Transporteo`_.
+To migrate from 1.7 to 2.X.X you need to install version 2.0.X first.
+Then we recomend using the migration tool `Transporteo`_.
 
 .. _Transporteo: https://github.com/akeneo/transporteo
 
-We're continuously improving Transporteo to cover more and more use cases and automate more and more the migrations.
+Then it is necessary to do the progressively upgrade process to each 2.X version.
 
 Migrate from 2.3 to 3.0
 ------------------------------
