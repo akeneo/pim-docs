@@ -1,6 +1,6 @@
 services:
     acme_notifyconnector.provider.form.job_instance:
-        class: '%pim_enrich.provider.form.job_instance.class%'
+        class: 'Akeneo\Platform\Bundle\ImportExportBundle\Provider\Form\JobInstanceFormProvider'
         arguments:
             -
                 csv_product_export_notify: pim-job-instance-csv-product-export-notify
