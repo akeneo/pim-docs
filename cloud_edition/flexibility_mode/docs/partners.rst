@@ -1,8 +1,7 @@
 Partners
 ========
 
-| On Flexiblity Mode, you have access to custom aliases that
-| allow you to run a limit set of commands with root privileges.
+On Flexiblity Mode, you have access to custom aliases that allow you to run a limit set of commands with root privileges.
 
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 | Alias                      | Argument                 | Action                                                                                                                                           |
@@ -15,7 +14,7 @@ Partners
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``partners_clear_cache``   |                          | Clear PIM cache properly. Stops php-fpm and job consumers, deletes PIM cache folder, warms up PIM cache and restarts php-fpm and job consumers   |
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``partners_systemctl``     | ``status|start|restart`` | SHow status or start/restart job consumers, see below for more details.                                                                          |
+| ``partners_systemctl``     | ``status|start|restart`` | Show status or start/restart job consumers, see below for more details.                                                                          |
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Queue management
@@ -38,11 +37,11 @@ operations.
 
 Configurations of daemons are stored under `/home/akeneo/.systemd/pim_job_queue`.
 
-Each text file contains the list of supported jobs for a given queue. Ex:
+Each text file contains the list of supported jobs for a given queue.
 
-In file `/home/akeneo/.systemd/pim_job_queue/1.conf`:
+Exemple in file `/home/akeneo/.systemd/pim_job_queue/1.conf`:
 
-.. code-block::
+.. code-block:: bash
    :linenos:
 
    csv_product_export
@@ -62,7 +61,7 @@ The name of the file is the **daemon identifier**. Make it simple and use only i
 
    # See real time logs for daemon #3
    journalctl --unit=pim_job_queue@3 -f
-```
+
 
 Please note that if **no configuration** file exist for a given daemon identifier,
 the daemon will consider it has to consume **any** elements in the queue. This is the default
