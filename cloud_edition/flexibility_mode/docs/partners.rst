@@ -62,6 +62,7 @@ The name of the file is the **daemon identifier**. Make it simple and use only i
 
    # See real time logs for daemon #3
    journalctl --unit=pim_job_queue@3 -f
+```
 
 Please note that if **no configuration** file exist for a given daemon identifier,
 the daemon will consider it has to consume **any** elements in the queue. This is the default
