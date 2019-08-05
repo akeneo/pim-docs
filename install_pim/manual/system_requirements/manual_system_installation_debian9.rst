@@ -27,6 +27,8 @@ It's also recommended to disable all non desired tools, such as MySQL Workbench 
     # apt install lsb-release apt-transport-https ca-certificates
     # wget -O mysql-apt-config.deb https://dev.mysql.com/get/mysql-apt-config_0.8.7-1_all.deb
     # dpkg -i mysql-apt-config.deb
+    # apt install dirmngr
+    # apt-key adv --keyserver keys.gnupg.net --recv-keys 8C718D3B5072E1F5
 
 Now is the time to install what has been configured in the step before:
 
@@ -113,7 +115,7 @@ Node
 
 .. code-block:: bash
 
-    # wget -O -  https://deb.nodesource.com/setup_8.x | bash -
+    # wget -O - https://deb.nodesource.com/setup_8.x | bash -
     # apt install -y nodejs
 
 Yarn
