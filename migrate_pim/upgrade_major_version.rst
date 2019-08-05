@@ -5,7 +5,7 @@ We release a major version each year.
 These new major versions bring new features and larger changes to answer clients growing needs.
 
 Migrate from 1.7 to 2.0
-------------------------------
+-----------------------
 
 To migrate from 1.7 to 2.0, we recommend the use of our brand new migration tool `Transporteo`_.
 
@@ -14,7 +14,7 @@ To migrate from 1.7 to 2.0, we recommend the use of our brand new migration tool
 We're continuously improving Transporteo to cover more and more use cases and automate more and more the migrations.
 
 Migrate from 2.3 to 3.1
-------------------------------
+-----------------------
 
 To migrate from 2.0 to 3.1 version, it is necessary to do the progressively upgrade process to each 2.X version.
 

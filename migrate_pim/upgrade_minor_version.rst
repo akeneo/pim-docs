@@ -9,13 +9,6 @@ We release a minor version 3 times a year:
 
 These versions bring new features.
 
-<<<<<<< HEAD
-=======
-.. note::
-
-    To check the PIM changelogs and release dates, follow this `link <https://www.akeneo.com/release-notes/>`_
-
->>>>>>> 96318bc... Fix broken link to release notes
 Depending on these features and on the custom code you've added in your project, the migration can be more or less straightforward.
 
 Each release is provided with a migration guide and a set of scripts to automate it as much as possible.
