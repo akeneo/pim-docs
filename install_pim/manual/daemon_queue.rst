@@ -111,8 +111,8 @@ Configuration file
 
 Create `/etc/systemd/system/pim_job_queue@.service`:
 
-.. code-block:: txt
-    :lineos:
+.. code-block:: ini
+    :linenos:
 
     [Unit]
     Description=Akeneo PIM Job Queue Service (#%i)
@@ -120,8 +120,8 @@ Create `/etc/systemd/system/pim_job_queue@.service`:
     [Service]
     Type=service
     User=akeneo
-    WorkingDirectory={{ pim_root_dir }}
-    ExecStart={{ pim_root_dir }}/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod
+    WorkingDirectory=/path/to/akeneo/
+    ExecStart=/path/to/akeneo/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod
     After=apache2.service
     Restart=always
 
@@ -132,7 +132,7 @@ Manage the services
 *******************
 
 .. code-block:: bash
-    :lineos:
+    :linenos:
 
     # use * if you want the operation to apply on all services.
     systemctl [start|stop|restart|status] pim_job_queue@*
@@ -152,16 +152,16 @@ Manage services by non-root users
 
 sytemctl is not useable by non-privileged users, if you want to allow a user `akeneo` for instance:
 
-.. code-blocks:: bash
-    :lineos:
+.. code-block:: bash
+    :linenos:
 
     apt install sudo
     visudo
 
 You can then type in the following lines, depending on what commands you want to allow.
 
-.. code-blocks:: bash
-    :lineos:
+.. code-block:: bash
+    :linenos:
 
     akeneo ALL=(root) NOPASSWD: /bin/systemctl start pim_job_queue@*
     akeneo ALL=(root) NOPASSWD: /bin/systemctl stop pim_job_queue@*
