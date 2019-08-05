@@ -55,10 +55,13 @@ Now we can apply many property updates on a product.
 .. code-block:: php
 
     $fieldUpdates = [
-        "sku"         => [["locale" => null, "scope" => null, "data" => "MySku"]],
-        "description" => [["locale" => "en_US", "scope" => "mobile", "data" => "My description"]]
-        "categories"  => ["tshirt", "promo"],
+        "values" => [
+            "sku"         => [["locale" => null, "scope" => null, "data" => "MySku"]],
+            "description" => [["locale" => "en_US", "scope" => "mobile", "data" => "My description"]]
+        ],
+        "categories"  => ["tshirt", "promo"]
     ];
+
     $this->updater->update($product, $fieldUpdates);
 
 .. note::
@@ -75,7 +78,7 @@ It's available as a service, you can fetch it from the container.
 
 .. code-block:: php
 
-    $propertySetter = $this->getContainer()->get('pim_catalog.updater.product_property_setter');
+    $propertySetter = $this->getContainer()->get('pim_catalog.updater.property_setter');
 
 Use the PropertySetterInterface
 -------------------------------

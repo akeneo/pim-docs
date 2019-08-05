@@ -117,7 +117,7 @@ You can also use the watch command which will recompile this file each time you 
 Summary
 +++++++
 
-We just created our first module and made it available for other parts of the application. You can now use it by requirering ``my_locale_logger``. We cannot use it know but we will see that in a minute.
+We just created our first module and made it available for other parts of the application. You can now use it by requiring ``my_locale_logger``. We cannot use it now but we will see that in a minute.
 
 Create our first Backbone view
 ==============================
@@ -178,7 +178,7 @@ In this code we do three things:
 - We declare an event listener to listen to the click events on our view to call the `clicked` method
 - The clicked method will log the DOM click event each time a click is triggered on our view.
 
-You can find more information about Backbone views on the `dedicated documentation <http://backbonejs.org/#View>`_
+You can find more information about Backbone views on the `dedicated documentation <https://backbonejs.org/#View>`_
 
 
 Register it
@@ -254,7 +254,7 @@ Now that we created our form extension we need to register it:
             parent: pim-product-edit-form-meta # The parent of your extension (the meta section of the product edit form in this case)
 
 
-A fiew words about this small configuration:
+A few words about this small configuration:
 
 - the key ``my_form_extension`` should be a unique key to represent your form extension.
 - you can declare multiple form extensions with the same RequireJS module.

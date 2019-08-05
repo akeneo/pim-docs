@@ -32,8 +32,8 @@ Actually, the Presenter interface displays data according to the user locale, bu
 How to modify the predefined formats of default Presenters
 ----------------------------------------------------------
 
-.. _IntlDateFormatter: http://php.net/manual/en/class.intldateformatter.php
-.. _NumberFormatter: http://php.net/manual/en/class.numberformatter.php
+.. _IntlDateFormatter: https://php.net/manual/en/class.intldateformatter.php
+.. _NumberFormatter: https://php.net/manual/en/class.numberformatter.php
 
 You can define your own formats to present dates, datetimes and prices depending on the user's locale.
 The formats of date, datetimes and currencies are predefined for a set of languages.

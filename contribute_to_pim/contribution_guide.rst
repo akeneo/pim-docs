@@ -389,11 +389,11 @@ messages of all the commits. When you are finished, execute the push command.
 .. _`code conventions`:                 http://docs.akeneo.com/latest/technical_architecture/best_practices/core/conventions.html
 .. _`coding standard`:                  http://docs.akeneo.com/latest/technical_architecture/best_practices/core/standards.html
 .. _`setup behat`:                      http://docs.akeneo.com/latest/technical_architecture/best_practices/core/behat.html
-.. _`Sylius documentation`:             http://docs.sylius.org/en/latest/
+.. _`Sylius documentation`:             https://github.com/Sylius/Sylius/tree/master/docs
 .. _`behat quick intro`:                http://docs.behat.org/en/v2.5/quick_intro.html
 .. _`begin with PHPSpec`:               https://www.phpspec.net/
 .. _`Prophecy documentation`:           https://github.com/phpspec/prophecy#prophecy
-.. _`Doctrine migration documentation`: http://docs.doctrine-project.org/projects/doctrine-migrations/en/latest/reference/introduction.html
+.. _`Doctrine migration documentation`: https://www.doctrine-project.org/projects/doctrine-migrations/en/latest/reference/introduction.html
 
 Step 4: Is my pull request merged?
 ----------------------------------

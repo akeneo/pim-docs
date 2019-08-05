@@ -7,7 +7,7 @@ cache:
   directories: [$HOME/.cache/pip]
 
 # command to install dependencies
-install: "pip install sphinx~=1.5.3 git+https://github.com/fabpot/sphinx-php.git git+https://github.com/mickaelandrieu/sphinxcontrib.youtube.git"
+install: "pip install sphinx git+https://github.com/fabpot/sphinx-php.git git+https://github.com/mickaelandrieu/sphinxcontrib.youtube.git"
 
 # command to run tests
 script: sphinx-build -nWT -b linkcheck . _build/

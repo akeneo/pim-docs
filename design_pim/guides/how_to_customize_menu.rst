@@ -10,15 +10,17 @@ To add an element at the root of the tree you can reuse the tab module provided 
 
 .. code-block:: yaml
 
-    # src/Acme/Bundle/AppBundle/Resources/form_extensions/menu.yml
+    # src/Acme/Bundle/AppBundle/Resources/config/form_extensions/menu.yml
     extensions:
         acme-custom-root-element:                          # The unique key of your extension
             module: pim/menu/tab                           # The module provided by akeneo for root elements
             parent: pim-menu                               # The parent is the root of the menu
-            aclResourceId: my_custom_acl_key               # [optional] You can define a acl check
+            targetZone: mainMenu
+            aclResourceId: my_custom_acl_key               # [optional] You can define a acl check - remove if this acl has not been created yet
             position: 110                                  # [optional] The position in the tree where you want to add the item
             config:
                 title: pim_menu.item.import_profile        # You can define a translation key for the tab name
+                to: pim_importexport_import_profile_index  # The route to redirect to
 
 After running the command ``rm -rf var/cache; bin/console pim:install:asset; yarn run webpack`` your new item should appear at the root of the menu.
 
@@ -29,13 +31,13 @@ Now if you want to add an element inside the menu, you can use the item module:
 
 .. code-block:: yaml
 
-    # src/Acme/Bundle/AppBundle/Resources/form_extensions/menu.yml
+    # src/Acme/Bundle/AppBundle/Resources/config/form_extensions/menu.yml
     extensions:
         acme-custom-sub-element:                           # The unique key of your extension
             module: pim/menu/item                          # The module provided by akeneo for sub elements
             parent: acme-custom-root-element               # The parent is the tab we just created
             targetZone: item
-            aclResourceId: my_custom_acl_key               # [optional] You can define a acl check
+            aclResourceId: my_custom_acl_key               # [optional] You can define a acl check - remove if this acl has not been created yet
             position: 110                                  # [optional] The position in the tree where you want to add the item
             config:
                 title: pim_menu.item.import_profile        # You can define a translation key for the item name

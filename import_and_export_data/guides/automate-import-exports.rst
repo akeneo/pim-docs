@@ -34,6 +34,16 @@ You can also provide a custom configuration (in JSON format) for the job:
 
     One daemon or several daemon processes have to be started to execute the jobs.
     Please follow the documentation :doc:`/install_pim/manual/daemon_queue` if it's not the case.
+    
+.. tip::   
+
+    Add --username in the job if you want to see it in the User Interface (under the Process tracker page). User permissions are applied on this page: a user can only see the jobs he executed. Adding the username in the job, for instance ‘admin’ will allow the user ‘admin’ to see the cron tasks executed with its username. Below an example of a command using the username ‘admin’:
+    
+.. code-block:: bash
+    :linenos:
+    
+    bin/console akeneo:batch:publish-job-to-queue csv_product_import --env=prod --username admin
+
 
 Scheduling the jobs
 -------------------

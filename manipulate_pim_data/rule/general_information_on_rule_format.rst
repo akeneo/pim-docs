@@ -96,7 +96,7 @@ Elements with * are optional.
 
 .. tip::
 
-    For more details you can see the `YAML specifications <http://yaml.org/spec/>`_.
+    For more details you can see the `YAML specifications <https://yaml.org/spec/>`_.
 
 .. warning::
 
@@ -282,7 +282,7 @@ Two parameters are required, two other are optional.
 Remove
 ______
 
-This action removes values from a multiselect, a category or a collection.
+This action removes values from a multiselect or a product category.
 
 Two parameters are required, three others are optional.
  - field: attribute code or "categories".
@@ -491,7 +491,7 @@ __________
 +--------------+--------------------------+
 | Example      | .. code-block:: yaml     |
 |              |                          |
-|              |   field: categories.code |
+|              |   field: categories      |
 |              |   operator: IN           |
 |              |   value:                 |
 |              |    - C0056               |

@@ -10,12 +10,12 @@ Sometimes, it's quite clear that the behaviour you experience is a bug. But it i
 
 If you have doubts, please have a look at the following resources. If not, go to the next step.
 
-* `The PIM knowledge base <https://www.akeneo.com/knowledge-base/>`_
-* `The PIM user guides <https://www.akeneo.com/user-guide/>`_
+* `The PIM Help Center <https://help.akeneo.com/pim/v3/index.html>`_
+* `The PIM online API documentation <https://api.akeneo.com/>`_
 
 .. tip::
 
-    User guides can be accessed at any moment from the **(?)** icon on the top right corner of the PIM.
+    Help Center can be accessed at any moment from the **(?) Help** icon on the bottom left corner of the PIM.
 
 Step 2: is your computer ready to use the PIM?
 ----------------------------------------------
@@ -64,7 +64,7 @@ Make sure that you applied the latest patches available for your PIM version. Yo
 Step 6: are your additional bundles up-to-date?
 -----------------------------------------------
 
-As for the PIM it's important to check that the additional bundles you use (for instance: EnhancedConnectorBundle, CustomEntityBundle, InnerVariationBundle...) are up-to-date.
+As for the PIM it's important to check that the additional bundles you use are up-to-date.
 
 If you need assistance, please refer to each bundle's documentation.
 
@@ -93,7 +93,7 @@ Clear the PIM cache (also known as "Symfony cache") by running the following com
 .. code-block:: bash
 
     cd /path/to/your/pim/
-    php bin/console cache:clear --env=prod
+    php bin/console cache:clear --env=prod --no-warmup
 
 Step 9: did you consider the volume of your catalog?
 ----------------------------------------------------
@@ -104,9 +104,9 @@ Step 9: did you consider the volume of your catalog?
 
 Each catalog is unique. How many channels, locales, attributes, families, categories, products and users do you have? These values may had increased drastically since you began using your PIM.
 
-Most of this information can be found on the PIM system information screen (under System > System information).
+Most of this information can be found on the PIM under System > System information. Since 2.3 version, you have a dedicated page available under Activity menu, called Catalog Volume Monitoring, see our `_Help Center article <https://help.akeneo.com/pim/v3/articles/catalog-volume-monitoring.html#a-dedicated-screen>`__ for more information about this page and how to read it. 
 
-Once the calculations made, please have a look at our :doc:`/maintain_pim/scalability_guide/index` and :doc:`/technical_architecture/performances_guide/index`.
+You can also read this Medium article `_Because your product catalog typology matters <https://medium.com/akeneo-labs/because-your-product-catalog-typology-matters-e1a9af4c33e0>`__ to see the impacts catalog modeling can have on PIM performances.
 
 Step 10: did you customize your PIM?
 ------------------------------------

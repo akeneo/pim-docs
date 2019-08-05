@@ -2,10 +2,10 @@ How to customize the Dataset
 ============================
 
 Akeneo PIM ships with two datasets. They are located in ``vendor/akeneo/pim-community-dev/src/Pim/Bundle/InstallerBundle/Resources/fixtures``:
-* *icecat-demo-dev* to be able to take a look and play with the PIM with already preset families, categories, products, etc..
+* *icecat_demo_dev* to be able to take a look and play with the PIM with already preset families, categories, products, etc..
 * *minimal* to start a brand new blank PIM project
 
-Akeneo PIM ships with *icecat-demo-dev* enabled.
+Akeneo PIM ships with *icecat_demo_dev* enabled.
 
 Switching From Icecat to Minimal
 --------------------------------
@@ -103,7 +103,7 @@ Edit the file ``app/config/parameters.yml`` and add the line
 
 .. code-block:: yaml
 
-    installer_data: 'AcmeInstallerBundle:mydataset'
+    installer_data: 'AcmeAppBundle:mydataset'
 
 You can now (re)install your database by running:
 

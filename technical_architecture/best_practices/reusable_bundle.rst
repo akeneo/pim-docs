@@ -39,7 +39,7 @@ Maintainability
 
 Keep in mind the five `SOLID principles`_ of Object Oriented Programming and especially the `Single Responsibility principle`_.
 
-You can use `PMD`_ to help make your code simple, flexible and easily testable.
+You can use `PHPMD`_ to help make your code simple, flexible and easily testable.
 
 
 In Akeneo PIM, we use `PhpSpec`_ as unit testing tool and `Behat`_ for behavior-oriented tests.
@@ -50,8 +50,8 @@ You can find some configuration examples on our `Akeneo-Labs`_ projects (`scruti
 
 .. _Single Responsibility principle: https://en.wikipedia.org/wiki/Single_responsibility_principle
 .. _SOLID principles: https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)
-.. _PMD: https://phpmd.org/
-.. _PhpSpec: http://phpspec.readthedocs.io/en/stable/
+.. _PHPMD: https://github.com/phpmd/phpmd/
+.. _PhpSpec: https://phpspec.readthedocs.io/en/stable/
 .. _Behat: http://docs.behat.org/en/latest/
 .. _Travis: https://travis-ci.org/
 .. _Scrutinizer: https://scrutinizer-ci.com/
@@ -101,11 +101,10 @@ It is the best extensibility point you have.
 Unfortunately, it is not always possible as Akeneo PIM cannot cover all cases where you would plug your code.
 In this case, you can still decorate or extend the desired class and add the extension point you need.
 
-By the way, feel free to contribute by opening an issue to discuss with our team on our `github repository`_
-or let us know your needs on our `forum`_. Your feedback is very valuable for us so we can improve our application.
+By the way, feel free to contribute by opening an issue to discuss with our team on our `github repository`_.
+Your feedback is very valuable for us so we can improve our application.
 
 .. _github repository: https://github.com/akeneo/pim-community-dev
-.. _forum: https://www.akeneo.com/fr/forums/
 
 
 Avoid to override Akeneo PIM classes/services
@@ -134,9 +133,9 @@ Two options:
 For your own model classes, create your class and its interface.
 Then you can rely on your interface and use the `Akeneo target resolver`_ which is based on the `Doctrine target entity resolver`_.
 
-.. _oneToOne unidirectional association: https://doctrine-orm.readthedocs.io/projects/doctrine-orm/en/latest/reference/association-mapping.html#one-to-one-unidirectional
+.. _oneToOne unidirectional association: https://www.doctrine-project.org/projects/doctrine-orm/en/2.5/reference/association-mapping.html#one-to-one-unidirectional
 .. _Akeneo target resolver: https://github.com/akeneo/pim-community-dev/blob/2.0/src/Pim/Bundle/CatalogBundle/DependencyInjection/Compiler/ResolveDoctrineTargetModelPass.php
-.. _Doctrine target entity resolver: https://symfony.com/doc/2.7/doctrine/resolve_target_entity.html
+.. _Doctrine target entity resolver: https://symfony.com/doc/3.4/doctrine/resolve_target_entity.html
 
 
 Repositories
