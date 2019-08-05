@@ -103,13 +103,13 @@ Launch the daemon
 Option #2 - systemd
 -------------------
 
-If you prefer, you can use systemd, which will also allow for multiple daemons execution at the same time,
-logs management and auto restart in case of failure.
+If you prefer, you can use ``systemd``, which will also allow for multiple daemons to run at the same time,
+to have logs management and auto restart in case of failure.
 
 Configuration file
 ******************
 
-Create `/etc/systemd/system/pim_job_queue@.service`:
+Create ``/etc/systemd/system/pim_job_queue@.service``:
 
 .. code-block:: ini
     :linenos:
@@ -150,7 +150,7 @@ Manage the services
 Manage services by non-root users
 *********************************
 
-sytemctl is not useable by non-privileged users, if you want to allow a user `akeneo` for instance:
+``sytemctl`` is not useable by non-privileged users, if you want to allow a user ``akeneo``:
 
 .. code-block:: bash
     :linenos:
