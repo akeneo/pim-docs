@@ -50,8 +50,8 @@ You can find some configuration examples on our `Akeneo-Labs`_ projects (`scruti
 
 .. _Single Responsibility principle: https://en.wikipedia.org/wiki/Single_responsibility_principle
 .. _SOLID principles: https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)
-.. _PHPMD: https://phpmd.org/
-.. _PhpSpec: http://phpspec.readthedocs.io/en/stable/
+.. _PHPMD: https://github.com/phpmd/phpmd/
+.. _PhpSpec: https://phpspec.readthedocs.io/en/stable/
 .. _Behat: http://docs.behat.org/en/latest/
 .. _Travis: https://travis-ci.org/
 .. _Scrutinizer: https://scrutinizer-ci.com/
@@ -101,11 +101,10 @@ It is the best extensibility point you have.
 Unfortunately, it is not always possible as Akeneo PIM cannot cover all cases where you would plug your code.
 In this case, you can still decorate or extend the desired class and add the extension point you need.
 
-By the way, feel free to contribute by opening an issue to discuss with our team on our `github repository`_
-or let us know your needs on our `forum`_. Your feedback is very valuable for us so we can improve our application.
+By the way, feel free to contribute by opening an issue to discuss with our team on our `github repository`_.
+Your feedback is very valuable for us so we can improve our application.
 
 .. _github repository: https://github.com/akeneo/pim-community-dev
-.. _forum: https://www.akeneo.com/fr/forums/
 
 
 Avoid to override Akeneo PIM classes/services

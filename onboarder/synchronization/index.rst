@@ -6,7 +6,7 @@ Push catalog structure to the retailer Onboarder
 
 To work, the retailer Onboarder needs some data from the PIM and you will have to push them once your installation will be done.
 
-Data synchronized are: attribute groups, attributes, attribute option, categories, families and users.
+Data synchronized are: attribute groups, attributes, attribute option, and families.
 
 .. code-block:: bash
 
@@ -37,7 +37,7 @@ Launch the message worker
 You want a supervised worker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add the following supervisor configuration (update the following example to your needs)
+You can use supervisor to run the ``worker`` as a daemonized process, supervisor will monitor this process and according to the configuration you'll define it will be autostarted and autorestarted.
 
 .. code-block:: bash
 
@@ -47,6 +47,16 @@ Add the following supervisor configuration (update the following example to your
     user=www-data
     autostart=true
     autorestart=true
+
+.. warning::
+
+    By default the environment variable of the shell that is running the supervisord process will not propagate the environment variables to the process it monitor.
+    You have to configure :doc:`the mandatory environment variables </onboarder/installation/index>` that the akeneo/pim-onboarder bundle requires in the ``/etc/supervisor.conf`` file.
+
+.. code-block:: bash
+
+    [supervisord]
+    environment=GOOGLE_APPLICATION_CREDENTIALS="/srv/pim/serviceAccount.json",ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE="middleware-topic-name",...
 
 .. note::
 
