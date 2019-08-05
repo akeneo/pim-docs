@@ -35,20 +35,20 @@ Create a new daemon by starting a service with a **unique** identifier:
 .. code-block:: bash
     :linenos:
 
-    # Launch the "first" daemon
-    service pim_job_queue@first start
+    # Launch the daemon #1
+    partners_systemctl start pim_job_queue@1
 
-    # Launch the "foo" daemon
-    service pim_job_queue@foo start
+    # Launch the daemon #2
+    partners_systemctl start pim_job_queue@2
 
     # Check the status of the daemon
-    service pim_job_queue@first status
+    partners_systemctl status pim_job_queue@1
 
     # Stop the daemon
-    service pim_job_queue@foo stop
+    partners_systemctl stop pim_job_queue@1
 
-    # See real time logs for
-    journalctl --unit=pim_job_queue@second -f
+    # See real time logs for daemon #2
+    journalctl --unit=pim_job_queue@2 -f
 
 Useful commands
 ---------------
@@ -60,4 +60,4 @@ Useful commands
     systemctl status 'pim_job_queue@*' --state=active
 
     # see logs for job consumer "foo", append with "-f" for real time display.
-    journalctl --unit=pim_job_queue@foo -f
+    journalctl --unit=pim_job_queue@2 -f
