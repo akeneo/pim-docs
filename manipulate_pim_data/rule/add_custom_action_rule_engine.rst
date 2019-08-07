@@ -380,7 +380,7 @@ You also need to override the rule file for the datagrid with your template.
                 conditions:
                     label: pimee_catalog_rule.datagrid.rule-grid.column.conditions
                     type: twig
-                    template: PimEnterpriseCatalogRuleBundle:Rule:_conditions.html.twig
+                    template: AkeneoPimRuleEngineBundle:Rule:_conditions.html.twig
                     frontend_type: html
                     data_name: content
                 actions:
@@ -504,7 +504,7 @@ Here is an example on how you could write a rule.
             priority: 0
             conditions:
                 -
-                    field: family.code
+                    field: family
                     operator: IN
                     value:
                         - camcorders
