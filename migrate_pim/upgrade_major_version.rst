@@ -7,7 +7,7 @@ These new major versions bring new features and larger changes to answer clients
 Migrate from 1.7 to 2.X
 ------------------------------
 
-To migrate from 1.7 to 2.X.X you need to install version 2.0.X first.
+To migrate from 1.7 to 2.X.X you need to first create a new akeneo instance with version 2.0.X.
 Then we recomend using the migration tool `Transporteo`_.
 
 .. _Transporteo: https://github.com/akeneo/transporteo
