@@ -5,13 +5,13 @@ Extracting the archive
     :linenos:
 
     $ mkdir -p /path/to/installation
-    $ tar -xvzf pim-community-standard-v3.1-latest-icecat.tar.gz -C /path/to/installation/
+    $ tar -xvzf pim-community-standard-v3.2-latest-icecat.tar.gz -C /path/to/installation/
 
 .. note::
     Replace */path/to/installation* by the path to the directory where you want to install the PIM.
 
 .. note::
-    * Replace *pim-community-standard-v3.1-latest-icecat.tar.gz* by the location and the name of the archive you have downloaded from https://www.akeneo.com/download
+    * Replace *pim-community-standard-v3.2-latest-icecat.tar.gz* by the location and the name of the archive you have downloaded from https://www.akeneo.com/download
 
 .. note::
     The PIM will be extracted in the folder /path/to/installation/pim-community-standard.
