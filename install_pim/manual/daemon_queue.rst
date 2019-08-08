@@ -164,7 +164,7 @@ Create ``/usr/local/bin/pim_job_queue_launcher.sh``:
     exit 0
 
 At this point, you can create files under ``/path/to/home/user/.systemd/pim_job_queue/``.
-These files have to be named ``x.conf``, with ``x`` being the identifier of the queue, for the sake 
+These files have to be named ``x.conf``, with ``x`` being the identifier of the queue, for the sake
 of this example, the files contain a list of job instance to support, one code per line.
 
 .. code-block:: ini

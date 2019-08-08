@@ -1,7 +1,8 @@
 Partners
 ========
 
-On Flexiblity Mode, you have access to custom aliases that allow you to run a limit set of commands with root privileges.
+| On Flexiblity Mode, you have access to custom aliases that
+| allow you to run a limit set of commands with root privileges.
 
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 | Alias                      | Argument                 | Action                                                                                                                                           |
@@ -10,7 +11,7 @@ On Flexiblity Mode, you have access to custom aliases that allow you to run a li
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``partners_elasticsearch`` | ``status|start|restart`` | Show status or start/restart elasticsearch daemon                                                                                                |
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``partners_php7.1-fpm``    | ``status|start|restart`` | Show status or start/restart php-fpm daemon (Command name can vary depending on php version)                                                     |
+| ``partners_php7.2-fpm``    | ``status|start|restart`` | Show status or start/restart php-fpm daemon (Command name can vary depending on php version)                                                     |
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``partners_clear_cache``   |                          | Clear PIM cache properly. Stops php-fpm and job consumers, deletes PIM cache folder, warms up PIM cache and restarts php-fpm and job consumers   |
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
