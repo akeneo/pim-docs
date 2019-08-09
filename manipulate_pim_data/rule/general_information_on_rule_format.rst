@@ -236,7 +236,7 @@ ___
 
 This action assigns values to an attribute.
 
-Two parameters are required and the two others are optional.
+Two parameters are required while the two others are optional.
  - field: attribute code.
  - locale: locale code for which value is assigned (optional).
  - scope: channel code for which value is assigned (optional).
