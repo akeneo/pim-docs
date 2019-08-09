@@ -207,7 +207,7 @@ This action copies an attribute value into another.
     Source and target should share the same type. If the source attribute is empty, the value "empty" will also
     be copied.
 
-Two parameters are required and the four others are optional:
+Two parameters are required while the four others are optional:
  - from_field: code of the attribute to be copied.
  - from_locale: locale code of the value to be copied (optional).
  - from_scope: channel code of the value to be copied (optional).
