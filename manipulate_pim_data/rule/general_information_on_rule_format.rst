@@ -6,13 +6,12 @@ Quick Overview
 
 **This cookbook is about a feature only provided in the Enterprise Edition.**
 
-Enrichment rules allow to set values for products given specific conditions. These rules are regularly
-applied, as a user who would regularly edit a product.
+Enrichment rules allow to set values for products given specific conditions. These rules can be manually applied from the User Interface or run using a cronjob.
 
 File Structure
 --------------
 
-Enrichment rules are defined in YAML. The file extension has to be ".yml". Indentation is mandatory within the
+Enrichment rules are defined in YAML format, so the file extension has to be ".yml". Indentation is mandatory within the
 file and has to follow the YAML format strictly. You have to import a rule so that it can be used in the PIM.
 
 This file starts with "rules" root element, which contains the list of enrichment rules. This document is about this
@@ -60,39 +59,39 @@ Enrichment Rule Structure
 -------------------------
 
 Structure’s elements which define a rule are:
- - rule code (dynamic)
- - priority*
- - conditions
- - actions
+ - rule's code (dynamic)*
+ - priority
+ - conditions*
+ - actions*
 
 Structure's elements which define a condition are:
- - field
- - locale​*
- - scope​*
- - operator
- - value
+ - field*
+ - locale
+ - scope
+ - operator*
+ - value*
 
-An enrichment rule is structured as follows:
+An enrichment rule is structured as follow:
 
 .. code-block:: yaml
 
     [free rule code]:
-        priority​*:
+        priority*:
         conditions:
-            - field:
-              locale​*:
-              scope​*:
-              operator:
-              value:
+            - field*:
+              locale:
+              scope:
+              operator*:
+              value*:
         actions:
-            - type:
+            - type:*
               [Diverse elements according to the action]
 
-Elements with * are optional.
+Elements with * are mandatory. Fill in the locale and scope elements only if your condition applies on localizable and/or scopable attributes. 
 
-**Dashes** - ​before element field and after each element contained in value part are mandatory.
+**Dashes** (-) must be placed before an element field and after each element contained in value part.
 
-**Colon** : ​mandatory after each structure element.
+**Colon** (:) mandatory after each structure element.
 
 .. tip::
 
@@ -109,10 +108,9 @@ Therefore, a rule with 90-priority will be executed before rules with a 0-priori
 they will be executed in a "technical" order. (database reading order)
 
 Action’s conditions can be applied on localizable and scopable values. In this case, it has
-to be specified using locale and scope elements.
+to be specified using and scope elements.
 
-The definition of conditions is very important to select only the products concerned by the rules.
-Don't forget to add conditions to not execute the rules at each execution.
+The definition of conditions is very important, make sure you select only products concerned by the rule. Add conditions so the rule(s) will not be executed if needed.
 
 - The field "camera_brand" will be updated only if its value is not already equal to "canon_brand".
 
@@ -197,6 +195,8 @@ Enrichment Rule Definition
 Available Actions List
 ++++++++++++++++++++++
 
+Akeneo rules engine proposes 4 kinds of actions:
+
 Copy
 ____
 
@@ -204,10 +204,10 @@ This action copies an attribute value into another.
 
 .. warning::
 
-    Source and target should share the same type. If source attribute is empty, the value "empty" will also
+    Source and target should share the same type. If the source attribute is empty, the value "empty" will also
     be copied.
 
-Two parameters are required and four other are optional:
+Two parameters are required while the four others are optional:
  - from_field: code of the attribute to be copied.
  - from_locale: locale code of the value to be copied (optional).
  - from_scope: channel code of the value to be copied (optional).
@@ -236,7 +236,7 @@ ___
 
 This action assigns values to an attribute.
 
-Two parameters are required, two other are optional.
+Two parameters are required while the two others are optional.
  - field: attribute code.
  - locale: locale code for which value is assigned (optional).
  - scope: channel code for which value is assigned (optional).
