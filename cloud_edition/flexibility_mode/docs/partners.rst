@@ -55,13 +55,13 @@ The name of the file is the **daemon identifier**. Make it simple and use only i
    :linenos:
 
    # Launch the daemon for this configuration /home/akeneo/.systemd/pim_job_queue/1.conf
-   partners_systemctl pim_job_queue@1 start
+   partners_systemctl start pim_job_queue@1
 
    # Check the status of the daemon #2
-   partners_systemctl pim_job_queue@2 status
+   partners_systemctl status pim_job_queue@2
 
     # Check the status of all daemons
-   partners_systemctl pim_job_queue@* status
+   partners_systemctl status pim_job_queue@*
 
    # See real time logs for daemon #3
    journalctl --unit=pim_job_queue@3 -f
