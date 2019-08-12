@@ -60,6 +60,9 @@ The name of the file is the **daemon identifier**. Make it simple and use only i
    # Check the status of the daemon #2
    partners_systemctl status pim_job_queue@2
 
+    # Check the status of all daemons
+   partners_systemctl status pim_job_queue@*
+
    # See real time logs for daemon #3
    journalctl --unit=pim_job_queue@3 -f
 
