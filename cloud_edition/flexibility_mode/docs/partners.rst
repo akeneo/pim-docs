@@ -36,16 +36,16 @@ Create a new daemon by starting a service with a **unique** identifier:
     :linenos:
 
     # Launch the daemon #1
-    partners_systemctl start pim_job_queue@1
+    partners_systemctl pim_job_queue@1 start
 
     # Launch the daemon #2
-    partners_systemctl start pim_job_queue@2
+    partners_systemctl pim_job_queue@2 start
 
     # Check the status of the daemon
-    partners_systemctl status pim_job_queue@1
+    partners_systemctl pim_job_queue@1 status
 
     # Stop the daemon
-    partners_systemctl stop pim_job_queue@1
+    partners_systemctl pim_job_queue@1 stop
 
     # See real time logs for daemon #2
     journalctl --unit=pim_job_queue@2 -f
@@ -57,7 +57,7 @@ Useful commands
     :linenos:
 
     # check the status of all running queues
-    systemctl status 'pim_job_queue@*' --state=active
+    partners_systemctl pim_job_queue@* status
 
     # see logs for job consumer "foo", append with "-f" for real time display.
     journalctl --unit=pim_job_queue@2 -f
