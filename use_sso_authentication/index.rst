@@ -104,9 +104,9 @@ How can I debug authentication errors ?
 
 Various errors can happen, those errors could be due to incorrect configuration on IdP side or SP side.
 
-| Regarding the SP, on the SSO configuration page, you have a "download logs" button that will provide a ZIP of ``var/logs/saml/authentication*.log``
-| You can also check these logs via CLI if your PIM installation is on premise or on PAAS.
-| 
+| Regarding the SP, SSO Logs are stored in the DB (table ``pimee_sso_logs``) to make them easily available to you through the PIM UI.
+| On the SSO configuration page, you have a "download logs" button that will provide a ZIP of the log content.
+|
 
 Regarding the IdP:
 * For the one provided in docker-compose.yml, you can check logs outputed by the container ``docker logs -f your_sso-idp-server_container-name``
