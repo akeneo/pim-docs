@@ -50,7 +50,7 @@ To reduce disk usage, some temporary files are deleted automatically on a regula
 
 - old temporary import/export files
 - old temporary file storage
-- akeneo_batch_ directories
+- akeneo_batch directories
 - ansible temporary directories
 
 Moreover, the integrator can:
