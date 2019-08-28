@@ -55,8 +55,29 @@ To reduce disk usage, some temporary files are deleted automatically on a regula
 
 Moreover, the integrator can:
 
-- activate the purge of all versions of products
+- activate the purge of old versions of products
+- purge old versions from versioning table
 - remove assets that are not linked to any product anymore
+
+
+
+.. code-block:: bash
+
+    mkdir /root/purge
+    
+    echo "Track assets that will be deleted in a csv file"
+    mysql akeneo_pim -e "SELECT fi.id, fi.original_filename, fi.file_key, r.file_info_id, r.asset_id, v.* FROM akeneo_file_storage_file_info fi LEFT JOIN pimee_product_asset_reference r ON fi.id = r.file_info_id LEFT JOIN pimee_product_asset_variation v ON fi.id = v.file_info_id WHERE storage = 'assetStorage' AND r.file_info_id IS NULL AND r.asset_id IS NULL AND v.source_file_info_id IS NULL" > /root/purge/asset_rows_to_delete.csv
+  
+    echo "List files to be deleted in a txt file"
+    echo "Path of files to be deleted is calculated by concatenating "/home/akeneo/pim/app/file_storage/asset/" with value of "fi.file_key" from the MySQL resquest."
+    mysql akeneo_pim -se "SELECT concat('/home/akeneo/pim/app/file_storage/asset/',fi.file_key) FROM akeneo_file_storage_file_info fi LEFT JOIN pimee_product_asset_reference r ON fi.id = r.file_info_id LEFT JOIN pimee_product_asset_variation v ON fi.id = v.file_info_id WHERE storage = 'assetStorage' AND r.file_info_id IS NULL AND r.asset_id IS NULL AND v.source_file_info_id IS NULL" > /root/purge/asset_files_to_delete.txt
+  
+    echo "Delete rows in database"
+    mysql akeneo_pim -se "SET FOREIGN_KEY_CHECKS=0;DELETE v, r, fi FROM akeneo_file_storage_file_info fi LEFT JOIN pimee_product_asset_reference r ON fi.id = r.file_info_id LEFT JOIN pimee_product_asset_variation v ON fi.id = v.file_info_id WHERE storage = 'assetStorage' AND r.file_info_id IS NULL AND r.asset_id IS NULL AND v.source_file_info_id IS NULL;SET FOREIGN_KEY_CHECKS=1;" > /root/purge/asset_rows_deleted.csv
+  
+    echo "Delete assets files based on previous list"
+    cat /root/purge/asset_files_to_delete.txt | xargs rm -f
+    
 
 Moreover, the customer and the integrator can:
 
