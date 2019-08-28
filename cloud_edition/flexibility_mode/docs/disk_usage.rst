@@ -56,14 +56,11 @@ To reduce disk usage, some temporary files are deleted automatically on a regula
 Moreover, the integrator can:
 
 - activate the purge of old versions of products
-- purge old versions from versioning table
 - remove assets that are not linked to any product anymore
-
-
 
 .. code-block:: bash
 
-    mkdir /root/purge
+    mkdir -p /root/purge
     
     echo "Track assets that will be deleted in a csv file"
     mysql akeneo_pim -e "SELECT fi.id, fi.original_filename, fi.file_key, r.file_info_id, r.asset_id, v.* FROM akeneo_file_storage_file_info fi LEFT JOIN pimee_product_asset_reference r ON fi.id = r.file_info_id LEFT JOIN pimee_product_asset_variation v ON fi.id = v.file_info_id WHERE storage = 'assetStorage' AND r.file_info_id IS NULL AND r.asset_id IS NULL AND v.source_file_info_id IS NULL" > /root/purge/asset_rows_to_delete.csv
@@ -79,6 +76,19 @@ Moreover, the integrator can:
     cat /root/purge/asset_files_to_delete.txt | xargs rm -f
     
 
+- purge old versions from versioning table
+
+.. code-block:: bash
+
+    mkdir -p /root/purge
+    
+    echo "Cleansing versions older than 90 days"
+    nohup php -d memory_limit=-1 bin/console --env=prod pim:versioning:purge --more-than-days 90 --force -n &
+    
+    echo "Shrink Mysql tables"
+    nohup mysqlcheck -o akeneo_pim &
+
+    
 Moreover, the customer and the integrator can:
 
 - open a ticket to ask the Cloud Team to set the duration of retention of archives of import / export
