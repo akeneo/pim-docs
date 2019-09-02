@@ -41,7 +41,7 @@ Impact of Disk Usage on the PIM
 -------------------------------
 When the disk is full, the PIM cannot work anymore: it cannot save modifications in database, upload new asset, ...
 
-It could can even prevent ElasticSearch from updating its indexes, resulting in divergence with the database.
+It can even prevent ElasticSearch from updating its indexes, resulting in divergence with the database.
 To avoid those issues, ensuring a healthy disk usage is necessary.
 
 Improving Disk Usage
