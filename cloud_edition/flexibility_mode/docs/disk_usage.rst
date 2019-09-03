@@ -81,7 +81,7 @@ Moreover, the integrator can:
 
 .. warning::
 
-    **Warning:** `mysqlcheck --optimize` will duplicate the table before optimizing it. Which means that, before running the command, one must make sure that there is enough disk space to copy the table. To avoid any data loss, backing the tables up before running `mysqlcheck` is prefered. For more information: https://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html
+    **Warning:** `mysqlcheck --optimize` will duplicate the table(s) before optimizing it (them). Which means that, before running the command, one must make sure that the remaining free space is at least equals to the biggest table size. To avoid any data loss, backing the tables up before running `mysqlcheck` is prefered. For more information: https://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html
 
 
 .. warning::
