@@ -78,6 +78,17 @@ Moreover, the integrator can:
 
 - purge old versions from versioning table
 
+
+.. warning::
+
+    **Warning:** `mysqlcheck --optimize` will duplicate the tables of the database before optimizing them. Which means that, before running the command, one must make sure that there is enough disk space to copy it. To avoid any data loss, backing the tables up before running `mysqlcheck` is prefered. For more information: https://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html
+
+
+.. warning::
+
+    **Warning:** `mysqlcheck --optimize` will lock the tables during the operation. Hence tables will be unavailable for the PIM. For more information: https://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html
+
+
 .. code-block:: bash
 
     mkdir -p /home/akeneo/purge
@@ -85,8 +96,8 @@ Moreover, the integrator can:
     echo "Cleansing versions older than 90 days"
     nohup php -d memory_limit=-1 bin/console --env=prod pim:versioning:purge --more-than-days 90 --force -n &
     
-    echo "Shrink Mysql tables"
-    nohup mysqlcheck -o akeneo_pim &
+    echo "Shrink MySQL tables"
+    nohup mysqlcheck --optimize akeneo_pim &
 
     
 Moreover, the customer and the integrator can:
