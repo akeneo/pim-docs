@@ -78,6 +78,12 @@ Moreover, the integrator can:
 
 - purge old versions from versioning table
 
+.. code-block:: bash
+
+    echo "Check pim_versioning_version table size"
+    mysql akeneo_pim -e 'SELECT table_name AS `Table`, round(((data_length + index_length) / 1024 / 1024 / 1024), 2) `Size in GB` FROM information_schema.TABLES WHERE table_schema = "akeneo_pim" AND table_name = "pim_versioning_version";'
+  
+
 
 .. warning::
 
