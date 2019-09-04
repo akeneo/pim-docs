@@ -31,7 +31,7 @@ list. Each rule is referred to by a code and can contain a list of conditions an
                 - field: name
                   operator: CONTAINS
                   value: Canon
-                - field: camera_brand.code
+                - field: camera_brand
                   operator: NOT IN
                   value:
                     - canon_brand
@@ -127,7 +127,7 @@ The definition of conditions is very important, make sure you select only produc
                 - field: name
                   operator: CONTAINS
                   value: Canon
-                - field: camera_brand.code
+                - field: camera_brand
                   operator: NOT IN
                   value:
                     - canon_brand
@@ -159,7 +159,7 @@ The definition of conditions is very important, make sure you select only produc
                   field: auto_focus_points
                   value: 4
 
-- The field "description" for en_US ecommerce will be updated only if its value is EMPTY and if the source field "description" for en_US print is NOT EMPTY.
+- The field "description" for en_US locale and ecommerce channel will be updated only if its value is EMPTY and if the source field "description" for en_US locale and print channel is NOT EMPTY.
 
 .. code-block:: yaml
 
@@ -204,7 +204,7 @@ This action copies an attribute value into another.
 
 .. warning::
 
-    Source and target should share the same type. If the source attribute is empty, the value "empty" will also
+    Source and target attributes should share the same type. If the source attribute is empty, the value "empty" will also
     be copied.
 
 Two parameters are required while the four others are optional:
@@ -217,8 +217,7 @@ Two parameters are required while the four others are optional:
 
 .. tip::
 
-    For instance, to copy description from en_US print channel to the en_US description e-commerce channel, action will
-    be defined as follows:
+    For instance, you have a scopable and localizable attribute called "description", you can copy its content from en_US locale and print channel to the en_US locale and ecommerce channel. Action will be defined as follows:
 
         .. code-block:: yaml
 
@@ -234,7 +233,7 @@ Two parameters are required while the four others are optional:
 Set
 ___
 
-This action assigns values to an attribute.
+This action assigns value(s) to an attribute having the type text, textArea, simple select...
 
 Two parameters are required while the two others are optional.
  - field: attribute code.
@@ -244,7 +243,7 @@ Two parameters are required while the two others are optional.
 
 .. tip::
 
-    For instance, to set the value "My very new description for purple tshirt" to description attribute in en_US locale,
+    For instance, to set the value "My very new description for purple tshirt" to your description attribute in en_US locale,
     for ecommerce channel, the action will be as follows:
 
     .. code-block:: yaml
@@ -261,7 +260,7 @@ ___
 
 This action allows to add values to a multi-select attribute, a reference entity multiple links attribute or a product to categories.
 
-Two parameters are required, two other are optional.
+Two parameters are required while the two others are optional.
  - field: attribute code.
  - locale: locale code for which value is assigned (optional).
  - scope: channel code for which value is assigned (optional).
@@ -269,7 +268,7 @@ Two parameters are required, two other are optional.
 
 .. tip::
 
-    For instance, adding category "t-shirts" action will be as follows:
+    For instance, to add the category "t-shirts", action will be as follows:
 
     .. code-block:: yaml
 
@@ -284,16 +283,16 @@ ______
 
 This action removes values from a multi-select attribute, a reference entity multiple links attribute or a product category.
 
-Two parameters are required, three others are optional.
+Two parameters are required while the three others are optional.
  - field: attribute code or "categories".
  - locale: locale code for which value is assigned (optional).
  - scope: channel code for which value is assigned (optional).
  - items: values to remove.
- - include_children: if ``true``, then also apply the removal to the children of the given categories. Only applicable if ``field`` is set to "**categories**" (optional, defaults to ``false``).
+ - include_children: if ``true``, then also apply the removal of the children to the given categories. Only applicable if ``field`` is set to "**categories**" (optional, defaults to ``false``).
 
 .. tip::
 
-    For instance, removing category "t-shirts" action will be as follows:
+    For instance, to remove the category "t-shirts", action will be as follows:
 
     .. code-block:: yaml
 
@@ -303,7 +302,7 @@ Two parameters are required, three others are optional.
               items:
                 - t-shirts
 
-    Removing category "clothing" and its children will be as follows:
+    To remove the category "clothing" and its children, action will be as follows:
 
     .. code-block:: yaml
 
@@ -314,7 +313,7 @@ Two parameters are required, three others are optional.
                 - clothing
               include_children: true
 
-    Unclassify from the whole "Master catalog" tree will be as follows:
+    To unclassify products from the whole "Master catalog" tree, action will be as follows:
 
     .. code-block:: yaml
 
@@ -352,11 +351,11 @@ _______
 |              | - EMPTY               |
 |              | - NOT EMPTY           |
 +--------------+-----------------------+
-| Value        | dates format:         |
+| Value        | date format:          |
 |              | yyyy-mm-dd. If        |
 |              | operator is EMPTY or  |
-|              | NOT EMPTY values      |
-|              | information is        |
+|              | NOT EMPTY, value      |
+|              | element will be       |
 |              | ignored.              |
 +--------------+-----------------------+
 | Example      | .. code-block:: yaml  |
@@ -378,11 +377,11 @@ _______
 |              | - EMPTY               |
 |              | - NOT EMPTY           |
 +--------------+-----------------------+
-| Value        | dates format:         |
+| Value        | date format:          |
 |              | yyyy-mm-dd. If        |
 |              | operator is EMPTY or  |
-|              | NOT EMPTY values      |
-|              | information is        |
+|              | NOT EMPTY, value      |
+|              | element will be       |
 |              | ignored.              |
 +--------------+-----------------------+
 | Example      | .. code-block:: yaml  |
@@ -398,8 +397,8 @@ _______
 | Operator     | - =                  |
 |              | - !=                 |
 +--------------+----------------------+
-| Value        | activated => true,   |
-|              | deactived => false.  |
+| Value        | activated => "true"  |
+|              | deactived => "false" |
 +--------------+----------------------+
 | Example      | .. code-block:: yaml |
 |              |                      |
@@ -418,7 +417,8 @@ ____________
 +--------------+-----------------------+
 | Value        | Percentage.           |
 |              | /!\\ locale and scope |
-|              | are mandatory         |
+|              | elements are          |
+|              | mandatory.            |
 +--------------+-----------------------+
 | Example      | .. code-block:: yaml  |
 |              |                       |
@@ -437,10 +437,10 @@ ______
 |              | - EMPTY                |
 |              | - NOT EMPTY            |
 +--------------+------------------------+
-| Value        | Family codes or ids.   |
+| Value        | Family code.           |
 |              | If operator is         |
 |              | EMPTY or NOT EMPTY,    |
-|              | value information is   |
+|              | value element will be  |
 |              | ignored.               |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
@@ -461,15 +461,15 @@ ______
 |              | - EMPTY               |
 |              | - NOT EMPTY           |
 +--------------+-----------------------+
-| Value        | Groups codes or Ids.  |
+| Value        | Group code.           |
 |              | If operator is EMPTY  |
-|              | or NOT EMPTY values   |
-|              | information is        |
+|              | or NOT EMPTY, value   |
+|              | element will be       |
 |              | ignored.              |
 +--------------+-----------------------+
 | Example      | .. code-block:: yaml  |
 |              |                       |
-|              |   field: groups.code  |
+|              |   field: groups       |
 |              |   operator: IN        |
 |              |   value:              |
 |              |    - oro_tshirts      |
@@ -486,8 +486,7 @@ __________
 |              | - IN CHILDREN            |
 |              | - NOT IN CHILDREN        |
 +--------------+--------------------------+
-| Value        | Categories codes or      |
-|              | ids.                     |
+| Value        | Category code            |
 +--------------+--------------------------+
 | Example      | .. code-block:: yaml     |
 |              |                          |
@@ -514,15 +513,15 @@ _______________
 |              | - NOT EMPTY                |
 +--------------+----------------------------+
 | Value        | Text, with or without      |
-|              | quotation marks. if        |
+|              | quotation marks. If        |
 |              | operator is EMPTY or NOT   |
-|              | EMPTY values information   |
-|              | is ignored.                |
+|              | EMPTY, value element       |
+|              | will be ignored.           |
 +--------------+----------------------------+
 | Example      | .. code-block:: yaml       |
 |              |                            |
 |              |   field: description       |
-|              |   operator: CONTAIN        |
+|              |   operator: CONTAINS       |
 |              |   value: "Awesome product" |
 +--------------+----------------------------+
 
@@ -534,18 +533,18 @@ ______
 |              | - =                    |
 |              | - !=                   |
 |              | - ">"                  |
-|              | - >=                   |
+|              | - ">="                 |
 |              | - EMPTY                |
 |              | - NOT EMPTY            |
 +--------------+------------------------+
 | Value        | Numeric value and      |
-|              | measure unity code.    |
+|              | measure unit code.     |
 |              | Dot "." is the decimal |
 |              | separator. No space    |
 |              | between thousands. If  |
-|              | operators is EMPTY or  |
-|              | NOT EMPTY values       |
-|              | information is         |
+|              | operator is EMPTY or   |
+|              | NOT EMPTY, value       |
+|              | element will be        |
 |              | ignored.               |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
@@ -564,7 +563,8 @@ _______
 | Operator     | - =                      |
 |              | - !=                     |
 +--------------+--------------------------+
-| Value        | Yes => true, No => false |
+| Value        | Yes => "true"            |
+|              | No => "false"            |
 +--------------+--------------------------+
 | Example      | .. code-block:: yaml     |
 |              |                          |
@@ -583,15 +583,15 @@ _________________________________________________
 +--------------+------------------------+
 | Value        | Option code. If        |
 |              | operator is EMPTY or   |
-|              | NOT EMPTY values       |
-|              | information is         |
+|              | NOT EMPTY, value       |
+|              | element will be        |
 |              | ignored. NOT IN        |
 |              | (red, blue) means      |
 |              | != red and != blue.    |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
-|              |   field: size.code     |
+|              |   field: size          |
 |              |   operator: IN         |
 |              |   value:               |
 |              |    - xxl               |
@@ -609,14 +609,14 @@ __________________________________________________
 | Value        | Option code. If        |
 |              | operator is EMPTY or   |
 |              | NOT EMPTY, value       |
-|              | information is         |
+|              | element will be        |
 |              | ignored. NOT IN        |
 |              | (red, blue) means      |
 |              | != red and != blue.    |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
-|              |   field: material.code |
+|              |   field: material      |
 |              |   operator: IN         |
 |              |   value:               |
 |              |    - GOLD              |
@@ -631,13 +631,13 @@ ______
 |              | - =                    |
 |              | - !=                   |
 |              | - ">"                  |
-|              | - >=                   |
+|              | - ">="                 |
 |              | - EMPTY                |
 |              | - NOT EMPTY            |
 +--------------+------------------------+
 | Value        | Number. If operator    |
 |              | is EMPTY or NOT EMPTY, |
-|              | values information is  |
+|              | value element will be  |
 |              | ignored.               |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
@@ -668,7 +668,7 @@ ____
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
-|              |   field: fix_date      |
+|              |   field: created_date  |
 |              |   operator: ">"        |
 |              |   value: "2016-05-12"  |
 +--------------+------------------------+
@@ -681,7 +681,7 @@ _____
 |              | - =                    |
 |              | - !=                   |
 |              | - ">"                  |
-|              | - >=                   |
+|              | - ">="                 |
 |              | - EMPTY                |
 |              | - NOT EMPTY            |
 +--------------+------------------------+
@@ -692,8 +692,8 @@ _____
 |              | between thousands.     |
 |              | If operator is EMPTY   |
 |              | or NOT EMPTY,          |
-|              | values information     |
-|              | is ignored.            |
+|              | value element          |
+|              | will be ignored.       |
 +--------------+------------------------+
 | Example      | .. code-block:: yaml   |
 |              |                        |
@@ -723,14 +723,13 @@ _______________
 |              | - NOT EMPTY                       |
 +--------------+-----------------------------------+
 | Value        | Text. If operator is EMPTY or     |
-|              | NOT EMPTY, values                 |
-|              | information is                    |
-|              | ignored.                          |
+|              | NOT EMPTY, value                  |
+|              | element will be ignored.          |
 +--------------+-----------------------------------+
 | Example      | .. code-block:: yaml              |
 |              |                                   |
 |              |   field: small_image              |
-|              |   operator: CONTAIN               |
+|              |   operator: CONTAINS              |
 |              |   value: ../../../                |
 |              |    src/PimEnterprise/Bundle/      |
 |              |    InstallerBundle/Resources/     |
