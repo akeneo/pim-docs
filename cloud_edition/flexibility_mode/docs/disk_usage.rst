@@ -100,7 +100,7 @@ Moreover, the integrator can:
     mkdir -p /home/akeneo/purge
     
     echo "Cleansing versions older than 90 days"
-    nohup php -d memory_limit=-1 bin/console --env=prod pim:versioning:purge --more-than-days 90 --force -n &
+    nohup php bin/console --env=prod pim:versioning:purge --more-than-days 90 --force -n &
     
     echo "Shrink MySQL tables"
     nohup mysqlcheck --optimize akeneo_pim pim_versioning_version &
