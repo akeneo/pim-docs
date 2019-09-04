@@ -153,7 +153,7 @@ Here we define a boolean filter which supports '=' operator and can be applied o
 Add a Custom Sorter
 -------------------
 
-Sorter implementation mechanism is very similar to the filter one: a registry, the interface `Pim\Bundle\CatalogBundle\Query\Sorter\SorterInterface` to implement and a tagged service to declare as follows:
+Sorter implementation mechanism is very similar to the filter one: a registry, the interface ``Pim\Bundle\CatalogBundle\Query\Sorter\SorterInterface`` to implement and a tagged service to declare as follows:
 
 .. code-block:: yaml
 
