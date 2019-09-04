@@ -125,13 +125,13 @@ Create ``/etc/systemd/system/pim_job_queue@.service``:
 
     [Unit]
     Description=Akeneo PIM Job Queue Service (#%i)
+    After=apache2.service
 
     [Service]
-    Type=service
+    Type=simple
     User=akeneo
     WorkingDirectory=/path/to/akeneo/
     ExecStart=/path/to/akeneo/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod
-    After=apache2.service
     Restart=always
 
     [Install]
