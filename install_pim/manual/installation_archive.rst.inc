@@ -55,12 +55,12 @@ Installation,
 .. note::
     The ``../composer.phar install`` command writes the database configuration to ``app/config/parameters.yml``
 
-You can now create an administrator user via the command `pim:user:create`. For instance:
+You now have to create an administrator user via the command `pim:user:create`. There is no default admin account. For instance:
 
 .. code-block:: bash
     :linenos:
 
-    $ bin/console pim:user:create kbeck secretp@ssw0rd kbeck@example.com Kent Beck en_US --admin -n --env=prod
+    $ bin/console pim:user:create superadmin GENERATEDSUPERADMINPASSWORD support@example.com Super Admin en_US --admin -n --env=prod
 
 .. include:: ./crontab_tasks.rst.inc
 

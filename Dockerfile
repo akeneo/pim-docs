@@ -80,7 +80,7 @@ RUN service mysql start && chmod +x /wait_for_mysql.sh && /wait_for_mysql.sh && 
     cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console doctrine:schema:create --env=prod && \
     cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console pim:installer:assets --env=prod && \
     cd /home/akeneo/pim-docs/pim-community-dev-master/ && sed -i "s#replace: '/bundles'#replace: '../bundles'#" frontend/build/compile-less.js && \
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && mkdir -p web/css && yarn install && yarn less
+    cd /home/akeneo/pim-docs/pim-community-dev-master/ && yarn install && yarn less
     #
     # Clean
 RUN rm -rf /root/.composer/cache && \
