@@ -22,3 +22,4 @@ Flexibility Mode
     docs/backups_management
     docs/partners
     docs/system_components
+    docs/disk_usage
