@@ -9,21 +9,35 @@ Edit your crontab with ``crontab -e`` and configure your tasks.
 
     Be sure to update the cron of the user used to install the PIM, to be able to run the command
 
-You have to add these 6 commands to your local installation:
+You have to add the following commands to your local installation:
 
 .. code-block:: bash
     :linenos:
 
-    php /path/to/installation/pim-enterprise-standard/bin/console pim:completeness:calculate --env=prod                                 # recalculates the products completeness
-    php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod                                     # processes pending versions
-    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod                                            # executes rules on products
-    php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:notify-before-due-date --env=prod                       # check and send notifications (TeamWork Assistant)
-    php /path/to/installation/pim-enterprise-standard/bin/console pim:asset:send-expiration-notification --env=prod                     # check and send notifications for asset date delay
-    php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:recalculate --env=prod                                  # recalculate project completeness (TeamWork Assistant)
-    php /path/to/installation/pim-enterprise-standard/bin/console pimee:franklin-insights:fetch-products --env=prod # fetch suggested data for products subscribed to Franklin Insights
+    # PIM native commands
+
+    # recalculates the products completeness
+    php /path/to/installation/pim-enterprise-standard/bin/console pim:completeness:calculate --env=prod
+    # processes pending versions
+    php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod
+    # executes rules on products
+    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod
+    # check and send notifications (TeamWork Assistant)
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:notify-before-due-date --env=prod
+    # check and send notifications for asset date delay
+    php /path/to/installation/pim-enterprise-standard/bin/console pim:asset:send-expiration-notification --env=prod
+    # recalculate project completeness (TeamWork Assistant)
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:recalculate --env=prod
+
+    # Franklin Insights specific commands
+
+    # fetch suggested data for products subscribed to Franklin Insights
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:franklin-insights:fetch-products --env=prod
+    # push structure and products data in order to compute the Quality Highlights metrics
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod
 
 .. note::
-   **Note:** The command ``pimee:franklin-insights:fetch-products`` is to be set only if you activate Franklin Insights EE feature.
+   **Note:** The commands ``pimee:franklin-insights:*`` have to be set only if you activate Franklin Insights EE feature.
 
 
 In the following example, these lines will run the completeness calculation at 11pm, the versioning calculation at 5am, the rules calculation at 6pm and the aggregate volume at 10pm every day:
