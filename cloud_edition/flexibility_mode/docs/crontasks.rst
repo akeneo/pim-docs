@@ -65,6 +65,8 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     0 2 * * * pimee:project:recalculate --env=prod
     #Ansible: pimee:franklin-insights:fetch-products
     */30 * * * * pimee:franklin-insights:fetch-products --env=prod
+    #Ansible: pimee:franklin-insights:quality-highlights:push-structure-and-products
+    15 */12 * * * * pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod
     #Ansible: akeneo:reference-entity:refresh-records --all
     0 23 * * * akeneo:reference-entity:refresh-records --all --env=prod
 
@@ -116,16 +118,18 @@ The default crontab at the moment on our Flexibility environments is the followi
 
 Enterprise Edition specific crontab:
 
-+----------------------------------------------------------+-------------------+-------------------------------------------+
-| Symfony console command                                  | Crontab frequency | Human frequency                           |
-+==========================================================+===================+===========================================+
-| akeneo:rule:run --env=prod                               | 0 5 \* \* \*      | At 05:00 AM                               |
-+----------------------------------------------------------+-------------------+-------------------------------------------+
-| pimee:project:notify-before-due-date --env=prod          | 20 0 \* \* \*     | At 12:20 AM                               |
-+----------------------------------------------------------+-------------------+-------------------------------------------+
-| pimee:project:recalculate --env=prod                     | 0 2 \* \* \*      | At 02:00 AM                               |
-+----------------------------------------------------------+-------------------+-------------------------------------------+
-| pimee:franklin-insights:fetch-products --env=prod        | \*/30 \* \* \* \* | Every 30 minutes                          |
-+----------------------------------------------------------+-------------------+-------------------------------------------+
-| akeneo:reference-entity:refresh-records --all --env=prod | 0 23 \* \* \*     | At 11:00 PM                               |
-+----------------------------------------------------------+-------------------+-------------------------------------------+
++-----------------------------------------------------------------------------------+----------------------+-------------------------------------------+
+| Symfony console command                                                           | Crontab frequency    | Human frequency                           |
++===================================================================================+======================+===========================================+
+| akeneo:rule:run --env=prod                                                        | 0 5 \* \* \*         | At 05:00 AM                               |
++-----------------------------------------------------------------------------------+----------------------+-------------------------------------------+
+| pimee:project:notify-before-due-date --env=prod                                   | 20 0 \* \* \*        | At 12:20 AM                               |
++-----------------------------------------------------------------------------------+----------------------+-------------------------------------------+
+| pimee:project:recalculate --env=prod                                              | 0 2 \* \* \*         | At 02:00 AM                               |
++-----------------------------------------------------------------------------------+----------------------+-------------------------------------------+
+| pimee:franklin-insights:fetch-products --env=prod                                 | \*/30 \* \* \* \*    | Every 30 minutes                          |
++-----------------------------------------------------------------------------------+----------------------+-------------------------------------------+
+| pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod | 15 \*/12 \* \* \* \* | Every 12 hours past 15 minutes            |
++-----------------------------------------------------------------------------------+----------------------+-------------------------------------------+
+| akeneo:reference-entity:refresh-records --all --env=prod                          | 0 23 \* \* \*        | At 11:00 PM                               |
++-----------------------------------------------------------------------------------+----------------------+-------------------------------------------+
