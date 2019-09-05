@@ -66,7 +66,7 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     #Ansible: pimee:franklin-insights:fetch-products
     */30 * * * * pimee:franklin-insights:fetch-products --env=prod
     #Ansible: pimee:franklin-insights:quality-highlights:push-structure-and-products
-    15 */12 * * * * pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod
+    15 0,12 * * * * pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod
     #Ansible: akeneo:reference-entity:refresh-records --all
     0 23 * * * akeneo:reference-entity:refresh-records --all --env=prod
 
@@ -129,7 +129,7 @@ Enterprise Edition specific crontab:
 +-----------------------------------------------------------------------------------+----------------------+-------------------------------------------+
 | pimee:franklin-insights:fetch-products --env=prod                                 | \*/30 \* \* \* \*    | Every 30 minutes                          |
 +-----------------------------------------------------------------------------------+----------------------+-------------------------------------------+
-| pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod | 15 \*/12 \* \* \* \* | Every 12 hours past 15 minutes            |
+| pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod | 15 0,12 \* \* \* \*  | At 12:15 AM and 12:15 PM                  |
 +-----------------------------------------------------------------------------------+----------------------+-------------------------------------------+
 | akeneo:reference-entity:refresh-records --all --env=prod                          | 0 23 \* \* \*        | At 11:00 PM                               |
 +-----------------------------------------------------------------------------------+----------------------+-------------------------------------------+
