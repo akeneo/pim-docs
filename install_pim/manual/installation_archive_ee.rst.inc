@@ -61,9 +61,9 @@ Installation,
 You now have to create an administrator user via the command `pim:user:create`. There is no default admin account. For instance:
 
 .. code-block:: bash
-:linenos:
+    :linenos:
 
-$ bin/console pim:user:create superadmin GENERATEDSUPERADMINPASSWORD support@example.com Super Admin en_US --admin -n --env=prod
+    $ bin/console pim:user:create superadmin GENERATEDSUPERADMINPASSWORD support@example.com Super Admin en_US --admin -n --env=prod
 
 .. include:: ./crontab_tasks.rst.inc
 
