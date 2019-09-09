@@ -369,6 +369,9 @@ You also need to override the rule file for the datagrid with your template.
     #src/Acme/Bundle/CustomBundle/Resources/config/datagrid/rule.yml
     datagrid:
         rule-grid:
+            options:
+                manageFilters: false
+                entityHint: rule
             source:
                 acl_resource: pimee_catalog_rule_rule_view_permissions
                 repository_method: createDatagridQueryBuilder
@@ -392,7 +395,7 @@ You also need to override the rule file for the datagrid with your template.
                 impactedSubjectCount:
                     label: pimee_catalog_rule.datagrid.rule-grid.column.impacted_product_count.label
                     type: twig
-                    template: PimEnterpriseCatalogRuleBundle:Rule:_impacted_product_count.html.twig
+                    template: AkeneoPimRuleEngineBundle:Rule:_impacted_product_count.html.twig
                     frontend_type: html
             properties:
                 id: ~
@@ -418,7 +421,7 @@ You also need to override the rule file for the datagrid with your template.
                     messages:
                         confirm_title: pimee_catalog_rule.datagrid.rule-grid.actions.execute.confirm_title
                         confirm_content: pimee_catalog_rule.datagrid.rule-grid.actions.execute.confirm_content
-                        confirm_ok: pimee_catalog_rule.datagrid.rule-grid.actions.execute.confirm_ok
+                        confirm_ok: pim_common.ok
                 delete:
                     launcherOptions:
                         className: AknIconButton AknIconButton--small AknIconButton--trash
@@ -429,8 +432,8 @@ You also need to override the rule file for the datagrid with your template.
             filters:
                 columns:
                     code:
-                        type: string
-                        data_name:   r.code
+                        type: search
+                        data_name: r.code
             sorters:
                 columns:
                     code:
@@ -439,9 +442,6 @@ You also need to override the rule file for the datagrid with your template.
                         data_name: r.impactedSubjectCount
                 default:
                     code: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'
-            mass_actions_groups:
-                bulk_actions:
-                    label: pim_datagrid.mass_action_group.bulk_actions.label
             mass_actions:
                 impacted_product_count:
                     type: ajax
@@ -449,41 +449,39 @@ You also need to override the rule file for the datagrid with your template.
                     handler: rule_impacted_product_count
                     label: pimee_catalog_rule.datagrid.rule-grid.mass_edit_action.impacted_product_count
                     route: pimee_catalog_rule_rule_mass_impacted_product_count
+                    className: 'AknButton AknButton--action AknButtonList-item'
                     messages:
                         confirm_title: pimee_catalog_rule.datagrid.rule-grid.mass_edit_action.confirm_title
                         confirm_content: pimee_catalog_rule.datagrid.rule-grid.mass_edit_action.confirm_content
-                        confirm_ok: pimee_catalog_rule.datagrid.rule-grid.mass_edit_action.confirm_ok
-                    launcherOptions:
-                        group: bulk_actions
+                        confirm_ok: pim_common.ok
                 execute:
                     type: ajax
                     acl_resource: pimee_catalog_rule_rule_execute_permissions
                     label: pimee_catalog_rule.datagrid.rule-grid.mass_edit_action.execute
                     handler: mass_execute_rule
+                    className: 'AknButton AknButton--action AknButtonList-item'
                     messages:
                         confirm_title: pimee_catalog_rule.datagrid.rule-grid.mass_action.execute.confirm_title
                         confirm_content: pimee_catalog_rule.datagrid.rule-grid.mass_action.execute.confirm_content
-                        confirm_ok: pimee_catalog_rule.datagrid.rule-grid.mass_action.execute.confirm_ok
+                        confirm_ok: pim_common.ok
                         success: pimee_catalog_rule.datagrid.rule-grid.mass_action.execute.success
                         error: pimee_catalog_rule.datagrid.rule-grid.mass_action.execute.error
                         empty_selection: pimee_catalog_rule.datagrid.rule-grid.mass_action.execute.empty_selection
-                    launcherOptions:
-                        group: bulk_actions
                 delete:
                     type: delete
                     entity_name: rule
                     acl_resource: pimee_catalog_rule_rule_delete_permissions
                     handler: mass_delete_rule
                     label: pimee_catalog_rule.datagrid.rule-grid.mass_edit_action.delete
+                    className: 'AknButton AknButton--important AknButtonList-item'
                     messages:
-                        confirm_title: pimee_catalog_rule.datagrid.rule-grid.mass_action.delete.confirm_title
+                        confirm_title: pim_common.confirm_deletion
                         confirm_content: pimee_catalog_rule.datagrid.rule-grid.mass_action.delete.confirm_content
-                        confirm_ok: pimee_catalog_rule.datagrid.rule-grid.mass_action.delete.confirm_ok
+                        confirm_ok: pim_common.delete
                         success: pimee_catalog_rule.datagrid.rule-grid.mass_action.delete.success
                         error: pimee_catalog_rule.datagrid.rule-grid.mass_action.delete.error
                         empty_selection: pimee_catalog_rule.datagrid.rule-grid.mass_action.delete.empty_selection
-                    launcherOptions:
-                        group: bulk_actions
+
 
 Then, add the translations.
 
