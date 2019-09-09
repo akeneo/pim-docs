@@ -389,7 +389,7 @@ You also need to override the rule file for the datagrid with your template.
                 actions:
                     label: pimee_catalog_rule.datagrid.rule-grid.column.actions
                     type: twig
-                    template: TheAkademyTrainingRulesBundle:Rules:_actions.html.twig
+                    template: AcmeCustomBundle:Rules:_actions.html.twig
                     frontend_type: html
                     data_name: content
                 impactedSubjectCount:
