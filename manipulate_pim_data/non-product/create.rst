@@ -9,7 +9,7 @@ To create common objects, we rely on different methods depending on the complexi
 
     To make it easier to override an object in your projects, we avoid any direct usage of ``new MyObject()`` in our code. We rely on services which implement a "creational pattern" where we inject a config parameter, for instance, ``pim_catalog.entity.family.class``.
 
-Akeneo PIM provides a Factory for almost every simple objects. Each factory inherits from the `SimpleFactoryInterface`_. Here we introduce how to use ``AttributeFactory``, ``FamilyFactory`` and ``CategoryFamily``, but the behavior is the same for all other factories.
+Akeneo PIM provides a Factory for almost every simple objects. Each factory inherits from the `SimpleFactoryInterface`_. Here we introduce how to use ``AttributeFactory``, ``FamilyFactory`` and ``SimpleFactory``, but the behavior is the same for all other factories.
 
 Use the AttributeFactory to Create a New Attribute
 --------------------------------------------------
@@ -43,7 +43,7 @@ The ``Pim\Component\Catalog\Factory\FamilyFactory`` is available as a service, y
     $family = $factory->create();
     $family->setCode('mynewfamilycode');
 
-Use the CategoryFactory to Create a New Category
+Use the SimpleFactory to Create a New Category
 ------------------------------------------------
 
 The category factory ``Akeneo\Tool\Component\StorageUtils\Factory\SimpleFactory`` is available as a service, you can fetch it from the container.
