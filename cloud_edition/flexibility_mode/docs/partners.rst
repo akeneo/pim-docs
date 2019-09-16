@@ -50,6 +50,9 @@ Create a new daemon by enabling and then starting a service with a **unique** id
     # Check the status of the daemon
     partners_systemctl pim_job_queue@1 status
 
+    # Stop the daemon
+    partners_systemctl pim_job_queue@1 stop
+
     # See real time logs for daemon #2
     journalctl --unit=pim_job_queue@2 -f
 
