@@ -40,18 +40,18 @@ The cache of composer is usually in its home folder, in a ``cache`` subdirectory
 - composer home will be in ``~/.config/composer`` (it contains your GitHub token, mandatory to install the dependencies of ``akeneo/pim-community-standard`` or of the Enterprise Edition),
 - composer cache will be in ``~/.cache/composer``.
 
-Using the Docker images
------------------------
+Use the Docker images
+---------------------
 
 .. note::
 
-   All ``docker-compose`` and ``docker`` commands must be run from the folder containing the *Docker compose* file.
+   All ``docker-compose`` and ``docker`` commands must be run from the folder containing the *Docker compose* file. For conveniency, we provide easy to use commands via `makefile`.
 
 Currently, our PHP image is not pushed on a docker registry. So you need to build it locally:
 
 .. code-block:: bash
 
-	DOCKER_BUILDKIT=1 docker build --progress=plain --pull --tag akeneo/pim-dev/php:7.3 --target dev .
+	make php-image-dev
 
 Make sure you have the lastest versions of the images by running:
 
@@ -63,7 +63,7 @@ To start your containers, run:
 
 .. code-block:: bash
 
-   $ docker-compose up -d
+   $ make up
 
 To stop the containers, run:
 
@@ -75,7 +75,7 @@ but if you want to completely remove everything (containers, networks and volume
 
 .. code-block:: bash
 
-   $ docker-compose down -v
+   $ make down
 
 This, of course, will not delete the Akeneo application you cloned on your machine, only the Docker containers. However, it will destroy the database and everything it contains.
 
@@ -95,20 +95,14 @@ Now, you can initialize Akeneo by running:
 
 .. code-block:: bash
 
-   $ export APP_ENV=prod
-   $ docker-compose run --rm php php -d memory_limit=4G /usr/local/bin/composer install
-   $ docker-compose run --rm node yarn install
-   $ docker-compose run --rm php php bin/console pim:installer:assets --symlink --clean
-   $ docker-compose run --rm node yarn less
-   $ docker-compose run --rm node yarn webpack
-   $ docker-compose run --rm php php bin/console pim:installer:db
+   $ make pim-prod
 
 .. note::
    If you are using Docker for Windows, there may be issues with symlinks that lead to errors during ``yarn run webpack``. If you encounter these issues, try leaving out the --symlink parameter from the ``pim:installer:assets`` commands.
 
 .. code-block:: bash
 
-   $ docker-compose up -d
+   $ make up
 
 **You should now be able to access Akeneo PIM from your host through ``http://localhost:8080/``. The default username and password are both ``admin``.**
 
@@ -117,7 +111,7 @@ Now, you can initialize Akeneo by running:
 
 .. code-block:: bash
 
-   $ APP_ENV=dev docker-compose up -d
+   $ APP_ENV=dev make up
 
 .. note::
    If you are using the minimal catalog please run the following command because this catalog does not have any user:
@@ -174,13 +168,13 @@ Enable it on fpm service:
 
 .. code-block:: bash
 
-    $ XDEBUG_ENABLED=1 docker-compose up -d
+    $ XDEBUG_ENABLED=1 make up
 
 Enable it on php service:
 
 .. code-block:: bash
 
-      $ docker-compose run --rm php php my-script.php
+      $ XDEBUG_ENABLED=1 docker-compose run --rm php php my-script.php
 
 If you are using PHPStorm, open the settings windows and go to ``Languages & Framework > PHP > Servers``. Then add two servers name ``pim-xx`` and ``pim-xx-cli`` (``xx`` could be ``ce`` or ``ee`` depending the edition you are working on)
 
@@ -197,9 +191,7 @@ Run behat tests
 The tests are to be run inside the containers. Start by configuring Behat:
 
 .. code-block:: bash
-    $ cp ./behat.yml.dist ./behat.yml
-	$ sed -i "s/127.0.0.1\//httpd\//g" ./behat.yml
-	$ sed -i "s/127.0.0.1/selenium/g" ./behat.yml
+    $ make behat.yml
 
 
 What if?
