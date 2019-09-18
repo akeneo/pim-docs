@@ -3,9 +3,9 @@
 Akeneo PIM only works on Linux servers. The application’s behaviour has been tested on several operating systems. We cannot guarantee the behaviour of the application on servers different from:
 
 +------------------------+-------------------+
-| Debian (Linux)         | ≥ 9 (64 bits)     |
+| Debian (Linux)         | ≥ 10 (64 bits)    |
 +------------------------+-------------------+
-| Ubuntu (Linux)         | ≥ 16.04 (64 bits) |
+| Ubuntu (Linux)         | ≥ 18.04 (64 bits) |
 +------------------------+-------------------+
 | CentOS / RHEL* (Linux) | ≥ 7               |
 +------------------------+-------------------+
@@ -31,29 +31,39 @@ The web server will also need the following libraries and modules:
 **PHP required modules and configuration**
 
 +----------------+---------------------------+
-| PHP            | 7.2                       |
+| PHP            | 7.3                       |
 +----------------+---------------------------+
-| php-apcu       | apc.enable_cli=1          |
+| php7.3-apcu    | apc.enable_cli=1          |
 +----------------+---------------------------+
-| php7.2-bcmath  | No specific configuration |
+| php7.3-bcmath  | No specific configuration |
 +----------------+---------------------------+
-| php7.2-curl    | No specific configuration |
+| php7.3-curl    | No specific configuration |
 +----------------+---------------------------+
-| php7.2-fpm     | No specific configuration |
+| php7.3-fpm     | No specific configuration |
 +----------------+---------------------------+
-| php7.2-gd      | No specific configuration |
+| php7.3-gd      | No specific configuration |
 +----------------+---------------------------+
-| php7.2-intl    | No specific configuration |
+| php7.3-intl    | No specific configuration |
 +----------------+---------------------------+
-| php7.2-mysql   | No specific configuration |
+| php7.3-mysql   | No specific configuration |
 +----------------+---------------------------+
-| php7.2-xml     | No specific configuration |
+| php7.3-xml     | No specific configuration |
 +----------------+---------------------------+
-| php7.2-zip     | No specific configuration |
+| php7.3-zip     | No specific configuration |
 +----------------+---------------------------+
-| php-exif       | No specific configuration |
+| php7.3-exif    | No specific configuration |
 +----------------+---------------------------+
-| php7.2-imagick | No specific configuration |
+| php7.3-imagick | No specific configuration |
++----------------+---------------------------+
+| php7.3-cli     | No specific configuration |
++----------------+---------------------------+
+| php7.3-opcache | No specific configuration |
++----------------+---------------------------+
+| php7.3-zip     | No specific configuration |
++----------------+---------------------------+
+| php7.3-mbstring| No specific configuration |
++----------------+---------------------------+
+| php-memcached  | No specific configuration |
 +----------------+---------------------------+
 
 .. warning::
@@ -82,9 +92,9 @@ Besides these modules, the following configuration is the minimal configuration 
 
 **Database server**
 
-+-----------------+---------------------+
-| MySQL (SQL)     | >= 5.7.22 and < 8.0 |
-+-----------------+---------------------+
++-----------------+----------+
+| MySQL (SQL)     | = 8.0.16 |
++-----------------+----------+
 
 To use this database you will also require the distribution package:
 
@@ -95,7 +105,7 @@ To use this database you will also require the distribution package:
 and the following PHP modules:
 
 +--------------+----------+
-| php7.2-mysql | Required |
+| php7.3-mysql | Required |
 +--------------+----------+
 
 .. warning::
@@ -106,14 +116,10 @@ and the following PHP modules:
 **Search engine**
 
 +---------------+------------+
-| Elasticsearch | 6.5        |
+| Elasticsearch | 7.3        |
 +---------------+------------+
 
-and the following Java Runtime Environment version
-
-+------------------------+----------+
-| openjdk-8-jre-headless | Required |
-+------------------------+----------+
+Elasticsearch is bundled with its own JDK version, but if you want to use the `no JDK version <https://www.elastic.co/downloads/elasticsearch-no-jdk>_`, please make sure to install the right JDK for Elasticsearch.
 
 **Network**
 
