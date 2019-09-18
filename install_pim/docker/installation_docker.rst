@@ -86,7 +86,7 @@ Install and run Akeneo
 Configure Akeneo
 ****************
 
-Akeneo PIM relies on environment variables to be configured. The `Symfony documentationv<https://symfony.com/doc/current/configuration.html#configuration-based-on-environment-variables>`_Z explains how to use them.
+Akeneo PIM relies on environment variables to be configured. The `Symfony documentationv<https://symfony.com/doc/current/configuration.html#configuration-based-on-environment-variables>`_ explains how to use them.
 
 Install Akeneo
 **************
