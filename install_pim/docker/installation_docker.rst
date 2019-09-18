@@ -15,7 +15,7 @@ Setting up your host user
 The PIM is shared with the containers as `a volume <https://docs.docker.com/engine/admin/volumes/volumes/>`_.
 The *fpm* and *php* containers will have write access to the ``var`` folder and *node* container will have write access to the ``web`` folder.
 
-The users UID and GID are both 1000:1000, so on Linux hosts **it is mandatory that the user of your host machine has 1000:1000 as UID and GID too**, otherwise you'll end up with a non-working PIM.
+These containers all have a default user with 1000:1000 as UID:GID, so on Linux hosts **it is mandatory that the user of your host machine has 1000:1000 as UID and GID too**, otherwise you'll end up with a non-working PIM.
 
 You won't face this problem on Mac OS and Windows hosts, as those systems use a VM between the host and Docker, which already operates with appropriate UID/GID.
 
@@ -23,14 +23,14 @@ Configure you package manager
 *****************************
 
 To accelerate the installation of the PIM dependencies, *Composer* and *Yarn* caches are shared between the host and the containers.
-This is achieved by `bind mounting <https://docs.docker.com/storage/bind-mounts/>`_ the cache folders of your host machine with the containers.
+This is achieved by `bind mounting <https://docs.docker.com/storage/bind-mounts/>`_ the cache folders of your host machine into the containers.
 Environment variables are available to setup those folders:
 
 
 .. code-block:: bash
 
-    HOST_COMPOSER_HOME=/path/to/home docker-compose run --rm php php -d memory_limit=4G /usr/local/bin/composer update
-    HOST_YARN_HOME=/path/to/home docker-compose run --rm note yarn install
+    HOST_COMPOSER_HOME=/path/to/composer/home docker-compose run --rm php php -d memory_limit=4G /usr/local/bin/composer update
+    HOST_YARN_HOME=/path/to/yarn/home docker-compose run --rm note yarn install
 
 .. warning::
 
