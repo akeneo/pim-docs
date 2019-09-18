@@ -7,24 +7,24 @@ System requirements
 Docker and Docker Compose
 *************************
 
-If you don't already have Docker and Docker Compose installed on your system, please refer to `docker installation docs <https://docs.docker.com/install/>`_ and `docker composer docs <https://docs.docker.com/compose/install/>`_.
+If you don't already have Docker and Docker Compose installed on your system, please refer to `docker installation <https://docs.docker.com/install/>`_ and `docker compose <https://docs.docker.com/compose/install/>`_ documentations.
 
 Setting up your host user
 *************************
 
 The PIM is shared with the containers as `a volume <https://docs.docker.com/engine/admin/volumes/volumes/>`_.
-The *fpm* and *php* containers will have write access to the ``var`` folder and *node* container will have write access to ``web`` folder.
+The *fpm* and *php* containers will have write access to the ``var`` folder and *node* container will have write access to the ``web`` folder.
 
-These users UID and GID are both 1000:1000, so on Linux hosts **it is mandatory that the user of your host machine has 1000:1000 as UID and GID too**, otherwise you'll end up with a non-working PIM.
+The users UID and GID are both 1000:1000, so on Linux hosts **it is mandatory that the user of your host machine has 1000:1000 as UID and GID too**, otherwise you'll end up with a non-working PIM.
 
 You won't face this problem on Mac OS and Windows hosts, as those systems use a VM between the host and Docker, which already operates with appropriate UID/GID.
 
 Configure you package manager
 *****************************
 
-To accelerate the installation of the PIM dependencies, Composer cache and Yarn cache are shared between the host and the containers.
+To accelerate the installation of the PIM dependencies, *Composer* and *Yarn* caches are shared between the host and the containers.
 This is achieved by `bind mounting <https://docs.docker.com/storage/bind-mounts/>`_ the cache folders of your host machine with the containers.
-Env vars are available to setup those folders:
+Environment variables are available to setup those folders:
 
 
 .. code-block:: bash
@@ -45,15 +45,15 @@ Using the Docker images
 
 .. note::
 
-   All "docker-compose" and "docker" commands are to be run from the folder containing the compose file.
+   All ``docker-compose`` and ``docker`` commands must be run from the folder containing the *Docker compose* file.
 
-Our php image is not pushed on a docker registry so you need to build it:
+Currently, our PHP image is not pushed on a docker registry. So you need to build it locally:
 
 .. code-block:: bash
 
 	DOCKER_BUILDKIT=1 docker build --progress=plain --pull --tag akeneo/pim-dev/php:7.3 --target dev .
 
-Make sure you have the last versions of the images by running:
+Make sure you have the lastest versions of the images by running:
 
 .. code-block:: bash
 
@@ -86,7 +86,7 @@ Install and run Akeneo
 Configure Akeneo
 ****************
 
-Akeneo PIM uses env vars, the `symfony docs `symfony docs <https://symfony.com/doc/current/configuration.html#configuration-based-on-environment-variables>`_ explains how to uses them.
+Akeneo PIM relies on environment variables to be configured. The `Symfony documentationv<https://symfony.com/doc/current/configuration.html#configuration-based-on-environment-variables>`_Z explains how to use them.
 
 Install Akeneo
 **************
@@ -108,26 +108,29 @@ Now, you can initialize Akeneo by running:
 
 .. code-block:: bash
 
-   $ APP_ENV=prod docker-compose up -d
+   $ docker-compose up -d
 
 **You should now be able to access Akeneo PIM from your host through ``http://localhost:8080/``. The default username and password are both ``admin``.**
 
 .. note::
+   The given commands setup a PIM with Symfony's `prod` environment. If you want to work on another mode, like `dev` or `test` for instance, please export ``APP_ENV`` with the right Symfony environment. Available environments are ``prod``, ``dev``, ``behat`` and ``test``. For example:
 
-   The following commands setup a PIM on symfony production environment. If you want to work on another environment, please export APP_ENV with the right symfony environment. Available environments are ``prod``, ``dev``, ``behat`` and ``test``
+.. code-block:: bash
+
+   $ APP_ENV=dev docker-compose up -d
 
 .. note::
    If you are using the minimal catalog please run the following command because this catalog does not have any user:
 
    .. code-block:: bash
 
-       $ APP_ENV=prod docker-compose --rm php php bin/console pim:user:create --admin -n -- admin admin test@example.com John Doe en_US
+       $ docker-compose --rm php php bin/console pim:user:create --admin -n -- admin admin test@example.com John Doe en_US
 
 
 Run imports and exports
 ***********************
 
-Akeneo 2.x implements a queue for the jobs, as a PHP daemon. This daemon is a Symfony command, that can only execute one job at a time. It does not consume any other job until the job is finished.
+Akeneo PIM implements a queue for the jobs, as a PHP daemon. This daemon is a Symfony command, that can only execute one job at a time. It does not consume any other job until the job is finished.
 
 You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every 5 seconds the queue, so it's not real time.
 
