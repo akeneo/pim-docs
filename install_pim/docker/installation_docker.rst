@@ -7,13 +7,13 @@ System requirements
 Docker and Docker Compose
 *************************
 
-If you don't already have Docker and Docker Compose installed on your system, please refer to `docker installation <https://docs.docker.com/install/>`_ and `docker compose <https://docs.docker.com/compose/install/>`_ documentations.
+Please refer to `docker installation <https://docs.docker.com/install/>`_ and `docker compose <https://docs.docker.com/compose/install/>`_ documentations if you don't already have installed them on your system.
 
 Setting up your host user
 *************************
 
 The PIM is shared with the containers as `a volume <https://docs.docker.com/engine/admin/volumes/volumes/>`_.
-The *fpm* and *php* containers will have write access to the ``var`` folder and *node* container will have write access to the ``web`` folder.
+The *FPM* and *PHP* containers have write access to the ``var`` folder and *node* container has write access to the ``web`` folder.
 
 These containers all have a default user with 1000:1000 as UID:GID, so on Linux hosts **it is mandatory that the user of your host machine has 1000:1000 as UID and GID too**, otherwise you'll end up with a non-working PIM.
 
@@ -22,9 +22,9 @@ You won't face this problem on Mac OS and Windows hosts, as those systems use a 
 Configure you package manager
 *****************************
 
-To accelerate the installation of the PIM dependencies, *Composer* and *Yarn* caches are shared between the host and the containers.
+*Composer* and *Yarn* caches are shared between the host and the containers to accelerate the installation of Akeneo PIM dependencies.
 This is achieved by `bind mounting <https://docs.docker.com/storage/bind-mounts/>`_ the cache folders of your host machine into the containers.
-Environment variables are available to setup those folders:
+Environment variables are available to set up those folders:
 
 
 .. code-block:: bash
@@ -45,15 +45,15 @@ Use the Docker images
 
 .. note::
 
-   All ``docker-compose`` and ``docker`` commands must be run from the folder containing the *Docker compose* file. For conveniency, we provide easy to use commands via `makefile`.
+   All ``docker-compose`` and ``docker`` commands must be run from the folder containing the *Docker compose* file. For convenience, we provide easy to use commands via `makefile`.
 
-Currently, our PHP image is not pushed on a docker registry. So you need to build it locally:
+Currently, our PHP image is not registered on Docker. So you need to build it locally:
 
 .. code-block:: bash
 
 	make php-image-dev
 
-Make sure you have the lastest versions of the images by running:
+Make sure you have the latest versions of the images by running:
 
 .. code-block:: bash
 
@@ -77,7 +77,7 @@ but if you want to completely remove everything (containers, networks and volume
 
    $ make down
 
-This, of course, will not delete the Akeneo application you cloned on your machine, only the Docker containers. However, it will destroy the database and everything it contains.
+Of course, it does not delete the Akeneo application you cloned on your machine, only the Docker containers. However, it destroys the database and everything it contains.
 
 
 Install and run Akeneo
@@ -86,7 +86,7 @@ Install and run Akeneo
 Configure Akeneo
 ****************
 
-Akeneo PIM relies on environment variables to be configured. The `Symfony documentationv<https://symfony.com/doc/current/configuration.html#configuration-based-on-environment-variables>`_ explains how to use them.
+Akeneo PIM is configured with environment variables. The `Symfony documentationv<https://symfony.com/doc/current/configuration.html#configuration-based-on-environment-variables>`_ explains how to use them.
 
 Install Akeneo
 **************
@@ -126,7 +126,7 @@ Run imports and exports
 
 Akeneo PIM implements a queue for the jobs, as a PHP daemon. This daemon is a Symfony command, that can only execute one job at a time. It does not consume any other job until the job is finished.
 
-You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every 5 seconds the queue, so it's not real time.
+You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every 5 seconds the queue, so it's not real-time.
 
 To launch a daemon, run the following command:
 
@@ -188,7 +188,7 @@ PIM files are located in ``/srv/pim`` on the php and fpm containers.
 Run behat tests
 ---------------
 
-The tests are to be run inside the containers. Start by configuring Behat:
+The tests have to be run inside the containers. Start by configuring Behat:
 
 .. code-block:: bash
     $ make behat.yml
