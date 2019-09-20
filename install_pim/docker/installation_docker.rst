@@ -191,6 +191,7 @@ Run behat tests
 The tests have to be run inside the containers. Start by configuring Behat:
 
 .. code-block:: bash
+
     $ make behat.yml
 
 
