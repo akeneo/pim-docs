@@ -15,7 +15,7 @@ Setting up your host user
 The PIM is shared with the containers as `a volume <https://docs.docker.com/engine/admin/volumes/volumes/>`_.
 The *FPM* and *PHP* containers have write access to the ``var`` folder and *node* container has write access to the ``web`` folder.
 
-These containers all have a default user with 1000:1000 as UID:GID, so on Linux hosts **it is mandatory that the user of your host machine has 1000:1000 as UID and GID too**, otherwise you'll end up with a non-working PIM.
+These containers all have a default user with 1000:1000 as UID:GID. So, on Linux hosts, **it is mandatory that the user of your host machine has 1000:1000 as UID and GID too**. Otherwise you'll end up with a non-working PIM.
 
 You won't face this problem on Mac OS and Windows hosts, as those systems use a VM between the host and Docker, which already operates with appropriate UID/GID.
 
@@ -97,9 +97,6 @@ Now, you can initialize Akeneo by running:
 
    $ make pim-prod
 
-.. note::
-   If you are using Docker for Windows, there may be issues with symlinks that lead to errors during ``yarn run webpack``. If you encounter these issues, try leaving out the --symlink parameter from the ``pim:installer:assets`` commands.
-
 .. code-block:: bash
 
    $ make up
@@ -124,7 +121,7 @@ Now, you can initialize Akeneo by running:
 Run imports and exports
 ***********************
 
-Akeneo PIM implements a queue for the jobs, as a PHP daemon. This daemon is a Symfony command, that can only execute one job at a time. It does not consume any other job until the job is finished.
+Akeneo PIM implements a queue for the `jobs<https://docs.akeneo.com/3.2/import_and_export_data/index.html>`_, as a PHP daemon. This daemon is a Symfony command, that can only execute one job at a time. It does not consume any other job until the job is finished.
 
 You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every 5 seconds the queue, so it's not real-time.
 
