@@ -13,8 +13,8 @@ usage(){
 
 DEPLOY=false
 HOST=docs-staging.akeneo.com
-PORT=22
-USERNAME=pim-docs
+PORT=GIMMETHEREALPORT
+USERNAME=GIMMETHEREALUSER
 CUSTOM_UID=`id -u`
 CUSTOM_GID=`id -g`
 VERSION=$1; shift; echo "Building version $VERSION..."
