@@ -21,14 +21,32 @@ Initializing Akeneo
 
 .. note::
 
-    Remember that ``dev`` is the default and slowness environment. So when you launch a Symfony command, always add ``--env=prod`` in prod environment to avoid useless logging and profiling.
+    Remember that ``dev`` is the default and slowest environment. So when you launch a Symfony command, always add ``--env=prod`` in prod environment to avoid useless logging and profiling.
 
 .. code-block:: bash
     :linenos:
 
     $ cd /path/to/installation/pim-community-standard
 
-Dependencies,
+Configure the PIM via the ``.env`` file:
+
+.. code-block:: yaml
+    :linenos:
+
+    APP_ENV=prod
+    APP_DATABASE_HOST=localhost
+    APP_DATABASE_PORT=null
+    APP_DATABASE_NAME=akeneo_pim
+    APP_DATABASE_USER=akeneo_pim
+    APP_DATABASE_PASSWORD=akeneo_pim
+    APP_DEFAULT_LOCALE=en
+    APP_SECRET=ThisTokenIsNotSoSecretChangeIt
+    APP_INDEX_HOSTS='elastic:changeme@elasticsearch:9200'
+    APP_PRODUCT_AND_PRODUCT_MODEL_INDEX_NAME=akeneo_pim_product_and_product_model
+    MAILER_URL=null://akeneo-pim.local
+    AKENEO_PIM_URL=http://akeneo-pim.local
+
+Install dependencies:
 
 .. code-block:: bash
     :linenos:
@@ -36,31 +54,30 @@ Dependencies,
     $ php -d memory_limit=3G ../composer.phar install --optimize-autoloader --prefer-dist
     $ yarn install
 
-Frontend,
+Setup cache and frontend:
 
 .. code-block:: bash
     :linenos:
 
-    $ php bin/console cache:clear --no-warmup --env=prod
-    $ php bin/console pim:installer:assets --symlink --clean --env=prod
-
-Installation,
-
-.. code-block:: bash
-    :linenos:
-
-    $ bin/console pim:install --force --symlink --clean --env=prod
+    $ php bin/console --env=prod cache:warmup
+    $ php bin/console --env=prod pim:installer:prepare-required-directories 
+    $ php bin/console --env=prod pim:installer:assets --symlink --clean
+    $ yarn run less
     $ yarn run webpack
 
-.. note::
-    The ``../composer.phar install`` command writes the database configuration to ``app/config/parameters.yml``
+Install the database:
+
+.. code-block:: bash
+    :linenos:
+
+    $ php bin/console --env=prod pim:installer:db
 
 You now have to create an administrator user via the command `pim:user:create`. There is no default admin account. For instance:
 
 .. code-block:: bash
     :linenos:
 
-    $ bin/console pim:user:create superadmin GENERATEDSUPERADMINPASSWORD support@example.com Super Admin en_US --admin -n --env=prod
+    $ php bin/console --env=prod pim:user:create superadmin GENERATEDSUPERADMINPASSWORD support@example.com Super Admin en_US --admin -n --env=prod
 
 .. include:: ./crontab_tasks.rst.inc
 

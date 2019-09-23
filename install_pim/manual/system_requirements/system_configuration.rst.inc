@@ -12,7 +12,8 @@ MySQL
 
     $ mysql -u root -p
     mysql> CREATE DATABASE akeneo_pim;
-    mysql> GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost IDENTIFIED BY 'akeneo_pim';
+    mysql> CREATE USER akeneo_pim@localhost IDENTIFIED WITH mysql_native_password BY 'akeneo_pim';
+    mysql> GRANT ALL PRIVILEGES ON akeneo_pim.* TO akeneo_pim@localhost;
     mysql> EXIT
 
 PHP
@@ -61,7 +62,7 @@ First, create the file ``/etc/apache2/sites-available/akeneo-pim.local.conf``
         </Directory>
 
         <FilesMatch \.php$>
-            SetHandler "proxy:unix:/run/php/php7.2-fpm.sock|fcgi://localhost/"
+            SetHandler "proxy:unix:/run/php/php7.3-fpm.sock|fcgi://localhost/"
         </FilesMatch>
 
         SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
@@ -75,7 +76,7 @@ First, create the file ``/etc/apache2/sites-available/akeneo-pim.local.conf``
 
     * Replace ``/path/to/installation`` by the path to the directory where you want to install the PIM.
     * Replace ``pim-community-standard`` by ``pim-enterprise-standard`` for enterprise edition.
-    * ``/run/php/php7.2-fpm.sock`` is the default socket path. If you changed it in ``/etc/php/7.2/fpm/pool.d/www.conf``, change it in the virtual host too.
+    * ``/run/php/php7.3-fpm.sock`` is the default socket path. If you changed it in ``/etc/php/7.3/fpm/pool.d/www.conf``, change it in the virtual host too.
     * Don't forget to add the ``web`` directory of your Symfony application.
 
 Enabling the virtual host
@@ -89,7 +90,7 @@ The Apache configuration is done, you need to enable it:
     # This will return 'Syntax OK'
 
     $ sudo a2ensite akeneo-pim.local
-    $ sudo systemctl reload apache2
+    $ sudo service apache2 reload
 
 Adding the virtual host name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
