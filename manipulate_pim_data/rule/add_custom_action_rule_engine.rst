@@ -23,7 +23,7 @@ First let's see how to create the action. You need to create an ActionApplier ob
 
     namespace Acme\Bundle\CustomBundle\ActionApplier;
 
-    use Akeneo\Bundle\Tool\RuleEngineBundle\Model\ActionInterface;
+    use Akeneo\Tool\Bundle\RuleEngineBundle\Model\ActionInterface;
     use Acme\Bundle\CustomBundle\Model\ProductPatternAction;
     use Akeneo\Tool\Component\RuleEngine\ActionApplier\ActionApplierInterface;
     use Akeneo\Tool\Component\StorageUtils\Updater\PropertySetterInterface;
@@ -90,7 +90,7 @@ Then we need to create the object that will handle the data.
 
     namespace Acme\Bundle\CustomBundle\Model;
 
-    use Akeneo\Bundle\Tool\RuleEngineBundle\Model\ActionInterface;
+    use Akeneo\Tool\Bundle\RuleEngineBundle\Model\ActionInterface;
     use Akeneo\Pim\Automation\RuleEngine\Component\Model\FieldImpactActionInterface;
 
     class ProductPatternAction implements ActionInterface, FieldImpactActionInterface
