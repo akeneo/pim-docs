@@ -86,7 +86,7 @@ Install and run Akeneo
 Configure Akeneo
 ****************
 
-Akeneo PIM is configured with environment variables. The `Symfony documentationv<https://symfony.com/doc/current/configuration.html#configuration-based-on-environment-variables>`_ explains how to use them.
+Akeneo PIM is configured with environment variables. The `Symfony documentation <https://symfony.com/doc/current/configuration.html#configuration-based-on-environment-variables>`_ explains how to use them.
 
 Install Akeneo
 **************
@@ -121,7 +121,7 @@ Now, you can initialize Akeneo by running:
 Run imports and exports
 ***********************
 
-Akeneo PIM implements a queue for the `jobs<https://docs.akeneo.com/3.2/import_and_export_data/index.html>`_, as a PHP daemon. This daemon is a Symfony command, that can only execute one job at a time. It does not consume any other job until the job is finished.
+Akeneo PIM implements a queue for the `jobs <https://docs.akeneo.com/3.2/import_and_export_data/index.html>`_, as a PHP daemon. This daemon is a Symfony command, that can only execute one job at a time. It does not consume any other job until the job is finished.
 
 You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every 5 seconds the queue, so it's not real-time.
 
