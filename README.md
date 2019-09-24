@@ -16,7 +16,7 @@ From the `./pim-docs` directory, run:
     $ docker run --rm \
         -v $(pwd):/home/akeneo/pim-docs/data \
         pim-docs:master \
-        ./build.sh master --uid $(id -u) --gid $(id -g) --no-asset-check
+        ./build.sh master --uid $(id -u) --gid $(id -g)
 ```
 
 The docs will be built into `./pim-docs-build`.

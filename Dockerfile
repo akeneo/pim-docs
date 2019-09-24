@@ -30,7 +30,7 @@ RUN apt-get update && \
     #
     # Download packages
     apt-get update && \
-    apt-get install -y --no-install-recommends php7.3-apcu php7.3-bcmath php7.3-cli php7.3-curl php7.3-fpm php7.3-gd php7.3-intl php7.3-mysql php7.3-xml php7.3-zip php7.3-mbstring nodejs yarnpkg && \
+    apt-get install -y --no-install-recommends php7.3-apcu php7.3-bcmath php7.3-cli php7.3-curl php7.3-fpm php7.3-gd php7.3-intl php7.3-mysql php7.3-xml php7.3-zip php7.3-mbstring && \
     #
     # Configure PHP
     echo "memory_limit = 1024M" >> /etc/php/7.3/cli/php.ini && \
@@ -61,9 +61,7 @@ RUN chmod +x /home/akeneo/pim-docs/build.sh && \
     cd /home/akeneo/pim-docs/pim-community-dev-master/ && \
     php -d memory_limit=3G /home/akeneo/pim-docs/composer.phar install --no-dev --no-suggest --ignore-platform-reqs
 
-RUN cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console pim:installer:assets --env=prod && \
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && sed -i "s#replace: '/bundles'#replace: '../bundles'#" frontend/build/compile-less.js && \
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && yarnpkg install && yarnpkg less
+RUN cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console pim:installer:assets --env=prod
     #
     # Clean
 RUN rm -rf /root/.composer/cache && \
