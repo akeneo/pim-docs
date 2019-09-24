@@ -8,12 +8,6 @@ The Akeneo PIM documentation
 
 Install [Docker](https://docs.docker.com/engine/installation/).
 
-[optional] To update the branch list with the current pim-docs branches, use:
-
-```
-sed -i -e "s/^\(.*\)'versions': .*,\(.*\)$/\1'versions': ['$(git branch -l|grep -x "\(^[ *]\+[0-9]\+\.[0-9]\+.*\)\|\(^[ *]\+master\)" | cut -c 3- | sort -r | paste -sd " ")'],\2/" conf.py
-```
-
 From the `./pim-docs` directory, run:
 
 ```bash
@@ -96,7 +90,9 @@ to redirect to `/styleguide/index.php`:
 
 ## Deploy the documentation
 
-Use this script https://github.com/akeneo/dev-tools/blob/master/script-executor/app/scripts/generate-docs.sh
+If you want to deploy all branches, use this script https://github.com/akeneo/dev-tools/blob/master/script-executor/app/scripts/generate-docs.sh.
+
+If you want to deploy only your current branch, you can use the ``build.sh`` script of this repository with the option ``--deploy``.
 
 ## Contribution
 
