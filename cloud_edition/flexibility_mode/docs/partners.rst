@@ -32,7 +32,7 @@ Please note that, while the number of running job consumers is not enforced, it 
 to increase it above the server capability. Between 1 and 3 comsumers is recommended.
 
 Default daemons (pim_job_queue@1 & pim_job_queue@2) are enabled by Default.
-Personalized daemons need to be enable in order them to automatically restart (When using partners_clear_cache for example).
+Personalized daemons need to be enable in order for them to automatically restart (When using partners_clear_cache for example).
 
 Create a new daemon by enabling & starting a service with a **unique** identifier:
 
