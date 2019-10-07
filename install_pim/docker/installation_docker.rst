@@ -30,7 +30,7 @@ Environment variables are available to set up those folders:
 .. code-block:: bash
 
     HOST_COMPOSER_HOME=/path/to/composer/home docker-compose run --rm php php -d memory_limit=4G /usr/local/bin/composer update
-    HOST_YARN_HOME=/path/to/yarn/home docker-compose run --rm note yarn install
+    HOST_YARN_HOME=/path/to/yarn/home docker-compose run --rm node yarn install
 
 .. warning::
 
