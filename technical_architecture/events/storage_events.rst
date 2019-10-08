@@ -33,7 +33,7 @@ ProjectSubscriber (Enterprise edition)                            0
 CheckPublishedProductOnRemovalSubscriber (Enterprise edition)     0
 ================================================================  ===============
 
-.. _CheckChannelsOnDeletionSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/Category/CheckChannelsOnDeletionSubscriber.php
+.. _CheckChannelsOnDeletionSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/Category/OnDelete/CheckChannelsOnDeletionSubscriber.php
 .. _AddRemoveVersionSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Tool/Bundle/VersioningBundle/EventSubscriber/AddRemoveVersionSubscriber.php
 
 ``akeneo.storage.post_remove``
@@ -45,15 +45,15 @@ This event is dispatched after we have removed an object using a remover.
 
 These are the built-in PIM subscribers registered to this event:
 
-===================================================  ===============
-Listener Class Name                                  Priority
-===================================================  ===============
-`IndexProductModelsSubscriber`_                      0
-`IndexProductsSubscriber`_                           0
-===================================================  ===============
+===============================================================  ===============
+Listener Class Name                                              Priority
+===============================================================  ===============
+`Product\\OnDelete\\ComputeProductsAndAncestorsSubscriber`_      0
+`ProductModel\\OnDelete\\ComputeProductAndAncestorsSubscriber`_  0
+===============================================================  ===============
 
-.. _IndexProductModelsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/IndexProductModelsSubscriber.php
-.. _IndexProductsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/IndexProductsSubscriber.php
+.. _Product\\OnDelete\\ComputeProductsAndAncestorsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/Product/OnDelete/ComputeProductsAndAncestorsSubscriber.php
+.. _ProductModel\\OnDelete\\ComputeProductAndAncestorsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/ProductModel/OnDelete/ComputeProductAndAncestorsSubscriber.php
 
 ``akeneo.storage.pre_remove_all``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -90,7 +90,7 @@ EnsureProductDraftGlobalStatusSubscriber (Enterprise edition)  0
 =============================================================  ===============
 
 .. _CurrencyDisablingSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Channel/Bundle/EventListener/CurrencyDisablingSubscriber.php
-.. _ComputeEntityRawValuesSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/ComputeEntityRawValuesSubscriber.php
+.. _ComputeEntityRawValuesSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/EntityWithValues/ComputeEntityRawValuesSubscriber.php
 .. _ChannelLocaleSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Channel/Bundle/EventListener/ChannelLocaleSubscriber.php
 
 ``akeneo.storage.post_save``
@@ -102,14 +102,18 @@ This event is dispatched after we have saved an object using a saver, either whe
 
 These are the built-in PIM subscribers registered to this event:
 
-==============================================  ===============
-Listener Class Name                             Priority
-==============================================  ===============
-`IndexProductModelsSubscriber`_                 0
-`IndexProductsSubscriber`_                      0
-CatalogUpdatesSubscriber (Enterprise edition)   0
-ImportProposalsSubscriber (Enterprise edition)  0
-==============================================  ===============
+===============================================================  ===============
+Listener Class Name                                              Priority
+===============================================================  ===============
+`Product\\OnSave\\ComputeProductsAndAncestorsSubscriber`_        0
+`ProductModel\\OnSave\\ComputeProductAndAncestorsSubscriber`_    0
+CatalogUpdatesSubscriber (Enterprise edition)                    0
+ImportProposalsSubscriber (Enterprise edition)                   0
+===============================================================  ===============
+
+.. _Product\\OnSave\\ComputeProductsAndAncestorsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/Product/OnSave/ComputeProductsAndAncestorsSubscriber.php
+.. _ProductModel\\OnSave\\ComputeProductAndAncestorsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/ProductModel/OnSave/ComputeProductAndAncestorsSubscriber.php
+
 
 ``akeneo.storage.pre_save_all``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -136,11 +140,11 @@ This event is dispatched after we have saved a pool of objects using the saveAll
 
 These are the built-in PIM subscribers registered to this event:
 
-===========================================================  ===============
-Listener Class Name                                          Priority
-===========================================================  ===============
-`IndexProductModelsSubscriber`_                              0
-`IndexProductsSubscriber`_                                   0
-AddAttributeGroupPermissionsSubscriber (Enterprise edition)  0
-AddCategoryPermissionsSubscriber (Enterprise edition)        0
-===========================================================  ===============
+=============================================================  ===============
+Listener Class Name                                            Priority
+=============================================================  ===============
+`Product\\OnSave\\ComputeProductsAndAncestorsSubscriber`_      0
+`ProductModel\\OnSave\\ComputeProductAndAncestorsSubscriber`_  0
+AddAttributeGroupPermissionsSubscriber (Enterprise edition)    0
+AddCategoryPermissionsSubscriber (Enterprise edition)          0
+=============================================================  ===============
