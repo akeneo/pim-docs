@@ -20,25 +20,6 @@ It implements ``Akeneo\Component\StorageUtils\Saver\SaverInterface`` and ``Akene
     $saver->save($product); // To save one product
     $saver->saveAll($products); // To save a collection of products
 
-Save the Products with Options
-------------------------------
-
-You can use an array of the following extra options (booleans) as a second parameter when you save products.
-
-If the 'flush' option is passed with 'true', the object will be saved to the database.
-
-If the 'recalculate' option is passed with 'true', the product completeness will be directly computed.
-
-If the 'schedule' option is passed with 'true', the product completeness will be scheduled and computed later.
-
-.. code-block:: php
-
-    $saver->save($product, ['flush' => true, 'recalculate' => true, 'schedule' => true]);
-
-.. note::
-
-    The 'schedule' option is more efficient than 'recalculate', the computation is done later with a cron task on the command 'pim:completeness:calculate'.
-
 Dive into the Saver
 -------------------
 
