@@ -25,54 +25,21 @@ For instance, to load the ``icecat`` catalog:
     php bin/console pim:installer:db --catalog vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev
 
 .. warning::
-
     Be careful, the command ``pim:installer:db`` will drop your database and then recreate it.
 
 Using Your Own Dataset
 ----------------------
 
-A custom dataset can be used during Akeneo PIM installation, so you can set up your own catalog structure or demo data. Here are the steps needed create your custom dataset:
-
-Create and register your custom dataset bundle
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Create a new bundle:
-
-.. literalinclude:: ../../src/Acme/Bundle/AppBundle/AcmeAppBundle.php
-   :language: php
-   :prepend: # /src/Acme/Bundle/AppBundle/AcmeAppBundle.php
-   :linenos:
-
-Register it in ``AppKernel.php``:
-
-.. code-block:: php
-   :linenos:
-
-   class AppKernel extends Kernel
-    {
-        /**
-         * {@inheritdoc}
-         */
-        public function registerBundles()
-        {
-            $bundles = [
-                new Acme\Bundle\AppBundle\AcmeAppBundle(),
-            ];
-
-            ...
-
-            return $bundles;
-        }
-    }
+A custom dataset can be used during Akeneo PIM installation, so you can set up your own catalog structure or demo data. Here are the steps needed create your custom dataset.
 
 .. _add-your-own-data:
 
 Add your Own Data
 ^^^^^^^^^^^^^^^^^
 
-Create the directory ``Resources/fixtures/mydataset`` in your bundle.
+Create a directory to put your data in. For instance, ``Resources/fixtures/mydataset`` in one of your bundle.
 
-Copy all ``*.yml`` and ``*.csv`` files from ``vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/minimal`` to the ``mydataset`` directory of your bundle. Then customize them depending on your needs.
+Copy all ``*.yml`` and ``*.csv`` files from ``vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/minimal`` to the ``mydataset`` directory. Then customize them depending on your needs.
 
 Mandatory Data
 ^^^^^^^^^^^^^^
@@ -87,29 +54,19 @@ You should also make sure that:
 - you have at least one ``channel`` in your ``channels.yml``;
 - you have at least one ``category tree`` (default: master) in your ``categories.csv``.
 
-.. note::
-
-  For 1.4 and newer version, the installer will use the same CSV format as the one used for import and export. The main advantage is that any data exported can be used in fixtures.
-
 .. tip::
 
   Check ``Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/minimal`` to see what the mandatory format is and which
   fixtures are absolutely needed, then you can draw heavily on ``Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev`` to add optional objects.
 
-Install the DB
+Load the Data
 ^^^^^^^^^^^^^^
 
-Edit the file ``app/config/parameters.yml`` and add the line
-
-.. code-block:: yaml
-
-    installer_data: 'AcmeAppBundle:mydataset'
-
-You can now (re)install your database by running:
+You can now (re)install the database and loading your own dataset by running:
 
 .. warning::
-    Be careful, the following command will drop your database and then recreate it.
+    Be careful, the command ``pim:installer:db`` will drop your database and then recreate it.
 
 .. code-block:: bash
 
-    php bin/console pim:installer:db --env=prod
+    php bin/console pim:installer:db --catalog path/to/my/bundle/Resources/fixtures/mydataset --env=prod
