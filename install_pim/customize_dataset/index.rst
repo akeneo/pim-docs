@@ -6,33 +6,27 @@ Akeneo PIM ships with two datasets. They are located in ``vendor/akeneo/pim-comm
 * *icecat_demo_dev* to be able to take a look and play with the PIM with already preset families, categories, products, etc..
 * *minimal* to start a brand new blank PIM project
 
-Akeneo PIM ships with *icecat_demo_dev* enabled.
+From v4.0, Akeneo PIM ships with *minimal* enabled.
 
 .. warning::
    From version PIM 3.2, *minimal* catalog does NOT include any default admin user for security reasons.
    This means you cannot connect anymore with the previous default `admin` account and the `admin` password.
    You have to create it yourself with the command `pim:user:create` and give it a proper password.
 
-Switching From Icecat to Minimal
---------------------------------
+Choosing Which Dataset to Install
+---------------------------------
 
-Edit the file ``app/config/parameters.yml`` and add the line
+In order to choose which dataset to install, you have to use the option ``--catalog`` of the command ``pim:installer:db``. By default, the ``minimal`` catalog is loaded.
 
-.. code-block:: yaml
-
-    installer_data: 'PimInstallerBundle:minimal'
-
-.. note::
-   If you use the enterprise version please use ``PimEnterpriseInstallerBundle:minimal`` instead of ``PimInstallerBundle:minimal``.
-
-You can now (re)install your database by running:
-
-.. warning::
-    Be careful, the following command will drop your database and then recreate it.
+For instance, to load the ``icecat`` catalog:
 
 .. code-block:: bash
 
-    php bin/console pim:installer:db --env=prod
+    php bin/console pim:installer:db --catalog vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev
+
+.. warning::
+
+    Be careful, the command ``pim:installer:db`` will drop your database and then recreate it.
 
 Using Your Own Dataset
 ----------------------
