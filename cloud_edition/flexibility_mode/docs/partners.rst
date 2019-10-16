@@ -41,7 +41,7 @@ Create a new daemon by enabling & starting a service with a **unique** identifie
 
     # Launch the daemon #1
     partners_systemctl pim_job_queue@1 start
-    
+
     # Enable the daemon #3
     partners_systemctl pim_job_queue@3 enable
 
