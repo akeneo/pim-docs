@@ -195,20 +195,22 @@ For a simple reference data:
 .. code-block:: yaml
 
     # /app/config/config.yml
-    pim_reference_data:
-        color:
-            class: Acme\Bundle\AppBundle\Entity\Color
-            type: simple
+    akeneo_pim_structure:
+        reference_data:
+            color:
+                class: Acme\Bundle\AppBundle\Entity\Color
+                type: simple
 
 For a multiple reference data:
 
 .. code-block:: yaml
 
     # /app/config/config.yml
-    pim_reference_data:
-        colors:
-            class: Acme\Bundle\AppBundle\Entity\Color
-            type: multi
+    akeneo_pim_structure:
+        reference_data:
+            colors:
+                class: Acme\Bundle\AppBundle\Entity\Color
+                type: multi
 
 The reference data name (here `color` or `colors`) must use only letters and be camel-cased: the same `Color`
 entity can be used as simple or multiple reference data.
