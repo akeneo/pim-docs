@@ -25,8 +25,9 @@ Akeneo PIM uses a daemon to execute jobs (i.e: imports, exports, etc.) from a qu
 
 This daemon is managed by ``systemd`` and allows multiple operations such as:
 
-- start/restart a daemon
+- start/stop/restart a daemon
 - check the status of a daemon
+- enable/disable a daemon
 - see logs of a daemon
 
 Please note that, while the number of running job consumers is not enforced, it is not recommended
@@ -53,6 +54,9 @@ The name of the file is the **daemon identifier**. Make it simple and use only i
 
 .. code-block:: bash
    :linenos:
+
+   # Enable the daemon for this configuration /home/akeneo/.systemd/pim_job_queue/1.conf
+   partners_systemctl pim_job_queue@1 enable
 
    # Launch the daemon for this configuration /home/akeneo/.systemd/pim_job_queue/1.conf
    partners_systemctl pim_job_queue@1 start
