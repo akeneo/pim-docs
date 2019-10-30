@@ -31,22 +31,19 @@ This daemon is managed by ``systemd`` and allows multiple operations such as:
 Please note that, while the number of running job consumers is not enforced, it is not recommended
 to increase it above the server capability. Between 1 and 3 comsumers is recommended.
 
-Default daemons (pim_job_queue@1 & pim_job_queue@2) are enabled by Default.
-Personalized daemons need to be enable in order them to automatically restart (When using partners_clear_cache for example).
+Default daemons (pim_job_queue@1 & pim_job_queue@2) are enabled by default.
+Personalized daemons need to be enabled in order for them to automatically restart, when using partners_clear_cache for example.
 
 Create a new daemon by enabling & starting a service with a **unique** identifier:
 
 .. code-block:: bash
     :linenos:
 
+    # Enable the daemon #1
+    partners_systemctl pim_job_queue@1 enable
+
     # Launch the daemon #1
     partners_systemctl pim_job_queue@1 start
-
-    # Enable the daemon #3
-    partners_systemctl pim_job_queue@3 enable
-
-    # Launch the daemon #3
-    partners_systemctl pim_job_queue@3 start
 
     # Check the status of the daemon
     partners_systemctl pim_job_queue@1 status
@@ -54,11 +51,11 @@ Create a new daemon by enabling & starting a service with a **unique** identifie
     # Stop the daemon
     partners_systemctl pim_job_queue@1 stop
 
-    # See real time logs for daemon #2
-    journalctl --unit=pim_job_queue@2 -f
+    # See real time logs for daemon #1
+    journalctl --unit=pim_job_queue@1 -f
 
-    # Disable the daemon #3
-    partners_systemctl pim_job_queue@3 disable
+    # Disable the daemon #1
+    partners_systemctl pim_job_queue@1 disable
 
 Useful commands
 ---------------
