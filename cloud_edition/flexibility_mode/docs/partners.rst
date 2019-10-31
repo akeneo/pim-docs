@@ -40,7 +40,7 @@ Configurations of daemons are stored under `/home/akeneo/.systemd/pim_job_queue`
 
 Each text file contains the list of supported jobs for a given queue.
 
-Exemple in file `/home/akeneo/.systemd/pim_job_queue/1.conf`:
+Example in file `/home/akeneo/.systemd/pim_job_queue/1.conf`:
 
 .. code-block:: bash
    :linenos:
