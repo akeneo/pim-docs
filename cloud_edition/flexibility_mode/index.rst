@@ -23,3 +23,4 @@ Flexibility Mode
     docs/partners
     docs/system_components
     docs/disk_usage
+    docs/onboarder
