@@ -2,7 +2,7 @@ Partners
 ========
 
 | On Flexiblity Mode, you have access to custom aliases that
-| allow you to run a limit set of commands with root privileges.
+| allow you to run a limited set of commands with root privileges.
 
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 | Alias                      | Argument                 | Action                                                                                                                                           |
