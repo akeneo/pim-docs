@@ -115,7 +115,7 @@ Now, you can initialize Akeneo by running:
 
    .. code-block:: bash
 
-       $ docker-compose run --rm php php bin/console pim:user:create --admin -n -- admin admin test@example.com John Doe en_US
+       $ docker-compose run --rm php php bin/console pim:user:create --admin -n admin admin test@example.com John Doe en_US
 
 
 Run imports and exports
