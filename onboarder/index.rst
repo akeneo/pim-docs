@@ -13,6 +13,7 @@ Akeneo Onboarder
 
     prerequisites/index
     installation/index
+    migrate/index
     synchronization/index
     troubleshooting/index
 
