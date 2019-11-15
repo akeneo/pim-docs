@@ -13,10 +13,10 @@ To migrate from 1.7 to 2.0, we recommend the use of our brand new migration tool
 
 We're continuously improving Transporteo to cover more and more use cases and automate more and more the migrations.
 
-Migrate from 2.3 to 3.1
+Migrate from 2.0 to 3.2
 -----------------------
 
-To migrate from 2.0 to 3.1 version, it is necessary to do the progressively upgrade process to each 2.X version.
+To migrate from 2.0 to 3.2 version, it is necessary to do the progressively upgrade process to each 2.X version.
 
 For instance, if you are on the 2.0 version, you will have to migrate to the 2.1, then the 2.2 and finally the 2.3.
 
@@ -27,7 +27,14 @@ From the 2.3 version, you will be able to follow this migration guide:
 * `From v2.3 to v3.0`_
 
 .. _From v2.3 to v3.0: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-3.0.md
+
+* `From v3.0 to v3.1`_
+
 .. _From v3.0 to v3.1: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-3.1.md
+
+* `From v3.1 o v3.2`_
+.. _From v3.1 to v3.2: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-3.2.md
+
 
 **If you are an Enterprise Edition client**
 
@@ -36,4 +43,4 @@ Standard Enterprise Edition (EE) archives are available from `the Portal <https:
 Then, follow the migration guides located in your archive to upgrade your project.
 
 * From EE v2.3 to EE v3.0: UPGRADE-3.0.md
-* From EE v3.0 to EE v3.1: UPGRADE-3.1.md
+* From EE v3.0 to EE v3.2: UPGRADE-3.2.md
