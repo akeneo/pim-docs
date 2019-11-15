@@ -32,7 +32,7 @@ From the 2.3 version, you will be able to follow this migration guide:
 
 .. _From v3.0 to v3.1: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-3.1.md
 
-* `From v3.1 o v3.2`_
+* `From v3.1 to v3.2`_
 
 .. _From v3.1 to v3.2: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-3.2.md
 
