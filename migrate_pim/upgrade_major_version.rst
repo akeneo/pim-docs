@@ -16,7 +16,7 @@ We're continuously improving Transporteo to cover more and more use cases and au
 Migrate from 2.0 to 3.2
 -----------------------
 
-To migrate from 2.0 to 3.2 version, it is necessary to do the progressively upgrade process to each 2.X version.
+To migrate from 2.0 to 3.2 version, it is necessary to do the progressively upgrade process to each 2.X and 3.X versions.
 
 For instance, if you are on the 2.0 version, you will have to migrate to the 2.1, then the 2.2 and finally the 2.3.
 
