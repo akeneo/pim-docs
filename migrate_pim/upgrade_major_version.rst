@@ -43,4 +43,5 @@ Standard Enterprise Edition (EE) archives are available from `the Portal <https:
 Then, follow the migration guides located in your archive to upgrade your project.
 
 * From EE v2.3 to EE v3.0: UPGRADE-3.0.md
-* From EE v3.0 to EE v3.2: UPGRADE-3.2.md
+* From EE v3.0 to EE v3.1: UPGRADE-3.1.md
+* From EE v3.1 to EE v3.2: UPGRADE-3.2.md
