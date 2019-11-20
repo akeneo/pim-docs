@@ -30,7 +30,7 @@ Environment variables are available to set up those folders:
 .. code-block:: bash
 
     HOST_COMPOSER_HOME=/path/to/composer/home docker-compose run --rm php php -d memory_limit=4G /usr/local/bin/composer update
-    HOST_YARN_HOME=/path/to/yarn/home docker-compose run --rm node yarn install
+    HOST_YARN_CACHE_FOLDER=/path/to/yarn/cache docker-compose run --rm node yarn install
 
 .. warning::
 
@@ -39,6 +39,8 @@ Environment variables are available to set up those folders:
 The cache of composer is usually in its home folder, in a ``cache`` subdirectory (in other words, in ``~/.composer/cache``). However, on some Linux systems, the Composer cache and configuration are separated in different folders:
 - composer home will be in ``~/.config/composer`` (it contains your GitHub token, mandatory to install the dependencies of ``akeneo/pim-community-standard`` or of the Enterprise Edition),
 - composer cache will be in ``~/.cache/composer``.
+
+The default folder for the yarn cache is ``~/.cache/yarn``.
 
 Use the Docker images
 ---------------------
