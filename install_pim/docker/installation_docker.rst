@@ -242,7 +242,7 @@ Those two bash scripts are just helpers placed in the PIM, in the folder ``bin/d
 
 .. code-block:: bash
 
-   $ docker-compose exec fpm composer update
+   $ docker-compose exec fpm php -d memory_limit=3G /usr/local/bin/composer install
    $ docker-compose run --rm node yarn install
 
 - ``pim-initialize.sh``
