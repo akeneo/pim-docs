@@ -109,7 +109,7 @@ The following command will keep up to 10 days of log entries for the SSO authent
 
 .. bash:
 
-$ bin/console  pimee:sso:rotate-log <max-number-of-days-to-keep>
+$ bin/console  pimee:sso:rotate-log 10
 
 
 FAQ

@@ -67,6 +67,8 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     */30 * * * * pimee:franklin-insights:fetch-products --env=prod
     #Ansible: akeneo:reference-entity:refresh-records --all
     0 23 * * * akeneo:reference-entity:refresh-records --all --env=prod
+    #Ansible: pimee:sso:rotate-log 10 --env=prod
+    4 22 * * * pimee:sso:rotate-log 10 --env=prod
 
     # My custom jobs
     SHELL=/bin/bash
