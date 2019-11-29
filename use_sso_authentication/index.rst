@@ -97,22 +97,20 @@ Setting up the SSO logs purge
 The PIM stores SSO related errors and warnings in a dedicated table. In order to cleanup log entries from
 this table (to avoid it to grow indefinitely), a command is available:
 
-```bash
+.. bash:
 
 $ bin/console  pimee:sso:rotate-log <max-number-of-days-to-keep>
 
-```
 
 Example
 -------
 
 The following command will keep up to 10 days of log entries for the SSO authentication.
 
-```bash
+.. bash:
 
 $ bin/console  pimee:sso:rotate-log <max-number-of-days-to-keep>
 
-```
 
 FAQ
 ---
