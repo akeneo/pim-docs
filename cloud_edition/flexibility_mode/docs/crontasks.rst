@@ -40,7 +40,7 @@ SHELL wrapper
 
 We provide a wrapper in the default crontab that intend to simplify the usage of the crontab for the PIM.
 This shell wrapper is defined on top of the crontab with the variable *SHELL* and will take care of prepending the path of the PIM
-and the console binary also taking care of the logs. Logs will be writen in the PIM logs directory by default with this wrapper.
+and the console binary also taking care of the logs. Logs will be written in the PIM logs directory by default with this wrapper.
 
 If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for example, before your cronjobs and do any custom implementation.
 
@@ -53,8 +53,6 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     15 12,20 * * * akeneo:rule:run --env=prod
     #Ansible: pim:versioning:refresh
     30 16,23 * * * pim:versioning:refresh --env=prod
-    #Ansible: pim:completeness:calculate
-    45 */2 * * * pim:completeness:calculate --env=prod
     #Ansible: akeneo:batch:purge-job-execution
     20 0 1 * * akeneo:batch:purge-job-execution --env=prod
     #Ansible: pimee:project:notify-before-due-date
@@ -69,6 +67,8 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     0 23 * * * akeneo:reference-entity:refresh-records --all --env=prod
     #Ansible: pimee:sso:rotate-log 10 --env=prod
     4 22 * * * pimee:sso:rotate-log 10 --env=prod
+    #Ansible: pim:volume:aggregate --env=prod
+    0 23 * * * pim:volume:aggregate --env=prod
 
     # My custom jobs
     SHELL=/bin/bash
@@ -106,8 +106,6 @@ The default crontab at the moment on our Flexibility environments is the followi
 | Symfony console command                                 | Crontab frequency | Human frequency                            |
 +=========================================================+===================+============================================+
 | pim:versioning:refresh --env=prod                       | 30 1 \* \* \*     | At 01:30 AM                                |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| pim:completeness:calculate --env=prod                   | 0 2 \* \* \*      | At 02:00 AM                                |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
 | akeneo:batch:purge-job-execution --env=prod             | 20 0 1 \* \*      | At 12:20 AM, every first day of the month  |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
