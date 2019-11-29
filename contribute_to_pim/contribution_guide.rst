@@ -384,7 +384,7 @@ messages of all the commits. When you are finished, execute the push command.
 .. _`Akeneo PIM repository`:            https://github.com/akeneo/pim-community-dev
 .. _ProGit:                             https://git-scm.com/book/en/v2
 .. _GitHub:                             https://github.com/join
-.. _`GitHub Documentation`:             https://help.github.com/en/articles/ignoring-files
+.. _`GitHub Documentation`:             https://help.github.com/en/github/using-git/ignoring-files
 .. _`documentation repository`:         https://github.com/akeneo/pim-docs
 .. _`code conventions`:                 http://docs.akeneo.com/latest/technical_architecture/best_practices/core/conventions.html
 .. _`coding standard`:                  http://docs.akeneo.com/latest/technical_architecture/best_practices/core/standards.html

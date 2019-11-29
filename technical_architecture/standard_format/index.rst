@@ -48,7 +48,7 @@ For instance, the standard format of an object that contains the properties ``a_
 To avoid `loosing precision with floating points`_, and as `decimal type doesn't exist in PHP`_, decimals are rendered as strings. If you need to perform precise operations on such numbers, please use the arbitrary precision math functions or the gmp functions. For instance, the standard format of an object that contains the properties ``a_decimal`` and ``a_negative_decimal`` would be:
 
 .. _loosing precision with floating points: https://floating-point-gui.de/
-.. _decimal type doesn't exist in PHP: https://php.net/manual/en/language.types.float.php
+.. _decimal type doesn't exist in PHP: https://www.php.net/manual/en/language.types.float.php
 
 .. code-block:: php
 

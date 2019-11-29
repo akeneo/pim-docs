@@ -19,7 +19,7 @@ Before contributing on a new entry, please begin by creating an `Issue`_ on GitH
 
 For typo / quick fixes you can directly submit a `PullRequest`_.
 
-.. _PullRequest: https://help.github.com/en/articles/about-pull-requests
+.. _PullRequest: https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests
 
 To test the rendering of the documentation you can follow this `HowTo`_.
 
@@ -176,6 +176,6 @@ You can also add links to the PHP documentation:
 .. _documents:               https://github.com/akeneo/pim-docs
 .. _reStructuredText Primer: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 .. _markup:                  https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html
-.. _Pygments website:        http://pygments.org/languages/
+.. _Pygments website:        https://pygments.org/languages/
 .. _source:                  https://github.com/fabpot/sphinx-php
 .. _Sphinx quick setup:      https://www.sphinx-doc.org/en/master/usage/quickstart.html#setting-up-the-documentation-sources
