@@ -176,6 +176,6 @@ You can also add links to the PHP documentation:
 .. _documents:               https://github.com/akeneo/pim-docs
 .. _reStructuredText Primer: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html
 .. _markup:                  https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html
-.. _Pygments website:        https://pygments.org/languages.html
+.. _Pygments website:        https://pygments.org/languages/
 .. _source:                  https://github.com/fabpot/sphinx-php
 .. _Sphinx quick setup:      https://www.sphinx-doc.org/en/master/usage/quickstart.html#setting-up-the-documentation-sources
