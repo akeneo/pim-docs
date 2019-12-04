@@ -7,16 +7,12 @@ usage(){
     echo "  --host <host>         Host used for deployment"
     echo "  --port <port>         Port used for deployment"
     echo "  --username <username> Username used for deployment"
-    echo "  --uid <user_id>       User id for documentation generation"
-    echo "  --gid <group_id>      Group id for documentation generation"
 }
 
 DEPLOY=false
 HOST=docs-staging.akeneo.com
 PORT=GIMMETHEREALPORT
 USERNAME=GIMMETHEREALUSER
-CUSTOM_UID=`id -u`
-CUSTOM_GID=`id -g`
 VERSION=$1; shift; echo "Building version $VERSION..."
 
 while true; do
@@ -25,8 +21,6 @@ while true; do
     -h | --host ) echo "Set host to $2..."; HOST=$2; shift 2 ;;
     -p | --port ) echo "Set port to $2..."; PORT=$2; shift 2 ;;
     -u | --username ) echo "Set username to $2..."; USERNAME=$2; shift 2 ;;
-    --uid ) CUSTOM_UID=$2; shift 2 ;;
-    --gid ) CUSTOM_GID=$2; shift 2 ;;
     -- ) shift; break ;;
     * ) break ;;
   esac
@@ -47,7 +41,6 @@ sed -i -e "s/^version =.*/version = '${VERSION}'/" /home/akeneo/pim-docs/data/co
 sphinx-build -b html /home/akeneo/pim-docs/data /home/akeneo/pim-docs/data/pim-docs-build
 cp -L -r /home/akeneo/pim-docs/pim-community-dev-${VERSION}/public /home/akeneo/pim-docs/data/pim-docs-build/
 cp -r /home/akeneo/pim-docs/data/design_pim/styleguide /home/akeneo/pim-docs/data/pim-docs-build/design_pim/
-chown -R $CUSTOM_UID:$CUSTOM_GID /home/akeneo/pim-docs/data/pim-docs-build/*
 if [ "$DEPLOY" == true ]; then
     rsync -e "ssh -p $PORT" -avz /home/akeneo/pim-docs/data/pim-docs-build/* $USERNAME@$HOST:/var/www/${VERSION}
 fi
