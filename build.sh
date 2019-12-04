@@ -41,14 +41,13 @@ if [ "$DEPLOY" == true ]; then
     echo "Connection OK"
 fi
 
-wget http://demo.akeneo.com/css/pim.css -P /home/akeneo/pim-docs/pim-community-dev-${VERSION}/web/css
 rm -rf /home/akeneo/pim-docs/data/pim-docs-build/web
 sed -i -e "s/^version =.*/version = '${VERSION}'/" /home/akeneo/pim-docs/data/conf.py
 
 sphinx-build -b html /home/akeneo/pim-docs/data /home/akeneo/pim-docs/data/pim-docs-build
-cp -L -r /home/akeneo/pim-docs/pim-community-dev-${VERSION}/web /home/akeneo/pim-docs/data/pim-docs-build/
+cp -L -r /home/akeneo/pim-docs/pim-community-dev-${VERSION}/public /home/akeneo/pim-docs/data/pim-docs-build/
 cp -r /home/akeneo/pim-docs/data/design_pim/styleguide /home/akeneo/pim-docs/data/pim-docs-build/design_pim/
-find /home/akeneo/pim-docs/data/pim-docs-build/ -exec chown $CUSTOM_UID:$CUSTOM_GID {} \;
+chown -R $CUSTOM_UID:$CUSTOM_GID /home/akeneo/pim-docs/data/pim-docs-build/*
 if [ "$DEPLOY" == true ]; then
     rsync -e "ssh -p $PORT" -avz /home/akeneo/pim-docs/data/pim-docs-build/* $USERNAME@$HOST:/var/www/${VERSION}
 fi
