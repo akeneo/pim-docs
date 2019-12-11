@@ -9,9 +9,9 @@ RUN apt-get update && \
         python python-setuptools ssh rsync curl software-properties-common && \
     #
     # Add sphinx
-    wget -O /tmp/sphinx.zip https://github.com/sphinx-doc/sphinx/archive/v1.8.4.zip && \
+    wget -O /tmp/sphinx.zip https://github.com/sphinx-doc/sphinx/archive/v1.8.5.zip && \
     unzip /tmp/sphinx.zip -d /tmp/ && \
-    cd /tmp/sphinx-1.8.4/ && \
+    cd /tmp/sphinx-1.8.5/ && \
     python setup.py install && \
     #
     # Add youtube-sphinx extension
