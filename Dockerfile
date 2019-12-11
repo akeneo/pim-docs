@@ -23,9 +23,9 @@ RUN apt-get update && \
     #
     # Add sphinx-php extension
     wget -O /tmp/sphinx-php.zip \
-        https://github.com/fabpot/sphinx-php/archive/v1.0.10.zip && \
+        https://github.com/fabpot/sphinx-php/archive/v1.0.11.zip && \
     unzip /tmp/sphinx-php.zip -d /tmp/ && \
-    cd /tmp/sphinx-php-1.0.10/ && \
+    cd /tmp/sphinx-php-1.0.11/ && \
     python setup.py install && \
     #
     # Download packages
