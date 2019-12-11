@@ -9,6 +9,7 @@ DOCKER_RUN = docker run -it --rm -u $(UID):$(GID)
 .PHONY: build, deploy, docker-build
 
 build:
+	make docker-build
 	rm -rf pim-docs-build && mkdir pim-docs-build
 	$(DOCKER_RUN) -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) data/build.sh $(VERSION)
 
