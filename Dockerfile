@@ -9,9 +9,9 @@ RUN apt-get update && \
         python python-setuptools ssh rsync curl software-properties-common && \
     #
     # Add sphinx
-    wget -O /tmp/sphinx.zip https://github.com/sphinx-doc/sphinx/archive/v1.8.4.zip && \
+    wget -O /tmp/sphinx.zip https://github.com/sphinx-doc/sphinx/archive/v1.8.5.zip && \
     unzip /tmp/sphinx.zip -d /tmp/ && \
-    cd /tmp/sphinx-1.8.4/ && \
+    cd /tmp/sphinx-1.8.5/ && \
     python setup.py install && \
     #
     # Add youtube-sphinx extension
@@ -23,9 +23,9 @@ RUN apt-get update && \
     #
     # Add sphinx-php extension
     wget -O /tmp/sphinx-php.zip \
-        https://github.com/fabpot/sphinx-php/archive/v1.0.10.zip && \
+        https://github.com/fabpot/sphinx-php/archive/v1.0.11.zip && \
     unzip /tmp/sphinx-php.zip -d /tmp/ && \
-    cd /tmp/sphinx-php-1.0.10/ && \
+    cd /tmp/sphinx-php-1.0.11/ && \
     python setup.py install && \
     #
     # Download packages
@@ -48,10 +48,8 @@ RUN apt-get update && \
     rm -rf /usr/share/locale/* && \
     rm -rf /var/log/*
 
-COPY build.sh /home/akeneo/pim-docs/build.sh
-
 # Install Akeneo PIM Assets
-RUN chmod +x /home/akeneo/pim-docs/build.sh && \
+RUN \
     #
     # Download curent version
     wget https://github.com/akeneo/pim-community-dev/archive/master.zip -P /home/akeneo/pim-docs/ && \
@@ -61,8 +59,10 @@ RUN chmod +x /home/akeneo/pim-docs/build.sh && \
     cd /home/akeneo/pim-docs/pim-community-dev-master/ && \
     php -d memory_limit=3G /home/akeneo/pim-docs/composer.phar install --no-dev --no-suggest --ignore-platform-reqs
 
-RUN cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console pim:installer:assets --env=prod
+RUN cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console pim:installer:assets --env=prod && \
+    mkdir /home/akeneo/pim-docs/pim-community-dev-master/public/css && \
+    wget http://demo.akeneo.com/css/pim.css -P /home/akeneo/pim-docs/pim-community-dev-master/public/css
     #
     # Clean
 RUN rm -rf /root/.composer/cache && \
-    cd /home/akeneo/pim-docs/pim-community-dev-master/ && ls | grep -v "vendor\|web" | xargs rm -rf
+    cd /home/akeneo/pim-docs/pim-community-dev-master/ && ls | grep -v "vendor\|public" | xargs rm -rf
