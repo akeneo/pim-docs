@@ -39,6 +39,15 @@ Here is an example with a few bulk actions:
 
     $ /path/to/php /path/to/your/pim/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod -j update_product_value -j add_product_value -j remove_product_value
 
+You can also exclude some jobs from a consumer (blacklisted jobs). This could be useful if you want a specific job to be consumed by another consumer.
+Here is an example with a few bulk actions:
+
+
+.. code-block:: bash
+    :linenos:
+
+    $ /path/to/php /path/to/your/pim/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod -b update_product_value -b add_product_value -b remove_product_value
+
 Logs
 ----
 
