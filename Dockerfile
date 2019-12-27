@@ -57,7 +57,7 @@ RUN \
     #
     # Install vendors
     cd /home/akeneo/pim-docs/pim-community-dev-master/ && \
-    php -d memory_limit=3G /home/akeneo/pim-docs/composer.phar install --no-dev --no-suggest --ignore-platform-reqs
+    php -d memory_limit=3G /home/akeneo/pim-docs/composer.phar install --no-suggest --ignore-platform-reqs
 
 RUN cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console pim:installer:assets --env=prod && \
     mkdir /home/akeneo/pim-docs/pim-community-dev-master/public/css && \

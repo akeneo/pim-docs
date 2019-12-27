@@ -1,0 +1,51 @@
+version: 2
+jobs:
+    build:
+        machine:
+            image: ubuntu-1604:201903-01
+        steps:
+            - checkout
+            - run: make build
+
+    deploy_staging:
+        machine:
+            image: ubuntu-1604:201903-01
+        steps:
+            - checkout
+            - add_ssh_keys
+            - run:
+                  name: Deploy on staging server
+                  command: HOSTNAME=$STAGING_HOSTNAME PORT=$STAGING_PORT VERSION=master make deploy
+
+    deploy_production:
+        machine:
+            image: ubuntu-1604:201903-01
+        steps:
+            - checkout
+            - add_ssh_keys
+            - run:
+                  name: Deploy on production server
+                  command: HOSTNAME=$PROD_HOSTNAME PORT=$PROD_PORT VERSION=master make deploy
+workflows:
+    version: 2
+    pull_request:
+        jobs:
+            - build:
+                  filters:
+                      branches:
+                          ignore:
+                              - master
+
+    deployment:
+        jobs:
+            - deploy_staging:
+                  filters:
+                      branches:
+                          only: master
+            - approve_to_deploy_in_production:
+                  type: approval
+                  requires:
+                      - deploy_staging
+            - deploy_production:
+                  requires:
+                      - approve_to_deploy_in_production
