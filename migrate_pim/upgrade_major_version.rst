@@ -26,8 +26,8 @@ From the 2.3 version, you will be able to follow this migration guide:
 
 * `From v2.3 to v3.0`_
 
-.. _From v2.3 to v3.0: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-3.0.md
-.. _From v3.0 to v3.1: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-3.1.md
+.. _From v2.3 to v3.0: https://github.com/akeneo/pim-community-standard/blob/3.0/UPGRADE-3.0.md
+.. _From v3.0 to v3.1: https://github.com/akeneo/pim-community-standard/blob/3.1/UPGRADE-3.1.md
 
 **If you are an Enterprise Edition client**
 
