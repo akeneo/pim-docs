@@ -167,7 +167,7 @@ And add it to our product form:
     extensions:
         pim-product-edit-form-meta/export-status:            # The form extension code (can be whatever you want)
             module: pim/product-edit-form/meta/export-status # The requirejs module we just created
-            parent: pim-product-edit-form                    # The parent extension in the form where we want to be regisetred
+            parent: pim-product-edit-form                    # The parent extension in the form where we want to be registered
             targetZone: meta
             position: 90                                     # The extension position
 
