@@ -22,6 +22,10 @@ You have to add these 7 commands to your local installation:
     php /path/to/installation/pim-enterprise-standard/bin/console pimee:franklin-insights:fetch-products --env=prod # fetch suggested data for products subscribed to Franklin Insights
     php /path/to/installation/pim-enterprise-standard/bin/console akeneo:reference-entity:refresh-records --all --env=prod # re-index all reference entities
     php /path/to/installation/pim-enterprise-standard/bin/console pim:volume:aggregate --env=prod # recalculates the number of product values
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:data-quality-insights:schedule-periodic-tasks --env=prod # schedule consolidation and purge of data quality insights related data
+
+.. note::
+   **Note:** The command ``pimee:data-quality-insights:schedule-periodic-tasks`` has to be scheduled once a day
 
 .. note::
    **Note:** The command ``pimee:franklin-insights:fetch-products`` is to be set only if you activate Franklin Insights EE feature.
