@@ -37,11 +37,13 @@ Here is an example with a few bulk actions:
 
 .. code-block:: bash
     :linenos:
+
     # With the -j option, the job daemon will only consume listed jobs
     $ /path/to/php /path/to/your/pim/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod -j update_product_value -j add_product_value -j remove_product_value
 
 .. code-block:: bash
     :linenos:
+
     # With the -b option, the job daemon will consume all jobs except the listed ones.
     $ /path/to/php /path/to/your/pim/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod -b update_product_value -b add_product_value
 
