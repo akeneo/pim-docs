@@ -111,7 +111,7 @@ The default crontab at the moment on our Flexibility environments is the followi
 +=========================================================+===================+============================================+
 | pim:versioning:refresh --env=prod                       | 30 1 \* \* \*     | At 01:30 AM                                |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
-| akeneo:connectivity-audit:update-data --env=prod        | 1 \* \* \* \*     | At 00:01 AM, every hour                    |
+| akeneo:connectivity-audit:update-data --env=prod        | 1 \* \* \* \*     | Every hour                    |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
 | akeneo:batch:purge-job-execution --env=prod             | 20 0 1 \* \*      | At 12:20 AM, every first day of the month  |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
