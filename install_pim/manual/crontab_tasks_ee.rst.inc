@@ -32,8 +32,6 @@ You have to add these 10 commands to your local installation:
    **Note:** The command ``pimee:franklin-insights:fetch-products`` is to be set only if you activate Franklin Insights EE feature.
 
 
-In the following example, these lines will run the versioning calculation at 5am, the rules calculation at 6pm and the aggregate volume at 10pm every day:
-
 .. code-block:: bash
     :linenos:
 
