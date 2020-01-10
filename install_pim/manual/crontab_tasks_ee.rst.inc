@@ -9,12 +9,13 @@ Edit your crontab with ``crontab -e`` and configure your tasks.
 
     Be sure to update the cron of the user used to install the PIM, to be able to run the command
 
-You have to add these 7 commands to your local installation:
+You have to add these 10 commands to your local installation:
 
 .. code-block:: bash
     :linenos:
 
     php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod                                     # processes pending versions
+    php /path/to/installation/pim-enterprise-standard/bin/console bin/console akeneo:connectivity-audit:update-data --env=prod          # refresh audit data for connections
     php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod                                            # executes rules on products
     php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:notify-before-due-date --env=prod                       # check and send notifications (TeamWork Assistant)
     php /path/to/installation/pim-enterprise-standard/bin/console pim:asset:send-expiration-notification --env=prod                     # check and send notifications for asset date delay
@@ -38,6 +39,7 @@ In the following example, these lines will run the versioning calculation at 5am
 
     # m  h  dom  mon  dow  command
     0 5   *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod > /path/to/installation/pim-enterprise-standard/var/logs/refresh_versioning.log 2>&1
+    1 *   *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console bin/console akeneo:connectivity-audit:update-data --env=prod > /path/to/installation/pim-enterprise-standard/var/logs/refresh_audit_data.log 2>&1
     0 18  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod > /path/to/installation/pim-enterprise-standard/var/logs/rule_run.log 2>&1
     0 22  *    *    *    php /path/to/installation/pim-enterprise-standard/bin/console pim:volume:aggregate --env=prod > /path/to/installation/pim-enterprise-standard/var/logs/volume_aggregate.log 2>&1
 
