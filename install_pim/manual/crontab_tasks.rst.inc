@@ -18,7 +18,7 @@ You have to add these 3 commands to your local installation:
     php /path/to/installation/pim-community-standard/bin/console akeneo:connectivity-audit:update-data --env=prod # refresh audit data for connections
     php /path/to/installation/pim-community-standard/bin/console pim:volume:aggregate --env=prod          # recalculates the number of product values
 
-In the following example, these lines will run the versioning calculation at 5am and the aggregate volume at 10pm every day:
+In the following example, these lines will run the versioning calculation at 5am, the refresh of audit data every hour (at 00:01) and the aggregate volume at 10pm every day:
 
 
 .. code-block:: bash
