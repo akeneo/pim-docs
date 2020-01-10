@@ -15,7 +15,7 @@ You have to add these 10 commands to your local installation:
     :linenos:
 
     php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod                                     # processes pending versions
-    php /path/to/installation/pim-enterprise-standard/bin/console bin/console akeneo:connectivity-audit:update-data --env=prod          # refresh audit data for connections
+    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:connectivity-audit:update-data --env=prod                      # refresh audit data for connections
     php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod                                            # executes rules on products
     php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:notify-before-due-date --env=prod                       # check and send notifications (TeamWork Assistant)
     php /path/to/installation/pim-enterprise-standard/bin/console pim:asset:send-expiration-notification --env=prod                     # check and send notifications for asset date delay
