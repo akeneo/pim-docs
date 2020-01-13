@@ -4,7 +4,7 @@ Extracting the archive
 .. code-block:: bash
     :linenos:
 
-    $ mkdir -p /path/to/installation
+    $ 
     $ tar -xvzf pim-community-standard-v3.2-latest-icecat.tar.gz -C /path/to/installation/
 
 .. note::

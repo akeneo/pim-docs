@@ -19,10 +19,12 @@ As we don’t provide (yet) a tools to deploy your own custom code on the enviro
 
 4. Databases access
 -------------------
-| You will find the database credentials for the akeneo_pim database user in the standard Akeneo configuration file: **/home/akeneo/pim/app/config/parameters.yml**.
-|
-| You can use these credentials to directly access the databases with their respective client (mysql).
-| You don’t need to specify an host, as the database server are directly accessible on the local environment.
+The `akeneo` user has directly access to the database server through the standard configuration. The MySQL client is directly useable to access the PIM database:
+
+.. code-block:: bash
+
+    $ mysql akeneo_pim
+
 
 5. Upload limits
 ----------------
