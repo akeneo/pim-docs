@@ -106,6 +106,12 @@ Stopping the PIM
 
    $ make down
 
+.. note::
+    As the database lives inside the MySQL container, stopping it will remove all your data.
+    You can add a `docker-composer.override.yml` in order to have a dedicated volume for
+    your MySQL data outside (`/var/lib/mysql`) of the container, in order to persist them.
+    Same note applies as well on the Elasticsearch container (`/var/lib/elasticsearch`).
+
 Install and run Akeneo
 ----------------------
 
