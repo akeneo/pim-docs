@@ -19,7 +19,7 @@ As we don’t provide (yet) a tools to deploy your own custom code on the enviro
 
 4. Databases access
 -------------------
-The `akeneo` user has directly access to the database server through the standard configuration. The MySQL client is directly useable to access the PIM database:
+The `akeneo` user has directly access to the database server through the standard configuration. You can use the MySQL client to access the PIM database:
 
 .. code-block:: bash
 

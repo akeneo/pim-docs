@@ -70,6 +70,7 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
 
 .. code-block:: bash
 
+    $ mkdir pim
     $ tar -xvjf pim-enterprise-standard-v4.0.tar.gz -C pim
     $ cd pim
     $ docker run -u www-data -v $(pwd):/srv/pim -w /srv/pim --rm akeneo/pim-php-dev:4.0 \
