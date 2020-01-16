@@ -41,8 +41,6 @@ The web server will also need the following libraries and modules:
 +----------------+---------------------------+
 | php7.3-fpm     | No specific configuration |
 +----------------+---------------------------+
-| php7.3-gd      | No specific configuration |
-+----------------+---------------------------+
 | php7.3-intl    | No specific configuration |
 +----------------+---------------------------+
 | php7.3-mysql   | No specific configuration |
@@ -116,7 +114,7 @@ and the following PHP modules:
 **Search engine**
 
 +---------------+------------+
-| Elasticsearch | 7.3        |
+| Elasticsearch | 7.5        |
 +---------------+------------+
 
 Elasticsearch is bundled with its own JDK version, but if you want to use the `no JDK version <https://www.elastic.co/downloads/elasticsearch-no-jdk>_`, please make sure to install the right JDK for Elasticsearch.
@@ -152,8 +150,6 @@ Most of the application folders and files require only read access. Here is a li
 These permissions are the ones required by the Symfony Framework (see its `official documentation <https://symfony.com/doc/3.4/setup/file_permissions.html>`_ for more information).
 
 Akeneo PIM application uses an abstraction layer called Flysystem to store media and files uploaded from the application. By default, Flysystem is configured to store these files on the application server, but this configuration `can easily be changed <https://flysystem.thephpleague.com/>`_ in favor of, for example, a distributed remote storage system (see Flysystem documentation for more information).
-
-The ``var/uploads`` folder could be located elsewhere depending on the configuration you defined in the ``parameters.yml`` of your Akeneo PIM application instance.
 
 .. warning::
 

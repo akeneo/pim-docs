@@ -5,14 +5,13 @@ As the Serenity offer is designed with simplicity in mind, you don't have to do 
 benefit from the latest patches and releases. The Akeneo team will take care of the upgrades
 as quickly as possible.
 
-You will get the latest stable (minus alpha, beta or pre-released) version available.
-To learn more about our release cycle, please check the following blog article: `A faster way to benefit from Akeneo!`_
+You will get the latest stable version available.
 
 What delay should I expect ?
 ----------------------------
 
-As we have to balance between service availability, new features and stability, we might 
-intentionally delay an update to deliver the best user experience. That being said we do our best 
+As we have to balance between service availability, new features and stability, we might
+intentionally delay an update to deliver the best user experience. That being said we do our best
 to deliver every patch in a matter of days.
 
 What about downtime ?

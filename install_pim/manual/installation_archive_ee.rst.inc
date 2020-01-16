@@ -5,7 +5,7 @@ Extracting the archive
     :linenos:
 
     $ mkdir -p /path/to/installation
-    $ tar -xvzf pim-enterprise-standard-v3.1.tar.gz -C /path/to/installation/
+    $ tar -xvzf pim-enterprise-standard-v4.0.tar.gz -C /path/to/installation/
 
 .. note::
     Replace */path/to/installation* by the path to the directory where you want to install the PIM.
