@@ -33,13 +33,14 @@ Prepare your project
 
 In the following code, `my_pim` is the directory where the Akeneo PIM 3.2 you want to migrate is installed.
 
+.. code::bash
+
     $ cd my_pim
     $ mv vendor vendor_3.2
     $ mv composer.json composer.json_3.2
     $ mv composer.lock composer.lock_3.2
     $ mv upgrades upgrades_3.2
     $ rm -rf var/cache/
-
     $ tar --strip-component 1 -xvzf /path/to/pim-enterprise-standard-v4.0.0.tar.gz  pim-enterprise-standard/composer.json
 
 Load your PIM Enterprise 4.0 dependencies
