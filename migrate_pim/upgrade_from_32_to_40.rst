@@ -31,9 +31,9 @@ Upgraded Virtual Host configuration
 Prepare your project
 ********************
 
-In the following code, `my_pim` is the directory where the Akeneo PIM 3.2 you want to migrate is installed.
+In the following code, "my_pim" is the directory where the Akeneo PIM 3.2 you want to migrate is installed.
 
-.. code::bash
+.. code:: bash
 
     $ cd my_pim
     $ mv vendor vendor_3.2
