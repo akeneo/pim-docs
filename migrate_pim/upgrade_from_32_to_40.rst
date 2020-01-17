@@ -64,7 +64,7 @@ Let Akeneo PIM 4.0 continue the preparation for you
 
 .. code:: bash
 
-    $ vendor/akeneo/pim-enterprise-dev/std-build/migrate_32.sh
+    $ vendor/akeneo/pim-enterprise-dev/std-build/prepare_32_to_40.sh
 
 MySQL and ES Credentials Access
 *******************************
@@ -122,12 +122,12 @@ Migrate your data
 
     You may receive the following warnings:
 
-        WARNING! You have 3 previously executed migrations in the database that are not registered migrations.
+        WARNING! You have X previously executed migrations in the database that are not registered migrations.
 
     This can be safely ignored as this only means that your DB is up to date, but without finding the corresponding
     migration file.
 
-    Another message could be `Migration _3_2_20190614113455 was executed but did not result in any SQL statements`.
+    Another message could be `Migration _X_Y_ZZZZ was executed but did not result in any SQL statements`.
 
     This makes sense for some migration that only touches the Elasticsearch index or don't apply because no data linked
     to this migration have been found.
