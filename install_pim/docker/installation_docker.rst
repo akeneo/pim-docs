@@ -9,9 +9,6 @@ System requirements
  - `make`
  - `bash`
 
-.. note::
-    If you are using a Windows environment, you can use Window Subsystem for Linux (WSL) to easily install `bash` and `make`: https://docs.microsoft.com/en-us/windows/wsl/install-win10
-
 Setting up your host user
 *************************
 
@@ -70,11 +67,23 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
 
 .. code-block:: bash
 
-    $ mkdir pim
-    $ tar -xvjf pim-enterprise-standard-v4.0.tar.gz -C pim
-    $ cd pim
-    $ docker run -u www-data -v $(pwd):/srv/pim -w /srv/pim --rm akeneo/pim-php-dev:4.0 \
+    $ tar -xvzf pim-enterprise-standard-v4.0.tar.gz
+    $ cd pim-enterprise-standard/pim-enterprise-standard
+    $ docker run -ti -u www-data -v $(pwd):/srv/pim -v ~/.ssh:/var/www/.ssh -w /srv/pim --rm akeneo/pim-php-dev:4.0 \
         php -d memory_limit=4G /usr/local/bin/composer install
+
+.. note::
+    The above Docker command uses a volume to make your SSH private key available to the container, in order for it to access
+    the distribution server.
+
+    If you are using a SSH Agent, you can as well provide a volume to access your SSH Agent from the container:
+
+    .. code-block:: bash
+
+        $ docker run -ti -u www-data -v $(pwd):/srv/pim -v $SSH_AUTH_SOCK:/ssh-auth.sock -e SSH_AUTH_SOCK=/ssh-auth.sock -w /srv/pim --rm akeneo/pim-php-dev:4.0 \
+            php -d memory_limit=4G /usr/local/bin/composer install
+
+    See https://beta.docs.docker.com/samples/library/composer/#private-repositories--ssh-agent for more details.
 
 Launching the PIM in dev mode
 -----------------------------
