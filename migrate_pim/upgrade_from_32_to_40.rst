@@ -34,6 +34,7 @@ Prepare your project
 In the following code, "my_pim" is the directory where the Akeneo PIM 3.2 you want to migrate is installed.
 
 .. code:: bash
+
     $ cd my_pim
     $ mv vendor vendor_3.2
     $ mv composer.json composer.json_3.2
@@ -46,10 +47,12 @@ Load your PIM Enterprise 4.0 dependencies
 *****************************************
 
 .. code:: bash
+
     $ composer install
 
 
 .. note::
+
     You may need to increase the memory provided to `composer`, as this step very memory consuming:
 
     .. code:: bash
@@ -60,6 +63,7 @@ Let Akeneo PIM 4.0 continue the preparation for you
 ***************************************************
 
 .. code:: bash
+
     $ vendor/akeneo/pim-enterprise-dev/std-build/migrate_32.sh
 
 MySQL and ES Credentials Access
@@ -77,6 +81,7 @@ Local or on-premise environment
 You can make the variables content available to your program or set them in a .env.local file:
 
 .. code::
+
     APP_DATABASE_HOST=mysql-host
     APP_DATABASE_PORT=3306
     APP_DATABASE_NAME=akeneo_pim_db_name
@@ -89,6 +94,7 @@ Make sure your environment is ready to be migrated
 **************************************************
 
 .. code:: bash
+
     $ bin/console pim:installer:check-requirements
 
 
@@ -99,6 +105,7 @@ Prepare the front
 *****************
 
 .. code:: bash
+
     $ bin/console pim:installer:assets --symlink --clean
     $ yarnpkg install
     $ yarnpkg run webpack
@@ -107,6 +114,7 @@ Migrate your data
 *****************
 
 .. code:: bash
+
     $ bin/console doctrine:migration:migrate
 
 
