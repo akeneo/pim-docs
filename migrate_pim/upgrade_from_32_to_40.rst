@@ -34,7 +34,6 @@ Prepare your project
 In the following code, "my_pim" is the directory where the Akeneo PIM 3.2 you want to migrate is installed.
 
 .. code:: bash
-
     $ cd my_pim
     $ mv vendor vendor_3.2
     $ mv composer.json composer.json_3.2
@@ -46,8 +45,7 @@ In the following code, "my_pim" is the directory where the Akeneo PIM 3.2 you wa
 Load your PIM Enterprise 4.0 dependencies
 *****************************************
 
-.. code::bash
-
+.. code:: bash
     $ composer install
 
 
@@ -90,8 +88,7 @@ You can make the variables content available to your program or set them in a .e
 Make sure your environment is ready to be migrated
 **************************************************
 
-.. code::bash
-
+.. code:: bash
     $ bin/console pim:installer:check-requirements
 
 
@@ -101,8 +98,7 @@ please fix the problem before continuing.
 Prepare the front
 *****************
 
-.. code::bash
-
+.. code:: bash
     $ bin/console pim:installer:assets --symlink --clean
     $ yarnpkg install
     $ yarnpkg run webpack
@@ -110,8 +106,7 @@ Prepare the front
 Migrate your data
 *****************
 
-.. code::bash
-
+.. code:: bash
     $ bin/console doctrine:migration:migrate
 
 
