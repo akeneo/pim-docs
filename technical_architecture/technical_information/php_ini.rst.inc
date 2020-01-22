@@ -21,6 +21,8 @@
     $ sudo vim /etc/php/7.1/fpm/php.ini
     memory_limit = 512M
     date.timezone = Etc/UTC
+    opcache.memory_consumption=256
+    opcache.max_accelerated_files=25000
 
 To avoid spending too much time on permission problems between the CLI user and the FPM user, a good practice is to use the same user for both of them.
 
