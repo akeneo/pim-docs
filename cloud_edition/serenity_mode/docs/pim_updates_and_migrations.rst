@@ -21,4 +21,4 @@ What about downtime ?
 As the PIM can sometimes contain a lot of data, some upgrades may require a downtime. In those
 cases we will contact you directly to find the best maintenance time schedule for you.
 
-.. _`A faster way to benefit from Akeneo!`: https://www.akeneo.com/blog/a-faster-way-to-benefit-from-akeneo/
+.. _`A faster way to benefit from Akeneo!`: https://www.akeneo.com/blog/akeneo-introduces-a-simpler-product-release-cycle/
