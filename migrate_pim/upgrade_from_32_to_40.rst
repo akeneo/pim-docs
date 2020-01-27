@@ -18,7 +18,7 @@ In order to download a 4.0 Enterprise Archive, please visit your `Akeneo Portal 
 Updated System components
 -------------------------
 
-You have to make sure your system components are upgrade to the version required for Akeneo PIM 4.0:
+You have to make sure your system components are updated to the version required for Akeneo PIM 4.0:
  - PHP 7.3
  - MySQL 8
  - Elasticsearch 7.5
@@ -67,7 +67,7 @@ Load your PIM Enterprise 4.0 dependencies
 
     .. code:: bash
 
-        $ php -d "memory_limit=4G" /path/to/composer
+        $ php -d "memory_limit=4G" /path/to/composer update
 
 Let Akeneo PIM 4.0 continue the preparation for you
 ***************************************************
@@ -141,8 +141,8 @@ Migrate your data
 
         WARNING! You have X previously executed migrations in the database that are not registered migrations.
 
-    This can be safely ignored as this only means that your DB is up to date, but without finding the corresponding
-    migration file.
+    This can be safely ignored as this only means that your database is up to date, but without finding the corresponding
+    migration files.
 
     Another message could be `Migration _X_Y_ZZZZ was executed but did not result in any SQL statements`.
 
@@ -188,7 +188,7 @@ Installing Rector
 Making sure all classes are loaded
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following command check that all classes can be properly loaded by PHP
+The following command checks that all classes can be properly loaded by PHP
 without generating a fatal error:
 
 .. code:: bash
