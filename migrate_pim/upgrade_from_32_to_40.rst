@@ -12,20 +12,33 @@ Requirements
 Akeneo PIM 4.0 Enterprise Archive
 ---------------------------------
 
-TODO: How to download from the Portal
+In order to download a 4.0 Enterprise Archive, please visit your `Akeneo Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html>`_.
 
 
 Updated System components
 -------------------------
 
-   TODO: System stack migrated.
+You have to make sure your system components are upgrade to the version required for Akeneo PIM 4.0:
+ - PHP 7.3
+ - MySQL 8
+ - Elasticsearch 7.5
 
+
+.. note::
+    MySQL and Elasticsearch support in-place update: MySQL 8 will be able to use database files
+    created by a MySQL 5.7 version and Elasticsearch 7.5 will be able to use indexes created
+    by Elasticsearch 6.
+
+    So there's no need to export and reimport data for these systems.
 
 Upgraded Virtual Host configuration
 -----------------------------------
 
-    TODO: link to new configuration
+As Akeneo PIM 4.0 is based on Symfony 4, the Web entry point has been changed:
+ - 3.2: `web/app.php`
+ - 4.0: `public/index.php`
 
+You can check the VirtualHost configuration for 4.0: system_requirements/system_configuration.rst.inc.
 
 
 Prepare your project
@@ -36,10 +49,6 @@ In the following code, "my_pim" is the directory where the Akeneo PIM 3.2 you wa
 .. code:: bash
 
     $ cd my_pim
-    $ mv vendor vendor_3.2
-    $ mv composer.json composer.json_3.2
-    $ mv composer.lock composer.lock_3.2
-    $ mv upgrades upgrades_3.2
     $ rm -rf var/cache/
     $ tar --strip-component 1 -xvzf /path/to/pim-enterprise-standard-v4.0.0.tar.gz  pim-enterprise-standard/composer.json
 
@@ -48,12 +57,12 @@ Load your PIM Enterprise 4.0 dependencies
 
 .. code:: bash
 
-    $ composer install
+    $ composer update
 
 
 .. note::
 
-    You may need to increase the memory provided to `composer`, as this step very memory consuming:
+    You may need to increase the memory provided to `composer`, as this step can be very memory consuming:
 
     .. code:: bash
 
@@ -64,7 +73,14 @@ Let Akeneo PIM 4.0 continue the preparation for you
 
 .. code:: bash
 
-    $ vendor/akeneo/pim-enterprise-dev/std-build/prepare_32_to_40.sh
+    $ vendor/akeneo/pim-enterprise-dev/std-build/migration/prepare_32_to_40.sh
+
+
+.. note::
+
+    This script will update the current filesystem layout to match Symfony 4 structure.
+    See http://fabien.potencier.org/symfony4-directory-structure.html for more details.
+
 
 MySQL and ES Credentials Access
 *******************************
@@ -133,6 +149,19 @@ Migrate your data
     to this migration have been found.
 
 
+Migrating the Assets from the PAM to the Asset Manager
+******************************************************
+
+If you are using PAM assets with your PIM 3.2, please use
+the CsvToAsset tools in order to migrate your assets to the
+new Asset Manager feature: https://github.com/akeneo/CsvToAsset
+
+.. warning::
+
+    Please note that if you have PAM assets, your PIM will
+    not work properly until you have finished the migration.
+
+
 Migrating your custom code
 **************************
 
@@ -147,10 +176,42 @@ In order to make this process easier and more error proof, we decided to use PHP
 to apply these changes.
 
 
-Todo:
+Installing Rector
+^^^^^^^^^^^^^^^^
 
-- typed return
-- parameters removed:
-    - tmp_storage_dir
-    => uses sys_get_temp_dir, as it's manageable via the TMPDIR variable
+.. code:: bash
+
+    composer require --dev rector/rector
+
+
+Making sure all classes are loaded
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following command check that all classes can be properly loaded by PHP
+without generating a fatal error:
+
+.. code:: bash
+
+    bin/rector scan-fatal-errors src/
+
+If any fatal error are detected, you will have to fix them before doing the next step.
+
+Applying automatic fixes
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: bash
+
+    bin/rector process src/
+
+
+.. note::
+
+    This will use the `rector.yaml` file created by the `prepare_32_to_40.sh` above.
+    Feel free to add your own refactoring rules inside it. More information on https://getrector.org/
+
+
+From that point, you will have to migrate your bundle one by one.
+
+Remember to check if they are still relevant, as each Akeneo version
+brings new features.
 
