@@ -42,22 +42,18 @@ First, create the file ``/etc/apache2/sites-available/akeneo-pim.local.conf``
     <VirtualHost *:80>
         ServerName akeneo-pim.local
 
-        DocumentRoot /path/to/installation/pim-community-standard/web
-        <Directory /path/to/installation/pim-community-standard/web>
+        DocumentRoot /path/to/installation/pim-community-standard/public
+        <Directory /path/to/installation/pim-community-standard/public>
             AllowOverride None
             Require all granted
 
             Options -MultiViews
             RewriteEngine On
             RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteRule ^(.*)$ app.php [QSA,L]
+            RewriteRule ^(.*)$ index.php [QSA,L]
         </Directory>
 
-        <Directory /path/to/installation/pim-community-standard>
-            Options FollowSymlinks
-        </Directory>
-
-        <Directory /path/to/installation/pim-community-standard/web/bundles>
+        <Directory /path/to/installation/pim-community-standard/public/bundles>
             RewriteEngine Off
         </Directory>
 
