@@ -1,4 +1,4 @@
-SSH and SFTP accesses
+Environment accesses
 =====================
 
 SSH
@@ -67,8 +67,8 @@ Something prevents the connection from being established, it can mean that:
 - you set up IP access restrictions on your instance and your are using an IP outside of this range.
 - if none of the above apply, please contact us.
 
-SFTP
-----
+SSH File Transfer Protocol (SFTP)
+----------------------------------
 
 This access can only be granted **upon request**, after a Cloud ticket has been created through the `helpdesk`_. 
 Please allow some time for our Team to create the access for you.

@@ -2,7 +2,6 @@ Composer settings
 =================
 
 
-
 | During the install process we used our own repository for the EE distribution. But you don't have any access to this repository after the install process.
 | We setup your own distribution repository in the composer file, so you can change it if you want.
 
@@ -41,7 +40,7 @@ Composer settings
 | All details about Distribution System can be found in the `Portal section of the Help center <https://help.akeneo.com/portal/?utm_source=akeneo-docs&utm_campaign=composer_settings>`_.
 
 
-Composer and github api rate limit
+Composer and github API rate limit
 ----------------------------------
 
 | The Community edition have many branches/tags and during a composer update process, you can reach easily the github api rate limit. Without OAuth token, github use the ip to manage api rate limit, and to limit to 60 requests per hour (https://developer.github.com/v3/#rate-limiting).

@@ -20,10 +20,16 @@ Types of environments
 - **my-project-staging**.cloud.akeneo.com
 - **no data recovery**
 
+.. note::
+
+    The system components are based on :doc:`../../../install_pim/manual/system_requirements/system_requirements`.
+
 Updates and migrations
 ----------------------
 
 Updates can include **patches** and **new features**. Integrators are accountables for applying new patches and performing migrations on the PIM.
+
+You can refer to :doc:`../../../migrate_pim/index` for more details about the procedure.
 
 .. note::
 
@@ -31,14 +37,26 @@ Updates can include **patches** and **new features**. Integrators are accountabl
     Please contact us through the `Helpdesk > Cloud Flexibility and Serenity <http://helpdesk.akeneo.com/>`_  to request for these specific upgrades and schedule the operation.
 
 
+Manage your environments
+------------------------
+.. toctree::
+    :maxdepth: 2
+
+    docs/environments_access
+    docs/system_administration
+    docs/crontasks
+    docs/composer_settings
+
+Further readings
+----------------
+
 .. toctree::
     :maxdepth: 1
 
-    docs/partner_starterkit
-    docs/crontasks
-    docs/pim_updates_and_migrations
-    docs/data_file_transfer
     docs/backups_management
-    docs/system_components
     docs/disk_usage
-    docs/onboarder
+
+.. _`Environments access`: ./environments_access.html
+.. _`composer into instance`: ./composer_settings.html
+.. _`our own akeneo setup`: ./pim_application.html
+.. _`superuser tasks`: ./partners.html

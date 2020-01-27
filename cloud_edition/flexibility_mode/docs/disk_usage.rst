@@ -1,19 +1,16 @@
-Disk Usage
-==========
+Disk Usage Management
+=====================
 
-Introduction
-------------
-Each Flexibility instance has got its own dedicated disk.
-
-Storage space depends on the contract, which usually starts as follow:
+Each instance has its own dedicated disk:
 
 - 350GB for a production instance
 - 150GB for a sandbox instance
 
-Because each disk is dedicated to only one instance, the storage space of one instance cannot be shared with another instance.
+As each disk is dedicated to only one instance, it cannot be shared accross them.
 
 Usages Impacting Disk Usage
 ---------------------------
+
 The disk usage will inscrease following the lifecycle of the instance. For example, each time:
 
 - a new product / family / ... is created
@@ -28,7 +25,6 @@ The disk usage will inscrease following the lifecycle of the instance. For examp
 - an asset is uploaded
 
   + it is stored on the file system
-  + if the asset is replaced with a new one, the old version stays on disk
 
 - an import / export runs
 

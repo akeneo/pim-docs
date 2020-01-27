@@ -1,27 +1,21 @@
 Backups management
 ==================
 
-Saving
-------
+A snapshot of your instance is made regulary and can be restored upon your request. 
 
-| Saving is done in standard dump for the database (mysqldump for mysql) and tar.gz for files.
-| Backups include both data, assets (if stored locally) and the full code of your Akeneo instance, including extensions & custom code.
-|
-| The backup frequency is every day.
-| The backup retention policy is the following one:
+.. note::
 
-    - 7 last days,
-    - 5 last weeks,
-    - 12 last months,
-    - 10 last years
+    Only production environments can be restored
 
-| Backups are saved on Google Cloud Storage in the same region than your environments.
-| We also save backups on a different datacenter each weeks.
-|
+Backup frequency
+****************
 
-Restoring
----------
+- 1 per hour for 24 hours
+- 1 per day for the last 7 days 
+- 1 per week for the last 5 weeks
+- 1 per months for the last 12 months
 
-| There is no environment settings inside the database so the dump can be restored as well.
-| The backup can only be restored by Akeneo on the production environment.
-|
+
+.. note::  
+    
+    Backups are stored on Google Cloud Storage on the same region as your environments. We also save backups on a different datacenter each weeks.
