@@ -44,11 +44,12 @@ You can check the VirtualHost configuration for 4.0: system_requirements/system_
 Prepare your project
 ********************
 
-In the following code, "my_pim" is the directory where the Akeneo PIM 3.2 you want to migrate is installed.
+.. warning::
+
+    All the following commands need to be run from the root of your 3.2 PIM
 
 .. code:: bash
 
-    $ cd my_pim
     $ rm -rf var/cache/
     $ tar --strip-component 1 -xvzf /path/to/pim-enterprise-standard-v4.0.0.tar.gz  pim-enterprise-standard/composer.json
 
@@ -177,7 +178,7 @@ to apply these changes.
 
 
 Installing Rector
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 
 .. code:: bash
 
@@ -192,7 +193,7 @@ without generating a fatal error:
 
 .. code:: bash
 
-    bin/rector scan-fatal-errors src/
+    vendor/bin/rector scan-fatal-errors src/
 
 If any fatal error are detected, you will have to fix them before doing the next step.
 
@@ -201,7 +202,7 @@ Applying automatic fixes
 
 .. code:: bash
 
-    bin/rector process src/
+    vendor/bin/rector process src/
 
 
 .. note::
