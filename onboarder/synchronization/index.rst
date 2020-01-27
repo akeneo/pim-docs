@@ -40,7 +40,7 @@ You want a supervised worker
 .. warning::
 
     This process is only for "On premise" PIMs. If you are using the Flexibility mode of Akeneo Cloud Edition,
-    please follow :doc:`this documentation </cloud_edition/flexibility_mode/docs/onboarder>` instead.
+    please follow :doc:`this documentation </cloud_edition/flexibility_mode/docs/job_consumers_and_workers>` instead.
 
 You can use supervisor to run the ``worker`` as a daemonized process, supervisor will monitor this process and according to the configuration you'll define it will be autostarted and autorestarted.
 

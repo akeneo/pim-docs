@@ -46,6 +46,7 @@ Manage your environments
     docs/system_administration
     docs/crontasks
     docs/composer_settings
+    docs/job_consumers_and_workers
 
 Further readings
 ----------------
@@ -55,8 +56,3 @@ Further readings
 
     docs/backups_management
     docs/disk_usage
-
-.. _`Environments access`: ./environments_access.html
-.. _`composer into instance`: ./composer_settings.html
-.. _`our own akeneo setup`: ./pim_application.html
-.. _`superuser tasks`: ./partners.html

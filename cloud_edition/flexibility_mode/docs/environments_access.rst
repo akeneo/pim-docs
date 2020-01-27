@@ -23,7 +23,7 @@ Always use **akeneo** as the user to connect to your server. It is an unprivileg
 
     No dedicated account will be created and **no root** access will be authorized. Privilege escalation is possible for `specific tasks`_.
 
-.. code-block:: shell
+.. code-block:: bash
 
     ssh -A akeneo@my-project-staging.cloud.akeneo.com
     akeneo@my-project-staging:~$ pwd
@@ -35,21 +35,21 @@ Always use **akeneo** as the user to connect to your server. It is an unprivileg
 Error: Permission Denied
 ************************
 
-.. code-block:: shell
+.. code-block:: bash
 
     ssh -A akeneo@my-project-staging.cloud.akeneo.com
     akeneo@my-project-staging.cloud.akeneo.com: Permission denied (publickey).
 
 Your SSH key is not allowed on the server and/or the user is not correct. Specify the private key to use with 
 
-.. code-block:: shell
+.. code-block:: bash
 
     ssh -A akeneo@my-project-staging.cloud.akeneo.com -i /path/to/private_key
 
 If the connection is not successful, make sure your key is registered on Akeneo portal and is marked as activated.
 If the connection is successful, it means your identity has not been properly registered to your SSH agent.
 
-.. code-block:: shell
+.. code-block:: bash
 
     eval "$(ssh-agent -s)"
     ssh-add /path/to/private_key
@@ -57,7 +57,7 @@ If the connection is successful, it means your identity has not been properly re
 Error: Connection refused
 *************************
 
-.. code-block:: shell
+.. code-block:: bash
 
     ssh -A akeneo@my-project-staging.cloud.akeneo.com
     ssh: connect to host akeneo@my-project-staging.cloud.akeneo.com port 22: Connection refused
@@ -78,7 +78,7 @@ Please allow some time for our Team to create the access for you.
 
 Each SFTP access can access to one folder that is also accessible by **akeneo**, so it can be used by scripts you'd create to interact with the PIM.
 
-.. code-block:: shell
+.. code-block:: bash
 
     sftp akeneosftp@my-project-staging.cloud.akeneo.com
     akeneosftp@y-project-staging.cloud.akeneo.com's password: 
