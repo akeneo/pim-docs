@@ -1,12 +1,13 @@
 Upgrade from 3.2 to 4.0
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Use this documentation to migrate projects based on Akeneo PIM CE or EE 3.2 to 4.0.
+Use this documentation to migrate projects based on Akeneo PIM Community Edition or Enterprise Edition 3.2 to 4.0.
 
 Disclaimer
 **********
 
 Make sure your production database is backuped before performing the data migration.
+The queue daemon(s) must be stopped as well.
 
 Requirements
 ************
