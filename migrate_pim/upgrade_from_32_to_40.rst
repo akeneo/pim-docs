@@ -162,8 +162,8 @@ Migrate your data
     to this migration have been found.
 
 
-Migrating the Assets from the PAM to the Asset Manager
-******************************************************
+Migrating the Assets from the PAM to the Asset Manager (Enterprise Edition only)
+********************************************************************************
 
 If you are using PAM assets with your PIM 3.2, please use
 the CsvToAsset tools in order to migrate your assets to the
