@@ -1,18 +1,30 @@
 Upgrade from 3.2 to 4.0
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Use this documentation to migrate projects based on the Enterprise Edition.
+Use this documentation to migrate projects based on Akeneo PIM Community Edition or Enterprise Edition 3.2 to 4.0.
 
 Disclaimer
 **********
 
+Make sure your production database is backuped before performing the data migration.
+The queue daemon(s) must be stopped as well.
+
 Requirements
 ************
 
-Akeneo PIM 4.0 Enterprise Archive
----------------------------------
+Akeneo PIM 4.0 composer.json
+----------------------------
 
-In order to download a 4.0 Enterprise Archive, please visit your `Akeneo Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html>`_.
+Community Edition
+^^^^^^^^^^^^^^^^^
+
+You can download the composer.json file directly from the Github repository: https://raw.githubusercontent.com/akeneo/pim-community-standard/4.0/composer.json
+
+Enterprise Edition
+^^^^^^^^^^^^^^^^^^
+
+You will find the `composer.json` file inside the Akeneo Enterprise Edition archive.
+Please visit your `Akeneo Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html>`_ to download the archive.
 
 
 Updated System components
@@ -46,12 +58,13 @@ Prepare your project
 
 .. warning::
 
-    All the following commands need to be run from the root of your 3.2 PIM
+    All the following commands need to be run from the root of your 3.2 PIM.
+    The `/path/to/pim-4.0-composer.json` file refers to the `composer.json` that you got on `Akeneo PIM 4.0 composer.json`_.
 
 .. code:: bash
 
     $ rm -rf var/cache/
-    $ tar --strip-component 1 -xvzf /path/to/pim-enterprise-standard-v4.0.0.tar.gz  pim-enterprise-standard/composer.json
+    $ cp /path/to/pim-4.0-composer.json .
 
 Load your PIM Enterprise 4.0 dependencies
 *****************************************
@@ -150,8 +163,8 @@ Migrate your data
     to this migration have been found.
 
 
-Migrating the Assets from the PAM to the Asset Manager
-******************************************************
+Migrating the Assets from the PAM to the Asset Manager (Enterprise Edition only)
+********************************************************************************
 
 If you are using PAM assets with your PIM 3.2, please use
 the CsvToAsset tools in order to migrate your assets to the
