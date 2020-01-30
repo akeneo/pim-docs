@@ -73,6 +73,8 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     0 23 * * * pim:volume:aggregate --env=prod
     #Ansible: pimee:data-quality-insights:schedule-periodic-tasks --env=prod
     15 0 * * * pimee:data-quality-insights:schedule-periodic-tasks --env=prod
+    #Ansible: pimee:data-quality-insights:evaluate-products --env=prod
+    */30 * * * * pimee:data-quality-insights:evaluate-products --env=prod
     #Ansible: pimee:franklin-insights:quality-highlights:push-structure-and-products
     15 0,12 * * * pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod
 
@@ -138,6 +140,8 @@ Enterprise Edition specific crontab:
 | akeneo:reference-entity:refresh-records --all --env=prod                          | 0 23 \* \* \*       | At 11:00 PM              |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
 | pimee:data-quality-insights:schedule-periodic-tasks --env=prod                    | 15 0 \* \* \*       | At 00:15 AM              |
++-----------------------------------------------------------------------------------+---------------------+--------------------------+
+| pimee:data-quality-insights:evaluate-products --env=prod                          | \*/30 \* \* \* \*   | Every 30 minutes         |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
 | pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod | 15 0,12 \* \* \*    | At 12:15 AM and 12:15 PM |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+

@@ -14,20 +14,33 @@ You have to add the following commands to your local installation:
 .. code-block:: bash
     :linenos:
 
-    php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod                                     # processes pending versions
-    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:connectivity-audit:update-data --env=prod                      # refresh audit data for connections
-    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod                                            # executes rules on products
-    php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:notify-before-due-date --env=prod                       # check and send notifications (TeamWork Assistant)
-    php /path/to/installation/pim-enterprise-standard/bin/console pim:asset:send-expiration-notification --env=prod                     # check and send notifications for asset date delay
-    php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:recalculate --env=prod                                  # recalculate project completeness (TeamWork Assistant)
-    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:reference-entity:refresh-records --all --env=prod # re-index all reference entities
-    php /path/to/installation/pim-enterprise-standard/bin/console pim:volume:aggregate --env=prod # recalculates the number of product values
-    php /path/to/installation/pim-enterprise-standard/bin/console pimee:data-quality-insights:schedule-periodic-tasks --env=prod # schedule consolidation and purge of data quality insights related data
+    # processes pending versions
+    php /path/to/installation/pim-enterprise-standard/bin/console pim:versioning:refresh --env=prod
+    # refresh audit data for connections
+    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:connectivity-audit:update-data --env=prod
+    # executes rules on products
+    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:rule:run --env=prod
+    # check and send notifications (TeamWork Assistant)
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:notify-before-due-date --env=prod
+    # check and send notifications for asset date delay
+    php /path/to/installation/pim-enterprise-standard/bin/console pim:asset:send-expiration-notification --env=prod
+    # recalculate project completeness (TeamWork Assistant)
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:project:recalculate --env=prod
+    # re-index all reference entities
+    php /path/to/installation/pim-enterprise-standard/bin/console akeneo:reference-entity:refresh-records --all --env=prod
+    # recalculates the number of product values
+    php /path/to/installation/pim-enterprise-standard/bin/console pim:volume:aggregate --env=prod
+    # schedule consolidation and purge of data quality insights related data
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:data-quality-insights:schedule-periodic-tasks --env=prod
+    # evaluate all criterion
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:data-quality-insights:evaluate-products --env=prod
 
     # Franklin Insights specific commands
 
-    php /path/to/installation/pim-enterprise-standard/bin/console pimee:franklin-insights:fetch-products --env=prod # fetch suggested data for products subscribed to Franklin Insights
-    php /path/to/installation/pim-enterprise-standard/bin/console pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod #push structure and products data in order to compute the Quality Highlights metrics
+    # fetch suggested data for products subscribed to Franklin Insights
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:franklin-insights:fetch-products --env=prod
+    # push structure and products data in order to compute the Quality Highlights metrics
+    php /path/to/installation/pim-enterprise-standard/bin/console pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod
 
 .. note::
    **Note:** The command ``pimee:data-quality-insights:schedule-periodic-tasks`` has to be scheduled once a day
