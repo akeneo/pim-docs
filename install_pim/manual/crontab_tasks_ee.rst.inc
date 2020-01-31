@@ -32,7 +32,7 @@ You have to add the following commands to your local installation:
     php /path/to/installation/pim-enterprise-standard/bin/console pim:volume:aggregate --env=prod
     # schedule consolidation and purge of data quality insights related data
     php /path/to/installation/pim-enterprise-standard/bin/console pimee:data-quality-insights:schedule-periodic-tasks --env=prod
-    # evaluate all criterion
+    # evaluate all criteria
     php /path/to/installation/pim-enterprise-standard/bin/console pimee:data-quality-insights:evaluate-products --env=prod
 
     # Franklin Insights specific commands
