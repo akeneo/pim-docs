@@ -58,7 +58,7 @@ To launch a daemon, run the following command:
 
 .. code-block:: bash
 
-    $ APP_ENV=dev php bin/console akeneo:batch:job-queue-consumer-daemon
+    $ php bin/console akeneo:batch:job-queue-consumer-daemon
 
 If you want to execute only one job:
 
