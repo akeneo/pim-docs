@@ -12,7 +12,7 @@ Configure the PIM via the ``.env`` file:
     APP_DATABASE_NAME=akeneo_pim
     APP_DATABASE_USER=akeneo_pim
     APP_DATABASE_PASSWORD=akeneo_pim
-    APP_INDEX_HOSTS='elastic:changeme@elasticsearch:9200'
+    APP_INDEX_HOSTS='localhost:9200'
 
 
 Launching the PIM in dev mode
@@ -27,7 +27,7 @@ Launching the PIM in dev mode
 	$ NO_DOCKER=true make dev
 
 
-Once this command is finished, the PIM is accessible on http://localhost:8080/
+Once this command is finished, the PIM is accessible at http://localhost:8080/
 
 Launching the PIM in prod mode
 ------------------------------
@@ -36,9 +36,9 @@ Launching the PIM in prod mode
 
    $ NO_DOCKER=true make prod
 
-Once this command is finished, the PIM is accessible on http://localhost:8080/
+Once this command is finished, the PIM is accessible at http://localhost:8080/
 
-Install and run Akeneo
+Setup Akeneo
 ----------------------
 
 Configuring Akeneo
@@ -52,7 +52,7 @@ Running jobs
 
 Akeneo PIM implements a queue for the `jobs <../../import_and_export_data/index.html>`_, as a PHP daemon. This daemon is a Symfony command, that can only execute one job at a time. It does not consume any other job until the job is finished.
 
-You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every 5 seconds the queue and executes the next job in the queue.
+You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every 5 seconds the queue and executes the next job from the queue.
 
 To launch a daemon, run the following command:
 
@@ -68,7 +68,7 @@ If you want to execute only one job:
 
 .. warning::
 
-   Before stopping or destroying your containers, remember to first stop this daemon if you launched it in the background, or you'll end up with a stuck FPM container, and will need to completely restart Docker.
+   When stopping or destroying your containers, avoid frozen FPM containers by killing running job consumers. Restarting Docker is required otherwise.
 
    .. code-block:: bash
 
