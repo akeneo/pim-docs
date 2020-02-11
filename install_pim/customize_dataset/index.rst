@@ -37,14 +37,14 @@ A custom dataset can be used during Akeneo PIM installation, so you can set up y
 Add your Own Data
 ^^^^^^^^^^^^^^^^^
 
-Create a directory to put your data in. For instance, ``Resources/fixtures/mydataset`` in one of your bundle.
+Create a directory to put your data in. For instance, ``/path/to/my/mydataset`` in one of your bundle.
 
-Copy all ``*.yml`` and ``*.csv`` files from ``vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/minimal`` to the ``mydataset`` directory. Then customize them depending on your needs.
+Copy all ``*.yml`` and ``*.csv`` files from ``vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/minimal`` to the ``/path/to/my/mydataset`` directory. Then customize them depending on your needs.
 
 Mandatory Data
 ^^^^^^^^^^^^^^
 
-Be sure you have included mandatory data in your custom installation fixtures. These are:
+Be sure you have included mandatory data in your custom installation dataset. These are:
 
 - user group ``all`` named ``All`` regardless of the translation in your ``user_groups.yml``;
 - attribute group ``other`` in your ``attribute_groups.yml``.
@@ -65,8 +65,8 @@ Load the Data
 You can now (re)install the database and loading your own dataset by running:
 
 .. warning::
-    Be careful, the command ``pim:installer:db`` will drop your database and then recreate it.
+    The command ``pim:installer:db`` will drop your database and then recreate it using the provided dataset
 
 .. code-block:: bash
 
-    php bin/console pim:installer:db --catalog path/to/my/bundle/Resources/fixtures/mydataset --env=prod
+    php bin/console pim:installer:db --catalog path/to/my/mydataset
