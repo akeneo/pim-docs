@@ -5,10 +5,15 @@ This document provides step by step instructions to install the PIM with the arc
 
 By default `Composer <https://getcomposer.org/>`_ uses `packagist.org <https://packagist.org/>`_ to retrieve all open source packages and their updates. To download Akeneo PIM Enterprise Edition, you have to get access to our private enterprise edition repository by sending your SSH public key to our system.
 
-Getting Akeneo PIM
-------------------
+Creating the PIM project
+------------------------
 
-This document provides step by step instructions to obtain an archive of the PIM Enterprise Edition.
+You need to get a PIM Enterprise Standard archive from the Partners Portal. See  <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_
 
-.. include:: ./partners_portal_archive.rst.inc
-.. include:: ./installation_archive_ee.rst.inc
+.. code-block:: bash
+
+    $ tar -xvzf pim-enterprise-standard-v4.0.tar.gz
+    $ cd pim-enterprise-standard/pim-enterprise-standard
+    $ php -d memory_limit=4G /usr/local/bin/composer install
+
+.. include:: ./common_install_ce_ee.rst.inc
