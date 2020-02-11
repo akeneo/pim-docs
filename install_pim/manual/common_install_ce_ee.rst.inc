@@ -73,15 +73,17 @@ Community Edition and Enterprise Edition cron jobs:
 +---------------------------------------------------------+-------------------+--------------------------------------------+
 | Symfony console command                                 | Crontab frequency | Human frequency                            |
 +=========================================================+===================+============================================+
-| pim:versioning:refresh --env=prod                       | 30 1 \* \* \*     | At 01:30 AM                                |
+| pim:versioning:refresh                                  | 30 1 \* \* \*     | At 01:30 AM                                |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
-| akeneo:connectivity-audit:update-data --env=prod        | 1 \* \* \* \*     | Every hour                                 |
+| pim:versioning:purge --more-than-days 90                | 30 2 \* \* \*     | At 02:30 AM                                |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
-| akeneo:batch:purge-job-execution --env=prod             | 20 0 1 \* \*      | At 12:20 AM, every first day of the month  |
+| akeneo:connectivity-audit:update-data                   | 1 \* \* \* \*     | Every hour                                 |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
-| pim:asset:send-expiration-notification --env=prod       | 0 1 \* \* \*      | At 01:00 AM                                |
+| akeneo:batch:purge-job-execution                        | 20 0 1 \* \*      | At 12:20 AM, every first day of the month  |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
-| pim:volume:aggregate --env=prod                         | 30 4 \* \* \*     | At 04:30 AM                                |
+| pim:asset:send-expiration-notification                  | 0 1 \* \* \*      | At 01:00 AM                                |
++---------------------------------------------------------+-------------------+--------------------------------------------+
+| pim:volume:aggregate                                    | 30 4 \* \* \*     | At 04:30 AM                                |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
 
 Additional Enterprise Edition cron jobs:
@@ -89,19 +91,21 @@ Additional Enterprise Edition cron jobs:
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
 | Symfony console command                                                           | Crontab frequency   | Human frequency          |
 +===================================================================================+=====================+==========================+
-| akeneo:rule:run --env=prod                                                        | 0 5 \* \* \*        | At 05:00 AM              |
+| akeneo:rule:run                                                                   | 0 5 \* \* \*        | At 05:00 AM              |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:project:notify-before-due-date --env=prod                                   | 20 0 \* \* \*       | At 12:20 AM              |
+| pimee:project:notify-before-due-date                                              | 20 0 \* \* \*       | At 12:20 AM              |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:project:recalculate --env=prod                                              | 0 2 \* \* \*        | At 02:00 AM              |
+| pimee:project:recalculate                                                         | 0 2 \* \* \*        | At 02:00 AM              |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| akeneo:reference-entity:refresh-records --all --env=prod                          | 0 23 \* \* \*       | At 11:00 PM              |
+| akeneo:reference-entity:refresh-records --all                                     | 0 23 \* \* \*       | At 11:00 PM              |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:data-quality-insights:schedule-periodic-tasks --env=prod                    | 15 0 \* \* \*       | At 00:15 AM              |
+| pimee:sso:rotate-log 10                                                           | 30 2 \* \* \*       | At 02:30 AM              |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:data-quality-insights:evaluate-products --env=prod                          | \*/30 \* \* \* \*   | Every 30 minutes         |
+| pimee:data-quality-insights:schedule-periodic-tasks                               | 15 0 \* \* \*       | At 00:15 AM              |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod | 15 0,12 \* \* \*    | At 12:15 AM and 12:15 PM |
+| pimee:data-quality-insights:evaluate-products                                     | \*/30 \* \* \* \*   | Every 30 minutes         |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:franklin-insights:fetch-products --env=prod                                 | \*/30 \* \* \* \*   | Every 30 minutes         |
+| pimee:franklin-insights:quality-highlights:push-structure-and-products            | 15 0,12 \* \* \*    | At 12:15 AM and 12:15 PM |
++-----------------------------------------------------------------------------------+---------------------+--------------------------+
+| pimee:franklin-insights:fetch-products                                            | \*/30 \* \* \* \*   | Every 30 minutes         |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
