@@ -198,8 +198,8 @@ Installing Rector
     composer require --dev rector/rector
 
 
-Making sure all classes are loaded
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Making sure all classes are loadable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following command checks that all classes can be properly loaded by PHP
 without generating a fatal error:
@@ -223,6 +223,18 @@ Applying automatic fixes
     This will use the `rector.yaml` file created by the `prepare_32_to_40.sh` above.
     Feel free to add your own refactoring rules inside it. More information on https://getrector.org/
 
+Identifiying broken code
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can use PHPStan to help you identify broken code:
+
+
+.. code:: bash
+
+    composer require --dev phpstan/phpstan
+    vendor/bin/phpstan analyse src/
+
+More information, please check https://github.com/phpstan/phpstan
 
 From that point, you will have to migrate your bundle one by one.
 
