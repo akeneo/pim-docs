@@ -16,3 +16,4 @@ You can either use `composer` to create your project:
 
 or download an archive containing Akeneo PIM and its PHP dependencies: https://download.akeneo.com/pim-community-standard-v4.0-latest-icecat.tar.gz
 
+.. include:: ./common_install_ce_ee.rst.inc

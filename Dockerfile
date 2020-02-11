@@ -8,6 +8,12 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends wget lsb-release apt-transport-https ca-certificates gnupg unzip \
         python python-setuptools ssh rsync curl software-properties-common && \
     #
+    # Add jinja2
+    wget -O /tmp/jinja2.tar.gz https://files.pythonhosted.org/packages/d8/03/e491f423379ea14bb3a02a5238507f7d446de639b623187bccc111fbecdf/Jinja2-2.11.1.tar.gz && \
+    tar -zxf /tmp/jinja2.tar.gz -C /tmp/ && \
+    cd /tmp/Jinja2-2.11.1/ && \
+    python setup.py install && \
+    #
     # Add sphinx
     wget -O /tmp/sphinx.zip https://github.com/sphinx-doc/sphinx/archive/v1.8.5.zip && \
     unzip /tmp/sphinx.zip -d /tmp/ && \
