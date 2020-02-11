@@ -54,22 +54,54 @@ Akeneo PIM implements a queue for the `jobs <../../import_and_export_data/index.
 
 You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every 5 seconds the queue and executes the next job from the queue.
 
-To launch a daemon, run the following command:
+Follow the job queue daemon set up in :doc:`this dedicated section </install_pim/manual/daemon_queue>`.
 
-.. code-block:: bash
 
-    $ php bin/console akeneo:batch:job-queue-consumer-daemon
+Cron jobs
+*********
 
-If you want to execute only one job:
+The application needs the following tasks to be executed in background on a regular basis. The frequency has to be adapted according to your data volume.
 
-.. code-block:: bash
-
-    $ php bin/console akeneo:batch:job-queue-consumer-daemon --run-once
+Edit your crontab with ``crontab -e`` and configure your tasks.
 
 .. warning::
 
-   When stopping or destroying your containers, avoid frozen FPM containers by killing running job consumers. Restarting Docker is required otherwise.
+    Be sure to update the cron of the user used to install the PIM, to be able to run the command
 
-   .. code-block:: bash
+Community Edition and Enterprise Edition cron jobs:
 
-    $ php pkill -f job-queue-consumer-daemon
++---------------------------------------------------------+-------------------+--------------------------------------------+
+| Symfony console command                                 | Crontab frequency | Human frequency                            |
++=========================================================+===================+============================================+
+| pim:versioning:refresh --env=prod                       | 30 1 \* \* \*     | At 01:30 AM                                |
++---------------------------------------------------------+-------------------+--------------------------------------------+
+| akeneo:connectivity-audit:update-data --env=prod        | 1 \* \* \* \*     | Every hour                                 |
++---------------------------------------------------------+-------------------+--------------------------------------------+
+| akeneo:batch:purge-job-execution --env=prod             | 20 0 1 \* \*      | At 12:20 AM, every first day of the month  |
++---------------------------------------------------------+-------------------+--------------------------------------------+
+| pim:asset:send-expiration-notification --env=prod       | 0 1 \* \* \*      | At 01:00 AM                                |
++---------------------------------------------------------+-------------------+--------------------------------------------+
+| pim:volume:aggregate --env=prod                         | 30 4 \* \* \*     | At 04:30 AM                                |
++---------------------------------------------------------+-------------------+--------------------------------------------+
+
+Additional Enterprise Edition cron jobs:
+
++-----------------------------------------------------------------------------------+---------------------+--------------------------+
+| Symfony console command                                                           | Crontab frequency   | Human frequency          |
++===================================================================================+=====================+==========================+
+| akeneo:rule:run --env=prod                                                        | 0 5 \* \* \*        | At 05:00 AM              |
++-----------------------------------------------------------------------------------+---------------------+--------------------------+
+| pimee:project:notify-before-due-date --env=prod                                   | 20 0 \* \* \*       | At 12:20 AM              |
++-----------------------------------------------------------------------------------+---------------------+--------------------------+
+| pimee:project:recalculate --env=prod                                              | 0 2 \* \* \*        | At 02:00 AM              |
++-----------------------------------------------------------------------------------+---------------------+--------------------------+
+| akeneo:reference-entity:refresh-records --all --env=prod                          | 0 23 \* \* \*       | At 11:00 PM              |
++-----------------------------------------------------------------------------------+---------------------+--------------------------+
+| pimee:data-quality-insights:schedule-periodic-tasks --env=prod                    | 15 0 \* \* \*       | At 00:15 AM              |
++-----------------------------------------------------------------------------------+---------------------+--------------------------+
+| pimee:data-quality-insights:evaluate-products --env=prod                          | \*/30 \* \* \* \*   | Every 30 minutes         |
++-----------------------------------------------------------------------------------+---------------------+--------------------------+
+| pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod | 15 0,12 \* \* \*    | At 12:15 AM and 12:15 PM |
++-----------------------------------------------------------------------------------+---------------------+--------------------------+
+| pimee:franklin-insights:fetch-products --env=prod                                 | \*/30 \* \* \* \*   | Every 30 minutes         |
++-----------------------------------------------------------------------------------+---------------------+--------------------------+

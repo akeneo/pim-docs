@@ -7,7 +7,7 @@ A common case is when you upgrade the PIM, you will probably need to update the 
 
 .. warning::
 
-    It is the responsibility of the integrator to tune the cronjob according to the project needs.
+    It is the responsibility of the integrator to tune the cronjob according to the project needs. The default cron jobs for an Enterprise Edition PIM are listed in the following :doc:`Cron Jobs section </install_pim/manual/installation_ee_archive>`.
 
 Usage
 -----
@@ -104,44 +104,3 @@ We would like to remind you that all our servers are configured with UTC time, d
     # The command /foo/bar will be executed at 02:15 UTC or 03:15 UTC
     # depending on the DST settings of the CET timezone
     15 2 * * * [ `TZ=CET date +\%Z` = CET ] && sleep 3600; /foo/bar
-
-Default crontab
----------------
-
-The default crontab at the moment on our Flexibility environments is the following one:
-
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| Symfony console command                                 | Crontab frequency | Human frequency                            |
-+=========================================================+===================+============================================+
-| pim:versioning:refresh --env=prod                       | 30 1 \* \* \*     | At 01:30 AM                                |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| akeneo:connectivity-audit:update-data --env=prod        | 1 \* \* \* \*     | Every hour                                 |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| akeneo:batch:purge-job-execution --env=prod             | 20 0 1 \* \*      | At 12:20 AM, every first day of the month  |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| pim:asset:send-expiration-notification --env=prod       | 0 1 \* \* \*      | At 01:00 AM                                |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| pim:volume:aggregate --env=prod                         | 30 4 \* \* \*     | At 04:30 AM                                |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-
-Enterprise Edition specific crontab:
-
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| Symfony console command                                                           | Crontab frequency   | Human frequency          |
-+===================================================================================+=====================+==========================+
-| akeneo:rule:run --env=prod                                                        | 0 5 \* \* \*        | At 05:00 AM              |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:project:notify-before-due-date --env=prod                                   | 20 0 \* \* \*       | At 12:20 AM              |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:project:recalculate --env=prod                                              | 0 2 \* \* \*        | At 02:00 AM              |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:franklin-insights:fetch-products --env=prod                                 | \*/30 \* \* \* \*   | Every 30 minutes         |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| akeneo:reference-entity:refresh-records --all --env=prod                          | 0 23 \* \* \*       | At 11:00 PM              |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:data-quality-insights:schedule-periodic-tasks --env=prod                    | 15 0 \* \* \*       | At 00:15 AM              |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:data-quality-insights:evaluate-products --env=prod                          | \*/30 \* \* \* \*   | Every 30 minutes         |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod | 15 0,12 \* \* \*    | At 12:15 AM and 12:15 PM |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
