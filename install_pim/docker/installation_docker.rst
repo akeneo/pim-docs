@@ -83,7 +83,7 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
         $ docker run -ti -u www-data -v $(pwd):/srv/pim -v $SSH_AUTH_SOCK:/ssh-auth.sock -e SSH_AUTH_SOCK=/ssh-auth.sock -w /srv/pim --rm akeneo/pim-php-dev:4.0 \
             php -d memory_limit=4G /usr/local/bin/composer install
 
-    See https://beta.docs.docker.com/samples/library/composer/#private-repositories--ssh-agent for more details.
+    See https://github.com/docker-library/docs/tree/master/composer/#private-repositories--ssh-agent for more details.
 
 Launching the PIM in dev mode
 -----------------------------
