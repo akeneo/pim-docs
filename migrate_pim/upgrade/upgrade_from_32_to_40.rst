@@ -241,3 +241,138 @@ From that point, you will have to migrate your bundle one by one.
 Remember to check if they are still relevant, as each Akeneo version
 brings new features.
 
+Re-write value factories for custom attribute types
+---------------------------------------------------
+
+A product or a product model contains a value collection. This value collection contains several values of several types (text, number, etc).
+For performance reasons, we re-implemented the factories which create those values. If you developed a custom attribute type, you have to rewrite the related value factory.
+
+Let's take an example of implementation of a Range Value, which contains two numbers: a minimum number and a maximum number.
+
+Create the RangeValue
+^^^^^^^^^^^^^^^^^^^^^
+
+For this example, we will imagine that you had a RangeValue defined this way:
+
+.. code-block:: php
+
+    <?php # src/Acme/RangeBundle/Product/Value/RangeValue.php
+
+    namespace Acme\RangeBundle\Product\Value;
+
+    use Akeneo\Pim\Enrichment\Component\Product\Model\AbstractValue;
+    use Akeneo\Pim\Enrichment\Component\Product\Model\ValueInterface;
+
+    class RangeValue extends AbstractValue
+    {
+        public function isEqual(ValueInterface $value) : bool
+        {
+            return $value instanceof RangeValue && $value->getData() === $this->getData();
+        }
+
+        public function getData()
+        {
+            return $this->data;
+        }
+
+        public function __toString() : string
+        {
+            return sprintf('[%s...%s]', $this->data['min'] ?? '', $this->data['max'] ?? '');
+        }
+    }
+
+Create the Value Factory
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+To create this value, you have to implement two methods in the range value factory: `createByCheckingData` and `createWithoutCheckingData`.
+
+.. code-block:: php
+
+    <?php # src/Acme/RangeBundle/Product/Factory/Value/RangeValueFactory.php
+
+    namespace Acme\RangeBundle\Product\Factory\Value;
+
+    use Acme\RangeBundle\AttributeType\RangeType;
+    use Acme\RangeBundle\Product\Value\RangeValue;
+    use Akeneo\Pim\Enrichment\Component\Product\Factory\Value\ValueFactory;
+    use Akeneo\Pim\Enrichment\Component\Product\Model\ValueInterface;
+    use Akeneo\Pim\Structure\Component\Query\PublicApi\AttributeType\Attribute;
+    use Akeneo\Tool\Component\StorageUtils\Exception\InvalidPropertyException;
+    use Akeneo\Tool\Component\StorageUtils\Exception\InvalidPropertyTypeException;
+
+    class RangeValueFactory implements ValueFactory
+    {
+        public function createByCheckingData(
+            Attribute $attribute,
+            ?string $channelCode,
+            ?string $localeCode,
+            $data
+        ): ValueInterface {
+            if (!is_array($data)) {
+                throw InvalidPropertyTypeException::arrayExpected(
+                    $attribute->code(),
+                    static::class,
+                    $data
+                );
+            }
+
+            if (!isset($data['min'])) {
+                throw InvalidPropertyTypeException::arrayKeyExpected(
+                    $attribute->code(),
+                    'min',
+                    static::class,
+                    $data
+                );
+            }
+
+            if (null === $data['min'] && null === $data['max']) {
+                throw InvalidPropertyException::valueNotEmptyExpected(
+                    $attribute->code(),
+                    static::class
+                );
+            }
+
+            if (!isset($data['max'])) {
+                throw InvalidPropertyTypeException::arrayKeyExpected(
+                    $attribute->code(),
+                    'max',
+                    static::class,
+                    $data
+                );
+            }
+
+            return $this->createWithoutCheckingData($attribute, $channelCode, $localeCode, $data);
+        }
+
+        public function createWithoutCheckingData(Attribute $attribute, ?string $channelCode, ?string $localeCode, $data): ValueInterface
+        {
+            if ($attribute->isLocalizableAndScopable()) {
+                return RangeValue::scopableLocalizableValue($attribute->code(), $data, $channelCode, $localeCode);
+            }
+            if ($attribute->isScopable()) {
+                return RangeValue::scopableValue($attribute->code(), $data, $channelCode);
+            }
+            if ($attribute->isLocalizable()) {
+                return RangeValue::localizableValue($attribute->code(), $data, $localeCode);
+            }
+
+            return RangeValue::value($attribute->code(), $data);
+        }
+
+        public function supportedAttributeType(): string
+        {
+            return RangeType::RANGE;
+        }
+    }
+
+You have to declare it in a new registry as well in the dependency injection configuration, named `akeneo.pim.enrichment.factory.product_value`.
+
+.. code-block:: yaml
+
+    acme.range.factory.value.range:
+        class: 'Acme\RangeBundle\Product\Factory\Value\RangeValueFactory'
+        tags: ['akeneo.pim.enrichment.factory.product_value']
+
+In the first method, `createByCheckingData`, the data type should be checked. For example, it checks that an expected scalar is indeed a scalar. This is done to guarantee that data manipulated in the domain layer are corrects. This method is useful when data are coming from the outside world (product save in UI, API, import, etc). This validation is costly as soon as you have several hundreds values per product.
+
+That's why we implemented a second method to avoid to do these checks. It should be used when a value collection is created from values coming from the database, as the data is already validated and consistent in Mysql. It avoids to pay the performance penalty for checking types.
