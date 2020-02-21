@@ -40,8 +40,13 @@ Then, follow the migration guides located in your archive to upgrade your projec
 
 * From EE v2.3 to EE v3.0: UPGRADE-3.0.md
 * From EE v3.0 to EE v3.1: UPGRADE-3.1.md
-* From EE v3.2 to EE v4.0:
+
+Migrate from 3.2 to 4.0
+-----------------------
+
+Use this documentation to migrate projects based on Akeneo PIM Community Edition or Enterprise Edition 3.2 to 4.0.
 
 .. toctree::
+   :maxdepth: 1
 
-    upgrade_from_32_to_40.rst
+   upgrade/upgrade_from_32_to_40
