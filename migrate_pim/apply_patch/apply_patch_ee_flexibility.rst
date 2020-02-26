@@ -16,7 +16,6 @@ To upgrade, please change the composer.json to:
     {
         ...
         "akeneo/pim-enterprise-dev": "4.0.10",
-        "akeneo/pim-community-dev": "4.0.10",
         ...
     }
 
