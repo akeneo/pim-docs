@@ -89,7 +89,7 @@ An enrichment rule is structured as follow:
 
 Elements with * are mandatory. Fill in the locale and scope elements only if your condition applies on localizable and/or scopable attributes.
 
-**Dashes** (-) must be placed before an element field and after each element contained in value part.
+**Dashes** (-) must be placed before an element field and after each element contained in the value part.
 
 **Colon** (:) mandatory after each structure element.
 
@@ -195,7 +195,7 @@ Enrichment Rule Definition
 Available Actions List
 ++++++++++++++++++++++
 
-Akeneo rules engine proposes 5 kinds of actions:
+Akeneo rules engine enables 5 kinds of actions:
 
 Copy
 ____
@@ -339,7 +339,7 @@ Two parameters are required while the three others are optional.
 Concatenate
 ___________
 
-This action concatenates at least two values into a single value. A space separates each source values.
+This action concatenates at least two values into a single value. A space separates each source value.
 
 The possible source attribute types are:
  - text
@@ -355,33 +355,33 @@ The possible target attribute types are:
  - text
  - text area
 
-**The parameters from and to are required in the format. Depending of source attribute type, some optional keys can be additionally set:**
+**The parameters from and to are required in the format. Depending on the source attribute type, some optional keys can be set:**
 
 +------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | from | List of sets for all attribute types:                                                                                                                                      |
 |      |                                                                                                                                                                            |
 |      | - field: attribute code.                                                                                                                                                   |
-|      | - locale: locale code for which value is assigned (optional).                                                                                                              |
-|      | - scope: channel code for which value is assigned (optional).                                                                                                              |
+|      | - locale: locale code for which the value is assigned (optional).                                                                                                          |
+|      | - scope: channel code for which the value is assigned (optional).                                                                                                          |
 |      |                                                                                                                                                                            |
-|      | For date attribute:                                                                                                                                                        |
+|      | For date attributes:                                                                                                                                                       |
 |      |                                                                                                                                                                            |
 |      | - format: format of the date following the `PHP format specification <https://www.php.net/manual/en/function.date.php>`_. Optional. Default is *Y-m-d* (e.g. *2020-01-31*) |
 |      |                                                                                                                                                                            |
-|      | For price collection attribute:                                                                                                                                            |
+|      | For price collection attributes:                                                                                                                                           |
 |      |                                                                                                                                                                            |
-|      | - currency: currency code for which price is assigned. Optional. By default all the prices in the collection are displayed, separated by a coma.                           |
+|      | - currency: currency code for which the price is assigned. Optional. By default all the prices in the collection are displayed, separated by a coma.                       |
 +------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | to   | One set of:                                                                                                                                                                |
 |      |                                                                                                                                                                            |
 |      | - field: attribute code.                                                                                                                                                   |
-|      | - locale: locale code for which value is assigned (optional).                                                                                                              |
-|      | - scope: channel code for which value is assigned (optional).                                                                                                              |
+|      | - locale: locale code for which the value is assigned (optional).                                                                                                          |
+|      | - scope: channel code for which the value is assigned (optional).                                                                                                          |
 +------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. tip::
 
-    For instance, to concatenate the brand (non localizable and non scopable) and the model in en_US locale into the description value in en_US locale, action will be as follows:
+    For instance, to concatenate the brand (non-localizable and non-scopable) and the model in en_US locale into the description value in en_US locale, the action will be as follows:
 
     .. code-block:: yaml
 
@@ -395,7 +395,7 @@ The possible target attribute types are:
                 field: description
                 locale: en_US
 
-    To concatenate the model in en_US locale, the color in en_US locale and the year of the release date into the title value in en_US locale, action will be as follows:
+    To concatenate the model in en_US locale, the color in en_US locale and the year of the release date into the title value in en_US locale, the action will be as follows:
 
     .. code-block:: yaml
 
@@ -411,7 +411,7 @@ The possible target attribute types are:
                 field: title
                 locale: en_US
 
-    To concatenate the model in en_US locale and the price in USD and in mobile channel into the subtitle value in en_US locale and mobile channel, action will be as follows:
+    To concatenate the model in en_US locale and the price in USD and in the mobile channel into the subtitle value in en_US locale and mobile channel, the action will be as follows:
 
     .. code-block:: yaml
 
