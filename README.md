@@ -49,3 +49,4 @@ Don't hesitate to suggest cookbook ideas via https://github.com/akeneo/pim-docs/
 
 - The folder `/_themes/sphinx_rtd_theme` is a clone from https://github.com/snide/sphinx_rtd_theme, and was
 updated on 2016-07. If you want to customize the Akeneo theme, please only update `/_theme/akeneo_rtd` theme.
+
