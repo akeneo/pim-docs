@@ -7,7 +7,7 @@ A common case is when you upgrade the PIM, you will probably need to update the 
 
 .. warning::
 
-    It is the responsibility of the integrator to tune the cronjob according to the project needs.
+    It is the responsibility of the integrator to tune the cronjob according to the project needs. The default cron jobs for an Enterprise Edition PIM are listed in the following :doc:`Cron Jobs section </install_pim/manual/installation_ee_archive>`.
 
 Usage
 -----
