@@ -87,6 +87,14 @@ Besides these modules, the following configuration is the minimal configuration 
 +----------------+---------------------------+
 | aspell-es      |                           |
 +----------------+---------------------------+
+| aspell-it      |                           |
++----------------+---------------------------+
+| aspell-sv      |                           |
++----------------+---------------------------+
+| aspell-da      |                           |
++----------------+---------------------------+
+| aspell-nl      |                           |
++----------------+---------------------------+
 
 **Javascript** (required only for development purposes)
 
