@@ -12,7 +12,8 @@ allowed_extensions;;;"| Must be a subset of extensions set in the parameters `pi
 | or `pim_catalog_file_allowed_extensions` (for files)"
 metric_family;;metric;Must be a valid metric family
 default_metric_unit;;metric;Must be a valid metric unit and must be part of the specified metric_family
-reference_data_name;;reference data;Must be a valid reference data code (see :ref:`reference-data-configuration`)
+metric_family;;metric;Must be a valid metric family
+default_metric_unit;;metric;Must be a valid metric unit and must be part of the specified metric_family
 available_locales;;;Must be a list of valid and activated locales
 max_characters;;;"| Must be a positive integer
 | Cannot be more than 255 for texts, or 65535 for textareas"

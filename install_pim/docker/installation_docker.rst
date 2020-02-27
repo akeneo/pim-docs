@@ -26,18 +26,16 @@ Configuring you package manager
 *******************************
 
 *Composer* and *Yarn* caches are shared between the host and the containers to accelerate the installation of Akeneo PIM dependencies.
-This is achieved by `bind mounting <https://docs.docker.com/storage/bind-mounts/>`_ the cache folders of your host machine into the containers.
 
-The default values defined in `docker-compose.yml` of the PIM root dir will match the default value for the `composer` and `yarn` configuration  and cache directories:
+The default values defined in `docker-compose.yml` match the default values for the `composer` and `yarn` directories:
  - Composer: `~/.composer`
  - Yarn: `~/.cache/yarn`
 
 
-Non standard directories for Composer and Yarn
-++++++++++++++++++++++++++++++++++++++++++++++
-If you are using non standard directories for Composer and Yarn, you can set the right directories by settting the following environment variable:
- - Composer: `HOST_COMPOSER_HOME`
- - Yarn: `HOST_YARN_HOME`
+.. note::
+    If you are using non standard directories for Composer and Yarn, set the following environment variables:
+     - Composer: `HOST_COMPOSER_HOME`
+     - Yarn: `HOST_YARN_HOME`
 
 
 Creating the PIM project
@@ -68,9 +66,10 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
 .. code-block:: bash
 
     $ tar -xvzf pim-enterprise-standard-v4.0.tar.gz
-    $ cd pim-enterprise-standard/pim-enterprise-standard
-    $ docker run -ti -u www-data -v $(pwd):/srv/pim -v ~/.ssh:/var/www/.ssh -w /srv/pim --rm akeneo/pim-php-dev:4.0 \
-        php -d memory_limit=4G /usr/local/bin/composer install
+    $ cd pim-enterprise-standard
+    $ docker run -ti -u www-data --rm \
+        -v $(pwd):/srv/pim -v ~/.composer:/var/www.composer -v ~/.ssh:/var/www/.ssh -w /srv/pim \
+        akeneo/pim-php-dev:4.0 php -d memory_limit=4G /usr/local/bin/composer install
 
 .. note::
     The above Docker command uses a volume to make your SSH private key available to the container, in order for it to access
