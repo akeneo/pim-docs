@@ -51,11 +51,11 @@ Then clean the cache, re-install assets and warmup the cache:
 .. code-block:: bash
 
     service php7.3-fpm restart
-    rm -rf var/cache/* ./web/bundles/* ./web/css/* ./web/js/*
-    bin/console --env=prod pim:installer:assets
+    rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/* ./public/dist/*
     bin/console --env=prod cache:warmup
-    yarn run less
-    yarn run webpack
+    bin/console --env=prod pim:installer:assets
+    yarnpkg run less
+    yarnpkg run webpack
 
 If the patch is a javascript fix, please **clear your browser cache** before testing.
 
