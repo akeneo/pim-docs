@@ -361,8 +361,8 @@ The possible target attribute types are:
 | from | List of sets for all attribute types:                                                                                                                                      |
 |      |                                                                                                                                                                            |
 |      | - field: attribute code.                                                                                                                                                   |
-|      | - locale: locale code for which the value is assigned (optional).                                                                                                          |
-|      | - scope: channel code for which the value is assigned (optional).                                                                                                          |
+|      | - locale: locale code for which the value is assigned, for localizable attributes (optional).                                                                              |
+|      | - scope: channel code for which the value is assigned, for scopable attributes (optional).                                                                                 |
 |      |                                                                                                                                                                            |
 |      | For date attributes:                                                                                                                                                       |
 |      |                                                                                                                                                                            |
@@ -375,8 +375,8 @@ The possible target attribute types are:
 | to   | One set of:                                                                                                                                                                |
 |      |                                                                                                                                                                            |
 |      | - field: attribute code.                                                                                                                                                   |
-|      | - locale: locale code for which the value is assigned (optional).                                                                                                          |
-|      | - scope: channel code for which the value is assigned (optional).                                                                                                          |
+|      | - locale: locale code for which the value is assigned, for localizable attributes (optional).                                                                              |
+|      | - scope: channel code for which the value is assigned, for scopable attributes (optional).                                                                                 |
 +------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. tip::
