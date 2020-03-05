@@ -349,11 +349,12 @@ The possible source attribute types are:
  - metric
  - number
  - price collection
- - simple or multi select (option codes)
+ - simple select
+ - multi select (values are separated by a coma)
 
 The possible target attribute types are:
  - text
- - text area
+ - textarea
 
 **The parameters from and to are required in the format. Depending on the source attribute type, some optional keys can be set:**
 
@@ -371,6 +372,10 @@ The possible target attribute types are:
 |      | For price collection attributes:                                                                                                                                           |
 |      |                                                                                                                                                                            |
 |      | - currency: currency code for which the price is assigned. Optional. By default all the prices in the collection are displayed, separated by a coma.                       |
+|      |                                                                                                                                                                            |
+|      | For simple and multi select attributes:                                                                                                                                    |
+|      |                                                                                                                                                                            |
+|      | - label_locale: locale code for the label of the option. Optionnal. By default code of the option is used.                                                                 |
 +------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | to   | One set of:                                                                                                                                                                |
 |      |                                                                                                                                                                            |
