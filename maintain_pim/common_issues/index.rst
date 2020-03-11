@@ -114,27 +114,17 @@ To do so, create a ``my_index_configuration.yml`` file with the following conten
 
 Then, load the ``my_index_configuration.yml`` by adding it to the Symfony ``elasticsearch_index_configuration_files`` parameter that is present in the file ``parameters.yml`` or ``pim_parameters.yml``.
 
-For instance, if you have a *Community* edition:
+For instance:
 
 .. code-block:: yaml
 
     # parameters.yml
     parameters:
         # ...
+        # Files used as configuration for the Elasticsearch index
         elasticsearch_index_configuration_files:
-            - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Akeneo/Pim/Enrichment/Bundle/Resources/elasticsearch/index_configuration.yml'
-            - '/path/to/my_index_configuration.yml'
-
-If you have the *Enterprise* edition:
-
-.. code-block:: yaml
-
-    # parameters.yml
-    parameters:
-        # ...
-        elasticsearch_index_configuration_files:
-            - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Akeneo/Pim/Enrichment/Bundle/Resources/elasticsearch/index_configuration.yml'
-            - '%kernel.root_dir%/../vendor/akeneo/pim-enterprise-dev/src/Akeneo/Pim/WorkOrganization/Workflow/Bundle/Resources/elasticsearch/index_configuration.yml'
+            - '%pim_ce_dev_src_folder_location%/src/Akeneo/Pim/Enrichment/Bundle/Resources/elasticsearch/settings.yml'
+            - '%pim_ce_dev_src_folder_location%/src/Akeneo/Pim/Enrichment/Bundle/Resources/elasticsearch/product_mapping.yml'
             - '/path/to/my_index_configuration.yml'
 
 This parameter is set by the PIM at the index creation. If you want to apply it on an existing index you may use the following command:
