@@ -350,7 +350,7 @@ The possible source attribute types are:
  - number
  - price collection
  - simple select
- - multi select (values are separated by a coma)
+ - multi select (values are separated by a comma)
 
 The possible target attribute types are:
  - text
@@ -375,7 +375,7 @@ The possible target attribute types are:
 |      |                                                                                                                                                                            |
 |      | For simple and multi select attributes:                                                                                                                                    |
 |      |                                                                                                                                                                            |
-|      | - label_locale: locale code for the label of the option. Optionnal. By default code of the option is used.                                                                 |
+|      | - label_locale: locale code for the label of the option. Optional. By default the code of the option is used.                                                              |
 +------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | to   | One set of:                                                                                                                                                                |
 |      |                                                                                                                                                                            |
