@@ -195,7 +195,7 @@ Enrichment Rule Definition
 Available Actions List
 ++++++++++++++++++++++
 
-Akeneo rules engine enables 5 kinds of actions:
+Akeneo rules engine enables 6 kinds of actions:
 
 Copy
 ____
@@ -434,6 +434,43 @@ The possible target attribute types are:
                 field: subtitle
                 locale: en_US
                 scope: mobile
+
+Clear
+_____
+
+This action clears the value(s) assigned to an attribute, product categories, product groups, or product associations.
+
+One parameter is required while the two others are optional.
+ - field: attribute code, "categories", "groups" or "associations".
+ - locale: locale code for which the value is assigned. For localizable attributes (optional).
+ - scope: channel code for which the value is assigned. For scopable attributes (optional).
+
+.. tip::
+
+    For instance, to clear the model in en_US locale, the action will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: clear
+              field: brand
+              locale: en_US
+
+    To clear all the categories linked to products, the action will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: clear
+              field: categories
+
+    To clear all the product associations, the action will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: clear
+              field: associations
 
 Fields
 ++++++
