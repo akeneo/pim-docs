@@ -201,7 +201,7 @@ the reference to the ticket and a description of the bug fix.
 
 Then, if you introduced BC Breaks in namespaces for example (but you should/must not), under the BC BREAK step add a
 description of the BC Break.
-Moreover, you have to add in ``UPGRADE.md`` a way to fix this BC Break in files (like sed command for example).
+Moreover, you have to add in ``UPGRADE.md`` a way to fix this BC Break in files.
 To finish, if you introduced database BC Break, you have to add migration files in `upgrades/schema/`.
 In most of the cases using `php bin/console doctrine:migrations:diff` is enough to create a database migration class
 (see `Doctrine migration documentation`_) but sometimes you will have to do it manually.
@@ -279,7 +279,7 @@ Some explanation for this Definition of Done :
 
 * "Added Specs" means phpspec have been written, every class has its own PHPSpec or the existing one has been updated except controllers, form types, commands, doctrine entity (POPO), symfony semantic config.
 
-* "Added acceptance tests" means that tests evaluating the proper business adequation of the code have been written. You can use Behat (not necessarily end to end tests) or phpUnit depending on your context.
+* "Added acceptance tests" means that tests evaluating the proper business adequation of the code have been written. You can use Behat but not necessarily by using end to end tests.
 
 * "Added integration tests" means that tests checking that different components work well together have been added. We usually use phpUnit for this purpose.
 
