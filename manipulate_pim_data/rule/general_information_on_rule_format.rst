@@ -377,7 +377,7 @@ The possible target attribute types are:
 |      |                                                                                                                                                                            |
 |      | For simple select, multi select, reference entity single link and reference entity multiple links attributes:                                                              |
 |      |                                                                                                                                                                            |
-|      | - label_locale: locale code for the label of the option/reference entity. Optional. By default the code is used.                                                           |
+|      | - label_locale: locale code for the label of the option/reference entity record. Optional. By default the code is used.                                                    |
 +------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | to   | One set of:                                                                                                                                                                |
 |      |                                                                                                                                                                            |
