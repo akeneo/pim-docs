@@ -25,6 +25,12 @@ FILES="
     bundles/pimui/images/icon-infos.svg
     bundles/pimui/images/info-user.png
     bundles/pimui/images/logo.svg
+    bundles/pimui/images/icon-check.svg
+    bundles/pimui/images/icon-delete-greendark.svg
+    bundles/pimui/images/icon-warning-orangelight.svg
+    bundles/pimui/images/icon-delete-orangedark.svg
+    bundles/pimui/images/icon-warning-redlight.svg
+    bundles/pimui/images/icon-delete-reddark.svg
     css/pim.css
 "
 
