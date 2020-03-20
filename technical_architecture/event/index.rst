@@ -59,32 +59,15 @@ In order to do that you can create an event listener that will send the email.
         }
     }
 
-And there is the service definition
+And there is the service definition:
 
-.. configuration-block::
+.. code-block:: yaml
 
-    .. code-block:: yaml
-
-        # app/config/services.yml
-        services:
-            my.listener:
-                class: Acme\Bundle\AppBundle\EventListener\ProductModificationListener
-                arguments:
-                    - '@swiftmailer.mailer'
-                tags:
-                    - { name: kernel.event_listener, event: akeneo.storage.post_save, method: onPostSave }
-
-    .. code-block:: xml
-
-        <!-- app/config/services.xml -->
-        <service id="my.listener" class="Acme\Bundle\AppBundle\EventListener\ProductModificationListener">
-            <tag name="kernel.event_listener" event="akeneo.storage.post_save" method="onPostSave" />
-        </service>
-
-    .. code-block:: php
-
-        // app/config/services.php
-        $container
-            ->register('my.listener', 'Acme\Bundle\AppBundle\EventListener\ProductModificationListener')
-            ->addTag('kernel.event_listener', array('event' => 'akeneo.storage.post_save', 'method' => 'onPostSave'))
-        ;
+    # app/config/services.yml
+    services:
+        my.listener:
+            class: Acme\Bundle\AppBundle\EventListener\ProductModificationListener
+            arguments:
+                - '@swiftmailer.mailer'
+            tags:
+                - { name: kernel.event_listener, event: akeneo.storage.post_save, method: onPostSave }
