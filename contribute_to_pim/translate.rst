@@ -56,7 +56,7 @@ Then, rebuild your front, and you will see the new languages available!
 
 .. code-block:: bash
 
-    rm -rf var/cache/* web/bundles web/dist
+    rm -rf var/cache/* public/bundles public/dist
     bin/console pim:installer:assets --symlink --clean
     yarn run webpack
 

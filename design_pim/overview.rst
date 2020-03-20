@@ -71,7 +71,7 @@ Now that we have this small module, we would like to use it somewhere. To do so,
             my_locale_logger: acmecustom/js/locale_logger
 
 
-We just declared a new module named ``my_locale_logger`` located in ``web/bundles/acmecustom/js/locale_logger.js``.
+We just declared a new module named ``my_locale_logger`` located in ``public/bundles/acmecustom/js/locale_logger.js``.
 Note that we don't need to specify the file extension and it is located in the public web folder (moved during the ``bin/console assets:install`` command execution). Also, ``my_locale_logger`` name is an arbitrary name and you can replace it with whatever you want.
 
 Make it available

@@ -28,9 +28,9 @@ Then clean the cache, re-install assets and warmup the cache:
 .. code-block:: bash
 
     service php7.3-fpm restart
-    rm -rf var/cache/* ./web/bundles/* ./web/css/* ./web/js/*
-    bin/console --env=prod pim:installer:assets
-    bin/console --env=prod cache:warmup
+    rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
+    bin/console pim:installer:assets
+    bin/console cache:warmup
     yarn run less
     yarn run webpack
 

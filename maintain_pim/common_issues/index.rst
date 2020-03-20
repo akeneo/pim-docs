@@ -32,7 +32,7 @@ To fix this issue, just run the following commands:
 .. code-block:: bash
 
     cd /path/to/your/pim/
-    rm -rf web/js/translations/*
+    rm -rf public/js/translations/*
     php bin/console oro:translation:dump
     yarn run webpack
 
@@ -57,7 +57,7 @@ You can revert this operation by running the following commands:
 .. code-block:: bash
 
     cd /path/to/your/pim/
-    rm ./web/js/oro.min.js
+    rm ./public/js/oro.min.js
     rm -rf ./var/cache/*
     php bin/console pim:install:asset --env=prod
     php bin/console assets:install --symlink web

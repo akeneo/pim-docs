@@ -364,7 +364,7 @@ This is the purpose of this section: provide a denormalizer capable of creating 
      * ## Import section
      *
      * This is where your dependencies to external modules are, using the standard import method (see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-     * The paths are relative to the web/bundles folder (at the root of your PIM project)
+     * The paths are relative to the public/bundles folder (at the root of your PIM project)
      */
     import Identifier, {createIdentifier} from 'akeneoreferenceentity/domain/model/attribute/identifier';
     import ReferenceEntityIdentifier, {
