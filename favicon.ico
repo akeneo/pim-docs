@@ -1,0 +1,11 @@
+--2020-03-20 16:25:41--  https://www.akeneo.com/wp-content/themes/akeneo/assets/public/favicon/favicon-32x32.png
+Resolving www.akeneo.com (www.akeneo.com)... 195.154.200.183
+Connecting to www.akeneo.com (www.akeneo.com)|195.154.200.183|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1239 (1.2K) [image/png]
+Saving to: ‘favicon-32x32.png’
+
+     0K .                                                     100% 18.8M=0s
+
+2020-03-20 16:25:42 (18.8 MB/s) - ‘favicon-32x32.png’ saved [1239/1239]
+
