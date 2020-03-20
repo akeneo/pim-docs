@@ -102,7 +102,7 @@ Structure
 * Use parentheses when instantiating classes regardless of the number of
   arguments the constructor has;
 
-* Exception message strings should be concatenated using :phpfunction:`sprintf`.
+* Exception message strings should be concatenated using `sprintf`.
 
 * If we expect something from a method/function (i.e. the returned value of the method/function used by the caller) we should always do an explicit return (not ``return;``).
 

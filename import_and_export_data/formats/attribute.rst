@@ -10,7 +10,7 @@ The import/export file follows this data structure:
     :file: examples/attribute_properties.csv
     :delim: ;
 
-.. _MeasureBundle measures: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Tool/Bundle/MeasureBundle/Resources/config/measure.yml
+.. _MeasureBundle measures: https://github.com/akeneo/pim-community-dev/blob/4.0/src/Akeneo/Tool/Bundle/MeasureBundle/Resources/config/measure.yml
 
 .. note::
 
