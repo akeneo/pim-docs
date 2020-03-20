@@ -390,7 +390,7 @@ messages of all the commits. When you are finished, execute the push command.
 .. _`coding standard`:                  http://docs.akeneo.com/latest/technical_architecture/best_practices/core/standards.html
 .. _`setup behat`:                      http://docs.akeneo.com/latest/technical_architecture/best_practices/core/behat.html
 .. _`Sylius documentation`:             https://github.com/Sylius/Sylius/tree/master/docs
-.. _`behat quick intro`:                http://docs.behat.org/en/v2.5/quick_intro.html
+.. _`behat quick intro`:                https://docs.behat.org/en/latest/quick_start.html
 .. _`begin with PHPSpec`:               https://www.phpspec.net/
 .. _`Prophecy documentation`:           https://github.com/phpspec/prophecy#prophecy
 .. _`Doctrine migration documentation`: https://www.doctrine-project.org/projects/doctrine-migrations/en/latest/reference/introduction.html
