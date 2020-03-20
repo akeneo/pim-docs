@@ -13,4 +13,8 @@ This chapter describes the collaborative workflow involving Mary and Julia.
 
 If you need a presentation of Collaborative Workflow feature, take a look at the *Product focus* video!
 
-.. youtube:: fIy5FLehi4g
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="https://www.youtube.com/embed/fIy5FLehi4g" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
