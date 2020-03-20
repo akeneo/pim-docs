@@ -11,4 +11,3 @@ composer.lock
 pim-docs-build/
 pim-docs-lint/
 docker-compose.override.yml
-.vscode

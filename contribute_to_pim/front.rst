@@ -26,7 +26,7 @@ After this step you will be able to launch the pim asset install command:
 
 .. code-block:: bash
 
-    bin/console --env=prod pim:installer:assets --symlink
+    bin/console pim:installer:assets --symlink
 
 With this command, Symfony will symlink the assets located in the `Resources/public` folder of every registered bundles to their respective `web/bundles` folders. We recommend to always use the symlink option when developing on the PIM.
 
@@ -71,7 +71,7 @@ To rebuild the frontend translations you need to run:
 
     rm -rf var/cache/*
     rm -rf web/js/translation/your_updated_locale.js
-    bin/console --env=prod oro:translation:dump your_updated_locale
+    bin/console oro:translation:dump your_updated_locale
 
 What to do if I updated a .less/.css file?
 ++++++++++++++++++++++++++++++++++++++++++

@@ -18,7 +18,7 @@ Step 1: Set up your Environment
 Install the Software Stack
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Before working on Akeneo PIM, set a Symfony2 friendly environment up with the following software:
+Before working on Akeneo PIM, set up a Symfony 4 friendly environment with the following software:
 
 * Git
 * Follow the technical requirements :doc:`/install_pim/manual/system_requirements/system_requirements`
@@ -98,8 +98,7 @@ The License
 ~~~~~~~~~~~
 
 Before you start, you must know that all patches you are going to submit
-must be released under the *OSL-3.0 license*, unless explicitly specified in your
-commits.
+must be released under the *OSL-3.0 license*.
 
 Create a Topic Branch
 ~~~~~~~~~~~~~~~~~~~~~
@@ -196,12 +195,13 @@ Prepare your Patch for Submission
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When your patch is about a bug fix and we give you a reference to a ticket ``PIM-xxxx``.
-You have to add to the ``CHANGELOG-1-x.md`` file (1-x is the version of the PIM you want to contribute)
-under the BUG FIXES step of the next version the reference to the ticket and a description of the bug fix.
+You have to add to the ``CHANGELOG-x.y.md`` file (x.y is the version of the PIM you want to contribute,
+no version if you want to contribute on ``master``) under the BUG FIXES step of the next version
+the reference to the ticket and a description of the bug fix.
 
 Then, if you introduced BC Breaks in namespaces for example (but you should/must not), under the BC BREAK step add a
 description of the BC Break.
-Moreover, you have to add in ``UPGRADE-1.x.md`` a way to fix this BC Break in files (like sed command for example).
+Moreover, you have to add in ``UPGRADE.md`` a way to fix this BC Break in files (like sed command for example).
 To finish, if you introduced database BC Break, you have to add migration files in `upgrades/schema/`.
 In most of the cases using `php bin/console doctrine:migrations:diff` is enough to create a database migration class
 (see `Doctrine migration documentation`_) but sometimes you will have to do it manually.
@@ -267,17 +267,23 @@ possible:
     | Q                                 | A
     | --------------------------------- | ---
     | Added Specs                       | [yes|no]
-    | Added Behats                      | [yes|no]
+    | Added acceptance tests            | [yes|no]
+    | Added integration tests           | [yes|no]
+    | Added legacy Behats               | [yes|no]
     | Changelog updated                 | [yes|no]
     | Review and 2 GTM                  | [yes|no]
-    | Migration scripts                 | [yes|no]
+    | Migration script                  | [yes|no]
     | Tech Doc                          | [yes|no]
 
 Some explanation for this Definition of Done :
 
 * "Added Specs" means phpspec have been written, every class has its own PHPSpec or the existing one has been updated except controllers, form types, commands, doctrine entity (POPO), symfony semantic config.
 
-* "Added Behats" means scenario have been written, for nominal and limit cases, internal api can also be tested through behat via commands (like query or updater).
+* "Added acceptance tests" means that tests evaluating the proper business adequation of the code have been written. You can use Behat (not necessarily end to end tests) or phpUnit depending on your context.
+
+* "Added integration tests" means that tests checking that different components work well together have been added. We usually use phpUnit for this purpose.
+
+* "Added legacy Behats" means scenario have been written using the legacy Behat stack. We recommend not adding this kind of tests, and instead work on real acceptance tests.
 
 * "Changelog updated" means the bug fix line has been added (in case of bug) via an explicit sentence, all the BC breaks (with the last minor version) have been listed and, in case of improvement (functional or technical), a short description (prefixed by the issue number).
 
