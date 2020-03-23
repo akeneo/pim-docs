@@ -9,7 +9,7 @@ Copy the ``.env`` file at your project root directory and modify the values acco
 
     $ cp vendor/akeneo/pim-onboarder/env.dist .env
 
-Add the following code to **each** PHP entry point (``bin/console``, ``web/app.php``, ``web/app_dev.php``, etc.) after the ``autoload.php`` require statement.
+Add the following code to **each** PHP entry point (``bin/console``, ``public/app.php``) after the ``autoload.php`` require statement.
 
 .. code-block:: php
 
@@ -17,7 +17,7 @@ Add the following code to **each** PHP entry point (``bin/console``, ``web/app.p
 
     use Symfony\Component\Dotenv\Dotenv;
     //...
-    
+
     require __DIR__ . '/../vendor/autoload.php';
     //...
 
