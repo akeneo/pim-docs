@@ -97,8 +97,6 @@ Besides these modules, the following configuration is the minimal configuration 
 +----------------+---------------------------+
 | aspell-pt-br   |                           |
 +----------------+---------------------------+
-| aspell-pt-pt   |                           |
-+----------------+---------------------------+
 | aspell-no      |                           |
 +----------------+---------------------------+
 
