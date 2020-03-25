@@ -16,7 +16,7 @@ Use a SFTP server
 
 .. _Sftp adapter: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/adapter_sftp.md
 
-Let's assume that you already have a fully functional SFTP server ready to receive files. You will have to setup the adapter in the ``app/config/config.yml`` file.
+Let's assume that you already have a fully functional SFTP server ready to receive files.
 
 .. code-block:: yaml
 
@@ -60,12 +60,9 @@ This version requires you to use the "v4" of the signature.
 
 .. code-block:: yaml
 
-    # config/packages/prod/oneup_flysystem.yml
+    # config/services/prod/storage.yml
     services:
-        acme.s3_client:
-            class: Aws\S3\S3Client
-            factory_class: Aws\S3\S3Client
-            factory_method: factory
+        Aws\S3\S3Client:
             arguments:
                 -
                     version: '2006-03-01' # or 'latest'
@@ -73,23 +70,21 @@ This version requires you to use the "v4" of the signature.
                     credentials:
                         key: "s3-key"
                         secret: "s3-secret"
+
+
+.. code-block:: yaml
+
+    # config/services/prod/storage.yml
     oneup_flysystem:
         adapters:
             asset_storage_adapter:
                 awss3v3:
-                    client: acme.s3_client
-                    bucket: ~
-                    prefix: ~
+                    client: 'Aws\S3\S3Client'
+                    bucket: 'mybucket'
 
 .. note::
 
     Don't forget to add your credentials and the region-id
-
-Then set this service as the value of the client key in the ``app/config/config.yml`` file.
-
-.. code-block:: yaml
-
-    # /app/config/config.yml
 
 .. note::
 
