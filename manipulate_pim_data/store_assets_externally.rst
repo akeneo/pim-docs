@@ -74,7 +74,7 @@ This version requires you to use the "v4" of the signature.
 
 .. code-block:: yaml
 
-    # config/services/prod/storage.yml
+    # config/packages/prod/oneup_flysystem.yml
     oneup_flysystem:
         adapters:
             asset_storage_adapter:
