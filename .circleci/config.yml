@@ -13,7 +13,6 @@ jobs:
         steps:
             - checkout
             - add_ssh_keys
-            - run: sudo chown 1000:1000 $SSH_AUTH_SOCK
             - run:
                   name: Deploy on staging server
                   command: DEPLOY_HOSTNAME=$STAGING_HOSTNAME DEPLOY_PORT=$STAGING_PORT VERSION="4.0" make deploy
@@ -24,7 +23,6 @@ jobs:
         steps:
             - checkout
             - add_ssh_keys
-            - run: sudo chown 1000:1000 $SSH_AUTH_SOCK
             - run:
                   name: Deploy on production server
                   command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="4.0" make deploy
