@@ -11,3 +11,4 @@ Manipulate the Akeneo PIM data
     define-acl
     catalog_structure/index
     teamwork_assistant/index
+    store_assets_externally
