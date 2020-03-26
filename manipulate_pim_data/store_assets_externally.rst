@@ -55,8 +55,7 @@ First of all, you will need to install the following requirements:
 ``composer --prefer-dist require aws/aws-sdk-php v3.5.0``
 ``composer --prefer-dist require league/flysystem-aws-s3-v3 v1.0.6``
 
-In order to use the AwsS3v3 adapter, you first need to create a client object defined as a service.
-This version requires you to use the "v4" of the signature.
+In order to use the AwsS3v3 adapter, you first need to create a client object defined as a service:
 
 .. code-block:: yaml
 
@@ -71,6 +70,8 @@ This version requires you to use the "v4" of the signature.
                         key: "s3-key"
                         secret: "s3-secret"
 
+
+Then configure the asset storage adapter to use the service you declared:
 
 .. code-block:: yaml
 
