@@ -54,6 +54,13 @@ Moreover, the integrator can:
 - activate the purge of old versions of products
 - remove assets that are not linked to any product anymore
 
+
+Database purges
+---------------
+
+Assets
+~~~~~~
+
 .. code-block:: bash
 
     mkdir -p /home/akeneo/purge
@@ -71,30 +78,15 @@ Moreover, the integrator can:
     echo "Delete assets files based on previous list"
     cat /home/akeneo/purge/asset_files_to_delete.txt | xargs rm -f
 
-
-- purge old versions from versioning table
-
-.. code-block:: bash
-
-    echo "Check pim_versioning_version table size"
-    mysql akeneo_pim -e 'SELECT table_name AS `Table`, round(((data_length + index_length) / 1024 / 1024 / 1024), 2) `Size in GB` FROM information_schema.TABLES WHERE table_schema = "akeneo_pim" AND table_name = "pim_versioning_version";'
-
-
-
-.. warning::
-
-    **Warning:** `mysqlcheck --optimize` will duplicate the table(s) before optimizing it (them). Which means that, before running the command, one must make sure that the remaining free space is at least equals to the biggest table size. To avoid any data loss, backing the tables up before running `mysqlcheck` is prefered. For more information: https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html
-
-
 .. warning::
 
     **Warning:** `mysqlcheck --optimize` will lock the table during the operation. Hence the table will be unavailable for the PIM. For more information: https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html
 
 
-.. code-block:: bash
+Versionning
+~~~~~~~~~~~
 
-    mkdir -p /home/akeneo/purge
-    cd /home/akeneo/purge
+.. code-block:: bash
 
     echo "Cleansing versions older than 90 days, please note this is executed every Sunday"
     nohup php bin/console pim:versioning:purge --more-than-days 90 --force -n &
@@ -126,4 +118,3 @@ Configure the PIM to save disk space
 
 - For product exports, you can disable files and media export (Export Profile > Edit > Global Settings)
 - Generated files for export are archived and can increase disk usage rapidly if executed too many times without a purge.
-- You can run `bin/console akeneo:batch:purge-job-execution --days=80` to purge these archives and their history in the PIM.

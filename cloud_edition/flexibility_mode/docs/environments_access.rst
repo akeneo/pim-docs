@@ -8,7 +8,7 @@ SSH access is **individual** and requires the use of a **SSH keys**. Password au
 
 .. note::
 
-    An SSH key is required to connect to your environment and also to have access to the Enterprise Edition repository. 
+    An SSH key is required to connect to your environment and also to have access to the Enterprise Edition repository.
     It's recommended to use the same SSH key for both accesses for a given user.
 
 Connection
@@ -40,7 +40,7 @@ Error: Permission Denied
     ssh -A akeneo@my-project-staging.cloud.akeneo.com
     akeneo@my-project-staging.cloud.akeneo.com: Permission denied (publickey).
 
-Your SSH key is not allowed on the server and/or the user is not correct. Specify the private key to use with 
+Your SSH key is not allowed on the server and/or the user is not correct. Specify the private key to use with
 
 .. code-block:: bash
 
@@ -63,6 +63,7 @@ Error: Connection refused
     ssh: connect to host akeneo@my-project-staging.cloud.akeneo.com port 22: Connection refused
 
 Something prevents the connection from being established, it can mean that:
+
 - you have a firewall that blocks the port 22 or SSH protocol. Contact your administrator to check for such restrictions.
 - you set up IP access restrictions on your instance and your are using an IP outside of this range.
 - if none of the above apply, please contact us.

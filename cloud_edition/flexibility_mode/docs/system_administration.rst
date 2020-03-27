@@ -20,7 +20,7 @@ Instances come with preset environment variables, that you can list using:
 PIM Location
 ------------
 
- **/home/akeneo/pim** directory.
+ **/home/akeneo/pim**
 
 Database access
 ---------------

@@ -1,8 +1,8 @@
 Composer settings
 =================
 
-| To be able to pull from distribution, you must use a known ssh keypair from `the Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=composer_settings>`_.
-| You can check your access rights to the distribution repository with this command:
+To be able to pull from distribution, you must use a known ssh keypair from `the Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=composer_settings>`_.
+You can check your access rights to the distribution repository with this command:
 
 .. code-block:: bash
 
@@ -17,7 +17,7 @@ Composer settings
     R 	    pim-enterprise-dev-partner
 
 
-| After that, you can check the content of your composer.json
+After that, you can check the content of your composer.json
 
 .. code-block:: text
 
@@ -32,16 +32,17 @@ Composer settings
         }
     ],
 
-| All details about Distribution System can be found in the `Portal section of the Help center <https://help.akeneo.com/portal/?utm_source=akeneo-docs&utm_campaign=composer_settings>`_.
+All details about Distribution System can be found in the `Portal section of the Help center <https://help.akeneo.com/portal/?utm_source=akeneo-docs&utm_campaign=composer_settings>`_.
 
 
 Composer and github API rate limit
 ----------------------------------
 
-| The Community edition has many branches/tags and during a composer update process, you will reach the GitHub API rate limit.
-| Without OAuth token, github use the ip to manage api rate limit, and to limit to 60 requests per hour (https://developer.github.com/v3/#rate-limiting).
+The Community edition has many branches/tags and during a composer update process, you will reach the GitHub API rate limit.
+Without OAuth token, GitHub use the ip to manage api rate limit, and to limit to 60 requests per hour (https://developer.github.com/v3/#rate-limiting).
 
-| In order to update your pim, you must setup a github token for composer. You can run composer and follow the instructions to help you.
+
+In order to update your pim, you must setup a github token for composer. You can run composer and follow the instructions to help you.
 
 .. code-block:: bash
 
@@ -52,4 +53,3 @@ Composer and github API rate limit
     Head to https://github.com/settings/tokens/new?scopes=repo&description=Composer+on+myinstance-2x+2018-02-23+1000
     to retrieve a token. It will be stored in "/home/akeneo/.composer/auth.json" for future use by Composer.
     Token (hidden):
-
