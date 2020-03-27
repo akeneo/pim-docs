@@ -51,10 +51,30 @@ The name of the file is the **daemon identifier**. Make it simple and use only i
 
 
 Please note that if **no configuration** file exist for a given daemon identifier,
-the daemon will consider it has to consume **any** elements in the queue. This is the default
+the daemon will consider that it has to consume **any** elements in the queue. This is the default
 behavior.
 
 Onboarder
 ---------
 
-To be completed...
+Onboarder requires workers to run at all times, it is disabled by default as not everybody needs it.
+
+Learn more about the onboarder and its configuration in the PIM in the dedicated section :doc:`/onboarder/index`.
+
+.. code-block:: bash
+   :linenos:
+
+   # Enable one worker
+   partners_systemctl pim_onboarder_worker@1 start
+
+   # Start the worker
+   partners_systemctl pim_onboarder_worker@1 start
+
+   # Check the status of the daemon #2
+   partners_systemctl pim_onboarder_worker@1 status
+
+   # See real time logs for daemon #3
+   journalctl --unit=pim_onboarder_worker@1 -f
+
+   # Stop pim_onboarder_worker
+   partners_systemctl pim_onboarder_worker stop

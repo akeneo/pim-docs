@@ -4,7 +4,18 @@ System Administration & Services Management
 Environment variables
 ---------------------
 
-To be completed...
+Instances come with preset environment variables, that you can list using:
+
+.. code-block:: bash
+
+    env | grep 'APP'
+
+    # Example:
+    # APP_ENV=prod
+    # APP_INDEX_HOSTS=localhost:9200
+    # APP_DATABASE_PASSWORD=UjNRiyc9YgHcvVsACePXKofn
+    # APP_DATABASE_HOST=localhost
+    # APP_SECRET=6d40b1ed-6ce0-6ca7-f1c9-256c2241edc9
 
 PIM Location
 ------------
@@ -14,17 +25,18 @@ PIM Location
 Database access
 ---------------
 
-Connect to the database with.
+Connect to the database by using `mysql`, with no need to provide credentials. They are read from `~/.my.cnf`.
 
 .. code-block:: bash
 
     $ mysql
+    $ mysqldump akeneo_pim # to dump the content of the database
 
 Privilege escalation
 --------------------
 
 .. note::
- 
+
     **akeneo** is an unprivileged user, but you can use the aliases below to perform system operations.
 
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -41,3 +53,7 @@ Privilege escalation
 | ``partners_systemctl``     | ``status|start|restart`` | Show status or start/restart job consumers, see below for more details.                                                                          |
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 
+Third-pary software installation
+--------------------------------
+
+You can install any software you need as long as they are standalone do not require the use of apt.

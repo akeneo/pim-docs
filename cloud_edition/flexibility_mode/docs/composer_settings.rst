@@ -1,11 +1,6 @@
 Composer settings
 =================
 
-
-| During the install process we used our own repository for the EE distribution. But you don't have any access to this repository after the install process.
-| We setup your own distribution repository in the composer file, so you can change it if you want.
-
-
 | To be able to pull from distribution, you must use a known ssh keypair from `the Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=composer_settings>`_.
 | You can check your access rights to the distribution repository with this command:
 
@@ -22,7 +17,7 @@ Composer settings
     R 	    pim-enterprise-dev-partner
 
 
-| After that, you can set up your composer.json like that
+| After that, you can check the content of your composer.json
 
 .. code-block:: text
 
@@ -43,7 +38,8 @@ Composer settings
 Composer and github API rate limit
 ----------------------------------
 
-| The Community edition have many branches/tags and during a composer update process, you can reach easily the github api rate limit. Without OAuth token, github use the ip to manage api rate limit, and to limit to 60 requests per hour (https://developer.github.com/v3/#rate-limiting).
+| The Community edition has many branches/tags and during a composer update process, you will reach the GitHub API rate limit.
+| Without OAuth token, github use the ip to manage api rate limit, and to limit to 60 requests per hour (https://developer.github.com/v3/#rate-limiting).
 
 | In order to update your pim, you must setup a github token for composer. You can run composer and follow the instructions to help you.
 

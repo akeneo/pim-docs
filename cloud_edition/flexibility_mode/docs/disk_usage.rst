@@ -37,7 +37,7 @@ Impact of Disk Usage on the PIM
 -------------------------------
 When the disk is full, the PIM cannot work anymore: it cannot save modifications in database, upload new asset, ...
 
-It can even prevent ElasticSearch from updating its indexes, resulting in divergence with the database.
+It can even prevent ElasticSearch from updating its indexes, resulting in desynchronization with the database.
 To avoid those issues, ensuring a healthy disk usage is necessary.
 
 Improving Disk Usage
@@ -94,15 +94,36 @@ Moreover, the integrator can:
 .. code-block:: bash
 
     mkdir -p /home/akeneo/purge
+    cd /home/akeneo/purge
 
-    echo "Cleansing versions older than 90 days"
-    nohup php bin/console --env=prod pim:versioning:purge --more-than-days 90 --force -n &
+    echo "Cleansing versions older than 90 days, please note this is executed every Sunday"
+    nohup php bin/console pim:versioning:purge --more-than-days 90 --force -n &
 
-    echo "Shrink MySQL tables"
-    nohup mysqlcheck --optimize akeneo_pim pim_versioning_version &
+In the event that the operation fails, please use the following procedure
 
+.. code-block:: bash
+
+    screen # create a dedicated session you can reconnect to if the connection is lost
+
+    mkdir -p /home/akeneo/purge
+    cd /home/akeneo/purge
+
+    mysqldump akeneo_pim pim_versioning_version --add-drop-table |
+    gzip -9 > pim_versioning_version.sql.gz
+
+    gunzip < pim_versioning_version.sql.gz | mysql
+
+   # if connection is lost in the process, re-connect using SSH and run
+   screen -r
 
 Moreover, the customer and the integrator can:
 
 - open a ticket to ask the Cloud Team to set the duration of retention of archives of import / export
 - contact the Customer Success Manager to upscale the disk
+
+Configure the PIM to save disk space
+------------------------------------
+
+- For product exports, you can disable files and media export (Export Profile > Edit > Global Settings)
+- Generated files for export are archived and can increase disk usage rapidly if executed too many times without a purge.
+- You can run `bin/console akeneo:batch:purge-job-execution --days=80` to purge these archives and their history in the PIM.

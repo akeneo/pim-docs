@@ -70,7 +70,7 @@ Something prevents the connection from being established, it can mean that:
 SSH File Transfer Protocol (SFTP)
 ----------------------------------
 
-This access can only be granted **upon request**, after a Cloud ticket has been created through the `helpdesk`_. 
+This access can only be granted **upon request**, after a Cloud ticket has been created through the `helpdesk`_.
 Please allow some time for our Team to create the access for you.
 
 .. note::
@@ -81,7 +81,7 @@ Each SFTP access can access to one folder that is also accessible by **akeneo**,
 .. code-block:: bash
 
     sftp akeneosftp@my-project-staging.cloud.akeneo.com
-    akeneosftp@y-project-staging.cloud.akeneo.com's password: 
+    akeneosftp@y-project-staging.cloud.akeneo.com's password:
     Connected to akeneosftp@my-project-staging.cloud.akeneo.com.
     sftp>
 
