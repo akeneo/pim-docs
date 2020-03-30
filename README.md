@@ -1,6 +1,6 @@
 # Akeneo PIM Documentation
 
-The Akeneo PIM documentation
+The Akeneo PIM documentation foo
 
 ## Build the documentation
 
