@@ -447,7 +447,7 @@ The expected values are:
 
 .. tip::
 
-    For instance, to clear the model in en_US locale, the action will be as follows:
+    For instance, to clear the brand in en_US locale, the action will be as follows:
 
     .. code-block:: yaml
 
