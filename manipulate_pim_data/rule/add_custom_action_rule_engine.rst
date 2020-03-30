@@ -304,7 +304,8 @@ Here is the constraint message and its associated validation file:
                - Length:
                    max: 255
 
-Don't forget to add these classes in your service definition and to tag them with the proper tag
+Don't forget to add these classes in your service definition and to tag them with the proper tag.
+Also, do not forget to load your `services.yml` in your dependency injection, either in a bundle extension or in the config directory.
 
 .. code-block:: yaml
 
