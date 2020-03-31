@@ -6,8 +6,9 @@ SCRIPT_DIR=$(dirname $0)
 
 EE_STD_DIR=$SCRIPT_DIR/../ee_dev
 
-if [ ! -d ee_dev ]; then
-    git clone --branch 4.0 --depth 1 git@github.com:akeneo/pim-enterprise-standard.git $EE_STD_DIR
+if [ ! -d $EE_STD_DIR ]; then
+    mkdir $EE_STD_DIR
+    cp $SCRIPT_DIR/test_php_uses_composer.json $EE_STD_DIR/composer.json
 fi
 
 find . \( -iname "*.rst" -or -iname "*.php" \) -not -path "./ee_dev/*" | xargs grep -ne '^ *use.*;$' | grep -v "use Acme" | sed -e 's/ *use */#/' | tr -d ";" > $EE_STD_DIR/php_uses.list

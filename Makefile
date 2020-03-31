@@ -7,6 +7,7 @@ DOCKER_RUN = docker run -it --rm -u $(UID):$(GID) -v $(PWD):/home/akeneo/pim-doc
 .PHONY: build, deploy, docker-build
 
 clean:
+	rm -rf ee_dev
 	rm -rf pim-docs-build && mkdir pim-docs-build
 	rm -rf pim-docs-lint && mkdir pim-docs-lint
 	rm -rf design_pim/styleguide/vendor
