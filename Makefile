@@ -27,8 +27,8 @@ docker-build:
 	docker build . --tag $(DOCKER_IMAGE)
 
 styleguide:
-	$(DOCKER_RUN) $(DOCKER_IMAGE) cp pim-docs/design_pim/styleguide/styleguide.js pim-docs/pim-docs-build/design_pim/styleguide/
-	$(DOCKER_RUN) $(DOCKER_IMAGE) cp pim-docs/design_pim/styleguide/styleguide.css pim-docs/pim-docs-build/design_pim/styleguide/
-	$(DOCKER_RUN) $(DOCKER_IMAGE) pim-docs/design_pim/styleguide/prepare_static_files.sh
+	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) cp styleguide.js /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/
+	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) cp styleguide.css /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/
+	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) ./prepare_static_files.sh
 	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) php /usr/local/bin/composer.phar install
 	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) bash -c "php index.php > /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/index.html"
