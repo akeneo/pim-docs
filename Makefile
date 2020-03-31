@@ -11,7 +11,7 @@ clean:
 	rm -rf pim-docs-lint && mkdir pim-docs-lint
 	rm -rf design_pim/styleguide/vendor
 
-build: clean lint html styleguide
+build: clean check-uses lint html styleguide
 	@echo "\nYou are now ready to check the documentation locally in the directory \"pim-docs-build/\" and to deploy it with \"DEPLOY_HOSTNAME=foo.com DEPLOY_PORT=1985 VERSION=bar make deploy\"."
 
 deploy: build
@@ -25,6 +25,9 @@ html:
 
 docker-build:
 	docker build . --tag $(DOCKER_IMAGE)
+
+check-uses:
+	./scripts/test_php_uses.sh
 
 styleguide:
 	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) cp styleguide.js /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/
