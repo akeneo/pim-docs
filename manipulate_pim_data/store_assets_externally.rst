@@ -75,7 +75,7 @@ In order to use the AwsS3v3 adapter, you first need to create a client object de
 
 .. note::
 
-    As per AWS Documentation recommendation, do not use 'latest' version in a production environement. More information in `Awss3 documentation`_.
+    As per AWS Documentation recommendation, do not use 'latest' version in a production environment. More information in `Awss3 documentation`_.
     All versions available are documented in `AWS SDK for PHP`_.
 
 Then configure the asset storage adapter to use the service you declared:
