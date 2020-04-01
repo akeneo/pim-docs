@@ -16,10 +16,10 @@ cp $SCRIPT_DIR/check_uses_existence.php $EE_STD_DIR/
 
 cd $EE_STD_DIR
 
-docker run -u www-data --rm \
+docker run -u $UID --rm \
     -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -v ~/.ssh:/var/www/.ssh -w /srv/pim \
     akeneo/pim-php-dev:4.0 php -d memory_limit=4G /usr/local/bin/composer install
 
-docker run -u www-data --rm \
+docker run -u $UID --rm \
     -v $(pwd):/srv/pim -w /srv/pim \
     akeneo/pim-php-dev:4.0 php check_uses_existence.php php_uses.list

@@ -33,16 +33,5 @@
             "url": "git@github.com:akeneo/pim-enterprise-dev.git"
         }
     ],
-    "scripts": {
-        "post-update-cmd": [
-            "bash vendor/akeneo/pim-enterprise-dev/std-build/install-required-files.sh"
-        ],
-        "post-install-cmd": [
-            "bash vendor/akeneo/pim-enterprise-dev/std-build/install-required-files.sh"
-        ],
-        "post-create-project-cmd": [
-            "bash vendor/akeneo/pim-enterprise-dev/std-build/install-required-files.sh"
-        ]
-    },
     "minimum-stability": "stable"
 }
