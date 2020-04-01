@@ -49,10 +49,13 @@ Use Amazon AwsS3v3 as storage
 -----------------------------
 
 .. _Awss3 adapter: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/adapter_awss3.md
+.. _Awss3 documentation: https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_configuration.html#cfg-version
+.. _AWS SDK for PHP: https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.S3.S3Client.html
 
 First of all, you will need to install the following requirements:
 
 ``composer --prefer-dist require aws/aws-sdk-php v3.5.0``
+
 ``composer --prefer-dist require league/flysystem-aws-s3-v3 v1.0.6``
 
 In order to use the AwsS3v3 adapter, you first need to create a client object defined as a service:
@@ -64,12 +67,16 @@ In order to use the AwsS3v3 adapter, you first need to create a client object de
         Aws\S3\S3Client:
             arguments:
                 -
-                    version: '2006-03-01' # or 'latest'
+                    version: '2006-03-01'
                     region: "region-id" # 'eu-central-1' for example
                     credentials:
                         key: "s3-key"
                         secret: "s3-secret"
 
+.. note::
+
+    As per AWS Documentation recommendation, do not use 'latest' version in a production environement. More information in `Awss3 documentation`_.
+    All versions available are documented in `AWS SDK for PHP`_.
 
 Then configure the asset storage adapter to use the service you declared:
 
