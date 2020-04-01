@@ -39,6 +39,9 @@ list. Each rule is referred to by a code and can contain a list of conditions an
                 - type: set
                   field: camera_brand
                   value: canon_brand
+            labels:
+                - en_US: 'Canon brand'
+                - fr_FR: 'Marque Canon'
         camera_copy_name_to_model:
             priority: 0
             conditions:
@@ -52,6 +55,9 @@ list. Each rule is referred to by a code and can contain a list of conditions an
                 - type: copy
                   from_field: name
                   to_field: camera_model_name
+            labels:
+                - en_US: 'Copy name to model'
+                - fr_FR: 'Copie nom vers modèle'
 
 Indentation is mandatory within the file and must be strictly identical to the one shown in the example.
 
@@ -63,6 +69,7 @@ Structure’s elements which define a rule are:
  - priority
  - conditions*
  - actions*
+ - labels
 
 Structure's elements which define a condition are:
  - field*
@@ -86,6 +93,8 @@ An enrichment rule is structured as follow:
         actions:
             - type:*
               [Various elements depending on the action]
+        labels:
+            - [locale code]: [label]
 
 Elements with * are mandatory. Fill in the locale and scope elements only if your condition applies on localizable and/or scopable attributes.
 
