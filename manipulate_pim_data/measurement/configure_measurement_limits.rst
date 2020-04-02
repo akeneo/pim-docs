@@ -7,7 +7,7 @@ However, as your catalog is unique, **you may need to raise those values**, this
 .. warning::
     If you hit those limits, this could reflect that **your modelization is not adapted**. If it's the case, we can't guarantee that the PIM will be functional and runs smoothly, be sure to test the performances with your new limits.
 
-All those limits are defined as parameters that you can override like any other `Symfony config parameter <https://symfony.com/doc/3.4/best_practices/configuration.html>`_.
+All those limits are defined as parameters that you can override like any other `Symfony config parameter <https://symfony.com/doc/4.4/best_practices.html#use-parameters-for-application-configuration>`_.
 
 Raise the limit of Measurement Families
 ---------------------------------------
@@ -17,7 +17,6 @@ If you want to create more, you have to edit the ``akeneo_measurement.validation
 .. code-block:: yaml
     :linenos:
 
-    # app/config/parameters.yml
     parameters:
         akeneo_measurement.validation.measurement_family.families_max: 200
 
@@ -29,7 +28,6 @@ If you want to create more, you have to edit the ``akeneo_measurement.validation
 .. code-block:: yaml
     :linenos:
 
-    # app/config/parameters.yml
     parameters:
         akeneo_measurement.validation.measurement_family.units_max: 100
 
@@ -41,6 +39,5 @@ If you want to create more, you have to edit the ``akeneo_measurement.validation
 .. code-block:: yaml
     :linenos:
 
-    # app/config/parameters.yml
     parameters:
         akeneo_measurement.validation.measurement_family.operations_max: 10
