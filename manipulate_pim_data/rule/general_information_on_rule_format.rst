@@ -6,13 +6,13 @@ Quick Overview
 
 **This cookbook is about a feature only provided in the Enterprise Edition.**
 
-Enrichment rules allow to set values for products given specific conditions. These rules can be manually applied from the User Interface or run using a cronjob.
+Enrichment rules allow to set values or properties for products given specific conditions. These rules can be manually applied from the User Interface or run using a cronjob.
 
 File Structure
 --------------
 
 Enrichment rules are defined in YAML format, so the file extension has to be ".yml". Indentation is mandatory within the
-file and has to follow the YAML format strictly. You have to import a rule so that it can be used in the PIM.
+file and has to strictly follow the YAML format. You have to import a rule so that it can be used in the PIM.
 
 This file starts with "rules" root element, which contains the list of enrichment rules. This document is about this
 list. Each rule is referred to by a code and can contain a list of conditions and actions.
@@ -39,6 +39,9 @@ list. Each rule is referred to by a code and can contain a list of conditions an
                 - type: set
                   field: camera_brand
                   value: canon_brand
+            labels:
+                - en_US: 'Canon brand'
+                - fr_FR: 'Marque Canon'
         camera_copy_name_to_model:
             priority: 0
             conditions:
@@ -52,6 +55,9 @@ list. Each rule is referred to by a code and can contain a list of conditions an
                 - type: copy
                   from_field: name
                   to_field: camera_model_name
+            labels:
+                - en_US: 'Copy name to model'
+                - fr_FR: 'Copie nom vers modèle'
 
 Indentation is mandatory within the file and must be strictly identical to the one shown in the example.
 
@@ -63,6 +69,7 @@ Structure’s elements which define a rule are:
  - priority
  - conditions*
  - actions*
+ - labels
 
 Structure's elements which define a condition are:
  - field*
@@ -85,7 +92,9 @@ An enrichment rule is structured as follow:
               value*:
         actions:
             - type:*
-              [Diverse elements according to the action]
+              [Various elements depending on the action]
+        labels:
+            - [locale code]: [label]
 
 Elements with * are mandatory. Fill in the locale and scope elements only if your condition applies on localizable and/or scopable attributes.
 
@@ -100,11 +109,11 @@ Elements with * are mandatory. Fill in the locale and scope elements only if you
 .. warning::
 
     Rules code choice is up to you, however it has to contain only alphanumeric characters, underscores, dashes and be
-    less than 255 characters.
+    less than 100 characters.
 
 A priority can be given to a rule. Priority will be considered for rules execution order. Without any given
-priority, rule has a zero-priority. The higher the priority, the sooner the rule will be executed.
-Therefore, a rule with 90-priority will be executed before rules with a 0-priority. If no rule has defined priority,
+priority, a rule has a zero-priority. The higher the priority, the sooner the rule will be executed.
+Therefore, a 90-priority rule  will be executed before 0-priority ones. If two rules have the same priority,
 they will be executed in a "technical" order. (database reading order)
 
 Action’s conditions can be applied on localizable and scopable values. In this case, it has
@@ -195,7 +204,7 @@ Enrichment Rule Definition
 Available Actions List
 ++++++++++++++++++++++
 
-Akeneo rules engine enables 5 kinds of actions:
+Akeneo rules engine enables 6 kinds of actions:
 
 Copy
 ____
@@ -255,10 +264,60 @@ Two parameters are required while the two others are optional.
               scope:  ecommerce
               value:  "My very new description for purple tshirt"
 
+It can also assign values to the following properties: categories, status (enabled/disabled), groups, family, associations.
+Beware, the previous values will be replaced by the new ones.
+
+.. tip::
+
+    For instance, the following actions will disable the product and set its family to 'shoes'. It will also categorize it in "category_code_1"
+    and "other_category_code" (while uncategorizing it from its previous categories), and add it to the "group_code" group (while removing it from its previous groups)
+
+    .. code-block:: yaml
+
+        actions:
+            - type: set
+              field: enabled
+              value: false
+            - type: set
+              field: family
+              value: shoes
+            - type: set
+              field: categories
+              value:
+                 - category_code_1
+                 - other_category_code
+            - type: groups
+              field: groups
+              value:
+                - group_code
+
+Regarding the associations, you can choose to associate any combination of products, product_models or groups for each association type.
+
+.. tip::
+
+    For instance, the following action will replace the associated products for X_SELL, but won't update associated product models or groups.
+    On the opposite, it will replace its associated product models and groups for UPSELL association, but won't update associated products.
+
+    .. code-block:: yaml
+
+        actions:
+            - type: set
+              field: associations
+              value:
+                  X_SELL:
+                      products:
+                        - product_42
+                        - another_product
+                  UPSELL:
+                      product_models:
+                        - amor
+                      groups:
+                        - tshirts
+
 Add
 ___
 
-This action allows to add values to a multi-select attribute, a reference entity multiple links attribute or a product to categories.
+This action allows to add values to a multi-select attribute, a reference entity multiple links attribute or a product to categories or groups.
 
 Two parameters are required while the two others are optional.
  - field: attribute code.
@@ -277,6 +336,26 @@ Two parameters are required while the two others are optional.
               field: categories
               items:
                 - t-shirts
+
+It can also associate products / product models / groups without removing already associated ones. As for the set action, you can choose to only associate products
+or product models or groups, or any combination of those.
+
+.. tip::
+
+    For instance, the following action will associate the "product_42" product and the "tshirt" group to your product (while keeping previously associated
+    products and groups), and won't update the associated product models.
+
+    .. code-block:: yaml
+
+        actions:
+            - type: add
+              field: associations
+              items:
+                  X_SELL:
+                      products:
+                        - product_42
+                      groups:
+                        - tshirts
 
 Remove
 ______
@@ -434,6 +513,43 @@ The possible target attribute types are:
                 field: subtitle
                 locale: en_US
                 scope: mobile
+
+Clear
+_____
+
+This action clears the value(s) assigned to an attribute, product categories, product groups, or product associations.
+
+The expected values are:
+ - field: attribute code, "categories", "groups" or "associations".
+ - locale: the locale code for which the value is assigned (optional).
+ - scope: the channel code for which the value is assigned (optional).
+
+.. tip::
+
+    For instance, to clear the brand in en_US locale, the action will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: clear
+              field: brand
+              locale: en_US
+
+    To clear all the categories linked to products, the action will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: clear
+              field: categories
+
+    To clear all the product associations, the action will be as follows:
+
+    .. code-block:: yaml
+
+        actions:
+            - type: clear
+              field: associations
 
 Fields
 ++++++
