@@ -20,7 +20,6 @@ These containers all have a default user with 1000:1000 as UID:GID.
 So, on Linux hosts, **it is mandatory that the user of your host machine has 1000:1000 as UID and GID too**.
 Otherwise you'll end up with a non-working PIM.
 
-You won't face this problem on Mac OS and Windows hosts, as those systems use a VM between the host and Docker, which already operates with appropriate UID/GID.
 
 Configuring you package manager
 *******************************
