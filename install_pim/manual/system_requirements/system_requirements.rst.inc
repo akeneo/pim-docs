@@ -95,6 +95,10 @@ Besides these modules, the following configuration is the minimal configuration 
 +----------------+---------------------------+
 | aspell-nl      |                           |
 +----------------+---------------------------+
+| aspell-pt-br   |                           |
++----------------+---------------------------+
+| aspell-no      |                           |
++----------------+---------------------------+
 
 **Javascript** (required only for development purposes)
 
