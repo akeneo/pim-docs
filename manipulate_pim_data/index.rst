@@ -11,3 +11,4 @@ Manipulate the Akeneo PIM data
     define-acl
     catalog_structure/index
     teamwork_assistant/index
+    measurement/configure_measurement_limits
