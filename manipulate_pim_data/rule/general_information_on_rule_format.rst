@@ -204,7 +204,7 @@ Enrichment Rule Definition
 Available Actions List
 ++++++++++++++++++++++
 
-Akeneo rules engine enables 6 kinds of actions:
+Akeneo rules engine enables 7 kinds of actions:
 
 Copy
 ____
@@ -550,6 +550,96 @@ The expected values are:
         actions:
             - type: clear
               field: associations
+
+Calculate
+_________
+
+This action allows to calculate numeric attribute values, with simple mathematical operations (addition, substraction, multiplication and division)
+
+This action only accepts number, measurement or price collection attributes for both source and destination.
+
+The action is split in 3 distinct parts:
+
+**destination**: the value you want to update. It can be composed of :
+
+- field: the attribute code (required)
+- locale: locale code if the attribute is localizable (optional)
+- scope: channel code if the attribute is scopable (optional)
+- currency: currency code if the attribute is a price collection (optional)
+- unit: unit code if the attribute is a measurement (optional, the default measurement unit of the attribute will be used if not set)
+
+**source**: the first operand of the operation. It can be composed of either:
+
+- value: a constant value (number, for instance 3.14)
+
+or:
+
+- field: attribute code of the source value (required)
+- locale: locale code if the attribute is localizable (optional)
+- scope: channel code if the attribute is scopable (optional)
+- currency: currency code if the attribute is a price collection (optional)
+
+**operation_list**: the list of operations to execute (obviously, at least one operation is required)
+
+It is exactly the same format as the ``source`` property, plus one required field:
+
+- operator: can be either ``add``, ``substract``, ``multiply`` or ``divide`` (required)
+
+    .. warning::
+
+       The operations are applied in the order they are provided, regardless of any mathematical priority.
+       For instance, 5 - 3 + 2 x 5 will result in ((5 - 3) + 2) x 5) = 20
+
+If a product value required in an operation is empty, or if a division by zero occurs, the product won't be updated.
+
+.. tip::
+
+    For instance, in order to calculate the volume of a cone, given a radius and a height, you can use the following action:
+
+        .. code-block:: yaml
+
+            actions:
+                - type: calculate
+                  destination:
+                    field: volume
+                    unit: CUBE_CENTIMETER
+                  source:
+                    value: 3.14
+                  operation_list:
+                    - operator: multiply
+                      field: radius
+                    - operator: multiply
+                      field: radius
+                    - operator: multiply
+                      field: height
+                    - operator: divide
+                      value: 3
+
+    The following action will calculate a price in euro, based on the price in dollars and a ratio:
+        .. code-block:: yaml
+
+            actions:
+                - type: calculate
+                  destination:
+                    field: price
+                    scope: ecommerce
+                    currency: EUR
+                  source:
+                    field: price
+                    scope: ecommerce
+                    currency: USD
+                  operation_list:
+                    - operator: multiply
+                      field: ratio
+
+    .. warning::
+
+       When using measurement attributes, their value will be converted to the default measuremnt unit defined for the attribute.
+       For instance, given a `Length` attribute with a 'CENTIMETER' default unit, and its value for the product is 1 INCH, the value will be converted to 2.54 (1 inch = 2.54 cm)
+
+    .. warning::
+
+       Also, no consistency check is performed regarding the units, you can perfectly multiply a frequency by a length, and put the result in a price attribute, even if it makes no sense :)
 
 Fields
 ++++++
