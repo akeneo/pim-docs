@@ -5,7 +5,7 @@ The import/export file follows this data structure:
 
 - **code** (required): the association type code
 - **label-<locale_code>**: each label in a dedicated column (See :doc:`localized-labels`)
-- **is_two_way**: Whether inverted association should be automatically created
+- **is_two_way**: When true, the association is a two-way association
 
 .. note::
 
