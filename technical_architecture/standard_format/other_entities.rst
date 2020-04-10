@@ -160,7 +160,7 @@ Association Type
         "en_US" => "Cross sell"
         "fr_FR" => "Vente croisée"
       ]
-      "two_way" => false
+      "is_two_way" => false
     ]
 
 +------------------------+----------------+--------------------------------------+---------------------------------------------------------------------+
@@ -171,7 +171,7 @@ Association Type
 | labels                 | string[]       | ``["en_US" => "Croll sell"]``        | | each key of the array represents the `code` of the                |
 |                        |                |                                      | | ``Akeneo\Channel\Component\Model\LocaleInterface``                |
 +------------------------+----------------+--------------------------------------+---------------------------------------------------------------------+
-| two_way                | string         | ``true``                             | | Whether inverted association should be automatically created      |
+| is_two_way             | string         | ``true``                             | | Whether inverted association should be automatically created      |
 +------------------------+----------------+--------------------------------------+---------------------------------------------------------------------+
 
 Attribute Group
