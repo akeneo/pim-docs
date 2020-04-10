@@ -173,7 +173,7 @@ Enable it on php service:
 
       $ XDEBUG_ENABLED=1 docker-compose run --rm php php my-script.php
 
-If you are using PHPStorm, open the settings windows and go to ``Languages & Framework > PHP > Servers``. Then add two servers name ``pim-xx`` and ``pim-xx-cli`` (``xx`` could be ``ce`` or ``ee`` depending the edition you are working on)
+If you are using PHPStorm, open the settings windows and go to ``Languages & Framework > PHP > Servers``. Then add two servers name ``pim-docker-web`` and ``pim-docker-cli``.
 
 .. image:: ../../_images/xdebug/phpstorm-xdebug.png
   :alt: Configure xdebug on PHPStorm
