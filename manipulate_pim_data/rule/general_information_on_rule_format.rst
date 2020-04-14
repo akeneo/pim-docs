@@ -554,13 +554,13 @@ The expected values are:
 Calculate
 _________
 
-This action allows to calculate numeric attribute values, with simple mathematical operations (addition, substraction, multiplication and division)
+This action allows calculating numeric attribute values, with simple mathematical operations (addition, subtraction, multiplication, and division)
 
 This action only accepts number, measurement or price collection attributes for both source and destination.
 
-The action is split in 3 distinct parts:
+The action is split into 3 different parts:
 
-**destination**: the value you want to update. It can be composed of :
+**destination**: the value you want to update. It is composed of:
 
 - field: the attribute code (required)
 - locale: locale code if the attribute is localizable (optional)
@@ -579,11 +579,11 @@ or:
 - scope: channel code if the attribute is scopable (optional)
 - currency: currency code if the attribute is a price collection (optional)
 
-**operation_list**: the list of operations to execute (obviously, at least one operation is required)
+**operation_list**: the list of operations to execute (at least one operation is required)
 
-It is exactly the same format as the ``source`` property, plus one required field:
+It is exactly the same format as the ``source`` property, with an additional required field:
 
-- operator: can be either ``add``, ``substract``, ``multiply`` or ``divide`` (required)
+- operator: can be either ``add``, ``subtract``, ``multiply`` or ``divide`` (required)
 
     .. warning::
 
@@ -615,7 +615,7 @@ If a product value required in an operation is empty, or if a division by zero o
                     - operator: divide
                       value: 3
 
-    The following action will calculate a price in euro, based on the price in dollars and a ratio:
+    The following action will calculate a price in euros, based on the price in dollars and a ratio:
         .. code-block:: yaml
 
             actions:
@@ -634,7 +634,7 @@ If a product value required in an operation is empty, or if a division by zero o
 
     .. warning::
 
-       When using measurement attributes, their value will be converted to the default measuremnt unit defined for the attribute.
+       When using measurement attributes, their value will be converted to the default measurement unit defined for the attribute.
        For instance, given a `Length` attribute with a 'CENTIMETER' default unit, and its value for the product is 1 INCH, the value will be converted to 2.54 (1 inch = 2.54 cm)
 
     .. warning::
