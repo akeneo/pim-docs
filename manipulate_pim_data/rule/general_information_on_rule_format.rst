@@ -556,7 +556,7 @@ _________
 
 This action allows calculating numeric attribute values, with simple mathematical operations (addition, subtraction, multiplication, and division)
 
-This action only accepts number, measurement or price collection attributes for both source and destination.
+This action only accepts number, measurement or price collection attributes for both the source and the destination.
 
 The action is split into 3 different parts:
 
@@ -568,11 +568,11 @@ The action is split into 3 different parts:
 - currency: currency code if the attribute is a price collection (optional)
 - unit: unit code if the attribute is a measurement (optional, the default measurement unit of the attribute will be used if not set)
 
-**source**: the first operand of the operation. It can be composed of either:
+**source**: the first operand of the operation. It requires at least either a value or a field and additional items. For instance, you can have:
 
-- value: a constant value (number, for instance 3.14)
+- value: a constant numeric value, e.g: 3.14 (required)
 
-or:
+OR:
 
 - field: attribute code of the source value (required)
 - locale: locale code if the attribute is localizable (optional)
@@ -635,7 +635,7 @@ If a product value required in an operation is empty, or if a division by zero o
     .. warning::
 
        When using measurement attributes, their value will be converted to the default measurement unit defined for the attribute.
-       For instance, given a `Length` attribute with a 'CENTIMETER' default unit, and its value for the product is 1 INCH, the value will be converted to 2.54 (1 inch = 2.54 cm)
+       For instance, a `Length` attribute can have a 'CENTIMETER' default unit and yet its value for the product is 1 INCH. In that case, the value will be converted to 2.54 (1 inch = 2.54 cm).
 
     .. warning::
 
