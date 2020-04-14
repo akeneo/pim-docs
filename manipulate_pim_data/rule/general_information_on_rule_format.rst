@@ -594,7 +594,7 @@ If a product value required in an operation is empty, or if a division by zero o
 
 .. tip::
 
-    For instance, in order to calculate the volume of a cone, given a radius and a height, you can use the following action:
+    For instance, in order to calculate the volume of a cone (volume = (¶ x R² x h) / 3), given a radius and a height, you can use the following action:
 
         .. code-block:: yaml
 
