@@ -570,7 +570,7 @@ The action is split into 3 different parts:
 
 **source**: the first operand of the operation. It requires at least either a value or a field and additional items. For instance, you can have:
 
-- value: a constant numeric value, e.g: 3.14 (required)
+- value: a constant numeric value - decimal separator: dot, no thousands separator, e.g: ``1515.14`` (required)
 
 OR:
 
@@ -594,7 +594,7 @@ If a product value required in an operation is empty, or if a division by zero o
 
 .. tip::
 
-    For instance, in order to calculate the volume of a cone (volume = (¶ x R² x h) / 3), given a radius and a height, you can use the following action:
+    For instance, in order to calculate the volume of a cone (volume = (π x R² x h) / 3), given a radius and a height, you can use the following action:
 
         .. code-block:: yaml
 
@@ -616,6 +616,7 @@ If a product value required in an operation is empty, or if a division by zero o
                       value: 3
 
     The following action will calculate a price in euros, based on the price in dollars and a ratio:
+
         .. code-block:: yaml
 
             actions:
