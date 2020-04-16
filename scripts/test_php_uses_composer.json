@@ -14,18 +14,29 @@
             "": "src/"
         },
         "psr-4": {
-            "Pim\\Upgrade\\": "upgrades/"
+            "Pim\\Upgrade\\": "upgrades/",
+            "Acme\\": "../src/Acme/"
         },
         "exclude-from-classmap": [
             "vendor/akeneo/pim-enterprise-dev/src/Kernel.php",
             "vendor/akeneo/pim-community-dev/src/Kernel.php"
         ]
     },
+    "autoload-dev": {
+        "psr-0": {
+            "Context": "vendor/akeneo/pim-community-dev/tests/legacy/features/",
+            "": "tests/legacy/features/"
+        },
+        "psr-4": {
+            "Pim\\Behat\\": "vendor/akeneo/pim-community-dev/tests/legacy/features/Behat"
+        }
+    },
     "require": {
         "akeneo/pim-enterprise-dev": "^4.0.0"
     },
     "require-dev": {
-        "doctrine/doctrine-migrations-bundle": "1.3.2"
+        "doctrine/doctrine-migrations-bundle": "1.3.2",
+        "phpstan/phpstan": "^0.12.18"
     },
     "repositories": [
         {

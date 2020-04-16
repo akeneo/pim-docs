@@ -28,7 +28,9 @@ docker-build:
 	docker build . --tag $(DOCKER_IMAGE)
 
 check-uses:
-	./scripts/test_php_uses.sh
+	docker run --rm -u www-data \
+        -v $$(pwd):/srv/pim -e COMPOSER_AUTH -v ~/.composer:/var/www/.composer -v ~/.ssh:/var/www/.ssh -w /srv/pim \
+        akeneo/pim-php-dev:4.0 ./scripts/test_php_uses.sh
 
 styleguide:
 	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) cp styleguide.js /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/
