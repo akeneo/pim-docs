@@ -21,16 +21,16 @@ deploy: build
 lint: docker-build
 	$(DOCKER_RUN) $(DOCKER_IMAGE) sphinx-build -nWT -b linkcheck /home/akeneo/pim-docs/ /home/akeneo/pim-docs/pim-docs-lint
 
-html:
+html: docker-build
 	$(DOCKER_RUN) $(DOCKER_IMAGE) sphinx-build -b html /home/akeneo/pim-docs/ /home/akeneo/pim-docs/pim-docs-build
 
 docker-build:
 	docker build . --tag $(DOCKER_IMAGE)
 
-check-uses:
+check-uses: docker-build
 	${DOCKER_RUN} -e COMPOSER_AUTH -v ~/.composer:/home/akeneo/.composer ${DOCKER_IMAGE} /home/akeneo/pim-docs/scripts/test_php_uses.sh
 
-styleguide:
+styleguide: docker-build
 	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) cp styleguide.js /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/
 	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) cp styleguide.css /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/
 	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) ./prepare_static_files.sh
