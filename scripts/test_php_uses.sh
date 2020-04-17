@@ -13,7 +13,7 @@ fi
 
 # Extract "use" statement from php and rst files
 # Acme\CustomBundle and Acme\RangeBundle are excluded because created in the examples
-find . \( -iname "*.rst" -or -iname "*.php" \) -not -path "./ee_dev/*" | \
+find . \( -iname "*.rst" -or -iname "*.php" \) -not -path "./ee_dev/*" -not -path "./.composer/*" | \
     xargs grep -ne '^ *use.*\\.*;$' | \
     sed -e 's/ *use */#/' | \
     grep -v 'CustomBundle' | \
@@ -25,5 +25,5 @@ cp $SCRIPT_DIR/check_uses_existence.php $EE_STD_DIR/
 
 cd $EE_STD_DIR
 
-php -d memory_limit=4G /usr/local/bin/composer install
+php -d memory_limit=4G /usr/local/bin/composer.phar install
 php check_uses_existence.php php_uses.list

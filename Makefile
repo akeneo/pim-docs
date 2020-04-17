@@ -1,5 +1,7 @@
+UID = $(shell id -u)
+GID = $(shell id -g)
 DOCKER_IMAGE = pim-docs
-DOCKER_RUN = docker run --rm -u 1000:1000 -v $(PWD):/home/akeneo/pim-docs/
+DOCKER_RUN = docker run -it --rm -u $(UID):$(GID) -v $(PWD):/home/akeneo/pim-docs/
 
 .DEFAULT_GOAL := build
 .PHONY: build, deploy, docker-build
@@ -26,9 +28,7 @@ docker-build:
 	docker build . --tag $(DOCKER_IMAGE)
 
 check-uses:
-	docker run --rm -u 1000:1000 \
-        -v $$(pwd):/srv/pim -e COMPOSER_AUTH -v ~/.composer:/var/www/.composer -v ~/.ssh:/var/www/.ssh -w /srv/pim \
-        akeneo/pim-php-dev:4.0 ./scripts/test_php_uses.sh
+	${DOCKER_RUN} -e COMPOSER_AUTH -v ~/.composer:/home/akeneo/.composer ${DOCKER_IMAGE} /home/akeneo/pim-docs/scripts/test_php_uses.sh
 
 styleguide:
 	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) cp styleguide.js /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/
