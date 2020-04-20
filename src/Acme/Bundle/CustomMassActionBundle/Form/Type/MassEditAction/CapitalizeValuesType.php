@@ -4,7 +4,7 @@ namespace Acme\Bundle\CustomMassActionBundle\Form\Type\MassEditAction;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CapitalizeValuesType extends AbstractType
 {
@@ -13,7 +13,7 @@ class CapitalizeValuesType extends AbstractType
         // Build your form here
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
             [

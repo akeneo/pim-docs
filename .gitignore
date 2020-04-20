@@ -1,12 +1,4 @@
-vendor/
-app/config/*
-!app/parameters.yml.dist
-var/
-web/*
-!web/.gitkeep
-app/cache/
-app/logs/
-_exts/
-pim-docs-build/
-pim-docs-lint/
-docker-compose.override.yml
+/pim-docs-build/
+/pim-docs-lint/
+/docker-compose.override.yml
+/ee_dev/

@@ -33,7 +33,7 @@ Any processor should have a ``process($item)`` method to process an entity. Here
     use Akeneo\Pim\Enrichment\Component\Comment\Builder\CommentBuilder;
     use Akeneo\Pim\Enrichment\Component\Comment\Model\CommentInterface;
     use Akeneo\Pim\Enrichment\Component\Product\Connector\Processor\MassEdit\AbstractProcessor;
-    use Akeneo\UserManagement\Bundle\Repository\UserRepositoryInterface;
+    use Akeneo\UserManagement\Component\Repository\UserRepositoryInterface;
     use Symfony\Component\Validator\Validator\ValidatorInterface;
 
     class AddCommentProcessor extends AbstractProcessor
@@ -94,14 +94,14 @@ Don't forget to load this new configuration file in your dependency injection:
 
     use Symfony\Component\Config\FileLocator;
     use Symfony\Component\DependencyInjection\ContainerBuilder;
-    use Symfony\Component\DependencyInjection\Loader;
+    use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
     use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
     class AcmeAppExtension extends Extension
     {
         public function load(array $configs, ContainerBuilder $container)
         {
-            $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+            $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
             $loader->load('processors.yml');
         }
     }
