@@ -13,13 +13,12 @@ while ($use = fgets($usesList)) {
     $lineLocation = $useInfo[0];
     $useValue = trim($useInfo[1]);
 
-    if (!class_exists($useValue)) {
-        if (!interface_exists($useValue)) {
-            if (!trait_exists($useValue)) {
-                $errorsCount++;
-                printf("Unable to find class or interface or trait %s (defined in %s)\n", $useValue, $lineLocation);
-            }
-        }
+    if ((!class_exists($useValue)) &&
+        (!interface_exists($useValue)) &&
+        (!trait_exists($useValue))) {
+
+        $errorsCount++;
+        printf("Unable to find class or interface or trait %s (defined in %s)\n", $useValue, $lineLocation);
     }
     $usesCount++;
 }

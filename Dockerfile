@@ -19,10 +19,7 @@ RUN apt-get update && \
     rm -rf /usr/share/locale/* && \
     rm -rf /var/log/*
 
-RUN useradd -m akeneo && \
-    mkdir /home/akeneo/.composer && \
-    chown -R akeneo /home/akeneo/
+RUN useradd -m akeneo
 
 WORKDIR /home/akeneo/
-VOLUME /home/akeneo/.composer
 USER akeneo

@@ -13,7 +13,7 @@ fi
 
 # Extract "use" statement from php and rst files
 # Acme\CustomBundle and Acme\RangeBundle are excluded because created in the examples
-find . \( -iname "*.rst" -or -iname "*.php" \) -not -path "./ee_dev/*" -not -path "./.composer/*" | \
+find . \( -iname "*.rst" -or -iname "*.php" \) -not -path "*/ee_dev/*" -not -path "*/.composer/*" | \
     xargs grep -ne '^ *use.*\\.*;$' | \
     sed -e 's/ *use */#/' | \
     grep -v 'CustomBundle' | \
