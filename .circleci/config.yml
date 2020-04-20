@@ -8,7 +8,6 @@ jobs:
             - run: make build
 
     deploy_staging:
-
         machine:
             image: ubuntu-1604:201903-01
         steps:
