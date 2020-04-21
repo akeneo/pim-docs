@@ -88,6 +88,12 @@ Besides these modules, the following configuration is the minimal configuration 
 | aspell-es      |                           |
 +----------------+---------------------------+
 
+**Optional dependencies**
+
++-------------------------+-------------------------------+-----------------------------------------+
+| MagickCore extra codecs | ≥ libmagickcore-6.q16-2-extra | Image magick extra codecs to handle SVG |
++-------------------------+-------------------------------+-----------------------------------------+
+
 **Javascript** (required only for development purposes)
 
 +----------------+---------------------------+
