@@ -6,7 +6,7 @@ Each instance has its own dedicated disk:
 - 350GB for a production instance
 - 150GB for a sandbox instance
 
-As each disk is dedicated to only one instance, it cannot be shared accross them.
+As each disk is dedicated to only one instance, it cannot be shared across them.
 
 Usages Impacting Disk Usage
 ---------------------------
@@ -91,7 +91,10 @@ Versionning
     echo "Cleansing versions older than 90 days, please note this is executed every Sunday"
     nohup php bin/console pim:versioning:purge --more-than-days 90 --force -n &
 
-In the event that the operation fails, please use the following procedure
+Dayly purge of versionning will ensure that the versionning table size does not grow indefinitely.
+
+If the table has grown too much, running the purge won't return the physical space on the disk as it only free space in the table.
+In that case, use the following procedure to free the associated disk space:
 
 .. code-block:: bash
 

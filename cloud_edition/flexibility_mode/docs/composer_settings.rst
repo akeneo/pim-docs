@@ -35,12 +35,11 @@ After that, you can check the content of your composer.json
 All details about Distribution System can be found in the `Portal section of the Help center <https://help.akeneo.com/portal/?utm_source=akeneo-docs&utm_campaign=composer_settings>`_.
 
 
-Composer and github API rate limit
+Composer and GitHub API rate limit
 ----------------------------------
 
-The Community edition has many branches/tags and during a composer update process, you will reach the GitHub API rate limit.
-Without OAuth token, GitHub use the ip to manage api rate limit, and to limit to 60 requests per hour (https://developer.github.com/v3/#rate-limiting).
-
+The Community edition has many branches/tags and during a composer update, you will reach the GitHub API rate limit.
+Without OAuth token, GitHub uses the IP to manage API rate limit, limits it to 60 requests per hour (https://developer.github.com/v3/#rate-limiting).
 
 In order to update your pim, you must setup a github token for composer. You can run composer and follow the instructions to help you.
 

@@ -16,13 +16,13 @@ The cronjobs are launched with the usual `akeneo` user. You can see the crontab 
 
 .. code-block:: bash
 
-    # list crontabs
+    # list crontab
     akeneo@my-instance:$ crontab -l
 
     # Edit the crontab
     akeneo@my-instance:$ crontab -e
 
-Its structure is as following
+Its structure is as follows:
 
 .. code-block:: bash
 

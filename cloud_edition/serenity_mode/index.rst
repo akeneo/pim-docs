@@ -4,8 +4,8 @@ Serenity Mode
 **Serenity** mode is a Software as a service (SaaS) and allows users to benefit from all upgrades and patches as they are released, and **automatically**.
 
 .. note::
-    
-    Please note that **no customization** is possible on Serenity instances.
+
+    Please note that **no code customization** is possible on Serenity instances. The usae of the API is encouraged to connect with the PIM.
 
 Types of environments
 ---------------------
@@ -19,7 +19,7 @@ Types of environments
 - **my-project**.cloud.akeneo.com
 - **can be restored** to an anterior date
 
-**2. Sandbox**    
+**2. Sandbox**
 
 - **my-project-staging**.cloud.akeneo.com
 - **no data recovery**
@@ -27,6 +27,6 @@ Types of environments
 Updates and migrations
 ----------------------
 
-Updates can include **patches** and **new features**. We try our best to make them as transparent as possible to end users and are usually applied outside of activity hours.
+Updates can include **patches** and **new features**. We try our best to make them as transparent as possible to end users and are usually applied during time slots of maintenance.
 
 .. _`A faster way to benefit from Akeneo!`: https://www.akeneo.com/blog/a-faster-way-to-benefit-from-akeneo/

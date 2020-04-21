@@ -15,7 +15,7 @@ Types of environments
 - **my-project**.cloud.akeneo.com
 - **can be restored** to an anterior date
 
-**2. Sandbox**    
+**2. Sandbox**
 
 - **my-project-staging**.cloud.akeneo.com
 - **no data recovery**
@@ -33,8 +33,13 @@ You can refer to :doc:`../../../migrate_pim/index` for more details about the pr
 
 .. note::
 
-    Major upgrades can require **new version** of software and different components.
+    Major upgrades can require **new versions** of software and various components.
     Please contact us through the `Helpdesk > Cloud Flexibility and Serenity <http://helpdesk.akeneo.com/>`_  to request for these specific upgrades and schedule the operation.
+
+Backups management
+------------------
+
+A snapshot of your production instance is made regularly and can be restored upon request.
 
 
 Manage your environments
