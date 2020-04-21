@@ -22,28 +22,20 @@ Here are the migration guides:
 * `From v3.0 to v3.1`_
 * `From v2.3 to v3.0`_
 * `From v2.2 to v2.3`_
-* `From v2.1 to v2.2`_
-* `From v2.0 to v2.1`_
+* From v2.1 to v2.2: UPGRADE-2.2.md
+* From v2.0 to v2.1: UPGRADE-2.1.md
 * `From v1.6 to v1.7`_
-* `From v1.5 to v1.6`_
-* `From v1.4 to v1.5`_
-* `From v1.3 to v1.4`_
-* `From v1.2 to v1.3`_
-* `From v1.1 to v1.2`_
-* `From v1.0 to v1.1`_
+* From v1.5 to v1.6: UPGRADE-1.6.md
+* From v1.4 to v1.5: UPGRADE-1.5.md
+* From v1.3 to v1.4: UPGRADE-1.4.md
+* From v1.2 to v1.3: UPGRADE-1.3.md
+* From v1.1 to v1.2: UPGRADE-1.2.md
+* From v1.0 to v1.1: UPGRADE-1.1.md
 
-.. _From v3.0 to v3.1: https://github.com/akeneo/pim-community-standard/blob/3.1/UPGRADE-3.1.md
-.. _From v2.3 to v3.0: https://github.com/akeneo/pim-community-standard/blob/3.0/UPGRADE-3.0.md
-.. _From v2.2 to v2.3: https://github.com/akeneo/pim-community-standard/blob/2.3/UPGRADE-2.3.md
-.. _From v2.1 to v2.2: https://github.com/akeneo/pim-community-standard/blob/2.3/UPGRADE-2.2.md
-.. _From v2.0 to v2.1: https://github.com/akeneo/pim-community-standard/blob/2.3/UPGRADE-2.1.md
-.. _From v1.6 to v1.7: https://github.com/akeneo/pim-community-standard/blob/1.7/UPGRADE-1.7.md
-.. _From v1.5 to v1.6: https://github.com/akeneo/pim-community-standard/blob/1.7/UPGRADE-1.6.md
-.. _From v1.4 to v1.5: https://github.com/akeneo/pim-community-standard/blob/1.7/UPGRADE-1.5.md
-.. _From v1.3 to v1.4: https://github.com/akeneo/pim-community-standard/blob/1.7/UPGRADE-1.4.md
-.. _From v1.2 to v1.3: https://github.com/akeneo/pim-community-standard/blob/1.7/UPGRADE-1.3.md
-.. _From v1.1 to v1.2: https://github.com/akeneo/pim-community-standard/blob/1.7/UPGRADE-1.2.md
-.. _From v1.0 to v1.1: https://github.com/akeneo/pim-community-standard/blob/1.7/UPGRADE-1.1.md
+.. _From v3.0 to v3.1: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-3.1.md
+.. _From v2.3 to v3.0: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-3.0.md
+.. _From v2.2 to v2.3: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-2.3.md
+.. _From v1.6 to v1.7: https://github.com/akeneo/pim-community-standard/blob/master/UPGRADE-1.7.md
 
 **If you are an Enterprise Edition client**
 

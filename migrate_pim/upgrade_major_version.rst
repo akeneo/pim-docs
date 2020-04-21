@@ -13,10 +13,10 @@ To migrate from 1.7 to 2.0, we recommend the use of our brand new migration tool
 
 We're continuously improving Transporteo to cover more and more use cases and automate more and more the migrations.
 
-Migrate from 2.3 to 3.1
+Migrate from 2.0 to 3.2
 -----------------------
 
-To migrate from 2.0 to 3.1 version, it is necessary to do the progressively upgrade process to each 2.X version.
+To migrate from 2.0 to 3.2 version, it is necessary to do the progressively upgrade process to each 2.X and 3.X versions.
 
 For instance, if you are on the 2.0 version, you will have to migrate to the 2.1, then the 2.2 and finally the 2.3.
 
@@ -40,6 +40,7 @@ Then, follow the migration guides located in your archive to upgrade your projec
 
 * From EE v2.3 to EE v3.0: UPGRADE-3.0.md
 * From EE v3.0 to EE v3.1: UPGRADE-3.1.md
+* From EE v3.1 to EE v3.2: UPGRADE-3.2.md
 
 Migrate from 3.2 to 4.0
 -----------------------
