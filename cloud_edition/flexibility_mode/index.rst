@@ -59,5 +59,4 @@ Further readings
 .. toctree::
     :maxdepth: 1
 
-    docs/backups_management
     docs/disk_usage
