@@ -12,24 +12,24 @@ Execute the following composer commands to require the bundle:
 
 .. code-block:: bash
 
-    composer config repositories.onboarder '{"type": "vcs", "url": "ssh://git@distribution.akeneo.com:443/pim-onboarder", "branch": "master"}'
-    composer require "akeneo/pim-onboarder" "3.0.*"
+    composer config repositories.onboarder '{"type": "vcs", "url": "ssh://git@distribution.akeneo.com:443/pim-onboarder"}'
+    composer require "akeneo/pim-onboarder" "4.0.*"
 
 
 Enable the extension
 --------------------
 
-Register the following two new bundles in your ``app/AppKernel.php``
+Register the newly installed PIM Onboarder bundle in your ``config/bundles.php``
 
 .. code-block:: php
 
-    protected function registerProjectBundles()
-    {
-        return [
-            // your app bundles should be registered here
-            new Pim\Onboarder\Bundle\PimOnboarderBundle(),
-        ];
-    }
+    return [
+        // Add your bundles here with the associated env.
+        // Ex:
+        // Acme\Bundle\AppBundle\AcmeAppBundle::class => ['dev' => true, 'test' => true, 'prod' => true]
+        new Akeneo\Onboarder\Bundle\PimOnboarderBundle::class => ['all' => true],
+    ];
+
 
 Configure the extension
 -----------------------
@@ -37,12 +37,11 @@ Configure the extension
 Load the extension configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Import the extension configuration in the ``app/config/config.yml`` file (after all other imports)
+Copy the extension configuration in the ``config`` directory
 
-.. code-block:: yaml
+.. code-block:: bash
 
-    imports:
-        - { resource: '@PimOnboarderBundle/Resources/config/onboarder_configuration.yml' }
+    cp vendor/akeneo/pim-onboarder/src/Bundle/Resources/config/onboarder_configuration.yml config/onboarder_configuration.yml
 
 Make the credential files accessible to Akeneo PIM software
 -----------------------------------------------------------
@@ -86,7 +85,6 @@ Here are two examples in order to define environment variables:
 | ONBOARDER_CLOUD_STORAGE_BUCKET_NAME                | Identifier of the bucket used to share files between your PIM and the retailer Onboarder.                                         |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 
-|
 
 **Optional variables**
 
@@ -111,7 +109,7 @@ The akeneo/pim-onboarder extension needs some extra tables. Please run the follo
 
     $ php bin/console akeneo:onboarder:setup-database --env=prod
 
-Once the installation done, please read the documenation about the :doc:`synchronization </onboarder/synchronization/index>`.
+Once the installation done, please read the documentation about the :doc:`synchronization </onboarder/synchronization/index>`.
 
 
 Create Elasticsearch index for pre ref products
