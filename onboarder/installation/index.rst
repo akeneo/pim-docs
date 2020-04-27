@@ -41,7 +41,7 @@ Copy the extension configuration in the ``config`` directory
 
 .. code-block:: bash
 
-    cp vendor/akeneo/pim-onboarder/src/Bundle/Resources/config/onboarder_configuration.yml config/onboarder_configuration.yml
+    cp vendor/akeneo/pim-onboarder/src/Bundle/Resources/config/onboarder_configuration.yml config/packages/onboarder.yml
 
 Make the credential files accessible to Akeneo PIM software
 -----------------------------------------------------------
