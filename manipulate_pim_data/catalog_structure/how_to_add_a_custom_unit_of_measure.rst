@@ -64,7 +64,9 @@ These two files contain this translation:
 
 .. code-block:: yaml
 
-    MICROMETER: micrometer
+    pim_measure:
+      units:
+        MICROMETER: micrometer
 
 Clear the cache and try it out
 ---------------------------------

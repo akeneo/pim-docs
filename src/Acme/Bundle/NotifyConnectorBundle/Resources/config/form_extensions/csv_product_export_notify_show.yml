@@ -252,7 +252,7 @@ extensions:
         module: pim/job/common/edit/field/text
         parent: pim-job-instance-csv-product-export-notify-show-properties
         position: 190
-        targetZone: global-settings
+        targetZone: properties
         config:
             fieldCode: configuration.urlToNotify
             readOnly: true
