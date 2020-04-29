@@ -1,7 +1,7 @@
 Ensure the Onboarder worker is always running
 =============================================
 
-A ``systemd`` daemon is used to manage the PIM Onboarder woker(s). It allows multiple operations such as:
+A ``systemd`` daemon is used to manage the PIM Onboarder worker(s). It allows multiple operations such as:
 
 - start/stop/restart a worker
 - check the status of a worker
