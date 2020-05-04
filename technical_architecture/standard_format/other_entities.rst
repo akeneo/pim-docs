@@ -171,7 +171,7 @@ Association Type
 | labels                 | string[]       | ``["en_US" => "Croll sell"]``        | | each key of the array represents the `code` of the                |
 |                        |                |                                      | | ``Akeneo\Channel\Component\Model\LocaleInterface``                |
 +------------------------+----------------+--------------------------------------+---------------------------------------------------------------------+
-| is_two_way             | string         | ``true``                             | | When true, the association is a two-way association               |
+| is_two_way             | boolean        | ``true``                             | | When true, the association is a two-way association               |
 +------------------------+----------------+--------------------------------------+---------------------------------------------------------------------+
 
 Attribute Group
