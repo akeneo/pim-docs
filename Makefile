@@ -2,7 +2,7 @@ UID = $(shell id -u)
 GID = $(shell id -g)
 DOCKER_IMAGE = pim-docs
 DOCKER_RUN = docker run -it --rm -v $(PWD):/home/akeneo/pim-docs/
-DOCKER_RUN_WITH_CIRCLE_IDS = ${DOCKER_RUN} -u $(UID):$(GID)
+DOCKER_RUN_WITH_CIRCLE_IDS = ${DOCKER_RUN} -u $(UID):$(GID) -v ~/.composer:/.composer
 
 .DEFAULT_GOAL := build
 .PHONY: build, deploy, docker-build
@@ -29,11 +29,11 @@ docker-build:
 	docker build . --tag $(DOCKER_IMAGE)
 
 check-uses: docker-build
-	${DOCKER_RUN_WITH_CIRCLE_IDS} -e COMPOSER_AUTH -v ~/.composer:/home/akeneo/.composer ${DOCKER_IMAGE} /home/akeneo/pim-docs/scripts/test_php_uses.sh
+	${DOCKER_RUN_WITH_CIRCLE_IDS} ${DOCKER_IMAGE} /home/akeneo/pim-docs/scripts/test_php_uses.sh
 
 styleguide: docker-build
 	$(DOCKER_RUN_WITH_CIRCLE_IDS) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) cp styleguide.js /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/
 	$(DOCKER_RUN_WITH_CIRCLE_IDS) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) cp styleguide.css /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/
 	$(DOCKER_RUN_WITH_CIRCLE_IDS) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) ./prepare_static_files.sh
-	$(DOCKER_RUN_WITH_CIRCLE_IDS) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) php /usr/local/bin/composer.phar install
+	$(DOCKER_RUN_WITH_CIRCLE_IDS) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) php /usr/local/bin/composer.phar install --no-plugins
 	$(DOCKER_RUN_WITH_CIRCLE_IDS) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) bash -c "php index.php > /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/index.html"
