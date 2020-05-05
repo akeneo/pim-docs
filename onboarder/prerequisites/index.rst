@@ -8,7 +8,7 @@ All the Prerequisites listed below have to be fulfilled before the installation 
 +================================================+========================================================================================================+
 | :ref:`PIM <onboarder-prereq-pim>`              | Your Akeneo PIM is an enterprise edition                                                               |
 +                                                +--------------------------------------------------------------------------------------------------------+
-|                                                | Your Akeneo PIM version is >= 2.3.9 and <3.0                                                           |
+|                                                | Your Akeneo PIM version is >= 2.3.9                                                                    |
 +------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 | :ref:`Synchronization <onboarder-prereq-sync>` | You've received from the Akeneo team the Onboarder parameters package                                  |
 +                                                +--------------------------------------------------------------------------------------------------------+
