@@ -25,5 +25,5 @@ cp $SCRIPT_DIR/check_uses_existence.php $EE_STD_DIR/
 
 cd $EE_STD_DIR
 
-php -d memory_limit=4G /usr/local/bin/composer.phar install
+php -d memory_limit=4G /usr/local/bin/composer.phar install --no-plugins
 php check_uses_existence.php php_uses.list
