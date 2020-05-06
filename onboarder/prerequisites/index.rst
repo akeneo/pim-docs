@@ -8,7 +8,7 @@ All the Prerequisites listed below have to be fulfilled before the installation 
 +================================================+========================================================================================================+
 | :ref:`PIM <onboarder-prereq-pim>`              | Your Akeneo PIM is an enterprise edition                                                               |
 +                                                +--------------------------------------------------------------------------------------------------------+
-|                                                | Your Akeneo PIM version is >= 3.0                                                                      |
+|                                                | Your Akeneo PIM version is >= 4.0                                                                      |
 +------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 | :ref:`Synchronization <onboarder-prereq-sync>` | The Onboarder parameters are available on your Partner Portal project page                             |
 +                                                +--------------------------------------------------------------------------------------------------------+
@@ -39,7 +39,7 @@ The parameters provided on the Partner Portal must contain:
 * A downloadable ``serviceAccount.json`` file that contains authentication values to be able to use the Google PubSub and Google Cloud Storage services.
 * Several environments variables values that you will configure in the install process in order to communicate with Google Cloud PubSub instance
 *
-    * ``ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE``: the topic into wich Akeneo PIM will publish synchronization messages to retailer onboarder
+    * ``ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE``: the topic into wich Akeneo PIM will publish synchronization messages to middleware
     * ``ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_ONBOARDER``: the topic into wich Akeneo PIM will publish synchronization messages to supplier onboarder
     * ``ONBOARDER_TOPIC_NAME_FOR_CONSUMPTION``: the topic Akeneo PIM will subscribe to
     * ``ONBOARDER_QUEUE_NAME``: the queue Akeneo PIM will consume synchronization messages from
