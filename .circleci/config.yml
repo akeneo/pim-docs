@@ -6,7 +6,11 @@ jobs:
             image: ubuntu-1604:202004-01
         steps:
             - checkout
-            - run: make build
+            #- run: make build TODO: remove the next line and uncomment this one before merging
+            - add_ssh_keys
+            - run:
+                  name: Deploy on staging server
+                  command: DEPLOY_HOSTNAME=$STAGING_HOSTNAME DEPLOY_PORT=$STAGING_PORT VERSION="4.0" make deploy
 
     deploy_staging:
         machine:
