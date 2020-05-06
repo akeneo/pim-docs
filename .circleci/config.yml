@@ -1,31 +1,4 @@
-version: 2.1
-
-commands:
-    configure-composer-auth:
-        description: Configure composer auth
-        steps:
-            - run: mkdir -p ~/.composer/cache
-            - run:
-                name: Add GitHub token for composer
-                command: echo ${COMPOSER_AUTH} > ~/.composer/auth.json
-
-    restore-composer-cache:
-        description: Restore Composer cache
-        steps:
-            - restore_cache:
-                name: Restore Composer cache
-                keys:
-                    - composer-{{ .Branch }}
-                    - composer-
-
-    save-composer-cache:
-        description: Save Composer cache
-        steps:
-            - save_cache:
-                name: Save Composer cache
-                key: composer-{{ .Branch }}
-                paths:
-                    - ~/.composer/cache
+version: 2.0
 
 jobs:
     build:
@@ -33,38 +6,27 @@ jobs:
             image: ubuntu-1604:202004-01
         steps:
             - checkout
-            - configure-composer-auth
-            - restore-composer-cache
             - run: make build
-            - save-composer-cache
 
     deploy_staging:
         machine:
-            image: ubuntu-1604:201903-01
+            image: ubuntu-1604:202004-01
         steps:
             - checkout
             - add_ssh_keys
-            - run: sudo chown 1000:1000 $SSH_AUTH_SOCK
-            - configure-composer-auth
-            - restore-composer-cache
             - run:
                   name: Deploy on staging server
                   command: DEPLOY_HOSTNAME=$STAGING_HOSTNAME DEPLOY_PORT=$STAGING_PORT VERSION="4.0" make deploy
-            - save-composer-cache
 
     deploy_production:
         machine:
-            image: ubuntu-1604:201903-01
+            image: ubuntu-1604:202004-01
         steps:
             - checkout
             - add_ssh_keys
-            - run: sudo chown 1000:1000 $SSH_AUTH_SOCK
-            - configure-composer-auth
-            - restore-composer-cache
             - run:
                   name: Deploy on production server
                   command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="4.0" make deploy
-            - save-composer-cache
 
 workflows:
     version: 2
