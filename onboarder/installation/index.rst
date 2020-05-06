@@ -44,6 +44,15 @@ Import the extension configuration in the ``app/config/config.yml`` file (after 
     imports:
         - { resource: '@PimOnboarderBundle/Resources/config/onboarder_configuration.yml' }
 
+Build the UI
+-----------------------
+
+Execute the following command to build the UI:
+
+.. code-block:: bash
+
+    bin/console pim:installer:assets --clean --env=prod && yarn run webpack
+
 Make the credential files accessible to Akeneo PIM software
 -----------------------------------------------------------
 
