@@ -1,10 +1,10 @@
 Synchronization
 ===============
 
-Push catalog structure to the retailer Onboarder
+Push catalog structure to the middleware
 ------------------------------------------------
 
-To work, the retailer Onboarder needs some data from the PIM and you will have to push them once your installation will be done.
+To work, the middleware needs some data from the PIM and you will have to push them once your installation will be done.
 
 Data synchronized are: attribute groups, attributes, attribute option, and families.
 

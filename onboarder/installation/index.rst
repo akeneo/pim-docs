@@ -43,6 +43,15 @@ Copy the extension configuration in the ``config`` directory
 
     cp vendor/akeneo/pim-onboarder/src/Bundle/Resources/config/onboarder_configuration.yml config/packages/onboarder.yml
 
+Build the UI
+-----------------------
+
+Execute the following command to build the UI:
+
+.. code-block:: bash
+
+    bin/console pim:installer:assets --clean --env=prod && yarn run webpack
+
 Make the credential files accessible to Akeneo PIM software
 -----------------------------------------------------------
 
@@ -74,15 +83,15 @@ Here are two examples in order to define environment variables:
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | GOOGLE_APPLICATION_CREDENTIALS                     | Absolute filesystem path to the ``serviceAccount.json`` file provided by the Akeneo team. We advise to use it only in production. |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE | Pub/Sub topic name to send messages to the retailer Onboarder.                                                                    |
+| ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE | Pub/Sub topic name to send messages to the middleware.                                                                            |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_ONBOARDER  | Pub/Sub topic name to send messages to the supplier Onboarder.                                                                    |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_TOPIC_NAME_FOR_CONSUMPTION               | Pub/Sub topic name to receive messages from the retailer Onboarder.                                                               |
+| ONBOARDER_TOPIC_NAME_FOR_CONSUMPTION               | Pub/Sub topic name to receive messages from the middleware.                                                                       |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | ONBOARDER_QUEUE_NAME                               | Pub/Sub queue name.                                                                                                               |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_CLOUD_STORAGE_BUCKET_NAME                | Identifier of the bucket used to share files between your PIM and the retailer Onboarder.                                         |
+| ONBOARDER_CLOUD_STORAGE_BUCKET_NAME                | Identifier of the bucket used to share files between your PIM and the middleware.                                                 |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 
 
