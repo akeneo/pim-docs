@@ -59,8 +59,8 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     20 0 * * * pimee:project:notify-before-due-date --env=prod
     #Ansible: akeneo:connectivity-audit:update-data
     1 0 * * * akeneo:connectivity-audit:update-data --env=prod
-    #Ansible: akeneo:connectivity-audit:purge-read-product
-    0 4 * * * akeneo:connectivity-audit:purge-read-product --env=prod
+    #Ansible: akeneo:connectivity-connection:purge-error
+    10 * * * * akeneo:connectivity-connection:purge-error --env=prod
     #Ansible: pim:asset:send-expiration-notification
     0 1 * * * pim:asset:send-expiration-notification --env=prod
     #Ansible: pimee:project:recalculate
@@ -119,7 +119,7 @@ The default crontab at the moment on our Flexibility environments is the followi
 +---------------------------------------------------------+-------------------+--------------------------------------------+
 | akeneo:connectivity-audit:update-data --env=prod        | 1 \* \* \* \*     | Every hour                                 |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
-| akeneo:connectivity-audit:purge-read-product --env=prod | 0 4 \* \* \*      | At 4:00 AM                                 |
+| akeneo:connectivity-connection:purge-error --env=prod   | 10 \* \* \* \*    | Every hour                                 |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
 | akeneo:batch:purge-job-execution --env=prod             | 20 0 1 \* \*      | At 12:20 AM, every first day of the month  |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
