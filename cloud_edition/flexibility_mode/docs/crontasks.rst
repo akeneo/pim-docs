@@ -91,7 +91,7 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     0 2 * * * sh /home/akeneo/bin/mysscript.sh
     15 2 * * * python /home/akeneo/bin/myexport.py
 
-Time of execution and timezone condiserations
+Time of execution and timezone considerations
 ---------------------------------------------
 
 All servers are configured using UTC time, don't forget to convert the time from the desired local time to UTC time.

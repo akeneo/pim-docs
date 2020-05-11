@@ -1,4 +1,4 @@
-Queue management & Workers
+Queue Management & Workers
 ==========================
 
 Job consumers
@@ -57,7 +57,7 @@ behavior.
 Onboarder
 ---------
 
-Onboarder requires workers to run at all times, it is disabled by default as not everybody needs it.
+While Onboarder requires workers to run at all times, those are disabled by default since some customers do not use the Onboarder.
 
 Learn more about the onboarder and its configuration in the PIM in the dedicated section :doc:`/onboarder/index`.
 

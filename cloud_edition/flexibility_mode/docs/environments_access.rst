@@ -40,13 +40,13 @@ Error: Permission Denied
     ssh -A akeneo@my-project-staging.cloud.akeneo.com
     akeneo@my-project-staging.cloud.akeneo.com: Permission denied (publickey).
 
-Your SSH key is not allowed on the server and/or the user is not correct. Specify the private key to use with
+Your SSH key is not allowed on the server and/or the user is not correct. Specify the private key to use with:
 
 .. code-block:: bash
 
     ssh -A akeneo@my-project-staging.cloud.akeneo.com -i /path/to/private_key
 
-If the connection is not successful, make sure your key is registered on Akeneo portal and is marked as activated.
+If the connection is not successful, make sure your key is registered on Akeneo Portal and is marked as activated.
 If the connection is successful, it means your identity has not been properly registered to your SSH agent.
 
 .. code-block:: bash
@@ -65,7 +65,7 @@ Error: Connection refused
 Something prevents the connection from being established, it can mean that:
 
 - you have a firewall that blocks the port 22 or SSH protocol. Contact your administrator to check for such restrictions.
-- you set up IP access restrictions on your instance and your are using an IP outside of this range.
+- your IP adress is not allowed to connect. IP access ranges have to be explicitely allowed through the Portal.
 - if none of the above apply, please contact us.
 
 SSH File Transfer Protocol (SFTP)
@@ -75,9 +75,9 @@ This access can only be granted **upon request**, after a Cloud ticket has been 
 Please allow some time for our Team to create the access for you.
 
 .. note::
-    SFTP accesses are independant from SSH accesses and each one has its own credentials that can be shared. You can request multiple SFTP accesses.
+    You can request several SFTP accesses, and each one has its own credentials that can be shared. Those credentials are independent from SSH key accesses. IP access restrictions apply to SFTP as well as to SSH.
 
-Each SFTP access can access to one folder that is also accessible by **akeneo**, so it can be used by scripts you'd create to interact with the PIM.
+Each SFTP access can access one folder that is also accessible by the user **akeneo**, so it can be used by scripts you'd create to interact with the PIM.
 
 .. code-block:: bash
 
@@ -88,7 +88,7 @@ Each SFTP access can access to one folder that is also accessible by **akeneo**,
 
 You can also use tools such as `Filezilla`_ or any SFTP client.
 
-File permissions for SFTP
+Files Permissions for SFTP
 *************************
 
 If **akeneo**, as an SSH user or as a PIM process, creates files in the SFTP sub-directories, permissions have to be set so that SFTP users can rename or delete them.

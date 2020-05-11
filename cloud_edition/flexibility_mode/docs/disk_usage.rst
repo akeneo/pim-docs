@@ -25,6 +25,7 @@ The disk usage will inscrease following the lifecycle of the instance. For examp
 - an asset is uploaded
 
   + it is stored on the file system
+  + if the asset is replaced with a new one, the old version stays on disk
 
 - an import / export runs
 
@@ -83,12 +84,12 @@ Assets
     **Warning:** `mysqlcheck --optimize` will lock the table during the operation. Hence the table will be unavailable for the PIM. For more information: https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html
 
 
-Versionning
+Versioning
 ~~~~~~~~~~~
 
 .. code-block:: bash
 
-    echo "Cleansing versions older than 90 days, please note this is executed every Sunday"
+    echo "Cleansing versions older than 90 days. Please note that this is executed every Sunday by default"
     nohup php bin/console pim:versioning:purge --more-than-days 90 --force -n &
 
 Dayly purge of versionning will ensure that the versionning table size does not grow indefinitely.
@@ -120,4 +121,4 @@ Configure the PIM to save disk space
 ------------------------------------
 
 - For product exports, you can disable files and media export (Export Profile > Edit > Global Settings)
-- Generated files for export are archived and can increase disk usage rapidly if executed too many times without a purge.
+- Files generated for exports are archived and can increase disk usage rapidly if executed too many times without a purge.

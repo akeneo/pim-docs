@@ -1,11 +1,11 @@
-Serenity Mode
+Serenity
 =============
 
 **Serenity** mode is a Software as a service (SaaS) and allows users to benefit from all upgrades and patches as they are released, and **automatically**.
 
 .. note::
 
-    Please note that **no code customization** is possible on Serenity instances. The usae of the API is encouraged to connect with the PIM.
+    Please note that **no code customization** is possible on Serenity instances. The usage of the API is encouraged to connect with the PIM.
 
 Types of environments
 ---------------------
