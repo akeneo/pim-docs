@@ -89,7 +89,7 @@ Each SFTP access can access one folder that is also accessible by the user **ake
 You can also use tools such as `Filezilla`_ or any SFTP client.
 
 Files Permissions for SFTP
-*************************
+**************************
 
 If **akeneo**, as an SSH user or as a PIM process, creates files in the SFTP sub-directories, permissions have to be set so that SFTP users can rename or delete them.
 

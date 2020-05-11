@@ -46,7 +46,7 @@ Privilege escalation
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``partners_elasticsearch`` | ``status|start|restart`` | Show status or start/restart elasticsearch daemon                                                                                                |
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``partners_php7.3-fpm``    | ``status|start|restart`` | Show status or start/restart php-fpm daemon (Command name can vary depending on your version of PHP)                                                     |
+| ``partners_php7.3-fpm``    | ``status|start|restart`` | Show status or start/restart php-fpm daemon (Command name can vary depending on your version of PHP)                                             |
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``partners_clear_cache``   |                          | Clear PIM cache properly. Stops php-fpm and job consumers, deletes PIM cache folder, warms up PIM cache and restarts php-fpm and job consumers   |
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -54,6 +54,6 @@ Privilege escalation
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Third-party Software Installation
---------------------------------
+---------------------------------
 
 Third-party packages can't be installed, with the exceptions of PHP packages.
