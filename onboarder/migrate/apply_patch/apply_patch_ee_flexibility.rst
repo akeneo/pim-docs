@@ -58,4 +58,4 @@ After that you can relaunch fpm to avoid generating outdated cache:
 
 .. note::
 
-    The ``partners_clear_cache`` command is only available in Akeneo Cloud Offer. You can find more commands in our :doc:`/cloud_edition/flexibility_mode/docs/partners` page.
+    The ``partners_clear_cache`` command is only available in Akeneo Cloud Offer. You can find more commands in our :doc:`/cloud_edition/flexibility_mode/docs/system_administration` page.
