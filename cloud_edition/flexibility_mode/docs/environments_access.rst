@@ -1,25 +1,104 @@
-Environments Access
-===================
+Environment accesses
+=====================
 
-| The system user dedicated to integrators on both environments is akeneo.
-| To access the environment, run the SSH command:
+SSH
+---
 
-.. code-block:: shell
+SSH access is **individual** and requires the use of a **SSH keys**. Password authentication is not possible.
+
+.. note::
+
+    An SSH key is required to connect to your environment and also to have access to the Enterprise Edition repository.
+    It's recommended to use the same SSH key for both accesses for a given user.
+
+Connection
+**********
+
+- Learn how to generate a new SSH key and add it to your SSH agent on `GitHub Help Center`_.
+- Learn how to authorize your SSH key to access your environment by visiting `Akeneo Help Center`_.
+
+Always use **akeneo** as the user to connect to your server. It is an unprivilege user with limited access to system operations.
+
+.. warning::
+
+    No dedicated account will be created and **no root** access will be authorized. Privilege escalation is possible for `specific tasks`_.
+
+.. code-block:: bash
 
     ssh -A akeneo@my-project-staging.cloud.akeneo.com
+    akeneo@my-project-staging:~$ pwd
+    # output: /home/akeneo
 
-| The **-A** option makes sure that your ssh-agent is forwarded to the server, meaning that you will get access to the Akeneo Entreprise repositories seamlessly.
-|
-| You may need to execute the **ssh-add** command previously, to add your key to the SSH Agent:
+.. note::
+    Using **-A** will forward your SSH agent to the server and allow you to access the Akeneo Entreprise repository once connected.
 
-.. code-block:: shell
+Error: Permission Denied
+************************
 
-    ssh-add
+.. code-block:: bash
 
-If you are using putty, follow those steps to enable "Agent forwarding":
+    ssh -A akeneo@my-project-staging.cloud.akeneo.com
+    akeneo@my-project-staging.cloud.akeneo.com: Permission denied (publickey).
 
-    - Open PuTTY
-    - Under "Connection" -> "SSH" -> "Auth"
-    - Check the "Allow agent forwarding"
+Your SSH key is not allowed on the server and/or the user is not correct. Specify the private key to use with:
 
-For more information, please consult the following `Github documentation <https://developer.github.com/guides/using-ssh-agent-forwarding>`_
+.. code-block:: bash
+
+    ssh -A akeneo@my-project-staging.cloud.akeneo.com -i /path/to/private_key
+
+If the connection is not successful, make sure your key is registered on Akeneo Portal and is marked as activated.
+If the connection is successful, it means your identity has not been properly registered to your SSH agent.
+
+.. code-block:: bash
+
+    eval "$(ssh-agent -s)"
+    ssh-add /path/to/private_key
+
+Error: Connection refused
+*************************
+
+.. code-block:: bash
+
+    ssh -A akeneo@my-project-staging.cloud.akeneo.com
+    ssh: connect to host akeneo@my-project-staging.cloud.akeneo.com port 22: Connection refused
+
+Something prevents the connection from being established, it can mean that:
+
+- you have a firewall that blocks the port 22 or SSH protocol. Contact your administrator to check for such restrictions.
+- your IP adress is not allowed to connect. IP access ranges have to be explicitely allowed through the Portal.
+- if none of the above apply, please contact us.
+
+SSH File Transfer Protocol (SFTP)
+----------------------------------
+
+This access can only be granted **upon request**, after a Cloud ticket has been created through the `helpdesk`_.
+Please allow some time for our Team to create the access for you.
+
+.. note::
+    You can request several SFTP accesses, and each one has its own credentials that can be shared. Those credentials are independent from SSH key accesses. IP access restrictions apply to SFTP as well as to SSH.
+
+Each SFTP access can access one folder that is also accessible by the user **akeneo**, so it can be used by scripts you'd create to interact with the PIM.
+
+.. code-block:: bash
+
+    sftp akeneosftp@my-project-staging.cloud.akeneo.com
+    akeneosftp@y-project-staging.cloud.akeneo.com's password:
+    Connected to akeneosftp@my-project-staging.cloud.akeneo.com.
+    sftp>
+
+You can also use tools such as `Filezilla`_ or any SFTP client.
+
+Files Permissions for SFTP
+**************************
+
+If **akeneo**, as an SSH user or as a PIM process, creates files in the SFTP sub-directories, permissions have to be set so that SFTP users can rename or delete them.
+
+.. code-block:: bash
+
+    $ chmod u=rwX,g=rwXs,o= /data/transfert/pim/*
+
+.. _`Filezilla`: https://filezilla-project.org/
+.. _`helpdesk`: https://helpdesk.akeneo.com
+.. _`specific tasks`: ./partners.html
+.. _`GitHub Help Center`:  https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+.. _`Akeneo Help Center`:  https://help.akeneo.com/portal/articles/access-akeneo-flexibility.html?utm_source=akeneo-docs&utm_campaign=flexibility_partner_starterkit
