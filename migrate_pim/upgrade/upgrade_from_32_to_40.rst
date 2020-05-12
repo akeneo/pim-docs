@@ -179,6 +179,14 @@ new Asset Manager feature: https://github.com/akeneo/CsvToAsset
 Migrating your custom code
 **************************
 
+About parameters.yml
+--------------------
+
+.. note::
+
+    PIM 4.x version uses Symfony4.
+    In this version of Symfony, the parameters.yml is no longer located in app/config but in config/services.
+
 Applying automatic fixes
 ------------------------
 
@@ -376,12 +384,4 @@ You have to declare it in a new registry as well in the dependency injection con
 In the first method, `createByCheckingData`, the data type should be checked. For example, it checks that an expected scalar is indeed a scalar. This is done to guarantee that data manipulated in the domain layer are corrects. This method is useful when data are coming from the outside world (product save in UI, API, import, etc). This validation is costly as soon as you have several hundreds values per product.
 
 That's why we implemented a second method to avoid to do these checks. It should be used when a value collection is created from values coming from the database, as the data is already validated and consistent in Mysql. It avoids to pay the performance penalty for checking types.
-
-About parameters.yml
---------------------
-
-.. note::
-
-    PIM 4.x version uses Symfony4.
-    In this version of Symfony, the parameters.yml is no longer located in app/config but in config/services.
 
