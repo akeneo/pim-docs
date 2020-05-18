@@ -592,6 +592,12 @@ It is exactly the same format as the ``source`` property, with an additional req
 
 If a product value required in an operation is empty, or if a division by zero occurs, the product won't be updated.
 
+**round_with_decimals** (optional): round the final result of the operation(s) with the given number of decimals
+
+If this parameter is not specified or if the value is null, no round is done on the result.
+If the destination attribute does not allow decimals, the action can be applied only when the result is an integer.
+This behavior can be changed by setting up the *round_with_decimals* to `0`: the result will be rounded and the action will be applied.
+
 .. tip::
 
     For instance, in order to calculate the volume of a cone (volume = (π x R² x h) / 3), given a radius and a height, you can use the following action:
@@ -615,12 +621,13 @@ If a product value required in an operation is empty, or if a division by zero o
                     - operator: divide
                       value: 3
 
-    The following action will calculate a price in euros, based on the price in dollars and a ratio:
+    The following action will calculate a price in euros, based on the price in dollars and a ratio, and round the result to remove decimal:
 
         .. code-block:: yaml
 
             actions:
                 - type: calculate
+                  round_with_decimals: 0
                   destination:
                     field: price
                     scope: ecommerce
