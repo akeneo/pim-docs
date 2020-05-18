@@ -62,6 +62,8 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     30 16,23 * * * pim:versioning:refresh
     #Ansible: akeneo:batch:purge-job-execution
     20 0 1 * * akeneo:batch:purge-job-execution
+    #Ansible: akeneo:connectivity-audit:purge-error-count
+    40 12 * * * akeneo:connectivity-audit:purge-error-count
     #Ansible: pimee:project:notify-before-due-date
     20 0 * * * pimee:project:notify-before-due-date
     #Ansible: akeneo:connectivity-audit:update-data
