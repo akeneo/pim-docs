@@ -558,7 +558,7 @@ This action allows calculating numeric attribute values, with simple mathematica
 
 This action only accepts number, measurement or price collection attributes for both the source and the destination.
 
-The action is split into 3 different parts:
+The action is split into 3 required parts, and 1 optional:
 
 **destination**: the value you want to update. It is composed of:
 
@@ -592,11 +592,17 @@ It is exactly the same format as the ``source`` property, with an additional req
 
 If a product value required in an operation is empty, or if a division by zero occurs, the product won't be updated.
 
-**round_with_decimals** (optional): round the final result of the operation(s) with the given number of decimals
+**round_precision** (optional): round the final result of the operation(s)
 
-If this parameter is not specified or if the value is null, no round is done on the result.
+If this parameter is not specified or if the value is null, no round will be done on the final result.
+The round precision can be:
+
+- a positive number: it represents the number of decimals to keep
+- 0: rounded with no decimal
+- a negative number: the rounding will occur before the decimal point (example with precision of `-1`: `81` becomes `80`, with precision of `-2`: `81` becomes `100`)
+
 If the destination attribute does not allow decimals, the action can be applied only when the result is an integer.
-This behavior can be changed by setting up the *round_with_decimals* to `0`: the result will be rounded and the action will be applied.
+This behavior can be changed by setting up the *round_precision* to 0: the result will be rounded and the action will be applied.
 
 .. tip::
 
@@ -627,7 +633,7 @@ This behavior can be changed by setting up the *round_with_decimals* to `0`: the
 
             actions:
                 - type: calculate
-                  round_with_decimals: 0
+                  round_precision: 0
                   destination:
                     field: price
                     scope: ecommerce
