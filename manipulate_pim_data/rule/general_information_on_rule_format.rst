@@ -558,7 +558,7 @@ This action allows calculating numeric attribute values, with simple mathematica
 
 This action only accepts number, measurement or price collection attributes for both the source and the destination.
 
-The action is split into 3 required parts, and 1 optional:
+The action is split into 3 required steps, and 1 optional:
 
 **destination**: the value you want to update. It is composed of:
 
@@ -592,9 +592,9 @@ It is exactly the same format as the ``source`` property, with an additional req
 
 If a product value required in an operation is empty, or if a division by zero occurs, the product won't be updated.
 
-**round_precision** (optional): round the final result of the operation(s)
+**round_precision** (optional): rounds the final result of the operation(s)
 
-If this parameter is not specified or if the value is null, no round will be done on the final result.
+If this parameter is not specified or if the value is null, the final result will not be rounded.
 The round precision can be:
 
 - a positive number: it represents the number of decimals to keep
@@ -627,7 +627,7 @@ This behavior can be changed by setting up the *round_precision* to 0: the resul
                     - operator: divide
                       value: 3
 
-    The following action will calculate a price in euros, based on the price in dollars and a ratio, and round the result to remove decimal:
+    The following action will calculate a price in euros, based on the price in dollars and a ratio, and round the result to the nearest integer value:
 
         .. code-block:: yaml
 
