@@ -558,7 +558,7 @@ This action allows calculating numeric attribute values, with simple mathematica
 
 This action only accepts number, measurement or price collection attributes for both the source and the destination.
 
-The action is split into 3 different parts:
+The action is split into 3 required steps, and 1 optional:
 
 **destination**: the value you want to update. It is composed of:
 
@@ -592,6 +592,18 @@ It is exactly the same format as the ``source`` property, with an additional req
 
 If a product value required in an operation is empty, or if a division by zero occurs, the product won't be updated.
 
+**round_precision** (optional): rounds the final result of the operation(s)
+
+If this parameter is not specified or if the value is null, the final result will not be rounded.
+The round precision can be:
+
+- a positive number: it represents the number of decimals to keep
+- 0: rounded with no decimal
+- a negative number: the rounding will occur before the decimal point (example with precision of `-1`: `81` becomes `80`, with precision of `-2`: `81` becomes `100`)
+
+If the destination attribute does not allow decimals, the action can be applied only when the result is an integer.
+This behavior can be changed by setting up the *round_precision* to 0: the result will be rounded and the action will be applied.
+
 .. tip::
 
     For instance, in order to calculate the volume of a cone (volume = (π x R² x h) / 3), given a radius and a height, you can use the following action:
@@ -615,12 +627,13 @@ If a product value required in an operation is empty, or if a division by zero o
                     - operator: divide
                       value: 3
 
-    The following action will calculate a price in euros, based on the price in dollars and a ratio:
+    The following action will calculate a price in euros, based on the price in dollars and a ratio, and round the result to the nearest integer value:
 
         .. code-block:: yaml
 
             actions:
                 - type: calculate
+                  round_precision: 0
                   destination:
                     field: price
                     scope: ecommerce
