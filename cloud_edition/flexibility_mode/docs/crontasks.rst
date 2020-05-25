@@ -66,8 +66,6 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     20 0 * * * pimee:project:notify-before-due-date
     #Ansible: akeneo:connectivity-audit:update-data
     1 0 * * * akeneo:connectivity-audit:update-data
-    #Ansible: pim:asset:send-expiration-notification
-    0 1 * * * pim:asset:send-expiration-notification
     #Ansible: pimee:project:recalculate
     0 2 * * * pimee:project:recalculate
     #Ansible: pimee:franklin-insights:fetch-products
