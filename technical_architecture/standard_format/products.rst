@@ -13,7 +13,8 @@ Let's consider a bar product, without any product value, except its identifier s
     * several groups
     * a variant group
     * several categories
-    * several associations related to groups and/or other products
+    * several associations related to groups, other products and/or product models
+    * several quantified associations related to products and/or product models
 
 Its standard format would be the following:
 
@@ -43,63 +44,86 @@ Its standard format would be the following:
       "created" => "2016-06-23T11:24:44+02:00"
       "updated" => "2016-06-23T11:24:44+02:00"
       "associations" => array:3 [
-        "PACK" => array:1 [
-          "groups" => []
+        "PACK" => array:3 [
+          "groups" => array:0 []
           "products" => array:2 [
             0 => "foo"
             1 => "baz"
           ]
+          "product_models" => array:0 []
         ]
-        "UPSELL" => array:1 [
+        "UPSELL" => array:3 [
           "groups" => array:1 [
             0 => "groupA"
           ]
-          "products" => []
+          "product_models" => array:0 []
+          "products" => array:0 []
         ]
-        "X_SELL" => array:2 [
+        "X_SELL" => array:3 [
           "groups" => array:1 [
             0 => "groupB"
+          ]
+          "product_models" => array:1 [
+            0 => "productModelA"
           ]
           "products" => array:1 [
             0 => "foo"
           ]
         ]
       ]
+      "quantified_associations" => array:1 [
+        "PRODUCT_SET" => array:2 [
+          "products" => array:1 [
+            0 => array:2 [
+              "identifier" => "productA"
+              "quantity" => 3
+            ]
+          ]
+          "product_models" => array:1 [
+            0 => array:2 [
+              "identifier" => "productModelA"
+              "quantity" => 3
+            ]
+          ]
+        ]
+      ]
     ]
 
-+---------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
-| type          | data structure | data example                                                               |   notes                                                             |
-+===============+================+============================================================================+=====================================================================+
-| identifier    | string         | ``"bar"``                                                                  | | it's the identifier of the product                                |
-|               |                |                                                                            |                                                                     |
-+---------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
-| family        | string         | ``"familyA"``                                                              | | it represents the code of the                                     |
-|               |                |                                                                            | | ``Akeneo\Pim\Structure\Component\Model\FamilyInterface``          |
-+---------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
-| groups        | array          | ``[0 => "groupA", 1 => "groupB"]``                                         | | it represents the code of the                                     |
-|               |                |                                                                            | | ``Akeneo\Pim\Enrichment\Component\Category\Model\GroupInterface`` |
-+---------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
-| variant_group | string         | ``"variantA"``                                                             | | it represents the code of the                                     |
-|               |                |                                                                            | | ``Akeneo\Pim\Enrichment\Component\Category\Model\GroupInterface`` |
-+---------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
-| categories    | array          | ``[0 => "categoryA", 1 => "categoryB"]``                                   | | it represents the code of the object                              |
-|               |                |                                                                            | | ``Akeneo\Tool\Component\Classification\Model\CategoryInterface``  |
-+---------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
-| enabled       | boolean        | ``true``                                                                   |                                                                     |
-|               |                |                                                                            |                                                                     |
-+---------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
-| values        | array          |                                                                            | | see below                                                         |
-|               |                |                                                                            |                                                                     |
-+---------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
-| created       | string         | ``"2016-06-13T00:00:00+02:00"``                                            | | formatted to ISO-8601 (see above)                                 |
-|               |                |                                                                            |                                                                     |
-+---------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
-| updated       | array          | ``"2016-06-13T00:00:00+02:00"``                                            | | formatted to ISO-8601 (see above)                                 |
-|               |                |                                                                            |                                                                     |
-+---------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
-| associations  | array          | ``["X_SELL" => ["groups" => [0 => "groupA"],"products" => [0 => "foo"]]]`` | | see below                                                         |
-|               |                |                                                                            |                                                                     |
-+---------------+----------------+----------------------------------------------------------------------------+---------------------------------------------------------------------+
++-------------------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+| type                    | data structure | data example                                                                                                                                                  |   notes                                                             |
++=========================+================+===============================================================================================================================================================+=====================================================================+
+| identifier              | string         | ``"bar"``                                                                                                                                                     | | it's the identifier of the product                                |
+|                         |                |                                                                                                                                                               |                                                                     |
++-------------------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+| family                  | string         | ``"familyA"``                                                                                                                                                 | | it represents the code of the                                     |
+|                         |                |                                                                                                                                                               | | ``Akeneo\Pim\Structure\Component\Model\FamilyInterface``          |
++-------------------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+| groups                  | array          | ``[0 => "groupA", 1 => "groupB"]``                                                                                                                            | | it represents the code of the                                     |
+|                         |                |                                                                                                                                                               | | ``Akeneo\Pim\Enrichment\Component\Category\Model\GroupInterface`` |
++-------------------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+| variant_group           | string         | ``"variantA"``                                                                                                                                                | | it represents the code of the                                     |
+|                         |                |                                                                                                                                                               | | ``Akeneo\Pim\Enrichment\Component\Category\Model\GroupInterface`` |
++-------------------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+| categories              | array          | ``[0 => "categoryA", 1 => "categoryB"]``                                                                                                                      | | it represents the code of the object                              |
+|                         |                |                                                                                                                                                               | | ``Akeneo\Tool\Component\Classification\Model\CategoryInterface``  |
++-------------------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+| enabled                 | boolean        | ``true``                                                                                                                                                      |                                                                     |
+|                         |                |                                                                                                                                                               |                                                                     |
++-------------------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+| values                  | array          |                                                                                                                                                               | | see below                                                         |
+|                         |                |                                                                                                                                                               |                                                                     |
++-------------------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+| created                 | string         | ``"2016-06-13T00:00:00+02:00"``                                                                                                                               | | formatted to ISO-8601 (see above)                                 |
+|                         |                |                                                                                                                                                               |                                                                     |
++-------------------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+| updated                 | array          | ``"2016-06-13T00:00:00+02:00"``                                                                                                                               | | formatted to ISO-8601 (see above)                                 |
+|                         |                |                                                                                                                                                               |                                                                     |
++-------------------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+| associations            | array          | ``["X_SELL" => ["groups" => [0 => "groupA"],"products" => [0 => "foo"],"product_models" => [0 => "productModelA"]]]``                                         | | see below                                                         |
++-------------------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+| quantified_associations | array          | ``["PRODUCT_SET" => ["products" => [["identifier" => "productA", "quantity"=> 1]],"product_models" => [["identifier" => "productModelA", "quantity"=> 1]]]``  | | see below                                                         |
+|                         |                |                                                                                                                                                               |                                                                     |
++-------------------------+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
 
 Associations
 ------------
@@ -108,11 +132,12 @@ The structure of the array is composed as below:
 
 .. code-block:: php
 
-    "associations" => array:3 [
-      "X_SELL" => array:2 [
+    "associations" => array:1 [
+      "X_SELL" => array:3 [
         "groups" => array:1 [
           0 => "groupB"
         ]
+        "product_models" => array:0 []
         "products" => array:1 [
           0 => "foo"
         ]
@@ -125,6 +150,35 @@ Each element in the array "groups" represents the code of the ``Akeneo\Pim\Enric
 
 Each element in the array "products" represents the identifier of the ``Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface``.
 
+Each element in the array "product_models" represents the code of the ``Akeneo\Pim\Enrichment\Component\Product\Model\ProductModelInterface``.
+
+Quantified associations
+-----------------------
+
+.. code-block:: php
+
+    "quantified_associations" => array:1 [
+      "PRODUCT_SET" => array:2 [
+        "products" => array:1 [
+          0 => array:2 [
+            "identifier" => "productA"
+            "quantity" => 3
+          ]
+        ]
+        "product_models" => array:1 [
+          0 => array:2 [
+            "identifier" => "productModelA"
+            "quantity" => 2
+          ]
+        ]
+      ]
+    ]
+
+"PRODUCT_SET" represents the code of the ``Akeneo\Pim\Structure\Component\Model\AssociationTypeInterface``.
+
+Each identifier in the array "products" represents the identifier of the ``Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface``.
+
+Each identifier in the array "product_models" represents the code of the ``Akeneo\Pim\Enrichment\Component\Product\Model\ProductModelInterface``.
 
 Product values
 --------------
@@ -136,7 +190,8 @@ Let's now consider a catalog with all attribute types possible and a foo product
     * a family
     * several groups
     * several categories
-    * several associations related to groups and/or other products
+    * several associations related to groups, other products and/or product models
+    * several quantified associations related to products and/or product models
 
 Its standard format would be the following:
 
@@ -385,25 +440,56 @@ Its standard format would be the following:
       "created" => "2016-06-23T11:24:44+02:00"
       "updated" => "2016-06-23T11:24:44+02:00"
       "associations" => array:3 [
-        "PACK" => array:1 [
-          "groups" => []
+        "PACK" => array:3 [
+          "groups" => array:0 []
           "products" => array:2 [
             0 => "bar"
             1 => "baz"
           ]
+          "product_models" => array:0 []
         ]
-        "UPSELL" => array:1 [
+        "UPSELL" => array:3 [
           "groups" => array:1 [
             0 => "groupA"
           ]
-          "products" => []
+          "products" => array:0 []
+          "product_models" => array:1 [
+            0 => "productModelA"
+          ]
         ]
-        "X_SELL" => array:2 [
+        "X_SELL" => array:3 [
           "groups" => array:1 [
             0 => "groupB"
           ]
           "products" => array:1 [
             0 => "bar"
+          ]
+          "product_models" => array:1 [
+            0 => "productModelA"
+          ]
+        ]
+      ]
+      "quantified_associations" => array:1 [
+        "PRODUCT_SET" => array:2 [
+          "products" => array:2 [
+            0 => array:2 [
+              "identifier" => "productA"
+              "quantity" => 3
+            ]
+            1 => array:2 [
+              "identifier" => "productB"
+              "quantity" => 1
+            ]
+          ]
+          "product_models" => array:2 [
+            0 => array:2 [
+              "identifier" => "productModelA"
+              "quantity" => 2
+            ]
+            1 => array:2 [
+              "identifier" => "productModelB"
+              "quantity" => 4
+            ]
           ]
         ]
       ]
