@@ -13,7 +13,7 @@ Let's consider a bar product, without any product value, except its identifier s
     * several groups
     * a variant group
     * several categories
-    * several associations related to groups, other products and/or product models
+    * several associations related to groups, products and/or product models
     * several quantified associations related to products and/or product models
 
 Its standard format would be the following:
@@ -190,7 +190,7 @@ Let's now consider a catalog with all attribute types possible and a foo product
     * a family
     * several groups
     * several categories
-    * several associations related to groups, other products and/or product models
+    * several associations related to groups, products and/or product models
     * several quantified associations related to products and/or product models
 
 Its standard format would be the following:
