@@ -63,17 +63,17 @@ You can use the following IdP server image, named ``sso-idp-server``, in the ``d
     :linenos:
 
     sso-idp-server:
-    image: 'kristophjunge/test-saml-idp'
-    ports:
-      - '${DOCKER_PORT_SSO_IDP:-8082}:8080'
-    volumes:
-      - './docker/sso_authsources.php:/var/www/simplesamlphp/config/authsources.php'
-    environment:
-      SIMPLESAMLPHP_SP_ENTITY_ID: '${AKENEO_PIM_URL:-http://localhost:8080/}/saml/metadata'
-      SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE: '${AKENEO_PIM_URL:-http://localhost:8080/}/saml/acs'
-      SIMPLESAMLPHP_SP_SINGLE_LOGOUT_SERVICE: '${AKENEO_PIM_URL:-http://localhost:8080/}/saml/logout'
-    networks:
-      - 'pim'
+        image: 'kristophjunge/test-saml-idp'
+        ports:
+          - '${DOCKER_PORT_SSO_IDP:-8082}:8080'
+        volumes:
+          - './docker/sso_authsources.php:/var/www/simplesamlphp/config/authsources.php'
+        environment:
+          SIMPLESAMLPHP_SP_ENTITY_ID: '${AKENEO_PIM_URL:-http://localhost:8080/}/saml/metadata'
+          SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE: '${AKENEO_PIM_URL:-http://localhost:8080/}/saml/acs'
+          SIMPLESAMLPHP_SP_SINGLE_LOGOUT_SERVICE: '${AKENEO_PIM_URL:-http://localhost:8080/}/saml/logout'
+        networks:
+          - 'pim'
 
 You will find, below, an example of sso_authsources.php file
 
