@@ -75,7 +75,7 @@ You can use the following IdP server image, named ``sso-idp-server``, in the ``d
         networks:
           - 'pim'
 
-You will find, below, an example of sso_authsources.php file
+You will find, below, an example of sso_authsources.php file.
 
 .. code-block:: php
     :linenos:
