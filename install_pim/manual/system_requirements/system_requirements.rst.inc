@@ -101,6 +101,8 @@ Besides these modules, the following configuration is the minimal configuration 
 +----------------+---------------------------+
 | yarn           | ≥ 1.0.0                   |
 +----------------+---------------------------+
+| JQuery         | 3.4                       |
++----------------+---------------------------+
 
 .. _database-servers:
 
