@@ -13,7 +13,7 @@ Execute the following composer commands to require the bundle:
 .. code-block:: bash
 
     composer config repositories.onboarder '{"type": "vcs", "url": "ssh://git@distribution.akeneo.com:443/pim-onboarder"}'
-    composer require "akeneo/pim-onboarder" "4.0.*"
+    composer require "akeneo/pim-onboarder" "^4.0"
 
 
 Enable the extension
@@ -27,7 +27,7 @@ Register the newly installed PIM Onboarder bundle in your ``config/bundles.php``
         // Add your bundles here with the associated env.
         // Ex:
         // Acme\Bundle\AppBundle\AcmeAppBundle::class => ['dev' => true, 'test' => true, 'prod' => true]
-        new Akeneo\Onboarder\Bundle\PimOnboarderBundle::class => ['all' => true],
+        Akeneo\Onboarder\Bundle\PimOnboarderBundle::class => ['all' => true],
     ];
 
 
@@ -37,11 +37,12 @@ Configure the extension
 Load the extension configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Copy the extension configuration in the ``config`` directory
+Copy the extension configuration in the ``config`` directory.
 
 .. code-block:: bash
 
     cp vendor/akeneo/pim-onboarder/src/Bundle/Resources/config/onboarder_configuration.yml config/packages/onboarder.yml
+
 
 Build the UI
 -----------------------
@@ -52,6 +53,7 @@ Execute the following command to build the UI:
 
     bin/console pim:installer:assets --clean --env=prod && yarn run webpack
 
+
 Make the credential files accessible to Akeneo PIM software
 -----------------------------------------------------------
 
@@ -60,6 +62,7 @@ In the parameters package the Akeneo team put a ``serviceAccount.json`` credenti
 Make sure this file is shipped to the server which is hosting your PIM.
 
 This file must be accessible (read rights) by the system user that runs the pim (example: www-data).
+
 
 Set the configuration values
 ----------------------------
@@ -93,7 +96,6 @@ Here are two examples in order to define environment variables:
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | ONBOARDER_CLOUD_STORAGE_BUCKET_NAME                | Identifier of the bucket used to share files between your PIM and the middleware.                                                 |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-
 
 **Optional variables**
 
@@ -129,3 +131,7 @@ A new Elasticsearch index is needed for pre ref products. In order to create it,
 .. code-block:: bash
 
     $ bin/console akeneo:elasticsearch:reset-indexes --index pim_onboarder_pre_ref_product --env=prod
+
+.. note::
+
+    You do not need to reindex anything at this point, even if the ``reset-indexes`` command proposes you to do so.
