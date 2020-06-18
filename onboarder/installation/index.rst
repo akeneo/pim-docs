@@ -13,7 +13,7 @@ Execute the following composer commands to require the bundle:
 .. code-block:: bash
 
     composer config repositories.onboarder '{"type": "vcs", "url": "ssh://git@distribution.akeneo.com:443/pim-onboarder"}'
-    composer require "akeneo/pim-onboarder" "^4.0"
+    composer require "akeneo/pim-onboarder" "^4.1"
 
 
 Enable the extension
@@ -29,19 +29,6 @@ Register the newly installed PIM Onboarder bundle in your ``config/bundles.php``
         // Acme\Bundle\AppBundle\AcmeAppBundle::class => ['dev' => true, 'test' => true, 'prod' => true]
         Akeneo\Onboarder\Bundle\PimOnboarderBundle::class => ['all' => true],
     ];
-
-
-Configure the extension
------------------------
-
-Load the extension configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Copy the extension configuration in the ``config`` directory.
-
-.. code-block:: bash
-
-    cp vendor/akeneo/pim-onboarder/src/Bundle/Resources/config/onboarder_configuration.yml config/packages/onboarder.yml
 
 
 Build the UI
@@ -120,7 +107,9 @@ The akeneo/pim-onboarder extension needs some extra tables. Please run the follo
 
     $ php bin/console akeneo:onboarder:setup-database --env=prod
 
-Once the installation done, please read the documentation about the :doc:`synchronization </onboarder/synchronization/index>`.
+.. warning::
+
+    Once the installation done, please read the documentation about the :doc:`synchronization </onboarder/synchronization/index>`.
 
 
 Create Elasticsearch index for pre ref products
@@ -132,6 +121,6 @@ A new Elasticsearch index is needed for pre ref products. In order to create it,
 
     $ bin/console akeneo:elasticsearch:reset-indexes --index pim_onboarder_pre_ref_product --env=prod
 
-.. note::
+.. warning::
 
     You do not need to reindex anything at this point, even if the ``reset-indexes`` command proposes you to do so.
