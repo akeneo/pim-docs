@@ -735,7 +735,7 @@ _______
 
     - **"+"** means a date in the future, **"-"** a date in the past
     - **count** is an integer
-    - **unit** is one of the following values: *second*, *minute*, *hour*, *day*, *week*, *month* or *year* with an optional final *s*
+    - **unit** is one of the following values: *minute*, *hour*, *day*, *week*, *month* or *year* with an optional final *s*
 
 
     For instance, **+1 month** means *in one month*, and **-2 days** means *2 days ago*
@@ -1002,29 +1002,55 @@ ______
 
 Date
 ____
-+--------------+------------------------+
-| Operator     | - <                    |
-|              | - ">"                  |
-|              | - =                    |
-|              | - !=                   |
-|              | - BETWEEN              |
-|              | - NOT BETWEEN          |
-|              | - EMPTY                |
-|              | - NOT EMPTY            |
-+--------------+------------------------+
-| Value        | Format date:           |
-|              | yyyy-mm-dd. If         |
-|              | operator is EMPTY or   |
-|              | NOT EMPTY, values      |
-|              | information is         |
-|              | ignored.               |
-+--------------+------------------------+
-| Example      | .. code-block:: yaml   |
-|              |                        |
-|              |   field: created_date  |
-|              |   operator: ">"        |
-|              |   value: "2016-05-12"  |
-+--------------+------------------------+
++--------------+----------------------------------------+
+| Operator     | - <                                    |
+|              | - ">"                                  |
+|              | - =                                    |
+|              | - !=                                   |
+|              | - BETWEEN                              |
+|              | - NOT BETWEEN                          |
+|              | - EMPTY                                |
+|              | - NOT EMPTY                            |
++--------------+----------------------------------------+
+| Value        | date format:                           |
+|              |                                        |
+|              | - "yyyy-mm-dd"                         |
+|              | - "now"                                |
+|              | - "<relative date format>" (see below) |
+|              |                                        |
+|              | If the operator is EMPTY or NOT EMPTY, |
+|              | the value will be ignored.             |
+|              | The "relative date format" only works  |
+|              | with the <, >, = and != operators      |
++--------------+----------------------------------------+
+| Examples     | .. code-block:: yaml                   |
+|              |                                        |
+|              |   - field: release_date                |
+|              |     operator: =                        |
+|              |     value: "2015-01-23"                |
+|              |                                        |
+|              |   - field: creation_date               |
+|              |     operator: >                        |
+|              |     value: "-6 months"                 |
++--------------+----------------------------------------+
+
+.. note::
+
+    The "relative date format" allows to specify dates that are relative to the rule execution's date, it is formatted as follows:
+
+    **<+/-><count> <unit>**, with:
+
+
+    - **"+"** means a date in the future, **"-"** a date in the past
+    - **count** is an integer
+    - **unit** is one of the following values: *day*, *week*, *month* or *year* with an optional final *s*
+
+
+    For instance, **+1 month** means *in one month*, and **-2 days** means *2 days ago*
+
+.. warning::
+
+    The calculated dates are relative to the current UTC date.
 
 Price
 _____
