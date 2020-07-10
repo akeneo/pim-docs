@@ -558,7 +558,7 @@ This action allows calculating numeric attribute values, with simple mathematica
 
 This action only accepts number, measurement or price collection attributes for both the source and the destination.
 
-The action is split into 3 different parts:
+The action is split into 3 required steps, and 1 optional:
 
 **destination**: the value you want to update. It is composed of:
 
@@ -592,6 +592,18 @@ It is exactly the same format as the ``source`` property, with an additional req
 
 If a product value required in an operation is empty, or if a division by zero occurs, the product won't be updated.
 
+**round_precision** (optional): rounds the final result of the operation(s)
+
+If this parameter is not specified or if the value is null, the final result will not be rounded.
+The round precision can be:
+
+- a positive number: it represents the number of decimals to keep
+- 0: rounded with no decimal
+- a negative number: the rounding will occur before the decimal point (example with precision of `-1`: `81` becomes `80`, with precision of `-2`: `81` becomes `100`)
+
+If the destination attribute does not allow decimals, the action can be applied only when the result is an integer.
+This behavior can be changed by setting up the *round_precision* to 0: the result will be rounded and the action will be applied.
+
 .. tip::
 
     For instance, in order to calculate the volume of a cone (volume = (π x R² x h) / 3), given a radius and a height, you can use the following action:
@@ -615,12 +627,13 @@ If a product value required in an operation is empty, or if a division by zero o
                     - operator: divide
                       value: 3
 
-    The following action will calculate a price in euros, based on the price in dollars and a ratio:
+    The following action will calculate a price in euros, based on the price in dollars and a ratio, and round the result to the nearest integer value:
 
         .. code-block:: yaml
 
             actions:
                 - type: calculate
+                  round_precision: 0
                   destination:
                     field: price
                     scope: ecommerce
@@ -647,55 +660,89 @@ Fields
 
 Created
 _______
-+--------------+-----------------------+
-| Operator     | - =                   |
-|              | - !=                  |
-|              | - ">"                 |
-|              | - <                   |
-|              | - BETWEEN             |
-|              | - NOT BETWEEN         |
-|              | - EMPTY               |
-|              | - NOT EMPTY           |
-+--------------+-----------------------+
-| Value        | date format:          |
-|              | yyyy-mm-dd. If        |
-|              | operator is EMPTY or  |
-|              | NOT EMPTY, value      |
-|              | element will be       |
-|              | ignored.              |
-+--------------+-----------------------+
-| Example      | .. code-block:: yaml  |
-|              |                       |
-|              |   field: created      |
-|              |   operator: =         |
-|              |   value: "2015-01-23" |
-+--------------+-----------------------+
++--------------+----------------------------------------+
+| Operator     | - =                                    |
+|              | - !=                                   |
+|              | - ">"                                  |
+|              | - <                                    |
+|              | - BETWEEN                              |
+|              | - NOT BETWEEN                          |
+|              | - EMPTY                                |
+|              | - NOT EMPTY                            |
++--------------+----------------------------------------+
+| Value        | date format:                           |
+|              |                                        |
+|              | - "yyyy-mm-dd HH:MM:SS" (UTC time)     |
+|              | - "now"                                |
+|              | - "<relative date format>" (see below) |
+|              |                                        |
+|              | If the operator is EMPTY or NOT EMPTY, |
+|              | the value will be ignored.             |
+|              | The "relative date format" only works  |
+|              | with the <, >, = and != operators      |
++--------------+----------------------------------------+
+| Examples     | .. code-block:: yaml                   |
+|              |                                        |
+|              |   - field: created                     |
+|              |     operator: =                        |
+|              |     value: "2015-01-23 00:00:00"       |
+|              |                                        |
+|              |   - field: created                     |
+|              |     operator: <                        |
+|              |     value: "-10 days"                  |
++--------------+----------------------------------------+
 
 Updated
 _______
-+--------------+-----------------------+
-| Operator     | - =                   |
-|              | - !=                  |
-|              | - ">"                 |
-|              | - <                   |
-|              | - BETWEEN             |
-|              | - NOT BETWEEN         |
-|              | - EMPTY               |
-|              | - NOT EMPTY           |
-+--------------+-----------------------+
-| Value        | date format:          |
-|              | yyyy-mm-dd. If        |
-|              | operator is EMPTY or  |
-|              | NOT EMPTY, value      |
-|              | element will be       |
-|              | ignored.              |
-+--------------+-----------------------+
-| Example      | .. code-block:: yaml  |
-|              |                       |
-|              |   field: updated      |
-|              |   operator: =         |
-|              |   value: "2015-01-23" |
-+--------------+-----------------------+
++--------------+----------------------------------------+
+| Operator     | - =                                    |
+|              | - !=                                   |
+|              | - ">"                                  |
+|              | - <                                    |
+|              | - BETWEEN                              |
+|              | - NOT BETWEEN                          |
+|              | - EMPTY                                |
+|              | - NOT EMPTY                            |
++--------------+----------------------------------------+
+| Value        | date format:                           |
+|              |                                        |
+|              | - "yyyy-mm-dd HH:MM:SS" (UTC time)     |
+|              | - "now"                                |
+|              | - "<relative date format>" (see below) |
+|              |                                        |
+|              | If the operator is EMPTY or NOT EMPTY, |
+|              | the value will be ignored.             |
+|              | The "relative date format" only works  |
+|              | with the <, >, = and != operators      |
++--------------+----------------------------------------+
+| Examples     | .. code-block:: yaml                   |
+|              |                                        |
+|              |   - field: updated                     |
+|              |     operator: =                        |
+|              |     value: "2015-01-23 00:00:00"       |
+|              |                                        |
+|              |   - field: updated                     |
+|              |     operator: >                        |
+|              |     value: "-1 year"                   |
++--------------+----------------------------------------+
+
+.. note::
+
+    The "relative date format" allows to specify dates that are relative to the rule execution's date, it is formatted as follows:
+
+    **<+/-><count> <unit>**, with:
+
+
+    - **"+"** means a date in the future, **"-"** a date in the past
+    - **count** is an integer
+    - **unit** is one of the following values: *minute*, *hour*, *day*, *week*, *month* or *year* with an optional final *s*
+
+
+    For instance, **+1 month** means *in one month*, and **-2 days** means *2 days ago*
+
+.. warning::
+
+    Obviously, for the "created" and "updated" properties, the only relevant relative date format is the "past" relative date
 
 Enabled
 _______
@@ -715,25 +762,31 @@ _______
 
 Completeness
 ____________
-+--------------+-----------------------+
-| Operator     | - =                   |
-|              | - !=                  |
-|              | - ">"                 |
-|              | - <                   |
-+--------------+-----------------------+
-| Value        | Percentage.           |
-|              | /!\\ locale and scope |
-|              | elements are          |
-|              | mandatory.            |
-+--------------+-----------------------+
-| Example      | .. code-block:: yaml  |
-|              |                       |
-|              |   field: completeness |
-|              |   locale: fr_FR       |
-|              |   scope: print        |
-|              |   operator: =         |
-|              |   value: "100"        |
-+--------------+-----------------------+
++--------------+---------------------------------------------------------------------------+
+| Operator     | - EQUALS ON AT LEAST ONE LOCALE                                           |
+|              | - NOT EQUALS ON AT LEAST ONE LOCALE                                       |
+|              | - GREATER THAN ON AT LEAST ONE LOCALE                                     |
+|              | - GREATER OR EQUALS THAN ON AT LEAST ONE LOCALE                           |
+|              | - LOWER THAN ON AT LEAST ONE LOCALE                                       |
+|              | - LOWER OR EQUALS THAN ON AT LEAST ONE LOCALE                             |
+|              | - =   (deprecated please use EQUALS ON AT LEAST ONE LOCALE instead)       |
+|              | - !=  (deprecated please use NOT EQUALS ON AT LEAST ONE LOCALE instead)   |
+|              | - ">" (deprecated please use GREATER THAN ON AT LEAST ONE LOCALE instead) |
+|              | - <   (deprecated please use LOWER THAN ON AT LEAST ONE LOCALE instead)   |
++--------------+---------------------------------------------------------------------------+
+| Value        | Percentage.                                                               |
+|              | /!\\ locale and scope                                                     |
+|              | elements are                                                              |
+|              | mandatory.                                                                |
++--------------+---------------------------------------------------------------------------+
+| Example      | .. code-block:: yaml                                                      |
+|              |                                                                           |
+|              |   field: completeness                                                     |
+|              |   locale: fr_FR                                                           |
+|              |   scope: print                                                            |
+|              |   operator: EQUALS ON AT LEAST ONE LOCALE                                 |
+|              |   value: "100"                                                            |
++--------------+---------------------------------------------------------------------------+
 
 Family
 ______
@@ -955,29 +1008,55 @@ ______
 
 Date
 ____
-+--------------+------------------------+
-| Operator     | - <                    |
-|              | - ">"                  |
-|              | - =                    |
-|              | - !=                   |
-|              | - BETWEEN              |
-|              | - NOT BETWEEN          |
-|              | - EMPTY                |
-|              | - NOT EMPTY            |
-+--------------+------------------------+
-| Value        | Format date:           |
-|              | yyyy-mm-dd. If         |
-|              | operator is EMPTY or   |
-|              | NOT EMPTY, values      |
-|              | information is         |
-|              | ignored.               |
-+--------------+------------------------+
-| Example      | .. code-block:: yaml   |
-|              |                        |
-|              |   field: created_date  |
-|              |   operator: ">"        |
-|              |   value: "2016-05-12"  |
-+--------------+------------------------+
++--------------+----------------------------------------+
+| Operator     | - <                                    |
+|              | - ">"                                  |
+|              | - =                                    |
+|              | - !=                                   |
+|              | - BETWEEN                              |
+|              | - NOT BETWEEN                          |
+|              | - EMPTY                                |
+|              | - NOT EMPTY                            |
++--------------+----------------------------------------+
+| Value        | date format:                           |
+|              |                                        |
+|              | - "yyyy-mm-dd"                         |
+|              | - "now"                                |
+|              | - "<relative date format>" (see below) |
+|              |                                        |
+|              | If the operator is EMPTY or NOT EMPTY, |
+|              | the value will be ignored.             |
+|              | The "relative date format" only works  |
+|              | with the <, >, = and != operators      |
++--------------+----------------------------------------+
+| Examples     | .. code-block:: yaml                   |
+|              |                                        |
+|              |   - field: release_date                |
+|              |     operator: =                        |
+|              |     value: "2015-01-23"                |
+|              |                                        |
+|              |   - field: creation_date               |
+|              |     operator: >                        |
+|              |     value: "-6 months"                 |
++--------------+----------------------------------------+
+
+.. note::
+
+    The "relative date format" allows to specify dates that are relative to the rule execution's date, it is formatted as follows:
+
+    **<+/-><count> <unit>**, with:
+
+
+    - **"+"** means a date in the future, **"-"** a date in the past
+    - **count** is an integer
+    - **unit** is one of the following values: *day*, *week*, *month* or *year* with an optional final *s*
+
+
+    For instance, **+1 month** means *in one month*, and **-2 days** means *2 days ago*
+
+.. warning::
+
+    The calculated dates are relative to the current UTC date.
 
 Price
 _____
