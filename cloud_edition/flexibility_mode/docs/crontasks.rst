@@ -67,9 +67,7 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     #Ansible: akeneo:connectivity-audit:update-data
     1 0 * * * akeneo:connectivity-audit:update-data
     #Ansible: pimee:project:recalculate
-    0 2 * * * pimee:project:recalculate
-    #Ansible: pimee:franklin-insights:fetch-products
-    */30 * * * * pimee:franklin-insights:fetch-products
+    0 2 * * * pimee:project:recalculate --env=prod
     #Ansible: akeneo:reference-entity:refresh-records --all
     0 23 * * * akeneo:reference-entity:refresh-records --all --env=prod
     #Ansible: pimee:sso:rotate-log 10 --env=prod
