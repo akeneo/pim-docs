@@ -78,8 +78,6 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     15 0 * * * pimee:data-quality-insights:schedule-periodic-tasks --env=prod
     #Ansible: pimee:data-quality-insights:evaluate-products --env=prod
     */30 * * * * pimee:data-quality-insights:evaluate-products --env=prod
-    #Ansible: pimee:franklin-insights:quality-highlights:push-structure-and-products
-    15 0,12 * * * pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod
 
     # My custom jobs
     SHELL=/bin/bash
