@@ -399,7 +399,7 @@ messages of all the commits. When you are finished, execute the push command.
 .. _`behat quick intro`:                https://docs.behat.org/en/latest/quick_start.html
 .. _`begin with PHPSpec`:               https://www.phpspec.net/
 .. _`Prophecy documentation`:           https://github.com/phpspec/prophecy#prophecy
-.. _`Doctrine migration documentation`: https://www.doctrine-project.org/projects/doctrine-migrations/en/latest/reference/introduction.html
+.. _`Doctrine migration documentation`: https://www.doctrine-project.org/projects/doctrine-migrations/en/1.8/reference/introduction.html
 
 Step 4: Is my pull request merged?
 ----------------------------------
