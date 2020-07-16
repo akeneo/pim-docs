@@ -59,14 +59,14 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     20 0 * * * pimee:project:notify-before-due-date --env=prod
     #Ansible: akeneo:connectivity-audit:update-data
     1 0 * * * akeneo:connectivity-audit:update-data --env=prod
-    #Ansible: akeneo:connectivity-audit:purge-read-product
-    0 4 * * * akeneo:connectivity-audit:purge-read-product --env=prod
+    #Ansible: akeneo:connectivity-connection:purge-error
+    10 * * * * akeneo:connectivity-connection:purge-error --env=prod
     #Ansible: pim:asset:send-expiration-notification
     0 1 * * * pim:asset:send-expiration-notification --env=prod
+    #Ansible: akeneo:connectivity-audit:purge-error-count
+    40 12 * * * akeneo:connectivity-audit:purge-error-count
     #Ansible: pimee:project:recalculate
     0 2 * * * pimee:project:recalculate --env=prod
-    #Ansible: pimee:franklin-insights:fetch-products
-    */30 * * * * pimee:franklin-insights:fetch-products --env=prod
     #Ansible: akeneo:reference-entity:refresh-records --all
     0 23 * * * akeneo:reference-entity:refresh-records --all --env=prod
     #Ansible: pimee:sso:rotate-log 10 --env=prod
@@ -77,8 +77,6 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     15 0 * * * pimee:data-quality-insights:schedule-periodic-tasks --env=prod
     #Ansible: pimee:data-quality-insights:evaluate-products --env=prod
     */30 * * * * pimee:data-quality-insights:evaluate-products --env=prod
-    #Ansible: pimee:franklin-insights:quality-highlights:push-structure-and-products
-    15 0,12 * * * pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod
 
     # My custom jobs
     SHELL=/bin/bash
@@ -119,9 +117,11 @@ The default crontab at the moment on our Flexibility environments is the followi
 +---------------------------------------------------------+-------------------+--------------------------------------------+
 | akeneo:connectivity-audit:update-data --env=prod        | 1 \* \* \* \*     | Every hour                                 |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
-| akeneo:connectivity-audit:purge-read-product --env=prod | 0 4 \* \* \*      | At 4:00 AM                                 |
+| akeneo:connectivity-connection:purge-error --env=prod   | 10 \* \* \* \*    | Every hour                                 |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
 | akeneo:batch:purge-job-execution --env=prod             | 20 0 1 \* \*      | At 12:20 AM, every first day of the month  |
++---------------------------------------------------------+-------------------+--------------------------------------------+
+| akeneo:connectivity-audit:purge-error-count --env=prod  | 40 12 \* \* \*    | At 12:40 AM                                |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
 | pim:asset:send-expiration-notification --env=prod       | 0 1 \* \* \*      | At 01:00 AM                                |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
@@ -139,13 +139,9 @@ Enterprise Edition specific crontab:
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
 | pimee:project:recalculate --env=prod                                              | 0 2 \* \* \*        | At 02:00 AM              |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:franklin-insights:fetch-products --env=prod                                 | \*/30 \* \* \* \*   | Every 30 minutes         |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
 | akeneo:reference-entity:refresh-records --all --env=prod                          | 0 23 \* \* \*       | At 11:00 PM              |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
 | pimee:data-quality-insights:schedule-periodic-tasks --env=prod                    | 15 0 \* \* \*       | At 00:15 AM              |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
 | pimee:data-quality-insights:evaluate-products --env=prod                          | \*/30 \* \* \* \*   | Every 30 minutes         |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod | 15 0,12 \* \* \*    | At 12:15 AM and 12:15 PM |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+

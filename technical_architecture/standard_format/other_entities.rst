@@ -160,6 +160,7 @@ Association Type
         "en_US" => "Cross sell"
         "fr_FR" => "Vente croisée"
       ],
+      "is_two_way" => false,
       "is_quantified" => false
     ]
 
@@ -170,6 +171,8 @@ Association Type
 +------------------------+----------------+--------------------------------------+---------------------------------------------------------------------+
 | labels                 | string[]       | ``["en_US" => "Croll sell"]``        | | each key of the array represents the `code` of the                |
 |                        |                |                                      | | ``Akeneo\Channel\Component\Model\LocaleInterface``                |
++------------------------+----------------+--------------------------------------+---------------------------------------------------------------------+
+| is_two_way             | boolean        | ``true``                             | | When true, the association is a two-way association               |
 +------------------------+----------------+--------------------------------------+---------------------------------------------------------------------+
 | is_quantified          | boolean        | ``false``                            | | When true, the association is a quantified association            |
 +------------------------+----------------+--------------------------------------+---------------------------------------------------------------------+
