@@ -68,20 +68,16 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     1 0 * * * akeneo:connectivity-audit:update-data
     #Ansible: pimee:project:recalculate
     0 2 * * * pimee:project:recalculate
-    #Ansible: pimee:franklin-insights:fetch-products
-    */30 * * * * pimee:franklin-insights:fetch-products
     #Ansible: akeneo:reference-entity:refresh-records --all
-    0 23 * * * akeneo:reference-entity:refresh-records --all --env=prod
-    #Ansible: pimee:sso:rotate-log 10 --env=prod
-    4 22 * * * pimee:sso:rotate-log 10 --env=prod
-    #Ansible: pim:volume:aggregate --env=prod
-    0 23 * * * pim:volume:aggregate --env=prod
-    #Ansible: pimee:data-quality-insights:schedule-periodic-tasks --env=prod
-    15 0 * * * pimee:data-quality-insights:schedule-periodic-tasks --env=prod
-    #Ansible: pimee:data-quality-insights:evaluate-products --env=prod
-    */30 * * * * pimee:data-quality-insights:evaluate-products --env=prod
-    #Ansible: pimee:franklin-insights:quality-highlights:push-structure-and-products
-    15 0,12 * * * pimee:franklin-insights:quality-highlights:push-structure-and-products --env=prod
+    0 23 * * * akeneo:reference-entity:refresh-records --all
+    #Ansible: pimee:sso:rotate-log 10
+    4 22 * * * pimee:sso:rotate-log 10
+    #Ansible: pim:volume:aggregate
+    0 23 * * * pim:volume:aggregate
+    #Ansible: pimee:data-quality-insights:schedule-periodic-tasks
+    15 0 * * * pimee:data-quality-insights:schedule-periodic-tasks
+    #Ansible: pimee:data-quality-insights:evaluate-products
+    */30 * * * * pimee:data-quality-insights:evaluate-products
 
     # My custom jobs
     SHELL=/bin/bash
