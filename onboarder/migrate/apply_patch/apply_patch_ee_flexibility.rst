@@ -1,7 +1,7 @@
 How to apply an Onboarder patch - Enterprise Edition - Flexibility Cloud offer
 ==============================================================================
 
-In the following example, Akeneo Onboarder version 2.3.x has just been released and we are using an Akeneo PIM version 3.0.x.
+In the following example, Akeneo Onboarder version 2.4.x has just been released and we are using an Akeneo PIM version 3.0.x.
 
 Using the exact patch version will avoid any local composer cache issue.
 
@@ -13,7 +13,7 @@ To upgrade, please change the composer.json to:
 
     {
         ...
-        "akeneo/pim-onboarder": "2.3.x",
+        "akeneo/pim-onboarder": "^2.4",
         ...
     }
 
@@ -25,7 +25,7 @@ Run the composer update command:
 
 You have to check whether the latest composer.json is different from your own. In this case you should backup your current composer.json and download the newest one beforehand.
 
-Double check in the output of this command that the 2.3.x version has been fetched, you can also check it by using the following command:
+Double check in the output of this command that the 2.4.x version has been fetched, you can also check it by using the following command:
 
 .. code-block:: bash
 
