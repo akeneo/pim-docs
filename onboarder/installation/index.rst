@@ -32,12 +32,14 @@ Register the newly installed PIM Onboarder bundle in your ``config/bundles.php``
 
 
 Build the UI
------------------------
+------------
 
-Execute the following command to build the UI:
+Clear the Symfony cache and execute the following command to build the UI:
 
 .. code-block:: bash
 
+    rm -rf var/cache/*
+    bin/console cache:warmup --env=prod
     bin/console pim:installer:assets --clean --env=prod && yarn run webpack
 
 
