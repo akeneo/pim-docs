@@ -762,31 +762,25 @@ _______
 
 Completeness
 ____________
-+--------------+---------------------------------------------------------------------------+
-| Operator     | - EQUALS ON AT LEAST ONE LOCALE                                           |
-|              | - NOT EQUALS ON AT LEAST ONE LOCALE                                       |
-|              | - GREATER THAN ON AT LEAST ONE LOCALE                                     |
-|              | - GREATER OR EQUALS THAN ON AT LEAST ONE LOCALE                           |
-|              | - LOWER THAN ON AT LEAST ONE LOCALE                                       |
-|              | - LOWER OR EQUALS THAN ON AT LEAST ONE LOCALE                             |
-|              | - =   (deprecated please use EQUALS ON AT LEAST ONE LOCALE instead)       |
-|              | - !=  (deprecated please use NOT EQUALS ON AT LEAST ONE LOCALE instead)   |
-|              | - ">" (deprecated please use GREATER THAN ON AT LEAST ONE LOCALE instead) |
-|              | - <   (deprecated please use LOWER THAN ON AT LEAST ONE LOCALE instead)   |
-+--------------+---------------------------------------------------------------------------+
-| Value        | Percentage.                                                               |
-|              | /!\\ locale and scope                                                     |
-|              | elements are                                                              |
-|              | mandatory.                                                                |
-+--------------+---------------------------------------------------------------------------+
-| Example      | .. code-block:: yaml                                                      |
-|              |                                                                           |
-|              |   field: completeness                                                     |
-|              |   locale: fr_FR                                                           |
-|              |   scope: print                                                            |
-|              |   operator: EQUALS ON AT LEAST ONE LOCALE                                 |
-|              |   value: "100"                                                            |
-+--------------+---------------------------------------------------------------------------+
++--------------+-----------------------+
+| Operator     | - =                   |
+|              | - !=                  |
+|              | - ">"                 |
+|              | - <                   |
++--------------+-----------------------+
+| Value        | Percentage.           |
+|              | /!\\ locale and scope |
+|              | elements are          |
+|              | mandatory.            |
++--------------+-----------------------+
+| Example      | .. code-block:: yaml  |
+|              |                       |
+|              |   field: completeness |
+|              |   locale: fr_FR       |
+|              |   scope: print        |
+|              |   operator: =         |
+|              |   value: "100"        |
++--------------+-----------------------+
 
 Family
 ______
