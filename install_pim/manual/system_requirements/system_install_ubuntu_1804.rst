@@ -73,9 +73,8 @@ The easiest way to install Elasticsearch 7 is to use the `official vendor packag
 .. code-block:: bash
 
     # apt-get install apt-transport-https
-    # wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
-    # echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-7.x.list
-    # apt update && apt-get install elasticsearch
+    # wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.5.2-amd64.deb
+    # dpkg -i elasticsearch-7.5.2-amd64.deb
     # service elasticsearch start
 
 .. warning::
