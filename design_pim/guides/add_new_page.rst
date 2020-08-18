@@ -93,9 +93,7 @@ To view your changes, you have to dump new routes and rebuild assets:
 
 .. code-block:: bash
 
-    $ bin/console pim:installer:dump-require-paths
-    $ bin/console pim:install:assets
-    $ bin/console assets:install --symlink
+    $ bin/console --env=prod pim:installer:assets --symlink --clean
     $ yarn run less
     $ yarn run webpack
 
