@@ -73,10 +73,10 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     4 22 * * * pimee:sso:rotate-log 10 --env=prod
     #Ansible: pim:volume:aggregate --env=prod
     0 23 * * * pim:volume:aggregate --env=prod
-    #Ansible: pimee:data-quality-insights:schedule-periodic-tasks --env=prod
-    15 0 * * * pimee:data-quality-insights:schedule-periodic-tasks --env=prod
-    #Ansible: pimee:data-quality-insights:evaluations --env=prod
-    */30 * * * * pimee:data-quality-insights:evaluations --env=prod
+    #Ansible: pim:data-quality-insights:schedule-periodic-tasks --env=prod
+    15 0 * * * pim:data-quality-insights:schedule-periodic-tasks --env=prod
+    #Ansible: pim:data-quality-insights:evaluations --env=prod
+    */30 * * * * pim:data-quality-insights:evaluations --env=prod
 
     # My custom jobs
     SHELL=/bin/bash
@@ -127,6 +127,10 @@ The default crontab at the moment on our Flexibility environments is the followi
 +---------------------------------------------------------+-------------------+--------------------------------------------+
 | pim:volume:aggregate --env=prod                         | 30 4 \* \* \*     | At 04:30 AM                                |
 +---------------------------------------------------------+-------------------+--------------------------------------------+
+| pim:data-quality-insights:schedule-periodic-tasks       | 15 0 \* \* \*     | At 00:15 AM                                |
++---------------------------------------------------------+-------------------+--------------------------------------------+
+| pim:data-quality-insights:evaluations                   | \*/30 \* \* \* \* | Every 30 minutes                           |
++---------------------------------------------------------+-------------------+--------------------------------------------+
 
 Enterprise Edition specific crontab:
 
@@ -140,8 +144,4 @@ Enterprise Edition specific crontab:
 | pimee:project:recalculate --env=prod                                              | 0 2 \* \* \*        | At 02:00 AM              |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
 | akeneo:reference-entity:refresh-records --all --env=prod                          | 0 23 \* \* \*       | At 11:00 PM              |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:data-quality-insights:schedule-periodic-tasks --env=prod                    | 15 0 \* \* \*       | At 00:15 AM              |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:data-quality-insights:evaluations --env=prod                                | \*/30 \* \* \* \*   | Every 30 minutes         |
 +-----------------------------------------------------------------------------------+---------------------+--------------------------+
