@@ -75,6 +75,8 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     0 23 * * * pim:volume:aggregate --env=prod
     #Ansible: pim:data-quality-insights:schedule-periodic-tasks --env=prod
     15 0 * * * pim:data-quality-insights:schedule-periodic-tasks --env=prod
+    #Ansible: pim:data-quality-insights:prepare-evaluations --env=prod
+    */10 * * * * pim:data-quality-insights:prepare-evaluations --env=prod
     #Ansible: pim:data-quality-insights:evaluations --env=prod
     */30 * * * * pim:data-quality-insights:evaluations --env=prod
 
