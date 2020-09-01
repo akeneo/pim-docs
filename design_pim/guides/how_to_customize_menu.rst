@@ -36,9 +36,8 @@ Now if you want to add an element inside the menu, you can use the item module:
         acme-custom-sub-element:                           # The unique key of your extension
             module: pim/menu/item                          # The module provided by akeneo for sub elements
             parent: acme-custom-root-element               # The parent is the tab we just created
-            targetZone: item
             # aclResourceId: my_custom_acl_key             # [optional] You can define a acl check - add this only if the acl has been created
-            position: 110                                  # [optional] The position in the tree where you want to add the item
+            position: 120                                  # [optional] The position in the tree where you want to add the item
             config:
                 title: pim_menu.item.import_profile        # You can define a translation key for the item name
                 to: pim_importexport_import_profile_index  # The route to redirect to
