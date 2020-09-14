@@ -418,9 +418,9 @@ Two parameters are required while the three others are optional.
 Concatenate
 ___________
 
-This action concatenates at least two sources into a single value. A source can be an attribute value, a text or a line break.
+This action concatenates at least two blocks into a single value. A block can be an attribute value or a text. You can also use the specific *new_line* block to start a new line.
 
-The possible source attribute types are:
+The possible block attribute types are:
  - text
  - text area
  - date
@@ -437,23 +437,23 @@ The possible target attribute types are:
  - text
  - textarea
 
-By default a space is added between two source attribute values (not between a source attribute and a source text, or between two source texts). You can avoid this behavior by adding an empty text between the two source attribute values.
+By default, a space is added between two attribute value blocks (not between an attribute and a text block, or between two text blocks). You can avoid this behavior by adding an empty text between the two attribute value blocks.
 
 **The parameters from and to are required in the format. Depending on the source attribute type, some optional keys can be set:**
 
 +------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| from | List of sets for all sources.                                                                                                                                              |
+| from | List of sets for all blocks.                                                                                                                                               |
 |      |                                                                                                                                                                            |
-|      | A source must contain exactly one single key among the following ones, plus some extra keys defined further:                                                               |
+|      | A block must contain exactly one single key among the following ones, plus some extra keys defined later:                                                                  |
 |      |                                                                                                                                                                            |
 |      | - field: attribute code.                                                                                                                                                   |
 |      | - text: a specific text.                                                                                                                                                   |
-|      | - new_line: no specific value (e.g. ``new_line: ~``). Only available if the target attribute is a text area.                                                               |
+|      | - new_line: no specific value. Please use ``new_line: ~``. It is only available if the target attribute is a text area.                                                    |
 |      |                                                                                                                                                                            |
 |      | For localizable and/or scopable attributes:                                                                                                                                |
 |      |                                                                                                                                                                            |
-|      | - locale: locale code for which the value is assigned, for localizable attributes (mandatory for localizable attributes only).                                             |
-|      | - scope: channel code for which the value is assigned, for scopable attributes (mandatory for scopable attributes only).                                                   |
+|      | - locale: locale code to which the value is assigned, mandatory and only for localizable attributes                                                                        |
+|      | - scope: channel code to which the value is assigned, mandatory and only for scopable attributes                                                                           |
 |      |                                                                                                                                                                            |
 |      | For date attributes:                                                                                                                                                       |
 |      |                                                                                                                                                                            |
@@ -509,7 +509,7 @@ By default a space is added between two source attribute values (not between a s
                 field: title
                 locale: en_US
 
-    To build the text "[model], for only [price-in-usd-for-mobile-channel]$!" into the subtitle value in en_US locale and mobile channel, the action will be as follows:
+    To build the text "[model], only for [price-in-usd-for-mobile-channel]$!" into the subtitle value in en_US locale and mobile channel, the action will be as follows:
 
     .. code-block:: yaml
 
@@ -518,7 +518,7 @@ By default a space is added between two source attribute values (not between a s
               from:
                 - field: model
                   locale: en_US
-                - text: ", for only "
+                - text: ", only for "
                 - field: price
                   scope: mobile
                   currency: USD
