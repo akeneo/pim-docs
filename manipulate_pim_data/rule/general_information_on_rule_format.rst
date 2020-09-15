@@ -420,7 +420,7 @@ ___________
 
 This action concatenates at least two blocks into a single value. A block can be an attribute value or a text. You can also use the specific *new_line* block to start a new line.
 
-The possible block attribute types are:
+The possible attribute types are:
  - text
  - text area
  - date
