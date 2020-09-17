@@ -476,7 +476,7 @@ By default, a space is added between two attribute value blocks (not between an 
 
 .. tip::
 
-    For instance, to concatenate the "Brand: " text, the brand (non-localizable and non-scopable), a line break, the "Model: " text and the model in en_US locale into the description value in en_US locale, the action will be as follows:
+    For instance, to concatenate the "Brand: " text, the brand attribute (non-localizable and non-scopable), a line break, the "Model: " text and the model attribute in en_US locale into the description value in en_US locale, the action will be as follows:
 
     .. code-block:: yaml
 
