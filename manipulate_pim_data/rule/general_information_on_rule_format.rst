@@ -418,9 +418,9 @@ Two parameters are required while the three others are optional.
 Concatenate
 ___________
 
-This action concatenates at least two values into a single value. A space separates each source value.
+This action concatenates at least two blocks into a single value. A block can be an attribute value or a text. You can also use the specific *new_line* block to start a new line.
 
-The possible source attribute types are:
+The possible attribute types are:
  - text
  - text area
  - date
@@ -437,14 +437,23 @@ The possible target attribute types are:
  - text
  - textarea
 
+By default, a space is added between two attribute value blocks (not between an attribute and a text block, or between two text blocks). You can avoid this behavior by adding an empty text between the two attribute value blocks.
+
 **The parameters from and to are required in the format. Depending on the source attribute type, some optional keys can be set:**
 
 +------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| from | List of sets for all attribute types:                                                                                                                                      |
+| from | List of sets for all blocks.                                                                                                                                               |
+|      |                                                                                                                                                                            |
+|      | A block must contain exactly one single key among the following ones, plus some extra keys defined later:                                                                  |
 |      |                                                                                                                                                                            |
 |      | - field: attribute code.                                                                                                                                                   |
-|      | - locale: locale code for which the value is assigned, for localizable attributes (optional).                                                                              |
-|      | - scope: channel code for which the value is assigned, for scopable attributes (optional).                                                                                 |
+|      | - text: a specific text.                                                                                                                                                   |
+|      | - new_line: no specific value. Please use ``new_line: ~``. It is only available if the target attribute is a text area.                                                    |
+|      |                                                                                                                                                                            |
+|      | For localizable and/or scopable attributes:                                                                                                                                |
+|      |                                                                                                                                                                            |
+|      | - locale: locale code to which the value is assigned, mandatory and only for localizable attributes                                                                        |
+|      | - scope: channel code to which the value is assigned, mandatory and only for scopable attributes                                                                           |
 |      |                                                                                                                                                                            |
 |      | For date attributes:                                                                                                                                                       |
 |      |                                                                                                                                                                            |
@@ -467,14 +476,17 @@ The possible target attribute types are:
 
 .. tip::
 
-    For instance, to concatenate the brand (non-localizable and non-scopable) and the model in en_US locale into the description value in en_US locale, the action will be as follows:
+    For instance, to concatenate the "Brand: " text, the brand attribute (non-localizable and non-scopable), a line break, the "Model: " text and the model attribute in en_US locale into the description value in en_US locale, the action will be as follows:
 
     .. code-block:: yaml
 
         actions:
             - type: concatenate
               from:
+                - text: "Brand: "
                 - field: brand
+                - new_line: ~
+                - text: "Model: "
                 - field: model
                   locale: en_US
               to:
@@ -497,7 +509,7 @@ The possible target attribute types are:
                 field: title
                 locale: en_US
 
-    To concatenate the model in en_US locale and the price in USD and in the mobile channel into the subtitle value in en_US locale and mobile channel, the action will be as follows:
+    To build the text "[model], only for [price-in-usd-for-mobile-channel]$!" into the subtitle value in en_US locale and mobile channel, the action will be as follows:
 
     .. code-block:: yaml
 
@@ -506,9 +518,11 @@ The possible target attribute types are:
               from:
                 - field: model
                   locale: en_US
+                - text: ", only for "
                 - field: price
                   scope: mobile
                   currency: USD
+                - text: "$!"
               to:
                 field: subtitle
                 locale: en_US
