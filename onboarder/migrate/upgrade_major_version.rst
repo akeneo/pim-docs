@@ -1,15 +1,30 @@
 How to upgrade to a major version?
 ==================================
 
-These new major versions bring new features and larger changes to answer clients growing needs.
+New major versions bring compatibility with new Akeneo PIM releases. So the only case you'll have to perform a major
+update of the Onboarder bundle is when you are migrating the PIM itself to a new version.
 
-Migrate from 2.1
-----------------
+The instructions you will follow to update your PIM are mostly enough to migrate the bundle, you will only need to do a
+couple more things specific to the Onboarder bundle.
 
-From the 2.1 version, you will be able to follow this migration guide:
 
-Onboarder archives are available from `the Portal <https://help.akeneo.com/portal/articles/set-up-akeneo-onboarder.html#set-up-your-onboarder-instance?utm_source=akeneo-docs&utm_campaign=migration>`_.
+Right before updating you composer dependencies
+-----------------------------------------------
 
-Then, follow the migration guide located in your archive to upgrade your project.
+When updating the PIM ``composer.json`` to increase the PIM version, you also need to  change the
+``akeneo/pim-onboarder`` version. Please refer to :doc:`/onboarder/installation/index` to know which version of the
+bundle to use.
 
-* From Onboarder v2.1: UPGRADE.md
+Then, make sure the Onboarder composer script is present in the ``composer.json`` file, as explained in :doc:`/onboarder/installation/index`.
+
+
+Right after updating you composer dependencies
+----------------------------------------------
+
+Thanks to the Onboarder composer script, all the migration scripts of the Onboarder bundle should have been copied
+in the ``upgrades/schema`` directory, alongside those of the PIM. Before executing the migrations (both those of the PIM
+and those of the Onboarder bundle), please make sure to follow the additional instructions of the ``UPGRADE.md`` file
+contained in the bundle (``vendor/akeneo/pim-onboarder/UPGRADE.md``). It will provide you accurate instructions on how
+to run the migration scripts.
+
+You can then follow the rest of the PIM upgrade instructions.

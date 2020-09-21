@@ -1,5 +1,5 @@
-Installation
-============
+How to install the Onboarder bundle
+===================================
 
 .. warning::
 
@@ -14,6 +14,17 @@ Execute the following composer commands to require the bundle:
 
     composer config repositories.onboarder '{"type": "vcs", "url": "ssh://git@distribution.akeneo.com:443/pim-onboarder"}'
     composer require "akeneo/pim-onboarder" "^4.1"
+
+Then add the following to your ``composer.json`` "scripts" part:
+
+.. code-block:: json
+
+    "post-update-cmd": [
+        "Akeneo\\Onboarder\\Setup\\Setup\\OnboarderComposerScripts::copyUpgradesFiles"
+    ],
+    "post-install-cmd": [
+        "Akeneo\\Onboarder\\Setup\\Setup\\OnboarderComposerScripts::copyUpgradesFiles"
+    ]
 
 
 Enable the extension
