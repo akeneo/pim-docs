@@ -1,7 +1,9 @@
+HOST_COMPOSER_CACHE ?= ~/.composer/cache
+HOST_COMPOSER_HOME ?= ~/.composer
 UID = $(shell id -u)
 GID = $(shell id -g)
 DOCKER_IMAGE = pim-docs
-DOCKER_RUN = docker run -it --rm -v $(PWD):/home/akeneo/pim-docs/ -u $(UID):$(GID) -v ~/.composer:/.composer
+DOCKER_RUN = docker run -it --rm -v $(PWD):/home/akeneo/pim-docs/ -u $(UID):$(GID) -e COMPOSER_CACHE_DIR=/home/akeneo/.cache/composer -v ${HOST_COMPOSER_CACHE}:/home/akeneo/.cache/composer -e COMPOSER_HOME=/home/akeneo/.config/composer -v ${HOST_COMPOSER_HOME}:/home/akeneo/.config/composer
 
 .DEFAULT_GOAL := build
 .PHONY: build, deploy, docker-build
