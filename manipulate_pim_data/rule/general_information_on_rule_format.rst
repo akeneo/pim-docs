@@ -67,6 +67,7 @@ Enrichment Rule Structure
 Structure’s elements which define a rule are:
  - rule's code (dynamic)*
  - priority
+ - enabled
  - conditions*
  - actions*
  - labels
@@ -83,7 +84,8 @@ An enrichment rule is structured as follow:
 .. code-block:: yaml
 
     [free rule code]:
-        priority*:
+        priority:
+        enabled:
         conditions:
             - field*:
               locale:
@@ -116,6 +118,9 @@ priority, a rule has a zero-priority. The higher the priority, the sooner the ru
 Therefore, a 90-priority rule  will be executed before 0-priority ones. If two rules have the same priority,
 they will be executed in a "technical" order. (database reading order)
 
+A status can be defined through the `enabled` key. When the value is `false` the rule cannot be executed neither from cronjob nor manually.
+In the rule import this key is not mandatory, the rule is enabled by default if it's not specified.
+
 Action’s conditions can be applied on localizable and scopable values. In this case, it has
 to be specified using and scope elements.
 
@@ -128,6 +133,7 @@ The definition of conditions is very important, make sure you select only produc
     rules:
         camera_set_canon_brand:
             priority: 0
+            enabled: true
             conditions:
                 - field: family
                   operator: IN
@@ -152,6 +158,7 @@ The definition of conditions is very important, make sure you select only produc
     rules:
         camera_set_autofocus_point:
             priority: 0
+            enabled: true
             conditions:
                 - field: family
                   operator: IN
@@ -175,6 +182,7 @@ The definition of conditions is very important, make sure you select only produc
     rules:
         copy_description_us_to_ecommerce_us:
             priority: 0
+            enabled: true
             conditions:
                 - field: family
                   operator: IN

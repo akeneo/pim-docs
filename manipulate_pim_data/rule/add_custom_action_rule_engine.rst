@@ -500,6 +500,7 @@ Here is an example on how you could write a rule.
     rules:
         test_pattern:
             priority: 0
+            enabled: true
             conditions:
                 -
                     field: family
