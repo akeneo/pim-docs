@@ -118,7 +118,7 @@ priority, a rule has a zero-priority. The higher the priority, the sooner the ru
 Therefore, a 90-priority rule  will be executed before 0-priority ones. If two rules have the same priority,
 they will be executed in a "technical" order. (database reading order)
 
-A status can be defined through the `enabled` key. When the value is `false` the rule cannot be executed neither from cronjob nor manually.
+A status can be defined with the `enabled` key. When the value is `false`, the rule cannot be executed neither from cronjob or manually.
 In the rule import this key is not mandatory, the rule is enabled by default if it's not specified.
 
 Action’s conditions can be applied on localizable and scopable values. In this case, it has
