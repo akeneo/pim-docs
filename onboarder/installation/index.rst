@@ -13,7 +13,7 @@ Execute the following composer commands to require the bundle:
 .. code-block:: bash
 
     composer config repositories.onboarder '{"type": "vcs", "url": "ssh://git@distribution.akeneo.com:443/pim-onboarder", "branch": "master"}'
-    composer require "akeneo/pim-onboarder" "3.1.*"
+    composer require "akeneo/pim-onboarder" "3.3.*"
 
 
 Enable the extension
