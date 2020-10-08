@@ -11,14 +11,14 @@ All those limits are defined as parameters that you can override like any other 
 
 Raise the limit of Measurement Families
 ---------------------------------------
-By default, you can't create more than **100 Measurement Families**.
+By default, you can't create more than **300 Measurement Families**.
 If you want to create more, you have to edit the ``akeneo_measurement.validation.measurement_family.families_max`` parameter, for example:
 
 .. code-block:: yaml
     :linenos:
 
     parameters:
-        akeneo_measurement.validation.measurement_family.families_max: 200
+        akeneo_measurement.validation.measurement_family.families_max: 500
 
 Raise the limit of Units per Measurement Family
 -----------------------------------------------
