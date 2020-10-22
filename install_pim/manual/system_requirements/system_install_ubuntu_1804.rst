@@ -36,10 +36,10 @@ Now is the time to install what has been configured in the step before:
 
 When installing MySQL 8.0, you'll have to choose the authentication method. Please select *Use Legacy Authentication Method* as the *Strong Password Encryption* is not yet supported by Akeneo PIM.
 
-PHP 7.3
+PHP 7.4
 *******
 
-As Ubuntu 18.04 only provides PHP 7.2, we need to use `Ondrej Sury <https://deb.sury.org/>`_ packages to install PHP 7.3..
+As Ubuntu 18.04 only provides PHP 7.2, we need to use `Ondrej Sury <https://deb.sury.org/>`_ packages to install PHP 7.4..
 
 First, install the `repository <https://launchpad.net/~ondrej/+archive/ubuntu/php/>`_:
 
@@ -60,7 +60,7 @@ Then, install PHP and the required extensions:
 
 .. code-block:: bash
 
-    $ apt-get install php7.3-cli php7.3-apcu php7.3-bcmath php7.3-curl php7.3-fpm php7.3-gd php7.3-intl php7.3-mysql php7.3-xml php7.3-zip php7.3-zip php7.3-mbstring php7.3-imagick php7.3-exif
+    $ apt-get install php7.4-cli php7.4-apcu php7.4-bcmath php7.4-curl php7.4-fpm php7.4-gd php7.4-intl php7.4-mysql php7.4-xml php7.4-zip php7.4-zip php7.4-mbstring php7.4-imagick php7.4-exif
 
 Elasticsearch 7.5
 *****************

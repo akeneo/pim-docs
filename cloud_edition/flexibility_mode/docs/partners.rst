@@ -11,7 +11,7 @@ Partners
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``partners_elasticsearch`` | ``status|start|restart`` | Show status or start/restart elasticsearch daemon                                                                                                |
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``partners_php7.3-fpm``    | ``status|start|restart`` | Show status or start/restart php-fpm daemon (Command name can vary depending on php version)                                                     |
+| ``partners_php7.4-fpm``    | ``status|start|restart`` | Show status or start/restart php-fpm daemon (Command name can vary depending on php version)                                                     |
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``partners_clear_cache``   |                          | Clear PIM cache properly. Stops php-fpm and job consumers, deletes PIM cache folder, warms up PIM cache and restarts php-fpm and job consumers   |
 +----------------------------+--------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+

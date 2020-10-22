@@ -58,7 +58,7 @@ First, create the file ``/etc/apache2/sites-available/akeneo-pim.local.conf``
         </Directory>
 
         <FilesMatch \.php$>
-            SetHandler "proxy:unix:/run/php/php7.3-fpm.sock|fcgi://localhost/"
+            SetHandler "proxy:unix:/run/php/php7.4-fpm.sock|fcgi://localhost/"
         </FilesMatch>
 
         SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
@@ -72,7 +72,7 @@ First, create the file ``/etc/apache2/sites-available/akeneo-pim.local.conf``
 
     * Replace ``/path/to/installation`` by the path to the directory where you want to install the PIM.
     * Replace ``pim-community-standard`` by ``pim-enterprise-standard`` for enterprise edition.
-    * ``/run/php/php7.3-fpm.sock`` is the default socket path. If you changed it in ``/etc/php/7.3/fpm/pool.d/www.conf``, change it in the virtual host too.
+    * ``/run/php/php7.4-fpm.sock`` is the default socket path. If you changed it in ``/etc/php/7.4/fpm/pool.d/www.conf``, change it in the virtual host too.
     * Don't forget to add the ``web`` directory of your Symfony application.
 
 Enabling the virtual host
