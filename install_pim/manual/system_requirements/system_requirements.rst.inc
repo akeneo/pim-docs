@@ -31,35 +31,35 @@ The web server will also need the following libraries and modules:
 **PHP required modules and configuration**
 
 +----------------+---------------------------+
-| PHP            | 7.3                       |
+| PHP            | 7.4                       |
 +----------------+---------------------------+
-| php7.3-apcu    | apc.enable_cli=1          |
+| php7.4-apcu    | apc.enable_cli=1          |
 +----------------+---------------------------+
-| php7.3-bcmath  | No specific configuration |
+| php7.4-bcmath  | No specific configuration |
 +----------------+---------------------------+
-| php7.3-curl    | No specific configuration |
+| php7.4-curl    | No specific configuration |
 +----------------+---------------------------+
-| php7.3-fpm     | No specific configuration |
+| php7.4-fpm     | No specific configuration |
 +----------------+---------------------------+
-| php7.3-intl    | No specific configuration |
+| php7.4-intl    | No specific configuration |
 +----------------+---------------------------+
-| php7.3-mysql   | No specific configuration |
+| php7.4-mysql   | No specific configuration |
 +----------------+---------------------------+
-| php7.3-xml     | No specific configuration |
+| php7.4-xml     | No specific configuration |
 +----------------+---------------------------+
-| php7.3-zip     | No specific configuration |
+| php7.4-zip     | No specific configuration |
 +----------------+---------------------------+
-| php7.3-exif    | No specific configuration |
+| php7.4-exif    | No specific configuration |
 +----------------+---------------------------+
-| php7.3-imagick | No specific configuration |
+| php7.4-imagick | No specific configuration |
 +----------------+---------------------------+
-| php7.3-cli     | No specific configuration |
+| php7.4-cli     | No specific configuration |
 +----------------+---------------------------+
-| php7.3-opcache | No specific configuration |
+| php7.4-opcache | No specific configuration |
 +----------------+---------------------------+
-| php7.3-zip     | No specific configuration |
+| php7.4-zip     | No specific configuration |
 +----------------+---------------------------+
-| php7.3-mbstring| No specific configuration |
+| php7.4-mbstring| No specific configuration |
 +----------------+---------------------------+
 | php-memcached  | No specific configuration |
 +----------------+---------------------------+
@@ -125,7 +125,7 @@ To use this database you will also require the distribution package:
 and the following PHP modules:
 
 +--------------+----------+
-| php7.3-mysql | Required |
+| php7.4-mysql | Required |
 +--------------+----------+
 
 .. warning::
