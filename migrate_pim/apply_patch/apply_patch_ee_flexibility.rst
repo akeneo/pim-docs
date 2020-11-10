@@ -42,7 +42,6 @@ Then clean the cache, re-install assets and warmup the cache:
 
     partners_clear_cache
     bin/console --env=prod pim:installer:assets
-    cp vendor/akeneo/pim-enterprise-dev/yarn.lock yarn.lock
     yarn run install
     yarn run less
     yarn run webpack

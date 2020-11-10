@@ -54,7 +54,6 @@ Then clean the cache, re-install assets and warmup the cache:
     rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/* ./public/dist/*
     bin/console --env=prod cache:warmup
     bin/console --env=prod pim:installer:assets
-    cp vendor/akeneo/pim-enterprise-dev/yarn.lock yarn.lock
     yarn run install
     yarnpkg run less
     yarnpkg run webpack
