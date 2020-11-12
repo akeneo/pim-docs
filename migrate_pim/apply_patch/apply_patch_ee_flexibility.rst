@@ -42,7 +42,7 @@ Then clean the cache, re-install assets and warmup the cache:
 
     partners_clear_cache
     bin/console --env=prod pim:installer:assets
-    yarn run install
+    yarn install
     yarn run less
     yarn run webpack
 

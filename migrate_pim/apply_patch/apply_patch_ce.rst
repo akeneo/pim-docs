@@ -32,7 +32,7 @@ Then clean the cache, re-install assets and warmup the cache:
     rm yarn.lock
     bin/console pim:installer:assets
     bin/console cache:warmup
-    yarn run install
+    yarn install
     yarn run less
     yarn run webpack
 

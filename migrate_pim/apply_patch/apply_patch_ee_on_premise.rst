@@ -54,7 +54,7 @@ Then clean the cache, re-install assets and warmup the cache:
     rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/* ./public/dist/*
     bin/console --env=prod cache:warmup
     bin/console --env=prod pim:installer:assets
-    yarn run install
+    yarn install
     yarnpkg run less
     yarnpkg run webpack
 
