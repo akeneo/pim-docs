@@ -29,12 +29,14 @@ Then clean the cache, re-install assets and warmup the cache:
 
     service php7.3-fpm restart
     rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
+    rm yarn.lock
     bin/console pim:installer:assets
     bin/console cache:warmup
+    yarn install
     yarn run less
     yarn run webpack
 
-If the patch is a javascript fix, please **clear your browser's cache** before testing.
+Please **clear your browser's cache** before testing.
 
 .. note::
 
