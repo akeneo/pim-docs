@@ -52,6 +52,7 @@ Then clean the cache, re-install assets and warmup the cache:
 
     service php7.3-fpm restart
     rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/* ./public/dist/*
+    rm yarn.lock
     bin/console --env=prod cache:warmup
     bin/console --env=prod pim:installer:assets
     yarn install
