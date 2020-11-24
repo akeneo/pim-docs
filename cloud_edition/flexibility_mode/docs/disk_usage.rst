@@ -32,13 +32,37 @@ The disk usage will increase following the lifecycle of the instance. For exampl
 
 Impact of Disk Usage on the PIM
 -------------------------------
+
 When the disk is full, the PIM cannot work anymore: it cannot save modifications in database, upload new assets, ...
 
 It can even prevent ElasticSearch from updating its indexes, resulting in desynchronization with the database.
 To avoid those issues, ensuring a healthy disk usage is necessary.
 
+Check Disk Space Usage
+----------------------
+
+The following command can help you to check the disk space usage expressed both
+in GB and as a percentage:
+
+.. code-block:: bash
+
+    echo "Report disk space usage for my instance"
+    df -h /data
+      Filesystem      Size  Used Avail Use% Mounted on
+      /dev/sdb        344G  133G  196G  41% /data
+
+
+As explained in the previous paragraph, the disk mounted on "/data" must not be
+full.
+
+Please notice that size difference between `df` command and your purchased disk space is caused by the metadata storage usage.
+
+Investigate Disk Space Usage Issues
+-----------------------------------
+
 Improving Disk Usage
---------------------
+~~~~~~~~~~~~~~~~~~~~
+
 To reduce disk usage, some temporary files are deleted automatically on a regular basis. For example:
 
 - old temporary import/export files
@@ -51,6 +75,16 @@ Moreover, the integrator can:
 - activate the purge of old versions of products
 - remove assets that are not linked to any product anymore
 
+Investigate Disk Usage Distribution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following command can help you to identify potential issues regarding the
+disk usage of your instance, by listing the largest directories:
+
+.. code-block:: bash
+
+    echo "Report the 20 largest directories"
+    du -hx /home/akeneo/*/ | sort -rh | head -20
 
 Database purges
 ---------------
