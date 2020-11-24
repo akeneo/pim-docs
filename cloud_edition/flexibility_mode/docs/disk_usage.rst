@@ -55,7 +55,7 @@ in GB and as a percentage:
 As explained in the previous paragraph, the disk mounted on "/data" must not be
 full.
 
-Please notice that difference between `df` command and your purchased disk space is related to the metadata storage usage.
+Please notice that size difference between `df` command and your purchased disk space is caused by the metadata storage usage.
 
 Investigate Disk Space Usage Issues
 -----------------------------------
