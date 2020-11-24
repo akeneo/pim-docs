@@ -47,12 +47,15 @@ in GB and as a percentage:
 .. code-block:: bash
 
     echo "Report disk space usage for my instance"
-    df -h --type ext4
+    df -h /data
       Filesystem      Size  Used Avail Use% Mounted on
-      /dev/sdb        147G  106G   34G  76% /
+      /dev/sdb        344G  133G  196G  41% /data
 
-As explained in the previous paragraph, the disk mounted on "/" must not be
+
+As explained in the previous paragraph, the disk mounted on "/data" must not be
 full.
+
+Please notice that difference between `df` command and your purchased disk space is related to the metadata storage usage.
 
 Investigate Disk Space Usage Issues
 -----------------------------------
