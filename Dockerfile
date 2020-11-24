@@ -15,7 +15,7 @@ RUN apt-get update && \
         php7.4-gd php7.4-intl php7.4-mysql php7.4-xml php7.4-zip php7.4-mbstring && \
     echo "memory_limit = 1024M" >> /etc/php/7.4/cli/php.ini && \
     echo "date.timezone = UTC" >> /etc/php/7.4/cli/php.ini && \
-    wget https://getcomposer.org/download/1.10.1/composer.phar -P /home/akeneo/pim-docs/ && \
+    wget https://getcomposer.org/download/2.0.7/composer.phar -P /home/akeneo/pim-docs/ && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/* && \
