@@ -102,3 +102,41 @@ If **akeneo**, as an SSH user or as a PIM process, creates files in the SFTP sub
 .. _`specific tasks`: ./partners.html
 .. _`GitHub Help Center`:  https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 .. _`Akeneo Help Center`:  https://help.akeneo.com/portal/articles/access-akeneo-flexibility.html?utm_source=akeneo-docs&utm_campaign=flexibility_partner_starterkit
+
+
+Copy data from one instance to another
+**************************************
+
+**Scenario:**
+
+    User wants to transfer a SQL dump file from production instance their staging instance:
+    
+.. note::
+
+    **User** connects with SSH and forwards their local ssh-agent towards
+        > **project.akeneo.cloud.com**, and runs scp command towards
+        
+        > **project-staging.akeneo.cloud.com**
+
+    👨‍💼 💻   ──────> 🔑  ──────> 🖥  ────── 🔑 ──────> 📂 ──────> 🖥
+
+**Prerequisites:**
+
+- Get SSH key access to both intances for akeneo user.
+- Get network access to instances.
+
+**Usage:**
+
+.. code-block:: bash
+
+    eval `ssh-agent`
+    ssh-add ~/.ssh/id_rsa
+    ssh -tA akeneo@project-staging.cloud.akeneo.com
+    
+    scp dump.sql akeneo@project:dump.sql
+
+.. warning::
+
+    On the SCP command, please note that no domain is specified.
+    
+    Use the short host name of instance. Connect to the target server and run `hostname` to get this value.
