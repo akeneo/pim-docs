@@ -2,7 +2,7 @@ Add A Calculation Step
 ======================
 
 To add a new step you just need to create a new Step Class that implements
-`PimEnterprise\Component\ActivityManager\Job\ProjectCalculation\CalculationStep\CalculationStepInterface` interface.
+`Akeneo\\Pim\\WorkOrganization\\TeamworkAssistant\\Componen\t\Job\\ProjectCalculation\\CalculationStep` interface.
 
 .. code-block:: php
 
@@ -25,16 +25,16 @@ To add a new step you just need to create a new Step Class that implements
     }
 
 For example, we created the
-`PimEnterprise\Component\ActivityManager\Job\ProjectCalculation\CalculationStep\LoggableStep` for debug purposes.
-It allows to log the memory usage for each loop of the
-`PimEnterprise\Component\ActivityManager\Job\ProjectCalculation\ProjectCalculationTasklet`. It helped us to hunt
+`Akeneo\\Pim\\WorkOrganization\\TeamworkAssistant\\Component\\Job\\ProjectCalculation\\CalculationStep\\LoggableStep` for debug purposes.
+It allows logging the memory usage for each loop of the
+`Akeneo\\Pim\\WorkOrganization\\TeamworkAssistant\\Component\\Job\\ProjectCalculation\\ProjectCalculationTasklet`. It helped us to hunt
 memory leaks. Don't hesitate to use it to check your custom calculation step.
 
 .. code-block:: php
 
-    <?php // src/PimEnterprise/Component/ActivityManager/Job/ProjectCalculation/CalculationStep/LoggableStep.php
+    <?php // src/Akeneo/Pim/WorkOrganization/TeamworkAssistant/Component/Job/ProjectCalculation/CalculationStep/LoggableStep.php
 
-    namespace PimEnterprise\Component\ActivityManager\Job\ProjectCalculation\CalculationStep;
+    namespace Akeneo\Pim\WorkOrganization\TeamworkAssistant\Component\Job\ProjectCalculation\CalculationStep;
 
     use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
     use Akeneo\Pim\WorkOrganization\TeamworkAssistant\Component\Model\ProjectInterface;
@@ -84,7 +84,7 @@ Or for the `LoggableStep`:
 .. code-block:: yaml
 
     activity_manager.calculation_step.loggable_step:
-        class: 'PimEnterprise\Component\ActivityManager\Job\ProjectCalculation\CalculationStep\LoggableStep'
+        class: 'Akeneo\Pim\WorkOrganization\TeamworkAssistant\Component\Job\ProjectCalculation\CalculationStep\LoggableStep'
         arguments:
             - '/your/custom/path/memory_leak_hunter.csv'
         public: false
