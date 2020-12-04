@@ -17,11 +17,11 @@ To add an element at the root of the tree you can reuse the tab module provided 
             parent: pim-menu                               # The parent is the root of the menu
             targetZone: mainMenu
             # aclResourceId: my_custom_acl_key             # [optional] You can define a acl check - add this only if the acl has been created
-            position: 110                                  # [optional] The position in the tree where you want to add the item
+            position: 80                                   # [optional] The position in the tree where you want to add the item
             config:
                 title: 'Root'                              # You can define a translation key for the tab name (for example pim_menu.item.import_profile)
                 iconModifier: iconCard                     # [optional] The icon of the simple node
-                to: acme_custom_index                      # The route to redirect to
+                to: pim_importexport_import_profile_index  # The route to redirect to
 
 After running the command ``rm -rf var/cache; bin/console pim:installer:assets; yarn run webpack`` your new item should appear at the root of the menu.
 
@@ -49,12 +49,23 @@ After running the command ``rm -rf var/cache; bin/console pim:installer:assets; 
 Define a simple node inside a custom root menu
 **********************************************
 
-If you want to add an element in a custom root menu, you can use the column, item and navigation-block module:
+For complex application, you may need to create sub menu in a custom root menu. To do this you don't need to have `to` key in the config of the root menu.
+By default, by clicking on root menu the user will be redirected to the route of the first item (lowest position)
 
 .. code-block:: yaml
 
     # src/Acme/Bundle/AppBundle/Resources/config/form_extensions/menu.yml
     extensions:
+        acme-custom-root-element:                          # The unique key of your extension
+            module: pim/menu/tab                           # The module provided by akeneo for root elements
+            parent: pim-menu                               # The parent is the root of the menu
+            targetZone: mainMenu
+            # aclResourceId: my_custom_acl_key             # [optional] You can define a acl check - add this only if the acl has been created
+            position: 80                                   # [optional] The position in the tree where you want to add the item
+            config:
+                title: 'Root'                              # You can define a translation key for the tab name (for example pim_menu.item.import_profile)
+                iconModifier: iconCard                     # [optional] The icon of the simple node
+
         acme-custom-root-column:                           # The unique key of your column extension
             module: pim/menu/column                        # The module provided by akeneo for column elements
             parent: pim-menu                               # The parent is the root of the menu
@@ -77,9 +88,10 @@ If you want to add an element in a custom root menu, you can use the column, ite
             position: 120                                  # [optional] The position in the tree where you want to add the item
             config:
                title: 'Sub'                                # You can define a translation key for the item name (for example pim_menu.item.import_profile)
-               to: pim_importexport_import_profile_index   # The route to redirect
+               to: acme_custom_index                       # The route to redirect
 
-If you want to see this new menu, you should hightlight menu element in your page
+The sub menu is only displayed when page reference this sub menu.
+If you want to see this new sub menu, you should have a page that reference this sub element (see Highlight menu elements).
 
 Highlight menu elements
 ***********************
@@ -107,4 +119,4 @@ After running the command ``rm -rf var/cache; bin/console pim:installer:assets; 
 Use you own menu extension item
 *******************************
 
-As you may have already guessed, with this system, you can develop your own menu item and add custom informations like notification badges or custom display.
+As you may have already guessed, with this system, you can develop your own menu item and add custom information like notification badges or custom display.
