@@ -313,3 +313,41 @@ If you don't see your changes, make sure you have run (``bin/console assets:inst
 Now that we have our extension loaded in our form, we can add some logic into it, check how to `customize the UI`_.
 
 .. _customize the UI: ../../design_pim
+
+Make a job stoppable
+--------------------
+
+As of now, it is possible your jobs won't be able to stop when the job is started.
+
+.. note::
+
+    If your job is based on the ``Akeneo\Tool\Component\Batch\Job\Job`` class, you only have to adapt your job service definition by setting the last property of the constructor to "true" (as shown in the example below).
+
+.. note::
+
+    If your job is composed of an ``Akeneo\Tool\Component\Batch\Step\ItemStep`` instance, you should not have to do anything regarding the steps of your jobs as the stopping mechanism is already built in the ItemStep class.
+
+To make this action available from the UI, we need to make sure of a few things:
+
+1. You need to make sure your custom job implements ``Akeneo\Tool\Component\Batch\Job\StoppableJobInterface`` and set the last property of the constructor to "true". See the following job service definition example:
+
+.. code-block:: yaml
+    :linenos:
+
+    pimee_catalog_rule.job.xlsx_product_import_with_rules:
+        class: '%pim_connector.job.simple_job.class%'
+        arguments:
+            - '%pimee_catalog_rule.job_name.xlsx_product_import_with_rules%'
+            - '@event_dispatcher'
+            - '@akeneo_batch.job_repository'
+            -
+                - '@pim_connector.step.charset_validator'
+                - '@pimee_catalog_rule.step.xlsx_product.import'
+                - '@pimee_catalog_rule.step.xlsx_product.import_associations'
+                - '@pimee_catalog_rule.step.xlsx_product.execute_rules'
+            - true # <-- This property should be true if the job is stoppable
+        tags:
+            - { name: akeneo_batch.job, connector: '%pim_connector.connector_name.xlsx%', type: '%pim_connector.job.import_type%' }
+
+2. If your job uses tasklets (by implementing ``TaskletInterface``) to execute your business logic. You can inject the service `"akeneo_batch.job.job_stopper"` directly in your custom tasklets and use it to indicate your job is stopping and then stops.
+
