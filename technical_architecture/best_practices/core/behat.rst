@@ -20,7 +20,7 @@ You can install Behat dependencies with composer (on pim-community-dev).
 
 Install Selenium Server
 -----------------------
-Download Selenium server 2.43.1 `here`_.
+Download Selenium server 2.53.1 `here`_.
 
 .. _here: http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar
 
