@@ -351,3 +351,28 @@ To make this action available from the UI, we need to make sure of a few things:
 
 2. If your job uses tasklets (by implementing ``TaskletInterface``) to execute your business logic. You can inject the service `"akeneo_batch.job.job_stopper"` directly in your custom tasklets and use it to indicate your job is stopping and then stops.
 
+Track the progress of a job
+---------------------------
+
+As of now, it is possible your user is not able to see the progress of your job in the UI.
+
+.. note::
+
+    If your job is composed of an ``Akeneo\Tool\Component\Batch\Step\ItemStep`` instance, as well as a reader implenting ``Akeneo\Tool\Component\Batch\Item\TrackableItemReaderInterface`` the tracking of your job should already be available in the UI.
+
+
+If your job uses a custom reader, make sure it implements ``Akeneo\Tool\Component\Batch\Item\TrackableItemReaderInterface`` and exposes the total of number that will be processed during the execution of the step.
+
+If your job uses a custom tasklet, we need to make sure of a few additional things:
+
+- your tasklet should implement the ``Akeneo\Tool\Component\Batch\Item\TrackableTaskletInterface`` interface
+- at the very beginning of the execution of the tasklet, you need to provide the step execution with the total items your tasklet will process through the ``Akeneo\Tool\Component\Batch\Model\StepExecution::setTotalItems`` function.
+- during the process of the tasklet, you need to provide the step execution with the progression of the process items by incrementing a processed item counter through the ``Akeneo\Tool\Component\Batch\Model\StepExecution::incrementProcessedItems();`` function.
+
+.. warning::
+
+    Make sure that for large set of items to process, you do not increment the "processed items" one by one, but rather 100 by 100.
+
+.. note::
+
+    You can refer to the ``Akeneo\Pim\Enrichment\Component\Product\Job\DeleteProductsAndProductModelsTasklet`` to see how the tracking is implemented and how the step execution is kept up to date with the progression.
