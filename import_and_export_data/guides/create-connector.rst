@@ -354,11 +354,11 @@ To make this action available from the UI, we need to make sure of a few things:
 Track the progress of a job
 ---------------------------
 
-As of now, it is possible your user is not able to see the progress of your job in the UI.
+As of now, it is possible your users are not able to see the progress of your job in the UI.
 
 .. note::
 
-    If your job is composed of an ``Akeneo\Tool\Component\Batch\Step\ItemStep`` instance, as well as a reader implenting ``Akeneo\Tool\Component\Batch\Item\TrackableItemReaderInterface`` the tracking of your job should already be available in the UI.
+    If your job is composed of an ``Akeneo\Tool\Component\Batch\Step\ItemStep`` instance, as well as a reader implementing ``Akeneo\Tool\Component\Batch\Item\TrackableItemReaderInterface`` the tracking of your job should already be available in the UI.
 
 
 If your job uses a custom reader, make sure it implements ``Akeneo\Tool\Component\Batch\Item\TrackableItemReaderInterface`` and exposes the total of number that will be processed during the execution of the step.
@@ -367,11 +367,11 @@ If your job uses a custom tasklet, we need to make sure of a few additional thin
 
 - your tasklet should implement the ``Akeneo\Tool\Component\Batch\Item\TrackableTaskletInterface`` interface
 - at the very beginning of the execution of the tasklet, you need to provide the step execution with the total items your tasklet will process through the ``Akeneo\Tool\Component\Batch\Model\StepExecution::setTotalItems`` function.
-- during the process of the tasklet, you need to provide the step execution with the progression of the process items by incrementing a processed item counter through the ``Akeneo\Tool\Component\Batch\Model\StepExecution::incrementProcessedItems();`` function.
+- during the process of the tasklet, you need to provide the step execution with the progression the tasklet by incrementing a counter through the ``Akeneo\Tool\Component\Batch\Model\StepExecution::incrementProcessedItems`` function.
 
 .. warning::
 
-    Make sure that for large set of items to process, you do not increment the "processed items" one by one, but rather 100 by 100.
+    Make sure that for large set of items to process, you should not increment the "processed items" one by one, but rather 100 by 100 (you can provide the counter step as an argument of the incrementProcessedItems).
 
 .. note::
 
