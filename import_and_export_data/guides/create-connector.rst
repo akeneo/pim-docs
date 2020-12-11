@@ -321,7 +321,7 @@ As of now, it is possible your jobs won't be able to stop when the job is starte
 
 .. note::
 
-    If your job is based on the ``Akeneo\Tool\Component\Batch\Job\Job`` class, you only have to adapt your job service definition by setting the last property of the constructor to "true" (as shown in the example below).
+    If your job is based on the ``Akeneo\Tool\Component\Batch\Job\Job`` class, you have to adapt your job service definition by setting the last property of the constructor to "true" (as shown in the example below).
 
 .. note::
 
