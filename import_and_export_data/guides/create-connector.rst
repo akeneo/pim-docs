@@ -327,7 +327,7 @@ In Akeneo 5.0 we added the possibility to declare a Job as stoppable. But as som
 
     If your job is composed of an ``Akeneo\Tool\Component\Batch\Step\ItemStep`` instance, you should not have to do anything regarding the steps of your jobs as the stopping mechanism is already built in the ItemStep class.
 
-To make this action available from the UI, we need to make sure of a few things:
+To make this action available from the UI, you need to make sure of a few things:
 
 1. You need to make sure your custom job implements ``Akeneo\Tool\Component\Batch\Job\StoppableJobInterface`` and set the last property of the constructor to "true". See the following job service definition example:
 
