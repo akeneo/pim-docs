@@ -351,6 +351,48 @@ To make this action available from the UI, we need to make sure of a few things:
 
 2. If your job uses tasklets (by implementing ``TaskletInterface``) to execute your business logic. You can inject the service `"akeneo_batch.job.job_stopper"` directly in your custom tasklets and use the function `JobStopper::isStopping` to know if user asked to stop the job. If this function return true, you should use the function `JobStopper::stop` and exit your Tasklet.
 
+The following example shows a simple tasklet able to stop when a user stops the job from the UI.
+
+.. code-block:: php
+    :linenos:
+
+    class TrackableTasklet implements TaskletInterface
+    {
+        private const BATCH_SIZE = 100;
+
+        protected ?StepExecution $stepExecution = null;
+        protected FindItemsToProcess $findItemsToProcess;
+        private JobStopper $jobStopper;
+
+        public function __construct(
+            FindItemsToProcess $findItemsToProcess,
+            JobStopper $jobStopper
+        ) {
+            $this->jobStopper = $jobStopper;
+            $this->findItemsToProcess = $findItemsToProcess;
+        }
+
+        public function setStepExecution(StepExecution $stepExecution): void
+        {
+            $this->stepExecution = $stepExecution;
+        }
+
+        public function execute(): void
+        {
+            $itemsToProcess = $this->FindItemsToProcess->find();
+            foreach ($itemsToProcess as $i => $itemToProcess) {
+                $itemToProcess->doSomeWork();
+                if ($i % self::BATCH_SIZE === 0
+                    && $this->jobStopper->isStopping($this->stepExecution)
+                ) {
+                    $this->jobStopper->stop($this->stepExecution);
+
+                    return;
+                }
+            }
+        }
+    }
+
 Track the progress of a job
 ---------------------------
 
@@ -399,14 +441,12 @@ The following example shows a simple tasklet updating it's progress using the st
             $itemsToProcess = $this->FindItemsToProcess->find();
             $this->stepExecution->setTotalItems($itemsToProcess->count());
 
-            // then, start the process
+            // then, start to process entities
             // and update the step execution with the progress
-            foreach ($itemsToProcess as $i => $itemToProcess) {
-                if ($itemToProcess->isValid()) {
-                    $itemToProcess->doSomeWork();
-                    $this->stepExecution->incrementProcessedItems();
-                    $this->jobRepository->updateStepExecution($this->stepExecution);
-                }
+            foreach ($itemsToProcess as $itemToProcess) {
+                $itemToProcess->doSomeWork();
+                $this->stepExecution->incrementProcessedItems();
+                $this->jobRepository->updateStepExecution($this->stepExecution);
             }
         }
 
