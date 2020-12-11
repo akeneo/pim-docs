@@ -403,7 +403,7 @@ The following example shows a simple tasklet able to stop when a user stops the 
 Track the progress of a job
 ---------------------------
 
-As of now, it is possible your users are not able to see the progress of your job in the UI.
+In Akeneo 5.0 we added the possibility to track the progress of job. But as some task may be not trackable we decided to make this new feature "opt in". In this documentation, we will explain you how to expose the progress of your job.
 
 .. note::
 
