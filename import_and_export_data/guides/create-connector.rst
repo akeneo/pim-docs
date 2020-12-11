@@ -361,7 +361,7 @@ As of now, it is possible your users are not able to see the progress of your jo
     If your job is composed of an ``Akeneo\Tool\Component\Batch\Step\ItemStep`` instance, as well as a reader implementing ``Akeneo\Tool\Component\Batch\Item\TrackableItemReaderInterface`` the tracking of your job should already be available in the UI.
 
 
-If your job uses a custom reader, make sure it implements ``Akeneo\Tool\Component\Batch\Item\TrackableItemReaderInterface`` and exposes the total of number that will be processed during the execution of the step.
+If your job uses a custom reader, make sure it implements ``Akeneo\Tool\Component\Batch\Item\TrackableItemReaderInterface`` and exposes the total of number of items that will be processed during the execution of the step.
 
 If your job uses a custom tasklet, we need to make sure of a few additional things:
 
