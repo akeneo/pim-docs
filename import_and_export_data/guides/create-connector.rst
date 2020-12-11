@@ -471,7 +471,7 @@ The following example shows a simple tasklet updating it's progress using the st
 
 .. warning::
 
-    Make sure that for large set of items to process, you should not increment the "processed items" one by one, but rather 100 by 100 (you can provide the counter step as an argument of the incrementProcessedItems).
+    Make sure to only call `JobStopper::isStopped` not too often as it will do a MySQL query. A good way of doing it could be to do it only every 100 loop tour.
 
 .. note::
 
