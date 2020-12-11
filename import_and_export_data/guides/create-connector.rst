@@ -356,13 +356,18 @@ The following example shows a simple tasklet able to stop when a user stops the 
 .. code-block:: php
     :linenos:
 
+    <?php
+    declare(strict_types=1);
+
+    namespace Acme\Bundle\StoppableJobBundle;
+
     class TrackableTasklet implements TaskletInterface
     {
         private const BATCH_SIZE = 100;
 
         protected ?StepExecution $stepExecution = null;
         protected FindItemsToProcess $findItemsToProcess;
-        private JobStopper $jobStopper;
+        protected JobStopper $jobStopper;
 
         public function __construct(
             FindItemsToProcess $findItemsToProcess,
@@ -382,6 +387,8 @@ The following example shows a simple tasklet able to stop when a user stops the 
             $itemsToProcess = $this->FindItemsToProcess->find();
             foreach ($itemsToProcess as $i => $itemToProcess) {
                 $itemToProcess->doSomeWork();
+
+                // Check every 100 items if the process should be stopped
                 if ($i % self::BATCH_SIZE === 0
                     && $this->jobStopper->isStopping($this->stepExecution)
                 ) {
@@ -415,6 +422,11 @@ The following example shows a simple tasklet updating it's progress using the st
 
 .. code-block:: php
     :linenos:
+
+    <?php
+    declare(strict_types=1);
+
+    namespace Acme\Bundle\StoppableJobBundle;
 
     class TrackableTasklet implements TaskletInterface, TrackableTaskletInterface
     {
