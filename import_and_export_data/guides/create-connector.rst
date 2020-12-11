@@ -317,7 +317,7 @@ Now that we have our extension loaded in our form, we can add some logic into it
 Make a job stoppable
 --------------------
 
-As of now, it is possible your jobs won't be able to stop when the job is started.
+In Akeneo 5.0 we added the possibility to declare a Job as stoppable. But as some task may be not stoppable (important workflows that always need to finish, job depending on other steps, etc) we decided to make this new feature "opt in". In this documentation, we will explain you how to make your job stoppable.
 
 .. note::
 
@@ -349,7 +349,7 @@ To make this action available from the UI, we need to make sure of a few things:
         tags:
             - { name: akeneo_batch.job, connector: '%pim_connector.connector_name.xlsx%', type: '%pim_connector.job.import_type%' }
 
-2. If your job uses tasklets (by implementing ``TaskletInterface``) to execute your business logic. You can inject the service `"akeneo_batch.job.job_stopper"` directly in your custom tasklets and use it to indicate your job is stopping and then stops.
+2. If your job uses tasklets (by implementing ``TaskletInterface``) to execute your business logic. You can inject the service `"akeneo_batch.job.job_stopper"` directly in your custom tasklets and use the function `JobStopper::isStopping` to know if user asked to stop the job. If this function return true, you should use the function `JobStopper::stop` and exit your Tasklet.
 
 Track the progress of a job
 ---------------------------
@@ -368,6 +368,54 @@ If your job uses a custom tasklet, we need to make sure of a few additional thin
 - your tasklet should implement the ``Akeneo\Tool\Component\Batch\Item\TrackableTaskletInterface`` interface
 - at the very beginning of the execution of the tasklet, you need to provide the step execution with the total items your tasklet will process through the ``Akeneo\Tool\Component\Batch\Model\StepExecution::setTotalItems`` function.
 - during the process of the tasklet, you need to provide the step execution with the progression the tasklet by incrementing a counter through the ``Akeneo\Tool\Component\Batch\Model\StepExecution::incrementProcessedItems`` function.
+
+The following example shows a simple tasklet updating it's progress using the step execution.
+
+.. code-block:: php
+    :linenos:
+
+    class TrackableTasklet implements TaskletInterface, TrackableTaskletInterface
+    {
+        protected ?StepExecution $stepExecution = null;
+        protected FindItemsToProcess $findItemsToProcess;
+        protected JobRepositoryInterface $jobRepository;
+
+        public function __construct(
+            FindItemsToProcess $findItemsToProcess,
+            JobRepositoryInterface $jobRepository
+        ) {
+            $this->findItemsToProcess = $findItemsToProcess;
+            $this->jobRepository = $jobRepository;
+        }
+
+        public function setStepExecution(StepExecution $stepExecution): void
+        {
+            $this->stepExecution = $stepExecution;
+        }
+
+        public function execute(): void
+        {
+            // First, let's calculate the total items to process
+            $itemsToProcess = $this->FindItemsToProcess->find();
+            $this->stepExecution->setTotalItems($itemsToProcess->count());
+
+            // then, start the process
+            // and update the step execution with the progress
+            foreach ($itemsToProcess as $i => $itemToProcess) {
+                if ($itemToProcess->isValid()) {
+                    $itemToProcess->doSomeWork();
+                    $this->stepExecution->incrementProcessedItems();
+                    $this->jobRepository->updateStepExecution($this->stepExecution);
+                }
+            }
+        }
+
+        public function isTrackable(): bool
+        {
+            return true;
+        }
+    }
+
 
 .. warning::
 
