@@ -450,7 +450,7 @@ The following example shows a simple tasklet updating it's progress using the st
         public function execute(): void
         {
             // First, let's calculate the total items to process
-            $itemsToProcess = $this->FindItemsToProcess->find();
+            $itemsToProcess = $this->findItemsToProcess->find();
             $this->stepExecution->setTotalItems($itemsToProcess->count());
 
             // then, start to process entities
