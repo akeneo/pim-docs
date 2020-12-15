@@ -17,32 +17,81 @@ To add an element at the root of the tree you can reuse the tab module provided 
             parent: pim-menu                               # The parent is the root of the menu
             targetZone: mainMenu
             # aclResourceId: my_custom_acl_key             # [optional] You can define a acl check - add this only if the acl has been created
-            position: 110                                  # [optional] The position in the tree where you want to add the item
+            position: 80                                   # [optional] The position in the tree where you want to add the item
             config:
-                title: pim_menu.item.import_profile        # You can define a translation key for the tab name
+                title: 'Root'                              # You can define a translation key for the tab name (for example pim_menu.item.import_profile)
+                iconModifier: iconCard                     # [optional] The icon of the simple node
                 to: pim_importexport_import_profile_index  # The route to redirect to
 
 After running the command ``rm -rf var/cache; bin/console pim:installer:assets; yarn run webpack`` your new item should appear at the root of the menu.
 
-Define a simple node inside a tab of the menu
-*********************************************
+Define a simple node inside an existing tab
+*******************************************
 
-Now if you want to add an element inside the menu, you can use the item module:
+If you want to add an element inside an existing sub menu, you can use the item module directly, by changing the parent key of the existing sub menu.
+For example, to add new sub menu in system page:
 
 .. code-block:: yaml
 
     # src/Acme/Bundle/AppBundle/Resources/config/form_extensions/menu.yml
     extensions:
+        acme-custom-system-sub-element:                    # The unique key of your extension
+            module: pim/menu/item                          # The module provided by akeneo for sub elements
+            parent: pim-menu-system-navigation-block       # The parent key of the existing sub menu
+            # aclResourceId: my_custom_acl_key             # [optional] You can define a acl check - add this only if the acl has been created
+            position: 240                                  # [optional] The position in the tree where you want to add the item
+            config:
+                title: 'Sub'                               # You can define a translation key for the item name
+                to: pim_importexport_import_profile_index  # The route to redirect
+
+After running the command ``rm -rf var/cache; bin/console pim:installer:assets; yarn run webpack`` your new item should appear in the menu.
+
+Define a simple node inside a custom root menu
+**********************************************
+
+For complex application, you may need to create sub menu in a custom root menu. To do this you don't need to have `to` key in the config of the root menu.
+By default, by clicking on root menu the user will be redirected to the route of the first item (lowest position)
+
+.. code-block:: yaml
+
+    # src/Acme/Bundle/AppBundle/Resources/config/form_extensions/menu.yml
+    extensions:
+        acme-custom-root-element:                          # The unique key of your extension
+            module: pim/menu/tab                           # The module provided by akeneo for root elements
+            parent: pim-menu                               # The parent is the root of the menu
+            targetZone: mainMenu
+            # aclResourceId: my_custom_acl_key             # [optional] You can define a acl check - add this only if the acl has been created
+            position: 80                                   # [optional] The position in the tree where you want to add the item
+            config:
+                title: 'Root'                              # You can define a translation key for the tab name (for example pim_menu.item.import_profile)
+                iconModifier: iconCard                     # [optional] The icon of the simple node
+
+        acme-custom-root-column:                           # The unique key of your column extension
+            module: pim/menu/column                        # The module provided by akeneo for column elements
+            parent: pim-menu                               # The parent is the root of the menu
+            targetZone: column
+            config:
+              stateCode: acme-custom-state-code            # The key used on locale storage to know if this menu is collapsed or not
+              tab: acme-custom-root-element                # The root menu key we just created
+
+        acme-custom-root-navigation-block:                 # The unique key of your navigation extension
+            module: pim/menu/navigation-block              # The module provided by akeneo for navigation elements
+            parent: acme-custom-root-column                # The parent is the column we just created
+            targetZone: navigation
+            config:
+                title: 'Root'                              # The label at the top of navigation tab, you can define a translation key
+
         acme-custom-sub-element:                           # The unique key of your extension
             module: pim/menu/item                          # The module provided by akeneo for sub elements
-            parent: acme-custom-root-element               # The parent is the tab we just created
+            parent: acme-custom-root-navigation-block      # The parent is the navigation block we just created
             # aclResourceId: my_custom_acl_key             # [optional] You can define a acl check - add this only if the acl has been created
             position: 120                                  # [optional] The position in the tree where you want to add the item
             config:
-                title: pim_menu.item.import_profile        # You can define a translation key for the item name
-                to: pim_importexport_import_profile_index  # The route to redirect to
+               title: 'Sub'                                # You can define a translation key for the item name (for example pim_menu.item.import_profile)
+               to: acme_custom_index                       # The route to redirect
 
-After running the command ``rm -rf var/cache; bin/console pim:installer:assets; yarn run webpack`` your new item should appear in the menu.
+The sub menu is only displayed when page reference this sub menu.
+If you want to see this new sub menu, you should have a page that reference this sub element (see Highlight menu elements).
 
 Highlight menu elements
 ***********************
@@ -70,4 +119,4 @@ After running the command ``rm -rf var/cache; bin/console pim:installer:assets; 
 Use you own menu extension item
 *******************************
 
-As you may have already guessed, with this system, you can develop your own menu item and add custom informations like notification badges or custom display.
+As you may have already guessed, with this system, you can develop your own menu item and add custom information like notification badges or custom display.
