@@ -828,6 +828,68 @@ ______
 |              |    - digital_cameras   |
 +--------------+------------------------+
 
+Family variant
+______________
++--------------+-------------------------+
+| Operator     | - IN                    |
+|              | - NOT IN                |
+|              | - EMPTY                 |
+|              | - NOT EMPTY             |
++--------------+-------------------------+
+| Value        | Family variant code.    |
+|              | If operator is          |
+|              | EMPTY or NOT EMPTY,     |
+|              | value element will be   |
+|              | ignored.                |
++--------------+-------------------------+
+| Example      | .. code-block:: yaml    |
+|              |                         |
+|              |   field: family_variant |
+|              |   operator: IN          |
+|              |   value:                |
+|              |    - clothing_by_color  |
+|              |    - shoes_by_size      |
++--------------+-------------------------+
+
+Entity Type
+___________
+
++--------------+--------------------------------------------------------------------------------------------------+
+| Operator     | - =                                                                                              |
++--------------+--------------------------------------------------------------------------------------------------+
+| Value        | FQCN of the entity. It can be either                                                             |
+|              |                                                                                                  |
+|              | - ``Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface``  for a product              |
+|              | - or ``Akeneo\Pim\Enrichment\Component\Product\Model\ProductModelInterface`` for a product model |
++--------------+--------------------------------------------------------------------------------------------------+
+| Example      | .. code-block:: yaml                                                                             |
+|              |                                                                                                  |
+|              |   field: entity_type                                                                             |
+|              |   operator: =                                                                                    |
+|              |   value: Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface                          |
++--------------+--------------------------------------------------------------------------------------------------+
+
+Parent
+______
++--------------+-------------------------+
+| Operator     | - IN                    |
+|              | - EMPTY                 |
+|              | - NOT EMPTY             |
++--------------+-------------------------+
+| Value        | Product model codes.    |
+|              | If operator is          |
+|              | EMPTY or NOT EMPTY,     |
+|              | value element will be   |
+|              | ignored.                |
++--------------+-------------------------+
+| Example      | .. code-block:: yaml    |
+|              |                         |
+|              |   field: parent         |
+|              |   operator: IN          |
+|              |   value:                |
+|              |    - model_pants_blue   |
+|              |    - model_pants_black  |
++--------------+-------------------------+
 
 Groups
 ______
