@@ -29,6 +29,52 @@ You have to make sure your system components are updated to the version required
 
     So there's no need to export and reimport data for this system.
 
+
+Updated System dependencies
+---------------------------
+
+Community Edition
+^^^^^^^^^^^^^^^^^
+TODO?
+
+Enterprise Edition
+^^^^^^^^^^^^^^^^^^
+The following libraries must be added to your operating system:
+
+.. code:: bash
+
+    $ apt-get install aspell-it aspell-sv aspell-da aspell-nl aspell-no aspell-pt-br
+
+Updated crontab definition
+--------------------------
+
+Community Edition
+^^^^^^^^^^^^^^^^^
+
+Added
+
+.. code:: bash
+
+    */10 * * * * bin/console pim:data-quality-insights:prepare-evaluations
+    */30 * * * * bin/console pim:data-quality-insights:evaluations
+    15 0 * * * bin/console pim:data-quality-insights:schedule-periodic-tasks
+
+
+Enterprise Edition
+^^^^^^^^^^^^^^^^^^
+
+Added
+
+.. code:: bash
+
+    */10 * * * * bin/console pim:data-quality-insights:prepare-evaluations
+
+
+Renamed
+
+- From `pimee:data-quality-insights:schedule-periodic-tasks` to `pim:data-quality-insights:schedule-periodic-tasks`
+- From `pimee:data-quality-insights:evaluate-products` to `pim:data-quality-insights:evaluations`
+
 Upgraded Virtual Host configuration
 -----------------------------------
 
@@ -47,6 +93,7 @@ The root of your current installation dir is referred as $INSTALLATION_DIR.
     If you're on a local or on-premise environment, you need to change the APP_ENV to prod_onprem (see https://symfony.com/doc/current/configuration.html#selecting-the-active-environment)
 
 .. code:: bash
+
     $ export APP_ENV=prod_onprem
     $ cd $INSTALLATION_DIR
     $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
@@ -57,14 +104,17 @@ Community Edition
 ^^^^^^^^^^^^^^^^^
 
 You can download the composer.json file directly from the Github repository:
+
 .. code:: bash
-curl https://raw.githubusercontent.com/akeneo/pim-community-standard/5.0/composer.json > $INSTALLATION_DIR/composer.json
+
+    $ curl https://raw.githubusercontent.com/akeneo/pim-community-standard/5.0/composer.json > $INSTALLATION_DIR/composer.json
 
 Enterprise Edition
 ^^^^^^^^^^^^^^^^^^
 Please visit your `Akeneo Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html>`_ to download the archive.
 
 .. code:: bash
+
     $ tar xvzf pim-enterprise-standard-<archive-suffix>.tar.gz -C $INSTALLATION_DIR --strip-components 1 pim-enterprise-standard/composer.json
 
 Load your PIM Enterprise dependencies
@@ -136,6 +186,19 @@ Migrate your data
 
     This makes sense for some migration that only touches the Elasticsearch index or don't apply because no data linked
     to this migration have been found.
+
+
+Initialize the evaluation of all the products and product models
+****************************************************************
+
+.. code:: bash
+
+    $ bin/console pim:data-quality-insights:initialize-products-evaluations
+
+.. note::
+
+    The previous command will populate the evaluation table for products and products model.
+    Depending on your catalog size this command could take time, a nice progress bar will help you to follow the progression.
 
 
 Migrating your custom code
