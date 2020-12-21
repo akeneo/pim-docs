@@ -29,6 +29,52 @@ You have to make sure your system components are updated to the version required
 
     So there's no need to export and reimport data for this system.
 
+
+Updated System dependencies
+---------------------------
+
+Community Edition
+^^^^^^^^^^^^^^^^^
+TODO?
+
+Enterprise Edition
+^^^^^^^^^^^^^^^^^^
+The following libraries must be added to your operating system:
+
+.. code:: bash
+
+    $ apt-get install aspell-it aspell-sv aspell-da aspell-nl aspell-no aspell-pt-br
+
+Updated crontab definition
+--------------------------
+
+Community Edition
+^^^^^^^^^^^^^^^^^
+
+Added
+
+.. code:: bash
+
+    */10 * * * * bin/console pim:data-quality-insights:prepare-evaluations
+    */30 * * * * bin/console pim:data-quality-insights:evaluations
+    15 0 * * * bin/console pim:data-quality-insights:schedule-periodic-tasks
+
+
+Enterprise Edition
+^^^^^^^^^^^^^^^^^^
+
+Added
+
+.. code:: bash
+
+    */10 * * * * bin/console pim:data-quality-insights:prepare-evaluations
+
+
+Renamed
+
+- From `pimee:data-quality-insights:schedule-periodic-tasks` to `pim:data-quality-insights:schedule-periodic-tasks`
+- From `pimee:data-quality-insights:evaluate-products` to `pim:data-quality-insights:evaluations`
+
 Upgraded Virtual Host configuration
 -----------------------------------
 
@@ -58,6 +104,7 @@ Community Edition
 ^^^^^^^^^^^^^^^^^
 
 You can download the composer.json file directly from the Github repository:
+
 .. code:: bash
     $  curl https://raw.githubusercontent.com/akeneo/pim-community-standard/5.0/composer.json > $INSTALLATION_DIR/composer.json
 
@@ -79,9 +126,9 @@ Load your PIM Enterprise dependencies
 
     You may need to increase the memory provided to `composer`, as this step can be very memory consuming:
 
-.. code:: bash
+    .. code:: bash
 
-    $ php /path/to/composer update
+        $ php /path/to/composer update
 
 Let Akeneo PIM continue the preparation for you
 ***************************************************
