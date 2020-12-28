@@ -35,7 +35,7 @@ Updated System dependencies
 
 Community Edition
 ^^^^^^^^^^^^^^^^^
-TODO?
+You can download the composer.json file directly from the Github repository: https://raw.githubusercontent.com/akeneo/pim-community-standard/5.0/composer.json
 
 Enterprise Edition
 ^^^^^^^^^^^^^^^^^^
