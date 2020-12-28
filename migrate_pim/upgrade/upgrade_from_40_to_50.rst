@@ -93,7 +93,7 @@ The root of your current installation dir is referred as $INSTALLATION_DIR.
     If you're on a local or on-premise environment, you need to change the APP_ENV to prod_onprem (see https://symfony.com/doc/current/configuration.html#selecting-the-active-environment)
 
 .. code:: bash
-    $ export APP_ENV=prod_onprem
+    $ export APP_ENV=prod
     $ cd $INSTALLATION_DIR
     $ cp -R ./vendor/akeneo/pim-community-dev/upgrades/* ./upgrades/
     $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
