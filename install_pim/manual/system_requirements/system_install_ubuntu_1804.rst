@@ -25,7 +25,7 @@ It's also recommended to disable all non desired tools, such as MySQL Workbench 
 .. code-block:: bash
 
     # apt-get install lsb-release apt-transport-https ca-certificates wget gnupg
-    # wget -O mysql-apt-config.deb https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
+    # wget -O mysql-apt-config.deb https://repo.mysql.com//mysql-apt-config_0.8.16-1_all.deb
     # dpkg -i mysql-apt-config.deb
 
 Now is the time to install what has been configured in the step before:
@@ -62,8 +62,8 @@ Then, install PHP and the required extensions:
 
     $ apt-get install php7.4-cli php7.4-apcu php7.4-bcmath php7.4-curl php7.4-fpm php7.4-gd php7.4-intl php7.4-mysql php7.4-xml php7.4-zip php7.4-zip php7.4-mbstring php7.4-imagick php7.4-exif
 
-Elasticsearch 7.5
-*****************
+Elasticsearch 7.10
+******************
 
 The easiest way to install Elasticsearch 7 is to use the `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/7.3/deb.html#deb>`_:
 
