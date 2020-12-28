@@ -136,7 +136,7 @@ When you work on a patch, please keep in mind:
 
 .. note::
 
-    We wrote a guide to :doc:`setup behat </technical_architecture/best_practices/core/behat>` in Akeneo PIM and you can check the `behat quick intro`_ on their documentation.
+    You can check the `behat quick intro`_ on their documentation.
 
     Here is the documentation to `begin with PHPSpec`_ and `Prophecy documentation`_.
 
@@ -388,7 +388,6 @@ messages of all the commits. When you are finished, execute the push command.
 .. _`documentation repository`:         https://github.com/akeneo/pim-docs
 .. _`code conventions`:                 http://docs.akeneo.com/latest/technical_architecture/best_practices/core/conventions.html
 .. _`coding standard`:                  http://docs.akeneo.com/latest/technical_architecture/best_practices/core/standards.html
-.. _`setup behat`:                      http://docs.akeneo.com/latest/technical_architecture/best_practices/core/behat.html
 .. _`Sylius documentation`:             https://github.com/Sylius/Sylius/tree/master/docs
 .. _`behat quick intro`:                http://docs.behat.org/en/v2.5/quick_intro.html
 .. _`begin with PHPSpec`:               https://www.phpspec.net/

@@ -474,6 +474,7 @@ By default, a space is added between two attribute value blocks (not between an 
 |      | For simple select, multi select, reference entity single link and reference entity multiple links attributes:                                                              |
 |      |                                                                                                                                                                            |
 |      | - label_locale: locale code for the label of the option/reference entity record. Optional. By default the code is used.                                                    |
+|      | - unit_label_locale: locale code for the unit of the measurement. Optional. By default the code is used.                                                                   |
 +------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | to   | One set of:                                                                                                                                                                |
 |      |                                                                                                                                                                            |
@@ -827,6 +828,68 @@ ______
 |              |    - digital_cameras   |
 +--------------+------------------------+
 
+Family variant
+______________
++--------------+-------------------------+
+| Operator     | - IN                    |
+|              | - NOT IN                |
+|              | - EMPTY                 |
+|              | - NOT EMPTY             |
++--------------+-------------------------+
+| Value        | Family variant code.    |
+|              | If operator is          |
+|              | EMPTY or NOT EMPTY,     |
+|              | value element will be   |
+|              | ignored.                |
++--------------+-------------------------+
+| Example      | .. code-block:: yaml    |
+|              |                         |
+|              |   field: family_variant |
+|              |   operator: IN          |
+|              |   value:                |
+|              |    - clothing_by_color  |
+|              |    - shoes_by_size      |
++--------------+-------------------------+
+
+Entity Type
+___________
+
++--------------+--------------------------------------------------------------------------------------------------+
+| Operator     | - =                                                                                              |
++--------------+--------------------------------------------------------------------------------------------------+
+| Value        | FQCN of the entity. It can be either                                                             |
+|              |                                                                                                  |
+|              | - ``Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface``  for a product              |
+|              | - or ``Akeneo\Pim\Enrichment\Component\Product\Model\ProductModelInterface`` for a product model |
++--------------+--------------------------------------------------------------------------------------------------+
+| Example      | .. code-block:: yaml                                                                             |
+|              |                                                                                                  |
+|              |   field: entity_type                                                                             |
+|              |   operator: =                                                                                    |
+|              |   value: Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface                          |
++--------------+--------------------------------------------------------------------------------------------------+
+
+Parent
+______
++--------------+-------------------------+
+| Operator     | - IN                    |
+|              | - EMPTY                 |
+|              | - NOT EMPTY             |
++--------------+-------------------------+
+| Value        | Product model codes.    |
+|              | If operator is          |
+|              | EMPTY or NOT EMPTY,     |
+|              | value element will be   |
+|              | ignored.                |
++--------------+-------------------------+
+| Example      | .. code-block:: yaml    |
+|              |                         |
+|              |   field: parent         |
+|              |   operator: IN          |
+|              |   value:                |
+|              |    - model_pants_blue   |
+|              |    - model_pants_black  |
++--------------+-------------------------+
 
 Groups
 ______

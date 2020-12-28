@@ -50,7 +50,7 @@ Then clean the cache, re-install assets and warmup the cache:
 
 .. code-block:: bash
 
-    service php7.3-fpm restart
+    service php7.4-fpm restart
     rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/* ./public/dist/*
     bin/console --env=prod cache:warmup
     bin/console --env=prod pim:installer:assets

@@ -39,7 +39,7 @@ When installing MySQL 8.0, you'll have to choose the authentication method. Plea
 PHP 7.4
 *******
 
-As Ubuntu 18.04 only provides PHP 7.2, we need to use `Ondrej Sury <https://deb.sury.org/>`_ packages to install PHP 7.3..
+As Ubuntu 18.04 only provides PHP 7.2, we need to use `Ondrej Sury <https://deb.sury.org/>`_ packages to install PHP 7.4..
 
 First, install the `repository <https://launchpad.net/~ondrej/+archive/ubuntu/php/>`_:
 
