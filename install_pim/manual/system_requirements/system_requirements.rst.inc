@@ -31,35 +31,35 @@ The web server will also need the following libraries and modules:
 **PHP required modules and configuration**
 
 +----------------+---------------------------+
-| PHP            | 7.3                       |
+| PHP            | 7.4                       |
 +----------------+---------------------------+
-| php7.3-apcu    | apc.enable_cli=1          |
+| php7.4-apcu    | apc.enable_cli=1          |
 +----------------+---------------------------+
-| php7.3-bcmath  | No specific configuration |
+| php7.4-bcmath  | No specific configuration |
 +----------------+---------------------------+
-| php7.3-curl    | No specific configuration |
+| php7.4-curl    | No specific configuration |
 +----------------+---------------------------+
-| php7.3-fpm     | No specific configuration |
+| php7.4-fpm     | No specific configuration |
 +----------------+---------------------------+
-| php7.3-intl    | No specific configuration |
+| php7.4-intl    | No specific configuration |
 +----------------+---------------------------+
-| php7.3-mysql   | No specific configuration |
+| php7.4-mysql   | No specific configuration |
 +----------------+---------------------------+
-| php7.3-xml     | No specific configuration |
+| php7.4-xml     | No specific configuration |
 +----------------+---------------------------+
-| php7.3-zip     | No specific configuration |
+| php7.4-zip     | No specific configuration |
 +----------------+---------------------------+
-| php7.3-exif    | No specific configuration |
+| php7.4-exif    | No specific configuration |
 +----------------+---------------------------+
-| php7.3-imagick | No specific configuration |
+| php7.4-imagick | No specific configuration |
 +----------------+---------------------------+
-| php7.3-cli     | No specific configuration |
+| php7.4-cli     | No specific configuration |
 +----------------+---------------------------+
-| php7.3-opcache | No specific configuration |
+| php7.4-opcache | No specific configuration |
 +----------------+---------------------------+
-| php7.3-zip     | No specific configuration |
+| php7.4-zip     | No specific configuration |
 +----------------+---------------------------+
-| php7.3-mbstring| No specific configuration |
+| php7.4-mbstring| No specific configuration |
 +----------------+---------------------------+
 | php-memcached  | No specific configuration |
 +----------------+---------------------------+
@@ -113,7 +113,7 @@ Besides these modules, the following configuration is the minimal configuration 
 **Database server**
 
 +-----------------+----------+
-| MySQL (SQL)     | ≥ 8.0.18 |
+| MySQL (SQL)     | ≥ 8.0.22 |
 +-----------------+----------+
 
 To use this database you will also require the distribution package:
@@ -125,7 +125,7 @@ To use this database you will also require the distribution package:
 and the following PHP modules:
 
 +--------------+----------+
-| php7.3-mysql | Required |
+| php7.4-mysql | Required |
 +--------------+----------+
 
 .. warning::
@@ -136,7 +136,7 @@ and the following PHP modules:
 **Search engine**
 
 +---------------+------------+
-| Elasticsearch | 7.5        |
+| Elasticsearch | 7.10       |
 +---------------+------------+
 
 Elasticsearch is bundled with its own JDK version, but if you want to use the `no JDK version <https://www.elastic.co/downloads/elasticsearch-no-jdk>_`, please make sure to install the right JDK for Elasticsearch.
@@ -169,7 +169,7 @@ Most of the application folders and files require only read access. Here is a li
 | web         | Contains the web assets required by the application                            |
 +-------------+--------------------------------------------------------------------------------+
 
-These permissions are the ones required by the Symfony Framework (see its `official documentation <https://symfony.com/doc/3.4/setup/file_permissions.html>`_ for more information).
+These permissions are the ones required by the Symfony Framework (see its `official documentation <https://symfony.com/doc/4.4/setup/file_permissions.html>`_ for more information).
 
 Akeneo PIM application uses an abstraction layer called Flysystem to store media and files uploaded from the application. By default, Flysystem is configured to store these files on the application server, but this configuration `can easily be changed <https://flysystem.thephpleague.com/>`_ in favor of, for example, a distributed remote storage system (see Flysystem documentation for more information).
 

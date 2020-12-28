@@ -25,7 +25,7 @@ It's also recommended to disable all non desired tools, such as MySQL Workbench 
 .. code-block:: bash
 
     # apt-get install lsb-release apt-transport-https ca-certificates wget gnupg
-    # wget -O mysql-apt-config.deb https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb
+    # wget -O mysql-apt-config.deb https://repo.mysql.com//mysql-apt-config_0.8.16-1_all.deb
     # dpkg -i mysql-apt-config.deb
 
 Now is the time to install what has been configured in the step before:
@@ -36,19 +36,27 @@ Now is the time to install what has been configured in the step before:
 
 When installing MySQL 8.0, you'll have to choose the authentication method. Please select *Use Legacy Authentication Method* as the *Strong Password Encryption* is not yet supported by Akeneo PIM.
 
-PHP 7.3
+PHP 7.4
 *******
+
+As Debian 10 only provides PHP 7.3, we need to use `Ondrej Sury <https://deb.sury.org/>`_ packages to install PHP 7.4..
+
+.. code-block:: bash
+
+    # wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+    # sh -c 'echo "deb https://packages.sury.org/php/ buster main" > /etc/apt/sources.list.d/php.list'
+    # apt-get update
 
 Install PHP and the required extensions:
 
 .. code-block:: bash
 
-    # apt-get install php7.3-cli php7.3-apcu php7.3-bcmath php7.3-curl php7.3-fpm php7.3-gd php7.3-intl php7.3-mysql php7.3-xml php7.3-zip php7.3-zip php7.3-mbstring php7.3-imagick php7.3-exif
+    # apt-get install php7.4-cli php7.4-apcu php7.4-bcmath php7.4-curl php7.4-opcache php7.4-fpm php7.4-gd php7.4-intl php7.4-mysql php7.4-xml php7.4-zip php7.4-mbstring php7.4-imagick php7.4-exif
 
-Elasticsearch 7.9
-*****************
+Elasticsearch 7.10
+*******************
 
-The easiest way to install Elasticsearch 7 is to use the `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/7.9/deb.html#deb>`_:
+The easiest way to install Elasticsearch 7 is to use the `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/7.10/deb.html#deb>`_:
 
 - first install the PGP key
 - then install the package via the official repository
@@ -63,7 +71,7 @@ The easiest way to install Elasticsearch 7 is to use the `official vendor packag
 
 .. warning::
 
-   You will probably need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/7.3/deb.html#deb-configuring>`_.
+   You will probably need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/7.10/vm-max-map-count.html>`_.
    Proceed as follow (first command will affect your current session, second one every boot of your machine):
 
    .. code-block:: bash
