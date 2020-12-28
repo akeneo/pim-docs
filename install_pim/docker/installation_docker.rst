@@ -51,11 +51,11 @@ The following command will create a PIM project in the current directory. Please
     $ cd pim
     $ docker run -u www-data -v $(pwd):/srv/pim -w /srv/pim --rm akeneo/pim-php-dev:4.0 \
         php -d memory_limit=4G /usr/local/bin/composer create-project \
-        akeneo/pim-community-standard /srv/pim "4.0.*@stable"
+        akeneo/pim-community-standard /srv/pim "5.0.*@stable"
 
 .. note::
     Alternatively, you can download an archive of Akeneo PIM CE containing all the PHP dependencies here:
-    https://download.akeneo.com/pim-community-standard-v4.0-latest-icecat.tar.gz
+    ``https://download.akeneo.com/pim-community-standard-v5.0-latest-icecat.tar.gz``
 
 
 Enterprise Edition
@@ -65,11 +65,11 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
 
 .. code-block:: bash
 
-    $ tar -xvzf pim-enterprise-standard-v4.0.tar.gz
+    $ tar -xvzf pim-enterprise-standard-v5.0.tar.gz
     $ cd pim-enterprise-standard
     $ docker run -ti -u www-data --rm \
         -v $(pwd):/srv/pim -v ~/.composer:/var/www.composer -v ~/.ssh:/var/www/.ssh -w /srv/pim \
-        akeneo/pim-php-dev:4.0 php -d memory_limit=4G /usr/local/bin/composer install
+        akeneo/pim-php-dev:5.0 php -d memory_limit=4G /usr/local/bin/composer install
 
 .. note::
     The above Docker command uses a volume to make your SSH private key available to the container, in order for it to access

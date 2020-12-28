@@ -113,7 +113,7 @@ Besides these modules, the following configuration is the minimal configuration 
 **Database server**
 
 +-----------------+----------+
-| MySQL (SQL)     | ≥ 8.0.18 |
+| MySQL (SQL)     | ≥ 8.0.22 |
 +-----------------+----------+
 
 To use this database you will also require the distribution package:
@@ -136,7 +136,7 @@ and the following PHP modules:
 **Search engine**
 
 +---------------+------------+
-| Elasticsearch | 7.5        |
+| Elasticsearch | 7.10       |
 +---------------+------------+
 
 Elasticsearch is bundled with its own JDK version, but if you want to use the `no JDK version <https://www.elastic.co/downloads/elasticsearch-no-jdk>_`, please make sure to install the right JDK for Elasticsearch.
@@ -169,7 +169,7 @@ Most of the application folders and files require only read access. Here is a li
 | web         | Contains the web assets required by the application                            |
 +-------------+--------------------------------------------------------------------------------+
 
-These permissions are the ones required by the Symfony Framework (see its `official documentation <https://symfony.com/doc/3.4/setup/file_permissions.html>`_ for more information).
+These permissions are the ones required by the Symfony Framework (see its `official documentation <https://symfony.com/doc/4.4/setup/file_permissions.html>`_ for more information).
 
 Akeneo PIM application uses an abstraction layer called Flysystem to store media and files uploaded from the application. By default, Flysystem is configured to store these files on the application server, but this configuration `can easily be changed <https://flysystem.thephpleague.com/>`_ in favor of, for example, a distributed remote storage system (see Flysystem documentation for more information).
 

@@ -313,3 +313,166 @@ If you don't see your changes, make sure you have run (``bin/console assets:inst
 Now that we have our extension loaded in our form, we can add some logic into it, check how to `customize the UI`_.
 
 .. _customize the UI: ../../design_pim
+
+Make a job stoppable
+--------------------
+
+In Akeneo 5.0 we added the possibility to declare a Job as stoppable. But as some task may be not stoppable (important workflows that always need to finish, job depending on other steps, etc) we decided to make this new feature "opt in". In this documentation, we will explain you how to make your job stoppable.
+
+.. note::
+
+    If your job is based on the ``Akeneo\Tool\Component\Batch\Job\Job`` class, you have to adapt your job service definition by setting the last property of the constructor to "true" (as shown in the example below).
+
+.. note::
+
+    If your job is composed of an ``Akeneo\Tool\Component\Batch\Step\ItemStep`` instance, you should not have to do anything regarding the steps of your jobs as the stopping mechanism is already built in the ItemStep class.
+
+To make this action available from the UI, you need to make sure of a few things:
+
+1. You need to make sure your custom job implements ``Akeneo\Tool\Component\Batch\Job\StoppableJobInterface`` and set the last property of the constructor to "true". See the following job service definition example:
+
+.. code-block:: yaml
+    :linenos:
+
+    pimee_catalog_rule.job.xlsx_product_import_with_rules:
+        class: '%pim_connector.job.simple_job.class%'
+        arguments:
+            - '%pimee_catalog_rule.job_name.xlsx_product_import_with_rules%'
+            - '@event_dispatcher'
+            - '@akeneo_batch.job_repository'
+            -
+                - '@pim_connector.step.charset_validator'
+                - '@pimee_catalog_rule.step.xlsx_product.import'
+                - '@pimee_catalog_rule.step.xlsx_product.import_associations'
+                - '@pimee_catalog_rule.step.xlsx_product.execute_rules'
+            - true # <-- This property should be true if the job is stoppable
+        tags:
+            - { name: akeneo_batch.job, connector: '%pim_connector.connector_name.xlsx%', type: '%pim_connector.job.import_type%' }
+
+2. If your job uses tasklets (by implementing ``TaskletInterface``) to execute your business logic. You can inject the service `"akeneo_batch.job.job_stopper"` directly in your custom tasklets and use the function `JobStopper::isStopping` to know if user asked to stop the job. If this function return true, you should use the function `JobStopper::stop` and exit your Tasklet.
+
+The following example shows a simple tasklet able to stop when a user stops the job from the UI.
+
+.. code-block:: php
+    :linenos:
+
+    <?php
+    declare(strict_types=1);
+
+    namespace Acme\Bundle\StoppableJobBundle;
+
+    class TrackableTasklet implements TaskletInterface
+    {
+        private const BATCH_SIZE = 100;
+
+        protected ?StepExecution $stepExecution = null;
+        protected FindItemsToProcess $findItemsToProcess;
+        protected JobStopper $jobStopper;
+
+        public function __construct(
+            FindItemsToProcess $findItemsToProcess,
+            JobStopper $jobStopper
+        ) {
+            $this->jobStopper = $jobStopper;
+            $this->findItemsToProcess = $findItemsToProcess;
+        }
+
+        public function setStepExecution(StepExecution $stepExecution): void
+        {
+            $this->stepExecution = $stepExecution;
+        }
+
+        public function execute(): void
+        {
+            $itemsToProcess = $this->FindItemsToProcess->find();
+            foreach ($itemsToProcess as $i => $itemToProcess) {
+                $itemToProcess->doSomeWork();
+
+                // Check every 100 items if the process should be stopped
+                if ($i % self::BATCH_SIZE === 0
+                    && $this->jobStopper->isStopping($this->stepExecution)
+                ) {
+                    $this->jobStopper->stop($this->stepExecution);
+
+                    return;
+                }
+            }
+        }
+    }
+
+Track the progress of a job
+---------------------------
+
+In Akeneo 5.0 we added the possibility to track the progress of job. But as some task may be not trackable we decided to make this new feature "opt in". In this documentation, we will explain you how to expose the progress of your job.
+
+.. note::
+
+    If your job is composed of an ``Akeneo\Tool\Component\Batch\Step\ItemStep`` instance, as well as a reader implementing ``Akeneo\Tool\Component\Batch\Item\TrackableItemReaderInterface`` the tracking of your job should already be available in the UI.
+
+
+If your job uses a custom reader, make sure it implements ``Akeneo\Tool\Component\Batch\Item\TrackableItemReaderInterface`` and exposes the total of number of items that will be processed during the execution of the step.
+
+If your job uses a custom tasklet, we need to make sure of a few additional things:
+
+- your tasklet should implement the ``Akeneo\Tool\Component\Batch\Item\TrackableTaskletInterface`` interface
+- at the very beginning of the execution of the tasklet, you need to provide the step execution with the total items your tasklet will process through the ``Akeneo\Tool\Component\Batch\Model\StepExecution::setTotalItems`` function.
+- during the process of the tasklet, you need to provide the step execution with the progression the tasklet by incrementing a counter through the ``Akeneo\Tool\Component\Batch\Model\StepExecution::incrementProcessedItems`` function.
+
+The following example shows a simple tasklet updating it's progress using the step execution.
+
+.. code-block:: php
+    :linenos:
+
+    <?php
+    declare(strict_types=1);
+
+    namespace Acme\Bundle\StoppableJobBundle;
+
+    class TrackableTasklet implements TaskletInterface, TrackableTaskletInterface
+    {
+        protected ?StepExecution $stepExecution = null;
+        protected FindItemsToProcess $findItemsToProcess;
+        protected JobRepositoryInterface $jobRepository;
+
+        public function __construct(
+            FindItemsToProcess $findItemsToProcess,
+            JobRepositoryInterface $jobRepository
+        ) {
+            $this->findItemsToProcess = $findItemsToProcess;
+            $this->jobRepository = $jobRepository;
+        }
+
+        public function setStepExecution(StepExecution $stepExecution): void
+        {
+            $this->stepExecution = $stepExecution;
+        }
+
+        public function execute(): void
+        {
+            // First, let's calculate the total items to process
+            $itemsToProcess = $this->findItemsToProcess->find();
+            $this->stepExecution->setTotalItems($itemsToProcess->count());
+
+            // then, start to process entities
+            // and update the step execution with the progress
+            foreach ($itemsToProcess as $itemToProcess) {
+                $itemToProcess->doSomeWork();
+                $this->stepExecution->incrementProcessedItems();
+                $this->jobRepository->updateStepExecution($this->stepExecution);
+            }
+        }
+
+        public function isTrackable(): bool
+        {
+            return true;
+        }
+    }
+
+
+.. warning::
+
+    Make sure to only call `JobStopper::isStopped` not too often as it will do a MySQL query. A good way of doing it could be to do it only every 100 loop tour.
+
+.. note::
+
+    You can refer to the ``Akeneo\Pim\Enrichment\Component\Product\Job\DeleteProductsAndProductModelsTasklet`` to see how the tracking is implemented and how the step execution is kept up to date with the progression.
