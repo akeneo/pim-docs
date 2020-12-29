@@ -19,7 +19,7 @@ For example, we can add a description property with a text field.
 
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Entity/Category.php
    :language: php
-   :prepend: # /src/Acme/Bundle/CatalogBundle/Entity/Category.php
+   :prepend: // /src/Acme/Bundle/CatalogBundle/Entity/Category.php
    :linenos:
 
 Configure the mapping override
@@ -36,7 +36,7 @@ You also need to configure the mapping override in your application configuratio
 
 .. code-block:: yaml
 
-    # app/config/config.yml
+    # config/services/storage_utils.yml
     akeneo_storage_utils:
         mapping_overrides:
             -
@@ -59,7 +59,7 @@ You need to update your category entity parameter used in ``entities.yml`` file:
 
    .. code-block:: php
 
-       # /src/Acme/Bundle/CatalogBundle/DependencyInjection/AcmeAppExtension.php
+       // /src/Acme/Bundle/CatalogBundle/DependencyInjection/AcmeAppExtension.php
        public function load(array $configs, ContainerBuilder $container)
        {
            /** ... **/
@@ -70,7 +70,7 @@ You need to update your category entity parameter used in ``entities.yml`` file:
    You don't have to add a lot of code to the Doctrine configuration to resolve target entities.
    We already have a resolver which injects the new category class name.
 
-Now, you can run the following commands to update your database:
+Now, you can run the following commands to update your database: (don't forget to register your new bundle in the `config/bundles.php` file)
 
 .. code-block:: bash
 
@@ -84,7 +84,7 @@ Firstly, you have to create your custom type by inheriting the CategoryType clas
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Form/Type/CategoryType.php
     :language: php
-    :prepend: # /src/Acme/Bundle/EnrichBundle/Form/Type/CategoryType.php
+    :prepend: // /src/Acme/Bundle/EnrichBundle/Form/Type/CategoryType.php
     :linenos:
 
 Then, you have to override the service definition of your form:
@@ -105,7 +105,7 @@ Then, add this new file to your dependency injection extension:
 
 .. code-block:: php
 
-    # /src/Acme/Bundle/EnrichBundle/DependencyInjection/AcmeAppExtension.php
+    // /src/Acme/Bundle/EnrichBundle/DependencyInjection/AcmeAppExtension.php
     public function load(array $configs, ContainerBuilder $container)
     {
         /** ... **/
@@ -175,14 +175,14 @@ For example, we can add an optional description property with a text field.
 
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Entity/CategoryTranslation.php
    :language: php
-   :prepend: # /src/Acme/Bundle/CatalogBundle/Entity/CategoryTranslation.php
+   :prepend: // /src/Acme/Bundle/CatalogBundle/Entity/CategoryTranslation.php
    :linenos:
 
 Then we need to link this description to the ``Category`` class.
 
 .. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Entity/TranslatableCategory.php
    :language: php
-   :prepend: # /src/Acme/Bundle/CatalogBundle/Entity/Category.php
+   :prepend: // /src/Acme/Bundle/CatalogBundle/Entity/Category.php
    :linenos:
 
 Configure the mapping override
@@ -206,7 +206,7 @@ You also need to configure the mapping override in your application configuratio
 
 .. code-block:: yaml
 
-    # app/config/config.yml
+    # config/services/storage_utils.yml
     akeneo_storage_utils:
         mapping_overrides:
             -
@@ -232,7 +232,7 @@ You need to update your category entity parameter used in ``entities.yml`` file:
 
    .. code-block:: php
 
-       # /src/Acme/Bundle/CatalogBundle/DependencyInjection/AcmeAppExtension.php
+       // /src/Acme/Bundle/CatalogBundle/DependencyInjection/AcmeAppExtension.php
        public function load(array $configs, ContainerBuilder $container)
        {
            /** ... **/
@@ -257,7 +257,7 @@ Firstly, you have to create your custom type by inheriting the CategoryType clas
 
 .. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Form/Type/TranslatableCategoryType.php
     :language: php
-    :prepend: # /src/Acme/Bundle/EnrichBundle/Form/Type/CategoryType.php
+    :prepend: // /src/Acme/Bundle/EnrichBundle/Form/Type/CategoryType.php
     :linenos:
 
 Then, you have to override the service definition of your form:
@@ -278,7 +278,7 @@ Then, add this new file to your dependency injection extension:
 
 .. code-block:: php
 
-    # /src/Acme/Bundle/EnrichBundle/DependencyInjection/AcmeAppExtension.php
+    // /src/Acme/Bundle/EnrichBundle/DependencyInjection/AcmeAppExtension.php
     public function load(array $configs, ContainerBuilder $container)
     {
         /** ... **/
