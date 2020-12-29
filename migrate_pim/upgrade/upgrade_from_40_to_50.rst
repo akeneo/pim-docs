@@ -12,8 +12,6 @@ The queue daemon(s) must be stopped as well.
 Requirements
 ************
 
-
-
 Updated System components
 -------------------------
 
@@ -21,7 +19,6 @@ You have to make sure your system components are updated to the version required
  - PHP 7.4
  - MySQL 8.0
  - Elasticsearch 7.10
-
 
 .. note::
     Elasticsearch supports in-place update: Elasticsearch 7.10 will be able to use indexes created
@@ -89,11 +86,9 @@ Akeneo PIM composer.json
 ----------------------------
 The root of your current installation dir is referred as $INSTALLATION_DIR.
 
-.. warning::
-    If you're on a local or on-premise environment, you need to change the APP_ENV to prod_onprem (see https://symfony.com/doc/current/configuration.html#selecting-the-active-environment)
 
 .. code:: bash
-    $ export APP_ENV=prod_onprem
+
     $ cd $INSTALLATION_DIR
     $ cp -R ./vendor/akeneo/pim-community-dev/upgrades/* ./upgrades/
     $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
@@ -106,6 +101,7 @@ Community Edition
 You can download the composer.json file directly from the Github repository:
 
 .. code:: bash
+
     $  curl https://raw.githubusercontent.com/akeneo/pim-community-standard/5.0/composer.json > $INSTALLATION_DIR/composer.json
 
 Enterprise Edition
@@ -113,6 +109,7 @@ Enterprise Edition
 Please visit your `Akeneo Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html>`_ to download the archive.
 
 .. code:: bash
+
     $ tar xvzf pim-enterprise-standard-<archive-suffix>.tar.gz -C $INSTALLATION_DIR --strip-components 1 pim-enterprise-standard/composer.json
 
 Load your PIM Enterprise dependencies
@@ -128,19 +125,31 @@ Load your PIM Enterprise dependencies
 
     .. code:: bash
 
-        $ php /path/to/composer update
+        $ php  -d memory_limit=4G /path/to/composer update
 
 Let Akeneo PIM continue the preparation for you
 ***************************************************
 
+.. warning::
+    If you're on a local or on-premise environment, you need to change the APP_ENV to prod_onprem (see https://symfony.com/doc/current/configuration.html#selecting-the-active-environment)
+
 .. code:: bash
 
-    $ vendor/akeneo/pim-enterprise-dev/std-build/upgrade/prepare.sh
+    $ export APP_ENV=prod
+    $ vendor/akeneo/pim-enterprise-dev/std-build/upgrade/prepare_40_to_50.sh
 
 .. warning::
     We have overwritten:
-    - package.json
-    - tsconfig.json
+        - Makefile
+        - package.json
+        - yarn.lock
+        - tsconfig.json
+        - src/Kernel.php
+        - config/packages/security.yml
+        - config/packages/dev
+        - config/packages/prod_flex
+        - config/packages/prod_onprem
+
     In case of customisation, you need to resolve conflicts.
 
 Make sure your environment is ready to be migrated
@@ -159,8 +168,12 @@ Prepare the front
 
 .. code:: bash
 
+    $ rm -rf public/bundles public/js
     $ bin/console pim:installer:assets --symlink --clean
     $ yarnpkg install
+    $ yarnpkg  --cwd=vendor/akeneo/pim-community-dev/akeneo-design-system install --frozen-lockfile
+    $ yarnpkg  --cwd=vendor/akeneo/pim-community-dev/akeneo-design-system run lib:build
+    $ rm -rf public/dist
     $ yarnpkg run webpack
 
 Migrate your data
@@ -203,7 +216,7 @@ Installing Rector
 
 .. code:: bash
 
-    composer require --dev rector/rector
+    composer require --dev rector/rector:0.7.25
 
 
 Making sure all classes are loadable
@@ -231,7 +244,7 @@ Applying automatic fixes
     This will use the `rector.yaml` file created by the `prepare.sh` above.
     Feel free to add your own refactoring rules inside it. More information on https://getrector.org/
 
-Identifiying broken code
+Identifying broken code
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can use PHPStan to help you identify broken code:
