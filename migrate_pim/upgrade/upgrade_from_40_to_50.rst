@@ -32,7 +32,7 @@ Updated System dependencies
 
 Community Edition
 ^^^^^^^^^^^^^^^^^
-TODO?
+You can download the composer.json file directly from the Github repository: https://raw.githubusercontent.com/akeneo/pim-community-standard/5.0/composer.json
 
 Enterprise Edition
 ^^^^^^^^^^^^^^^^^^
@@ -88,7 +88,7 @@ The root of your current installation dir is referred as $INSTALLATION_DIR.
 
 
 .. code:: bash
-
+    $ export APP_ENV=prod
     $ cd $INSTALLATION_DIR
     $ cp -R ./vendor/akeneo/pim-community-dev/upgrades/* ./upgrades/
     $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
