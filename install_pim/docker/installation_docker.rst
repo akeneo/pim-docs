@@ -4,8 +4,8 @@ Install Akeneo PIM for development with Docker
 System requirements
 -------------------
 
- - `docker 19+`: <https://docs.docker.com/install/>`
- - `docker-compose 1.24+`: <https://docs.docker.com/compose/install/>`
+ - `docker 19+`: `Docker installation <https://docs.docker.com/install/>`_
+ - `docker-compose 1.24+`: `docker-compose installation <https://docs.docker.com/compose/install/>`_
  - `make`
  - `bash`
 
@@ -49,7 +49,7 @@ The following command will create a PIM project in the current directory. Please
 
     $ mkdir pim
     $ cd pim
-    $ docker run -u www-data -v $(pwd):/srv/pim -w /srv/pim --rm akeneo/pim-php-dev:4.0 \
+    $ docker run -u www-data -v $(pwd):/srv/pim -w /srv/pim --rm akeneo/pim-php-dev:5.0 \
         php -d memory_limit=4G /usr/local/bin/composer create-project \
         akeneo/pim-community-standard /srv/pim "5.0.*@stable"
 
@@ -61,7 +61,7 @@ The following command will create a PIM project in the current directory. Please
 Enterprise Edition
 ******************
 
-You need to get a PIM Enterprise Standard archive from the Partners Portal. See  <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_
+You need to get a PIM Enterprise Standard archive from the Partners Portal. See  `Portal documentation <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_
 
 .. code-block:: bash
 

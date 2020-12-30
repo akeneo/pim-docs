@@ -63,6 +63,9 @@ The web server will also need the following libraries and modules:
 +----------------+---------------------------+
 | php-memcached  | No specific configuration |
 +----------------+---------------------------+
+| composer       | >= 2                      |
++----------------+---------------------------+
+
 
 .. warning::
 

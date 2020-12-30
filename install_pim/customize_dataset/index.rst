@@ -6,7 +6,7 @@ Akeneo PIM ships with two datasets. They are located in ``vendor/akeneo/pim-comm
 * *icecat_demo_dev* to be able to take a look and play with the PIM with already preset families, categories, products, etc..
 * *minimal* to start a brand new blank PIM project
 
-From v4.0, Akeneo PIM ships with *minimal* enabled.
+From v5.0, Akeneo PIM ships with *minimal* enabled.
 
 .. warning::
    From version PIM 3.2, *minimal* catalog does NOT include any default admin user for security reasons.
