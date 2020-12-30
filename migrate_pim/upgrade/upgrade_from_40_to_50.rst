@@ -29,14 +29,13 @@ You have to make sure your system components are updated to the version required
 
 Updated System dependencies
 ---------------------------
-
-Community Edition
-^^^^^^^^^^^^^^^^^
-You can download the composer.json file directly from the Github repository: https://raw.githubusercontent.com/akeneo/pim-community-standard/5.0/composer.json
-
+Check your system dependencies are in sync with :doc:`/install_pim/manual/system_requirements/system_requirements`
 Enterprise Edition
 ^^^^^^^^^^^^^^^^^^
-The following libraries must be added to your operating system:
+
+.. warning::
+    The aspell dependencies are new.
+
 
 .. code:: bash
 
@@ -45,27 +44,10 @@ The following libraries must be added to your operating system:
 Updated crontab definition
 --------------------------
 
-Community Edition
-^^^^^^^^^^^^^^^^^
-
-Added
-
-.. code:: bash
-
-    */10 * * * * bin/console pim:data-quality-insights:prepare-evaluations
-    */30 * * * * bin/console pim:data-quality-insights:evaluations
-    15 0 * * * bin/console pim:data-quality-insights:schedule-periodic-tasks
-
+Check your crontab is in sync with :doc:`/cloud_edition/flexibility_mode/docs/crontasks`
 
 Enterprise Edition
 ^^^^^^^^^^^^^^^^^^
-
-Added
-
-.. code:: bash
-
-    */10 * * * * bin/console pim:data-quality-insights:prepare-evaluations
-
 
 Renamed
 
@@ -77,7 +59,7 @@ Upgraded Virtual Host configuration
 
 Since Akeneo PIM, instead of using one fpm pool, we are using one for the API, and one for UI.
 
-You can check the VirtualHost configuration for 5.0: system_requirements/system_configuration.rst.inc.
+You can check the VirtualHost configuration for 5.0 on your system: :doc:`/install_pim/manual/index`
 
 Prepare your project
 ********************
@@ -131,9 +113,6 @@ Load your PIM Enterprise dependencies
 Let Akeneo PIM continue the preparation for you
 ***************************************************
 
-.. warning::
-    If you're on a local or on-premise environment, you need to change the APP_ENV to prod_onprem (see https://symfony.com/doc/current/configuration.html#selecting-the-active-environment)
-
 .. code:: bash
 
     $ export APP_ENV=prod
@@ -169,14 +148,7 @@ Prepare the front
 
 .. code:: bash
 
-    $ rm -rf public/bundles public/js public/css
-    $ bin/console pim:installer:assets --symlink --clean
-    $ yarnpkg install
-    $ yarnpkg  --cwd=vendor/akeneo/pim-community-dev/akeneo-design-system install --frozen-lockfile
-    $ yarnpkg  --cwd=vendor/akeneo/pim-community-dev/akeneo-design-system run lib:build
-    $ rm -rf public/dist
-    $ yarnpkg run webpack
-    $ yarnpkg run less
+    $ make upgrade
 
 Migrate your data
 *****************
