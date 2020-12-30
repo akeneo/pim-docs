@@ -88,6 +88,7 @@ The root of your current installation dir is referred as $INSTALLATION_DIR.
 
 
 .. code:: bash
+
     $ export APP_ENV=prod
     $ cd $INSTALLATION_DIR
     $ cp -R ./vendor/akeneo/pim-community-dev/upgrades/* ./upgrades/
@@ -168,13 +169,14 @@ Prepare the front
 
 .. code:: bash
 
-    $ rm -rf public/bundles public/js
+    $ rm -rf public/bundles public/js public/css
     $ bin/console pim:installer:assets --symlink --clean
     $ yarnpkg install
     $ yarnpkg  --cwd=vendor/akeneo/pim-community-dev/akeneo-design-system install --frozen-lockfile
     $ yarnpkg  --cwd=vendor/akeneo/pim-community-dev/akeneo-design-system run lib:build
     $ rm -rf public/dist
     $ yarnpkg run webpack
+    $ yarnpkg run less
 
 Migrate your data
 *****************
