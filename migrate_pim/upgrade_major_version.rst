@@ -4,7 +4,7 @@ How to upgrade to a major version?
 We release a major version each year.
 These new major versions bring new features and larger changes to answer clients growing needs.
 
-Migrate from 1.7 to 2.0
+Upgrade from 1.7 to 2.0
 -----------------------
 
 To migrate from 1.7 to 2.0, we recommend the use of our brand new migration tool `Transporteo`_.
@@ -13,7 +13,7 @@ To migrate from 1.7 to 2.0, we recommend the use of our brand new migration tool
 
 We're continuously improving Transporteo to cover more and more use cases and automate more and more the migrations.
 
-Migrate from 2.3 to 3.1
+Upgrade from 2.3 to 3.1
 -----------------------
 
 To migrate from 2.0 to 3.1 version, it is necessary to do the progressively upgrade process to each 2.X version.
@@ -41,7 +41,7 @@ Then, follow the migration guides located in your archive to upgrade your projec
 * From EE v2.3 to EE v3.0: UPGRADE-3.0.md
 * From EE v3.0 to EE v3.1: UPGRADE-3.1.md
 
-Migrate from 3.2 to 4.0
+Upgrade from 3.2 to 4.0
 -----------------------
 
 Use this documentation to migrate projects based on Akeneo PIM Community Edition or Enterprise Edition 3.2 to 4.0.
@@ -50,3 +50,13 @@ Use this documentation to migrate projects based on Akeneo PIM Community Edition
    :maxdepth: 1
 
    upgrade/upgrade_from_32_to_40
+
+Upgrade from 4.0 to 5.0
+-----------------------
+
+Use this documentation to migrate projects based on Akeneo PIM Community Edition or Enterprise Edition 4.0 to 5.0.
+
+.. toctree::
+   :maxdepth: 1
+
+   upgrade/upgrade_from_40_to_50

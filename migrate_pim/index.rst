@@ -1,4 +1,4 @@
-Migrate Akeneo PIM projects
+Upgrade Akeneo PIM projects
 ===========================
 
 This chapter describes how to apply a patch on your current version or how to upgrade from a minor/major version to a more recent one.
