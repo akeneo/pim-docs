@@ -30,16 +30,13 @@ You have to make sure your system components are updated to the version required
 Updated System dependencies
 ---------------------------
 Check your system dependencies are in sync with :doc:`/install_pim/manual/system_requirements/system_requirements`
+
 Enterprise Edition
 ^^^^^^^^^^^^^^^^^^
 
 .. warning::
     The aspell dependencies are new.
-
-
-.. code:: bash
-
-    $ apt-get install aspell-it aspell-sv aspell-da aspell-nl aspell-no aspell-pt-br
+    Please note you have to use a composer v2 or above.
 
 Updated crontab definition
 --------------------------
@@ -137,8 +134,8 @@ Make sure your environment is ready to be migrated
 
 .. code:: bash
 
+    $ rm -Rf var/cache
     $ bin/console pim:installer:check-requirements
-
 
 If this command detects something not working or not properly configured,
 please fix the problem before continuing.
@@ -148,7 +145,7 @@ Prepare the front
 
 .. code:: bash
 
-    $ make upgrade
+    $ make upgrade-front
 
 Migrate your data
 *****************
@@ -156,7 +153,6 @@ Migrate your data
 .. code:: bash
 
     $ bin/console doctrine:migrations:migrate
-
 
 .. note::
 
