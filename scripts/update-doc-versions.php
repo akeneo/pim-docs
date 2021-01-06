@@ -9,7 +9,8 @@ $fileContent = file_get_contents($versionFile) ?: "[]";
 $json = json_decode($fileContent);
 
 if (containsBranch($json, $branch)) {
-    die("Existing branch $branch in $versionFile, exiting...");
+    echo ("Existing branch $branch in $versionFile, exiting...");
+    exit(0);
 }
 
 $json[] = [
