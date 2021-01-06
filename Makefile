@@ -4,7 +4,7 @@ DOCKER_IMAGE = pim-docs
 DOCKER_RUN = docker run -it --rm -u $(UID):$(GID)
 
 .DEFAULT_GOAL := build
-.PHONY: build, deploy, docker-build
+.PHONY: build, deploy, docker-build, update-versions
 
 build: lint
 	# Flags used here, not in `make html`:
@@ -17,7 +17,7 @@ build: lint
 	$(DOCKER_RUN) -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) cp -r /home/akeneo/pim-docs/data/design_pim/styleguide /home/akeneo/pim-docs/data/pim-docs-build/design_pim/
 	@echo "\nYou are now ready to check the documentation locally in the directory \"pim-docs-build/\" and to deploy it with \"HOSTNAME=foo.com PORT=1985 VERSION=bar make deploy\"."
 
-deploy: build
+deploy: build update-versions
 	$(DOCKER_RUN) -v /etc/passwd:/etc/passwd:ro -v $${SSH_AUTH_SOCK}:/ssh-auth.sock:ro -e SSH_AUTH_SOCK=/ssh-auth.sock $(DOCKER_IMAGE) rsync -e "ssh -q -p $${DEPLOY_PORT} -o StrictHostKeyChecking=no" -qarz --delete /home/akeneo/pim-docs/pim-docs-build/ akeneo@$${DEPLOY_HOSTNAME}:/var/www/${VERSION}
 
 lint: docker-build
@@ -27,3 +27,8 @@ lint: docker-build
 
 docker-build:
 	docker build . --tag $(DOCKER_IMAGE)
+
+update-versions:
+	docker run -it --rm -v $${SSH_AUTH_SOCK}:/ssh-auth.sock:ro -e SSH_AUTH_SOCK=/ssh-auth.sock -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) rsync -e "ssh -q -p $${PORT} -o StrictHostKeyChecking=no" -qarz --delete akeneo@$${HOSTNAME}:/var/www/versions.php /home/akeneo/pim-docs/data
+	$(DOCKER_RUN)  -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) php scripts/update-doc-versions.php $(CIRCLE_BRANCH) versions.json
+	docker run -it --rm -v $${SSH_AUTH_SOCK}:/ssh-auth.sock:ro -e SSH_AUTH_SOCK=/ssh-auth.sock -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) rsync -e "ssh -q -p $${PORT} -o StrictHostKeyChecking=no" -qarz --delete /home/akeneo/pim-docs/data/versions.php akeneo@$${HOSTNAME}:/var/www/
