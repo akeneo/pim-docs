@@ -29,6 +29,6 @@ docker-build:
 	docker build . --tag $(DOCKER_IMAGE)
 
 update-versions:
-	docker run -it --rm -v $${SSH_AUTH_SOCK}:/ssh-auth.sock:ro -e SSH_AUTH_SOCK=/ssh-auth.sock -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) rsync -e "ssh -q -p $${PORT} -o StrictHostKeyChecking=no" -qarz --delete akeneo@$${HOSTNAME}:/var/www/versions.php /home/akeneo/pim-docs/data
+	docker run -it --rm -v $${SSH_AUTH_SOCK}:/ssh-auth.sock:ro -e SSH_AUTH_SOCK=/ssh-auth.sock -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) rsync -e "ssh -q -p $${PORT} -o StrictHostKeyChecking=no" -qarz --delete akeneo@$${HOSTNAME}:/var/www/versions.json /home/akeneo/pim-docs/data
 	$(DOCKER_RUN)  -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) php scripts/update-doc-versions.php $(CIRCLE_BRANCH) versions.json
-	docker run -it --rm -v $${SSH_AUTH_SOCK}:/ssh-auth.sock:ro -e SSH_AUTH_SOCK=/ssh-auth.sock -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) rsync -e "ssh -q -p $${PORT} -o StrictHostKeyChecking=no" -qarz --delete /home/akeneo/pim-docs/data/versions.php akeneo@$${HOSTNAME}:/var/www/
+	docker run -it --rm -v $${SSH_AUTH_SOCK}:/ssh-auth.sock:ro -e SSH_AUTH_SOCK=/ssh-auth.sock -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) rsync -e "ssh -q -p $${PORT} -o StrictHostKeyChecking=no" -qarz --delete /home/akeneo/pim-docs/data/versions.json akeneo@$${HOSTNAME}:/var/www/
