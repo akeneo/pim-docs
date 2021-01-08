@@ -15,7 +15,7 @@ jobs:
             - add_ssh_keys
             - run:
                   name: Deploy on staging server
-                  command: HOSTNAME=$STAGING_HOSTNAME PORT=$STAGING_PORT VERSION="5.0" make deploy
+                  command: HOSTNAME=$STAGING_HOSTNAME PORT=$STAGING_PORT VERSION=master make deploy
 
     deploy_production:
         machine:
@@ -25,10 +25,7 @@ jobs:
             - add_ssh_keys
             - run:
                   name: Deploy on production server
-                  command: HOSTNAME=$PROD_HOSTNAME PORT=$PROD_PORT VERSION="5.0" make deploy
-
-orbs:
-    pull-up: akeneo-orbs/pull-up@1.0
+                  command: HOSTNAME=$PROD_HOSTNAME PORT=$PROD_PORT VERSION=master make deploy
 
 workflows:
     version: 2
@@ -38,14 +35,14 @@ workflows:
                   filters:
                       branches:
                           ignore:
-                              - "5.0"
+                              - master
 
     deployment:
         jobs:
             - deploy_staging:
                   filters:
                       branches:
-                          only: "5.0"
+                          only: master
             - approve_to_deploy_in_production:
                   type: approval
                   requires:
@@ -53,17 +50,3 @@ workflows:
             - deploy_production:
                   requires:
                       - approve_to_deploy_in_production
-
-    pull_up:
-        jobs:
-            - pull-up/pull-up:
-                  from: "5.0"
-                  into: "master"
-                  branch_prefix: "50_to_master"
-                  github_token: MICHEL_TAG_TOKEN
-                  github_username: "micheltag"
-                  slack_webhook: "${SLACK_URL_PULL_UP}"
-                  filters:
-                      branches:
-                          only:
-                              - "5.0"
