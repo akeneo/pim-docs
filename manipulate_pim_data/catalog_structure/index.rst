@@ -6,4 +6,3 @@ This chapter describes how to customize the catalog structure to add your own mo
 .. toctree::
 
    creating_a_reference_data
-   ../category/add_new_properties_to_a_category
