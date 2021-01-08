@@ -1,4 +1,4 @@
-version: 2.0
+version: 2.1
 
 jobs:
     build:
@@ -28,6 +28,9 @@ jobs:
                   name: Deploy on production server
                   command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="4.0" make deploy
 
+orbs:
+    pull-up: akeneo-orbs/pull-up@1.0
+
 workflows:
     version: 2
     pull_request:
@@ -51,3 +54,17 @@ workflows:
             - deploy_production:
                   requires:
                       - approve_to_deploy_in_production
+
+    pull_up:
+        jobs:
+            - pull-up/pull-up:
+                  from: "pull-up-in-50"
+                  into: "5.0"
+                  branch_prefix: "40_to_50"
+                  github_token: MICHEL_TAG_TOKEN
+                  github_username: "micheltag"
+                  slack_webhook: "${SLACK_URL_PULL_UP}"
+                  filters:
+                      branches:
+                          only:
+                              - "pull-up-in-50"
