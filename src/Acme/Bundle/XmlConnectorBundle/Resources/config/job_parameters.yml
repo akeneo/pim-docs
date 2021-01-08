@@ -1,9 +1,9 @@
 parameters:
-    acme_xml_connector.job.job_parameters.simple_xml_export.class: Acme\Bundle\XmlConnectorBundle\Job\JobParameters\SimpleXmlImport
+    acme_xml_connector.job.job_parameters.simple_xml_import.class: Acme\Bundle\XmlConnectorBundle\Job\JobParameters\SimpleXmlImport
 
 services:
     acme_xml_connector.job.job_parameters.simple_xml_product_import:
-        class: '%acme_xml_connector.job.job_parameters.simple_xml_export.class%'
+        class: '%acme_xml_connector.job.job_parameters.simple_xml_import.class%'
         arguments:
             - '%pim_catalog.localization.decimal_separators%'
             - '%pim_catalog.localization.date_formats%'
@@ -12,7 +12,7 @@ services:
             - { name: akeneo_batch.job.job_parameters.default_values_provider }
 
     acme_xml_connector.job.job_parameters.provider.simple_xml_product_import:
-        class: '%pim_enrich.provider.form.job_instance.class%'
+        class: 'Akeneo\Platform\Bundle\ImportExportBundle\Provider\Form\JobInstanceFormProvider'
         arguments:
             -
                 xml_product_import: pim-job-instance-xml-product-import

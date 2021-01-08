@@ -1,5 +1,5 @@
-Installation
-============
+How to install the Onboarder bundle
+===================================
 
 .. warning::
 
@@ -12,37 +12,47 @@ Execute the following composer commands to require the bundle:
 
 .. code-block:: bash
 
-    composer config repositories.onboarder '{"type": "vcs", "url": "ssh://git@distribution.akeneo.com:443/pim-onboarder", "branch": "master"}'
-    composer require "akeneo/pim-onboarder" "3.0.*"
+    composer config repositories.onboarder '{"type": "vcs", "url": "ssh://git@distribution.akeneo.com:443/pim-onboarder"}'
+    composer require "akeneo/pim-onboarder" "^4.2"
+
+Then add the following to your ``composer.json`` "scripts" part:
+
+.. code-block:: json
+
+    "post-update-cmd": [
+        "Akeneo\\Onboarder\\Setup\\OnboarderComposerScripts::copyUpgradesFiles"
+    ],
+    "post-install-cmd": [
+        "Akeneo\\Onboarder\\Setup\\OnboarderComposerScripts::copyUpgradesFiles"
+    ]
 
 
 Enable the extension
 --------------------
 
-Register the following two new bundles in your ``app/AppKernel.php``
+Register the newly installed PIM Onboarder bundle in your ``config/bundles.php``
 
 .. code-block:: php
 
-    protected function registerProjectBundles()
-    {
-        return [
-            // your app bundles should be registered here
-            new Pim\Onboarder\Bundle\PimOnboarderBundle(),
-        ];
-    }
+    return [
+        // Add your bundles here with the associated env.
+        // Ex:
+        // Acme\Bundle\AppBundle\AcmeAppBundle::class => ['dev' => true, 'test' => true, 'prod' => true]
+        Akeneo\Onboarder\Bundle\PimOnboarderBundle::class => ['all' => true],
+    ];
 
-Configure the extension
------------------------
 
-Load the extension configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Build the UI
+------------
 
-Import the extension configuration in the ``app/config/config.yml`` file (after all other imports)
+Clear the Symfony cache and execute the following command to build the UI:
 
-.. code-block:: yaml
+.. code-block:: bash
 
-    imports:
-        - { resource: '@PimOnboarderBundle/Resources/config/onboarder_configuration.yml' }
+    rm -rf var/cache/*
+    bin/console cache:warmup --env=prod
+    bin/console pim:installer:assets --clean --env=prod && yarn run webpack
+
 
 Make the credential files accessible to Akeneo PIM software
 -----------------------------------------------------------
@@ -52,6 +62,7 @@ In the parameters package the Akeneo team put a ``serviceAccount.json`` credenti
 Make sure this file is shipped to the server which is hosting your PIM.
 
 This file must be accessible (read rights) by the system user that runs the pim (example: www-data).
+
 
 Set the configuration values
 ----------------------------
@@ -75,18 +86,16 @@ Here are two examples in order to define environment variables:
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | GOOGLE_APPLICATION_CREDENTIALS                     | Absolute filesystem path to the ``serviceAccount.json`` file provided by the Akeneo team. We advise to use it only in production. |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE | Pub/Sub topic name to send messages to the retailer Onboarder.                                                                    |
+| ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE | Pub/Sub topic name to send messages to the middleware.                                                                            |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_ONBOARDER  | Pub/Sub topic name to send messages to the supplier Onboarder.                                                                    |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_TOPIC_NAME_FOR_CONSUMPTION               | Pub/Sub topic name to receive messages from the retailer Onboarder.                                                               |
+| ONBOARDER_TOPIC_NAME_FOR_CONSUMPTION               | Pub/Sub topic name to receive messages from the middleware.                                                                       |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | ONBOARDER_QUEUE_NAME                               | Pub/Sub queue name.                                                                                                               |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_CLOUD_STORAGE_BUCKET_NAME                | Identifier of the bucket used to share files between your PIM and the retailer Onboarder.                                         |
+| ONBOARDER_CLOUD_STORAGE_BUCKET_NAME                | Identifier of the bucket used to share files between your PIM and the middleware.                                                 |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-
-|
 
 **Optional variables**
 
@@ -111,7 +120,9 @@ The akeneo/pim-onboarder extension needs some extra tables. Please run the follo
 
     $ php bin/console akeneo:onboarder:setup-database --env=prod
 
-Once the installation done, please read the documenation about the :doc:`synchronization </onboarder/synchronization/index>`.
+.. warning::
+
+    Once the installation done, please read the documentation about the :doc:`synchronization </onboarder/synchronization/index>`.
 
 
 Create Elasticsearch index for pre ref products
@@ -122,3 +133,7 @@ A new Elasticsearch index is needed for pre ref products. In order to create it,
 .. code-block:: bash
 
     $ bin/console akeneo:elasticsearch:reset-indexes --index pim_onboarder_pre_ref_product --env=prod
+
+.. warning::
+
+    You do not need to reindex anything at this point, even if the ``reset-indexes`` command proposes you to do so.

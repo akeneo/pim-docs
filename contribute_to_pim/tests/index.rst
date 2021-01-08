@@ -2,11 +2,11 @@ How behavior tests are architectured in the PIM?
 ================================================
 
 
-The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-community-dev/tree/master/tests/legacy/features
+The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-community-dev/tree/4.0/tests/legacy/features
 
 .. warning::
 
-    Please, note that reading `Behat documentation <http://docs.behat.org/en/v2.5/>`_ is a prerequisite for
+    Please, note that reading `Behat documentation <http://docs.behat.org/>`_ is a prerequisite for
     the following documentation.
 
 .. toctree::

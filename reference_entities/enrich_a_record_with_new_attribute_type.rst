@@ -271,7 +271,7 @@ This is the purpose of this section: provide a denormalizer capable of creating 
      * ## Import section
      *
      * This is where your dependencies are to external modules using the standard import method (see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-     * The paths are absolute and the root is the web/bundles folder (at the root of your PIM project)
+     * The paths are absolute and the root is the public/bundles folder (at the root of your PIM project)
      */
     import ValueData from 'akeneoreferenceentity/domain/model/record/data';
 

@@ -32,25 +32,6 @@ All the exchanges, redirections between the browser, the Service Provider and th
 Setting up the Identity Provider (IdP)
 --------------------------------------
 
-Using Docker
-^^^^^^^^^^^^
-
-We provide an already configured IdP server image in the ``docker-compose.yml`` file, named ``sso-idp-server``.
-
-The following information is here if you want to tweak something, if not, go directly to the `Setting up the Service Provider (SP)` section.
-
-
-This container will expose the ``8082`` port, you can override this value in the ``.env`` file.
-
-You can access the IdP administration page at the following url: http://localhost:8082/simplesaml.
-
-| Some users are already configured, the same that are in the `icecat_demo_dev fixtures <https://github.com/akeneo/pim-community-dev/blob/3.0/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev/users.csv>`_.
-| They are defined in the ``docker/sso_authsources.php``.
-
-
-The configuration of the Service Provider is automatically provided by environment variables in the ``docker-compose.yml`` file line 58 (``SIMPLESAMLPHP_SP_ENTITY_ID``) of your standard archive.
-
-
 Without Docker
 ^^^^^^^^^^^^^^
 
@@ -71,6 +52,59 @@ You will have to configure the Service Provider information with the following d
 * ACS url: http://your.akeneo-pim.url/saml/acs
 
 You will have to retrieve the IdP certificate, it will be needed to configure the Service Provider on the Akeneo PIM side.
+
+
+Using Docker
+^^^^^^^^^^^^
+
+You can use the following IdP server image, named ``sso-idp-server``, in the ``docker-compose.yml`` file.
+
+.. code-block:: yaml
+    :linenos:
+
+    sso-idp-server:
+        image: 'kristophjunge/test-saml-idp'
+        ports:
+          - '${DOCKER_PORT_SSO_IDP:-8082}:8080'
+        volumes:
+          - './docker/sso_authsources.php:/var/www/simplesamlphp/config/authsources.php'
+        environment:
+          SIMPLESAMLPHP_SP_ENTITY_ID: '${AKENEO_PIM_URL:-http://localhost:8080/}/saml/metadata'
+          SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE: '${AKENEO_PIM_URL:-http://localhost:8080/}/saml/acs'
+          SIMPLESAMLPHP_SP_SINGLE_LOGOUT_SERVICE: '${AKENEO_PIM_URL:-http://localhost:8080/}/saml/logout'
+        networks:
+          - 'pim'
+
+You will find, below, an example of sso_authsources.php file.
+
+.. code-block:: php
+    :linenos:
+
+    <?php
+
+    $config = array(
+
+        'example-userpass' => array(
+            'exampleauth:UserPass',
+            'julia:julia' => array(
+                'akeneo_uid' => array('julia'),
+            ),
+            'mary:mary' => array(
+                'akeneo_uid' => array('mary'),
+            ),
+        ),
+    );
+
+
+This container will expose the ``8082`` port, you can override this value in the ``.env`` file.
+
+You can access the IdP administration page at the following url: http://localhost:8082/simplesaml.
+
+| Some users are already configured, the same that are in the `icecat_demo_dev fixtures <https://github.com/akeneo/pim-community-dev/blob/4.0/src/Akeneo/Platform/Bundle/InstallerBundle/Resources/fixtures/icecat_demo_dev/users.csv>`_.
+| They are defined in the ``docker/sso_authsources.php``.
+
+
+The configuration of the Service Provider is automatically provided by environment variables in the ``docker-compose.yml`` file line 58 (``SIMPLESAMLPHP_SP_ENTITY_ID``) of your standard archive.
 
 
 Setting up the Service Provider (SP)

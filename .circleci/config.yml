@@ -2,30 +2,31 @@ version: 2
 jobs:
     build:
         machine:
-            image: ubuntu-1604:201903-01
+            image: ubuntu-1604:202004-01
         steps:
             - checkout
             - run: make build
 
     deploy_staging:
         machine:
-            image: ubuntu-1604:201903-01
+            image: ubuntu-1604:202004-01
         steps:
             - checkout
             - add_ssh_keys
             - run:
                   name: Deploy on staging server
-                  command: HOSTNAME=$STAGING_HOSTNAME PORT=$STAGING_PORT VERSION="5.0" make deploy
+                  command: DEPLOY_HOSTNAME=$STAGING_HOSTNAME DEPLOY_PORT=$STAGING_PORT VERSION="4.0" make deploy
 
     deploy_production:
         machine:
-            image: ubuntu-1604:201903-01
+            image: ubuntu-1604:202004-01
         steps:
             - checkout
             - add_ssh_keys
             - run:
                   name: Deploy on production server
-                  command: HOSTNAME=$PROD_HOSTNAME PORT=$PROD_PORT VERSION="5.0" make deploy
+                  command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="4.0" make deploy
+
 workflows:
     version: 2
     pull_request:

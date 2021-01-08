@@ -32,7 +32,7 @@ To fix this issue, just run the following commands:
 .. code-block:: bash
 
     cd /path/to/your/pim/
-    rm -rf web/js/translations/*
+    rm -rf public/js/translations/*
     php bin/console oro:translation:dump
     yarn run webpack
 
@@ -57,7 +57,7 @@ You can revert this operation by running the following commands:
 .. code-block:: bash
 
     cd /path/to/your/pim/
-    rm ./web/js/oro.min.js
+    rm ./public/js/oro.min.js
     rm -rf ./var/cache/*
     php bin/console pim:install:asset --env=prod
     php bin/console assets:install --symlink web
@@ -104,64 +104,18 @@ Elasticsearch defines a ``index.mapping.total_fields.limit`` `parameter <https:/
        "status":400
     }
 
-To do so, create a ``my_index_configuration.yml`` file with the following content:
 
-.. code-block:: yaml
+To do so, you must update the ``APP_ELASTICSEARCH_TOTAL_FIELDS_LIMIT`` environment variable. (see https://docs.akeneo.com/4.0/migrate_pim/upgrade/upgrade_from_32_to_40.html#local-or-on-premise-environment)
 
-    settings:
-        mapping:
-            total_fields:
-                limit: 12000 # fix your own limit here
+.. code-block:: bash
 
-Then, load the ``my_index_configuration.yml`` by adding it to the Symfony ``elasticsearch_index_configuration_files`` parameter that is present in the file ``parameters.yml`` or ``pim_parameters.yml``.
+    APP_ELASTICSEARCH_TOTAL_FIELDS_LIMIT=12000
 
-For instance, if you have a *Community* edition:
-
-.. code-block:: yaml
-
-    # parameters.yml
-    parameters:
-        # ...
-        elasticsearch_index_configuration_files:
-            - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Akeneo/Pim/Enrichment/Bundle/Resources/elasticsearch/index_configuration.yml'
-            - '/path/to/my_index_configuration.yml'
-
-If you have the *Enterprise* edition:
-
-.. code-block:: yaml
-
-    # parameters.yml
-    parameters:
-        # ...
-        elasticsearch_index_configuration_files:
-            - '%kernel.root_dir%/../vendor/akeneo/pim-community-dev/src/Akeneo/Pim/Enrichment/Bundle/Resources/elasticsearch/index_configuration.yml'
-            - '%kernel.root_dir%/../vendor/akeneo/pim-enterprise-dev/src/Akeneo/Pim/WorkOrganization/Workflow/Bundle/Resources/elasticsearch/index_configuration.yml'
-            - '/path/to/my_index_configuration.yml'
 
 This parameter is set by the PIM at the index creation. If you want to apply it on an existing index you may use the following command:
 
 .. code-block:: bash
 
-    curl -XPUT 'localhost:9200/akeneo_pim_product/_settings' -H 'Content-Type: application/json' -d'
-          {
-              "index" : {
-                  "mapping" : {
-                      "total_fields" : {
-                          "limit" : "12000"
-                      }
-                  }
-              }
-          }'
-    curl -XPUT 'localhost:9200/akeneo_pim_product_model/_settings' -H 'Content-Type: application/json' -d'
-          {
-              "index" : {
-                  "mapping" : {
-                      "total_fields" : {
-                          "limit" : "12000"
-                      }
-                  }
-              }
-          }'
     curl -XPUT 'localhost:9200/akeneo_pim_product_and_product_model/_settings' -H 'Content-Type: application/json' -d'
           {
               "index" : {

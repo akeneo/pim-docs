@@ -2,9 +2,9 @@
 
 namespace Acme\Bundle\CustomMassActionBundle\MassEditAction\Operation;
 
-use Pim\Bundle\EnrichBundle\MassEditAction\Operation\AbstractMassEditOperation;
+use Akeneo\Pim\Enrichment\Bundle\MassEditAction\Operation\MassEditOperation;
 
-class CapitalizeValues extends AbstractMassEditOperation
+class CapitalizeValues extends MassEditOperation
 {
     /**
      * {@inheritdoc}
