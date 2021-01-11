@@ -171,9 +171,6 @@ Indeed, each key in form configuration files must be unique across the whole app
     We are aware that this is not an ideal solution and we're working on a more satisfactory way to handle relations between forms.
     If you have any idea feel free to propose it or even write a contribution!
 
-.. note::
-
-    You can find details about frontend customization in this section: :doc:`/design_pim/overview`
 
 Now we need to declare a provider to link your job to the right form root:
 
