@@ -15,7 +15,7 @@ jobs:
             - add_ssh_keys
             - run:
                   name: Deploy on staging server
-                  command: DEPLOY_HOSTNAME=$STAGING_HOSTNAME DEPLOY_PORT=$STAGING_PORT VERSION="4.0" make deploy
+                  command: DEPLOY_HOSTNAME=$STAGING_HOSTNAME DEPLOY_PORT=$STAGING_PORT VERSION="5.0" make deploy
 
     deploy_production:
         machine:
@@ -25,7 +25,7 @@ jobs:
             - add_ssh_keys
             - run:
                   name: Deploy on production server
-                  command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="4.0" make deploy
+                  command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="5.0" make deploy
 
 workflows:
     version: 2
