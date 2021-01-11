@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
     build:
         machine:
@@ -26,6 +26,7 @@ jobs:
             - run:
                   name: Deploy on production server
                   command: HOSTNAME=$PROD_HOSTNAME PORT=$PROD_PORT VERSION=master make deploy
+
 workflows:
     version: 2
     pull_request:
