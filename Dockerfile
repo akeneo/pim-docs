@@ -15,7 +15,6 @@ RUN apt-get update && \
         php7.4-gd php7.4-intl php7.4-mysql php7.4-xml php7.4-zip php7.4-mbstring && \
     echo "memory_limit = 1024M" >> /etc/php/7.4/cli/php.ini && \
     echo "date.timezone = UTC" >> /etc/php/7.4/cli/php.ini && \
-    wget https://getcomposer.org/download/2.0.7/composer.phar -P /usr/local/bin/ && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/* && \
@@ -23,6 +22,9 @@ RUN apt-get update && \
     rm -rf /usr/share/man/* && \
     rm -rf /usr/share/locale/* && \
     rm -rf /var/log/*
+
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
+RUN chmod +x /usr/local/bin/composer
 
 # Install Akeneo PIM Assets
 RUN \
@@ -35,7 +37,7 @@ RUN \
     #
     # Install dependencies
     #
-    php -d memory_limit=3G /usr/local/bin/composer.phar install --no-suggest --ignore-platform-reqs && \
+    php -d memory_limit=3G /usr/local/bin/composer install --no-suggest --ignore-platform-reqs && \
     cd /home/akeneo/pim-docs/pim-community-dev-master/ && php bin/console pim:installer:assets --env=prod && \
     mkdir /home/akeneo/pim-docs/pim-community-dev-master/public/css && \
     wget http://demo.akeneo.com/css/pim.css -P /home/akeneo/pim-docs/pim-community-dev-master/public/css && \
