@@ -59,7 +59,7 @@ You need to update your category entity parameter used in ``entities.yml`` file:
 
    .. code-block:: php
 
-       // /src/Acme/Bundle/CatalogBundle/DependencyInjection/AcmeAppExtension.php
+       // /src/Acme/Bundle/CatalogBundle/DependencyInjection/AcmeCatalogExtension.php
        public function load(array $configs, ContainerBuilder $container)
        {
            /** ... **/
@@ -74,6 +74,7 @@ Now, you can run the following commands to update your database: (don't forget t
 
 .. code-block:: bash
 
+    rm -rf var/cache
     php bin/console doctrine:schema:update --dump-sql
     php bin/console doctrine:schema:update --force
 
@@ -82,19 +83,19 @@ Define the Category Form
 
 Firstly, you have to create your custom type by inheriting the CategoryType class and then add your custom fields:
 
-.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Form/Type/CategoryType.php
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Form/Type/CategoryType.php
     :language: php
-    :prepend: // /src/Acme/Bundle/EnrichBundle/Form/Type/CategoryType.php
+    :prepend: // /src/Acme/Bundle/CatalogBundle/Form/Type/CategoryType.php
     :linenos:
 
 Then, you have to override the service definition of your form:
 
 .. code-block:: yaml
 
-    # /src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
+    # /src/Acme/Bundle/CatalogBundle/Resources/config/form_types.yml
     services:
         pim_enrich.form.type.category:
-            class: 'Acme\Bundle\EnrichBundle\Form\Type\CategoryType'
+            class: 'Acme\Bundle\CatalogBundle\Form\Type\CategoryType'
             arguments:
                 - '%pim_catalog.entity.category.class%'
                 - '%pim_catalog.entity.category_translation.class%'
@@ -105,7 +106,7 @@ Then, add this new file to your dependency injection extension:
 
 .. code-block:: php
 
-    // /src/Acme/Bundle/EnrichBundle/DependencyInjection/AcmeAppExtension.php
+    // /src/Acme/Bundle/CatalogBundle/DependencyInjection/AcmeCatalogExtension.php
     public function load(array $configs, ContainerBuilder $container)
     {
         /** ... **/
@@ -116,7 +117,7 @@ You also need to update the controller dependency injection:
 
 .. code-block:: yaml
 
-    # /src/Akeneo/Pim/Enrichment/Bundle/Resources/config/controllers.yml
+    # /src/Acme/Bundle/CatalogBundle/Resources/config/controllers.yml
     services:
         pim_enrich.controller.category_tree.product:
             class: 'Akeneo\Pim\Enrichment\Bundle\Controller\Ui\CategoryTreeController'
@@ -128,27 +129,47 @@ You also need to update the controller dependency injection:
                 - '@pim_catalog.factory.category'
                 - '@pim_catalog.repository.category'
                 - '@oro_security.security_facade'
-                - { related_entity: product, form_type: 'Acme\Bundle\EnrichBundle\Form\Type\CategoryType', acl: pim_enrich_product, route: pim_enrich }
+                - { related_entity: product, form_type: 'Acme\Bundle\CatalogBundle\Form\Type\CategoryType', acl: pim_enrich_product, route: pim_enrich }
             calls:
                 - [ setContainer, [ '@service_container' ] ]
 
+Then, add this new file to your dependency injection extension:
+
+.. code-block:: php
+
+    // /src/Acme/Bundle/CatalogBundle/DependencyInjection/AcmeCatalogExtension.php
+    public function load(array $configs, ContainerBuilder $container)
+    {
+        /** ... **/
+        $loader->load('controllers.yml');
+    }
+
 Then, don't forget to add your new field to the twig template:
 
-.. code-block:: jinja
+.. code-block:: twig
 
-    # /src/Acme/Bundle/EnrichBundle/Resources/views/CategoryTree/Tab/property.html.twig
-    <!-- ... -->
-    {% set generalProperties %}
-        {{ form_row(form.code) }}
-        {{ form_row(form.description) }}
-    {% endset %}
-    <!-- ... -->
+	# /src/Acme/Bundle/CatalogBundle/Resources/views/CategoryTree/Tab/property.html.twig
+	<div class="tab-pane tab-property {{ viewElement.loop.first ? 'active' : '' }}" id="{{ viewElement.alias|replace({' ': '-', '.': '-'})|lower }}">
+	    {% set generalProperties %}
+	        {{ form_row(form.code) }}
+	        {{ form_row(form.description) }}
+	    {% endset %}
+
+	    {% set nodeValues %}
+	        {{ form_row(form.label) }}
+	    {% endset %}
+
+	    {{ elements.tabSections({
+	        'pane.accordion.general_properties': elements.form_container(generalProperties),
+	        'pane.accordion.node_values': elements.form_container(nodeValues)
+	    }) }}
+	</div>
 
 Make sure you've registered the template properly inside ``form_types.yml``:
 
-.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/form_types.yml
     :language: yaml
-    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
+    :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/form_types.yml
     :lines: 1-2
     :linenos:
 
@@ -156,8 +177,8 @@ For the form validation you will have to add a new validation file:
 
 .. code-block:: yaml
 
-    # /src/Acme/Bundle/AppBundle/Resources/config/validation/category.yml
-    Acme\Bundle\AppBundle\Entity\Category:
+    # /src/Acme/Bundle/CatalogBundle/Resources/config/validation/category.yml
+    Acme\Bundle\CatalogBundle\Entity\Category:
         properties:
             description:
                 - NotBlank: ~
@@ -232,7 +253,7 @@ You need to update your category entity parameter used in ``entities.yml`` file:
 
    .. code-block:: php
 
-       // /src/Acme/Bundle/CatalogBundle/DependencyInjection/AcmeAppExtension.php
+       // /src/Acme/Bundle/CatalogBundle/DependencyInjection/AcmeCatalogExtension.php
        public function load(array $configs, ContainerBuilder $container)
        {
            /** ... **/
@@ -255,19 +276,19 @@ Define the Category Form
 
 Firstly, you have to create your custom type by inheriting the CategoryType class and then add your custom fields:
 
-.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Form/Type/TranslatableCategoryType.php
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Form/Type/TranslatableCategoryType.php
     :language: php
-    :prepend: // /src/Acme/Bundle/EnrichBundle/Form/Type/CategoryType.php
+    :prepend: // /src/Acme/Bundle/CatalogBundle/Form/Type/CategoryType.php
     :linenos:
 
 Then, you have to override the service definition of your form:
 
 .. code-block:: yaml
 
-    # /src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
+    # /src/Acme/Bundle/CatalogBundle/Resources/config/form_types.yml
     services:
         pim_enrich.form.type.category:
-            class: 'Acme\Bundle\EnrichBundle\Form\Type\CategoryType'
+            class: 'Acme\Bundle\CatalogBundle\Form\Type\CategoryType'
             arguments:
                 - '%pim_catalog.entity.category.class%'
                 - '%pim_catalog.entity.category_translation.class%'
@@ -278,7 +299,7 @@ Then, add this new file to your dependency injection extension:
 
 .. code-block:: php
 
-    // /src/Acme/Bundle/EnrichBundle/DependencyInjection/AcmeAppExtension.php
+    // /src/Acme/Bundle/CatalogBundle/DependencyInjection/AcmeCatalogExtension.php
     public function load(array $configs, ContainerBuilder $container)
     {
         /** ... **/
@@ -301,26 +322,44 @@ You also need to update the controller dependency injection:
                 - '@pim_catalog.factory.category'
                 - '@pim_catalog.repository.category'
                 - '@oro_security.security_facade'
-                - { related_entity: product, form_type: 'Acme\Bundle\EnrichBundle\Form\Type\CategoryType', acl: pim_enrich_product, route: pim_enrich }
+                - { related_entity: product, form_type: 'Acme\Bundle\CatalogBundle\Form\Type\CategoryType', acl: pim_enrich_product, route: pim_enrich }
             calls:
                 - [ setContainer, [ '@service_container' ] ]
 
 Then, don't forget to add your new field to the twig template:
 
-.. code-block:: jinja
+.. code-block:: twig
 
-    # /src/Acme/Bundle/EnrichBundle/Resources/views/CategoryTree/Tab/property.html.twig
-    <!-- ... -->
-    {% set nodeValues %}
-        {{ form_row(form.label) }}
-        {{ form_row(form.description) }}
-    {% endset %}
-    <!-- ... -->
+	<div class="tab-pane tab-property {{ viewElement.loop.first ? 'active' : '' }}" id="{{ viewElement.alias|replace({' ': '-', '.': '-'})|lower }}">
+	    {% set generalProperties %}
+	        {{ form_row(form.code) }}
+	        {{ form_row(form.description) }}
+	    {% endset %}
+
+	    {% set nodeValues %}
+	        {{ form_row(form.label) }}
+	    {% endset %}
+
+	    {{ elements.tabSections({
+	        'pane.accordion.general_properties': elements.form_container(generalProperties),
+	        'pane.accordion.node_values': elements.form_container(nodeValues)
+	    }) }}
+	</div>
 
 Make sure you've registered the template properly inside ``form_types.yml``:
 
-.. literalinclude:: ../../src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
+.. literalinclude:: ../../src/Acme/Bundle/CatalogBundle/Resources/config/form_types.yml
     :language: yaml
-    :prepend: # /src/Acme/Bundle/EnrichBundle/Resources/config/form_types.yml
-    :lines: 1-3
+    :prepend: # /src/Acme/Bundle/CatalogBundle/Resources/config/form_types.yml
+    :lines: 1-2
     :linenos:
+
+For the form validation you will have to add a new validation file:
+
+.. code-block:: yaml
+
+	# /src/Acme/Bundle/CatalogBundle/Resources/config/validation/category.yml
+	Acme\Bundle\CatalogBundle\Entity\CategoryTranslation:
+	    properties:
+	        description:
+              - NotBlank: ~
