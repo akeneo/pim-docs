@@ -104,9 +104,6 @@ Elasticsearch defines a ``index.mapping.total_fields.limit`` `parameter <https:/
        "status":400
     }
 
-
-To do so, you must update the ``APP_ELASTICSEARCH_TOTAL_FIELDS_LIMIT`` environment variable. (see https://docs.akeneo.com/4.0/migrate_pim/upgrade/upgrade_from_32_to_40.html#local-or-on-premise-environment)
-
 .. code-block:: bash
 
     APP_ELASTICSEARCH_TOTAL_FIELDS_LIMIT=12000
