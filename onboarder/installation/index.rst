@@ -81,10 +81,12 @@ Here are two examples in order to define environment variables:
 
 .. warning::
 
-    All the following variables must be set in order to configure the Onboarder correctly for all entrypoints, all processes that runs the PIM code source.
+    All the following variables must be set in order to configure the Onboarder correctly for all entry points, all processes that runs the PIM code source.
 
 **Variables provided by the Akeneo team**
 
++----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| FLAG_ONBOARDER_ENABLED                             | Set to the value ``1``                                                                                                            |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | GOOGLE_APPLICATION_CREDENTIALS                     | Absolute filesystem path to the ``serviceAccount.json`` file provided by the Akeneo team. We advise to use it only in production. |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
