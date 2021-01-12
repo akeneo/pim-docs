@@ -65,7 +65,7 @@ Then, install PHP and the required extensions:
 Elasticsearch 7.10
 ******************
 
-The easiest way to install Elasticsearch 7 is to use the `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/7.3/deb.html#deb>`_:
+The easiest way to install Elasticsearch 7 is to use the `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/7.5/deb.html#deb>`_:
 
 - first install the PGP key
 - then install the package via the official repository
@@ -80,7 +80,7 @@ The easiest way to install Elasticsearch 7 is to use the `official vendor packag
 
 .. warning::
 
-   You will probably need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/7.3/deb.html#deb-configuring>`_.
+   You will probably need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/7.5/deb.html#deb-configuring>`_.
    Proceed as follow (first command will affect your current session, second one every boot of your machine):
 
    .. code-block:: bash

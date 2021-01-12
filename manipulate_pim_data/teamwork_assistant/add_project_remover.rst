@@ -37,8 +37,8 @@ interface and be tagged ``pimee_activity_manager.project_remover``.
     use Akeneo\Tool\Component\StorageUtils\Remover\RemoverInterface;
     use Akeneo\Tool\Component\StorageUtils\StorageEvents;
     use Doctrine\Common\Persistence\ObjectRepository;
-    use Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Model\ProjectInterface;
-    use Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Remover\ProjectRemoverInterface;
+    use Akeneo\Pim\WorkOrganization\TeamworkAssistant\Component\Model\ProjectInterface;
+    use Akeneo\Pim\WorkOrganization\TeamworkAssistant\Component\Remover\ProjectRemoverInterface;
 
     class ColorProjectRemover implements ProjectRemoverInterface
     {

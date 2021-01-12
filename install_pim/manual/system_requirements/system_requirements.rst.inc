@@ -103,12 +103,20 @@ Besides these modules, the following configuration is the minimal configuration 
 | aspell-no      |                           |
 +----------------+---------------------------+
 
+**Optional dependencies**
+
++-------------------------+-------------------------------+-----------------------------------------+
+| MagickCore extra codecs | ≥ libmagickcore-6.q16-2-extra | Image magick extra codecs to handle SVG |
++-------------------------+-------------------------------+-----------------------------------------+
+
 **Javascript** (required only for development purposes)
 
 +----------------+---------------------------+
 | nodejs         | ≥ 10.15.0                 |
 +----------------+---------------------------+
 | yarn           | ≥ 1.0.0                   |
++----------------+---------------------------+
+| JQuery         | 3.4                       |
 +----------------+---------------------------+
 
 .. _database-servers:
