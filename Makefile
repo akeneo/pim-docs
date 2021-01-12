@@ -1,7 +1,8 @@
 UID = $(shell id -u)
 GID = $(shell id -g)
 DOCKER_IMAGE = pim-docs
-DOCKER_RUN = docker run -it --rm -u $(UID):$(GID)
+DOCKER_RUN = docker run -it --rm -u $(UID):$(GID) -v $(PWD):/home/akeneo/pim-docs/data
+DOCKER_RSYNC = $(DOCKER_RUN) -v /etc/passwd:/etc/passwd:ro -v $${SSH_AUTH_SOCK}:/ssh-auth.sock:ro -e SSH_AUTH_SOCK=/ssh-auth.sock $(DOCKER_IMAGE) rsync -e "ssh -q -p $${DEPLOY_PORT} -o StrictHostKeyChecking=no" -qarz --delete
 
 .DEFAULT_GOAL := build
 .PHONY: build, deploy, docker-build, update-versions
@@ -12,9 +13,9 @@ build: lint
 	#  -W   Turn warnings into errors. This means that the build stops at the first warning and sphinx-build exits with exit status 1.
 	#  -T   Displays the full stack trace if an unhandled exception occurs.
 	#  -b   Linkcheck builder checks for broken links.
-	$(DOCKER_RUN) -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) sphinx-build -nWT -b html /home/akeneo/pim-docs/data /home/akeneo/pim-docs/data/pim-docs-build
-	$(DOCKER_RUN) -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) cp -L -r /home/akeneo/pim-docs/pim-community-dev-master/public /home/akeneo/pim-docs/data/pim-docs-build/
-	$(DOCKER_RUN) -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) cp -r /home/akeneo/pim-docs/data/design_pim/styleguide /home/akeneo/pim-docs/data/pim-docs-build/design_pim/
+	$(DOCKER_RUN) $(DOCKER_IMAGE) sphinx-build -nWT -b html /home/akeneo/pim-docs/data /home/akeneo/pim-docs/data/pim-docs-build
+	$(DOCKER_RUN) $(DOCKER_IMAGE) cp -L -r /home/akeneo/pim-docs/pim-community-dev-master/public /home/akeneo/pim-docs/data/pim-docs-build/
+	$(DOCKER_RUN) $(DOCKER_IMAGE) cp -r /home/akeneo/pim-docs/data/design_pim/styleguide /home/akeneo/pim-docs/data/pim-docs-build/design_pim/
 	@echo "\nYou are now ready to check the documentation locally in the directory \"pim-docs-build/\" and to deploy it with \"DEPLOY_HOSTNAME=foo.com DEPLOY_PORT=1985 VERSION=bar make deploy\"."
 
 deploy: build update-versions
@@ -29,6 +30,6 @@ docker-build:
 	docker build . --tag $(DOCKER_IMAGE)
 
 update-versions:
-	docker run -it --rm -v $${SSH_AUTH_SOCK}:/ssh-auth.sock:ro -e SSH_AUTH_SOCK=/ssh-auth.sock -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) rsync -e "ssh -q -p $${PORT} -o StrictHostKeyChecking=no" -qarz --delete akeneo@$${HOSTNAME}:/var/www/versions.json /home/akeneo/pim-docs/data
-	$(DOCKER_RUN)  -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) php scripts/update-doc-versions.php $(CIRCLE_BRANCH) versions.json
-	docker run -it --rm -v $${SSH_AUTH_SOCK}:/ssh-auth.sock:ro -e SSH_AUTH_SOCK=/ssh-auth.sock -v $(PWD):/home/akeneo/pim-docs/data $(DOCKER_IMAGE) rsync -e "ssh -q -p $${PORT} -o StrictHostKeyChecking=no" -qarz --delete /home/akeneo/pim-docs/data/versions.json akeneo@$${HOSTNAME}:/var/www/
+	$(DOCKER_RSYNC) akeneo@$${DEPLOY_HOSTNAME}:/var/www/versions.json /home/akeneo/pim-docs/data
+	$(DOCKER_RUN) -w /home/akeneo/pim-docs/data $(DOCKER_IMAGE) php scripts/update-doc-versions.php $(CIRCLE_BRANCH) versions.json
+	$(DOCKER_RSYNC) /home/akeneo/pim-docs/data/versions.json akeneo@$${DEPLOY_HOSTNAME}:/var/www/

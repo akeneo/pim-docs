@@ -3,12 +3,13 @@
 // script used for maintaining versions.json (file referencing all deployed branch documentation on pim-docs)
 $branch = $argv[1];
 $versionFile = $argv[2];
+echo "Version file ${versionFile}";
 
 $fileContent = file_get_contents($versionFile) ?: "[]";
 
 $json = json_decode($fileContent);
 
-if (containsBranch($json, $branch)) {
+if (containsBranch($json, initLabelFromBranchName($branch))) {
     echo ("Existing branch $branch in $versionFile, exiting...");
     exit(0);
 }
