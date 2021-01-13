@@ -19,12 +19,14 @@ Then add the following to your ``composer.json`` "scripts" part:
 
 .. code-block:: json
 
+    {
     "post-update-cmd": [
         "Akeneo\\Onboarder\\Setup\\OnboarderComposerScripts::copyUpgradesFiles"
     ],
     "post-install-cmd": [
         "Akeneo\\Onboarder\\Setup\\OnboarderComposerScripts::copyUpgradesFiles"
     ]
+    }
 
 
 Enable the extension
