@@ -8,6 +8,13 @@ jobs:
             - checkout
             - run: make build
 
+    check-external-link:
+        machine:
+            image: ubuntu-1604:202004-01
+        steps:
+            - checkout
+            - run: make lint
+
     deploy_staging:
         machine:
             image: ubuntu-1604:202004-01
@@ -78,4 +85,4 @@ workflows:
                         only:
                             - "4.0"
         jobs:
-            - build
+            - check-external-link
