@@ -36,7 +36,7 @@ To deploy what you have built, use `HOSTNAME=foo.com PORT=1985 VERSION=bar make 
 
 `HOSTNAME` is the server to deploy the documentation on.
 `PORT` is the SSH port to connect to the server.
-`VERSION` is the subdirectory of `/var/www/` where the documentation will be deployed on the the server. It should be something like `3.2`, `4.0` or `master`. 
+`VERSION` is the subdirectory of `/var/www/` where the documentation will be deployed on the the server. It should be something like `3.2`, `4.0` or `master`.
 
 To know the production and staging environments of pim-docs, please read the [inventory](https://github.com/akeneo/ansible/blob/master/inventories/core.inventory).
 

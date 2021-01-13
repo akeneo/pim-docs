@@ -44,8 +44,8 @@ You can use PHP Mess Detector to help make your code simple, flexible and easily
 In Akeneo PIM, we use `PhpSpec`_ as unit testing tool and `Behat`_ for behavior-oriented tests.
 
 Use a Continuous Integration (CI) tool to deploy your application, test your code and improve its quality.
-On our open-source projects, we use free CI tools `Travis`_ for unit tests and `Scrutinizer`_ for static analysis.
-You can find some configuration examples on our `Akeneo-Labs`_ projects (`scrutinizer.yml`_ and `travis.yml`_).
+On our open-source projects, we use free CI tools `Travis`_ for unit tests.
+You can find some configuration examples on our `Akeneo-Labs`_ projects (`travis.yml`_).
 
 .. _Single Responsibility principle: https://en.wikipedia.org/wiki/Single_responsibility_principle
 .. _SOLID principles: https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)
@@ -53,9 +53,7 @@ You can find some configuration examples on our `Akeneo-Labs`_ projects (`scruti
 .. _PhpSpec: https://phpspec.readthedocs.io/en/stable/
 .. _Behat: http://docs.behat.org/en/latest/
 .. _Travis: https://travis-ci.org/
-.. _Scrutinizer: https://scrutinizer-ci.com/
 .. _Akeneo-Labs: https://github.com/akeneo-labs
-.. _scrutinizer.yml: https://github.com/akeneo-labs/CustomEntityBundle/blob/master/.scrutinizer.yml
 .. _travis.yml: https://github.com/akeneo-labs/CustomEntityBundle/blob/master/.travis.yml
 
 
@@ -133,8 +131,8 @@ For your own model classes, create your class and its interface.
 Then you can rely on your interface and use the `Akeneo target resolver`_ which is based on the `Doctrine target entity resolver`_.
 
 .. _oneToOne unidirectional association: https://www.doctrine-project.org/projects/doctrine-orm/en/2.5/reference/association-mapping.html#one-to-one-unidirectional
-.. _Akeneo target resolver: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Tool/Bundle/StorageUtilsBundle/DependencyInjection/Compiler/AbstractResolveDoctrineTargetModelPass.php
-.. _Doctrine target entity resolver: https://symfony.com/doc/3.4/doctrine/resolve_target_entity.html
+.. _Akeneo target resolver: https://github.com/akeneo/pim-community-dev/blob/5.0/src/Akeneo/Tool/Bundle/StorageUtilsBundle/DependencyInjection/Compiler/AbstractResolveDoctrineTargetModelPass.php
+.. _Doctrine target entity resolver: https://symfony.com/doc/4.4/doctrine/resolve_target_entity.html
 
 
 Repositories

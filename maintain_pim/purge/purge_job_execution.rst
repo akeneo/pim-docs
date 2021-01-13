@@ -23,7 +23,11 @@ You can also provide a custom configuration for the job:
 
     bin/console akeneo:batch:purge-job-execution --days=30 --env=prod
 
-For example, with the option --days=30, the command will remove all jobs executions older than 30 days.
+For example, with the option --days=30, the command will remove all jobs executions and their archives when they were created over 30 days ago.
+
+.. note::
+
+    This purge command removes the job executions from the database and files from var/file_storage/archive directory.
 
 Scheduling the jobs
 -------------------
@@ -54,7 +58,3 @@ You can now add a new line at the end of the opened file:
     0 0 * * * /home/akeneo/pim/bin/console akeneo:batch:purge-job-execution --env=prod
 
 With this cron configuration a purge of jobs executions older than 90 days, will be launched once a day.
-
-.. note::
-
-    This purge command removes the job executions from the database but does not remove files from app/archive.

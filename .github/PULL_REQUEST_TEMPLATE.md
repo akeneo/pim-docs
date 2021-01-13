@@ -1,5 +1,7 @@
 <!--- (<3 Thanks for taking the time to contribute! You're awesome! <3) --->
 
+<!--- (Please note that every external contribution must be done on the default branch (4.0 in April 2020) --->
+
 <!--- (If you've never contributed to this repository before, please read https://github.com/akeneo/pim-docs/blob/master/.github/CONTRIBUTING.md) --->
 
 **Description**

@@ -1,5 +1,5 @@
 <?php
-require_once("../../vendor/autoload.php");
+require_once("vendor/autoload.php");
 
 use Symfony\Component\Yaml\Yaml;
 
@@ -41,7 +41,7 @@ $yaml = Yaml::parse(file_get_contents('config.yml'));
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
-    <link rel="stylesheet" href="../../web/css/pim.css">
+    <link rel="stylesheet" href="../../public/css/pim.css">
     <link rel="stylesheet" href="styleguide.css">
     <style>
         .highlighttable { width: 100%; }

@@ -11,7 +11,7 @@ To add a new step you just need to create a new Step Class that implements
     namespace AcmeBundle\ProjectCalculation\CalculationStep;
 
     use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
-    use Akeneo\ActivityManager\Component\Model\ProjectInterface;
+    use Akeneo\Pim\WorkOrganization\TeamworkAssistant\Component\Model\ProjectInterface;
 
     class MyCustomStep implements CalculationStepInterface
     {
@@ -37,7 +37,7 @@ memory leaks. Don't hesitate to use it to check your custom calculation step.
     namespace PimEnterprise\Component\ActivityManager\Job\ProjectCalculation\CalculationStep;
 
     use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
-    use PimEnterprise\Component\ActivityManager\Model\ProjectInterface;
+    use Akeneo\Pim\WorkOrganization\TeamworkAssistant\Component\Model\ProjectInterface;
 
     /**
      * Log the memory usage. Use it to debug.

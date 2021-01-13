@@ -16,7 +16,7 @@ memory leaks. Don't hesitate to use it to check your custom `calculation step`_.
     namespace Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Job\ProjectCalculation\CalculationStep;
 
     use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
-    use Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Model\ProjectInterface;
+    use Akeneo\Pim\WorkOrganization\TeamworkAssistant\Component\Model\ProjectInterface;
 
     /**
      * Log the memory usage. Use it to debug.

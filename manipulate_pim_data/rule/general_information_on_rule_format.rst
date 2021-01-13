@@ -942,7 +942,6 @@ Text / Textarea
 _______________
 +--------------+----------------------------+
 | Operator     | - STARTS WITH              |
-|              | - ENDS WITH                |
 |              | - CONTAINS                 |
 |              | - DOES NOT CONTAIN         |
 |              | - =                        |
@@ -1178,7 +1177,6 @@ Picture or file
 _______________
 +--------------+-----------------------------------+
 | Operator     | - STARTS WITH                     |
-|              | - ENDS WITH                       |
 |              | - CONTAINS                        |
 |              | - DOES NOT CONTAIN                |
 |              | - =                               |

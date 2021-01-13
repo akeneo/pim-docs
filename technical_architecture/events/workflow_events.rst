@@ -99,7 +99,7 @@ When a product draft is deleted:
 
 This event is dispatched **before** a product draft status is set to "ready".
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 ``pimee_workflow.product_draft.post_ready``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -107,7 +107,7 @@ This event is dispatched **before** a product draft status is set to "ready".
 This event is dispatched **after** a product draft's status has been set to "ready" and saved to DB.
 The product draft now becomes a proposal, **ready to be reviewed**.
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 **Built-in PIM subscribers registered to this event**
 
@@ -122,7 +122,7 @@ Listener Class Name                                                             
 
 This event is dispatched **before** a product draft is approved.
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 ``pimee_workflow.product_draft.post_approve``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -130,7 +130,7 @@ This event is dispatched **before** a product draft is approved.
 This event is dispatched **after** a product draft has been approved.
 The product **is updated and saved** with the new values, and the product draft is removed or updated.
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 **Built-in PIM subscribers registered to this event**
 
@@ -146,7 +146,7 @@ Listener Class Name                                                             
 This event is dispatched **before** a product draft is **partially** approved.
 A partial approve is about a specific single change of the product draft.
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 ``pimee_workflow.product_draft.post_partial_approve``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -155,7 +155,7 @@ This event is dispatched **before** a product draft is **partially** approved.
 The product **is updated and saved** with the new values, and the product draft is removed or updated.
 A partial approve is about a specific single change of the product draft.
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 **Built-in PIM subscribers registered to this event**
 
@@ -170,7 +170,7 @@ Listener Class Name                                                             
 
 This event is dispatched **before** a product object is updated from draft values.
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 ``pimee_workflow.product_draft.post_apply``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -178,14 +178,14 @@ This event is dispatched **before** a product object is updated from draft value
 This event is dispatched **after** a product object has been updated from draft values.
 Note that **the product is not saved yet**, only the product object is updated.
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 ``pimee_workflow.product_draft.pre_refuse``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This event is dispatched **before** a product draft is refused.
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 ``pimee_workflow.product_draft.post_refuse``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -193,7 +193,7 @@ This event is dispatched **before** a product draft is refused.
 This event is dispatched **after** a product draft has been refused.
 The product draft is updated in the DB.
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 **Built-in PIM subscribers registered to this event**
 
@@ -209,7 +209,7 @@ Listener Class Name                                                             
 This event is dispatched **before** a product draft is **partially** refused.
 A partial refuse is about a specific single change of the product draft.
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 ``pimee_workflow.product_draft.post_partial_refuse``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -218,7 +218,7 @@ This event is dispatched **before** a product draft is **partially** refused.
 The product draft is removed or updated.
 A partial refuse is about a specific single change of the product draft.
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 **Built-in PIM subscribers registered to this event**
 
@@ -233,14 +233,14 @@ Listener Class Name                                                             
 
 This event is dispatched **before** a product draft is removed.
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 ``pimee_workflow.product_draft.post_remove``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This event is dispatched **after** a product draft has been removed.
 
-**Event Class**: `GenericEvent <https://github.com/symfony/symfony/blob/2.7/src/Symfony/Component/EventDispatcher/GenericEvent.php>`_
+**Event Class**: `GenericEvent`_
 
 **Built-in PIM subscribers registered to this event**
 
@@ -249,3 +249,5 @@ Listener Class Name                                                             
 ============================================================================================================  ===============
 ``Akeneo\Pim\WorkOrganization\Workflow\Bundle\EventSubscriber\ProductDraft\RemoveNotificationSubscriber``      0
 ============================================================================================================  ===============
+
+.. _GenericEvent: https://github.com/symfony/symfony/blob/4.4/src/Symfony/Component/EventDispatcher/GenericEvent.php

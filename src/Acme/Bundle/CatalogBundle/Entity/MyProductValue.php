@@ -2,15 +2,12 @@
 
 namespace Acme\Bundle\CatalogBundle\Entity;
 
-use Pim\Bundle\CatalogBundle\Model\AbstractProductValue;
-use JMS\Serializer\Annotation\ExclusionPolicy;
+use Akeneo\Pim\Enrichment\Component\Product\Model\AbstractValue;
 
 /**
  * Overrides ProductValue to add the color backend type
- *
- * @ExclusionPolicy("all")
  */
-class MyProductValue extends AbstractProductValue
+class MyProductValue extends AbstractValue
 {
     /**
      * @var Color
