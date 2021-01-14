@@ -12,7 +12,7 @@ You can either use `composer` to create your project:
    :linenos:
 
    $ php -d memory_limit=4G /usr/local/bin/composer create-project --prefer-dist \
-        akeneo/pim-community-standard /srv/pim "4.0.*@stable"
+        akeneo/pim-community-standard /srv/pim "5.0.*@stable"
 
 or download an archive containing Akeneo PIM and its PHP dependencies: https://download.akeneo.com/pim-community-standard-v4.0-latest-icecat.tar.gz
 
