@@ -98,12 +98,6 @@ The property setter replaces the data if it already exists.
     // sets localizable and scopable attribute's data
     $propertySetter->setData($product, 'description', 'my description', ['locale' => 'en_US', 'scope' => 'mobile']);
 
-.. note::
-
-    This service has been reviewed in the 1.4 and now supports doctrine fields (before the 1.4, it was only available for attribute values).
-
-    The method ``Pim\Bundle\CatalogBundle\Updater\ProductUpdater::setValue()`` is now deprecated, you should use ``Akeneo\Tool\Component\StorageUtils\Updater\PropertySetterInterface::setData()`` instead.
-
 Instantiate a New PropertyAdderInterface
 -----------------------------------------
 
@@ -113,7 +107,7 @@ It's available as a service, you can fetch it from the container.
 
 .. code-block:: php
 
-    $propertyAdder = $this->getContainer()->get('pim_catalog.updater.product_property_adder');
+    $propertyAdder = $this->getContainer()->get('pim_catalog.updater.property_adder');
 
 Use the PropertyAdderInterface
 ------------------------------
@@ -141,7 +135,7 @@ It's available as a service, you can fetch it from the container.
 
 .. code-block:: php
 
-    $propertyRemover = $this->getContainer()->get('pim_catalog.updater.product_property_remover');
+    $propertyRemover = $this->getContainer()->get('pim_catalog.updater.property_remover');
 
 Use the PropertyRemoverInterface
 --------------------------------
@@ -169,7 +163,7 @@ It's available as a service, you can fetch it from the container.
 
 .. code-block:: php
 
-    $propertyCopier = $this->getContainer()->get('pim_catalog.updater.product_property_copier');
+    $propertyCopier = $this->getContainer()->get('pim_catalog.updater.property_copier');
 
 Use the PropertyCopierInterface
 -------------------------------
@@ -187,12 +181,6 @@ The property copier allows to copy data from a property to another (doctrine fie
         'description',
         ['from_locale' => 'en_US', 'to_locale' => 'en_US']
     );
-
-.. note::
-
-    This service has been reviewed in the 1.4 version and now supports doctrine fields (before the 1.4, it was only available for attribute values).
-
-    The method ``Pim\Bundle\CatalogBundle\Updater\ProductUpdater::copyValue()`` is now deprecated, you should use ``Akeneo\Tool\Component\StorageUtils\Updater\PropertyCopierInterface::copyData()``.
 
 Add a Custom FieldSetterInterface
 ---------------------------------

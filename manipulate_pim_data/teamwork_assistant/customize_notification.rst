@@ -22,7 +22,7 @@ First you need to create a new subscriber in your bundle, example: ``src\AppBund
     namespace AppBundle\EventListener;
 
     use Akeneo\Tool\Bundle\BatchBundle\Notification\MailNotifier;
-    use Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Repository\UserRepositoryInterface;
+    use Akeneo\Pim\WorkOrganization\TeamworkAssistant\Component\Repository\UserRepositoryInterface;
 
     class ProjectCreationNotifierSubscriber implements EventSubscriberInterface
     {

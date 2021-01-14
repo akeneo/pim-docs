@@ -8,9 +8,9 @@ All the Prerequisites listed below have to be fulfilled before the installation 
 +================================================+========================================================================================================+
 | :ref:`PIM <onboarder-prereq-pim>`              | Your Akeneo PIM is an enterprise edition                                                               |
 +                                                +--------------------------------------------------------------------------------------------------------+
-|                                                | Your Akeneo PIM version is >= 2.3.9 and <4.0                                                           |
+|                                                | Your Akeneo PIM version is >= 4.0                                                                      |
 +------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-| :ref:`Synchronization <onboarder-prereq-sync>` | You've received from the Akeneo team the Onboarder parameters package                                  |
+| :ref:`Synchronization <onboarder-prereq-sync>` | The Onboarder parameters are available on your Partner Portal project page                             |
 +                                                +--------------------------------------------------------------------------------------------------------+
 |                                                | You are able to launch a daemonized command in your server (a process that needs to be always started) |
 +                                                +--------------------------------------------------------------------------------------------------------+
@@ -24,7 +24,7 @@ All the Prerequisites listed below have to be fulfilled before the installation 
 PIM
 ---
 
-The Onboarder is compatible with enterprise edition from >= 2.3.9 to <4.0
+The Onboarder is compatible with the enterprise edition of the PIM starting 3.0 version.
 
 .. _onboarder-prereq-sync:
 
@@ -34,13 +34,14 @@ Synchronization
 Parameters package
 ^^^^^^^^^^^^^^^^^^
 
-The parameters package provided by the Akeneo team must contain:
+The parameters provided on the Partner Portal must contain:
 
-* A ``serviceAccount.json`` file that contains authentication values to be able to use the Google PubSub and Google Cloud Storage services.
+* A downloadable ``serviceAccount.json`` file that contains authentication values to be able to use the Google PubSub and Google Cloud Storage services.
 * Several environments variables values that you will configure in the install process in order to communicate with Google Cloud PubSub instance
 *
-    * ``ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE``: the topic where the Akeneo PIM will publish synchronization messages to retailer onboarder
-    * ``ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_ONBOARDER``: the topic where the Akeneo PIM will publish synchronization messages to supplier onboarder
-    * ``ONBOARDER_TOPIC_NAME_FOR_CONSUMPTION``: the topic where the Akeneo PIM will subscribe
-    * ``ONBOARDER_QUEUE_NAME``: the queue where the Akeneo PIM will consume synchronization messages
-* ``ONBOARDER_CLOUD_STORAGE_BUCKET_NAME``: name of the bucket where the assets will be synchronized
+    * ``FLAG_ONBOARDER_ENABLED``: the feature flag that allows the activation of the Retailer Onboarder
+    * ``ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE``: the topic into wich Akeneo PIM will publish synchronization messages to middleware
+    * ``ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_ONBOARDER``: the topic into wich Akeneo PIM will publish synchronization messages to supplier onboarder
+    * ``ONBOARDER_TOPIC_NAME_FOR_CONSUMPTION``: the topic Akeneo PIM will subscribe to
+    * ``ONBOARDER_QUEUE_NAME``: the queue Akeneo PIM will consume synchronization messages from
+    * ``ONBOARDER_CLOUD_STORAGE_BUCKET_NAME``: the name of the bucket where the assets will be synchronized

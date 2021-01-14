@@ -1,10 +1,10 @@
 Synchronization
 ===============
 
-Push catalog structure to the retailer Onboarder
+Push catalog structure to the middleware
 ------------------------------------------------
 
-To work, the retailer Onboarder needs some data from the PIM and you will have to push them once your installation will be done.
+To work, the middleware needs some data from the PIM and you will have to push them once your installation will be done.
 
 Data synchronized are: attribute groups, attributes, attribute option, and families.
 
@@ -40,7 +40,7 @@ You want a supervised worker
 .. warning::
 
     This process is only for "On premise" PIMs. If you are using the Flexibility mode of Akeneo Cloud Edition,
-    please follow :doc:`this documentation </cloud_edition/flexibility_mode/docs/onboarder>` instead.
+    please follow :doc:`this documentation </cloud_edition/flexibility_mode/docs/job_consumers_and_workers>` instead.
 
 You can use supervisor to run the ``worker`` as a daemonized process, supervisor will monitor this process and according to the configuration you'll define it will be autostarted and autorestarted.
 

@@ -49,8 +49,9 @@ The following command will create a PIM project in the current directory. Please
 
     $ mkdir pim
     $ cd pim
-    $ docker run -u www-data -v $(pwd):/srv/pim -w /srv/pim --rm akeneo/pim-php-dev:5.0 \
-        php -d memory_limit=4G /usr/local/bin/composer create-project \
+    $ docker run -ti -u www-data --rm \
+        -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -w /srv/pim \
+        akeneo/pim-php-dev:5.0 php -d memory_limit=4G /usr/local/bin/composer create-project \
         akeneo/pim-community-standard /srv/pim "5.0.*@stable"
 
 .. note::
@@ -68,7 +69,7 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
     $ tar -xvzf pim-enterprise-standard-v5.0.tar.gz
     $ cd pim-enterprise-standard
     $ docker run -ti -u www-data --rm \
-        -v $(pwd):/srv/pim -v ~/.composer:/var/www.composer -v ~/.ssh:/var/www/.ssh -w /srv/pim \
+        -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -v ~/.ssh:/var/www/.ssh -w /srv/pim \
         akeneo/pim-php-dev:5.0 php -d memory_limit=4G /usr/local/bin/composer install
 
 .. note::
@@ -174,7 +175,7 @@ Enable it on php service:
 
       $ XDEBUG_ENABLED=1 docker-compose run --rm php php my-script.php
 
-If you are using PHPStorm, open the settings windows and go to ``Languages & Framework > PHP > Servers``. Then add two servers name ``pim-xx`` and ``pim-xx-cli`` (``xx`` could be ``ce`` or ``ee`` depending the edition you are working on)
+If you are using PHPStorm, open the settings windows and go to ``Languages & Framework > PHP > Servers``. Then add two servers name ``pim-docker-web`` and ``pim-docker-cli``.
 
 .. image:: ../../_images/xdebug/phpstorm-xdebug.png
   :alt: Configure xdebug on PHPStorm

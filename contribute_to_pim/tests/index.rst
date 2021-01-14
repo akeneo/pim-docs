@@ -6,7 +6,7 @@ The PIM comes with a set of Behat scenarios: https://github.com/akeneo/pim-commu
 
 .. warning::
 
-    Please, note that reading `Behat documentation <http://docs.behat.org/en/v2.5/>`_ is a prerequisite for
+    Please, note that reading `Behat documentation <http://docs.behat.org/>`_ is a prerequisite for
     the following documentation.
 
 .. toctree::

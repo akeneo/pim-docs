@@ -102,6 +102,7 @@ We can create an instance with the following command:
 
 .. code-block:: bash
 
+    php bin/console cache:clear
     # akeneo:batch:create-job <connector> <job> <type> <code> <config> [<label>]
     php bin/console akeneo:batch:create-job 'Acme CSV Notify Connector' csv_product_export_notify export my_app_product_export '{"urlToNotify": "http://my-app.com/product-export-done"}'
 
@@ -264,7 +265,7 @@ Let's register this file in the ``requirejs`` configuration
 
     config:
         paths:
-            pim/job/product/edit/mapping: acmeenrich/js/job/product/form/mapping
+            pim/job/product/edit/mapping: acmeenrich/js/job/product/edit/mapping
 
 Now that our file is registered in ``requirejs`` configuration, we can add this extension to the product edit form:
 
@@ -274,9 +275,9 @@ Now that our file is registered in ``requirejs`` configuration, we can add this 
     # /src/Acme/Bundle/EnrichBundle/Resources/config/form_extensions/job_instance/csv_product_export_edit.yml
 
     extensions:
-        pim-job-instance-csv-product-export-edit-mapping:                        # The form extension code (can be whatever you want)
+        pim-job-instance-csv-product-export-notify-edit-mapping:                 # The form extension code (can be whatever you want)
             module: pim/job/product/edit/mapping                                 # The requirejs module we just created
-            parent: pim-job-instance-csv-product-export-edit-tabs                # The parent extension in the form where we want to be regisetred
+            parent: pim-job-instance-csv-product-export-notify-edit-tabs         # The parent extension in the form where we want to be registered
             aclResourceId: pim_importexport_export_profile_mapping_edit          # The user will need this ACL for this extension to be registered
             targetZone: container
             position: 140                                                        # The extension position
@@ -288,9 +289,9 @@ Now that our file is registered in ``requirejs`` configuration, we can add this 
     # /src/Acme/Bundle/EnrichBundle/Resources/config/form_extensions/job_instance/csv_product_export_show.yml
 
     extensions:
-        pim-job-instance-csv-product-export-show-mapping:                        # The form extension code (can be whatever you want)
+        pim-job-instance-csv-product-export-notify-show-mapping:                 # The form extension code (can be whatever you want)
             module: pim/job/product/show/mapping                                 # The requirejs module we just created
-            parent: pim-job-instance-csv-product-export-show-tabs                # The parent extension in the form where we want to be regisetred
+            parent: pim-job-instance-csv-product-export-notify-show-tabs         # The parent extension in the form where we want to be registered
             aclResourceId: pim_importexport_export_profile_mapping_show          # The user will need this ACL for this extension to be registered
             targetZone: container
             position: 140                                                        # The extension position
@@ -303,6 +304,7 @@ To see your changes in the new tab in the job edit form you need to run:
 .. code-block:: bash
 
     bin/console cache:clear
+    bin/console --env=prod pim:installer:assets --symlink --clean
     yarn run webpack
 
 If you don't see your changes, make sure you have run (``bin/console assets:install --symlink web``).
