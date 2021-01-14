@@ -82,7 +82,7 @@ You can download the composer.json file directly from the Github repository:
 
 .. code:: bash
 
-    $  curl https://raw.githubusercontent.com/akeneo/pim-community-standard/5.0/composer.json > $INSTALLATION_DIR/composer.json
+    $  curl https://raw.githubusercontent.com/akeneo/pim-community-standard/master/composer.json > $INSTALLATION_DIR/composer.json
 
 Enterprise Edition
 ^^^^^^^^^^^^^^^^^^
