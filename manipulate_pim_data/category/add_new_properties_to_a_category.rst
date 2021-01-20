@@ -129,9 +129,11 @@ You also need to update the controller dependency injection:
                 - '@pim_catalog.factory.category'
                 - '@pim_catalog.repository.category'
                 - '@oro_security.security_facade'
+                - '@translator'
                 - { related_entity: product, form_type: 'Acme\Bundle\CatalogBundle\Form\Type\CategoryType', acl: pim_enrich_product, route: pim_enrich }
             calls:
                 - [ setContainer, [ '@service_container' ] ]
+            public: true
 
 Then, add this new file to your dependency injection extension:
 
@@ -322,9 +324,11 @@ You also need to update the controller dependency injection:
                 - '@pim_catalog.factory.category'
                 - '@pim_catalog.repository.category'
                 - '@oro_security.security_facade'
+                - '@translator'
                 - { related_entity: product, form_type: 'Acme\Bundle\CatalogBundle\Form\Type\CategoryType', acl: pim_enrich_product, route: pim_enrich }
             calls:
                 - [ setContainer, [ '@service_container' ] ]
+            public: true
 
 Then, don't forget to add your new field to the twig template:
 
