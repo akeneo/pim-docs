@@ -86,6 +86,8 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     */30 * * * * pim:data-quality-insights:evaluations
     #Ansible: pimee:data-quality-insights:migrate-product-criterion-evaluation
     */10 * * * * pimee:data-quality-insights:migrate-product-criterion-evaluation
+    #Ansible: akeneo:messenger:doctrine:purge-messages
+    */30 * * * * akeneo:messenger:doctrine:purge-messages
 
     # My custom jobs
     SHELL=/bin/bash
