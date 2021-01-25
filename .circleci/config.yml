@@ -5,6 +5,7 @@ jobs:
             image: ubuntu-1604:202004-01
         steps:
             - checkout
+            - run: curl http://www.google.com/
             - run: make build
 
     deploy_staging:
