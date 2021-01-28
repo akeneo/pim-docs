@@ -36,7 +36,7 @@ You also need to configure the mapping override in your application configuratio
 
 .. code-block:: yaml
 
-    # config/services/storage_utils.yml
+    # /config/services/storage_utils.yml
     akeneo_storage_utils:
         mapping_overrides:
             -
@@ -55,22 +55,30 @@ You need to update your category entity parameter used in ``entities.yml`` file:
    :linenos:
 
 .. important::
-   If you are creating a new bundle, double check that this file is inside the extension
+   If you are creating a new bundle, double check that this ``entities.yml`` file is loaded in your bundle extension and that your new bundle is registered in your application ``/config/bundles.php`` file
 
    .. code-block:: php
 
-       // /src/Acme/Bundle/CatalogBundle/DependencyInjection/AcmeCatalogExtension.php
-       public function load(array $configs, ContainerBuilder $container)
-       {
-           /** ... **/
-           $loader->load('entities.yml');
-       }
+        // /src/Acme/Bundle/CatalogBundle/DependencyInjection/AcmeCatalogExtension.php
+        public function load(array $configs, ContainerBuilder $container)
+        {
+            /** ... **/
+            $loader->load('entities.yml');
+        }
+
+    .. code-block:: php
+
+        // /config/bundles.php
+        return [
+            /** ... **/
+            Acme\Bundle\CatalogBundle\AcmeCatalogBundle::class => ['all' => true],
+        ];
 
 .. note::
    You don't have to add a lot of code to the Doctrine configuration to resolve target entities.
    We already have a resolver which injects the new category class name.
 
-Now, you can run the following commands to update your database: (don't forget to register your new bundle in the `config/bundles.php` file)
+Now, you can run the following commands to update your database:
 
 .. code-block:: bash
 
