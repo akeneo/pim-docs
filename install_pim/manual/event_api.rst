@@ -1,4 +1,4 @@
-Setting up the event api
+Setting up the Events API
 ========================
 
 Configure the consumer worker
