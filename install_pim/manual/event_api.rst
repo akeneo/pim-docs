@@ -96,25 +96,17 @@ Create ``/etc/systemd/system/akeneo_events_api_consumer@.service``:
 
     [Unit]
     Description=Akeneo PIM Events API consumer
+    Requires=apache2.service
 
     [Service]
-    Type=forking
-    User=root
+    User=akeneo
+    Environment=APP_ENV=prod
     WorkingDirectory=/path/to/home/user/.systemd
-    ExecStart=/usr/local/bin/akeneo_events_api_consumer_launcher.sh
-    After=apache2.service
+    ExecStart=/path/to/akeneo/bin/console messenger:consume webhook
     Restart=always
 
     [Install]
     WantedBy=multi-user.target
-
-Create ``/usr/local/bin/akeneo_events_api_consumer_launcher.sh``:
-
-.. code-block:: bash
-    :linenos:
-
-    su -c "/path/to/akeneo/bin/console messenger:consume webhook --env=prod &" akeneo
-    exit 0
 
 Manage the services
 *******************
