@@ -1,5 +1,5 @@
 Setting up the Events API
-========================
+=========================
 
 Configure the consumer worker
 #############################
@@ -35,7 +35,7 @@ In this documentation, we will describe how to configure the Process Control Sys
 These instructions are valid for Debian 9 and Ubuntu 16.04.
 
 Installing supervisor
-**********************
+*********************
 
 Install `supervisor`:
 
