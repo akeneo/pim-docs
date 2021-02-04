@@ -74,7 +74,7 @@ workflows:
                 filters:
                     branches:
                         only:
-                            - "5.0"
+                            - "4.0"
 
     nightly:
         triggers:
