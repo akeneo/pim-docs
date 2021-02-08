@@ -39,6 +39,7 @@ The parameters provided on the Partner Portal must contain:
 * A downloadable ``serviceAccount.json`` file that contains authentication values to be able to use the Google PubSub and Google Cloud Storage services.
 * Several environments variables values that you will configure in the install process in order to communicate with Google Cloud PubSub instance
 *
+    * ``FLAG_ONBOARDER_ENABLED``: the feature flag that allows the activation of the Retailer Onboarder
     * ``ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE``: the topic into wich Akeneo PIM will publish synchronization messages to middleware
     * ``ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_ONBOARDER``: the topic into wich Akeneo PIM will publish synchronization messages to supplier onboarder
     * ``ONBOARDER_TOPIC_NAME_FOR_CONSUMPTION``: the topic Akeneo PIM will subscribe to
