@@ -51,7 +51,7 @@ The following command will create a PIM project in the current directory. Please
     $ cd pim
     $ docker run -ti -u www-data --rm \
         -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -w /srv/pim \
-        akeneo/pim-php-dev:5.0 php -d memory_limit=4G /usr/local/bin/composer create-project \
+        akeneo/pim-php-dev:5.0 php /usr/local/bin/composer create-project \
         akeneo/pim-community-standard /srv/pim "5.0.*@stable"
 
 .. note::
@@ -70,7 +70,7 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
     $ cd pim-enterprise-standard
     $ docker run -ti -u www-data --rm \
         -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -v ~/.ssh:/var/www/.ssh -w /srv/pim \
-        akeneo/pim-php-dev:5.0 php -d memory_limit=4G /usr/local/bin/composer install
+        akeneo/pim-php-dev:5.0 php /usr/local/bin/composer install
 
 .. note::
     The above Docker command uses a volume to make your SSH private key available to the container, in order for it to access
@@ -80,8 +80,8 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
 
     .. code-block:: bash
 
-        $ docker run -ti -u www-data -v $(pwd):/srv/pim -v $SSH_AUTH_SOCK:/ssh-auth.sock -e SSH_AUTH_SOCK=/ssh-auth.sock -w /srv/pim --rm akeneo/pim-php-dev:4.0 \
-            php -d memory_limit=4G /usr/local/bin/composer install
+        $ docker run -ti -u www-data -v $(pwd):/srv/pim -v $SSH_AUTH_SOCK:/ssh-auth.sock -e SSH_AUTH_SOCK=/ssh-auth.sock -w /srv/pim --rm akeneo/pim-php-dev:5.0 \
+            /usr/local/bin/composer install
 
     See https://github.com/docker-library/docs/tree/master/composer/#private-repositories--ssh-agent for more details.
 

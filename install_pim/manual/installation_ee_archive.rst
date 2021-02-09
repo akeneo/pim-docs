@@ -12,8 +12,8 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
 
 .. code-block:: bash
 
-    $ tar -xvzf pim-enterprise-standard-v4.0.tar.gz
+    $ tar -xvzf pim-enterprise-standard-v5.0.tar.gz
     $ cd pim-enterprise-standard/pim-enterprise-standard
-    $ php -d memory_limit=4G /usr/local/bin/composer install
+    $ composer install
 
 .. include:: ./common_install_ce_ee.rst.inc
