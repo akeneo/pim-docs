@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Bundle\EnrichBundle\Form\Type;
+namespace Acme\Bundle\CatalogBundle\Form\Type;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;

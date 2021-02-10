@@ -1,0 +1,2 @@
+parameters:
+  pim_enrich.view_element.category.tab.property.template: 'AcmeCatalogBundle:CategoryTree:Tab/property.html.twig'
