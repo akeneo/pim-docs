@@ -120,12 +120,9 @@ Launch the daemon
 Option #2 - systemd
 -------------------
 
-If you prefer, you can use ``systemd``, which will also allow for multiple daemons to run at the same time,
-to have logs management and auto restart in case of failure.
+If you prefer, you can use ``systemd``, which allows multiple daemons to run at the same time, log management, and auto restart in case of failure.
 
-As of ``3.1``, job consumers can be specified which job instance codes will be supported. It can be leverage to make
-sure certain types of jobs will always be processed by one consumer without being interfered by regular activity on the PIM.
-
+As of ``3.1``, job consumers can be assigned specific job instance codes they will support.  This can be leveraged to make sure certain types of jobs will always be processed by a given consumer without being impacted by regular activity on the PIM.
 
 Configuration files
 *******************
