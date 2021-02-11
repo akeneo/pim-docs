@@ -7,6 +7,13 @@ jobs:
             - checkout
             - run: make build
 
+    check-external-link:
+        machine:
+            image: ubuntu-1604:202004-01
+        steps:
+            - checkout
+            - run: make lint
+
     deploy_staging:
         machine:
             image: ubuntu-1604:202004-01
@@ -67,3 +74,14 @@ workflows:
                       branches:
                           only:
                               - "5.0"
+
+    nightly:
+        triggers:
+            - schedule:
+                  cron: "0 2 * * *"
+                  filters:
+                      branches:
+                          only:
+                              - "5.0"
+        jobs:
+            - check-external-link
