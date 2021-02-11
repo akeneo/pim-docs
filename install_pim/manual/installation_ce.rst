@@ -11,9 +11,8 @@ You can either use `composer` to create your project:
 .. code-block:: bash
    :linenos:
 
-   $ php -d memory_limit=4G /usr/local/bin/composer create-project --prefer-dist \
-        akeneo/pim-community-standard /srv/pim "5.0.*@stable"
+   $ composer create-project akeneo/pim-community-standard /srv/pim "5.0.*@stable"
 
-or download an archive containing Akeneo PIM and its PHP dependencies: https://download.akeneo.com/pim-community-standard-v4.0-latest-icecat.tar.gz
+or download an archive containing Akeneo PIM and its PHP dependencies: https://download.akeneo.com/pim-community-standard-v5.0-latest-icecat.tar.gz
 
 .. include:: ./common_install_ce_ee.rst.inc

@@ -7,6 +7,13 @@ jobs:
             - checkout
             - run: make build
 
+    check-external-link:
+        machine:
+            image: ubuntu-1604:202004-01
+        steps:
+            - checkout
+            - run: make lint
+
     deploy_staging:
         machine:
             image: ubuntu-1604:202004-01
@@ -26,6 +33,9 @@ jobs:
             - run:
                   name: Deploy on production server
                   command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="5.0" make deploy
+
+orbs:
+    pull-up: akeneo-orbs/pull-up@1.0
 
 workflows:
     version: 2
@@ -50,3 +60,28 @@ workflows:
             - deploy_production:
                   requires:
                       - approve_to_deploy_in_production
+
+    pull_up:
+        jobs:
+            - pull-up/pull-up:
+                  from: "5.0"
+                  into: "master"
+                  branch_prefix: "50_to_master"
+                  github_token: MICHEL_TAG_TOKEN
+                  github_username: "micheltag"
+                  slack_webhook: "${SLACK_URL_PULL_UP}"
+                  filters:
+                      branches:
+                          only:
+                              - "5.0"
+
+    nightly:
+        triggers:
+            - schedule:
+                  cron: "0 2 * * *"
+                  filters:
+                      branches:
+                          only:
+                              - "5.0"
+        jobs:
+            - check-external-link

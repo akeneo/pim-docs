@@ -101,6 +101,10 @@ Here are two examples in order to define environment variables:
 | ONBOARDER_CLOUD_STORAGE_BUCKET_NAME                | Identifier of the bucket used to share files between your PIM and the middleware.                                                 |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 
+.. note::
+
+    The values for the variables prefixed by ``ONBOARDER_`` are generated. You can find them in the Partners Portal, under the "Properties" tab of your Onboarder project.
+
 **Optional variables**
 
 +----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
