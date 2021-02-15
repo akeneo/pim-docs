@@ -14,7 +14,7 @@ Only thumbnails are stored on the PIM server.
 Use a SFTP server
 -----------------
 
-.. _Sftp adapter: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/adapter_sftp.md
+.. _Sftp adapter: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/doc/adapter_sftp.md
 
 Let's assume that you already have a fully functional SFTP server ready to receive files.
 
@@ -48,7 +48,7 @@ For further information about SFTP adapter check `Sftp adapter`_.
 Use Amazon AwsS3v3 as storage
 -----------------------------
 
-.. _Awss3 adapter: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/adapter_awss3.md
+.. _Awss3 adapter: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/doc/adapter_awss3.md
 .. _Awss3 documentation: https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_configuration.html#cfg-version
 .. _AWS SDK for PHP: https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.S3.S3Client.html
 
@@ -107,6 +107,6 @@ For further information about AWS adapter check `Awss3 adapter`_.
 Other
 -----
 
-.. _Flysystem documentation: https://github.com/1up-lab/OneupFlysystemBundle/tree/master/Resources/doc/
+.. _Flysystem documentation: https://github.com/1up-lab/OneupFlysystemBundle/tree/master/doc
 
 You can find more information about adapters in `Flysystem documentation`_.
