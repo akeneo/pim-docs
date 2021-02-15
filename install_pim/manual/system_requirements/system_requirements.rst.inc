@@ -112,7 +112,7 @@ Besides these modules, the following configuration is the minimal configuration 
 **Javascript** (required only for development purposes)
 
 +----------------+---------------------------+
-| nodejs         | ≥ 12.20                    |
+| nodejs         | ≥ 12.20                   |
 +----------------+---------------------------+
 | yarn           | ≥ 1.0.0                   |
 +----------------+---------------------------+
