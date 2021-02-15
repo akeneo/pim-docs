@@ -108,13 +108,13 @@ Apache
 
 .. include:: /install_pim/manual/system_requirements/system_configuration.rst.inc
 
-Node
-****
+Node 12
+*******
 
 .. code-block:: bash
 
     $ apt-get install curl
-    $ curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+    $ curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
     $ bash nodesource_setup.sh
     $ apt-get install -y nodejs
 
