@@ -100,16 +100,28 @@ Apache
 
 .. include:: /install_pim/manual/system_requirements/system_configuration.rst.inc
 
-Node
-****
+Node 12
+*******
 
 .. code-block:: bash
 
-    # apt-get install nodejs
+    $ apt-get install curl
+    $ curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
+    $ bash nodesource_setup.sh
+    $ apt-get install -y nodejs
+
+To check which version of Node.js you have installed after these initial steps, type:
+
+.. code-block:: bash
+
+    $ nodejs -v
 
 Yarn
 ****
 
 .. code-block:: bash
 
-    # apt-get install yarnpkg
+    $ curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+    $ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+    $ apt update && apt-get install yarn
+
