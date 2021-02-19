@@ -14,7 +14,7 @@ Only thumbnails are stored on the PIM server.
 Connect to an SFTP server
 -------------------------
 
-.. _Sftp adapter: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/adapter_sftp.md
+.. _Sftp adapter: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/doc/adapter_sftp.md
 
 Let's assume that you already have a fully functional SFTP server ready to receive files. You will have to setup the adapter in the ``app/config/config.yml`` file.
 
@@ -48,7 +48,7 @@ For further information about SFTP adapter check `Sftp adapter`_.
 Connect to an Amazon AwsS3v3 server
 -----------------------------------
 
-.. _Awss3 adapter: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/Resources/doc/adapter_awss3.md
+.. _Awss3 adapter: https://github.com/1up-lab/OneupFlysystemBundle/blob/master/doc/adapter_awss3.md
 
 First of all, you will need to install the following requirements:
 
@@ -104,6 +104,6 @@ For further information about AWS adapter check `Awss3 adapter`_.
 Other
 -----
 
-.. _Flysystem documentation: https://github.com/1up-lab/OneupFlysystemBundle/tree/master/Resources/doc/
+.. _Flysystem documentation: https://github.com/1up-lab/OneupFlysystemBundle/tree/master/doc
 
 You can find more information about adapters in `Flysystem documentation`_.
