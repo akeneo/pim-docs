@@ -65,6 +65,6 @@ workflows:
                   filters:
                       branches:
                           only:
-                              - "5.0"
+                              - "master"
         jobs:
             - check-external-link
