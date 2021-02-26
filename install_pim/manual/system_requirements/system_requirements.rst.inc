@@ -30,41 +30,41 @@ The web server will also need the following libraries and modules:
 
 **PHP required modules and configuration**
 
-+----------------+---------------------------+
-| PHP            | 7.4                       |
-+----------------+---------------------------+
-| php7.4-apcu    | apc.enable_cli=1          |
-+----------------+---------------------------+
-| php7.4-bcmath  | No specific configuration |
-+----------------+---------------------------+
-| php7.4-curl    | No specific configuration |
-+----------------+---------------------------+
-| php7.4-fpm     | No specific configuration |
-+----------------+---------------------------+
-| php7.4-intl    | No specific configuration |
-+----------------+---------------------------+
-| php7.4-mysql   | No specific configuration |
-+----------------+---------------------------+
-| php7.4-xml     | No specific configuration |
-+----------------+---------------------------+
-| php7.4-zip     | No specific configuration |
-+----------------+---------------------------+
-| php7.4-exif    | No specific configuration |
-+----------------+---------------------------+
-| php7.4-imagick | No specific configuration |
-+----------------+---------------------------+
-| php7.4-cli     | No specific configuration |
-+----------------+---------------------------+
-| php7.4-opcache | No specific configuration |
-+----------------+---------------------------+
-| php7.4-zip     | No specific configuration |
-+----------------+---------------------------+
-| php7.4-mbstring| No specific configuration |
-+----------------+---------------------------+
-| php-memcached  | No specific configuration |
-+----------------+---------------------------+
-| composer       | >= 2                      |
-+----------------+---------------------------+
++-----------------+---------------------------+
+| PHP             | 7.4                       |
++-----------------+---------------------------+
+| php7.4-apcu     | apc.enable_cli=1          |
++-----------------+---------------------------+
+| php7.4-bcmath   | No specific configuration |
++-----------------+---------------------------+
+| php7.4-curl     | No specific configuration |
++-----------------+---------------------------+
+| php7.4-fpm      | No specific configuration |
++-----------------+---------------------------+
+| php7.4-intl     | No specific configuration |
++-----------------+---------------------------+
+| php7.4-mysql    | No specific configuration |
++-----------------+---------------------------+
+| php7.4-xml      | No specific configuration |
++-----------------+---------------------------+
+| php7.4-zip      | No specific configuration |
++-----------------+---------------------------+
+| php7.4-exif     | No specific configuration |
++-----------------+---------------------------+
+| php7.4-imagick  | No specific configuration |
++-----------------+---------------------------+
+| php7.4-cli      | No specific configuration |
++-----------------+---------------------------+
+| php7.4-opcache  | No specific configuration |
++-----------------+---------------------------+
+| php7.4-zip      | No specific configuration |
++-----------------+---------------------------+
+| php7.4-mbstring | No specific configuration |
++-----------------+---------------------------+
+| php7.4-memcached| No specific configuration |
++-----------------+---------------------------+
+| composer        | >= 2                      |
++-----------------+---------------------------+
 
 
 .. warning::

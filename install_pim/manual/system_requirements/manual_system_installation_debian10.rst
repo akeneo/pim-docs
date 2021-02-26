@@ -51,7 +51,7 @@ Install PHP and the required extensions:
 
 .. code-block:: bash
 
-    # apt-get install php7.4-cli php7.4-apcu php7.4-bcmath php7.4-curl php7.4-opcache php7.4-fpm php7.4-gd php7.4-intl php7.4-mysql php7.4-xml php7.4-zip php7.4-mbstring php7.4-imagick php7.4-exif
+    # apt-get install php7.4-cli php7.4-apcu php7.4-bcmath php7.4-curl php7.4-opcache php7.4-fpm php7.4-gd php7.4-intl php7.4-memcached php7.4-mysql php7.4-xml php7.4-zip php7.4-mbstring php7.4-imagick php7.4-exif
 
 
 Elasticsearch 7.10
