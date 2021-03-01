@@ -17,22 +17,16 @@ MySQL 8.0
 
 The easiest way to install MySQL 8.0 is to use the official vendor package.
 
-First, start by installing the `MySQL APT repository <https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/#apt-repo-setup>`_.
-It's a tool that aims to ease the installation and update of MySQL products.
-During the installation of this tool, one will be asked to choose the versions of the MySQL server to install. MySQL 8.0 has to be chosen.
-It's also recommended to disable all non desired tools, such as MySQL Workbench or MySQL Router.
+The best documentation is coming from MySQL himself : <https://dev.mysql.com/doc/refman/8.0/en/linux-installation-debian.html>
+
+You must install a fixed version, to do that, you to download the bundle file:
 
 .. code-block:: bash
 
-    # apt-get install lsb-release apt-transport-https ca-certificates wget gnupg
-    # wget -O mysql-apt-config.deb https://repo.mysql.com//mysql-apt-config_0.8.16-1_all.deb
-    # dpkg -i mysql-apt-config.deb
+    # wget https://downloads.mysql.com/archives/get/p/23/file/mysql-server_8.0.22-1debian10_amd64.deb-bundle.tar
 
-Now is the time to install what has been configured in the step before:
+And refer you to the Oracle Documentation : <https://dev.mysql.com/doc/refman/8.0/en/linux-installation-debian.html>
 
-.. code-block:: bash
-
-    # apt update && apt-get install mysql-server
 
 When installing MySQL 8.0, you'll have to choose the authentication method. Please select *Use Legacy Authentication Method* as the *Strong Password Encryption* is not yet supported by Akeneo PIM.
 
