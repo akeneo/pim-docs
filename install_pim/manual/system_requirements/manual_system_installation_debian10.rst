@@ -19,7 +19,7 @@ The easiest way to install MySQL 8.0 is to use the official vendor package.
 
 The best documentation is coming from MySQL himself : <https://dev.mysql.com/doc/refman/8.0/en/linux-installation-debian.html>
 
-You must install a fixed version, to do that, you to download the bundle file:
+You must install a fixed version, to do that, you need to download the bundle file:
 
 .. code-block:: bash
 
@@ -118,4 +118,3 @@ Yarn
     $ curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
     $ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
     $ apt update && apt-get install yarn
-
