@@ -1,4 +1,4 @@
-How to Purge jobs executions
+How to purge jobs executions
 ============================
 
 This chapter gives details on how to purge jobs executions in order to decrease the database volume.
