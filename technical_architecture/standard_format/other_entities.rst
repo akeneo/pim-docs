@@ -6,7 +6,7 @@ Attribute
 
 .. code-block:: php
 
-    array:26 [
+    array:28 [
       "code" => "a_date"
       "type" => "pim_catalog_date"
       "labels" => array:1 [
@@ -38,6 +38,14 @@ Attribute
       "sort_order" => 0
       "localizable" => true
       "scopable" => false
+      "labels" => [
+        "en_US" => "Date"
+        "fr_FR" => "Date"
+      ]
+      "descriptions" => [
+        "en_US" => "This date represents ..."
+        "fr_FR" => "Cette date représente ..."
+      ]
     ]
 
 
@@ -102,6 +110,12 @@ Attribute
 | localizable            | boolean        | ``false``                                        |                                                                            |
 +------------------------+----------------+--------------------------------------------------+----------------------------------------------------------------------------+
 | scopable               | boolean        | ``false``                                        |                                                                            |
++------------------------+----------------+--------------------------------------------------+----------------------------------------------------------------------------+
+| labels                 | string[]       | ``["en_US" => "Date"]``                          | | each key of the array represents the `code` of the                       |
+|                        |                |                                                  | | ``Akeneo\Channel\Component\Model\LocaleInterface``                       |
++------------------------+----------------+--------------------------------------------------+----------------------------------------------------------------------------+
+| descriptions           | string[]       | ``["en_US" => "This date represents ..."]``      | | each key of the array represents the `code` of the                       |
+|                        |                |                                                  | | ``Akeneo\Channel\Component\Model\LocaleInterface``                       |
 +------------------------+----------------+--------------------------------------------------+----------------------------------------------------------------------------+
 
 Enterprise edition

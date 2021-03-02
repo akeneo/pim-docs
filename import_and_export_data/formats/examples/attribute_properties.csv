@@ -5,6 +5,8 @@ code;;all types;"| Must be unique
 | Cannot end with “_products” or “_groups”"
 type;;all types;Must be a valid type (see table below)
 label-<locale_code>;;;
+description-<locale_code>;;;"| Can contain line breaks
+| Cannot be more than 500 characters"
 group;;all types;Must be a valid attribute group code
 unique;0;;
 useable_as_grid_filter;0;;
