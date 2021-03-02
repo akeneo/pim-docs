@@ -161,19 +161,23 @@ If you want to execute only one job:
 Xdebug
 ******
 
-*Xdebug* is disabled by default. If you want to enable it, set the environment variable ``XDEBUG_ENABLED`` to `1`.
+*Xdebug* is disabled by default, by setting the *Xdebug mode* to *off*.
 
-Enable it on fpm service:
+You can change the mode via the ``XDEBUG_MODE`` environment variable.
 
-.. code-block:: bash
+See `Xdebug modes documentation <https://xdebug.org/docs/all_settings#mode>`_ for a complete list of available modes.
 
-    $ XDEBUG_ENABLED=1 make dev
-
-Enable it on php service:
+For example, enable step debugging on fpm service:
 
 .. code-block:: bash
 
-      $ XDEBUG_ENABLED=1 docker-compose run --rm php php my-script.php
+    $ XDEBUG_MODE=debug make dev
+
+Or on a PHP CLI script:
+
+.. code-block:: bash
+
+      $ XDEBUG_MODE=debug docker-compose run --rm php php my-script.php
 
 If you are using PHPStorm, open the settings windows and go to ``Languages & Framework > PHP > Servers``. Then add two servers name ``pim-docker-web`` and ``pim-docker-cli``.
 
