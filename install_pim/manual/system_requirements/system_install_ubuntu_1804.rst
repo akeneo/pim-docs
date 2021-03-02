@@ -17,16 +17,12 @@ MySQL 8.0
 
 The easiest way to install MySQL 8.0 is to use the official vendor package.
 
-The best documentation is coming from MySQL himself : <https://dev.mysql.com/doc/refman/8.0/en/linux-installation-debian.html>
+Follow the official documentation: <https://dev.mysql.com/doc/refman/8.0/en/linux-installation-debian.html>.
 
-You must install a fixed version, to do that, you need to download the bundle file:
-
-.. code-block:: bash
-
+Download the bundle package for the required version:
     # wget https://downloads.mysql.com/archives/get/p/23/file/mysql-server_8.0.22-1debian10_amd64.deb-bundle.tar
 
-And refer you to the Oracle Documentation : <https://dev.mysql.com/doc/refman/8.0/en/linux-installation-debian.html>
-
+And follow the aforementioned documentation.
 
 When installing MySQL 8.0, you'll have to choose the authentication method. Please select *Use Legacy Authentication Method* as the *Strong Password Encryption* is not yet supported by Akeneo PIM.
 
@@ -59,7 +55,7 @@ Then, install PHP and the required extensions:
 Elasticsearch 7.10
 ******************
 
-The easiest way to install Elasticsearch 7 is to use the `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/7.5/deb.html#deb>`_:
+Follow the official Elasticsearch documentation: `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/7.10/deb.html#deb>`_:
 
 - first install the PGP key
 - then install the package via the official repository
