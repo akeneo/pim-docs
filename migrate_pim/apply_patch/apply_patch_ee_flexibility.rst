@@ -41,7 +41,9 @@ Then clean the cache, re-install assets and warmup the cache:
 .. code-block:: bash
 
     partners_clear_cache
+    rm yarn.lock
     bin/console --env=prod pim:installer:assets
+    yarn install
     yarn run less
     yarn run webpack
 

@@ -1,5 +1,5 @@
-Installation
-============
+How to install the Onboarder bundle
+===================================
 
 .. warning::
 
@@ -13,7 +13,18 @@ Execute the following composer commands to require the bundle:
 .. code-block:: bash
 
     composer config repositories.onboarder '{"type": "vcs", "url": "ssh://git@distribution.akeneo.com:443/pim-onboarder"}'
-    composer require "akeneo/pim-onboarder" "^4.1"
+    composer require "akeneo/pim-onboarder" "^4.2"
+
+Then add the following to your ``composer.json`` "scripts" part:
+
+.. code-block:: json
+
+    "post-update-cmd": [
+        "Akeneo\\Onboarder\\Setup\\OnboarderComposerScripts::copyUpgradesFiles"
+    ],
+    "post-install-cmd": [
+        "Akeneo\\Onboarder\\Setup\\OnboarderComposerScripts::copyUpgradesFiles"
+    ]
 
 
 Enable the extension
@@ -85,6 +96,10 @@ Here are two examples in order to define environment variables:
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | ONBOARDER_CLOUD_STORAGE_BUCKET_NAME                | Identifier of the bucket used to share files between your PIM and the middleware.                                                 |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+
+.. note::
+
+    The values for the variables prefixed by ``ONBOARDER_`` are generated. You can find them in the Partners Portal, under the "Properties" tab of your Onboarder project.
 
 **Optional variables**
 
