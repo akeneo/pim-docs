@@ -14,4 +14,4 @@ you must apply this fix with the following MySql ALTER command:
 
 .. code-block:: sql
 
-   ALTER TABLE pim_catalog_completeness MODIFY id int AUTO_INCREMENT
+   ALTER TABLE pim_catalog_completeness MODIFY id bigint NOT NULL AUTO_INCREMENT;
