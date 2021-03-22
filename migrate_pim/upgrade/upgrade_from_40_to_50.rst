@@ -111,7 +111,7 @@ Let Akeneo PIM continue the preparation for you
 ***************************************************
 
 Community Edition
-^^^^^^^^^^^^^^^^^
+-----------------
 
 .. code:: bash
 
@@ -120,7 +120,7 @@ Community Edition
 
 
 Enterprise Edition
-^^^^^^^^^^^^^^^^^^
+------------------
 
 .. code:: bash
 
