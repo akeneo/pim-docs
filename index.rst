@@ -93,6 +93,7 @@ That's it! You now have the basic knowledge to start an Akeneo project.
     contribute_to_pim/index
     use_sso_authentication/index
     reference_entities/index
+    troubleshooting/index
 
 .. toctree::
     :maxdepth: 2
