@@ -1,5 +1,5 @@
-Reference Entities (beta)
-=========================
+Reference Entities
+==================
 
 .. note::
 
@@ -8,7 +8,7 @@ Reference Entities (beta)
 .. note::
 
    In this current documentation, we provide a way to add a custom attribute type and enrich it.
-   However, this extensibility point is pretty new and **we couldn't ensure the backward compatibility** in the next minor releases (3.1, 3.2, 3.3 versions).
+   However, this extensibility point is pretty new and **we couldn't ensure the backward compatibility** in the next minor releases.
 
 This part of the documentation is about the Reference Entities feature.
 Reference entities are objects related to products with their own attributes and lifecycle (ie. brands, ranges, manufacturers, colors, materials, care instructions...).

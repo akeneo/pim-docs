@@ -110,6 +110,18 @@ Load your PIM Enterprise dependencies
 Let Akeneo PIM continue the preparation for you
 ***************************************************
 
+Community Edition
+-----------------
+
+.. code:: bash
+
+    $ export APP_ENV=prod
+    $ vendor/akeneo/pim-community-dev/std-build/migration/prepare_40_to_50.sh
+
+
+Enterprise Edition
+------------------
+
 .. code:: bash
 
     $ export APP_ENV=prod
