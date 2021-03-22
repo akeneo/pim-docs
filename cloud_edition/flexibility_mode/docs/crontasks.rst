@@ -72,8 +72,8 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     40 12 * * * akeneo:connectivity-audit:purge-error-count
     #Ansible: pimee:project:recalculate
     0 2 * * * pimee:project:recalculate
-    #Ansible: akeneo:reference-entity:refresh-records --all
-    0 23 * * * akeneo:reference-entity:refresh-records --all
+    #Ansible: akeneo:reference-entity:refresh-records
+    0 23 * * * akeneo:reference-entity:refresh-records
     #Ansible: pimee:sso:rotate-log 10
     4 22 * * * pimee:sso:rotate-log 10
     #Ansible: pim:volume:aggregate
@@ -151,5 +151,5 @@ Enterprise Edition specific crontab:
 +------------------------------------------------------------------------+---------------------+--------------------------+
 | :code:`pimee:project:recalculate --env=prod`                           | 0 2 \* \* \*        | At 02:00 AM              |
 +------------------------------------------------------------------------+---------------------+--------------------------+
-| :code:`akeneo:reference-entity:refresh-records --all --env=prod`       | 0 23 \* \* \*       | At 11:00 PM              |
+| :code:`akeneo:reference-entity:refresh-records --env=prod`             | 0 23 \* \* \*       | At 11:00 PM              |
 +------------------------------------------------------------------------+---------------------+--------------------------+

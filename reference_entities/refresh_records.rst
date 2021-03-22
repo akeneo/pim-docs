@@ -31,7 +31,7 @@ To achieve this result, you can use the command:
 
 .. code-block:: bash
 
-    $ php bin/console --env=prod akeneo:reference-entity:refresh-records --all
+    $ php bin/console --env=prod akeneo:reference-entity:refresh-records
 
 
 This command will go over all the records of the database and refresh all the record's values.
