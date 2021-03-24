@@ -153,7 +153,7 @@ The following ports should be opened on the server host for the PIM to work prop
 
 .. warning::
 
-    Do not forget to add strong credentials to MySql and ElasticSearch servers if their host is exposed on a public network.
+    Do not forget to add strong credentials to MySql and ElasticSearch servers if their host are exposed on a public network.
 
 **Files and folders access rights**
 
