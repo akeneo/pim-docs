@@ -137,24 +137,6 @@ and the following PHP modules:
 
 Elasticsearch is bundled with its own JDK version, but if you want to use the `no JDK version <https://www.elastic.co/downloads/elasticsearch-no-jdk>_`, please make sure to install the right JDK for Elasticsearch.
 
-**Network**
-
-The following ports should be opened on the server host for the PIM to work properly:
-
-+------------------+-----------------------------------------------------------+---------------------------+
-| HTTP or HTTPS    | 80 or 443                                                 | Required                  |
-+------------------+-----------------------------------------------------------+---------------------------+
-| MySQL            | unix socket or 3306 (if MySQL server on a different host) | Required                  |
-+------------------+-----------------------------------------------------------+---------------------------+
-| Elasticsearch    | 9200 (only if ES server on a different host)              | Required                  |
-+------------------+-----------------------------------------------------------+---------------------------+
-| SSH              | 22                                                        | Required (for deployment) |
-+------------------+-----------------------------------------------------------+---------------------------+
-
-.. warning::
-
-    Do not forget to add strong credentials to MySql and ElasticSearch servers if their host are exposed on a public network.
-
 **Files and folders access rights**
 
 Most of the application folders and files require only read access. Here is a list of folders that also need write access for the FPM user:
