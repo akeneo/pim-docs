@@ -141,28 +141,32 @@ Elasticsearch is bundled with its own JDK version, but if you want to use the `n
 
 The following ports should be opened on the server host for the PIM to work properly:
 
-+---------------+-----------------------------------------------------------+---------------------------+
-| HTTP or HTTPS | 80 or 443                                                 | Required                  |
-+---------------+-----------------------------------------------------------+---------------------------+
-| MySQL         | unix socket or 3306 (if MySQL server on a different host) | Required                  |
-+---------------+-----------------------------------------------------------+---------------------------+
-| Elasticsearch | 9200                                                      | Required                  |
-+---------------+-----------------------------------------------------------+---------------------------+
-| SSH           | 22                                                        | Required (for deployment) |
-+---------------+-----------------------------------------------------------+---------------------------+
++------------------+-----------------------------------------------------------+---------------------------+
+| HTTP or HTTPS    | 80 or 443                                                 | Required                  |
++------------------+-----------------------------------------------------------+---------------------------+
+| MySQL            | unix socket or 3306 (if MySQL server on a different host) | Required                  |
++------------------+-----------------------------------------------------------+---------------------------+
+| Elasticsearch    | 9200 (only if ES server on a different host)              | Required                  |
++------------------+-----------------------------------------------------------+---------------------------+
+| SSH              | 22                                                        | Required (for deployment) |
++------------------+-----------------------------------------------------------+---------------------------+
+
+.. warning::
+
+    Do not forget to add strong credentials to MySql and ElasticSearch servers if their host is exposed on a public network.
 
 **Files and folders access rights**
 
 Most of the application folders and files require only read access. Here is a list of folders that also need write access for the FPM user:
 
 +-------------+--------------------------------------------------------------------------------+
-| var/cache   | Contains application cache files                                               |
+| var/cache   | Contains application cache files                                               |
 +-------------+--------------------------------------------------------------------------------+
-| var/logs    | Contains application log files                                                 |
+| var/logs    | Contains application log files                                                 |
 +-------------+--------------------------------------------------------------------------------+
 | var/uploads | Contains files uploaded to the application by users or during import processes |
 +-------------+--------------------------------------------------------------------------------+
-| web         | Contains the web assets required by the application                            |
+| web         | Contains the web assets required by the application                            |
 +-------------+--------------------------------------------------------------------------------+
 
 These permissions are the ones required by the Symfony Framework (see its `official documentation <https://symfony.com/doc/3.4/setup/file_permissions.html>`_ for more information).
