@@ -24,8 +24,8 @@ Asset family identifiers stored with a different case in attributes properties (
 
    Impacted versions: PIM EE <= 5.0
 
-We fixed the attributes import to sanitize the asset family identifiers, but if you need to fix data already stored
-in database, we provide a tooling command to clean this data:
+We fixed the attributes import to sanitize the asset family identifiers in PIM-9753,
+and you may need to fix data already stored in database with the following clean command:
 
 .. code-block:: sql
 
