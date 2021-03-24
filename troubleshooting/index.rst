@@ -15,3 +15,18 @@ you must apply this fix with the following MySql ALTER command:
 .. code-block:: sql
 
    ALTER TABLE pim_catalog_completeness MODIFY id bigint NOT NULL AUTO_INCREMENT;
+
+
+Asset family identifiers stored with a different case in attributes properties (EE only)
+----------------------------------------------------------------------------------------
+
+.. note::
+
+   Impacted versions: PIM EE <= 5.0
+
+We fixed the attributes import to sanitize the asset family identifiers, but if you need to fix data already stored
+in database, we provide a tooling command to clean this data:
+
+.. code-block:: sql
+
+   bin/console --env=prod pim:asset-manager:clean-asset-family-in-asset-collection-attributes
