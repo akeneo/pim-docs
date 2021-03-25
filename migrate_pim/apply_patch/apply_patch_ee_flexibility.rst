@@ -40,12 +40,12 @@ Then clean the cache, re-install assets and warmup the cache:
 
 .. code-block:: bash
 
-    partners_clear_cache
     rm yarn.lock
     bin/console --env=prod pim:installer:assets
     yarn install
     yarn run less
     yarn run webpack
+    partners_clear_cache
 
 
 If the patch is a javascript fix, please **clear your browser cache** before testing.
@@ -54,19 +54,6 @@ If the patch is a javascript fix, please **clear your browser cache** before tes
 
     We set any other dependencies to their exact patch versions to avoid compatibility issues.
 
-
 .. note::
 
-    If you get a 500 error after upgrading and clear cache isn't working try to clear the apc cache with a php script or restart Apache/Web server.
-
-
-After that you can relaunch fpm to avoid generating outdated cache:
-
-.. code-block:: bash
-
-    partners_php7.4-fpm restart
-
-
-.. note::
-
-    The ``partners_clear_cache`` and the ``partners_php7.4-fpm`` commands are only available in Akeneo Cloud Offer. You can find more commands in our :doc:`/cloud_edition/flexibility_mode/docs/system_administration` page.
+    The ``partners_clear_cache`` command is only available in Akeneo Flexibility Offer. You can find more commands in our :doc:`/cloud_edition/flexibility_mode/docs/system_administration` page.

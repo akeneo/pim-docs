@@ -34,7 +34,7 @@ You can refer to :doc:`../../../migrate_pim/index` for more details about the pr
 .. note::
 
     Major upgrades can require **new versions** of software and various components.
-    Please contact us through the `Helpdesk > Cloud Flexibility and Serenity <http://helpdesk.akeneo.com/>`_  to schedule the upgrade of the tech stack.
+    Please contact us through the `Helpdesk > Cloud Flexibility and Serenity <https://akeneo.atlassian.net/servicedesk/customer/portal/8/group/23/create/93?summary=Technological%20stack%20upgrade%20for%20PIM&customfield_13302=12701>`_  to schedule the upgrade of the tech stack.
 
 Backups management
 ------------------
