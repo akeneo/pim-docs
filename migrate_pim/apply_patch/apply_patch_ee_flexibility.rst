@@ -54,6 +54,7 @@ If the patch is a javascript fix, please **clear your browser cache** before tes
 
     We set any other dependencies to their exact patch versions to avoid compatibility issues.
 
+
 .. note::
 
     The ``partners_clear_cache`` command is only available in Akeneo Flexibility Offer. You can find more commands in our :doc:`/cloud_edition/flexibility_mode/docs/system_administration` page.
