@@ -42,7 +42,7 @@ Attribute
         "en_US" => "Date"
         "fr_FR" => "Date"
       ]
-      "descriptions" => [
+      "guidelines" => [
         "en_US" => "This date represents ..."
         "fr_FR" => "Cette date représente ..."
       ]
@@ -114,7 +114,7 @@ Attribute
 | labels                 | string[]       | ``["en_US" => "Date"]``                          | | each key of the array represents the `code` of the                       |
 |                        |                |                                                  | | ``Akeneo\Channel\Component\Model\LocaleInterface``                       |
 +------------------------+----------------+--------------------------------------------------+----------------------------------------------------------------------------+
-| descriptions           | string[]       | ``["en_US" => "This date represents ..."]``      | | each key of the array represents the `code` of the                       |
+| guidelines             | string[]       | ``["en_US" => "This date represents ..."]``      | | each key of the array represents the `code` of the                       |
 |                        |                |                                                  | | ``Akeneo\Channel\Component\Model\LocaleInterface``                       |
 +------------------------+----------------+--------------------------------------------------+----------------------------------------------------------------------------+
 
