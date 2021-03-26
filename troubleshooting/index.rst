@@ -30,3 +30,19 @@ and you may need to fix data already stored in database with the following clean
 .. code-block:: sql
 
    bin/console --env=prod pim:asset-manager:clean-asset-family-in-asset-collection-attributes
+
+
+Asset & Asset family codes being case-sensitive (EE only)
+----------------------------------------------------------------------------------------
+
+.. note::
+
+   Impacted versions: PIM EE <= 5.0
+
+The Asset index mapping has been updated to be case-insensitive on the Asset & Asset family codes.
+You may need to reset your index and re-index all Assets:
+
+.. code-block:: sql
+
+   bin/console akeneo:elasticsearch:reset-indexes --index=akeneo_assetmanager_asset
+   bin/console akeneo:asset-manager:index-assets --all
