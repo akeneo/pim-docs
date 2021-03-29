@@ -27,6 +27,22 @@ Asset family identifiers stored with a different case in attributes properties (
 We fixed the attributes import to sanitize the asset family identifiers in PIM-9753,
 and you may need to fix data already stored in database with the following clean command:
 
-.. code-block:: sql
+.. code-block:: bash
 
    bin/console --env=prod pim:asset-manager:clean-asset-family-in-asset-collection-attributes
+
+
+Asset & Asset family codes being case-sensitive (EE only)
+----------------------------------------------------------------------------------------
+
+.. note::
+
+   Impacted versions: PIM EE <= 5.0
+
+The Asset index mapping has been updated to be case-insensitive on the Asset & Asset family codes.
+You may need to reset your index and re-index all Assets:
+
+.. code-block:: bash
+
+   bin/console akeneo:elasticsearch:reset-indexes --index=akeneo_assetmanager_asset
+   bin/console akeneo:asset-manager:index-assets --all
