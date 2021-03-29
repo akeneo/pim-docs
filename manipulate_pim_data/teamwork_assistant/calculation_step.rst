@@ -2,7 +2,7 @@ Add A Calculation Step
 ======================
 
 To add a new step you just need to create a new Step Class that implements
-`Akeneo\\Pim\\WorkOrganization\\TeamworkAssistant\\Componen\t\Job\\ProjectCalculation\\CalculationStep` interface.
+`Akeneo\\Pim\\WorkOrganization\\TeamworkAssistant\\Component\\Job\\ProjectCalculation\\CalculationStep` interface.
 
 .. code-block:: php
 
