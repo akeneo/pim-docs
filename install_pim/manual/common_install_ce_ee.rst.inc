@@ -31,7 +31,7 @@ To run the PIM EE in dev mode without docker, you will need to change some confi
     $ cp vendor/akeneo/pim-enterprise-dev/config/packages/prod_onprem/messenger.yml config/packages/dev/
 
 
-You can then launch the ins talltion with the following command:
+You can then launch the install with the following command:
 
 .. code-block:: bash
 
