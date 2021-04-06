@@ -78,8 +78,8 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     4 22 * * * pimee:sso:rotate-log 10
     #Ansible: pim:volume:aggregate
     0 23 * * * pim:volume:aggregate
-    #Ansible: pimee:data-quality-insights:schedule-periodic-tasks
-    15 0 * * * pimee:data-quality-insights:schedule-periodic-tasks
+    #Ansible: pim:data-quality-insights:schedule-periodic-tasks
+    15 0 * * * pim:data-quality-insights:schedule-periodic-tasks
     #Ansible: pim:data-quality-insights:prepare-evaluations
     */10 * * * * pim:data-quality-insights:prepare-evaluations
     #Ansible: pim:data-quality-insights:evaluations
