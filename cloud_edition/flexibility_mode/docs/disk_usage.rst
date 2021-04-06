@@ -89,31 +89,6 @@ disk usage of your instance, by listing the largest directories:
 Database purges
 ---------------
 
-Assets
-~~~~~~
-
-.. code-block:: bash
-
-    mkdir -p /home/akeneo/purge
-
-    echo "Track assets that will be deleted in a csv file"
-    mysql akeneo_pim -e "SELECT fi.id, fi.original_filename, fi.file_key, r.file_info_id, r.asset_id, v.* FROM akeneo_file_storage_file_info fi LEFT JOIN pimee_product_asset_reference r ON fi.id = r.file_info_id LEFT JOIN pimee_product_asset_variation v ON fi.id = v.file_info_id WHERE storage = 'assetStorage' AND r.file_info_id IS NULL AND r.asset_id IS NULL AND v.source_file_info_id IS NULL" > /home/akeneo/purge/asset_rows_to_delete.csv
-
-    echo "List files to be deleted in a txt file"
-    echo "Path of files to be deleted is calculated by concatenating "/home/akeneo/pim/app/file_storage/asset/" with value of "fi.file_key" from the MySQL resquest."
-    mysql akeneo_pim -se "SELECT concat('/home/akeneo/pim/app/file_storage/asset/',fi.file_key) FROM akeneo_file_storage_file_info fi LEFT JOIN pimee_product_asset_reference r ON fi.id = r.file_info_id LEFT JOIN pimee_product_asset_variation v ON fi.id = v.file_info_id WHERE storage = 'assetStorage' AND r.file_info_id IS NULL AND r.asset_id IS NULL AND v.source_file_info_id IS NULL" > /home/akeneo/purge/asset_files_to_delete.txt
-
-    echo "Delete rows in database"
-    mysql akeneo_pim -se "SET FOREIGN_KEY_CHECKS=0;DELETE v, r, fi FROM akeneo_file_storage_file_info fi LEFT JOIN pimee_product_asset_reference r ON fi.id = r.file_info_id LEFT JOIN pimee_product_asset_variation v ON fi.id = v.file_info_id WHERE storage = 'assetStorage' AND r.file_info_id IS NULL AND r.asset_id IS NULL AND v.source_file_info_id IS NULL;SET FOREIGN_KEY_CHECKS=1;" > /home/akeneo/purge/asset_rows_deleted.csv
-
-    echo "Delete assets files based on the previous list"
-    cat /home/akeneo/purge/asset_files_to_delete.txt | xargs rm -f
-
-.. warning::
-
-    **Warning:** `mysqlcheck --optimize` will lock the table during the operation. Hence the table will be unavailable for the PIM. For more information: https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html
-
-
 Versioning
 ~~~~~~~~~~~
 
