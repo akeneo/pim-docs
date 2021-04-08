@@ -22,6 +22,17 @@ Launching the PIM in dev mode
 
    All `make` commands must be run from the PIM root directory, either created by the archive or from the composer create project above.
 
+
+To run the PIM EE in dev mode without docker, you will need to change some configuration files:
+
+.. code-block:: bash
+
+    $ cp vendor/akeneo/pim-enterprise-dev/config/packages/prod_onprem/oneup_flysystem.yml config/packages/dev/
+    $ cp vendor/akeneo/pim-enterprise-dev/config/packages/prod_onprem/messenger.yml config/packages/dev/
+
+
+You can then launch the install with the following command:
+
 .. code-block:: bash
 
 	$ NO_DOCKER=true make dev
