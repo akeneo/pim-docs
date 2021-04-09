@@ -105,7 +105,7 @@ To check which version of Node.js you have installed after these initial steps, 
 
 .. code-block:: bash
 
-    $ nodejs -v
+    $ node -v
 
 Yarn
 ****
@@ -115,3 +115,10 @@ Yarn
     $ curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
     $ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
     $ apt update && apt-get install yarn
+
+To check which version of YARN you have installed after these initial steps, type:
+
+.. code-block:: bash
+
+    $ yarn -v
+
