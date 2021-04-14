@@ -1,0 +1,22 @@
+@startuml Akeneo PIM
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+
+!include DEVICONS/react.puml
+!include DEVICONS/symfony.puml
+!include DEVICONS/mysql.puml
+!include FONTAWESOME/users.puml
+
+LAYOUT_WITH_LEGEND()
+
+Person(Julia, "Julia","Product catalog","users")
+
+System_Boundary(PIM,"PIM") {
+Container(UI, "UI","React","react","react")
+Container(Backend,"Backend","FPM","symfony","symfony")
+ContainerDB(mySql,"pim","akeneo_pim","mysql")
+ContainerDB(bucket,"Asset storage", "bucket")
+}
+@enduml
