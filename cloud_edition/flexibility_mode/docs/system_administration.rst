@@ -25,12 +25,28 @@ PIM Location
 Database access
 ---------------
 
-Connect to the database by using `mysql`, with no need to provide credentials. They are read from `~/.my.cnf`.
+Connect to the database by using ``mysql``, with no need to provide credentials. They are read from `~/.my.cnf`.
 
 .. code-block:: bash
 
     $ mysql
-    $ mysqldump akeneo_pim # to dump the content of the database
+
+Akeneo database dump
+--------------------
+
+In order to dump the ``akeneo`` database, one could run the command:
+
+.. code-block:: bash
+
+    $ mysqldump akeneo_pim
+
+.. warning::
+
+    Please add the option ``--no-tablespaces`` to the ``mysqldump`` command if you noticed such an error
+
+.. code-block:: bash
+
+    mysqldump: Error: 'Access denied; you need (at least one of) the PROCESS privilege(s) for this operation' when trying to dump tablespaces
 
 Privilege escalation
 --------------------

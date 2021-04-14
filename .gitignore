@@ -3,3 +3,5 @@
 /pim-docs-lint/
 /docker-compose.override.yml
 /ee_dev/
+.vscode
+_build/
