@@ -13,7 +13,7 @@ You can launch several daemon processes to execute multiple jobs in parallel.
 
 Also, the daemon processes could be run on several instance of the PIM, using the same MySQL database.
 
-These queues allows `horizontal scalability <https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling>`_ of the PIM.
+These queues allow `horizontal scalability <https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling>`_ of the PIM.
 Therefore, you can configure servers dedicated to the execution of the jobs.
 
 Jobs are categorized in three different types and are consumed by three queues (one for each type):

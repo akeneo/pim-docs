@@ -135,7 +135,7 @@ Running jobs
 
 Akeneo PIM implements a queue for the `jobs <../../import_and_export_data/index.html>`_, as a PHP daemon. This daemon is a Symfony command, that can only execute one job at a time. It does not consume any other job until the job is finished.
 
-You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every second the queue and executes the next job in the queue.
+You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks the queue every second and executes the next job in the queue.
 
 To launch a daemon, run the following command:
 
@@ -152,7 +152,7 @@ If you want to execute only one job:
 .. warning::
 
    Before stopping or destroying your containers, remember to first stop this daemon if you launched it in the background, or you'll end up with a stuck FPM container, and will need to completely restart Docker.
-   Please note this command sends a stop signal to all the consumers. If a job is running while the stop signal is sent, the consumer will wait for the end of the running job before ending.
+   Please note that this command sends a stop signal to all the consumers. If a job is running while the stop signal is sent, the consumer will wait for the end of the running job before ending.
 
    .. code-block:: bash
 
