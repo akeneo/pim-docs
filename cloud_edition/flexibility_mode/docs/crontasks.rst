@@ -51,47 +51,39 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
 
 .. code-block:: bash
 
-    SHELL="/usr/local/sbin/cron_wrapper.sh"
-
-    # email adress below is only used to notify if anything goes wrong. Feel free to adapt it to your needs!
+    # Email adress below is only used to notify if anything goes wrong. Feel free to adapt it to your needs!
     MAILTO="projectmanager@acme.com"
-
-    #Ansible: akeneo:rule:run
-    15 12,20 * * * akeneo:rule:run
-    #Ansible: pim:versioning:refresh
-    30 16,23 * * * pim:versioning:refresh
-    #Ansible: akeneo:batch:purge-job-execution
-    20 0 1 * * akeneo:batch:purge-job-execution
-    #Ansible: pimee:project:notify-before-due-date
-    20 0 * * * pimee:project:notify-before-due-date
-    #Ansible: akeneo:connectivity-audit:update-data
-    1 0 * * * akeneo:connectivity-audit:update-data
-    #Ansible: akeneo:connectivity-connection:purge-error
-    10 * * * * akeneo:connectivity-connection:purge-error
-    #Ansible: akeneo:connectivity-audit:purge-error-count
-    40 12 * * * akeneo:connectivity-audit:purge-error-count
-    #Ansible: pimee:project:recalculate
-    0 2 * * * pimee:project:recalculate
-    #Ansible: akeneo:reference-entity:refresh-records --all
+    # Akeneo PIM default CRONs (Using custom shell wrapper)
+    SHELL=/usr/local/sbin/cron_wrapper.sh
+    0 1 * * 0 pim:versioning:purge --more-than-days 90 --no-interaction --force
+    0 0 1 * * akeneo:batch:purge-job-execution
+    1 * * * * akeneo:connectivity-audit:update-data
+    0 5 * * * akeneo:rule:run
+    0 3 * * * pim:versioning:refresh
+    0 4 * * * pim:volume:aggregate
+    20 0 * * * pimee:project:recalculate
+    0 2 * * * pimee:project:notify-before-due-date
     0 23 * * * akeneo:reference-entity:refresh-records --all
-    #Ansible: pimee:sso:rotate-log 10
-    4 22 * * * pimee:sso:rotate-log 10
-    #Ansible: pim:volume:aggregate
-    0 23 * * * pim:volume:aggregate
-    #Ansible: pim:data-quality-insights:schedule-periodic-tasks
+    5 22 * * * pimee:sso:rotate-log 30
     15 0 * * * pim:data-quality-insights:schedule-periodic-tasks
-    #Ansible: pim:data-quality-insights:prepare-evaluations
     */10 * * * * pim:data-quality-insights:prepare-evaluations
-    #Ansible: pim:data-quality-insights:evaluations
     */30 * * * * pim:data-quality-insights:evaluations
-    #Ansible: pimee:data-quality-insights:migrate-product-criterion-evaluation
-    */10 * * * * pimee:data-quality-insights:migrate-product-criterion-evaluation
 
-    # My custom jobs
+    # Custom CRONs
     SHELL=/bin/bash
 
-    0 2 * * * sh /home/akeneo/bin/mysscript.sh
-    15 2 * * * python /home/akeneo/bin/myexport.py
+    # MAILTO="admin@my-company.com,pim_dev@my-company.com"
+    # ┌───────────── minute 0-59
+    # │ ┌───────────── hour 0-23
+    # │ │ ┌───────────── day of month 1-31
+    # │ │ │ ┌───────────── month 1-12 (or names, see 'man 5 crontab')
+    # │ │ │ │ ┌───────────── day of week 0-7 (0 or 7 is Sun, or use names)
+    # │ │ │ │ │
+    # │ │ │ │ │
+    # │ │ │ │ │
+    # * * * * *  command to execute
+    # 0 2 * * * sh /home/akeneo/bin/mysscript.sh
+    # 15 2 * * * python /home/akeneo/bin/myexport.py
 
 Time of execution and timezone considerations
 ---------------------------------------------
@@ -108,44 +100,3 @@ Use the **date** command to check current time dand date on the system.
     # The command /foo/bar will be executed at 02:15 UTC or 03:15 UTC
     # depending on the DST settings of the CET timezone
     15 2 * * * [ `TZ=CET date +\%Z` = CET ] && sleep 3600; /foo/bar
-
-Default crontab
----------------
-
-The default crontab at the moment on our Flexibility environments is the following one:
-
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| Symfony console command                                 | Crontab frequency | Human frequency                            |
-+=========================================================+===================+============================================+
-| pim:versioning:refresh --env=prod                       | 30 1 \* \* \*     | At 01:30 AM                                |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| akeneo:connectivity-audit:update-data --env=prod        | 1 \* \* \* \*     | Every hour                                 |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| akeneo:connectivity-connection:purge-error --env=prod   | 10 \* \* \* \*    | Every hour                                 |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| akeneo:batch:purge-job-execution --env=prod             | 20 0 1 \* \*      | At 12:20 AM, every first day of the month  |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| akeneo:connectivity-audit:purge-error-count --env=prod  | 40 12 \* \* \*    | At 12:40 AM                                |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| pim:asset:send-expiration-notification --env=prod       | 0 1 \* \* \*      | At 01:00 AM                                |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| pim:volume:aggregate --env=prod                         | 30 4 \* \* \*     | At 04:30 AM                                |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| pim:data-quality-insights:schedule-periodic-tasks       | 15 0 \* \* \*     | At 00:15 AM                                |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-| pim:data-quality-insights:evaluations                   | \*/30 \* \* \* \* | Every 30 minutes                           |
-+---------------------------------------------------------+-------------------+--------------------------------------------+
-
-Enterprise Edition specific crontab:
-
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| Symfony console command                                                           | Crontab frequency   | Human frequency          |
-+===================================================================================+=====================+==========================+
-| akeneo:rule:run --env=prod                                                        | 0 5 \* \* \*        | At 05:00 AM              |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:project:notify-before-due-date --env=prod                                   | 20 0 \* \* \*       | At 12:20 AM              |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| pimee:project:recalculate --env=prod                                              | 0 2 \* \* \*        | At 02:00 AM              |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
-| akeneo:reference-entity:refresh-records --all --env=prod                          | 0 23 \* \* \*       | At 11:00 PM              |
-+-----------------------------------------------------------------------------------+---------------------+--------------------------+
