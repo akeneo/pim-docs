@@ -51,7 +51,7 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
 
 .. code-block:: bash
 
-    # Email adress below is only used to notify if anything goes wrong. Feel free to adapt it to your needs!
+    # Email address below is only used to notify if anything goes wrong. Feel free to adapt it to your needs!
     MAILTO="projectmanager@acme.com"
     # Akeneo PIM default CRONs (Using custom shell wrapper)
     SHELL=/usr/local/sbin/cron_wrapper.sh
