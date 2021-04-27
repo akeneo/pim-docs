@@ -89,6 +89,12 @@ disk usage of your instance, by listing the largest directories:
 Database purges
 ---------------
 
+Assets
+~~~~~~
+
+    echo "Remove all orphan files not linked to any assets"
+    php bin/console akeneo:asset-manager:purge-orphans-file-info
+
 Versioning
 ~~~~~~~~~~~
 
