@@ -36,5 +36,5 @@ styleguide: docker-build
 	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) cp styleguide.js /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/
 	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) cp styleguide.css /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/
 	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) ./prepare_static_files.sh
-	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide -e COMPOSER_AUTH $(DOCKER_IMAGE) php /usr/local/bin/composer.phar install --no-plugins
+	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide -e COMPOSER_AUTH $(DOCKER_IMAGE) php /usr/local/bin/composer install --no-plugins
 	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) bash -c "php index.php > /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/index.html"
