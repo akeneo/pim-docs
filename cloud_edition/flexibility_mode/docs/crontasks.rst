@@ -89,7 +89,7 @@ Time of execution and timezone considerations
 ---------------------------------------------
 
 All servers are configured using UTC time, don't forget to convert the time from the desired local time to UTC time.
-Use the **date** command to check current time dand date on the system.
+Use the **date** command to check current time and date on the system.
 
 .. warning::
 
