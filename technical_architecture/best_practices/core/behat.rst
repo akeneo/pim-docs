@@ -15,7 +15,7 @@ You can install Behat dependencies with composer (on pim-community-dev).
 
 .. code-block:: bash
 
-  $ php composer.phar install --dev
+  $ php composer install --dev
 
 
 Install Selenium Server
