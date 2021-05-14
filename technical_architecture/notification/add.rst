@@ -115,9 +115,6 @@ Note that ``$object`` is ``mixed``, so feel free to give anything useful to buil
         - ``actionType`` (``string``): this will be used to guess the icon to display on the notification
         - ``showReportButton`` (``bool``): to hide/display the "report" label on the notification
 
-.. note::
-    You can see available notification icons on the `styleguide website <https://docs.akeneo.com/2.3/design_pim/styleguide/index.php#Templates-AknNotification>`_.
-
 For example, the ``create`` method of the NotificationFactory for mass edit notifications looks like that:
 
 .. code-block:: php
