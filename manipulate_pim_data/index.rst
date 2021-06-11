@@ -13,3 +13,4 @@ Manipulate the Akeneo PIM data
     teamwork_assistant/index
     store_assets_externally
     measurement/configure_measurement_limits
+    connect/configure_event_subscription_network
