@@ -1,7 +1,7 @@
 How to Configure the Event Subscription network restrictions
 ============================================================
 
-In the Event Subscription, some restrictions exists on the entered URL to guarantee that the PIM is not used for accessing
+In the Event Subscription, some restrictions exist on the entered URL to guarantee that the PIM is not used to access
 unsolicited resources.
 
 The following domains are always blacklisted:
