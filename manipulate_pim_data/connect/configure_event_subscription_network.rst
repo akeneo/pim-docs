@@ -19,7 +19,7 @@ However, **you may need to add an exception to those IP address ranges**, this c
 Add IPs to the whitelist
 ------------------------
 If you want to allow specific IPs, you can set the environment variable `ALLOWED_NETWORK_WHITELIST` with
-a comma-sperated list of IPs (with or without netmask).
+a list of IPs separated by commas, with or without netmask.
 
 .. code-block:: yaml
     :linenos:
