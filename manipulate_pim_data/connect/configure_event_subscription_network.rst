@@ -3,7 +3,18 @@ How to Configure the Event Subscription network restrictions
 
 In the Event Subscription, some restrictions exists on the entered URL to guarantee that the PIM is not used for accessing
 unsolicited resources.
-However, **you may need to change those rules**, this chapter explains how.
+
+The following domains are always blacklisted:
+
+- `localhost`
+- `elasticsearch`
+- `memcached`
+- `object-storage`
+- `mysql`
+
+Additionnaly, we also block the ranges of IPs defined in the RFC1918.
+
+However, **you may need to add an exception to those IP address ranges**, this chapter explains how.
 
 Add IPs to the whitelist
 ------------------------
@@ -14,3 +25,7 @@ a comma-sperated list of IPs (with or without netmask).
     :linenos:
 
     ALLOWED_NETWORK_WHITELIST=10.0.2.0/24,10.0.3.1
+
+.. warning::
+
+    The domain blacklist will always supersede the IP whitelist.
