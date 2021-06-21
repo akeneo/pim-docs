@@ -53,8 +53,7 @@ Clear the Symfony cache and execute the following command to build the UI:
 
     rm -rf var/cache/*
     bin/console cache:warmup --env=prod
-    bin/console pim:installer:assets --clean --env=prod && yarn run webpack
-
+    make front
 
 Make the credential files accessible to Akeneo PIM software
 -----------------------------------------------------------
