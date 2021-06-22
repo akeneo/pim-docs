@@ -49,11 +49,37 @@ Build the UI
 
 Clear the Symfony cache and execute the following command to build the UI:
 
+
+If you have access to 'make' commands use :
 .. code-block:: bash
 
     rm -rf var/cache/*
     bin/console cache:warmup --env=prod
     make front
+
+Else,
+
+For >=5.0.0 :
+.. code-block:: bash
+
+    rm -rf var/cache/*
+    bin/console cache:warmup --env=prod
+    rm -rf public/bundles public/js
+    bin/console pim:installer:assets --clean
+    rm -rf public/css
+    yarn run less
+    rm -rf public/dist
+    yarn run webpack
+
+
+For < 5.0.0 :
+.. code-block:: bash
+
+    rm -rf var/cache/*
+    bin/console cache:warmup --env=prod
+    bin/console pim:installer:assets --clean
+    rm -rf public/dist
+    yarn run webpack
 
 Make the credential files accessible to Akeneo PIM software
 -----------------------------------------------------------
