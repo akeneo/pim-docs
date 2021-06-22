@@ -309,10 +309,6 @@ To see your changes in the new tab in the job edit form you need to run:
 
 If you don't see your changes, make sure you have run (``bin/console assets:install --symlink web``).
 
-Now that we have our extension loaded in our form, we can add some logic into it, check how to `customize the UI`_.
-
-.. _customize the UI: ../../design_pim
-
 Make a job stoppable
 --------------------
 

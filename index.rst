@@ -88,7 +88,6 @@ That's it! You now have the basic knowledge to start an Akeneo project.
     migrate_pim/index
     import_and_export_data/index
     manipulate_pim_data/index
-    design_pim/index
     maintain_pim/index
     contribute_to_pim/index
     use_sso_authentication/index
