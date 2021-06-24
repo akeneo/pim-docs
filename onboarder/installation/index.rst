@@ -49,7 +49,6 @@ Build the UI
 
 Clear the Symfony cache and execute the following command to build the UI:
 
-If you have access to 'make' commands use :
 .. code-block:: bash
 
     rm -rf var/cache/*
