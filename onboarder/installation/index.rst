@@ -26,7 +26,6 @@ Then add the following to your ``composer.json`` "scripts" part:
         "Akeneo\\Onboarder\\Setup\\OnboarderComposerScripts::copyUpgradesFiles"
     ]
 
-
 Enable the extension
 --------------------
 
@@ -51,8 +50,9 @@ Clear the Symfony cache and execute the following command to build the UI:
 
     rm -rf var/cache/*
     bin/console cache:warmup --env=prod
-    bin/console pim:installer:assets --clean --env=prod && yarn run webpack
-
+    bin/console pim:installer:assets --clean --env=prod
+    rm -rf public/dist
+    yarn run webpack
 
 Make the credential files accessible to Akeneo PIM software
 -----------------------------------------------------------
@@ -63,6 +63,20 @@ Make sure this file is shipped to the server which is hosting your PIM.
 
 This file must be accessible (read rights) by the system user that runs the pim (example: www-data).
 
+
+Check your .env file, it must contains at least those variables
+---------------------------------------------------------------
+
+.. code-block:: bash
+
+    APP_ENV=prod
+    AKENEO_PIM_URL=<URL of the pim>
+    APP_DATABASE_HOST=<database host>
+    APP_DATABASE_NAME=<database name>
+    APP_DATABASE_PASSWORD=<database password>
+    APP_DATABASE_PORT=<database port>
+    APP_DATABASE_USER=<database user>
+    APP_INDEX_HOSTS=localhost:9200
 
 Set the configuration values
 ----------------------------
