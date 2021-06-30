@@ -26,7 +26,6 @@ Then add the following to your ``composer.json`` "scripts" part:
         "Akeneo\\Onboarder\\Setup\\OnboarderComposerScripts::copyUpgradesFiles"
     ]
 
-
 Enable the extension
 --------------------
 
