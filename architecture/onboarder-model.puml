@@ -1,0 +1,42 @@
+@startuml
+Product *-- Attribute
+FlatFileImportTemplate *-- FlatFileMapping
+
+class Product {
+    String upc
+    String sku
+    String uid?
+    String name
+    Product customerProduct
+}
+
+enum ProductState {
+    draft
+    proposal
+    valid
+}
+
+enum AttributeState {
+    accepted
+    refused
+}
+
+class Attribute {
+    String name
+    String type
+    Attribute customerAttribute
+}
+
+class FlatFileMapping {
+    boolean isProductMapping
+    String flatFileColumnName
+    String targetName
+}
+
+class FlatFileImportTemplate {
+    FlatFileMapping[] mappings
+}
+
+
+
+@enduml
