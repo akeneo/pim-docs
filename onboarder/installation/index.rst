@@ -28,7 +28,6 @@ Then add the following to your ``composer.json`` "scripts" part:
     ]
     }
 
-
 Enable the extension
 --------------------
 
