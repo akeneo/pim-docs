@@ -4,7 +4,7 @@ Setting up the job queue daemon
 Purpose of the queue
 --------------------
 
-Jobs launched from the UI or from the CLI are pushed into a `queue <https://en.wikipedia.org/wiki/Message_queue>`_ in order to be processed in background.
+Jobs launched from the UI or from the CLI are pushed into `queues <https://en.wikipedia.org/wiki/Message_queue>`_ in order to be processed in background.
 
 One or several daemon processes have to be launched to execute the jobs.
 
@@ -13,51 +13,58 @@ You can launch several daemon processes to execute multiple jobs in parallel.
 
 Also, the daemon processes could be run on several instance of the PIM, using the same MySQL database.
 
-This queue allows `horizontal scalability <https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling>`_ of the PIM.
+These queues allow `horizontal scalability <https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling>`_ of the PIM.
 Therefore, you can configure servers dedicated to the execution of the jobs.
 
-The command to launch a daemon is:
+Jobs are categorized in three different types and are consumed by three queues (one for each type):
+- ``ui_job`` for jobs that are launched specifically by the PIM users (except imports and exports). For instance the mass edit or mass delete jobs.
+- ``import_export_job`` for import and export jobs
+- ``data_maintenance_job`` for all other jobs that are launched in background
+
+Having these 3 types allows to define a priority between jobs. For instance the following command consumes the UI jobs first, then the import/export jobs, and finally the data maintenance jobs (this is the recommended usage):
 
 .. code-block:: bash
     :linenos:
 
-    $ /path/to/php /path/to/your/pim/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod
+    $ /path/to/php /path/to/your/pim/bin/console messenger:consume ui_job import_export_job data_maintenance_job --env=prod
 
-You can also run the daemon to execute only one job and then exit. This is useful for development purpose.
-
-.. code-block:: bash
-    :linenos:
-
-    $ /path/to/php /path/to/your/pim/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod --run-once
-
-Another possibility is to launch several daemons that will consume or exclude specific jobs.
-This could be useful if you want a specific job to be consumed sooner.
-Here is an example with a few bulk actions:
-
+You can also run the daemon and specify how many jobs you want to execute thanks to the ``limit`` option. This is useful for development purpose.
 
 .. code-block:: bash
     :linenos:
 
-    # With the -j option, the job daemon will only consume listed jobs
-    $ /path/to/php /path/to/your/pim/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod -j update_product_value -j add_product_value -j remove_product_value
+    # Run one job then exit
+    $ /path/to/php /path/to/your/pim/bin/console messenger:consume ui_job import_export_job data_maintenance_job --env=prod --limit=1
+
+Another possibility is to launch several daemons that will consume or exclude specific job types.
+This could be useful if for instance too many imports/exports are launched too often. You can add one or a few additional daemons that consume import/export jobs only, and speed up the queue consumption.
 
 .. code-block:: bash
     :linenos:
 
-    # With the -b option, the job daemon will consume all jobs except the listed ones.
-    $ /path/to/php /path/to/your/pim/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod -b update_product_value -b add_product_value
+    # This daemon will consume import/export jobs only.
+    $ /path/to/php /path/to/your/pim/bin/console messenger:consume import_export_job --env=prod
+
+When daemons are running, you can stop them properly by using the following command. The daemons will wait for the end of the current running job (or don't wait if no job is running) before ending.
+
+.. code-block:: bash
+    :linenos:
+
+    $ /path/to/php /path/to/your/pim/bin/console messenger:stop-workers --env=prod
+
+If the consumers don't stop after a while, please check that the ``--env`` option is the same as the one used to launch the consumer.
 
 Logs
 ----
 
-The daemon process writes logs to the standard output.
+The daemon process writes logs to the standard output. Adding a ``-vv`` option increases the verbosity and allows to see logs about consumed jobs.
 It's your responsibility to choose where to write the logs.
 For example, to write in the file ``/tmp/daemon_logs.log``:
 
 .. code-block:: bash
     :linenos:
 
-    $ /path/to/php /path/to/your/pim/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod >/tmp/daemon_logs.log 2>&1
+    $ /path/to/php /path/to/your/pim/bin/console messenger:consume ui_job import_export_job data_maintenance_job --env=prod -vv >/tmp/daemon_logs.log 2>&1
 
 Do note that you should ensure the log rotation as well.
 
@@ -92,7 +99,7 @@ Create a file in the configuration directory of supervisor ``/etc/supervisor/con
     :linenos:
 
     [program:akeneo_queue_daemon]
-    command=/path/to/php /path/to/your/pim/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod
+    command=/path/to/php /path/to/your/pim/bin/console messenger:consume ui_job import_export_job data_maintenance_job --env=prod -vv
     autostart=false
     autorestart=true
     stderr_logfile=/var/log/akeneo_daemon.err.log
@@ -122,7 +129,7 @@ Option #2 - systemd
 
 If you prefer, you can use ``systemd``, which allows multiple daemons to run at the same time, log management, and auto restart in case of failure.
 
-As of ``3.1``, job consumers can be assigned specific job instance codes they will support.  This can be leveraged to make sure certain types of jobs will always be processed by a given consumer without being impacted by regular activity on the PIM.
+As of ``3.1``, job consumers can be assigned specific job types they will support.  This can be leveraged to make sure certain types of jobs will always be processed by a given consumer without being impacted by regular activity on the PIM.
 
 Configuration files
 *******************
@@ -153,18 +160,20 @@ Create ``/usr/local/bin/pim_job_queue_launcher.sh``:
 
     QUEUE_IDENTIFIER=${1}
 
-    JOBS=""
+    JOB_TYPES=""
     CONF_FILE=/path/to/home/user/.systemd/pim_job_queue/${QUEUE_IDENTIFIER}.conf
 
-    if [ ! -f ${CONF_FILE} ]; then
-        echo "${CONF_FILE} does not exist, this queue will support all jobs"
-    else
+    if [ -f ${CONF_FILE} ]; then
     while read job; do
-        JOBS+="-j $job "
+        JOB_TYPES+="$job "
     done <${CONF_FILE}
     fi
+    if [ -z "${JOB_TYPES// }" ]; then
+        echo "${CONF_FILE} does not exist or is empty, this consumer will support all job types"
+        JOB_TYPES="ui_job import_export_job data_maintenance_job"
+    fi
 
-    su -c "/path/to/akeneo/bin/console akeneo:batch:job-queue-consumer-daemon --env=prod ${JOBS} &" akeneo
+    su -c "/path/to/akeneo/bin/console messenger:consume --env=prod ${JOB_TYPES} &" akeneo
 
     exit 0
 
@@ -175,10 +184,10 @@ of this example, the files contain a list of job instance to support, one code p
 .. code-block:: ini
    :linenos:
 
-   csv_product_export
-   csv_product_import
+   ui_job
+   import_export_job
 
-If the file is empty or does not exist, all jobs will be supported by the daemon.
+If the file is empty or does not exist, all job types will be supported by the daemon.
 
 Manage the services
 *******************
