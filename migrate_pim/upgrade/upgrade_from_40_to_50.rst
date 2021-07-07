@@ -165,12 +165,14 @@ Migrate your data
 .. code:: bash
 
     $ bin/console doctrine:migrations:migrate
+    $ bin/console pimee:data-quality-insights:migrate-product-criterion-evaluation
 
 .. note::
 
     You may receive the following warnings:
 
         WARNING! You have X previously executed migrations in the database that are not registered migrations.
+
 
     This can be safely ignored as this only means that your database is up to date, but without finding the corresponding
     migration files.
@@ -179,6 +181,8 @@ Migrate your data
 
     This makes sense for some migration that only touches the Elasticsearch index or don't apply because no data linked
     to this migration have been found.
+
+    The message "The migration has already been performed." concerning the "data-quality-insights" migration could be ignored .
 
 
 Migrating your custom code
