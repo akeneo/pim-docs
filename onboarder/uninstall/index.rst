@@ -18,4 +18,4 @@ You need to run this command to clean them:
 
 .. warning::
 
-    Onboarder ACL is stored in a yml file and not in the database. So the Akeneo Onboarder permission will still be displayed after running the command.
+    Onboarder ACL is stored in a yml file and not in the database. So the `Akeneo Onboarder` permission will still be displayed after running this command.
