@@ -1,5 +1,5 @@
 How to uninstall the Onboarder bundle
-===================================
+=====================================
 
 Clean related data
 ------------------
