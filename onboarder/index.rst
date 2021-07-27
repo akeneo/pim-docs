@@ -16,6 +16,7 @@ Akeneo Onboarder
     migrate/index
     synchronization/index
     troubleshooting/index
+    uninstall/index
 
 .. toctree::
     :hidden:
