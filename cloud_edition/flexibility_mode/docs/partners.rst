@@ -54,9 +54,6 @@ Create a new daemon by enabling & starting a service with a **unique** identifie
     # Stop the daemon
     partners_systemctl pim_job_queue@1 stop
 
-    # See real time logs for daemon #2
-    journalctl --unit=pim_job_queue@2 -f
-
     # Disable the daemon #3
     partners_systemctl pim_job_queue@3 disable
 
@@ -68,6 +65,3 @@ Useful commands
 
     # check the status of all running queues
     partners_systemctl pim_job_queue@* status
-
-    # see logs for job consumer "foo", append with "-f" for real time display.
-    journalctl --unit=pim_job_queue@2 -f
