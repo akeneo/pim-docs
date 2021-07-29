@@ -23,7 +23,6 @@ import sys, os, datetime
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
 
-sys.path.insert(0, os.path.abspath('vendor/fabpot/sphinx-php'))
 from sphinx.highlighting import lexers
 from pygments.lexers.web import PhpLexer
 from pygments.lexers.web import HtmlLexer
@@ -31,7 +30,7 @@ from pygments.lexers.shell import BashLexer
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sensio.sphinx.configurationblock', 'sensio.sphinx.phpcode' , 'sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.coverage', 'sphinx.ext.ifconfig', 'sphinxcontrib.youtube']
+extensions = ['sensio.sphinx.configurationblock', 'sensio.sphinx.phpcode', 'sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.coverage', 'sphinx.ext.ifconfig', 'sphinxcontrib.youtube']
 lexers['php'] = PhpLexer(startinline=True)
 lexers['php-annotations'] = PhpLexer(startinline=True)
 lexers['html'] = HtmlLexer()
@@ -60,10 +59,10 @@ copyright = u'2013-'+ current_year +', Akeneo SAS'
 # built documents.
 #
 # The short X.Y version.
-version = os.getenv('PIM_VERSION', 'master')
+version = os.getenv('PIM_VERSION', '3.1')
 
 # Warning: These versions will be deleted on documentation deploy.
-versions = os.getenv('PIM_VERSIONS', 'master')
+versions = os.getenv('PIM_VERSIONS', '3.1')
 html_context = {
     'versions': versions.split(' '),
     'css_files': [
@@ -98,7 +97,7 @@ release = version
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['vendor/**/*']
+exclude_patterns = ['vendor/**/*', 'ee_dev/**/*']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
