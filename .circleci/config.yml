@@ -1,0 +1,75 @@
+version: 2.1
+parameters:
+    release_branch:
+        type: string
+        default: "3.0"
+
+jobs:
+    build:
+        machine:
+            image: ubuntu-1604:202004-01
+        steps:
+            - checkout
+            - run: make build
+
+    check-external-link:
+        machine:
+            image: ubuntu-1604:202004-01
+        steps:
+            - checkout
+            - run: make lint
+
+    deploy_staging:
+        machine:
+            image: ubuntu-1604:202004-01
+        steps:
+            - checkout
+            - add_ssh_keys
+            - run:
+                  name: Deploy on staging server
+                  command: DEPLOY_HOSTNAME=$STAGING_HOSTNAME DEPLOY_PORT=$STAGING_PORT PIM_VERSION="<< pipeline.parameters.release_branch >>" make deploy
+
+    deploy_production:
+        machine:
+            image: ubuntu-1604:202004-01
+        steps:
+            - checkout
+            - add_ssh_keys
+            - run:
+                  name: Deploy on production server
+                  command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT PIM_VERSION="<< pipeline.parameters.release_branch >>" make deploy
+
+workflows:
+    version: 2
+    pull_request:
+        jobs:
+            - build:
+                  filters:
+                      branches:
+                          ignore:
+                              - "<< pipeline.parameters.release_branch >>"
+
+    deployment:
+        jobs:
+            - deploy_staging:
+                  filters:
+                      branches:
+                          only: "<< pipeline.parameters.release_branch >>"
+            - approve_to_deploy_in_production:
+                  type: approval
+                  requires:
+                      - deploy_staging
+            - deploy_production:
+                  requires:
+                      - approve_to_deploy_in_production
+
+    nightly:
+        triggers:
+            - schedule:
+                  cron: "0 2 * * *"
+                  filters:
+                      branches:
+                          only:
+                              - "<< pipeline.parameters.release_branch >>"
+        jobs:
+            - check-external-link
