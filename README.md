@@ -17,10 +17,10 @@ The docs will be built into `./pim-docs-build`.
 Once you merge a PR into the `3.0` branch, it is automatically deployed on the staging server. In order to deploy it in production, please follow these steps:
 
 - Check the staging environment if everything is ok to be deployed in production
-- Open [the list of merged PR in master branch](https://circleci.com/gh/akeneo/workflows/pim-docs/tree/master) in Circle CI. You have to be connected with your Github account.
+- Open [the list of merged PR in 3.0 branch](https://circleci.com/gh/akeneo/workflows/pim-docs/tree/3.0) in Circle CI. You have to be connected with your Github account.
 - Click on the first row which should be "On hold"
 
-![List of merged PR in master](.circleci/list_workflows.jpg)
+![List of merged PR in 3.0](.circleci/list_workflows.jpg)
 
 - Click on the box "approve_to_deploy_in_production" and approve. It will launch the deployment in production.
 
