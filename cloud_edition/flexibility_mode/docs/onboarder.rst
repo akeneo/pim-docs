@@ -47,7 +47,4 @@ Useful commands
     # check the status of all running workers
     partners_systemctl pim_onboarder_worker@* status
 
-    # see the logs of worker #2, append with "-f" for real time display.
-    journalctl --unit=pim_onboarder_worker@2 -f
-
 .. _`job queue consumer`: ./onboarder.html
