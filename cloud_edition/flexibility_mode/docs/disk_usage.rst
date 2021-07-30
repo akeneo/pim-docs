@@ -89,6 +89,26 @@ disk usage of your instance, by listing the largest directories:
 Database purges
 ---------------
 
+Assets
+~~~~~~
+
+.. code-block:: bash
+
+    echo "Remove all orphan files not linked to any assets"
+    php bin/console akeneo:asset-manager:purge-orphans-file-info
+
+This command will not remove thumbnails generated for preview, if you also want to delete those file:
+
+.. code-block:: bash
+
+    php bin/console akeneo:asset-manager:thumbnail-cache:clear
+
+
+.. warning::
+
+    The thumbnails will be regenerated on the first display in the PIM
+
+
 Versioning
 ~~~~~~~~~~~
 

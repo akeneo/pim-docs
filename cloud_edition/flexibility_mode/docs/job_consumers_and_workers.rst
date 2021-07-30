@@ -43,11 +43,8 @@ The name of the file is the **daemon identifier**. Make it simple and use only i
    # Check the status of the daemon #2
    partners_systemctl pim_job_queue@2 status
 
-    # Check the status of all daemons
+   # Check the status of all daemons
    partners_systemctl pim_job_queue@* status
-
-   # See real time logs for daemon #3
-   journalctl --unit=pim_job_queue@3 -f
 
 
 Please note that if **no configuration** file exist for a given daemon identifier,
@@ -72,9 +69,6 @@ Learn more about the onboarder and its configuration in the PIM in the dedicated
 
    # Check the status of the daemon #2
    partners_systemctl pim_onboarder_worker@1 status
-
-   # See real time logs for daemon #3
-   journalctl --unit=pim_onboarder_worker@1 -f
 
    # Stop pim_onboarder_worker
    partners_systemctl pim_onboarder_worker stop

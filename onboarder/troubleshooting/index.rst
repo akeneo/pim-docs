@@ -17,3 +17,15 @@ If you launch this daemon :doc:`using supervisor configuration </install_pim/man
     [supervisord]
     environment=GOOGLE_APPLICATION_CREDENTIALS="/srv/pim/serviceAccount.json",ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE="middleware-topic-name",...
 
+You can check if Google Pub/Sub access is successfully configured by using the following command in your pim
+
+.. code-block:: bash
+
+    php bin/console akeneo:onboarder:check-pubsub-access --env=prod
+
+.. image:: ./images/check_pub_sub_access_command_response.png
+    :width: 900px
+    :height: 550px
+    :scale: 100 %
+    :alt: Result of the check pubsub access command
+    :align: center

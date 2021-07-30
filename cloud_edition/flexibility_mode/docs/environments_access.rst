@@ -110,12 +110,12 @@ Copy data from one instance to another
 **Scenario:**
 
     User wants to transfer a SQL dump file from production instance their staging instance:
-    
+
 .. note::
 
     **User** connects with SSH and forwards their local ssh-agent towards
         > **project.akeneo.cloud.com**, and runs scp command towards
-        
+
         > **project-staging.akeneo.cloud.com**
 
     👨‍💼 💻   ──────> 🔑  ──────> 🖥  ────── 🔑 ──────> 📂 ──────> 🖥
@@ -132,11 +132,11 @@ Copy data from one instance to another
     eval `ssh-agent`
     ssh-add ~/.ssh/id_rsa
     ssh -tA akeneo@project-staging.cloud.akeneo.com
-    
+
     scp dump.sql akeneo@project:dump.sql
 
 .. warning::
 
     On the SCP command, please note that no domain is specified.
-    
+
     Use the short host name of instance. Connect to the target server and run `hostname` to get this value.
