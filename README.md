@@ -14,13 +14,13 @@ The docs will be built into `./pim-docs-build`.
 
 ### With Circle CI (recommended)
 
-Once you merge a PR into the `master` branch, it is automatically deployed on the staging server. In order to deploy it in production, please follow these steps:
+Once you merge a PR into the `3.2` branch, it is automatically deployed on the staging server. In order to deploy it in production, please follow these steps:
 
 - Check the staging environment if everything is ok to be deployed in production
-- Open [the list of merged PR in master branch](https://circleci.com/gh/akeneo/workflows/pim-docs/tree/master) in Circle CI. You have to be connected with your Github account.
+- Open [the list of merged PR in 3.2 branch](https://circleci.com/gh/akeneo/workflows/pim-docs/tree/3.2) in Circle CI. You have to be connected with your Github account.
 - Click on the first row which should be "On hold"
 
-![List of merged PR in master](.circleci/list_workflows.jpg)
+![List of merged PR in 3.2](.circleci/list_workflows.jpg)
 
 - Click on the box "approve_to_deploy_in_production" and approve. It will launch the deployment in production.
 
@@ -36,10 +36,9 @@ To deploy what you have built, use `HOSTNAME=foo.com PORT=1985 VERSION=bar make 
 
 `HOSTNAME` is the server to deploy the documentation on.
 `PORT` is the SSH port to connect to the server.
-`VERSION` is the subdirectory of `/var/www/` where the documentation will be deployed on the the server. It should be something like `3.2`, `4.0` or `master`.
+`PIM_VERSION` is the subdirectory of `/var/www/` where the documentation will be deployed on the the server. It should be something like `3.2`, `4.0` or `master`.
 
 To know the production and staging environments of pim-docs, please read the [inventory](https://github.com/akeneo/ansible/blob/master/inventories/core.inventory).
-
 
 ## Contribution
 
