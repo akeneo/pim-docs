@@ -86,7 +86,7 @@ What to do if I updated a form_extension**.yml file?
 .. code-block:: bash
 
     rm -rf var/cache
-    bin/console --env=prod pim:installer:dump-extensions
+    yarn update-extensions
     yarn webpack-dev
 
 What to do if I updated a requirejs.yml file?
