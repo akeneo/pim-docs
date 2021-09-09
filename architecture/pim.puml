@@ -1,4 +1,7 @@
 @startuml PIM core domain model
+'
+' Stereotype: TimeStampable: created,  updated
+'
 
 enum Locale {
     code: string
@@ -44,9 +47,17 @@ Class Attribute {
     guidelines: Object
 }
 
-Class Product {
+'TODO "develop"  rawvalues that contains a product... 
+'QUESTION How can we infer rawValues structure? => inspect real life DB?
+'TODO "develop"  quantifiedAssociation that contains a product... 
+'QUESTION How can we infer quantifiedAssociation structure? => inspect real life DB?
+Class Product << TimeStampable >> {
     family: Family
     familyVariant: FamilyVariant
+    productModel: ProductModel
+    rawValues: JSON
+    quantifiedAssociation: JSON
+    isEnabled: boolean
 }
 
 Class Family {
@@ -54,6 +65,10 @@ Class Family {
 }
 
 Class FamilyVariant {
+
+}
+
+Class ProductModel {
 
 }
 
