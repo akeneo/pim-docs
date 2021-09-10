@@ -71,7 +71,7 @@ Something prevents the connection from being established, it can mean that:
 SSH File Transfer Protocol (SFTP)
 ----------------------------------
 
-This access can only be granted **upon request**, after a Cloud ticket has been created through the `helpdesk`_.
+This access can only be granted **upon request**, after a Cloud ticket has been created through the `helpdesk <https://akeneo.atlassian.net/servicedesk/customer/portal/8/group/23/create/93?summary=New%20SFTP%20Account&customfield_13395=13010&customfield_13395%3A1=13034&description=--%21--%20%20Default%20user%20would%20be%20set%20to%20%22akeneosftp%22%20with%20a%20home%20directory%20in%20%22%2Fdata%2Ftransfer%2F%3Cusername%3E%22%0A--%21--%20%20If%20you%20would%20like%20another%20username%2C%20please%20notice%20us>`_.
 Please allow some time for our Team to create the access for you.
 
 .. note::
@@ -98,7 +98,6 @@ If **akeneo**, as an SSH user or as a PIM process, creates files in the SFTP sub
     $ chmod u=rwX,g=rwXs,o= /data/transfert/pim/*
 
 .. _`Filezilla`: https://filezilla-project.org
-.. _`helpdesk`: https://helpdesk.akeneo.com
 .. _`specific tasks`: ./partners.html
 .. _`GitHub Help Center`:  https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 .. _`Akeneo Help Center`:  https://help.akeneo.com/portal/articles/access-akeneo-flexibility.html?utm_source=akeneo-docs&utm_campaign=flexibility_partner_starterkit
