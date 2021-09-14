@@ -11,7 +11,7 @@ All those limits are defined as parameters that you can override like any other 
 
 Raise the limit of Reference Entities
 -------------------------------------
-By default, you can't create more than **100 Reference Entities**.
+By default, you can't create more than **200 Reference Entities**.
 If you want to create more, you have to edit the ``reference_entity_limit`` parameter, for example:
 
 .. code-block:: yaml
@@ -19,7 +19,7 @@ If you want to create more, you have to edit the ``reference_entity_limit`` para
 
     # app/config/parameters.yml
     parameters:
-        reference_entity_limit: 200
+        reference_entity_limit: 250
 
 Raise the limit of Attributes per Reference Entity
 --------------------------------------------------
