@@ -51,14 +51,34 @@ Class Attribute {
 'QUESTION How can we infer rawValues structure? => inspect real life DB?
 'TODO "develop"  quantifiedAssociation that contains a product... 
 'QUESTION How can we infer quantifiedAssociation structure? => inspect real life DB?
+' 
 Class Product << TimeStampable >> {
+    identifier: 
     family: Family
-    familyVariant: FamilyVariant
-    productModel: ProductModel
+    parent: ProductModel
     rawValues: JSON
+    ' attribute codes are determined recusively on parent (product model)
     quantifiedAssociation: JSON
     isEnabled: boolean
+    attributesFromAncestors
+
 }
+
+Class ProductVariant
+{
+    familyVariant: FamilyVariant
+    familyVariantAttributes:
+}
+
+Product <|-- ProductVariant
+
+Class ProductFamily  {
+    family: Family
+    familyAttributes:
+}
+
+Product  <|-- ProductFamily
+
 
 Class Family {
 
