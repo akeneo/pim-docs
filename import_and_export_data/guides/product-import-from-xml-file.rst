@@ -107,9 +107,15 @@ Then you will need to add the job parameters classes (they define the job config
    :language: php
    :linenos:
 
+In your bundle, create the following form_extensions :
+
+Resources/config/form_extensions/job_instance/xml_product_import_edit.yml with the following content:
+
 .. literalinclude:: ../../src/Acme/Bundle/XmlConnectorBundle/Resources/config/form_extensions/job_instance/xml_product_import_edit.yml
   :language: yaml
   :linenos:
+
+And Resources/config/form_extensions/job_instance/xml_product_import_show.yml with the following content:
 
 .. literalinclude:: ../../src/Acme/Bundle/XmlConnectorBundle/Resources/config/form_extensions/job_instance/xml_product_import_show.yml
    :language: yaml
