@@ -58,6 +58,7 @@ Clear the Symfony cache and execute the following command to build the UI:
     yarn run less
     rm -rf public/dist
     yarn run webpack
+    yarn run update-extensions
 
 Make the credential files accessible to Akeneo PIM software
 -----------------------------------------------------------
