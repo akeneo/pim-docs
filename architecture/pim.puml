@@ -49,36 +49,30 @@ Class Attribute {
 
 'TODO "develop"  rawvalues that contains a product... 
 'QUESTION How can we infer rawValues structure? => inspect real life DB?
-'TODO "develop"  quantifiedAssociation that contains a product... 
+'TODO "develop"  quantifiedAssociation that contains a product... #associations...
 'QUESTION How can we infer quantifiedAssociation structure? => inspect real life DB?
 ' 
 Class Product << TimeStampable >> {
+    'also in raw values.
     identifier: 
     family: Family
     parent: ProductModel
     rawValues: JSON
     ' attribute codes are determined recusively on parent (product model)
     quantifiedAssociation: JSON
+    'Workflow status for business: used in filters
     isEnabled: boolean
     attributesFromAncestors
 
-}
-
-Class ProductVariant
-{
+'QUESTION how can we model the following constraint on attributes.
+'
+    'For a Product of type 'family variant'
     familyVariant: FamilyVariant
     familyVariantAttributes:
-}
-
-Product <|-- ProductVariant
-
-Class ProductFamily  {
+    'For a product of type 'family'
     family: Family
     familyAttributes:
 }
-
-Product  <|-- ProductFamily
-
 
 Class Family {
 
