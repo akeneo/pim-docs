@@ -13,7 +13,7 @@ Execute the following composer commands to require the bundle:
 .. code-block:: bash
 
     composer config repositories.onboarder '{"type": "vcs", "url": "ssh://git@distribution.akeneo.com:443/pim-onboarder"}'
-    composer require "akeneo/pim-onboarder" "^4.2"
+    composer require "akeneo/pim-onboarder" "^5.0"
 
 Then add the following to your ``composer.json`` "scripts" part:
 
