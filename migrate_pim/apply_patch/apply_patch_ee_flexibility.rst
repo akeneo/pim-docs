@@ -70,3 +70,20 @@ After that you can relaunch fpm to avoid generating outdated cache:
 .. note::
 
     The ``partners_clear_cache`` and the ``partners_php7.4-fpm`` commands are only available in Akeneo Cloud Offer. You can find more commands in our :doc:`/cloud_edition/flexibility_mode/docs/system_administration` page.
+
+
+If you have an error during the ``yarn run webpack`` command, please execute this process to upgrade your package.json, reinstall the correct version of yarn modules and clean your cache.
+
+.. code-block:: bash
+
+    cp vendor/akeneo/pim-enterprise-dev/std-build/package.json package.json
+    cp vendor/akeneo/pim-enterprise-dev/yarn.lock yarn.lock
+    rm -rf node_modules
+    yarn install
+    partners_php7.4-fpm restart
+    rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
+    bin/console pim:installer:assets
+    bin/console cache:warmup
+    yarn run less
+    make javascript-prod
+    make javascript-extensions
