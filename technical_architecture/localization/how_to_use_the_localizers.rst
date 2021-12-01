@@ -63,4 +63,4 @@ If you want to add your own format, you have to configure it in your `app/config
                 - { value: 'dd/MM/yyyy', label: 'dd/mm/yyyy' }
                 - { value: 'dd.MM.yyyy', label: 'dd.mm.yyyy' }
 
-The key "value" has to contain characters defined in http://userguide.icu-project.org/formatparse/datetime .
+The key "value" has to contain characters defined in https://unicode-org.github.io/icu/userguide/format_parse/datetime/ .
