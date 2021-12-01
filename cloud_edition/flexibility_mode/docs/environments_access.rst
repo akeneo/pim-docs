@@ -98,6 +98,7 @@ If **akeneo**, as an SSH user or as a PIM process, creates files in the SFTP sub
     $ chmod u=rwX,g=rwXs,o= /data/transfert/pim/*
 
 .. _`Filezilla`: https://filezilla-project.org
+.. _`helpdesk`: https://helpdesk.akeneo.com
 .. _`specific tasks`: ./partners.html
 .. _`GitHub Help Center`:  https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 .. _`Akeneo Help Center`:  https://help.akeneo.com/portal/articles/access-akeneo-flexibility.html?utm_source=akeneo-docs&utm_campaign=flexibility_partner_starterkit
