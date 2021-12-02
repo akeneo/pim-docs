@@ -19,10 +19,10 @@ RUN echo 'APT::Install-Recommends "0" ; APT::Install-Suggests "0" ;' > /etc/apt/
     sh -c 'echo "deb https://packages.sury.org/php/ buster main" > /etc/apt/sources.list.d/php.list' && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
-        php7.4-apcu php7.4-bcmath php7.4-cli php7.4-curl php7.4-fpm \
-        php7.4-gd php7.4-intl php7.4-mysql php7.4-xml php7.4-zip php7.4-mbstring && \
-    echo "memory_limit = 1024M" >> /etc/php/7.4/cli/php.ini && \
-    echo "date.timezone = UTC" >> /etc/php/7.4/cli/php.ini && \
+        php8.0-apcu php8.0-bcmath php8.0-cli php8.0-curl php8.0-fpm \
+        php8.0-gd php8.0-intl php8.0-mysql php8.0-xml php8.0-zip php8.0-mbstring && \
+    echo "memory_limit = 1024M" >> /etc/php/8.0/cli/php.ini && \
+    echo "date.timezone = UTC" >> /etc/php/8.0/cli/php.ini && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/* && \
