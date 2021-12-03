@@ -95,6 +95,9 @@ Clear the PIM cache (also known as "Symfony cache") by running the following com
     cd /path/to/your/pim/
     php bin/console cache:clear --env=prod --no-warmup
 
+ 
+You could use the command `partners_clear_cache` if you are on a Akeneo Cloud Offer. You can find more commands in our `_System Administration & Services Management page <https://docs.akeneo.com/4.0/cloud_edition/flexibility_mode/docs/system_administration.html>`__.
+
 Step 9: did you consider the volume of your catalog?
 ----------------------------------------------------
 
