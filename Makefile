@@ -3,7 +3,6 @@ GID = $(shell id -g)
 DOCKER_IMAGE = pim-docs
 DOCKER_RUN = docker run -it --rm -u $(UID):$(GID) -v $(PWD):/home/akeneo/pim-docs/data
 DOCKER_RSYNC = $(DOCKER_RUN) -v /etc/passwd:/etc/passwd:ro -v $${SSH_AUTH_SOCK}:/ssh-auth.sock:ro -e SSH_AUTH_SOCK=/ssh-auth.sock $(DOCKER_IMAGE) rsync -e "ssh -q -p $${DEPLOY_PORT} -o StrictHostKeyChecking=no" -qarz --delete
-DOCKER_BUILD = $(DOCKER_RUN) -v $(PWD)/_build:/home/akeneo/ce
 
 .DEFAULT_GOAL := build
 .PHONY: build, deploy, docker-build, update-versions
