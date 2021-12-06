@@ -6,6 +6,10 @@ jobs:
             image: ubuntu-1604:202004-01
         steps:
             - checkout
+            - run:
+                name: Create mandatory Composer cache directory
+                command: |
+                    mkdir -p ~/.composer/cache && sudo chown -R 1000:1000 ~/.composer
             - run: make build
 
     check-external-link:

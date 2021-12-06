@@ -41,7 +41,8 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:akeneo/pim-enterprise-dev.git"
+            "url": "git@github.com:akeneo/pim-enterprise-dev.git",
+            "no-api": true
         }
     ],
     "minimum-stability": "stable"
