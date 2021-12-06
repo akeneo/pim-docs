@@ -14,7 +14,6 @@ build: lint
 	#  -T   Displays the full stack trace if an unhandled exception occurs.
 	#  -b   Linkcheck builder checks for broken links.
 	$(DOCKER_RUN) $(DOCKER_IMAGE) sphinx-build -nWT -b html /home/akeneo/pim-docs/data /home/akeneo/pim-docs/data/pim-docs-build
-	$(DOCKER_RUN) $(DOCKER_IMAGE) cp -L -r /home/akeneo/pim-docs/pim-community-dev-master/public /home/akeneo/pim-docs/data/pim-docs-build/
 	@echo "\nYou are now ready to check the documentation locally in the directory \"pim-docs-build/\" and to deploy it with \"DEPLOY_HOSTNAME=foo.com DEPLOY_PORT=1985 VERSION=bar make deploy\"."
 
 deploy: build update-versions
