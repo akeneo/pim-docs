@@ -101,7 +101,7 @@ This command will not remove thumbnails generated for preview, if you also want 
 
 .. code-block:: bash
 
-    php bin/console akeneo:asset-manager:thumbnail-cache:clear
+    php bin/console akeneo:asset-manager:thumbnail-cache:clear --all
 
 
 .. warning::
