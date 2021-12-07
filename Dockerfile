@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM akeneo/pim-php-dev:5.0
 WORKDIR /home/akeneo/pim-docs/
 ENV DEBIAN_FRONTEND=noninteractive
 
