@@ -30,7 +30,7 @@ docker-build:
 	docker build . --tag $(DOCKER_IMAGE)
 
 check-uses: docker-build
-	${DOCKER_RUN} -e COMPOSER_AUTH ${DOCKER_IMAGE} /home/akeneo/pim-docs/scripts/test_php_uses.sh
+	${DOCKER_RUN} -e COMPOSER_AUTH -e GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=no' ${DOCKER_IMAGE} /home/akeneo/pim-docs/scripts/test_php_uses.sh
 
 styleguide: docker-build
 	$(DOCKER_RUN) -w /home/akeneo/pim-docs/design_pim/styleguide $(DOCKER_IMAGE) cp styleguide.js /home/akeneo/pim-docs/pim-docs-build/design_pim/styleguide/
