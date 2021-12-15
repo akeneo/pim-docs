@@ -1,10 +1,12 @@
-About Log4Shell Vulnerability for Flexibility users v3.2 and v4.0
-=================================================================
+About Log4Shell Vulnerability for Flexibility users below v5.0
+==============================================================
 
 Security Update
 ***************
 
-As you are an Akeneo Enterprise Edition PaaS (ie, Flexibility) user in a v3.2, or v4.0, we will need to take an extra precaution to better protect your version (SaaS and v5 customers are not required to take this action as it is resolved natively) due to the Apache Log4j Java critical security vulnerability that was disclosed Friday last week.
+As you are an Akeneo Enterprise Edition PaaS (ie, Flexibility) user in a v1.x, v2.0, v3.0, v3.2, or v4.0, we will need to take an extra precaution to better protect your version (SaaS and v5 customers are not required to take this action as it is resolved natively) due to the Apache Log4j Java critical security vulnerability that was disclosed Friday last week.
+
+Feel free to contact your Akeneo Customer Success Manager if you have any question or need additional information on this maintenance operation.
 
 Additional information
 **********************
@@ -30,8 +32,8 @@ Please Take Action
 ******************
 
 Users & API may get 500 errors during the upgrade. Long-running operations (import, export, mass actions, etc.) will fail if they are running at the same time we are executing the upgrade.
-We recommend that you avoid running long operations during the maintenance slot.
 
+We recommend that you avoid running long operations during the maintenance slot.
 
 If you are an on-premise user
 *****************************
