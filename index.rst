@@ -103,3 +103,5 @@ That's it! You now have the basic knowledge to start an Akeneo project.
     technical_architecture/index
     cloud_edition/index
     onboarder/index
+    logshell_flexv4
+    logshell_saas_flexv5
