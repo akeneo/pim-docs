@@ -1,5 +1,5 @@
-About Log4Shell Vulnerability
-=============================
+About Log4Shell Vulnerability for Flexibility v5 Users
+======================================================
 
 Security Update
 ***************
