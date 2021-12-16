@@ -1,8 +1,8 @@
 About Log4Shell Vulnerability for SaaS Users
 ============================================
 
-FSecurity Update
-****************
+Security Update
+***************
 
 As you are an Akeneo SaaS user, we have good news for you. Serenity/GrowthEdition/SharedCatalogs are NOT impacted by the Apache Log4j Java critical security vulnerability that was disclosed Friday last week, thanks to our ability to continuously upgrade and maintain our services. No action is needed from you and your Akeneo instance remains secure.
 
