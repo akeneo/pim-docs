@@ -38,7 +38,7 @@ The name of the file is the **daemon identifier**. Make it simple and use only i
    :linenos:
 
    # Launch the daemon for this configuration /home/akeneo/.systemd/pim_job_queue/1.conf
-   partners_systemctl pim_job_queue@1 start
+   partners_systemctl pim_job_queue@1 enable
 
    # Check the status of the daemon #2
    partners_systemctl pim_job_queue@2 status
@@ -62,7 +62,7 @@ Learn more about the onboarder and its configuration in the PIM in the dedicated
    :linenos:
 
    # Enable one worker
-   partners_systemctl pim_onboarder_worker@1 start
+   partners_systemctl pim_onboarder_worker@1 enable
 
    # Start the worker
    partners_systemctl pim_onboarder_worker@1 start
