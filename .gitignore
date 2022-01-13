@@ -3,3 +3,4 @@
 /pim-docs-lint/
 /docker-compose.override.yml
 /ee_dev/
+_build/
