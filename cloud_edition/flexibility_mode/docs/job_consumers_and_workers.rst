@@ -19,7 +19,7 @@ This daemon is managed by ``systemd`` and allows multiple operations such as:
    Please note that, while the number of running job consumers is not enforced, it is not recommended
    to increase it above the server capability. Between 1 and 3 comsumers is recommended.
 
-To see how and which commands are available, please refer to :ref:`Privilege escalation <system_administration>`
+To see how and which commands are available, please refer to :doc:`Privilege escalation <./system_administration>`
 
 
 Configuration
