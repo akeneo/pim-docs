@@ -6,14 +6,8 @@ Job consumers
 
 Akeneo PIM uses a daemon to execute jobs (i.e: imports, exports, etc.) from a queue.
 
-This daemon is managed by ``systemd`` and allows multiple operations such as:
-
-- start/restart a daemon
-- check the status of a daemon
-- see logs of a daemon
-
 Please note that, while the number of running job consumers is not enforced, it is not recommended
-to increase it above the server capability. Between 1 and 3 comsumers is recommended.
+to increase it above the server capability. Between 1 and 3 consumers is recommended.
 
 As of PIM 3.1, each daemon can be dedicated to run certain job(s), hence making sure the jobs will
 be executed in a timely manner, and that their execution will not interfere with other business
@@ -32,7 +26,10 @@ Example in file `/home/akeneo/.systemd/pim_job_queue/1.conf`:
    csv_category_export
    csv_family_export
 
-The name of the file is the **daemon identifier**. Make it simple and use only integer numbers.
+The name of the file is the **daemon identifier**. Make it simple and use only
+integer numbers. Once their configuration files are created, you can manipulate
+these daemons through our tool called `partners_systemctl` as you would do with
+`systemctl`:
 
 .. code-block:: bash
    :linenos:
@@ -43,29 +40,36 @@ The name of the file is the **daemon identifier**. Make it simple and use only i
    # Check the status of the daemon #2
    partners_systemctl pim_job_queue@2 status
 
-    # Check the status of all daemons
+   # Enable the daemon #3:
+   partners_systemctl pim_job_queue@3 enable
+
+   # Check the status of all daemons
    partners_systemctl pim_job_queue@* status
 
-   # See real time logs for daemon #3
-   journalctl --unit=pim_job_queue@3 -f
+Please note that if **no configuration** file exist for a given daemon
+identifier, the daemon will consider that it has to consume **any** elements in
+the queue. This is the default behavior.
 
-
-Please note that if **no configuration** file exist for a given daemon identifier,
-the daemon will consider that it has to consume **any** elements in the queue. This is the default
-behavior.
+Ensure that all the deamons that are supposed to run are enabled. Disabled
+daemons will not be started in case your environment restarts.
 
 Onboarder
 ---------
 
-While Onboarder requires workers to run at all times, those are disabled by default since some customers do not use the Onboarder.
+While Onboarder requires workers to run at all times, those are disabled by
+default since some customers do not use Onboarder.
 
-Learn more about the onboarder and its configuration in the PIM in the dedicated section :doc:`/onboarder/index`.
+Learn more about Onboarder and its configuration in the PIM in the dedicated
+section :doc:`/onboarder/index`.
+
+Similarly to PIM job consumers, here is how you can manipulate Onboarder
+daemons:
 
 .. code-block:: bash
    :linenos:
 
    # Enable one worker
-   partners_systemctl pim_onboarder_worker@1 start
+   partners_systemctl pim_onboarder_worker@1 enable
 
    # Start the worker
    partners_systemctl pim_onboarder_worker@1 start
