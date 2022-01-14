@@ -7,17 +7,17 @@ Job consumers
 Processes
 ^^^^^^^^^
 
-Akeneo PIM uses a daemon to execute jobs (i.e: imports, exports, etc.) from a queue.
+Akeneo PIM uses daemons to execute jobs (i.e: imports, exports, etc.) from a queue.
 
-This daemon is managed by ``systemd`` and allows multiple operations such as:
+Job daemons are managed by ``systemd`` which allows multiple operations such as:
 
-- start/stop/restart a daemon
-- enable/disable a daemon
-- check the status/see logs of a daemon
+- start/stop/restart a daemon,
+- enable/disable a daemon,
+- check the status/see logs of a daemon.
 
 .. warning::
    Please note that, while the number of running job consumers is not enforced, it is not recommended
-   to increase it above the server capability. Between 1 and 3 comsumers is recommended.
+   to increase it above the server capability. Between 1 and 3 consumers is recommended.
 
 To see how and which commands are available, please refer to :doc:`Privilege escalation <./system_administration>`
 
@@ -34,15 +34,17 @@ operations.
 
 Daemons files can be configured for :doc:`3 behaviors <../../../../install_pim/manual/daemon_queue>`:
 
-- Handle all jobs: (**Default**) Keep the configuration file empty
-- Specific jobs: (**Whitelist**) Write their names (One per line) in the configuration file
-- Exclude jobs: (**Blacklist**) Write their names (One per line), preceded by a ``!`` (exclamation mark) in the configuration file
+- Handle all jobs: (**Default**) Keep the configuration file empty,
+- Specific jobs: (**Whitelist**) Write their names (One per line) in the configuration file,
+- Exclude jobs: (**Blacklist**) Write their names (One per line), preceded by a ``!`` (exclamation mark) in the configuration file.
 
+Once their configuration files are created, you can manipulate these daemons
+through our tool called `partners_systemctl` as you would do with `systemctl`.
 
 Examples
 ^^^^^^^^
 
-- Create a new daemon which handle all type of jobs:
+- Create a new daemon which handles all type of jobs:
    .. code-block:: bash
       :linenos:
 
@@ -55,7 +57,7 @@ Examples
       # Enable the worker to be started automatically at instance boot up
       partners_systemctl pim_job_queue@3 enable
 
-- Create a new daemon which handle specific jobs:
+- Create a new daemon which handles specific jobs:
    .. code-block:: bash
       :linenos:
 
@@ -73,7 +75,7 @@ Examples
       # Enable the worker to be started automatically at instance boot up
       partners_systemctl pim_job_queue@4 enable
 
-- Create a new daemon which exclude specific jobs:
+- Create a new daemon which excludes specific jobs:
    .. code-block:: bash
       :linenos:
 
@@ -90,20 +92,20 @@ Examples
       # Enable the worker to be started automatically at instance boot up
       partners_systemctl pim_job_queue@5 enable
 
-- Remove an existing daemon (Could not be done on akeneo default ones):
+- Remove an existing daemon (not possible on Akeneo default ones):
    .. code-block:: bash
       :linenos:
 
-      # Enable the worker to be started automatically at instance boot up
+      # Stop the worker with its name (configuration filename without extension)
       partners_systemctl pim_job_queue@7 stop
 
-      # Start the worker with its name (configuration filename without extension)
+      # Disable the worker not to be started automatically at instance boot up
       partners_systemctl pim_job_queue@7 disable
 
-      # Create a file for the new daemon and keep it empty to handle all jobs
+      # Delete its configuration file
       rm /home/akeneo/.systemd/pim_job_queue/7.conf
 
-- Manage all daemons at a time:
+- Manage all daemons at once:
    .. code-block:: bash
       :linenos:
 
@@ -117,9 +119,17 @@ Examples
 Onboarder
 ---------
 
-While Onboarder requires workers to run at all times, those are disabled by default since some customers do not use the Onboarder.
+While Onboarder requires workers to run at all times, those are disabled by
+default since some customers do not use Onboarder.
 
-Learn more about the onboarder and its configuration in the PIM in the dedicated section :doc:`/onboarder/index`.
+Learn more about Onboarder and its configuration in the PIM in the dedicated
+section :doc:`/onboarder/index`.
+
+Examples
+^^^^^^^^
+
+Similarly to PIM job consumers, here is how you can manipulate Onboarder
+daemons:
 
 .. code-block:: bash
    :linenos:
@@ -127,11 +137,11 @@ Learn more about the onboarder and its configuration in the PIM in the dedicated
    # Start the worker
    partners_systemctl pim_onboarder_worker@1 start
 
-   # Enable worker 1 to be started at instance boot
+   # Enable worker #1 to be started at instance boot
    partners_systemctl pim_onboarder_worker@1 enable
 
-   # Check the status of the daemon #2
+   # Check the status of the daemon #1
    partners_systemctl pim_onboarder_worker@1 status
 
-   # Stop pim_onboarder_worker
-   partners_systemctl pim_onboarder_worker stop
+   # Stop daemon #1
+   partners_systemctl pim_onboarder_worker@1 stop
