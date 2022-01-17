@@ -17,6 +17,7 @@ These queues allow `horizontal scalability <https://en.wikipedia.org/wiki/Scalab
 Therefore, you can configure servers dedicated to the execution of the jobs.
 
 Jobs are categorized in three different types and are consumed by three queues (one for each type):
+
 - ``ui_job`` for jobs that are launched specifically by the PIM users (except imports and exports). For instance the mass edit or mass delete jobs.
 - ``import_export_job`` for import and export jobs
 - ``data_maintenance_job`` for all other jobs that are launched in background
@@ -182,10 +183,10 @@ These files have to be named ``x.conf``, with ``x`` being the identifier of the 
 of this example, the files contain a list of job instance to support, one code per line.
 
 .. code-block:: ini
-   :linenos:
+    :linenos:
 
-   ui_job
-   import_export_job
+    ui_job
+    import_export_job
 
 If the file is empty or does not exist, all job types will be supported by the daemon.
 
