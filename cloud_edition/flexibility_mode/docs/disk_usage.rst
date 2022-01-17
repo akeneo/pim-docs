@@ -134,8 +134,8 @@ In that case, use the following procedure to free the associated disk space:
 
     gunzip < pim_versioning_version.sql.gz | mysql
 
-   # if the connection is lost in the process, re-connect using SSH and run
-   screen -r
+    # if the connection is lost in the process, re-connect using SSH and run
+    screen -r
 
 Moreover, the customer and the integrator can:
 
