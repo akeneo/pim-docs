@@ -119,11 +119,9 @@ Examples
 Onboarder
 ---------
 
-While Onboarder requires workers to run at all times, those are disabled by
-default since some customers do not use Onboarder.
+While Onboarder requires workers to run at all times, those are disabled by default since some customers do not use Onboarder.
 
-Learn more about Onboarder and its configuration in the PIM in the dedicated
-section :doc:`/onboarder/index`.
+Learn more about Onboarder and its configuration in the PIM in the dedicated section :doc:`/onboarder/index`.
 
 Examples
 ^^^^^^^^
