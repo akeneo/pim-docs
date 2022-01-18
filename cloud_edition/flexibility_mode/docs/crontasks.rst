@@ -63,7 +63,7 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     0 4 * * * pim:volume:aggregate
     20 0 * * * pimee:project:recalculate
     0 2 * * * pimee:project:notify-before-due-date
-    0 23 * * * akeneo:reference-entity:refresh-records --all
+    0 23 * * * akeneo:reference-entity:refresh-records
     5 22 * * * pimee:sso:rotate-log 30
     15 0 * * * pim:data-quality-insights:schedule-periodic-tasks
     */10 * * * * pim:data-quality-insights:prepare-evaluations
