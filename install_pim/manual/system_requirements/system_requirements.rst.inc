@@ -31,37 +31,37 @@ The web server will also need the following libraries and modules:
 **PHP required modules and configuration**
 
 +-----------------+---------------------------+
-| PHP             | 7.4                       |
+| PHP             | 8.0                       |
 +-----------------+---------------------------+
-| php7.4-apcu     | apc.enable_cli=1          |
+| php8.0-apcu     | apc.enable_cli=1          |
 +-----------------+---------------------------+
-| php7.4-bcmath   | No specific configuration |
+| php8.0-bcmath   | No specific configuration |
 +-----------------+---------------------------+
-| php7.4-curl     | No specific configuration |
+| php8.0-curl     | No specific configuration |
 +-----------------+---------------------------+
-| php7.4-fpm      | No specific configuration |
+| php8.0-fpm      | No specific configuration |
 +-----------------+---------------------------+
-| php7.4-intl     | No specific configuration |
+| php8.0-intl     | No specific configuration |
 +-----------------+---------------------------+
-| php7.4-mysql    | No specific configuration |
+| php8.0-mysql    | No specific configuration |
 +-----------------+---------------------------+
-| php7.4-xml      | No specific configuration |
+| php8.0-xml      | No specific configuration |
 +-----------------+---------------------------+
-| php7.4-zip      | No specific configuration |
+| php8.0-zip      | No specific configuration |
 +-----------------+---------------------------+
-| php7.4-exif     | No specific configuration |
+| php8.0-exif     | No specific configuration |
 +-----------------+---------------------------+
-| php7.4-imagick  | No specific configuration |
+| php8.0-imagick  | No specific configuration |
 +-----------------+---------------------------+
-| php7.4-cli      | No specific configuration |
+| php8.0-cli      | No specific configuration |
 +-----------------+---------------------------+
-| php7.4-opcache  | No specific configuration |
+| php8.0-opcache  | No specific configuration |
 +-----------------+---------------------------+
-| php7.4-zip      | No specific configuration |
+| php8.0-zip      | No specific configuration |
 +-----------------+---------------------------+
-| php7.4-mbstring | No specific configuration |
+| php8.0-mbstring | No specific configuration |
 +-----------------+---------------------------+
-| php7.4-memcached| No specific configuration |
+| php8.0-memcached| No specific configuration |
 +-----------------+---------------------------+
 | composer        | >= 2                      |
 +-----------------+---------------------------+
@@ -112,9 +112,9 @@ Besides these modules, the following configuration is the minimal configuration 
 **Javascript** (required only for development purposes)
 
 +----------------+---------------------------+
-| nodejs         | ≥ 12.20                   |
+| nodejs         | ≥ 14                      |
 +----------------+---------------------------+
-| yarn           | ≥ 1.0.0                   |
+| yarn           | ≥ 1.22                    |
 +----------------+---------------------------+
 | JQuery         | 3.4                       |
 +----------------+---------------------------+
@@ -124,7 +124,7 @@ Besides these modules, the following configuration is the minimal configuration 
 **Database server**
 
 +-------------------+----------+
-|     MySQL (SQL)   |  8.0.22  |
+|     MySQL (SQL)   |  8.0.23  |
 +-------------------+----------+
 
 To use this database you will also require the distribution package:
@@ -136,7 +136,7 @@ To use this database you will also require the distribution package:
 and the following PHP modules:
 
 +--------------+----------+
-| php7.4-mysql | Required |
+| php8.0-mysql | Required |
 +--------------+----------+
 
 .. warning::
@@ -147,7 +147,7 @@ and the following PHP modules:
 **Search engine**
 
 +---------------+------------+
-| Elasticsearch | 7.10       |
+| Elasticsearch | 7.16       |
 +---------------+------------+
 
 Elasticsearch is bundled with its own JDK version, but if you want to use the `no JDK version <https://www.elastic.co/downloads/elasticsearch-no-jdk>_`, please make sure to install the right JDK for Elasticsearch.
@@ -166,7 +166,7 @@ Most of the application folders and files require only read access. Here is a li
 | public      | Contains the web assets required by the application                            |
 +-------------+--------------------------------------------------------------------------------+
 
-These permissions are the ones required by the Symfony Framework (see its `official documentation <https://symfony.com/doc/4.4/setup/file_permissions.html>`_ for more information).
+These permissions are the ones required by the Symfony Framework (see its `official documentation <https://symfony.com/doc/5.4/setup/file_permissions.html>`_ for more information).
 
 Akeneo PIM application uses an abstraction layer called Flysystem to store media and files uploaded from the application. By default, Flysystem is configured to store these files on the application server, but this configuration `can be easily changed <https://flysystem.thephpleague.com/>`_ in favor of, for example, a distributed remote storage system (see Flysystem documentation for more information).
 
