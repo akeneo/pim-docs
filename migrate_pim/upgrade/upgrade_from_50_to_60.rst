@@ -31,12 +31,6 @@ Updated System dependencies
 ---------------------------
 Check your system dependencies are in sync with :doc:`/install_pim/manual/system_requirements/system_requirements`
 
-Enterprise Edition
-^^^^^^^^^^^^^^^^^^
-
-.. warning::
-    The aspell dependencies are new.
-    Please note you have to use a composer v2 or above.
 
 Updated crontab definition
 --------------------------
@@ -128,16 +122,7 @@ Enterprise Edition
     $ vendor/akeneo/pim-enterprise-dev/std-build/upgrade/prepare_50_to_60.sh
 
 .. warning::
-    We have overwritten:
-        - Makefile
-        - package.json
-        - yarn.lock
-        - tsconfig.json
-        - src/Kernel.php
-        - config/packages/security.yml
-        - config/packages/dev
-        - config/packages/prod_flex
-        - config/packages/prod_onprem
+    This script overwrites several configuration files.
 
     In case of customisation, you need to resolve conflicts.
 
