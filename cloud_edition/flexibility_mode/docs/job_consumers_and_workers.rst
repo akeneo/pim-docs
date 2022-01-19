@@ -33,9 +33,9 @@ be executed in a timely manner, and that their execution will not interfere with
 operations.
 
 .. warning::
-   Since PIM 6.0, job queue has been reworked. Your previous configuration files are not relevant anymore.
-   During the **technological stack upgrade** from a PIM <6.0, the configuration folder `/home/akeneo/.systemd/pim_job_queue` is removed.
-   Please refer to the information below to setup job configuration following the new mechanism.
+   As of PIM 6.0, job queues have been reworked. Previous daemon configuration files are deprecated.
+   During the **technological stack upgrade** from a PIM 5.0 to PIM 6.0, configuration folder `/home/akeneo/.systemd/pim_job_queue` will be removed.
+   Please refer to the information below to set up job configuration.
 
 Daemons files can be configured following this :doc:`documentation <../../../../install_pim/manual/daemon_queue>`.
 
