@@ -22,7 +22,7 @@ jobs:
             - add_ssh_keys
             - run:
                   name: Deploy on staging server
-                  command: DEPLOY_HOSTNAME=$STAGING_HOSTNAME DEPLOY_PORT=$STAGING_PORT VERSION="master" make deploy
+                  command: DEPLOY_HOSTNAME=$STAGING_HOSTNAME DEPLOY_PORT=$STAGING_PORT VERSION="6.0" make deploy
 
     deploy_production:
         machine:
@@ -32,7 +32,7 @@ jobs:
             - add_ssh_keys
             - run:
                   name: Deploy on production server
-                  command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="master" make deploy
+                  command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="6.0" make deploy
 
 workflows:
     version: 2
@@ -42,14 +42,14 @@ workflows:
                   filters:
                       branches:
                           ignore:
-                              - master
+                              - '6.0'
 
     deployment:
         jobs:
             - deploy_staging:
                   filters:
                       branches:
-                          only: master
+                          only: '6.0'
             - approve_to_deploy_in_production:
                   type: approval
                   requires:
@@ -65,6 +65,6 @@ workflows:
                   filters:
                       branches:
                           only:
-                              - "master"
+                              - "6.0"
         jobs:
             - check-external-link
