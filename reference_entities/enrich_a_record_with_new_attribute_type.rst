@@ -5,9 +5,8 @@ Enrich Records with a new Reference Entity Attribute type
 
    Reference Entities feature is only available for the **Enterprise Edition**.
 
-This cookbook will present how to enrich Records with a custom Reference Entity attribute type we just created `in a previous step`_.
-
-.. _in a previous step: ./create_new_attribute_type.html
+This cookbook will present how to enrich Records with a custom Reference Entity attribute type we just created
+:doc:`in a previous step <create_new_attribute_type>`.
 
 Enrich Records with the Attribute
 ---------------------------------

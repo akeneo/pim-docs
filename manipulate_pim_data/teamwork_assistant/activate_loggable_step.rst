@@ -1,13 +1,12 @@
 How To Log Memory Usage In Calculation Steps
 ============================================
 
-.. _calculation step: ../../technical_overview/teamwork_assistant/project_creation.html#calculation-steps
-
 We created the
 ``Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Job\ProjectCalculation\CalculationStep\LoggableStep`` for debug purposes.
 It allows to log the memory usage for each loop of the
-``Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Job\ProjectCalculation\ProjectCalculationTasklet``. It helped us to hunt
-memory leaks. Don't hesitate to use it to check your custom `calculation step`_.
+``Akeneo\Pim\WorkOrganization\TeamWorkAssistant\Component\Job\ProjectCalculation\ProjectCalculationTasklet``.
+It helped us to hunt memory leaks.
+Don't hesitate to use it to check your custom :ref:`calculation step <calculation-steps>`.
 
 .. code-block:: php
 

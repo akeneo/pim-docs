@@ -525,9 +525,7 @@ To be able to have everything working, we need to register our custom attribute 
                     view: '@custom/reference-entity/attribute/simple_metric.tsx'
 
 .. note::
-    Note that in this tutorial, we don't have any custom property for this attribute, we'll cover this point in `another tutorial`_.
-
-.. _another tutorial: add_custom_property_to_your_custom_attribute_type.html
+    Note that in this tutorial, we don't have any custom property for this attribute, we'll cover this point in :doc:`another tutorial <add_custom_property_to_your_custom_attribute_type>`.
 
 
 API Part of The New Attribute Type

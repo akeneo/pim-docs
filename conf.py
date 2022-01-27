@@ -280,6 +280,6 @@ texinfo_documents = [
 
 # When using "linkckeck" builder, no checks on anchors.
 linkcheck_anchors = False
-linkcheck_ignore = [r'http://localhost:\d+/', r'http://your\.akeneo-pim\.url.*', r'https://filezilla-project\.org']
+linkcheck_ignore = [r'http://localhost:\d+/', r'http://your\.akeneo-pim\.url.*']
 
 user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99'
