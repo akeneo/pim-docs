@@ -25,9 +25,7 @@ The only argument of the service is the list of attribute types supported by you
 How to Convert Attributes in my Own Import/Export
 -------------------------------------------------
 
-.. _import: ../../import_and_export_data/product-import.html#product-processor-attributeconverterinterface
-
-To convert your localized attribute in your own import, see import_.
+To convert your localized attribute in your own import, see :doc:`import </import_and_export_data/product-import>`.
 
 How to Add a Decimal Separator in Import/Export
 -----------------------------------------------

@@ -1,10 +1,9 @@
 How To Remove A Project On A Custom Catalog Update?
 ===================================================
 
-.. _reference: ../../technical_overview/teamwork_assistant/catalog_impact.html
-
 Several catalog updates can have an impact on project integrity. In this case we need to remove the impacted projects.
-Akeneo PIM already manages its own catalog updates. The list is available in Teamwork Assistant reference_ part.
+Akeneo PIM already manages its own catalog updates.
+The list is available in Teamwork Assistant :doc:`reference </technical_overview/teamwork_assistant/catalog_impact>` part.
 
 How does It Work?
 _________________
