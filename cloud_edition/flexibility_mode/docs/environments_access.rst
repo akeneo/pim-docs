@@ -21,7 +21,7 @@ Always use **akeneo** as the user to connect to your server. It is an unprivileg
 
 .. warning::
 
-    No dedicated account will be created and **no root** access will be authorized. Privilege escalation is possible for `specific tasks`_.
+    No dedicated account will be created and **no root** access will be authorized. Privilege escalation is possible for `specific tasks`.
 
 .. code-block:: bash
 
@@ -98,7 +98,6 @@ If **akeneo**, as an SSH user or as a PIM process, creates files in the SFTP sub
     $ chmod u=rwX,g=rwXs,o= /data/transfert/pim/*
 
 .. _`Filezilla`: https://filezilla-project.org
-.. _`specific tasks`: ./partners.html
 .. _`GitHub Help Center`:  https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 .. _`Akeneo Help Center`:  https://help.akeneo.com/portal/articles/access-akeneo-flexibility.html?utm_source=akeneo-docs&utm_campaign=flexibility_partner_starterkit
 

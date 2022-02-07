@@ -61,7 +61,7 @@ Akeneo PIM is configured with environment variables. The `Symfony documentation 
 Running jobs
 ************
 
-Akeneo PIM implements a queue for the `jobs <../../import_and_export_data/index.html>`_, as a PHP daemon. This daemon is a Symfony command, that can only execute one job at a time. It does not consume any other job until the job is finished.
+Akeneo PIM implements a queue for the :doc:`jobs </import_and_export_data/index>`, as a PHP daemon. This daemon is a Symfony command, that can only execute one job at a time. It does not consume any other job until the job is finished.
 
 You can launch several daemons to allow the execution of several jobs in parallel. A daemon checks every 5 seconds the queue and executes the next job from the queue.
 
