@@ -8,20 +8,17 @@ project from the Product Edit Form and the sequential edit. Moreover, a command
 This scalability guide will focus on how to use the Teamwork Assistant functionally (how much projects in the same time,
 etc.) and technically (how to use the recalculate command) in a healthy way.
 
-.. _project completeness: project_completeness.html
-
 .. note::
 
-    To know more about the project completeness visit the `project completeness`_ reference.
+    To know more about the project completeness visit the :doc:`project completeness <project_completeness>` reference.
 
 Computing Project Completeness
 ------------------------------
 
-.. _medium catalog: ../scalability_guide/representative_catalogs.html
-
 Before beginning to work with the Teamwork Assistant, you must be aware that this feature has to compute a lot of
 data. The more products and attribute groups you have in a project, the more time project completeness computing will take.
-We did some benchmarks with our `medium catalog`_ on MySQL to give you an idea of the time it can take. A medium
+We did some benchmarks with our :doc:`medium catalog </maintain_pim/scalability_guide/representative_catalogs>`
+on MySQL to give you an idea of the time it can take. A medium
 catalog is about 3,66 millions of product values.
 
 

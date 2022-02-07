@@ -12,11 +12,12 @@ RUN echo 'APT::Install-Recommends "0" ; APT::Install-Suggests "0" ;' > /etc/apt/
         ca-certificates \
         gnupg \
         unzip \
-        python ssh rsync curl \
-        python-jinja2 \
-        python-sphinx && \
+        python \
+        ssh  \
+        rsync  \
+        curl \
+        python3-pip && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /tmp/* && \
-    rm -rf /usr/share/locale/* && \
-    rm -rf /var/log/*
+    rm -rf /var/lib/apt/lists/* /var/log/* /tmp/* /usr/share/locale/*
+
+RUN pip3 install -U sphinx

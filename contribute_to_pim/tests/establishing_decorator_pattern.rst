@@ -358,7 +358,7 @@ Now, let's see what happens when *grantGroup()* is called from our context.
 
 .. note::
 
-    To learn more about spin, please refer to the `spin chapter <spin.html>`_.
+    To learn more about spin, please refer to :doc:`spin`.
 
 You may notice that all logic of the element research is located in decorators and is spinned.
 

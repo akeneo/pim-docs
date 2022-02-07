@@ -9,11 +9,9 @@ completeness for contributors and owner. Displayed data are contextual. It means
 for each contributor and for the owner. Contributors see completeness depending on their own permissions. The owner sees
 the full completeness of family requirements.
 
-.. _`project calculation`: project_completeness.html
-
 .. tip::
 
-    To know more about the completeness calculation, you can read `project calculation`_.
+    To know more about the completeness calculation, you can read :doc:`project calculation <project_completeness>`.
 
 Widget extension points?
 ________________________
@@ -54,11 +52,6 @@ Which position to choose?
 - To add your extension between the project selector and the contributor selector the position must be between 100 and 200.
 - To add your extension at the far right the position must be above 200.
 
-.. _`how to customize the PEF`: ../..//add_a_custom_button_to_product_edit_form.html
-
-.. tip::
-
-    We did cookbook about `how to customize the PEF`_.
 
 Events
 ++++++

@@ -40,6 +40,8 @@ The only new info here is the name (first parameter) and the connector name (the
 
 How can we add our notification behaviour to this job? The simplest way is to write a new step that will be executed after the export step.
 
+.. _connector-add-a-new-step:
+
 Add a new step
 --------------
 
