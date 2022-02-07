@@ -8,10 +8,9 @@ Projects are the heart of Akeneo Teamwork Assistant. They allow users to know wh
 products. In this section, we will understand how a project is created and what are the important steps it goes through
 during creation.
 
-.. _project completeness: project_completeness.html
-
 * project **saved**: Via the UI, the user creates a new project, then saves it. A project is saved when the Project entity has been saved in the database.
-* project **calculated**: Once a project has been saved some background processes are launched. For example, these processes detect impacted users and they compute the `project completeness`_ of each product for multiple user groups
+* project **calculated**: Once a project has been saved some background processes are launched.
+   For example, these processes detect impacted users and they compute the :doc:`project completeness <project_completeness>` of each product for multiple user groups
    and permissions using calculation steps.
 
 A project is known as created when these two steps are done.
@@ -38,6 +37,8 @@ Once normalized, a project looks like this:
       "datagridView" => [] DatagridView [internal_api] format
     ]
 
+.. _calculation-steps:
+
 Calculation Steps
 _________________
 
@@ -47,31 +48,24 @@ notify users concerned by the project.
 For each product we need to identify the user groups that have the rights to edit the products. Once all the products
 have been checked, we send a notification to the concerned users (aka the contributors).
 
-.. _Job: ../import_export/main-concepts.html#job
-
 The job fills in a table that contains user groups that have permissions to edit at least one attribute of a product
-that belongs to the project. The job `Job`_ contains steps.
+that belongs to the project. The job :doc:`Job </import_and_export_data/index>` contains steps.
 The main step of the job is the `CalculationStep` which is used to execute an action between Project and Products.
 The main goal of this step is to extract data from the product to add information to the project.
 
-.. _Item Step: ../../import_and_export_data/guides/create-connector.html#add-a-new-step
+.. note::
 
-.. _Add a calculation step: ../../manipulate_pim_data/teamwork_assistant/calculation_step.html#add-a-calculation-step
+    To get more information about how to add custom item steps in a job go to this :ref:`Item Step <connector-add-a-new-step>`.
 
 .. note::
 
-    To get more information about how to add custom item steps in a job go to this `Item Step`_.
-
-.. note::
-
-    To get more information about how to add custom calculation steps during calculation job go to this `Add a calculation step`_.
+    To get more information about how to add custom calculation steps during calculation job go to this :doc:`Add a calculation step </manipulate_pim_data/teamwork_assistant/calculation_step>`.
 
 Project Creation Event
 ______________________
 
-.. _add notifications: ../../manipulate_pim_data/teamwork_assistant/customize_notification.html#customize-notifications
-
-The PIM offers an event on which you can plug listeners to add custom behaviors. For example to `add notifications`_,
+The PIM offers an event on which you can plug listeners to add custom behaviors.
+For example to :doc:`add notifications </manipulate_pim_data/teamwork_assistant/customize_notification>`,
 or to trigger special actions. This event is located in the class
 ``Akeneo\TeamworkAssistant\Component\Event\ProjectCreationEvents``.
 

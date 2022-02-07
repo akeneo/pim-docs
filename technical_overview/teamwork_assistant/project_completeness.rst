@@ -38,9 +38,8 @@ From this introduction, let's recap which data we need:
 Creating a table to gather all data we need to compute the completeness seems to be a good idea but we need some
 adjustments. It can't be scalable if we do this for each user.
 
-.. _format: format.html
-
-So let's remove users from this table. And now, how can we retrieve the completeness for a user? In the project format_,
+So let's remove users from this table. And now, how can we retrieve the completeness for a user?
+In the project :doc:`format <project_creation>`,
 we have product filters. From those filters it's easy to know which user is impacted by the product selection. To gain
 some time, we pre-calculate which user is impacted and we link them to project at its creation. But it's not scalable
 either. If we add a user, its completeness could not be calculated because he is not linked to the project yet. The
@@ -59,19 +58,17 @@ Here is the final structure we needed (only data that are relevant for the demon
   - or is it complete?
 
 - Project model:
- 
+
   - locale
   - channel
   - product filters
   - products (*)
   - user groups (*)
 
-.. _calculation step: project_creation.html#calculation-steps
-
 (*) As these fields are only used for the completeness calculation purpose and they have no sense from a business point
 of view, they are not mapped to doctrine. The `products` field from project model is a n - n table that helps to join
 project to pre-processing. The `user groups` field from project model is a n - n table that helps to know who is
-impacted by the product selection. These tables are filled thanks to the `calculation step`_.
+impacted by the product selection. These tables are filled thanks to the :doc:`calculation step <project_creation>`.
 
 By cross-checking pre-processing table, project table, category accesses table, attribute group accesses table we are
 able to calculate those three little numbers that are the number of products not started to enrich, in progress and done
@@ -106,10 +103,8 @@ are computed once you save a project, when you save a product concerned by a pro
 sequential edit. Moreover, a command ``php bin/console pimee:project:recalculate`` is provided to help you to
 recalculate data according to your needs.
 
-.. _scalability guide: scalability_guide.html
-
 The advantage is that the regularity of the pre-processing data updating can be adjusted as required with this command.
-Before using this you should have a look to the `scalability guide`_.
+Before using this you should have a look to the :doc:`scalability guide <scalability_guide>`.
 
 According to our benchmark on a catalog with 3.6 millions of product values, pre-processing those data is feasible
 during the night for many projects as we don't pre-process all the catalog but only products concerned by projects and
