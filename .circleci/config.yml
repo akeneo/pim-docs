@@ -9,7 +9,7 @@ jobs:
 
     check-external-link:
         machine:
-            image: ubuntu-1604:202004-01
+            image: ubuntu-2004:202111-01
         steps:
             - checkout
             - run: make lint
