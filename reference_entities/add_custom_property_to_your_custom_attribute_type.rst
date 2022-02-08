@@ -5,10 +5,8 @@ Add a Custom Property to Your Custom Attribute Type
 
    Reference Entities feature is only available for the **Enterprise Edition**.
 
-In the `previous tutorial`_, we've created a custom simple metric attribute.
+In the :doc:`previous tutorial <create_new_attribute_type>`, we've created a custom simple metric attribute.
 In this tutorial, we will add a new custom property to this attribute. For the simple metric, we will add a "Unit" property.
-
-.. _previous tutorial: ./create_new_attribute_type.html
 
 .. image:: ../_images/reference_entities/custom_property_simple_metric_attribute.png
   :alt: Set a custom property on a custom attribute

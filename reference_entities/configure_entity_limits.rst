@@ -35,15 +35,8 @@ If you want to create more, you have to edit the ``reference_entity_maximum_attr
 
 Raise the limit of Options for "Simple Option" and "Multiple Option" Attributes
 -------------------------------------------------------------------------------
-By default, you can't create more than **100** options for each **"Simple Option" and "Multiple Option"**.
-If you want to create more, you have to edit the ``reference_entity_option_limit_per_list_attribute`` parameter, for example:
-
-.. code-block:: yaml
-    :linenos:
-
-    # app/config/parameters.yml
-    parameters:
-        reference_entity_option_limit_per_list_attribute: 200
+You can't create more than **100** options for each **"Simple Option" and "Multiple Option"**.
+If you need more than 100 options, we advise you to create a dedicated reference entity.
 
 
 Raise the limit of Records per Reference Entity
