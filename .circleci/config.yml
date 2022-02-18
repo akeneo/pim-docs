@@ -91,14 +91,3 @@ workflows:
                     branches:
                         only:
                             - "4.0"
-
-    nightly:
-        triggers:
-            - schedule:
-                cron: "0 2 * * *"
-                filters:
-                    branches:
-                        only:
-                            - "4.0"
-        jobs:
-            - check-external-link
