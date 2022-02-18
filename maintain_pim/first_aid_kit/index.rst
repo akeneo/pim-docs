@@ -95,7 +95,7 @@ Clear the PIM cache (also known as "Symfony cache") by running the following com
     cd /path/to/your/pim/
     php bin/console cache:clear --env=prod --no-warmup
 
- 
+
 You could use the command `partners_clear_cache` if you are on a Akeneo Cloud Offer. You can find more commands in our `_System Administration & Services Management page <https://docs.akeneo.com/4.0/cloud_edition/flexibility_mode/docs/system_administration.html>`__.
 
 Step 9: did you consider the volume of your catalog?
@@ -107,7 +107,7 @@ Step 9: did you consider the volume of your catalog?
 
 Each catalog is unique. How many channels, locales, attributes, families, categories, products and users do you have? These values may had increased drastically since you began using your PIM.
 
-Most of this information can be found on the PIM under System > System information. Since 2.3 version, you have a dedicated page available under Activity menu, called Catalog Volume Monitoring, see our `_Help Center article <https://help.akeneo.com/pim/v3/articles/catalog-volume-monitoring.html#a-dedicated-screen>`__ for more information about this page and how to read it. 
+Most of this information can be found on the PIM under System > System information. Since 2.3 version, you have a dedicated page available under Activity menu, called Catalog Volume Monitoring, see our `_Help Center article <https://help.akeneo.com/pim/v3/articles/catalog-volume-monitoring.html#a-dedicated-screen>`__ for more information about this page and how to read it.
 
 You can also read this Medium article `_Because your product catalog typology matters <https://medium.com/akeneo-labs/because-your-product-catalog-typology-matters-e1a9af4c33e0>`__ to see the impacts catalog modeling can have on PIM performances.
 
@@ -126,8 +126,6 @@ Disable all custom developments by commenting them in the "AppKernel.php" file `
     // new YourCompagny\Bundle\AppBundle\YourCompagnyCustomBundle(),
 
 And then, re-apply `Step 7: are your assets properly deployed?`_ and `Step 8: did you clear the cache?`_
-
-Alternatively, you can check if the issue is reproducible on `Demo website <http://demo.akeneo.com/user/login>`_ (only for the latest PIM version).
 
 Does the bug persist?
 ---------------------
