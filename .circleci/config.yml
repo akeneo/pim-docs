@@ -62,14 +62,3 @@ workflows:
             - deploy_production:
                   requires:
                       - approve_to_deploy_in_production
-
-    nightly:
-        triggers:
-            - schedule:
-                  cron: "0 2 * * *"
-                  filters:
-                      branches:
-                          only:
-                              - "<< pipeline.parameters.release_branch >>"
-        jobs:
-            - check-external-link
