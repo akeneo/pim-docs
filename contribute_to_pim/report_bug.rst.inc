@@ -23,11 +23,11 @@ Report a Bug
   * Provides the PIM system information available under System > System information
   * Provides as much information as possible on your environment (OS, PHP version, browser)
 
-* Don't hesitate to claim your badge "Bug Hunter" on `badger <http://badger.akeneo.com/login>`_
+* Don't hesitate to claim your badge "Bug Hunter" on `badger <https://badger.akeneo.com/login>`_
 
 **Enterprise Edition**
 
 * Gather as much information as possible by following our :doc:`/maintain_pim/bug_qualification/index` guide
-* Raise an issue by using your `Service Desk Account <http://helpdesk.akeneo.com/>`_
+* Raise an issue by using your `Service Desk Account <https://helpdesk.akeneo.com>`_
 * Attach the PIM system information file to your request (it is available under System > System information > TXT)
 * Submit your request on our Helpdesk
