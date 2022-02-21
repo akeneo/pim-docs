@@ -1,4 +1,4 @@
-FROM akeneo/pim-php-dev:master
+FROM akeneo/pim-php-dev:6.0
 WORKDIR /home/akeneo/pim-docs/
 ENV DEBIAN_FRONTEND=noninteractive
 
