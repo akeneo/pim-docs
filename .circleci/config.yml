@@ -34,6 +34,9 @@ jobs:
                   name: Deploy on production server
                   command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="6.0" make deploy
 
+orbs:
+    pull-up: akeneo-orbs/pull-up@1.0
+
 workflows:
     version: 2
     pull_request:
