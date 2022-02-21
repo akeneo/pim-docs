@@ -20,4 +20,6 @@ RUN echo 'APT::Install-Recommends "0" ; APT::Install-Suggests "0" ;' > /etc/apt/
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf /var/lib/apt/lists/* /var/log/* /tmp/* /usr/share/locale/*
 
-RUN pip3 install -U sphinx
+RUN pip3 install --upgrade setuptools wheel
+RUN pip3 install --upgrade sphinx
+

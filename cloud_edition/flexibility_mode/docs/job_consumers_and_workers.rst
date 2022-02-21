@@ -130,6 +130,9 @@ daemons:
    # Enable consumer #1 to be started at instance boot
    partners_systemctl pim_onboarder_consumer@1 enable
 
+   # Enable worker #1 to be started at instance boot
+   partners_systemctl pim_onboarder_worker@1 enable
+
    # Check the status of the daemon #1
    partners_systemctl pim_onboarder_consumer@1 status
 
