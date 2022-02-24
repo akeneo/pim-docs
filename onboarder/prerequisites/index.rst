@@ -24,7 +24,7 @@ All the Prerequisites listed below have to be fulfilled before the installation 
 PIM
 ---
 
-The Onboarder is compatible with the enterprise edition of the PIM starting 5.0 version.
+The Onboarder is compatible with the enterprise edition of the PIM, version 5.0 (6.0 not yet supported).
 
 .. _onboarder-prereq-sync:
 
