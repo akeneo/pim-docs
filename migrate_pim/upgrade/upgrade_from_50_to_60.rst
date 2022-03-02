@@ -175,11 +175,13 @@ Migrate the job queue
 In 6.0 we set up a new job queue. You may have jobs awaiting in the old queue, they must be migrated in the new queue:
 
 .. code:: bash
+
     $ bin/console akeneo:batch:migrate-job-messages-from-old-queue
 
 If you want to skip the interactive question and want to migrate directly:
 
 .. code:: bash
+
     $ bin/console akeneo:batch:migrate-job-messages-from-old-queue --no-interaction
 
 Migrating your custom code
