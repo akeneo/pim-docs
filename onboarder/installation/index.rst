@@ -162,3 +162,8 @@ A new Elasticsearch index is needed for pre ref products. In order to create it,
 .. warning::
 
     You do not need to reindex anything at this point, even if the ``reset-indexes`` command proposes you to do so.
+
+Setup synchronization
+---------------------
+
+Now that you have a working Onboarder bundle, you have to setup :doc:`synchronization </onboarder/synchronization/index>`
