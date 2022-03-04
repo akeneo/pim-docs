@@ -37,16 +37,11 @@ Updated crontab definition
 
 Check your crontab is in sync with :doc:`/cloud_edition/flexibility_mode/docs/crontasks`
 
-Enterprise Edition
-^^^^^^^^^^^^^^^^^^
-
-Renamed
-
-- From `pimee:data-quality-insights:schedule-periodic-tasks` to `pim:data-quality-insights:schedule-periodic-tasks`
-- From `pimee:data-quality-insights:evaluate-products` to `pim:data-quality-insights:evaluations`
 
 Upgraded Virtual Host configuration
 -----------------------------------
+
+*OnPremise only*
 
 Since Akeneo PIM, instead of using one fpm pool, we are using one for the API, and one for UI.
 
