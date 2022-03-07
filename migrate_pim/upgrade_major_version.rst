@@ -7,11 +7,9 @@ These new major versions bring new features and larger changes to answer clients
 Upgrade from 1.7 to 2.0
 -----------------------
 
-To migrate from 1.7 to 2.0, we recommend the use of our brand new migration tool `Transporteo`_.
+To migrate from 1.7 to 2.0, we recommend the use of our migration tool `Transporteo`_.
 
 .. _Transporteo: https://github.com/akeneo/transporteo
-
-We're continuously improving Transporteo to cover more and more use cases and automate more and more the migrations.
 
 Upgrade from 2.3 to 3.1
 -----------------------
