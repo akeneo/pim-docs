@@ -9,6 +9,22 @@ Disclaimer
 Make sure your production database is backed-up before performing the data migration.
 The queue daemon(s) must be stopped as well.
 
+Prepare your project for the new technical stack
+************************************************
+
+Your current v5.0 application must have up to date migrations before migrating on the new technical stack.
+
+The root of your current installation dir is referred as $INSTALLATION_DIR.
+
+.. code:: bash
+
+    $ export APP_ENV=prod
+    $ cd $INSTALLATION_DIR
+    $ cp -R ./vendor/akeneo/pim-community-dev/upgrades/* ./upgrades/
+    $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
+    $ php bin/console doctrine:migrations:version --add --all -q
+    $ rm -rf var/cache/
+
 Requirements
 ************
 
@@ -53,16 +69,6 @@ Prepare your project
 Akeneo PIM composer.json
 ----------------------------
 The root of your current installation dir is referred as $INSTALLATION_DIR.
-
-
-.. code:: bash
-
-    $ export APP_ENV=prod
-    $ cd $INSTALLATION_DIR
-    $ cp -R ./vendor/akeneo/pim-community-dev/upgrades/* ./upgrades/
-    $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
-    $ php bin/console doctrine:migrations:version --add --all -q
-    $ rm -rf var/cache/
 
 Community Edition
 ^^^^^^^^^^^^^^^^^
