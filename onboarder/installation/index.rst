@@ -105,7 +105,7 @@ Here are two examples in order to define environment variables:
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | FLAG_ONBOARDER_ENABLED                             | Set to the value ``1``                                                                                                            |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| GOOGLE_APPLICATION_CREDENTIALS                     | Absolute filesystem path to the ``serviceAccount.json`` file provided by the Akeneo team. We advise to use it only in production. |
+| ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS           | Absolute filesystem path to the ``serviceAccount.json`` file provided by the Akeneo team. We advise to use it only in production. |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE | Pub/Sub topic name to send messages to the middleware.                                                                            |
 +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
@@ -124,9 +124,9 @@ Here are two examples in order to define environment variables:
 
 **Optional variables**
 
-+----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| PUBSUB_EMULATOR_HOST | Use this if you want to use a Pub/Sub emulator during development. In this case you don't need the serviceAccount.json file neither set the GOOGLE_APPLICATION_CREDENTIALS variable. |
-+----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| PUBSUB_EMULATOR_HOST | Use this if you want to use a Pub/Sub emulator during development. In this case you don't need the serviceAccount.json file neither set the ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS variable. |
++----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 Setup database tables
