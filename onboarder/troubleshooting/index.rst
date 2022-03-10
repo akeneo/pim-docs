@@ -35,4 +35,4 @@ Proposals from Onboarder don't show up into the PIM
 
 If you don't received proposals into the PIM, double check that you have rightfully setup and configure your workers, see :doc:`synchronization </onboarder/synchronization/index>` page.
 
-Please also check that in your .env file you have an `ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS` entry. More details in the :doc:`installation </onboarder/installation/index#set-the-configuration-values>` page at "Set the configuration values" section.
+Please also check that in your .env file you have an `ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS` entry. More details in the :doc:`installation </onboarder/installation/index>` page at "Set the configuration values" section.
