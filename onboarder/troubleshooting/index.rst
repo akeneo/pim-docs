@@ -33,6 +33,6 @@ You can check if Google Pub/Sub access is successfully configured by using the f
 Proposals from Onboarder don't show up in the PIM
 ---------------------------------------------------
 
-If you don't received proposals into the PIM, double check that you have rightfully setup and configure your workers, see :doc:`synchronization </onboarder/synchronization/index>` page.
+If you don't receive proposals in the PIM, double check that you properly set up and configured your workers, see :doc:`synchronization </onboarder/synchronization/index>` page.
 
 Please also check that in your .env file you have an `ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS` entry. More details in the :doc:`installation </onboarder/installation/index>` page at "Set the configuration values" section.
