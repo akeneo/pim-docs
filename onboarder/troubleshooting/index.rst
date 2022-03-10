@@ -30,7 +30,7 @@ You can check if Google Pub/Sub access is successfully configured by using the f
     :alt: Result of the check pubsub access command
     :align: center
 
-Proposals from Onboarder don't show up into the PIM
+Proposals from Onboarder don't show up in the PIM
 ---------------------------------------------------
 
 If you don't received proposals into the PIM, double check that you have rightfully setup and configure your workers, see :doc:`synchronization </onboarder/synchronization/index>` page.
