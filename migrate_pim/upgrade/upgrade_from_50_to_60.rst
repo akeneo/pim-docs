@@ -25,6 +25,11 @@ The root of your current installation dir is referred as $INSTALLATION_DIR.
     $ php bin/console doctrine:migrations:version --add --all -q
     $ rm -rf var/cache/
 
+.. note::
+
+    WARNING: please note that this part of the migration needs to be executed on your PIM v5.0 ``before`` upgrading your technical stack. 
+
+
 Requirements
 ************
 
