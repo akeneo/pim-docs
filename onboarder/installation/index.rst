@@ -124,9 +124,9 @@ Here are two examples in order to define environment variables:
 
 **Optional variables**
 
-+----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| PUBSUB_EMULATOR_HOST | Use this if you want to use a Pub/Sub emulator during development. In this case you don't need the onboarderServiceAccount.json file neither set the ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS variable. |
-+----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| PUBSUB_EMULATOR_HOST | Use this if you want to use a Pub/Sub emulator during development. In this case you don't need the ``onboarderServiceAccount.json`` file neither set the ``ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS`` variable. |
++----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 Setup database tables
