@@ -15,7 +15,7 @@ If you launch this daemon :doc:`using supervisor configuration </install_pim/man
 .. code-block:: bash
 
     [supervisord]
-    environment=ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS="/srv/pim/serviceAccount.json",ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE="middleware-topic-name",...
+    environment=ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS="/srv/pim/onboarderServiceAccount.json",ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE="middleware-topic-name",...
 
 You can check if Google Pub/Sub access is successfully configured by using the following command in your pim
 

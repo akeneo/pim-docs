@@ -61,7 +61,7 @@ You can use supervisor to run the ``worker`` as a daemonized process, supervisor
 .. code-block:: bash
 
     [supervisord]
-    environment=ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS="/srv/pim/serviceAccount.json",ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE="middleware-topic-name",...
+    environment=ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS="/srv/pim/onboarderServiceAccount.json",ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE="middleware-topic-name",...
 
 .. note::
 

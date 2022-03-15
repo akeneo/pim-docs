@@ -63,9 +63,9 @@ Clear the Symfony cache and execute the following command to build the UI:
 Make the credential files accessible to Akeneo PIM software
 -----------------------------------------------------------
 
-In the parameters package the Akeneo team put a ``serviceAccount.json`` credential file used for Google Cloud PubSub and Google Cloud Storage authentication
+In the parameters package the Akeneo team put a ``serviceAccount.json`` credential file used for Google Cloud PubSub and Google Cloud Storage authentication.
 
-Make sure this file is shipped to the server which is hosting your PIM.
+Make sure to rename the file from ``serviceAccount.json`` to ``onboarderServiceAccount.json`` and upload it to the server which is hosting your PIM.
 
 This file must be accessible (read rights) by the system user that runs the pim (example: www-data).
 
@@ -102,31 +102,31 @@ Here are two examples in order to define environment variables:
 
 **Variables provided by the Akeneo team**
 
-+----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| FLAG_ONBOARDER_ENABLED                             | Set to the value ``1``                                                                                                            |
-+----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS           | Absolute filesystem path to the ``serviceAccount.json`` file provided by the Akeneo team. We advise to use it only in production. |
-+----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE | Pub/Sub topic name to send messages to the middleware.                                                                            |
-+----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_ONBOARDER  | Pub/Sub topic name to send messages to the supplier Onboarder.                                                                    |
-+----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_TOPIC_NAME_FOR_CONSUMPTION               | Pub/Sub topic name to receive messages from the middleware.                                                                       |
-+----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_QUEUE_NAME                               | Pub/Sub queue name.                                                                                                               |
-+----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| ONBOARDER_CLOUD_STORAGE_BUCKET_NAME                | Identifier of the bucket used to share files between your PIM and the middleware.                                                 |
-+----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| FLAG_ONBOARDER_ENABLED                             | Set to the value ``1``                                                                                                                     |
++----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS           | Absolute filesystem path to the ``onboarderServiceAccount.json`` file provided by the Akeneo team. We advise to use it only in production. |
++----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE | Pub/Sub topic name to send messages to the middleware.                                                                                     |
++----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_ONBOARDER  | Pub/Sub topic name to send messages to the supplier Onboarder.                                                                             |
++----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| ONBOARDER_TOPIC_NAME_FOR_CONSUMPTION               | Pub/Sub topic name to receive messages from the middleware.                                                                                |
++----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| ONBOARDER_QUEUE_NAME                               | Pub/Sub queue name.                                                                                                                        |
++----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+| ONBOARDER_CLOUD_STORAGE_BUCKET_NAME                | Identifier of the bucket used to share files between your PIM and the middleware.                                                          |
++----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. note::
 
-    The values for the variables prefixed by ``ONBOARDER_`` are generated. You can find them in the Partners Portal, under the "Properties" tab of your Onboarder project.
+    The values for the variables prefixed by ``ONBOARDER_`` are generated (except ``ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS``). You can find them in the Partners Portal, under the "Properties" tab of your Onboarder project.
 
 **Optional variables**
 
-+----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| PUBSUB_EMULATOR_HOST | Use this if you want to use a Pub/Sub emulator during development. In this case you don't need the serviceAccount.json file neither set the ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS variable. |
-+----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| PUBSUB_EMULATOR_HOST | Use this if you want to use a Pub/Sub emulator during development. In this case you don't need the onboarderServiceAccount.json file neither set the ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS variable. |
++----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 Setup database tables
