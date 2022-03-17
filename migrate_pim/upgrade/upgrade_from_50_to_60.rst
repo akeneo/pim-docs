@@ -157,6 +157,7 @@ Migrate your data
 
     $ bin/console doctrine:migrations:migrate
     $ bin/console pimee:data-quality-insights:migrate-product-criterion-evaluation
+    $ bin/console pim:data-quality-insights:recompute-product-scores
 
 .. note::
 
