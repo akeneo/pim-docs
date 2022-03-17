@@ -29,14 +29,17 @@ Configuring you package manager
 
 The default values defined in `docker-compose.yml` match the default values for the `composer` and `yarn` directories:
  - Composer: `~/.composer`
+ - Composer cache directory: `~/.cache/composer`
  - Yarn: `~/.cache/yarn`
+
+On some older versions of Composer, the default cache director can be located at `~/.composer/cache`
 
 
 .. note::
     If you are using non standard directories for Composer and Yarn, set the following environment variables:
-     - Composer: `HOST_COMPOSER_HOME`
+     - Composer: `COMPOSER_HOME <https://getcomposer.org/doc/03-cli.md#composer-home>`_
+     - Composer cache dir: `COMPOSER_CACHE_DIR <https://getcomposer.org/doc/03-cli.md#composer-cache-dir>`_
      - Yarn: `HOST_YARN_HOME`
-
 
 Creating the PIM project
 ------------------------
@@ -57,7 +60,7 @@ The following command will create a PIM project in the current directory. Please
 
 .. note::
     Alternatively, you can download an archive of Akeneo PIM CE containing all the PHP dependencies here:
-    ``https://download.akeneo.com/pim-community-standard-v6.0-latest-icecat.tar.gz``
+    https://download.akeneo.com/pim-community-standard-v6.0-latest-icecat.tar.gz
 
 
 Enterprise Edition
@@ -71,8 +74,8 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
     $ cd pim-enterprise-standard
     $ docker run -ti -u www-data --rm \
         -e COMPOSER_MEMORY_LIMIT=4G \
-        -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -v ~/.ssh:/var/www/.ssh -w /srv/pim \
-        akeneo/pim-php-dev:master php /usr/local/bin/composer install
+        -v $(pwd):/srv/pim -v ~/.ssh:/var/www/.ssh -w /srv/pim \
+        akeneo/pim-php-dev:6.0 php /usr/local/bin/composer install
 
 .. note::
     The above Docker command uses a volume to make your SSH private key available to the container, in order for it to access
@@ -82,7 +85,7 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
 
     .. code-block:: bash
 
-        $ docker run -ti -u www-data -v $(pwd):/srv/pim -v $SSH_AUTH_SOCK:/ssh-auth.sock -e SSH_AUTH_SOCK=/ssh-auth.sock -w /srv/pim --rm akeneo/pim-php-dev:master \
+        $ docker run -ti -u www-data -v $(pwd):/srv/pim -v $SSH_AUTH_SOCK:/ssh-auth.sock -e SSH_AUTH_SOCK=/ssh-auth.sock -w /srv/pim --rm akeneo/pim-php-dev:6.0 \
             /usr/local/bin/composer install
 
     See https://github.com/docker-library/docs/tree/master/composer/#private-repositories--ssh-agent for more details.
