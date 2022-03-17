@@ -234,3 +234,9 @@ From that point, you will have to migrate your bundle one by one.
 
 Remember to check if they are still relevant, as each Akeneo version
 brings new features.
+
+
+Setting up the Events API
+*************************
+
+Configure your Events API with :doc:`/install_pim/manual/events_api`
