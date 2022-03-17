@@ -15,7 +15,7 @@ If you launch this daemon :doc:`using supervisor configuration </install_pim/man
 .. code-block:: bash
 
     [supervisord]
-    environment=GOOGLE_APPLICATION_CREDENTIALS="/srv/pim/serviceAccount.json",ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE="middleware-topic-name",...
+    environment=ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS="/srv/pim/onboarderServiceAccount.json",ONBOARDER_TOPIC_NAME_FOR_PUBLICATION_TO_MIDDLEWARE="middleware-topic-name",...
 
 You can check if Google Pub/Sub access is successfully configured by using the following command in your pim
 
@@ -29,3 +29,10 @@ You can check if Google Pub/Sub access is successfully configured by using the f
     :scale: 100 %
     :alt: Result of the check pubsub access command
     :align: center
+
+Proposals from Onboarder don't show up in the PIM
+---------------------------------------------------
+
+If you don't receive proposals in the PIM, double check that you properly set up and configured your workers, see :doc:`synchronization </onboarder/synchronization/index>` page.
+
+Please also check that in your .env file you have an `ONBOARDER_GOOGLE_APPLICATION_CREDENTIALS` entry. More details in the :doc:`installation </onboarder/installation/index>` page at "Set the configuration values" section.
