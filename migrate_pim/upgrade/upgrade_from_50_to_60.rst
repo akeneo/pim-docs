@@ -157,6 +157,7 @@ Migrate your data
 
     $ bin/console doctrine:migrations:migrate
     $ bin/console pimee:data-quality-insights:migrate-product-criterion-evaluation
+    $ bin/console akeneo:batch:publish-job-to-queue data_quality_insights_recompute_products_scores
 
 .. note::
 
