@@ -19,6 +19,12 @@ To upgrade, please change the composer.json to:
         ...
     }
 
+You can use a text editor (vi) or the composer require command:
+
+.. code-block:: bash
+
+    composer require --no-update akeneo/pim-community-dev 4.0.10
+    
 Run the composer update command:
 
 .. code-block:: bash
