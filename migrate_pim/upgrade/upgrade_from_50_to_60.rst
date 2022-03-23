@@ -20,6 +20,7 @@ The root of your current installation dir is referred as $INSTALLATION_DIR.
 
     $ export APP_ENV=prod
     $ cd $INSTALLATION_DIR
+    $ rm -rf ./upgrades/*
     $ cp -R ./vendor/akeneo/pim-community-dev/upgrades/* ./upgrades/
     $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
     $ php bin/console doctrine:migrations:version --add --all -q
