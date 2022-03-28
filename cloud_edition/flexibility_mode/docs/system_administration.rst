@@ -65,7 +65,6 @@ Alias                        Argument                                     Action
 ``partners_systemctl <job>`` ``status|start|stop|restart|enable|disable`` Show status, start/stop/restart or enable/disable job consumers. Refer to `this page <job_consumers_and_workers.rst>`_ for more details
 ============================ ============================================ ======
 
-
 Third-party Software Installation
 ---------------------------------
 
