@@ -80,7 +80,7 @@ Follow the official Elasticsearch documentation: `official vendor package <https
 
 .. warning::
 
-   You will probably need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/7.5/deb.html#deb-configuring>`_.
+   You will probably need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/7.16/deb.html#deb-configuring>`_.
    Proceed as follow (first command will affect your current session, second one every boot of your machine):
 
    .. code-block:: bash
@@ -108,13 +108,13 @@ Apache
 
 .. include:: /install_pim/manual/system_requirements/system_configuration.rst.inc
 
-Node 12
+Node 14
 *******
 
 .. code-block:: bash
 
     $ apt-get install curl
-    $ curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
+    $ curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
     $ bash nodesource_setup.sh
     $ apt-get install -y nodejs
 

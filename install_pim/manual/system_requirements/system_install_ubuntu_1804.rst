@@ -98,7 +98,7 @@ Apache
 
 .. include:: /install_pim/manual/system_requirements/system_configuration.rst.inc
 
-Node 12
+Node 14
 *******
 
 .. code-block:: bash
