@@ -27,7 +27,7 @@ Here are the main objects of the architecture.
 
 .. note::
 
-    Akeneo Batch is widely based on Spring Batch https://projects.spring.io/spring-batch/, it implements a very small part of the original work, and mainly provides reusable functions to process large volumes of records.
+    Akeneo Batch is widely based on Spring Batch https://spring.io/projects/spring-batch, it implements a very small part of the original work, and mainly provides reusable functions to process large volumes of records.
 
 Connector
 ---------
