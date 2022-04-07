@@ -20,7 +20,7 @@ The easiest way to install MySQL 8.0 is to use the official vendor package.
 Follow the official documentation: <https://dev.mysql.com/doc/refman/8.0/en/linux-installation-debian.html>.
 
 Download the bundle package for the required version:
-    # wget https://downloads.mysql.com/archives/get/p/23/file/mysql-server_8.0.22-1debian10_amd64.deb-bundle.tar
+    # wget https://downloads.mysql.com/archives/get/p/23/file/mysql-server_8.0.23-1debian10_amd64.deb-bundle.tar
 
 And follow the aforementioned documentation.
 
