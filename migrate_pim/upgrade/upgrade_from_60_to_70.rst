@@ -140,6 +140,7 @@ Migrate your data
 
 .. code:: bash
 
+    $ bin/console pim:data-quality-insights:clean-product-scores
     $ bin/console doctrine:migrations:migrate
     $ bin/console pim:data-quality-insights:populate-product-models-scores-and-ki
 
