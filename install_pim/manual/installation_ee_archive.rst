@@ -12,7 +12,7 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
 
 .. code-block:: bash
 
-    $ tar -xvzf pim-enterprise-standard-v5.0.tar.gz
+    $ tar -xvzf pim-enterprise-standard-v6.0.tar.gz
     $ cd pim-enterprise-standard/pim-enterprise-standard
     $ composer install
 
