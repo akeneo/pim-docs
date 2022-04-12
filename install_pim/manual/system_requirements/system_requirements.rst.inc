@@ -57,7 +57,7 @@ The web server will also need the following libraries and modules:
 +-----------------+---------------------------+
 | php8.0-opcache  | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-zip      | No specific configuration |
+| php8.0-gd       | No specific configuration |
 +-----------------+---------------------------+
 | php8.0-mbstring | No specific configuration |
 +-----------------+---------------------------+
