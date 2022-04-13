@@ -29,7 +29,7 @@ Be aware that your composer.json won't be updated and some dependencies might be
 
 You have to check whether the latest composer.json is different from your own. In this case you should backup your current composer.json and download the newest one beforehand.
 
-Double check in the output of this command that the 4.0.10 version has been fetched, you can also check it by using the following command:
+Double check in the output of this command that the 5.0.2 version has been fetched, you can also check it by using the following command:
 
 .. code-block:: bash
 
