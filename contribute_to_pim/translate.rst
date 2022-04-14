@@ -11,7 +11,6 @@ How to translate?
 You have to create an account and begin to translate in your favorite language on `Crowdin`_.
 You need a proofreading permission to validate the strings, so your translation will be included in the PIM.
 Each language with more than 80% of valid translations are automatically translated with `Nelson`_ each week, and will be available in the next patch.
-You will be able to claim your badge "El Translator" on `Badger platform <http://badger.akeneo.com/login/>`_!
 
 Your language is not available on Crowdin?
 ------------------------------------------

@@ -20,16 +20,16 @@ The easiest way to install MySQL 8.0 is to use the official vendor package.
 Follow the official documentation: <https://dev.mysql.com/doc/refman/8.0/en/linux-installation-debian.html>.
 
 Download the bundle package for the required version:
-    # wget https://downloads.mysql.com/archives/get/p/23/file/mysql-server_8.0.22-1debian10_amd64.deb-bundle.tar
+    # wget https://downloads.mysql.com/archives/get/p/23/file/mysql-server_8.0.23-1debian10_amd64.deb-bundle.tar
 
 And follow the aforementioned documentation.
 
 When installing MySQL 8.0, you'll have to choose the authentication method. Please select *Use Legacy Authentication Method* as the *Strong Password Encryption* is not yet supported by Akeneo PIM.
 
-PHP 7.4
+PHP 8.0
 *******
 
-As Debian 10 only provides PHP 7.3, we need to use `Ondrej Sury <https://deb.sury.org/>`_ packages to install PHP 7.4..
+As Debian 10 only provides PHP 7.3, we need to use `Ondrej Sury <https://deb.sury.org/>`_ packages to install PHP 8.0..
 
 .. code-block:: bash
 
@@ -41,13 +41,13 @@ Install PHP and the required extensions:
 
 .. code-block:: bash
 
-    # apt-get install php7.4-cli php7.4-apcu php7.4-bcmath php7.4-curl php7.4-opcache php7.4-fpm php7.4-gd php7.4-intl php7.4-memcached php7.4-mysql php7.4-xml php7.4-zip php7.4-mbstring php7.4-imagick php7.4-exif
+    # apt-get install php8.0-cli php8.0-apcu php8.0-bcmath php8.0-curl php8.0-opcache php8.0-fpm php8.0-gd php8.0-intl php8.0-memcached php8.0-mysql php8.0-xml php8.0-zip php8.0-mbstring php8.0-imagick
 
 
-Elasticsearch 7.10
+Elasticsearch 7.16
 *******************
 
-Follow the official Elasticsearch documentation: `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/7.10/deb.html#deb>`_:
+Follow the official Elasticsearch documentation: `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/7.16/deb.html#deb>`_:
 
 - first install the PGP key
 - then install the package via the official repository
@@ -62,7 +62,7 @@ Follow the official Elasticsearch documentation: `official vendor package <https
 
 .. warning::
 
-   You will probably need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/7.10/vm-max-map-count.html>`_.
+   You will probably need to `increase the MAX_MAP_COUNT Linux kernel setting <https://www.elastic.co/guide/en/elasticsearch/reference/7.16/vm-max-map-count.html>`_.
    Proceed as follow (first command will affect your current session, second one every boot of your machine):
 
    .. code-block:: bash
@@ -90,13 +90,13 @@ Apache
 
 .. include:: /install_pim/manual/system_requirements/system_configuration.rst.inc
 
-Node 12
+Node 14
 *******
 
 .. code-block:: bash
 
     $ apt-get install curl
-    $ curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
+    $ curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
     $ bash nodesource_setup.sh
     $ apt-get install -y nodejs
 
