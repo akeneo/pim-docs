@@ -61,7 +61,7 @@ You can now clear the Symfony cache, re-install assets and rebuild the front-end
 .. code-block:: bash
 
     service php7.2-fpm stop
-    rm -rf var/cache/* ./web/bundles/* ./web/css/* ./web/js/*
+    rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
     service php7.2-fpm start
     bin/console --env=prod pim:installer:assets
     bin/console --env=prod cache:warmup
