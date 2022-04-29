@@ -1,7 +1,7 @@
 How to update the Onboarder bundle - Enterprise Edition - On Premise offer
 ==========================================================================
 
-In the following example, Akeneo Onboarder version 4.0.x has just been released and we are using an Akeneo PIM version 4.0.x.
+In the following example, Akeneo Onboarder version 5.0.x has just been released and we are using an Akeneo PIM version 5.0.x.
 
 
 Update the project dependencies
@@ -15,7 +15,7 @@ To upgrade, please change the composer.json to:
 
     {
         ...
-        "akeneo/pim-onboarder": "^4.1",
+        "akeneo/pim-onboarder": "^5.0",
         ...
     }
 
@@ -25,8 +25,7 @@ To upgrade, please change the composer.json to:
 
 .. important::
 
-    If you are upgrading from a version older than 4.1, please first remove the now useless ``config/packages/onboarder.yml`` file.
-    Also, please make sure the Onboarder composer scripts are present in the ``composer.json`` file, as explained in :doc:`/onboarder/installation/index`.
+    Please make sure the Onboarder composer scripts are present in the ``composer.json`` file, as explained in :doc:`/onboarder/installation/index`.
 
 Run the composer update command:
 
@@ -49,8 +48,8 @@ instructions of the ``UPGRADE.md`` file it contains. It will provide you accurat
 migration scripts.
 
 
-Rebuild the front-end
----------------------
+Rebuild the UI
+--------------
 
 You can now clear the Symfony cache, re-install assets and rebuild the front-end code with the following commands.
 
@@ -62,11 +61,13 @@ You can now clear the Symfony cache, re-install assets and rebuild the front-end
 .. code-block:: bash
 
     service php7.2-fpm stop
-    rm -rf var/cache/* ./web/bundles/* ./web/css/* ./web/js/*
+    rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
     service php7.2-fpm start
     bin/console --env=prod pim:installer:assets
     bin/console --env=prod cache:warmup
+    yarn run less
     yarn run webpack
+    yarn run update-extensions
 
 If the patch is a javascript fix, or if you upgrade to a new minor version, please **clear your browser cache** before testing.
 

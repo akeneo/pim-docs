@@ -23,8 +23,6 @@ Report a Bug
   * Provides the PIM system information available under System > System information
   * Provides as much information as possible on your environment (OS, PHP version, browser)
 
-* Don't hesitate to claim your badge "Bug Hunter" on `badger <https://badger.akeneo.com/login>`_
-
 **Enterprise Edition**
 
 * Gather as much information as possible by following our :doc:`/maintain_pim/bug_qualification/index` guide
