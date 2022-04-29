@@ -399,8 +399,3 @@ messages of all the commits. When you are finished, execute the push command.
 .. _`begin with PHPSpec`:               https://www.phpspec.net/
 .. _`Prophecy documentation`:           https://github.com/phpspec/prophecy#prophecy
 .. _`Doctrine migration documentation`: https://www.doctrine-project.org/projects/doctrine-migrations/en/1.8/reference/introduction.html
-
-Step 4: Is my pull request merged?
-----------------------------------
-
-Once your Pull Request is merged, don't hesitate to claim your badge "Core contributor" on `Badger platform <http://badger.akeneo.com/login/>`_.
