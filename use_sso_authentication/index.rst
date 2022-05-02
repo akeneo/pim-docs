@@ -43,7 +43,7 @@ The configuration of the IdP depends on the solution you choose so you'll have t
 You will have to configure the users:
 
 * Add the users you'll want to be able to login into the pim (the user must exists in the pim).
-* The attribute ``akeneo_uid`` will have to be sent in the Authentication response, and the value will have to match an existing pim user ``username`` attribute.
+* The attribute ``akeneo_uid`` will have to be sent in the Authentication response, and the value will have to match an existing pim user's ``username`` or ``email`` attribute.
 
 You will have to configure the Service Provider information with the following data:
 
