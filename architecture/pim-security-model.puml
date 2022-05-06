@@ -1,0 +1,90 @@
+@startuml PIM security model
+
+together {
+
+' oro_user
+
+    class UserGroup {
+        name: string
+    }
+
+    class User { 
+        username: string
+        password: password
+    }
+
+    class ApiConnection {
+        code: string 
+        label: string
+        flow_type: FlowType
+        'presentation
+        image: File
+        clientId: string
+        secret: string
+        webhookUrl: string
+        webhookSecret: string
+        webhooEnabled: boolean
+        'todo 
+        allowed_grant_ypes
+        redirect_uri
+        type
+    }
+
+    enum FlowType { 
+        data_source
+        data_destination
+        other
+    }
+
+    class RealUser {
+        catalogLocale: Locale
+        uiLocale: Locale
+        timezone: TimeZone
+        catalogChannel: Channel
+        defaultTreeRoot: Category
+
+        mainMission: MissionType
+        namePrefix: string
+        firstName: string
+        lastName: string
+        phone: string
+        email: string
+    }
+
+    User <|-- ApiConnection
+    User <|-- RealUser
+
+    UserGroup "0..*" *-- "0..*" User
+
+    class Role {
+        code: string
+        label: string
+        'Application ensures no overlapping
+        grantedEntityRole: RoleEntity[0..]
+        grantedRoleAction: RoleAction[0..*]
+
+    }
+
+    Role "0..*" *-- "0..*" User
+    Role -> "is granted" RoleEntity
+    Role -> "is granted" RoleAction
+
+    together {
+        class RoleEntity  <<Reference>> {
+            actions: RoleAction[1..*]
+            isWeb: boolean
+        }
+
+        class RoleAction  <<Reference>> {
+            action: string
+        }
+
+    }
+
+    RoleEntity o-- RoleAction
+
+}
+
+
+
+@enduml

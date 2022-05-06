@@ -1,5 +1,5 @@
 # subject; condition; limit; limit-order
-pim_catalog_product; ; ; 
+oro_user; ; ; 
 
 # association; ; restriction-condition
 
@@ -407,36 +407,25 @@ yyyy-MM-dd;yyyy-MM-dd-HH.mm.ss;rowset
 #! block filter templates
 
 #! block layout
-pim_catalog_product; pim_catalog_group; -341.4737854003906; 29.156216621398926; 1.0
-pim_catalog_product; inverse-FK_90632072BC295696#; 170.9906005859375; -102.3337631225586; 1.0
-pim_catalog_product; pim_catalog_product_unique_data; -15.599441528320312; -37.49908447265625; 1.0
-pim_catalog_product; pim_catalog_variant_attribute_set_has_axes; 69.06002807617188; -216.07366943359375; 1.0
-pim_catalog_product; pim_catalog_attribute; -165.11660766601562; -103.279541015625; 1.0
-pim_catalog_product; pim_catalog_family_attribute; 61.669036865234375; -67.35362243652344; 1.0
-pim_catalog_product; pim_catalog_family_variant_attribute_set; 358.57928466796875; -205.39376831054688; 1.0
-pim_catalog_product; pim_catalog_category_product_model; 303.05698832673795; 113.85873510050908; 1.0
-pim_catalog_product; FK_350D8339727ACA70#; 302.5660406008062; 170.0826280924898; 1.0
-pim_catalog_product; pim_catalog_group_product; -174.92444610595703; 27.33293914794922; 1.0
-pim_catalog_product; FK_5943911E727ACA70#; 537.0048592002304; 97.80023049719534; 1.0
-pim_catalog_product; pim_catalog_family_variant_has_variant_attribute_sets; 371.02587920861697; -130.58701856972849; 1.0
-pim_catalog_product; pim_catalog_family_variant; 461.4124400762862; -0.31924502643539654; 1.0
-pim_catalog_product; pim_catalog_association_product; -82.60887542183013; 111.15718852737803; 1.0
-pim_catalog_product; pim_catalog_category_product; 200.6044663869659; 76.68128255564193; 1.0
-pim_catalog_product; pim_catalog_association_type; 55.863537532721125; 290.52285946321194; 1.0
-pim_catalog_product; pim_catalog_product_model_association; 169.44082583994202; 357.95221451688406; 1.0
-pim_catalog_product; inverse-FK_90632072E2D3A503#; 41.35048794452052; -155.88497641645833; 1.0
-pim_catalog_product; pim_catalog_group_type; -374.6206359863281; -25.07085418701172; 1.0
-pim_catalog_product; pim_catalog_association_product_model; 213.0038627417705; 512.1613077310235; 1.0
-pim_catalog_product; pim_catalog_association_group; -260.2319927215576; 144.7725372314453; 1.0
-pim_catalog_product; pim_catalog_channel; 223.7555375099182; 237.67776489257812; 1.0
-pim_catalog_product; pim_catalog_association_product_model_to_product; 58.792255221621474; 206.9471518715996; 1.0
-pim_catalog_product; pim_catalog_variant_attribute_set_has_attributes; 18.82855224609375; -285.4270935058594; 1.0
-pim_catalog_product; $ZOOMBOX; 0.0; 0.0; 1.0
-pim_catalog_product; pim_catalog_product_model; 450.6466045909458; 70.01699605988864; 1.0
-pim_catalog_product; pim_catalog_family; 387.3621139526367; -55.930702209472656; 1.0
-pim_catalog_product; pim_catalog_category; 158.31970145126934; 150.9361386341327; 1.0
-pim_catalog_product; pim_catalog_association; -135.19475264019428; 253.1551078925898; 1.0
-pim_catalog_product; pim_catalog_product; 123.44444615163923; 19.222221221452855; 1.0
+oro_user; akeneo_reference_entity_reference_entity_permissions; 163.16705063992902; -20.36885272488709; 1.0
+oro_user; oro_access_group; -68.83489847442041; -46.69632348772083; 1.0
+oro_user; pim_api_auth_code; 37.96795567238064; 55.601548660817514; 1.0
+oro_user; oro_access_role; -404.0055839806559; -28.730664337697448; 1.0
+oro_user; oro_user_access_group_role; -230.12475409796258; -80.57086760418761; 1.0
+oro_user; akeneo_asset_manager_asset_family; -120.50994873046875; -171.50320434570312; 1.0
+oro_user; FK_350D8339727ACA70#; -258.3739013671875; 140.73037719726562; 1.0
+oro_user; akeneo_reference_entity_reference_entity; 201.52490234375; -86.32208251953125; 1.0
+oro_user; pim_api_access_token; -112.65689172081335; 135.50011897793286; 1.0
+oro_user; pim_api_client; 177.91337935190074; 104.64975842209194; 1.0
+oro_user; $ZOOMBOX; 0.0; 0.0; 1.0
+oro_user; akeneo_connectivity_connection; 163.30246861356414; 17.56047483578169; 1.0
+oro_user; akeneo_asset_manager_asset_family_permissions; -56.6396864631771; -113.60948455809086; 1.0
+oro_user; pim_catalog_category; -254.8267955388783; 106.00216184761814; 1.0
+oro_user; oro_user_access_group; -160.10324576764515; 0.4745307117068762; 1.0
+oro_user; oro_user; -69.54475242797668; 43.93199627619617; 1.0
+oro_user; oro_user_access_role; -303.0403649769159; 35.54361696287657; 1.0
+oro_user; akeneo_connectivity_test_app; -399.2906155771401; 81.47488987548411; 1.0
+oro_user; pim_api_refresh_token; -27.042506980553924; 99.49674674732137; 1.0
 
 #! block known
 # known association; decision pending

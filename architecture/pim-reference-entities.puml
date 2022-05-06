@@ -1,0 +1,34 @@
+@startuml
+class ReferenceEntity {
+    identifier: string 
+    attributeAsLabel: string
+    attributeAsImage: string
+    
+}
+
+class Record  {
+    code: string
+    'label and image are two default attributes.
+    attributes: RecordAttribute[2..*]
+}
+
+
+class RecordAttribute <<UiLocale>> {
+    label: string 
+    type: RecordAttributeType
+    valuePerChannel: boolean
+    valuePerlocale: boolean
+}
+
+'//TODO describe entity reference attribute types.
+enum RecordAttributeType {
+    image 
+    text
+    number
+    referenceEntitySingleLink
+    referenceEntityMultipleLink
+    singleOption
+    multipleOption
+} 
+
+@enduml
