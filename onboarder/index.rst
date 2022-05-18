@@ -13,8 +13,9 @@ Akeneo Onboarder
 
     prerequisites/index
     installation/index
-    migrate/index
     synchronization/index
+    patch_and_minor/index
+    upgrade_major/index
     troubleshooting/index
     uninstall/index
 
