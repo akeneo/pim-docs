@@ -1,5 +1,5 @@
-How to upgrade to a major version?
-==================================
+How to upgrade to a major version
+=================================
 
 New major versions bring compatibility with new Akeneo PIM releases. So the only case you'll have to perform a major
 update of the Onboarder bundle is when you are migrating the PIM itself to a new version.
@@ -11,12 +11,11 @@ couple more things specific to the Onboarder bundle.
 Right before updating you composer dependencies
 -----------------------------------------------
 
-When updating the PIM ``composer.json`` to increase the PIM version, you also need to  change the
+When updating the PIM ``composer.json`` to increase the PIM version, you also need to change the
 ``akeneo/pim-onboarder`` version. Please refer to :doc:`/onboarder/installation/index` to know which version of the
 bundle to use.
 
 Then, make sure the Onboarder composer script is present in the ``composer.json`` file, as explained in :doc:`/onboarder/installation/index`.
-
 
 Right after updating you composer dependencies
 ----------------------------------------------
