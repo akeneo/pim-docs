@@ -89,7 +89,7 @@ ProjectSubscriber (Enterprise edition)                         0
 EnsureProductDraftGlobalStatusSubscriber (Enterprise edition)  0
 =============================================================  ===============
 
-.. _CurrencyDisablingSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Channel/Bundle/EventListener/CurrencyDisablingSubscriber.php
+.. _CurrencyDisablingSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Channel/back/Infrastructure/EventListener/CurrencyDisablingSubscriber.php
 .. _ComputeEntityRawValuesSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/EntityWithValues/ComputeEntityRawValuesSubscriber.php
 .. _ChannelLocaleSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Channel/Bundle/EventListener/ChannelLocaleSubscriber.php
 
