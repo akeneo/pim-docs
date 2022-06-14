@@ -46,6 +46,7 @@ workflows:
                       branches:
                           ignore:
                               - "5.0"
+            - check-external-link
 
     deployment:
         jobs:
