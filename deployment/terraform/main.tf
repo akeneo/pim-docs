@@ -5,7 +5,7 @@ provider "google" {
 
 # Create the website bucket
 resource "google_storage_bucket" "website" {
-  name          = var.domain_name
+  name          = "website-bucket"
   location      = "EU"
   force_destroy = true
 
@@ -48,7 +48,7 @@ resource "google_compute_managed_ssl_certificate" "website" {
   provider = google
   name     = "website-cert"
   managed {
-    domains = [var.domain_name]
+    domains = ["${var.domain_name}"]
   }
 }
 
@@ -103,4 +103,29 @@ terraform {
     prefix = "infra/website"
   }
   required_version = "= 1.1.3"
+}
+
+resource "google_project_service" "dns" {
+  project                    = var.project_id
+  service                    = "dns.googleapis.com"
+  disable_dependent_services = true
+}
+
+resource "google_dns_managed_zone" "website_dns" {
+  name     = "docs-sandbox"
+  dns_name = "${var.domain_name}."
+  description = "Website DNS zone"
+  project     = var.project_id
+
+  depends_on = [
+    google_project_service.dns,
+  ]
+}
+
+resource "google_dns_record_set" "a" {
+  name         = "${google_dns_managed_zone.website_dns.dns_name}"
+  managed_zone = google_dns_managed_zone.website_dns.name
+  type         = "A"
+  ttl          = 300
+  rrdatas      = ["${google_compute_global_address.website.address}"]
 }
