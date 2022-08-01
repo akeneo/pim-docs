@@ -1,6 +1,11 @@
 Initializing Akeneo
 -------------------
 
+.. note::
+
+    Copy the .env into a local .env and make the configuration in the local .env.
+
+
 Configure the PIM via the ``.env`` file:
 
 .. code-block:: yaml
