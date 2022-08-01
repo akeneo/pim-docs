@@ -73,7 +73,6 @@ First, create the file ``/etc/apache2/sites-available/akeneo-pim.local.conf``
     * Replace ``/path/to/installation`` by the path to the directory where you want to install the PIM.
     * Replace ``pim-community-standard`` by ``pim-enterprise-standard`` for enterprise edition.
     * ``/run/php/php8.0-fpm.sock`` is the default socket path. If you changed it in ``/etc/php/8.0/fpm/pool.d/www.conf``, change it in the virtual host too.
-    * Don't forget to add the ``web`` directory of your Symfony application.
 
 Enabling the virtual host
 ^^^^^^^^^^^^^^^^^^^^^^^^^
