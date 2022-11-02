@@ -97,17 +97,6 @@ Examples
       # Disable the consumer not to be started automatically at instance boot up
       partners_systemctl pim_webhook_consumer disable
 
-- Manage all daemons at once:
-   .. code-block:: bash
-      :linenos:
-
-      # Check the status of all daemons
-      partners_systemctl pim_job_consumer@* status
-
-      # Restart all daemons
-      partners_systemctl pim_job_consumer@* restart
-
-
 Onboarder
 ---------
 
