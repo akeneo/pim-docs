@@ -6,7 +6,6 @@ together {
         attributeAsImage: RecordAttribute
     }
 
-
     abstract class Attribute <<UiLocale>> {
         *label: string
         *isRequired:boolean
@@ -36,7 +35,6 @@ together {
         maxFileSizeInMb: number
         allowedExtensions: string[0..*]
     }
-
     Attribute <|-- Image
 
     abstract class LinkEntityReference <<MultipleOrSimpleSelect>> {

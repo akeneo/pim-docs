@@ -14,7 +14,6 @@ together   {
         'additional denormalized col in db  activated: boolean
     }
 
-
     enum Currency {
         code: string
         ' must be removed from channel to be disactivated
@@ -149,6 +148,7 @@ together {
         isEnabled: boolean
         rawValues: AttributeValue[0..*]
     }
+    Product -> Category:  is bound to 0 or more categories in the channel category tree.
 
     Class ProductModel {
         parent: ProductModel
