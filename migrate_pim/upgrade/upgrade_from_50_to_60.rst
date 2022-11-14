@@ -22,12 +22,12 @@ The root of your current installation dir is referred as $INSTALLATION_DIR.
     $ cd $INSTALLATION_DIR
     $ cp -R ./vendor/akeneo/pim-community-dev/upgrades/* ./upgrades/
     $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
-    $ php bin/console doctrine:migrations:version --add --all -q
+    $ php bin/console doctrine:migrations:migrate
     $ rm -rf var/cache/
 
 .. note::
 
-    WARNING: please note that this part of the migration needs to be executed on your PIM v5.0 ``before`` upgrading your technical stack. 
+    WARNING: please note that this part of the migration needs to be executed on your PIM v5.0 ``before`` upgrading your technical stack.
 
 
 Requirements
