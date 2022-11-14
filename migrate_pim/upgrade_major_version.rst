@@ -69,3 +69,13 @@ Use this documentation to migrate projects based on Akeneo PIM Community Edition
    :maxdepth: 1
 
    upgrade/upgrade_from_50_to_60
+
+Upgrade from 6.0 to 7.0
+-----------------------
+
+Use this documentation to migrate projects based on Akeneo PIM Community Edition or Enterprise Edition 6.0 to 7.0.
+
+.. toctree::
+   :maxdepth: 1
+
+   upgrade/upgrade_from_60_to_70

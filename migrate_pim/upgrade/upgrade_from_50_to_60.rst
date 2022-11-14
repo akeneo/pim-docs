@@ -7,7 +7,7 @@ Disclaimer
 **********
 
 Make sure your production database is backed-up before performing the data migration.
-The queue daemon(s) must be stopped as well.
+The queue daemon(s) must be stopped as well (:doc:`/cloud_edition/flexibility_mode/docs/job_consumers_and_workers`).
 
 Prepare your project for the new technical stack
 ************************************************

@@ -1,13 +1,34 @@
-Upgrade from 4.0 to 5.0
+Upgrade from 6.0 to 7.0
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Use this documentation to upgrade projects based on Akeneo PIM Community Edition or Enterprise Edition 4.0 to 5.0.
+Use this documentation to upgrade projects based on Akeneo PIM Community Edition or Enterprise Edition 6.0 to 7.0.
 
 Disclaimer
 **********
 
 Make sure your production database is backed-up before performing the data migration.
 The queue daemon(s) must be stopped as well.
+
+Prepare your project for the new technical stack
+************************************************
+
+Your current v6.0 application must have up to date migrations before migrating on the new technical stack.
+
+The root of your current installation dir is referred as $INSTALLATION_DIR.
+
+.. code:: bash
+
+    $ export APP_ENV=prod
+    $ cd $INSTALLATION_DIR
+    $ cp -R ./vendor/akeneo/pim-community-dev/upgrades/* ./upgrades/
+    $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
+    $ php bin/console doctrine:migrations:version --add --all -q
+    $ rm -rf var/cache/
+
+.. note::
+
+    WARNING: please note that this part of the migration needs to be executed on your PIM v6.0 ``before`` upgrading your technical stack.
+
 
 Requirements
 ************
@@ -16,47 +37,21 @@ Updated System components
 -------------------------
 
 You have to make sure your system components are updated to the version required for Akeneo PIM:
- - PHP 7.4
+ - PHP 8.0
  - MySQL 8.0
- - Elasticsearch 7.10
-
-.. note::
-    Elasticsearch supports in-place update: Elasticsearch 7.10 will be able to use indexes created
-    by Elasticsearch 7.5.
-
-    So there's no need to export and reimport data for this system.
+ - Elasticsearch 7.16
 
 
 Updated System dependencies
 ---------------------------
 Check your system dependencies are in sync with :doc:`/install_pim/manual/system_requirements/system_requirements`
 
-Enterprise Edition
-^^^^^^^^^^^^^^^^^^
-
-.. warning::
-    The aspell dependencies are new.
-    Please note you have to use a composer v2 or above.
 
 Updated crontab definition
 --------------------------
 
 Check your crontab is in sync with :doc:`/cloud_edition/flexibility_mode/docs/crontasks`
 
-Enterprise Edition
-^^^^^^^^^^^^^^^^^^
-
-Renamed
-
-- From `pimee:data-quality-insights:schedule-periodic-tasks` to `pim:data-quality-insights:schedule-periodic-tasks`
-- From `pimee:data-quality-insights:evaluate-products` to `pim:data-quality-insights:evaluations`
-
-Upgraded Virtual Host configuration
------------------------------------
-
-Since Akeneo PIM, instead of using one fpm pool, we are using one for the API, and one for UI.
-
-You can check the VirtualHost configuration for 5.0 on your system: :doc:`/install_pim/manual/index`
 
 Prepare your project
 ********************
@@ -65,16 +60,6 @@ Akeneo PIM composer.json
 ----------------------------
 The root of your current installation dir is referred as $INSTALLATION_DIR.
 
-
-.. code:: bash
-
-    $ export APP_ENV=prod
-    $ cd $INSTALLATION_DIR
-    $ cp -R ./vendor/akeneo/pim-community-dev/upgrades/* ./upgrades/
-    $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
-    $ php bin/console doctrine:migrations:migrate
-    $ rm -rf var/cache/
-
 Community Edition
 ^^^^^^^^^^^^^^^^^
 
@@ -82,7 +67,7 @@ You can download the composer.json file directly from the Github repository:
 
 .. code:: bash
 
-    $  curl https://raw.githubusercontent.com/akeneo/pim-community-standard/5.0/composer.json > $INSTALLATION_DIR/composer.json
+    $  curl https://raw.githubusercontent.com/akeneo/pim-community-standard/7.0/composer.json > $INSTALLATION_DIR/composer.json
 
 Enterprise Edition
 ^^^^^^^^^^^^^^^^^^
@@ -116,7 +101,7 @@ Community Edition
 .. code:: bash
 
     $ export APP_ENV=prod
-    $ vendor/akeneo/pim-community-dev/std-build/migration/prepare_40_to_50.sh
+    $ vendor/akeneo/pim-community-dev/std-build/migration/prepare_60_to_70.sh
 
 
 Enterprise Edition
@@ -125,19 +110,10 @@ Enterprise Edition
 .. code:: bash
 
     $ export APP_ENV=prod
-    $ vendor/akeneo/pim-enterprise-dev/std-build/upgrade/prepare_40_to_50.sh
+    $ vendor/akeneo/pim-enterprise-dev/std-build/upgrade/prepare_60_to_70.sh
 
 .. warning::
-    We have overwritten:
-        - Makefile
-        - package.json
-        - yarn.lock
-        - tsconfig.json
-        - src/Kernel.php
-        - config/packages/security.yml
-        - config/packages/dev
-        - config/packages/prod_flex
-        - config/packages/prod_onprem
+    This script overwrites several configuration files.
 
     In case of customisation, you need to resolve conflicts.
 
@@ -164,8 +140,9 @@ Migrate your data
 
 .. code:: bash
 
+    $ bin/console pim:data-quality-insights:clean-product-scores
     $ bin/console doctrine:migrations:migrate
-    $ bin/console pimee:data-quality-insights:migrate-product-criterion-evaluation
+    $ bin/console pim:data-quality-insights:populate-product-models-scores-and-ki
 
 .. note::
 
@@ -234,9 +211,3 @@ From that point, you will have to migrate your bundle one by one.
 
 Remember to check if they are still relevant, as each Akeneo version
 brings new features.
-
-
-Setting up the Events API
-*************************
-
-Configure your Events API with :doc:`/install_pim/manual/events_api`

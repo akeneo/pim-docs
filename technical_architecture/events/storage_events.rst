@@ -2,7 +2,7 @@ Storage events
 ==============
 
 .. _GenericEvent: https://github.com/symfony/symfony/blob/4.4/src/Symfony/Component/EventDispatcher/GenericEvent.php
-.. _RemoveEvent: https://github.com/akeneo/pim-community-dev/blob/6.0/src/Akeneo/Tool/Component/StorageUtils/Event/RemoveEvent.php
+.. _RemoveEvent: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Tool/Component/StorageUtils/Event/RemoveEvent.php
 
 Storage events are dispatched in the PIM when you manipulate data using the savers and removers services.
 They are basically useful if you want to add your business logic before or after an object is saved or removed.
@@ -33,8 +33,8 @@ ProjectSubscriber (Enterprise edition)                            0
 CheckPublishedProductOnRemovalSubscriber (Enterprise edition)     0
 ================================================================  ===============
 
-.. _CheckChannelsOnDeletionSubscriber: https://github.com/akeneo/pim-community-dev/blob/6.0/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/Category/OnDelete/CheckChannelsOnDeletionSubscriber.php
-.. _AddRemoveVersionSubscriber: https://github.com/akeneo/pim-community-dev/blob/6.0/src/Akeneo/Tool/Bundle/VersioningBundle/EventSubscriber/AddRemoveVersionSubscriber.php
+.. _CheckChannelsOnDeletionSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/Category/OnDelete/CheckChannelsOnDeletionSubscriber.php
+.. _AddRemoveVersionSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Tool/Bundle/VersioningBundle/EventSubscriber/AddRemoveVersionSubscriber.php
 
 ``akeneo.storage.post_remove``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -52,8 +52,8 @@ Listener Class Name                                              Priority
 `ProductModel\\OnDelete\\ComputeProductAndAncestorsSubscriber`_  0
 ===============================================================  ===============
 
-.. _Product\\OnDelete\\ComputeProductsAndAncestorsSubscriber: https://github.com/akeneo/pim-community-dev/blob/6.0/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/Product/OnDelete/ComputeProductsAndAncestorsSubscriber.php
-.. _ProductModel\\OnDelete\\ComputeProductAndAncestorsSubscriber: https://github.com/akeneo/pim-community-dev/blob/6.0/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/ProductModel/OnDelete/ComputeProductAndAncestorsSubscriber.php
+.. _Product\\OnDelete\\ComputeProductsAndAncestorsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/Product/OnDelete/ComputeProductsAndAncestorsSubscriber.php
+.. _ProductModel\\OnDelete\\ComputeProductAndAncestorsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/ProductModel/OnDelete/ComputeProductAndAncestorsSubscriber.php
 
 ``akeneo.storage.pre_remove_all``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -89,9 +89,9 @@ ProjectSubscriber (Enterprise edition)                         0
 EnsureProductDraftGlobalStatusSubscriber (Enterprise edition)  0
 =============================================================  ===============
 
-.. _CurrencyDisablingSubscriber: https://github.com/akeneo/pim-community-dev/blob/6.0/src/Akeneo/Channel/Bundle/EventListener/CurrencyDisablingSubscriber.php
-.. _ComputeEntityRawValuesSubscriber: https://github.com/akeneo/pim-community-dev/blob/6.0/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/EntityWithValues/ComputeEntityRawValuesSubscriber.php
-.. _ChannelLocaleSubscriber: https://github.com/akeneo/pim-community-dev/blob/6.0/src/Akeneo/Channel/Bundle/EventListener/ChannelLocaleSubscriber.php
+.. _CurrencyDisablingSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Channel/back/Infrastructure/EventListener/CurrencyDisablingSubscriber.php
+.. _ComputeEntityRawValuesSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/EntityWithValues/ComputeEntityRawValuesSubscriber.php
+.. _ChannelLocaleSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Channel/back/Infrastructure/EventListener/ChannelLocaleSubscriber.php
 
 ``akeneo.storage.post_save``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -111,8 +111,8 @@ CatalogUpdatesSubscriber (Enterprise edition)                    0
 ImportProposalsSubscriber (Enterprise edition)                   0
 ===============================================================  ===============
 
-.. _Product\\OnSave\\ComputeProductsAndAncestorsSubscriber: https://github.com/akeneo/pim-community-dev/blob/6.0/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/Product/OnSave/ComputeProductsAndAncestorsSubscriber.php
-.. _ProductModel\\OnSave\\ComputeProductAndAncestorsSubscriber: https://github.com/akeneo/pim-community-dev/blob/6.0/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/ProductModel/OnSave/ComputeProductAndAncestorsSubscriber.php
+.. _Product\\OnSave\\ComputeProductsAndAncestorsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/Product/OnSave/ComputeProductsAndAncestorsSubscriber.php
+.. _ProductModel\\OnSave\\ComputeProductAndAncestorsSubscriber: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Pim/Enrichment/Bundle/EventSubscriber/ProductModel/OnSave/ComputeProductAndAncestorsSubscriber.php
 
 
 ``akeneo.storage.pre_save_all``
