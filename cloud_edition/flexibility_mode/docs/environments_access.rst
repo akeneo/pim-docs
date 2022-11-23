@@ -164,3 +164,58 @@ Copy process (MySQL data & pictures (including assets)) from one instance to ano
 
     #on myproduction.akeneo.com
     mysql -u akeneo_pim -p$APP_DATABASE_PASSWORD akeneo_pim < /home/akeneo/pim/dump_dd_mm_yy.sql
+    
+**Step two:**
+    
+    Find the asset Location using the following command:
+    
+.. code-block:: bash
+
+    bin/console debug:config OneupFlysystemBundle
+    
+    In the result you will see something like this
+    
+.. code-block:: bash
+
+    asset_storage_adapter:
+            local:
+                location: /home/akeneo/pim/var/file_storage/asset
+                
+ **Step three:**
+ 
+    Once the assets locations are identified you can compress all files in a zip and copy it to your destination instance.
+    
+ **Step four:** 
+    
+    re-index Elastic Search
+    
+    - First reset the indexes.
+    
+    .. code-block:: bash
+
+        bin/console akeneo:elasticsearch:reset-indexes
+        
+    - Reindex using following commands
+    
+    .. code-block:: bash
+
+        # Index products
+        bin/console pim:product:index --all
+
+        # Index product model
+        bin/console pim:product-model:index --all
+
+        # Index product proposals
+        bin/console pimee:product-proposal:index
+
+        # Index published products
+        bin/console pimee:published-product:index
+
+        # Index reference entities
+        bin/console akeneo:reference-entity:index-records --all
+
+        # Index assets (4.x)
+        bin/console akeneo:asset-manager:index-assets --all
+    
+    After the reset you might have the feeling that all the products are disappeared from the product list because it is based on elastic search. Once,       it will be fully indexed all the products will be returned back.
+    
