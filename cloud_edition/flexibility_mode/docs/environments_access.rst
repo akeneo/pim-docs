@@ -165,7 +165,7 @@ Finally, in your destination instance, import your MySQL dump:
     #on myproduction.akeneo.com
     mysql -u akeneo_pim -p$APP_DATABASE_PASSWORD akeneo_pim < /home/akeneo/pim/dump_dd_mm_yy.sql
     
-**Step two:**
+**Step two: Localize assets storage**
     
     Find the asset Location using the following command:
     
