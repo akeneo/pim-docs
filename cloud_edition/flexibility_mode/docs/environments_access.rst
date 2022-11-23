@@ -173,7 +173,7 @@ Finally, in your destination instance, import your MySQL dump:
 
     bin/console debug:config OneupFlysystemBundle
     
-In the result you will see something like this
+The result indicate the file path of all your assets
     
 .. code-block:: bash
 
