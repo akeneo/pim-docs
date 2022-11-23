@@ -103,7 +103,7 @@ If **akeneo**, as an SSH user or as a PIM process, creates files in the SFTP sub
 
 
 Transfer data from one instance to another
-**************************************
+*************************************************
 
 **Scenario:**
 
