@@ -183,9 +183,9 @@ The result indicate the file path of all your assets
                 
 **Step three: Copy assets**
  
-    Once the assets locations are identified you can compress all files in a zip and copy it to your destination instance.
+    Compress all folders according to the locations and copy them into your destination instance. 
     
-**Step four:** 
+**Step four: Reset and reindex ElasticSearch** 
     
     re-index Elastic Search
     
