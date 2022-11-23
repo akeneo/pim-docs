@@ -147,7 +147,7 @@ Copy process (MySQL data & pictures (including assets)) from one instance to ano
 
     User wants to copy all the data (including assets & pictures) from staging instance to production instance :
 
-**Step one:**
+**Step one: Import MySQL data**
    
     First, create a MySQL dump of your data:
 
