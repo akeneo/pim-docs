@@ -156,6 +156,8 @@ Copy process (MySQL data & pictures (including assets)) from one instance to ano
     #on mystaging.cloud.akeneo.com
     mysqldump -u akeneo_pim -p$APP_DATABASE_PASSWORD akeneo_pim > /home/akeneo/pim/dump_dd_mm_yy.sql
 
+    
+    
     You could compress it to be more efficient during the copying process.
     Then, transfer your dump into the destination instance (cf previous paragraph)
     Finally, in your destination instance, import your MySQL dump:
