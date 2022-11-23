@@ -181,7 +181,7 @@ The result indicate the file path of all your assets
             local:
                 location: /home/akeneo/pim/var/file_storage/asset
                 
-**Step three:**
+**Step three: Copy assets**
  
     Once the assets locations are identified you can compress all files in a zip and copy it to your destination instance.
     
