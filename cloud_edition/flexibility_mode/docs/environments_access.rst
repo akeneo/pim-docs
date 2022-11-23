@@ -187,13 +187,13 @@ The result indicate the file path of all your assets
     
 **Step four: Reset and reindex ElasticSearch** 
 
-    - First reset the indexes.
+    - Reset all the indexes from ElasticSearch
     
     .. code-block:: bash
 
         bin/console akeneo:elasticsearch:reset-indexes
         
-    - Reindex using following commands
+    - Reindex all the indexes one by one
     
     .. code-block:: bash
 
