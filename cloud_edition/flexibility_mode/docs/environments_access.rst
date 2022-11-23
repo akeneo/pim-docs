@@ -156,11 +156,9 @@ Copy process (MySQL data & pictures (including assets)) from one instance to ano
     #on mystaging.cloud.akeneo.com
     mysqldump -u akeneo_pim -p$APP_DATABASE_PASSWORD akeneo_pim > /home/akeneo/pim/dump_dd_mm_yy.sql
 
-    
-    
-    You could compress it to be more efficient during the copying process.
-    Then, transfer your dump into the destination instance (cf previous paragraph)
-    Finally, in your destination instance, import your MySQL dump:
+You could compress it to be more efficient during the copying process.
+Then, transfer your dump into the destination instance (cf previous paragraph)
+Finally, in your destination instance, import your MySQL dump:
     
 .. code-block:: bash
 
@@ -175,7 +173,7 @@ Copy process (MySQL data & pictures (including assets)) from one instance to ano
 
     bin/console debug:config OneupFlysystemBundle
     
-    In the result you will see something like this
+In the result you will see something like this
     
 .. code-block:: bash
 
@@ -183,11 +181,11 @@ Copy process (MySQL data & pictures (including assets)) from one instance to ano
             local:
                 location: /home/akeneo/pim/var/file_storage/asset
                 
- **Step three:**
+**Step three:**
  
     Once the assets locations are identified you can compress all files in a zip and copy it to your destination instance.
     
- **Step four:** 
+**Step four:** 
     
     re-index Elastic Search
     
@@ -219,5 +217,5 @@ Copy process (MySQL data & pictures (including assets)) from one instance to ano
         # Index assets (4.x)
         bin/console akeneo:asset-manager:index-assets --all
     
-    After the reset you might have the feeling that all the products are disappeared from the product list because it is based on elastic search. Once,       it will be fully indexed all the products will be returned back.
+After the reset you might have the feeling that all the products are disappeared from the product list because it is based on elastic search. Once,       it will be fully indexed all the products will be returned back.
     
