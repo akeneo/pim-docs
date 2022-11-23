@@ -102,7 +102,7 @@ If **akeneo**, as an SSH user or as a PIM process, creates files in the SFTP sub
 .. _`Akeneo Help Center`:  https://help.akeneo.com/portal/articles/access-akeneo-flexibility.html?utm_source=akeneo-docs&utm_campaign=flexibility_partner_starterkit
 
 
-Copy data from one instance to another
+Transfer data from one instance to another
 **************************************
 
 **Scenario:**
@@ -138,3 +138,29 @@ Copy data from one instance to another
     On the SCP command, please note that no domain is specified.
 
     Use the short host name of instance. Connect to the target server and run `hostname` to get this value.
+    
+    
+Copy process (MySQL data & pictures (including assets)) from one instance to another
+************************************************************************************
+
+**Scenario:**
+
+    User wants to copy all the data (including assets & pictures) from staging instance to production instance :
+
+**Step one:**
+   
+    First, create a MySQL dump of your data:
+
+.. code-block:: bash
+
+    #on mystaging.cloud.akeneo.com
+    mysqldump -u akeneo_pim -p$APP_DATABASE_PASSWORD akeneo_pim > /home/akeneo/pim/dump_dd_mm_yy.sql
+
+    You could compress it to be more efficient during the copying process.
+    Then, transfer your dump into the destination instance (cf previous paragraph)
+    Finally, in your destination instance, import your MySQL dump:
+    
+.. code-block:: bash
+
+    #on myproduction.akeneo.com
+    mysql -u akeneo_pim -p$APP_DATABASE_PASSWORD akeneo_pim < /home/akeneo/pim/dump_dd_mm_yy.sql
