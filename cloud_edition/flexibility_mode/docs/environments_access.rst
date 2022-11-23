@@ -214,6 +214,7 @@ The result indicate the file path of all your assets
 
         # Index assets (4.x)
         bin/console akeneo:asset-manager:index-assets --all
-    
-After the reset you might have the feeling that all the products are disappeared from the product list because it is based on elastic search. Once,       it will be fully indexed all the products will be returned back.
+
+.. note::
+    After reseting indexes, all the products seems to diseapear from the product list. It's normal, they are well on MySQL but the product list results are based on ElasticSearch indexes. They will be visible once it's fully reindexed.
     
