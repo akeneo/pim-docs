@@ -186,9 +186,7 @@ The result indicate the file path of all your assets
     Compress all folders according to the locations and copy them into your destination instance. 
     
 **Step four: Reset and reindex ElasticSearch** 
-    
-    re-index Elastic Search
-    
+
     - First reset the indexes.
     
     .. code-block:: bash
