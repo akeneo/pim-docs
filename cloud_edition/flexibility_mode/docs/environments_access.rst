@@ -154,7 +154,7 @@ Copy process (MySQL data & pictures (including assets)) from one instance to ano
 .. code-block:: bash
 
     #on mystaging.cloud.akeneo.com
-    mysqldump -u akeneo_pim -p$APP_DATABASE_PASSWORD akeneo_pim > /home/akeneo/pim/dump_dd_mm_yy.sql
+    mysqldump -u akeneo_pim -p$APP_DATABASE_PASSWORD akeneo_pim > /home/akeneo/pim/dump_`date -u +"%Y-%m-%dT%TZ"`.sql
 
 You could compress it to be more efficient during the copying process.
 Then, transfer your dump into the destination instance (cf previous paragraph)
@@ -163,7 +163,7 @@ Finally, in your destination instance, import your MySQL dump:
 .. code-block:: bash
 
     #on myproduction.akeneo.com
-    mysql -u akeneo_pim -p$APP_DATABASE_PASSWORD akeneo_pim < /home/akeneo/pim/dump_dd_mm_yy.sql
+    mysql -u akeneo_pim -p$APP_DATABASE_PASSWORD akeneo_pim < /home/akeneo/pim/dump_`date -u +"%Y-%m-%dT%TZ"`.sql
     
 **Step two: Localize assets storage**
     
