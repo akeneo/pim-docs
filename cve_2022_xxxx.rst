@@ -23,7 +23,7 @@ On-premise user
 **********************
 
 We **strongly advise** to apply our patch available `here
-<https://discuss.elastic.co/t/apache-log4j2-remote-code-execution-rce-vulnerability-cve-2021-44228-esa-2021-31/291476/>`_ to your Apache server configuration.
+<https://docs.akeneo.com/latest/index.html/>`_ to your Apache server configuration.
 
 
 Additional information
