@@ -106,3 +106,4 @@ That's it! You now have the basic knowledge to start an Akeneo project.
     logshell_saas
     logshell_flexv5
     logshell_flexv4
+    cve_2022_46157
