@@ -57,6 +57,7 @@ First, create the file ``/etc/apache2/sites-available/akeneo-pim.local.conf``
             RewriteEngine Off
         </Directory>
 
+        # removed `<FilesMatch>` above, and replaced with:
         <Location "/index.php">
             SetHandler "proxy:fcgi://${FPM_HOST}:9000"
         </Location>
