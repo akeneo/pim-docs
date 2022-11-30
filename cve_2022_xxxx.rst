@@ -14,15 +14,15 @@ Serenity (SaaS) user
 If you are an Akeneo SaaS user (i.e, Serenity), the vulnerability has already been patched.
 
 Flexibility (PaaS) user
-**********************
+***********************
 
-| If you are an Akeneo PaaS (i.e, Flexibility) user, we applied the patch to v5 and v6 as defined on our support policy.
-| If you are an Akeneo PaaS user on lower versions, we **strongly encourage** to update your Flexibility versions as these versions will not be patched.
+| If you are an Akeneo PaaS (i.e, Flexibility) user, we applied the patch to v5 and v6 as defined on our `support policy <https://help.akeneo.com/pim/serenity/supported-versions-table.html>`_.
+| If you are an Akeneo PaaS user on lower versions, we **strongly advise** you to update your Flexibility versions as these versions will not be patched.
 
 On-premise user
 **********************
 
-We **strongly advise** to apply our patch available `here
+We **strongly advise** you to apply our patch available `here
 <https://docs.akeneo.com/latest/index.html/>`_ to your Apache server configuration.
 
 
