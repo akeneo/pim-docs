@@ -23,7 +23,7 @@ On-premise user
 **********************
 
 We **strongly advise** you to apply our patch available `here
-<https://docs.akeneo.com/latest/install_pim/manual/index.html/>`_ to your Apache server configuration according your operating system.
+<https://docs.akeneo.com/latest/install_pim/manual/index.html>`_ to your Apache server configuration according your operating system.
 
 
 Additional information
