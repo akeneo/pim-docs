@@ -59,7 +59,7 @@ First, create the file ``/etc/apache2/sites-available/akeneo-pim.local.conf``
 
         # removed `<FilesMatch>` above, and replaced with:
         <Location "/index.php">
-            SetHandler "proxy:fcgi://${FPM_HOST}:9000"
+            SetHandler "proxy:unix:/run/php/php8.0-fpm.sock|fcgi://localhost/"
         </Location>
 
         SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
