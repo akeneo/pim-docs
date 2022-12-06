@@ -60,7 +60,7 @@ The following command will create a PIM project in the current directory. Please
 
 .. note::
     Alternatively, you can download an archive of Akeneo PIM CE containing all the PHP dependencies here:
-    https://download.akeneo.com/pim-community-standard-v7.0-latest-icecat.tar.gz
+    https://download.akeneo.com/pim-community-standard-v6.0-latest-icecat.tar.gz
 
 
 Enterprise Edition
