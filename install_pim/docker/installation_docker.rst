@@ -22,6 +22,41 @@ Otherwise you'll end up with a non-working PIM.
 
 You won't face this problem on Mac OS and Windows hosts, as those systems use a VM between the host and Docker, which already operates with appropriate UID/GID.
 
+.. note::
+    On new Docker version, the default user could be different from 1000:1000.
+
+    .. code-block:: bash
+
+        $ echo $(id -u):$(id -g)
+
+
+    So your user ID doesn’t matching the user ID in a docker image can prevent you from running it.
+    In that case, you need to use user mapping:
+
+    - Edit , or create if it doesn’t exist, `/etc/docker/daemon.json` to include:
+
+    .. code-block:: bash
+
+        {
+          "userns-remap": "<yourUserName>"
+        }
+
+    - Edit, or create if it doesn’t exist, `/etc/subuid` to include:
+
+    .. code-block:: bash
+
+        <yourUserName>:0:1000
+        <yourUserName>:1001:65536
+
+    - Edit, or create if it doesn’t exist, `/etc/subgid` to include:
+
+    .. code-block:: bash
+
+        <yourUserName>:0:1000
+        <yourUserName>:1001:65536
+
+    - Restart your docker daemon and everything should be alright
+
 Configuring you package manager
 *******************************
 
@@ -89,6 +124,17 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
             /usr/local/bin/composer install
 
     See https://github.com/docker-library/docs/tree/master/composer/#private-repositories--ssh-agent for more details.
+
+.. note::
+    You can also have access errors on installing dependencies with composer through docker.
+
+    So you need to create a token on github. See `Github documentation <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token>`_
+
+    And add it to your composer config.
+
+    .. code-block:: bash
+
+        $ docker-compose run --rm php composer config --global github-ooauth.github.com <your_new_token>
 
 Launching the PIM in dev mode
 -----------------------------
