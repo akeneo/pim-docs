@@ -11,9 +11,9 @@ You can either use `composer` to create your project:
 .. code-block:: bash
    :linenos:
 
-   $ composer create-project akeneo/pim-community-standard /srv/pim "6.0.*@stable"
+   $ composer create-project akeneo/pim-community-standard /srv/pim "7.0.*@stable"
 
-or download an archive containing Akeneo PIM and its PHP dependencies: https://download.akeneo.com/pim-community-standard-v6.0-latest-icecat.tar.gz
+or download an archive containing Akeneo PIM and its PHP dependencies: https://download.akeneo.com/pim-community-standard-v7.0-latest-icecat.tar.gz
 
 
 .. include:: ./common_install_initializing_ce_ee.rst.inc
