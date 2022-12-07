@@ -20,16 +20,16 @@ The easiest way to install MySQL 8.0 is to use the official vendor package.
 Follow the official documentation: <https://dev.mysql.com/doc/refman/8.0/en/linux-installation-debian.html>.
 
 Download the bundle package for the required version:
-    # wget https://downloads.mysql.com/archives/get/p/23/file/mysql-server_8.0.23-1debian10_amd64.deb-bundle.tar
+    # wget https://downloads.mysql.com/archives/get/p/23/file/mysql-server_8.0.30-1debian10_amd64.deb-bundle.tar
 
 And follow the aforementioned documentation.
 
 When installing MySQL 8.0, you'll have to choose the authentication method. Please select *Use Legacy Authentication Method* as the *Strong Password Encryption* is not yet supported by Akeneo PIM.
 
-PHP 8.0
+PHP 8.1
 *******
 
-As Ubuntu 18.04 only provides PHP 7.2, we need to use `Ondrej Sury <https://deb.sury.org/>`_ packages to install PHP 8.0..
+As Ubuntu 18.04 only provides PHP 7.2, we need to use `Ondrej Sury <https://deb.sury.org/>`_ packages to install PHP 8.1..
 
 First, install the `repository <https://launchpad.net/~ondrej/+archive/ubuntu/php/>`_:
 
@@ -50,12 +50,12 @@ Then, install PHP and the required extensions:
 
 .. code-block:: bash
 
-    $ apt-get install php8.0-cli php8.0-apcu php8.0-bcmath php8.0-curl php8.0-opcache php8.0-fpm php8.0-gd php8.0-intl php8.0-memcached php8.0-mysql php8.0-xml php8.0-zip php8.0-mbstring php8.0-imagick
+    $ apt-get install php8.1-cli php8.1-apcu php8.1-bcmath php8.1-curl php8.1-opcache php8.1-fpm php8.1-gd php8.1-intl php8.1-memcached php8.1-mysql php8.1-xml php8.1-zip php8.1-mbstring php8.1-imagick
 
-Elasticsearch 7.16
+Elasticsearch 8.4
 ******************
 
-Follow the official Elasticsearch documentation: `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/7.16/deb.html#deb>`_:
+Follow the official Elasticsearch documentation: `official vendor package <https://www.elastic.co/guide/en/elasticsearch/reference/8.4/deb.html#deb>`_:
 
 - first install the PGP key
 - then install the package via the official repository
@@ -64,8 +64,8 @@ Follow the official Elasticsearch documentation: `official vendor package <https
 
     # apt-get install apt-transport-https
     # wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
-    # echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-7.x.list
-    # apt update && apt-get install elasticsearch
+    # echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-8.x.list
+    # apt update && apt-get install elasticsearch=8.4.2
     # service elasticsearch start
 
 .. warning::
