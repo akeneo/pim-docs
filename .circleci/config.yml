@@ -2,7 +2,7 @@ version: 2.1
 jobs:
     build:
         machine:
-            image: ubuntu-2004:202111-01
+            image: ubuntu-2004:2022.04.1
         steps:
             - checkout
             - run: make build
@@ -16,7 +16,7 @@ jobs:
 
     deploy_staging:
         machine:
-            image: ubuntu-2004:202111-01
+            image: ubuntu-2004:2022.04.1
         steps:
             - checkout
             - add_ssh_keys
@@ -26,7 +26,7 @@ jobs:
 
     deploy_production:
         machine:
-            image: ubuntu-2004:202111-01
+            image: ubuntu-2004:2022.04.1
         steps:
             - checkout
             - add_ssh_keys
@@ -45,7 +45,7 @@ workflows:
                   filters:
                       branches:
                           ignore:
-                              - '6.0'
+                              - "6.0"
 
     deployment:
         jobs:
