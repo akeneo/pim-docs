@@ -24,7 +24,7 @@ Jobs and steps are actually Symfony services. The first thing we need is to decl
 .. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Resources/config/jobs.yml
     :language: yaml
     :linenos:
-    :lines: 1-12,14-
+    :lines: 1-13,15-
 
 .. warning::
 
