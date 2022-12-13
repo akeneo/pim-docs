@@ -2,6 +2,28 @@ extensions:
     pim-job-instance-xml-product-import-edit:
         module: pim/form/common/edit-form
 
+    pim-job-instance-xml-product-import-edit-main-image:
+        module: pim/form/common/main-image
+        parent: pim-job-instance-xml-product-import-edit
+        targetZone: main-image
+        config:
+            path: bundles/pimui/images/illustrations/ImportCSV.svg
+
+    pim-job-instance-xml-product-import-edit-user-navigation:
+        module: pim/menu/user-navigation
+        parent: pim-job-instance-xml-product-import-edit
+        targetZone: user-menu
+        config:
+            userAccount: pim_menu.user.user_account
+            logout: pim_menu.user.logout
+
+    pim-job-instance-xml-product-import-edit-breadcrumbs:
+        module: pim/common/breadcrumbs
+        parent: pim-job-instance-xml-product-import-edit
+        targetZone: breadcrumbs
+        config:
+            tab: pim-menu-imports
+
     pim-job-instance-xml-product-import-edit-cache-invalidator:
         module: pim/cache-invalidator
         parent: pim-job-instance-xml-product-import-edit
@@ -20,18 +42,28 @@ extensions:
         targetZone: container
         position: 100
         config:
-            tabTitle: pim_enrich.form.job_instance.tab.properties.title
+            tabTitle: pim_common.properties
             tabCode: pim-job-instance-properties
+
+    pim-job-instance-xml-product-import-edit-global:
+        module: pim/job/common/edit/properties
+        parent: pim-job-instance-xml-product-import-edit-tabs
+        aclResourceId: pim_importexport_export_profile_property_edit
+        targetZone: container
+        position: 120
+        config:
+            tabTitle: pim_enrich.export.product.global_settings.title
+            tabCode: pim-job-instance-global
 
     pim-job-instance-xml-product-import-edit-history:
         module: pim/common/tab/history
         parent: pim-job-instance-xml-product-import-edit-tabs
         targetZone: container
         aclResourceId: pim_importexport_import_profile_history
-        position: 120
+        position: 130
         config:
             class: Akeneo\Tool\Component\Batch\Model\JobInstance
-            title: pim_enrich.form.job_instance.tab.history.title
+            title: pim_common.history
             tabCode: pim-job-instance-history
 
     pim-job-instance-xml-product-import-edit-properties-code:
@@ -41,7 +73,7 @@ extensions:
         targetZone: properties
         config:
             fieldCode: code
-            label: pim_enrich.form.job_instance.tab.properties.code.title
+            label: pim_common.code
             readOnly: true
 
     pim-job-instance-xml-product-import-edit-properties-label:
@@ -51,118 +83,128 @@ extensions:
         targetZone: properties
         config:
             fieldCode: label
-            label: pim_enrich.form.job_instance.tab.properties.label.title
+            label: pim_common.label
 
     pim-job-instance-xml-product-import-edit-properties-file-path:
-        module: pim/job/common/edit/field/text
-        parent: pim-job-instance-xml-product-import-edit-properties
+        module: pim/job/common/edit/field/file-path
+        parent: pim-job-instance-xml-product-import-edit-global
         position: 120
-        targetZone: global-settings
+        targetZone: properties
         config:
             fieldCode: configuration.filePath
             readOnly: false
-            label: pim_enrich.form.job_instance.tab.properties.file_path.title
-            tooltip: pim_enrich.form.job_instance.tab.properties.file_path.help
+            label: pim_import_export.form.job_instance.tab.properties.file_path.title
+            tooltip: pim_import_export.form.job_instance.tab.properties.file_path.help_import
 
     pim-job-instance-xml-product-import-edit-properties-file-upload:
-        module: pim/job/common/edit/field/switch
-        parent: pim-job-instance-xml-product-import-edit-properties
+        module: pim/job/common/edit/field/allow-file-upload
+        parent: pim-job-instance-xml-product-import-edit-global
         position: 130
-        targetZone: global-settings
+        targetZone: properties
         config:
             fieldCode: configuration.uploadAllowed
             readOnly: false
-            label: pim_enrich.form.job_instance.tab.properties.upload_allowed.title
-            tooltip: pim_enrich.form.job_instance.tab.properties.upload_allowed.help
-            readOnly: false
+            label: pim_import_export.form.job_instance.tab.properties.upload_allowed.title
+            tooltip: pim_import_export.form.job_instance.tab.properties.upload_allowed.help
 
     pim-job-instance-xml-product-import-edit-properties-decimal-separator:
         module: pim/job/common/edit/field/decimal-separator
-        parent: pim-job-instance-xml-product-import-edit-properties
+        parent: pim-job-instance-xml-product-import-edit-global
         position: 170
-        targetZone: global-settings
+        targetZone: properties
         config:
             fieldCode: configuration.decimalSeparator
             readOnly: false
-            label: pim_enrich.form.job_instance.tab.properties.decimal_separator.title
-            tooltip: pim_enrich.form.job_instance.tab.properties.decimal_separator.help
+            label: pim_import_export.form.job_instance.tab.properties.decimal_separator.title
+            tooltip: pim_import_export.form.job_instance.tab.properties.decimal_separator.help
 
     pim-job-instance-xml-product-import-edit-properties-date-format:
         module: pim/job/product/edit/field/date-format
-        parent: pim-job-instance-xml-product-import-edit-properties
+        parent: pim-job-instance-xml-product-import-edit-global
         position: 180
-        targetZone: global-settings
+        targetZone: properties
         config:
             fieldCode: configuration.dateFormat
             readOnly: false
-            label: pim_enrich.form.job_instance.tab.properties.date_format.title
-            tooltip: pim_enrich.form.job_instance.tab.properties.date_format.help
+            label: pim_import_export.form.job_instance.tab.properties.date_format.title
+            tooltip: pim_import_export.form.job_instance.tab.properties.date_format.help
 
     pim-job-instance-xml-product-import-edit-properties-enabled:
         module: pim/job/common/edit/field/switch
-        parent: pim-job-instance-xml-product-import-edit-properties
+        parent: pim-job-instance-xml-product-import-edit-global
         position: 190
-        targetZone: global-settings
+        targetZone: properties
         config:
             fieldCode: configuration.enabled
             readOnly: false
-            label: pim_enrich.form.job_instance.tab.properties.enabled.title
-            tooltip: pim_enrich.form.job_instance.tab.properties.enabled.help
+            label: pim_import_export.form.job_instance.tab.properties.enabled.title
+            tooltip: pim_import_export.form.job_instance.tab.properties.enabled.help
 
     pim-job-instance-xml-product-import-edit-properties-categories-column:
         module: pim/job/common/edit/field/text
-        parent: pim-job-instance-xml-product-import-edit-properties
+        parent: pim-job-instance-xml-product-import-edit-global
         position: 200
-        targetZone: global-settings
+        targetZone: properties
         config:
             fieldCode: configuration.categoriesColumn
             readOnly: false
-            label: pim_enrich.form.job_instance.tab.properties.categories_column.title
-            tooltip: pim_enrich.form.job_instance.tab.properties.categories_column.help
+            label: pim_import_export.form.job_instance.tab.properties.categories_column.title
+            tooltip: pim_import_export.form.job_instance.tab.properties.categories_column.help
 
     pim-job-instance-xml-product-import-edit-properties-family-column:
         module: pim/job/common/edit/field/text
-        parent: pim-job-instance-xml-product-import-edit-properties
+        parent: pim-job-instance-xml-product-import-edit-global
         position: 210
-        targetZone: global-settings
+        targetZone: properties
         config:
             fieldCode: configuration.familyColumn
             readOnly: false
-            label: pim_enrich.form.job_instance.tab.properties.family_column.title
-            tooltip: pim_enrich.form.job_instance.tab.properties.family_column.help
+            label: pim_import_export.form.job_instance.tab.properties.family_column.title
+            tooltip: pim_import_export.form.job_instance.tab.properties.family_column.help
 
     pim-job-instance-xml-product-import-edit-properties-groups-column:
         module: pim/job/common/edit/field/text
-        parent: pim-job-instance-xml-product-import-edit-properties
+        parent: pim-job-instance-xml-product-import-edit-global
         position: 220
-        targetZone: global-settings
+        targetZone: properties
         config:
             fieldCode: configuration.groupsColumn
             readOnly: false
-            label: pim_enrich.form.job_instance.tab.properties.groups_column.title
-            tooltip: pim_enrich.form.job_instance.tab.properties.groups_column.help
+            label: pim_import_export.form.job_instance.tab.properties.groups_column.title
+            tooltip: pim_import_export.form.job_instance.tab.properties.groups_column.help
 
     pim-job-instance-xml-product-import-edit-properties-enabled-comparison:
         module: pim/job/common/edit/field/switch
-        parent: pim-job-instance-xml-product-import-edit-properties
+        parent: pim-job-instance-xml-product-import-edit-global
         position: 230
-        targetZone: global-settings
+        targetZone: properties
         config:
             fieldCode: configuration.enabledComparison
             readOnly: false
-            label: pim_enrich.form.job_instance.tab.properties.enabled_comparison.title
-            tooltip: pim_enrich.form.job_instance.tab.properties.enabled_comparison.help
+            label: pim_import_export.form.job_instance.tab.properties.enabled_comparison.title
+            tooltip: pim_import_export.form.job_instance.tab.properties.enabled_comparison.help
 
     pim-job-instance-xml-product-import-edit-properties-real-time-versioning:
         module: pim/job/common/edit/field/switch
-        parent: pim-job-instance-xml-product-import-edit-properties
+        parent: pim-job-instance-xml-product-import-edit-global
         position: 240
-        targetZone: global-settings
+        targetZone: properties
         config:
             fieldCode: configuration.realTimeVersioning
             readOnly: false
-            label: pim_enrich.form.job_instance.tab.properties.real_time_versioning.title
-            tooltip: pim_enrich.form.job_instance.tab.properties.real_time_versioning.help
+            label: pim_import_export.form.job_instance.tab.properties.real_time_versioning.title
+            tooltip: pim_import_export.form.job_instance.tab.properties.real_time_versioning.help
+
+    pim-job-instance-xml-product-import-edit-properties-convert-variant-to-simple:
+        module: pim/job/common/edit/field/switch
+        parent: pim-job-instance-xml-product-import-edit-global
+        position: 250
+        targetZone: properties
+        config:
+            fieldCode: configuration.convertVariantToSimple
+            readOnly: false
+            label: pim_import_export.form.job_instance.tab.properties.convert_variant_to_simple.title
+            tooltip: pim_import_export.form.job_instance.tab.properties.convert_variant_to_simple.help
 
     pim-job-instance-xml-product-import-edit-label:
         module: pim/job/common/edit/label
@@ -176,26 +218,23 @@ extensions:
         targetZone: meta
         position: 100
 
-    pim-job-instance-xml-product-import-edit-back-to-grid:
-        module: pim/form/common/back-to-grid
+    pim-job-instance-xml-product-import-edit-secondary-actions:
+        module: pim/form/common/secondary-actions
         parent: pim-job-instance-xml-product-import-edit
-        targetZone: back
-        aclResourceId: pim_importexport_import_profile_index
-        position: 80
-        config:
-            backUrl: pim_importexport_import_profile_index
+        targetZone: buttons
+        position: 50
 
     pim-job-instance-xml-product-import-edit-delete:
         module: pim/job/import/edit/delete
-        parent: pim-job-instance-xml-product-import-edit
-        targetZone: buttons
+        parent: pim-job-instance-xml-product-import-edit-secondary-actions
+        targetZone: secondary-actions
         aclResourceId: pim_importexport_import_profile_remove
         position: 100
         config:
             trans:
-                title: confirmation.remove.job_instance
-                content: pim_enrich.confirmation.delete_item
-                success: flash.job_instance.removed
+                title: confirmation.remove.import_profile
+                content: pim_common.confirm_deletion
+                success: pim_import_export.entity.job_instance.flash.delete.success
                 failed: error.removing.job_instance
             redirect: pim_importexport_import_profile_index
 
@@ -219,7 +258,7 @@ extensions:
         targetZone: state
         position: 900
         config:
-            entity: pim_enrich.entity.job_instance.title
+            entity: pim_import_export.entity.job_instance.label
 
     pim-job-instance-xml-product-import-edit-validation:
         module: pim/job/common/edit/validation
