@@ -132,7 +132,7 @@ Instead, you can simply run
 
 .. code-block:: bash
 
-    yarn webpack-watch
+    yarn webpack-dev --watch
 
 This will run the initial build of webpack and then recompile each time you modify a javascript file (and reload your browser).
 
@@ -151,10 +151,10 @@ yarn webpack-dev
 
 This command will build the javascript artefacts in development mode. The size of the generated bundle will be higher and quicker to generate. It's the prefered way to rebuild the frontend after checking out another branch when you are not actively working on the frontend.
 
-yarn webpack-watch
+yarn webpack-dev --watch
 ++++++++++++++++++
 
-This command does exactly what the yarn webpack command does but will not exit at the end of the process.
+This command does exactly what the yarn webpack-dev command does but will not exit at the end of the process.
 Instead, it will wait for modifications and recompile the changed files if needed. It will then reload your browser to see the modifications in the PIM.
 
 Last word about the browser cache
