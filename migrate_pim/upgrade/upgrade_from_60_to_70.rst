@@ -37,9 +37,9 @@ Updated System components
 -------------------------
 
 You have to make sure your system components are updated to the version required for Akeneo PIM:
- - PHP 8.0
+ - PHP 8.1
  - MySQL 8.0
- - Elasticsearch 7.16
+ - Elasticsearch 8.4
 
 
 Updated System dependencies
