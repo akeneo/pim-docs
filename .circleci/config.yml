@@ -50,6 +50,7 @@ workflows:
                 filters:
                     branches:
                         only:
+                            - "7.0-staging-doc"
                             - "7.0"
                             - "master"
             - approve_to_deploy_in_production:
