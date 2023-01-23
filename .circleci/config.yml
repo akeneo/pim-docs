@@ -47,9 +47,11 @@ workflows:
     deployment:
         jobs:
             - deploy_staging:
-                  filters:
-                      branches:
-                          only: master
+                filters:
+                    branches:
+                        only:
+                            - "7.0"
+                            - "master"
             - approve_to_deploy_in_production:
                   type: approval
                   requires:
