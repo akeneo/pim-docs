@@ -17,7 +17,7 @@ MySQL 8.0
 
 The easiest way to install MySQL 8.0 is to use the official vendor APT repository.
 
-Follow the official documentation: <https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/>.
+Follow the official documentation: https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/.
 
 Download the bundle package for the required version:
 
