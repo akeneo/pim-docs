@@ -8,4 +8,3 @@ This chapter describes how to create and customize connectors to handle imports 
    create-connector
    product-import-from-xml-file
    clean-csv-file-during-product-import
-   automate-import-exports

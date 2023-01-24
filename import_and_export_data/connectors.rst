@@ -4,12 +4,12 @@ Akeneo Connectors
 CSV Connector
 -------------
 
-Akeneo CSV Connector supports reading and writing CSV files.
+Akeneo CSV Connector supports reading and writing CSV files. The connector uses an open source library called openspout (https://github.com/openspout/openspout) to read and create CSV files.
 
 XLSX Connector
 --------------
 
-Akeneo XLSX Connector supports reading and writing XLSX files. The connector uses an open source library called Spout (https://github.com/box/spout) to read and create XLSX files.
+Akeneo XLSX Connector supports reading and writing XLSX files. The connector uses an open source library called openspout (https://github.com/openspout/openspout) to read and create XLSX files.
 
 The connector supports the following Excel versions:
 
@@ -19,6 +19,11 @@ The connector supports the following Excel versions:
 - Windows Excel 2007
 - Excel 16 (Office 2016 for OS X)
 - Excel 14 (Office 2011 for OS X)
+
+YAML Connector
+--------------
+
+Akeneo YAML Connector supports reading and writing YAML files. The connector uses an open source component called symfony/yaml (https://github.com/symfony/yaml) to read and create YAML files.
 
 Customizing connectors
 ----------------------

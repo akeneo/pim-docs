@@ -39,11 +39,19 @@ Updated System components
 You have to make sure your system components are updated to the version required for Akeneo PIM:
  - PHP 8.1
  - MySQL 8.0
- - Elasticsearch 8.4
+ - Elasticsearch 8.4.2
 
+.. note::
+
+    In order to migrate from Elasticsearch 7.16.2 (required in PIM 6.0) to 8.4.2 (required in PIM 7.0), you need to:
+      - Install elasticsearch 7.17.7
+      - Start elasticsearch => the index will be compatible with version 8
+      - Then install elasticsearch 8.4.2
+      - Then start elasticsearch
 
 Updated System dependencies
 ---------------------------
+
 Check your system dependencies are in sync with :doc:`/install_pim/manual/system_requirements/system_requirements`
 
 

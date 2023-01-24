@@ -11,8 +11,8 @@ you can create your own `services`_ that interact with those objects whenever ce
 
 For more details about event listeners, you can read the `Symfony documentation`_
 
-.. _Symfony documentation: https://symfony.com/doc/2.7/event_dispatcher.html
-.. _services: https://symfony.com/doc/2.7/service_container.html
+.. _Symfony documentation: https://symfony.com/doc/5.4/event_dispatcher.html
+.. _services: https://symfony.com/doc/5.4/service_container.html
 
 Example
 -------
