@@ -40,7 +40,7 @@ Feel free to share it with the community!
 
 Here is an example of a working customization of the native archiver based on the Unix zip command and the Symfony `Process Component`_ :
 
-.. _`Process Component`: https://symfony.com/doc/2.7/components/process.html
+.. _`Process Component`: https://symfony.com/doc/5.4/components/process.html
 
 .. code-block:: php
 

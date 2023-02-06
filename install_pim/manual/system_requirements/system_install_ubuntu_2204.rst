@@ -1,8 +1,8 @@
-System installation on Ubuntu 20.04 (Focal Fossa)
-=================================================
+System installation on Ubuntu 22.04 (Jammy Jellyfish)
+=====================================================
 
-Here is a quick guide to set up the :doc:`system_requirements` on Ubuntu 20.04. This guide will help you to install all
-the packages and modules needed for Akeneo PIM on a freshly installed Ubuntu 20.04 system and then configure the
+Here is a quick guide to set up the :doc:`system_requirements` on Ubuntu 22.04. This guide will help you to install all
+the packages and modules needed for Akeneo PIM on a freshly installed Ubuntu 22.04 system and then configure the
 application to match your local installation.
 
 .. warning::
@@ -17,7 +17,7 @@ MySQL 8.0
 
 The easiest way to install MySQL 8.0 is to use the official vendor APT repository.
 
-Follow the official documentation: <https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/>.
+Follow the official documentation: https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/.
 
 Download the bundle package for the required version:
 
@@ -34,7 +34,7 @@ Please select *Use Legacy Authentication Method* as the *Strong Password Encrypt
 PHP 8.1
 *******
 
-As Ubuntu 20.04 only provides PHP 7.4, we need to use `Ondrej Sury <https://deb.sury.org/>`_ packages to install PHP 8.1..
+As Ubuntu 22.04 only provides PHP 7.4, we need to use `Ondrej Sury <https://deb.sury.org/>`_ packages to install PHP 8.1..
 
 First, install the `repository <https://launchpad.net/~ondrej/+archive/ubuntu/php/>`_:
 
@@ -72,11 +72,11 @@ Follow the official Elasticsearch documentation: `official vendor package <https
 
 .. code-block:: bash
 
-    # apt-get install apt-transport-https
-    # wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
-    # echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-8.x.list
-    # apt update && apt-get install elasticsearch
-    # service elasticsearch start
+    $ apt-get install apt-transport-https
+    $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
+    $ echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-8.x.list
+    $ apt update && apt-get install elasticsearch
+    $ service elasticsearch start
 
 .. warning::
 
@@ -85,9 +85,9 @@ Follow the official Elasticsearch documentation: `official vendor package <https
 
    .. code-block:: bash
 
-      # sysctl -w vm.max_map_count=262144
-      # echo "vm.max_map_count=262144" | tee /etc/sysctl.d/elasticsearch.conf
-      # service elasticsearch restart
+      $ sysctl -w vm.max_map_count=262144
+      $ echo "vm.max_map_count=262144" | tee /etc/sysctl.d/elasticsearch.conf
+      $ service elasticsearch restart
 
 Apache
 ******
@@ -108,13 +108,13 @@ Apache
 
 .. include:: /install_pim/manual/system_requirements/system_configuration.rst.inc
 
-Node 14
+Node 18
 *******
 
 .. code-block:: bash
 
     $ apt-get install curl
-    $ curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+    $ curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh
     $ bash nodesource_setup.sh
     $ apt-get install -y nodejs
 

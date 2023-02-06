@@ -24,16 +24,13 @@ Jobs and steps are actually Symfony services. The first thing we need is to decl
 .. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Resources/config/jobs.yml
     :language: yaml
     :linenos:
-    :lines: 1-12,14-
+    :lines: 1-9,11-
 
 .. warning::
 
     Make sure that the file containing your declaration is correctly loaded by your bundle extension. For more info please see the `Symfony documentation`_.
 
-    Please note that in versions < 1.6, the file was named ``batch_jobs.yml`` and was automatically loaded.
-    The file content was very strict, was less standard and upgradeable than it is now.
-
-.. _Symfony documentation: https://symfony.com/doc/2.7/bundles/extension.html#using-the-load-method
+.. _Symfony documentation: https://symfony.com/doc/5.4/bundles/extension.html#using-the-load-method
 
 As you can see there is almost no difference with the native CSV export job.
 The only new info here is the name (first parameter) and the connector name (the ``connector`` property of the tag).
@@ -105,7 +102,7 @@ We can create an instance with the following command:
 .. code-block:: bash
 
     php bin/console cache:clear
-    # akeneo:batch:create-job <connector> <job> <type> <code> <config> [<label>]
+    # akeneo:batch:create-job <connector> <job> <type> <code> <config> [<label>]
     php bin/console akeneo:batch:create-job 'Acme CSV Notify Connector' csv_product_export_notify export my_app_product_export '{"urlToNotify": "http://my-app.com/product-export-done"}'
 
 
@@ -332,7 +329,7 @@ To make this action available from the UI, you need to make sure of a few things
     :linenos:
 
     pimee_catalog_rule.job.xlsx_product_import_with_rules:
-        class: '%pim_connector.job.simple_job.class%'
+        class: 'Akeneo\Tool\Component\Batch\Job\Job'
         arguments:
             - '%pimee_catalog_rule.job_name.xlsx_product_import_with_rules%'
             - '@event_dispatcher'

@@ -39,11 +39,19 @@ Updated System components
 You have to make sure your system components are updated to the version required for Akeneo PIM:
  - PHP 8.1
  - MySQL 8.0
- - Elasticsearch 8.4
+ - Elasticsearch 8.4.2
 
+.. note::
+
+    In order to migrate from Elasticsearch 7.16.2 (required in PIM 6.0) to 8.4.2 (required in PIM 7.0), you need to:
+      - Install elasticsearch 7.17.7
+      - Start elasticsearch => the index will be compatible with version 8
+      - Then install elasticsearch 8.4.2
+      - Then start elasticsearch
 
 Updated System dependencies
 ---------------------------
+
 Check your system dependencies are in sync with :doc:`/install_pim/manual/system_requirements/system_requirements`
 
 
@@ -161,53 +169,3 @@ Migrate your data
 
     The message "The migration has already been performed." concerning the "data-quality-insights" migration could be ignored .
 
-
-Migrating your custom code
-**************************
-
-Applying automatic fixes
-------------------------
-
-Some changes we made in the code of Akeneo PIM can be automatically applied to your own code.
-
-In order to make this process easier and more error proof, we decided to use PHP Rector (https://github.com/rectorphp/rector)
-to apply these changes.
-
-
-Installing Rector
-^^^^^^^^^^^^^^^^^
-
-.. code:: bash
-
-    composer require --dev rector/rector-prefixed
-
-Applying automatic fixes
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code:: bash
-
-    vendor/bin/rector process src/
-
-
-.. note::
-
-    This will use the `rector.yaml` file created by the `prepare.sh` above.
-    Feel free to add your own refactoring rules inside it. More information on https://getrector.org/
-
-Identifying broken code
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can use PHPStan to help you identify broken code:
-
-
-.. code:: bash
-
-    composer require --dev phpstan/phpstan
-    vendor/bin/phpstan analyse src/
-
-More information, please check https://github.com/phpstan/phpstan
-
-From that point, you will have to migrate your bundle one by one.
-
-Remember to check if they are still relevant, as each Akeneo version
-brings new features.

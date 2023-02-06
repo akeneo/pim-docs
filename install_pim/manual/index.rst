@@ -7,9 +7,8 @@ Here are the guidelines to set everything up according to your operating system:
    :maxdepth: 1
 
    system_requirements/system_requirements
-   system_requirements/manual_system_installation_debian10
-   system_requirements/system_install_ubuntu_1804
-   system_requirements/system_install_ubuntu_2004
+   system_requirements/manual_system_installation_debian11
+   system_requirements/system_install_ubuntu_2204
 
 Once the requirements are fulfilled, you are ready to install Akeneo PIM. Otherwise, check the *Setup System Requirements* pages.
 
@@ -19,4 +18,5 @@ Once the requirements are fulfilled, you are ready to install Akeneo PIM. Otherw
    installation_ce
    installation_ee_archive
    daemon_queue
+   scheduled_job
    events_api
