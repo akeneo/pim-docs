@@ -61,8 +61,6 @@ The web server will also need the following libraries and modules:
 +-----------------+---------------------------+
 | php8.1-mbstring | No specific configuration |
 +-----------------+---------------------------+
-| php8.1-memcached| No specific configuration |
-+-----------------+---------------------------+
 | composer        | >= 2                      |
 +-----------------+---------------------------+
 

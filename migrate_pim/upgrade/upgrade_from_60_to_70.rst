@@ -24,14 +24,33 @@ The root of your current installation dir is referred as $INSTALLATION_DIR.
     $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
     $ php bin/console doctrine:migrations:migrate
     $ rm -rf var/cache/
+    $ php bin/console doctrine:migrations:migrate
+    $ php bin/console pim:update:check-requirements
 
 .. note::
 
     WARNING: please note that this part of the migration needs to be executed on your PIM v6.0 ``before`` upgrading your technical stack.
 
+.. note::
+
+    If the ``pim:update:check-requirements`` return an error you should follow the recommendation before upgrading your technical stack.
 
 Requirements
 ************
+
+Updated Elasticsearch component
+-------------------------------
+
+In order to migrate from Elasticsearch 7.16.2 (required in PIM 6.0) to 8.4.2 (required in PIM 7.0), you need to:
+  - Install elasticsearch 7.17.7
+  - Start elasticsearch: the index will be compatible with version 8
+  - Install elasticsearch 8.4.2
+  - Start elasticsearch
+
+.. note::
+    Please refer to update documentation depending on your platform:
+        - :doc:`Debian</install_pim/manual/system_requirements/manual_system_installation_debian11>`
+        - :doc:`Ubuntu</install_pim/manual/system_requirements/system_install_ubuntu_2204>`
 
 Updated System components
 -------------------------
@@ -40,14 +59,6 @@ You have to make sure your system components are updated to the version required
  - PHP 8.1
  - MySQL 8.0
  - Elasticsearch 8.4.2
-
-.. note::
-
-    In order to migrate from Elasticsearch 7.16.2 (required in PIM 6.0) to 8.4.2 (required in PIM 7.0), you need to:
-      - Install elasticsearch 7.17.7
-      - Start elasticsearch => the index will be compatible with version 8
-      - Then install elasticsearch 8.4.2
-      - Then start elasticsearch
 
 Updated System dependencies
 ---------------------------
@@ -148,7 +159,6 @@ Migrate your data
 
 .. code:: bash
 
-    $ bin/console pim:data-quality-insights:clean-product-scores
     $ bin/console doctrine:migrations:migrate
     $ bin/console pim:data-quality-insights:populate-product-models-scores-and-ki
 
