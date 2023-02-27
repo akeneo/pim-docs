@@ -4,10 +4,6 @@ Understanding the Product Export
 It's a good start to understand the overall architecture and how to re-use or replace some parts.
 You can now natively export data into CSV and XLSX format.
 
-.. note::
-
-  Please note that the export jobs have been widely re-worked in 1.6. The old export system has been removed, please refer to previous versions of this page if needed.
-
 Definition of the Job
 ---------------------
 
@@ -15,41 +11,36 @@ The product export is defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/co
 
 .. code-block:: yaml
 
-    parameters:
-        pim_connector.connector_name.csv: 'Akeneo CSV Connector'
-        pim_connector.connector_name.xlsx: 'Akeneo XLSX Connector'
-        pim_connector.job.simple_job.class: Akeneo\Tool\Component\Batch\Job\Job
-        pim_connector.job_name.csv_product_export: 'csv_product_export'
-        pim_connector.job_name.xlsx_product_export: 'xlsx_product_export'
-        pim_connector.job.export_type: export
-
     services:
         ## CSV export
         pim_connector.job.csv_product_export:
-            class: '%pim_connector.job.simple_job.class%'
+            class: 'Akeneo\Tool\Component\Batch\Job\Job'
             arguments:
-                - '%pim_connector.job_name.csv_product_export%'
+                - 'csv_product_export' # The job name
                 - '@event_dispatcher'
                 - '@akeneo_batch.job_repository'
                 -
-                    - '@pim_connector.step.csv_product.export'
+                    - '@pim_connector.step.csv_product.export' # The product export step
+                    - '@akeneo.job_automation.connector.step.upload' # The upload step
+                - true # Does the job is stoppable ?
             tags:
-                - { name: akeneo_batch.job, connector: '%pim_connector.connector_name.csv%', type: '%pim_connector.job.export_type%' }
+                - { name: akeneo_batch.job, connector: 'Akeneo CSV Connector', type: 'export' }
 
     ## XLSX export
     pim_connector.job.xlsx_product_export:
-        class: '%pim_connector.job.simple_job.class%'
+        class: 'Akeneo\Tool\Component\Batch\Job\Job'
         arguments:
-            - '%pim_connector.job_name.xlsx_product_export%'
+            - 'xlsx_product_export'
             - '@event_dispatcher'
             - '@akeneo_batch.job_repository'
             -
                 - '@pim_connector.step.xlsx_product.export'
+                - '@akeneo.job_automation.connector.step.upload'
+            - true
         tags:
-            - { name: akeneo_batch.job, connector: '%pim_connector.connector_name.xlsx%', type: '%pim_connector.job.export_type%' }
+            - { name: akeneo_batch.job, connector: 'Akeneo XLSX Connector', type: 'export' }
 
 With the ``type`` parameter, we can see that this job is an export.
-
 
 Product Export Step
 -------------------
@@ -60,12 +51,9 @@ All steps service definitions are defined in ``src/Akeneo/Pim/Enrichment/Bundle/
 
 .. code-block:: yaml
 
-    parameters:
-        pim_connector.step.item_step.class: Akeneo\Tool\Component\Batch\Step\ItemStep
-
     services:
         pim_connector.step.csv_product.export:
-            class: '%pim_connector.step.item_step.class%'
+            class: 'Akeneo\Tool\Component\Batch\Step\ItemStep'
             arguments:
                 - 'export' # Export name
                 - '@event_dispatcher'
@@ -74,17 +62,19 @@ All steps service definitions are defined in ``src/Akeneo/Pim/Enrichment/Bundle/
                 - '@pim_connector.processor.normalization.product' # Processor
                 - '@pim_connector.writer.file.csv_product' # Writer
                 - 10 # Batch size
+                - '@akeneo_batch.job.job_stopper'
 
         pim_connector.step.xlsx_product.export:
-            class: '%pim_connector.step.item_step.class%'
+            class: 'Akeneo\Tool\Component\Batch\Step\ItemStep'
             arguments:
                 - 'export'
                 - '@event_dispatcher'
                 - '@akeneo_batch.job_repository'
-                - '@pim_connector.reader.database.product'
-                - '@pim_connector.processor.normalization.product'
-                - '@pim_connector.writer.file.xlsx_product'
-                - 10
+                - '@pim_connector.reader.database.product' # Reader
+                - '@pim_connector.processor.normalization.product' # Processor
+                - '@pim_connector.writer.file.xlsx_product' # Writer
+                - 10 # Batch size
+                - '@akeneo_batch.job.job_stopper'
 
 An ``ItemStep`` always contains 3 elements:
 
@@ -107,13 +97,11 @@ The product reader now uses the ProductQueryBuilder, it means that you can now f
 
     services:
         pim_connector.reader.database.product:
-            class: '%pim_connector.reader.database.product.class%'
+            class: 'Akeneo\Pim\Enrichment\Component\Product\Connector\Reader\Database\ProductReader'
             arguments:
-                - '@pim_catalog.query.product_query_builder_factory'
+                - '@pim_catalog.query.product_query_builder_factory_for_reading_purpose'
                 - '@pim_catalog.repository.channel'
-                - '@pim_catalog.manager.completeness'
                 - '@pim_catalog.converter.metric'
-                - true
 
 Product Processor
 -----------------
@@ -124,19 +112,16 @@ The service is defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/pr
 
 .. code-block:: yaml
 
-    parameters:
-        pim_connector.processor.normalization.product.class: Akeneo\Pim\Enrichment\Component\Product\Connector\Processor\Normalization\ProductProcessor
-
     services:
         pim_connector.processor.normalization.product:
-            class: '%pim_connector.processor.normalization.product.class%'
+            class: 'Akeneo\Pim\Enrichment\Component\Product\Connector\Processor\Normalization\ProductProcessor'
             arguments:
                 - '@pim_catalog.normalizer.standard.product'
                 - '@pim_catalog.repository.channel'
                 - '@pim_catalog.repository.attribute'
-                - '@pim_catalog.builder.product'
-                - '@akeneo_storage_utils.doctrine.object_detacher'
-                - '@pim_connector.processor.bulk_media_fetcher'
+                - '@pim_catalog.product_model.fill_missing_values'
+                - '@akeneo.pim.structure.query.get_attributes'
+                - '@pim_connector.processor.normalization.get_normalized_product_quality_scores'
 
 The class ``Akeneo\Pim\Enrichment\Component\Product\Connector\Processor\Normalization\ProductProcessor`` mainly delegates the transformation to the service ``pim_catalog.normalizer.standard.product``.
 
@@ -152,7 +137,7 @@ We can see here that we normalize each product into the ``standard`` format. It 
         ),
     ]);
 
-This service ``pim_catalog.normalizer.standard.product`` is declared in ``src/Pim/Bundle/CatalogBundle/Resources/config/serializers.yml`` and uses the Symfony ``Serializer`` class.
+This service ``pim_catalog.normalizer.standard.product`` is declared in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/serializers_standard.yml`` and uses the Symfony ``Serializer`` class.
 
 As a product may not have values for all attributes, depending on the product, the normalized array will contain different keys, for instance,
 
@@ -210,29 +195,31 @@ Here is another example:
 
 .. note::
 
-    You can find extra information about the Serializer component in the official Symfony documentation https://symfony.com/doc/2.7/components/serializer.html
+    You can find extra information about the Serializer component in the official Symfony documentation https://symfony.com/doc/5.4/components/serializer.html
 
 Product Writer
 --------------
 
 This element receives products in the standard format, converts them in flat format with the converter and writes the lines in a csv file.
 
-The service is defined in ``src\Akeneo\Tool\Bundle\ConnectorBundleBundle\Resources\config\writers.yml``.
+The service is defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/steps.yml``.
 
 .. code-block:: yaml
 
-    parameters:
-        pim_connector.writer.file.csv_product.class: Akeneo\Pim\Enrichment\Component\Product\Connector\Writer\File\Csv\ProductWriter
-
     services:
         pim_connector.writer.file.csv_product:
-            class: '%pim_connector.writer.file.csv_product.class%'
+            class: 'Akeneo\Pim\Enrichment\Component\Product\Connector\Writer\File\Csv\ProductWriter'
             arguments:
                 - '@pim_connector.array_converter.standard_to_flat.product_localized'
                 - '@pim_connector.factory.flat_item_buffer'
                 - '@pim_connector.writer.file.product.flat_item_buffer_flusher'
                 - '@pim_catalog.repository.attribute'
                 - '@pim_connector.writer.file.media_exporter_path_generator'
+                - '@akeneo.pim.enrichment.connector.write.file.flat.generate_headers_from_family_codes'
+                - '@akeneo.pim.enrichment.connector.write.file.flat.generate_headers_from_attribute_codes'
+                - '@pim_enrich.connector.flat_translators.product_translator'
+                - '@akeneo_file_storage.repository.file_info'
+                - '@akeneo_file_storage.file_storage.filesystem_provider'
                 - ['pim_catalog_file', 'pim_catalog_image']
 
 This service first merges all used columns in all the rows, adds missing cells in each row, then writes the csv file.
@@ -257,10 +244,3 @@ This service first merges all used columns in all the rows, adds missing cells i
             'name'                     => 'Akeneo T-Shirt black and purple with short sleeve'
         ]
     ];
-
-.. warning::
-
-    In versions prior to 1.4.9, this writer used to load all products in memory. This can lead to performance and/or stability issues when exporting a very large number of lines (500k for instance).
-    Since 1.4.9 the writer uses a buffer on the disk to avoid overloading the memory, so the only limit is the free space on your server's disk, which is much less likely to be reached.
-
-    If you encounter this kind of memory issue, please consider upgrading to the latest version.

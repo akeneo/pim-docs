@@ -29,10 +29,10 @@ PIM updates and migrations
 
 Following the `Semantic Version <https://semver.org>`_, PIM has 2 main updates:
 
-- patches or minors versions:
-    Can include **bug fixes** and **new features**.
+- patches versions:
+    Can include **bug fixes**.
     Integrators are accountable for applying new patches and performing migrations on the PIM.
-    You can refer to :doc:`../../../migrate_pim/upgrade_minor_version` for more details about the procedure.
+    You can refer to :doc:`../../../migrate_pim/apply_patch/index` for more details about the procedure.
 - majors versions:
     Requires **new versions** of software and various components.
     Please contact us through the `Helpdesk > Cloud Flexibility and Serenity <https://akeneo.atlassian.net/servicedesk/customer/portal/8/group/23/create/93?summary=Technological%20stack%20upgrade%20for%20PIM&customfield_13302=12701&customfield_13395=13010&customfield_13395%3A1=13016&description=--%21--%20%20Operation%20scheduling%3A%0A--%21--%20%20%20%20-%202h%20downtime%20expected%0A--%21--%20%20%20%20-%20French%20Office%20Hours%0A--%21--%20%20%20%20-%20Should%20be%20scheduled%2048h%20in%20advance%0A--%21--%20%20Please%20offer%20us%20several%20dates%20and%20we%20will%20confirm%20the%20one%20that%20also%20corresponds%20to%20our%20availability>`_  to schedule the upgrade of the technological stack.

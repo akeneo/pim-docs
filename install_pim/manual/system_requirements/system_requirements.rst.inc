@@ -3,11 +3,11 @@
 Akeneo PIM only works on Linux servers. The application’s behaviour has been tested on several operating systems. We cannot guarantee the behaviour of the application on servers different from:
 
 +------------------------+-------------------+
-| Debian (Linux)         | ≥ 10 (64 bits)    |
+| Debian (Linux)         | ≥ 11 (64 bits)    |
 +------------------------+-------------------+
-| Ubuntu (Linux)         | ≥ 18.04 (64 bits) |
+| Ubuntu (Linux)         | ≥ 20.04 (64 bits) |
 +------------------------+-------------------+
-| CentOS / RHEL* (Linux) | ≥ 7               |
+| CentOS / RHEL* (Linux) | ≥ 7               |
 +------------------------+-------------------+
 
 * RHEL stands for Red Hat Enterprise Linux.
@@ -25,45 +25,43 @@ The web server will also need the following libraries and modules:
 +--------------+-----------------------------------+
 | mod rewrite  |  Required                         |
 +--------------+-----------------------------------+
-| mod-fastcgi  |  Required (no CGI nor libmod-php) |
+| mod-fastcgi  |  Required (no CGI nor libmod-php) |
 +--------------+-----------------------------------+
 
 **PHP required modules and configuration**
 
 +-----------------+---------------------------+
-| PHP             | 8.0                       |
+| PHP             | 8.1                       |
 +-----------------+---------------------------+
-| php8.0-apcu     | apc.enable_cli=1          |
+| php8.1-apcu     | apc.enable_cli=1          |
 +-----------------+---------------------------+
-| php8.0-bcmath   | No specific configuration |
+| php8.1-bcmath   | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-curl     | No specific configuration |
+| php8.1-curl     | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-fpm      | No specific configuration |
+| php8.1-fpm      | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-intl     | No specific configuration |
+| php8.1-intl     | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-mysql    | No specific configuration |
+| php8.1-mysql    | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-xml      | No specific configuration |
+| php8.1-xml      | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-zip      | No specific configuration |
+| php8.1-zip      | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-exif     | No specific configuration |
+| php8.1-exif     | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-imagick  | No specific configuration |
+| php8.1-imagick  | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-cli      | No specific configuration |
+| php8.1-cli      | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-opcache  | No specific configuration |
+| php8.1-opcache  | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-gd       | No specific configuration |
+| php8.1-gd       | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-mbstring | No specific configuration |
+| php8.1-mbstring | No specific configuration |
 +-----------------+---------------------------+
-| php8.0-memcached| No specific configuration |
-+-----------------+---------------------------+
-| composer        | >= 2                      |
+| composer        | >= 2                      |
 +-----------------+---------------------------+
 
 
@@ -112,7 +110,7 @@ Besides these modules, the following configuration is the minimal configuration 
 **Javascript** (required only for development purposes)
 
 +----------------+---------------------------+
-| nodejs         | ≥ 14                      |
+| nodejs         | ≥ 18                      |
 +----------------+---------------------------+
 | yarn           | ≥ 1.22                    |
 +----------------+---------------------------+
@@ -124,7 +122,7 @@ Besides these modules, the following configuration is the minimal configuration 
 **Database server**
 
 +-------------------+----------+
-|     MySQL (SQL)   |  8.0.23  |
+|     MySQL (SQL)   |  8.0.30  |
 +-------------------+----------+
 
 To use this database you will also require the distribution package:
@@ -136,7 +134,7 @@ To use this database you will also require the distribution package:
 and the following PHP modules:
 
 +--------------+----------+
-| php8.0-mysql | Required |
+| php8.1-mysql | Required |
 +--------------+----------+
 
 .. warning::
@@ -147,7 +145,7 @@ and the following PHP modules:
 **Search engine**
 
 +---------------+------------+
-| Elasticsearch | 7.16       |
+| Elasticsearch | 8.4.2      |
 +---------------+------------+
 
 Elasticsearch is bundled with its own JDK version, but if you want to use the `no JDK version <https://www.elastic.co/downloads/elasticsearch-no-jdk>_`, please make sure to install the right JDK for Elasticsearch.

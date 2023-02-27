@@ -40,7 +40,7 @@ Maybe something has been changed in your server. You can check that by running t
 In addition, check that:
 
 * The Xdebug PHP extension is well deactivated.
-* The PIM commands are well run in prod mode instead of dev mode (See: `Symfony documentation: Selecting the Environment for Console Commands <https://symfony.com/doc/2.7/configuration/environments.html#selecting-the-environment-for-console-commands>`_)
+* The PIM commands are well run in prod mode instead of dev mode (See: `Symfony documentation: Selecting the Environment for Console Commands <https://symfony.com/doc/5.4/configuration.html#selecting-the-active-environment>`_)
 * Your crontab scheduled PIM commands are not launched too frequently
 
 Step 4: what about your infrastructure?

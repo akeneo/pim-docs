@@ -24,26 +24,45 @@ The root of your current installation dir is referred as $INSTALLATION_DIR.
     $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
     $ php bin/console doctrine:migrations:migrate
     $ rm -rf var/cache/
+    $ php bin/console doctrine:migrations:migrate
+    $ php bin/console pim:update:check-requirements
 
 .. note::
 
     WARNING: please note that this part of the migration needs to be executed on your PIM v6.0 ``before`` upgrading your technical stack.
 
+.. note::
+
+    If the ``pim:update:check-requirements`` return an error you should follow the recommendation before upgrading your technical stack.
 
 Requirements
 ************
+
+Updated Elasticsearch component
+-------------------------------
+
+In order to migrate from Elasticsearch 7.16.2 (required in PIM 6.0) to 8.4.2 (required in PIM 7.0), you need to:
+  - Install elasticsearch 7.17.7
+  - Start elasticsearch: the index will be compatible with version 8
+  - Install elasticsearch 8.4.2
+  - Start elasticsearch
+
+.. note::
+    Please refer to update documentation depending on your platform:
+        - :doc:`Debian</install_pim/manual/system_requirements/manual_system_installation_debian11>`
+        - :doc:`Ubuntu</install_pim/manual/system_requirements/system_install_ubuntu_2204>`
 
 Updated System components
 -------------------------
 
 You have to make sure your system components are updated to the version required for Akeneo PIM:
- - PHP 8.0
+ - PHP 8.1
  - MySQL 8.0
- - Elasticsearch 7.16
-
+ - Elasticsearch 8.4.2
 
 Updated System dependencies
 ---------------------------
+
 Check your system dependencies are in sync with :doc:`/install_pim/manual/system_requirements/system_requirements`
 
 
@@ -140,7 +159,6 @@ Migrate your data
 
 .. code:: bash
 
-    $ bin/console pim:data-quality-insights:clean-product-scores
     $ bin/console doctrine:migrations:migrate
     $ bin/console pim:data-quality-insights:populate-product-models-scores-and-ki
 
@@ -161,53 +179,3 @@ Migrate your data
 
     The message "The migration has already been performed." concerning the "data-quality-insights" migration could be ignored .
 
-
-Migrating your custom code
-**************************
-
-Applying automatic fixes
-------------------------
-
-Some changes we made in the code of Akeneo PIM can be automatically applied to your own code.
-
-In order to make this process easier and more error proof, we decided to use PHP Rector (https://github.com/rectorphp/rector)
-to apply these changes.
-
-
-Installing Rector
-^^^^^^^^^^^^^^^^^
-
-.. code:: bash
-
-    composer require --dev rector/rector-prefixed
-
-Applying automatic fixes
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code:: bash
-
-    vendor/bin/rector process src/
-
-
-.. note::
-
-    This will use the `rector.yaml` file created by the `prepare.sh` above.
-    Feel free to add your own refactoring rules inside it. More information on https://getrector.org/
-
-Identifying broken code
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can use PHPStan to help you identify broken code:
-
-
-.. code:: bash
-
-    composer require --dev phpstan/phpstan
-    vendor/bin/phpstan analyse src/
-
-More information, please check https://github.com/phpstan/phpstan
-
-From that point, you will have to migrate your bundle one by one.
-
-Remember to check if they are still relevant, as each Akeneo version
-brings new features.

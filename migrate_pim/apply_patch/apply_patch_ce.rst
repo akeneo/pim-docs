@@ -27,7 +27,7 @@ Then clean the cache, re-install assets and warmup the cache:
 
 .. code-block:: bash
 
-    service php8.0-fpm restart
+    service php8.1-fpm restart
     rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
     rm yarn.lock
     bin/console pim:installer:assets

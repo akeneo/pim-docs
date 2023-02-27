@@ -2,6 +2,6 @@ services:
     acme_notifyconnector.step.notify:
         class: 'Acme\Bundle\NotifyConnectorBundle\Step\NotifyStep'
         arguments:
-            - 'notify'
+            - 'notify' # The step name
             - '@event_dispatcher'
             - '@akeneo_batch.job_repository'

@@ -11,8 +11,8 @@ you can create your own `services`_ that interact with those objects whenever ce
 
 For more details about event listeners, you can read the `Symfony documentation`_
 
-.. _Symfony documentation: https://symfony.com/doc/2.7/event_dispatcher.html
-.. _services: https://symfony.com/doc/2.7/service_container.html
+.. _Symfony documentation: https://symfony.com/doc/5.4/event_dispatcher.html
+.. _services: https://symfony.com/doc/5.4/service_container.html
 
 Example
 -------
@@ -29,14 +29,13 @@ In order to do that you can create an event listener that will send the email.
 
     use Symfony\Component\EventDispatcher\GenericEvent;
     use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
+    use Symfony\Component\Mailer\MailerInterface;
+    use Symfony\Component\Mime\Email;
 
     class ProductModificationListener
     {
-        private $mailer;
-
-        public function __construct(\Swift_Mailer $mailer)
+        public function __construct(private MailerInterface $mailer)
         {
-            $this->mailer = $mailer;
         }
 
         public function onPostSave(GenericEvent $event)
@@ -48,14 +47,13 @@ In order to do that you can create an event listener that will send the email.
                 return;
             }
 
-            $message = \Swift_Message::newInstance()
-                ->setSubject('A product modification event have been fired')
-                ->setFrom('no-reply@example.com')
-                ->setTo('me@example.com')
-                ->setBody('...')
-            ;
+            $email = (new Email())
+              ->subject('A product modification event have been fired')
+              ->text('...')
+              ->addTo('me@example.com')
+              ->html('...');
 
-            $this->mailer->send($message);
+            $this->mailer->send($email);
         }
     }
 
@@ -68,6 +66,6 @@ And there is the service definition:
         my.listener:
             class: Acme\Bundle\AppBundle\EventListener\ProductModificationListener
             arguments:
-                - '@swiftmailer.mailer'
+                - '@mailer'
             tags:
                 - { name: kernel.event_listener, event: akeneo.storage.post_save, method: onPostSave }
