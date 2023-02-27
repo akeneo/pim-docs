@@ -1,7 +1,7 @@
 How to apply a patch - Enterprise Edition - On Premise offer
 =================================================================
 
-In the following example, Akeneo PIM version 7.0.2 has just been released and we are using an Akeneo PIM version 6.0.1.
+In the following example, Akeneo PIM version 7.0.2 has just been released and we are using an Akeneo PIM version 7.0.1.
 
 We always tag both Community and Enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 7.0.2 fix may depend on CE 7.0.2.
 
