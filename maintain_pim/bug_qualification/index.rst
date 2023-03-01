@@ -56,7 +56,7 @@ When you notice slownesses, displaying pages and/or during import/exports, you a
 
 * Use the Symfony's profiler timeline tab to identify what part of the execution takes most of the time.
 * Use `blackfire.io <https://blackfire.io/>`_ in order to profile the requests which take too much time.
-* Use MySQL built in "SHOW PROCESSLIST" query to identify queries which take too long to run (See: `MySQL documentation: SHOW PROCESSLIST Syntax <https://dev.mysql.com/doc/refman/5.6/en/show-processlist.html>`_).
+* Use MySQL built in "SHOW PROCESSLIST" query to identify queries which take too long to run (See: `MySQL documentation: SHOW PROCESSLIST Syntax <https://dev.mysql.com/doc/refman/8.0/en/show-processlist.html>`_).
 * Use MEMINFO to analyse memory leak issues (See: `MEMINFO GitHub repository <https://github.com/BitOne/php-meminfo/>`_).
 
 Reporting the bug
