@@ -1,13 +1,13 @@
 How to apply a patch - Enterprise Edition - Flexibility Cloud offer
 ========================================================================
 
-In the following example, Akeneo PIM version 6.0.2 has just been released and we are using an Akeneo PIM version 6.0.1.
-
-We always tag both Community and Enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 6.0.2 fix may depend on CE 6.0.2.
-
-Using the exact patch version will avoid any local composer cache issue.
+In the following example, Akeneo PIM version 6.0.50 has just been released and we are still using an Akeneo PIM version 6.0.1.
 
 In your enterprise standard project, the composer.json will reference both community and enterprise bundles repositories.
+
+We always tag both Community and Enterprise versions with aligned version numbers, so please be aware that the exact same versions will be used for CE and EE, for instance, a EE 6.0.50 fix will rely on CE 6.0.50.
+
+Using the exact patch version will avoid any local composer cache issue and potential version misalignments.
 
 To upgrade, please change the composer.json to:
 
@@ -15,7 +15,7 @@ To upgrade, please change the composer.json to:
 
     {
         ...
-        "akeneo/pim-enterprise-dev": "6.0.2",
+        "akeneo/pim-enterprise-dev": "6.0.50",
         ...
     }
 
@@ -27,9 +27,9 @@ Run the composer update command:
 
 Be aware that your composer.json won't be updated and some dependencies might be missing or from an outdated version.
 
-You have to check whether the latest composer.json is different from your own. In this case you should backup your current composer.json and download the newest one beforehand.
+You have to make sure you have the latest version of composer.json. If this isn't the case, you should backup your current composer.json and download the newest one before updating.
 
-Double check in the output of this command that the 6.0.2 version has been fetched, you can also check it by using the following command:
+Double check in the output of this command that the 6.0.50 version has been fetched. You can also check this by running the following command:
 
 .. code-block:: bash
 
@@ -60,7 +60,7 @@ If the patch is a javascript fix, please **clear your browser cache** before tes
     The ``partners_clear_cache`` command is only available in Akeneo Flexibility Offer. You can find more commands in our :doc:`/cloud_edition/flexibility_mode/docs/system_administration` page.
 
 
-If you have an error during the ``yarn run webpack`` command, please execute this process to upgrade your package.json, reinstall the correct version of yarn modules and clean your cache.
+If you have an error during the ``yarn run webpack`` command, please execute this process to update your package.json, reinstall the correct version of yarn modules and clean your cache.
 
 .. code-block:: bash
 
