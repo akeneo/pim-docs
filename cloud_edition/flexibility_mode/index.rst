@@ -1,7 +1,7 @@
 Flexibility
 ================
 
-**Flexibility** mode is a Platform as a Service (PaaS) which allows developers to deploy Akeneo PIM and custom code on an infrastructure managed by Akeneo.
+**Flexibility** mode is a Platform as a Service (PaaS) which allows developers to customize and build upon Akeneo PIM Enterprise Edition on an infrastructure managed by Akeneo.
 
 Types of environments
 ---------------------
