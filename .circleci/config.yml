@@ -22,7 +22,7 @@ jobs:
             - add_ssh_keys
             - run:
                   name: Deploy on staging server
-                  command: DEPLOY_HOSTNAME=$STAGING_HOSTNAME DEPLOY_PORT=$STAGING_PORT VERSION="master" make deploy
+                  command: DEPLOY_HOSTNAME=$STAGING_HOSTNAME DEPLOY_PORT=$STAGING_PORT VERSION="7.0" make deploy
 
     deploy_production:
         machine:
@@ -32,7 +32,10 @@ jobs:
             - add_ssh_keys
             - run:
                   name: Deploy on production server
-                  command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="master" make deploy
+                  command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="7.0" make deploy
+
+orbs:
+    pull-up: akeneo-orbs/pull-up@1.0
 
 workflows:
     version: 2
@@ -42,14 +45,15 @@ workflows:
                   filters:
                       branches:
                           ignore:
-                              - master
+                              - "7.0"
 
     deployment:
         jobs:
             - deploy_staging:
-                  filters:
-                      branches:
-                          only: master
+                filters:
+                    branches:
+                        only:
+                            - "7.0"
             - approve_to_deploy_in_production:
                   type: approval
                   requires:
@@ -58,6 +62,20 @@ workflows:
                   requires:
                       - approve_to_deploy_in_production
 
+    pull_up:
+        jobs:
+            - pull-up/pull-up:
+                  from: "7.0"
+                  into: "master"
+                  branch_prefix: "70_to_master"
+                  github_token: MICHEL_TAG_TOKEN
+                  github_username: "micheltag"
+                  slack_webhook: "${SLACK_URL_PULL_UP}"
+                  filters:
+                      branches:
+                          only:
+                              - "7.0"
+
     nightly:
         triggers:
             - schedule:
@@ -65,6 +83,6 @@ workflows:
                   filters:
                       branches:
                           only:
-                              - "master"
+                              - "7.0"
         jobs:
             - check-external-link
