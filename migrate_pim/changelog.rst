@@ -2,7 +2,7 @@ What is a Changelog?
 ========================
 
 When our maintenance team works on issues, they take extreme care to avoid any backward compatibility break, but it might happen. 
-If it is the case, the BC break is mentioned in the changelog of the version.
+If it is the case, the backward compatibility break is mentioned in the changelog of the version.
 
 Where is the Changelog?
 ========================
