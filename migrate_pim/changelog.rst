@@ -11,7 +11,7 @@ Where is the Changelog?
 
     Akeneo provides 2 changelogs: one for CE edition available the Community repo and one for EE edition which is only available in the latest Enterprise Edition archive.
 
-Community Edition changelog :
+Community Edition changelog:
 
 * Go to our `Community Repository <https://github.com/akeneo/pim-community-dev/>`_.
 * Select your branch in the drop down menu, for instance select 6.0 branch.
