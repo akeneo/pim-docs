@@ -18,7 +18,7 @@ Community Edition changelog:
 * Then scroll down the page, and select the desired Changelog in the list, for instance `Changelog 6.0 version <https://github.com/akeneo/pim-community-dev/blob/6.0/CHANGELOG-6.0.md>`_.
 
 
-Enterprise Edition changelog :
+Enterprise Edition changelog:
 
 * Get the latest `PIM Enterprise Edition (EE) archive from the Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_.
 * If you don't know how to get your archive, please contact us
