@@ -4,7 +4,7 @@ How to upgrade to a minor version? (PIM version < 4.x)
 
 .. note::
 
-    There is no longer minor version since 4.0.
+    Since version 5.0, we have stopped releasing minor versions. Instead, we release more frequent, smaller patches. Instructions for installing patches can be found here: :doc:`/migrate_pim/apply_patch/index`
     
 
 Since 1.x to 3.x, we released a minor version 3 times a year:
