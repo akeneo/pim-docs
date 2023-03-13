@@ -1,6 +1,11 @@
 System Administration & Services Management
 ===========================================
 
+PIM Location
+------------
+
+ **/home/akeneo/pim**
+
 Environment variables
 ---------------------
 
@@ -17,11 +22,6 @@ Instances come with preset environment variables, that you can list using:
     # APP_DATABASE_HOST=localhost
     # APP_SECRET=6d40b1ed-6ce0-6ca7-f1c9-256c2241edc9
 
-PIM Location
-------------
-
- **/home/akeneo/pim**
-
 Database access
 ---------------
 
@@ -34,7 +34,7 @@ Connect to the database by using ``mysql``, with no need to provide credentials.
 Akeneo database dump
 --------------------
 
-In order to dump the ``akeneo`` database, one could run the command:
+To dump the ``akeneo`` database, you could run the command:
 
 .. code-block:: bash
 
@@ -53,7 +53,7 @@ Privilege escalation
 
 .. note::
 
-    **akeneo** is an unprivileged user, but you can use the aliases below to perform system operations.
+    **akeneo** is an **unprivileged** user, but you can use the aliases below to perform system operations.
 
 ============================ ============================================ ======
 Alias                        Argument                                     Action
@@ -62,7 +62,7 @@ Alias                        Argument                                     Action
 ``partners_elasticsearch``   ``status|start|restart``                     Show status or start/restart elasticsearch daemon
 ``partners_php8.0-fpm``      ``status|start|restart``                     Show status or start/restart php-fpm daemon (Command name can vary depending on your version of PHP)
 ``partners_clear_cache``                                                  Clear PIM cache properly. Stops php-fpm and job consumers, deletes PIM cache folder, warms up PIM cache and restarts php-fpm and job consumers
-``partners_systemctl <job>`` ``status|start|stop|restart|enable|disable`` Show status, start/stop/restart or enable/disable job consumers. Refer to `this page <job_consumers_and_workers.rst>`_ for more details
+``partners_systemctl <job>`` ``status|start|stop|restart|enable|disable`` Show status, start/stop/restart or enable/disable job consumers. Refer to `this page <job_consumers_and_workers.html>`_ for more details
 ============================ ============================================ ======
 
 
