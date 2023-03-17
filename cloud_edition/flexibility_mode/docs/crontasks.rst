@@ -58,20 +58,23 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     0 1 * * 0 pim:versioning:purge --more-than-days 90 --no-interaction --force
     0 0 1 * * akeneo:batch:purge-job-execution
     1 * * * * akeneo:connectivity-audit:update-data
-    0 5 * * * akeneo:rule:run
+    10 * * * * akeneo:connectivity-connection:purge-error
+    40 12 * * * akeneo:connectivity-audit:purge-error-count
+    0 5,11,17,23 * * * akeneo:rule:run
     0 3 * * * pim:versioning:refresh
     0 4 * * * pim:volume:aggregate
     20 0 * * * pimee:project:recalculate
     0 2 * * * pimee:project:notify-before-due-date
     0 23 * * * akeneo:reference-entity:refresh-records
+    0 23 * * * akeneo:asset-manager:refresh-assets --all
     5 22 * * * pimee:sso:rotate-log 30
     15 0 * * * pim:data-quality-insights:schedule-periodic-tasks
     */10 * * * * pim:data-quality-insights:prepare-evaluations
     */30 * * * * pim:data-quality-insights:evaluations
-    0 0 * * 1 akeneo:connectivity-connection:openid-keys:create
     5 * * * * akeneo:connectivity-connection:purge-events-api-logs
-    10 * * * * akeneo:connectivity-connection:purge-error
-    40 12 * * * akeneo:connectivity-audit:purge-error-count
+    4 21 * * 0 akeneo:connectivity-connection:openid-keys:create --no-interaction
+    30 0 * * * pim:data-quality-insights:clean-completeness-evaluation-results --no-interaction
+    */10 * * * * pim:job-automation:push-scheduled-jobs-to-queue
 
     # Custom CRONs
     SHELL=/bin/bash
