@@ -4,7 +4,8 @@ Environment accesses
 SSH
 ---
 
-SSH access is **individual** and requires the use of a **SSH keys**. Password authentication is not possible.
+SSH access is **individual** and requires the use of **SSH keys**. 
+Password authentication is not possible.
 
 .. note::
 
@@ -17,7 +18,7 @@ Connection
 - Learn how to generate a new SSH key and add it to your SSH agent on `GitHub Help Center`_.
 - Learn how to authorize your SSH key to access your environment by visiting `Akeneo Help Center`_.
 
-Always use **akeneo** as the user to connect to your server. It is an unprivilege user with limited access to system operations.
+Always use **akeneo** as the user to connect to your server. It is a user with limited access to system operations.
 
 .. warning::
 
@@ -31,6 +32,9 @@ Always use **akeneo** as the user to connect to your server. It is an unprivileg
 
 .. note::
     Using **-A** will forward your SSH agent to the server and allow you to access the Akeneo Entreprise repository once connected.
+
+Troubleshooting
+************************
 
 Error: Permission Denied
 ************************
@@ -46,11 +50,12 @@ Your SSH key is not allowed on the server and/or the user is not correct. Specif
 
     ssh -A akeneo@my-project-staging.cloud.akeneo.com -i /path/to/private_key
 
-If the connection is not successful, make sure your key is registered on Akeneo Portal and is marked as activated.
+If the connection is not successful, make sure your key is registered on **Akeneo Portal** and is marked as activated.
 If the connection is successful, it means your identity has not been properly registered to your SSH agent.
 
 .. code-block:: bash
 
+    # To add your key to ssh-agent
     eval "$(ssh-agent -s)"
     ssh-add /path/to/private_key
 
@@ -64,20 +69,20 @@ Error: Connection refused
 
 Something prevents the connection from being established, it can mean that:
 
-- you have a firewall that blocks the port 22 or SSH protocol. Contact your administrator to check for such restrictions.
-- your IP adress is not allowed to connect. IP access ranges have to be explicitely allowed through the Portal.
+- you have a firewall that blocks port 22 or SSH protocol. Contact your administrator to check for such restrictions.
+- your IP address is not allowed to connect. IP access ranges have to be explicitly allowed through the Portal.
 - if none of the above apply, please contact us.
 
 SSH File Transfer Protocol (SFTP)
 ----------------------------------
 
-This access can only be granted **upon request**, after a Cloud ticket has been created through the `helpdesk <https://akeneo.atlassian.net/servicedesk/customer/portal/8/group/23/create/93?summary=New%20SFTP%20Account&customfield_13395=13010&customfield_13395%3A1=13034&description=--%21--%20%20Default%20user%20would%20be%20set%20to%20%22akeneosftp%22%20with%20a%20home%20directory%20in%20%22%2Fdata%2Ftransfer%2F%3Cusername%3E%22%0A--%21--%20%20If%20you%20would%20like%20another%20username%2C%20please%20notice%20us>`_.
-Please allow some time for our Team to create the access for you.
+This access can only be granted **upon request**, you must submit a ticket through the `helpdesk <https://akeneo.atlassian.net/servicedesk/customer/portal/8/group/23/create/93?summary=New%20SFTP%20Account&customfield_13395=13010&customfield_13395%3A1=13034&description=--%21--%20%20Default%20user%20would%20be%20set%20to%20%22akeneosftp%22%20with%20a%20home%20directory%20in%20%22%2Fdata%2Ftransfer%2F%3Cusername%3E%22%0A--%21--%20%20If%20you%20would%20like%20another%20username%2C%20please%20notice%20us>`_.
+Please allow some time for our team to create the access for you.
 
 .. note::
     You can request several SFTP accesses, and each one has its own credentials that can be shared. Those credentials are independent from SSH key accesses. IP access restrictions apply to SFTP as well as to SSH.
 
-Each SFTP access can access one folder that is also accessible by the user **akeneo**, so it can be used by scripts you'd create to interact with the PIM.
+Each SFTP access can access one folder that is also accessible by the user **akeneo**.
 
 .. code-block:: bash
 
@@ -91,7 +96,7 @@ You can also use tools such as `Filezilla`_ or any SFTP client.
 Files Permissions for SFTP
 **************************
 
-If **akeneo**, as an SSH user or as a PIM process, creates files in the SFTP sub-directories, permissions have to be set so that SFTP users can rename or delete them.
+Files created by **akeneo** user in the SFTP sub-directories, can be modified by SFTP users.
 
 .. code-block:: bash
 
@@ -102,17 +107,22 @@ If **akeneo**, as an SSH user or as a PIM process, creates files in the SFTP sub
 .. _`Akeneo Help Center`:  https://help.akeneo.com/portal/articles/access-akeneo-flexibility.html?utm_source=akeneo-docs&utm_campaign=flexibility_partner_starterkit
 
 
+Data Transfer Between Instances
+----------------------------------
+
 Copy data from one instance to another
 **************************************
 
+Instances within the same projects (ex: production and staging instances) share an internal network that allows them to transfer data between them.
+
 **Scenario:**
 
-    User wants to transfer a SQL dump file from production instance their staging instance:
+    A user wants to transfer a backup of the database from the production instance to the staging instance:
 
 .. note::
 
     **User** connects with SSH and forwards their local ssh-agent towards
-        > **project.akeneo.cloud.com**, and runs scp command towards
+        > **project.akeneo.cloud.com**, and runs `scp` command towards
 
         > **project-staging.akeneo.cloud.com**
 
@@ -120,7 +130,7 @@ Copy data from one instance to another
 
 **Prerequisites:**
 
-- Get SSH key access to both intances for akeneo user.
+- Get SSH key access to both instances for akeneo user.
 - Get network access to instances.
 
 **Usage:**
@@ -131,10 +141,10 @@ Copy data from one instance to another
     ssh-add ~/.ssh/id_rsa
     ssh -tA akeneo@project-staging.cloud.akeneo.com
 
-    scp dump.sql akeneo@project:dump.sql
+    scp database_backup.sql akeneo@project:database_backup.sql
 
 .. warning::
 
     On the SCP command, please note that no domain is specified.
 
-    Use the short host name of instance. Connect to the target server and run `hostname` to get this value.
+    Use the short hostname of the instance, you can find this value by connect to the target instance and run `hostname` to get this value.
