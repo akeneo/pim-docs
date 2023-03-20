@@ -87,6 +87,7 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
 You can then copy the composer.json file to your pim installation:
 
 .. code-block:: bash
+
     mkdir pim-temp
     tar -xvzf pim-enterprise-standard-v6.0.tar.gz -C pim-temp
     cd pim-temp/pim-enterprise-standard
