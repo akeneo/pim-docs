@@ -75,6 +75,7 @@ If you don't want to use this wrapper you can prepend `SHELL=/bin/bash`, for exa
     4 21 * * 0 akeneo:connectivity-connection:openid-keys:create --no-interaction
     30 0 * * * pim:data-quality-insights:clean-completeness-evaluation-results --no-interaction
     */10 * * * * pim:job-automation:push-scheduled-jobs-to-queue
+    0 */2 * * * akeneo:messenger:doctrine:purge-messages messenger_messages default
 
     # Custom CRONs
     SHELL=/bin/bash
