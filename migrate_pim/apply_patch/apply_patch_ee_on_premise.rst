@@ -68,8 +68,8 @@ If the patch is a javascript fix, please **clear your browser cache** before tes
 .. note::
 
    
-    
-    Troubleshooting
+
+Troubleshooting
 -----------------------
 
 
