@@ -43,7 +43,19 @@ Please **clear your browser's cache** before testing.
     We set any other dependencies to their exact patch versions to avoid compatibility issues.
 
 
-.. note::
+Troubleshooting
+-----------------------
 
-    If you get a 500 error after upgrading, and clearing thecache isn't working, try to cleaing the APC cache with a PHP script or restart Apache/Web server.
 
+**Cache issues**
+
+If you get a 500 error after upgrading and clear cache isn't working, try clearing the apc cache with a PHP script or restart the Apache/Web server.
+    
+    
+**Composer issues**    
+
+You have to make sure you have the latest version of composer.json. If this isn't the case, you should backup your current composer.json and download the newest one before updating.
+
+You need to get an archive containing Akeneo PIM and its PHP dependencies: https://download.akeneo.com/pim-community-standard-v6.0-latest-icecat.tar.gz
+
+You can then copy the composer.json file to your pim installation.
