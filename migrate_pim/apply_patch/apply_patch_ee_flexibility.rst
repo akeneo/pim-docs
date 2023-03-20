@@ -60,6 +60,9 @@ If the patch is a javascript fix, please **clear your browser cache** before tes
     The ``partners_clear_cache`` command is only available in Akeneo Flexibility Offer. You can find more commands in our :doc:`/cloud_edition/flexibility_mode/docs/system_administration` page.
 
 
+Troubleshooting
+-----------------------
+
 If you have an error during the ``yarn run webpack`` command, please execute this process to update your package.json, reinstall the correct version of yarn modules and clean your cache.
 
 .. code-block:: bash
