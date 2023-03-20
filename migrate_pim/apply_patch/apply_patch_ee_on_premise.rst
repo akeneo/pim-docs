@@ -85,7 +85,6 @@ You have to make sure you have the latest version of composer.json. If this isn'
 You need to get a PIM Enterprise Standard archive from the Partners Portal. See <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_
 
 You can then copy the composer.json file to your pim installation:
-
 .. code-block:: bash
     mkdir pim-temp
     tar -xvzf pim-enterprise-standard-v6.0.tar.gz -C pim-temp
