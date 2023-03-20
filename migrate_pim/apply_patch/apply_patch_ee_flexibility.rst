@@ -27,8 +27,6 @@ Run the composer update command:
 
 Be aware that your composer.json won't be updated and some dependencies might be missing or from an outdated version.
 
-You have to make sure you have the latest version of composer.json. If this isn't the case, you should backup your current composer.json and download the newest one before updating.
-
 Double check in the output of this command that the 6.0.50 version has been fetched. You can also check this by running the following command:
 
 .. code-block:: bash
@@ -63,6 +61,7 @@ If the patch is a javascript fix, please **clear your browser cache** before tes
 Troubleshooting
 -----------------------
 
+**Frontend issues***
 If you have an error during the ``yarn run webpack`` command, please execute this process to update your package.json, reinstall the correct version of yarn modules and clean your cache.
 
 .. code-block:: bash
@@ -78,3 +77,17 @@ If you have an error during the ``yarn run webpack`` command, please execute thi
     yarn run less
     make javascript-prod
     make javascript-extensions
+    
+    
+**Composer issues**    
+You have to make sure you have the latest version of composer.json. If this isn't the case, you should backup your current composer.json and download the newest one before updating.
+
+You need to get a PIM Enterprise Standard archive from the Partners Portal. See <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_
+
+You can then copy the composer.json file to your pim installation:
+
+.. code-block:: bash
+    mkdir pim-temp
+    tar -xvzf pim-enterprise-standard-v6.0.tar.gz -C pim-temp
+    cd pim-temp/pim-enterprise-standard
+    cp composer.json ~/path-to-pim-installation
