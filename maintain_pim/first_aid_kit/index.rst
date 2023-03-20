@@ -10,7 +10,7 @@ Sometimes, it's quite clear that the behaviour you experience is a bug. But it i
 
 If you have doubts, please have a look at the following resources. If not, go to the next step.
 
-* `The PIM Help Center <https://help.akeneo.com/pim/v3/index.html>`_
+* `The PIM Help Center <https://help.akeneo.com/en_US/v3/index.html>`_
 * `The PIM online API documentation <https://api.akeneo.com/>`_
 
 .. tip::
@@ -107,7 +107,7 @@ Step 9: did you consider the volume of your catalog?
 
 Each catalog is unique. How many channels, locales, attributes, families, categories, products and users do you have? These values may had increased drastically since you began using your PIM.
 
-Most of this information can be found on the PIM under System > System information. Since 2.3 version, you have a dedicated page available under Activity menu, called Catalog Volume Monitoring, see our `_Help Center article <https://help.akeneo.com/pim/v3/articles/catalog-volume-monitoring.html#a-dedicated-screen>`__ for more information about this page and how to read it.
+Most of this information can be found on the PIM under System > System information. Since 2.3 version, you have a dedicated page available under Activity menu, called Catalog Volume Monitoring, see our `_Help Center article <https://help.akeneo.com/v3-discover-akeneo-concepts/24-v3-monitor-your-catalog-size#a-dedicated-screen>`__ for more information about this page and how to read it.
 
 You can also read this Medium article `_Because your product catalog typology matters <https://medium.com/akeneo-labs/because-your-product-catalog-typology-matters-e1a9af4c33e0>`__ to see the impacts catalog modeling can have on PIM performances.
 
