@@ -74,8 +74,8 @@ Troubleshooting
 
 
 **Cache issues**
- 
- If you get a 500 error after upgrading and clear cache isn't working, try clearing the apc cache with a PHP script or restart the Apache/Web server.
+
+If you get a 500 error after upgrading and clear cache isn't working, try clearing the apc cache with a PHP script or restart the Apache/Web server.
     
     
 **Composer issues**    
