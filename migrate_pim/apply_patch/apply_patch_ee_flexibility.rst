@@ -80,6 +80,7 @@ If you have an error during the ``yarn run webpack`` command, please execute thi
     
     
 **Composer issues**    
+
 You have to make sure you have the latest version of composer.json. If this isn't the case, you should backup your current composer.json and download the newest one before updating.
 
 You need to get a PIM Enterprise Standard archive from the Partners Portal. See <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_
