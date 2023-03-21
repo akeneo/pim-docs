@@ -32,7 +32,8 @@ After that, you can check the content of your composer.json
         }
     ],
 
-All details about Distribution System can be found in the `Portal section of the Help center <https://help.akeneo.com/portal/?utm_source=akeneo-docs&utm_campaign=composer_settings>`_.
+All details about Distribution System can be found in the `Help Center, in the Portal Section <https://help.akeneo.com/en_US/akeneo-portal-project-console#category_380005>`_.
+
 
 
 Composer and GitHub API rate limit
