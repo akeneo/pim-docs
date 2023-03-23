@@ -63,10 +63,6 @@ If the patch is a javascript fix, please **clear your browser cache** before tes
 .. note::
 
     We set any other dependencies to their exact patch versions to avoid compatibility issues.
-
-
-.. note::
-
    
 
 Troubleshooting
