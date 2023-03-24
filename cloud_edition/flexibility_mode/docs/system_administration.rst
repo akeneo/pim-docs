@@ -62,7 +62,7 @@ Alias                        Argument                                     Action
 ``partners_elasticsearch``   ``status|start|restart``                     Show status or start/restart elasticsearch daemon
 ``partners_php8.0-fpm``      ``status|start|restart``                     Show status or start/restart php-fpm daemon (Command name can vary depending on your version of PHP)
 ``partners_clear_cache``                                                  Clear PIM cache properly. Stops php-fpm and job consumers, deletes PIM cache folder, warms up PIM cache and restarts php-fpm and job consumers
-``partners_systemctl <job>`` ``status|start|stop|restart|enable|disable`` Show status, start/stop/restart or enable/disable job consumers. Refer to `this page <job_consumers_and_workers.html>`_ for more details
+``partners_systemctl <job>`` ``status|start|stop|restart|enable|disable`` Show status, start/stop/restart or enable/disable job consumers. Refer to `this page <job_consumers_and_workers.rst>`_ for more details
 ============================ ============================================ ======
 
 
