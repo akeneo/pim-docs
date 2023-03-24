@@ -1,6 +1,11 @@
 System Administration & Services Management
 ===========================================
 
+PIM Location
+------------
+
+ **/home/akeneo/pim**
+
 Environment variables
 ---------------------
 
@@ -17,11 +22,6 @@ Instances come with preset environment variables, that you can list using:
     # APP_DATABASE_HOST=localhost
     # APP_SECRET=6d40b1ed-6ce0-6ca7-f1c9-256c2241edc9
 
-PIM Location
-------------
-
- **/home/akeneo/pim**
-
 Database access
 ---------------
 
@@ -34,7 +34,7 @@ Connect to the database by using ``mysql``, with no need to provide credentials.
 Akeneo database dump
 --------------------
 
-In order to dump the ``akeneo`` database, one could run the command:
+To dump the ``akeneo`` database, you could run the command:
 
 .. code-block:: bash
 
@@ -53,7 +53,7 @@ Privilege escalation
 
 .. note::
 
-    **akeneo** is an unprivileged user, but you can use the aliases below to perform system operations.
+    **akeneo** is an **unprivileged** user, but you can use the aliases below to perform system operations.
 
 ============================ ============================================ ======
 Alias                        Argument                                     Action
