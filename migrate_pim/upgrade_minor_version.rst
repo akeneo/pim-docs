@@ -1,7 +1,13 @@
-How to upgrade to a minor version?
-==================================
+How to upgrade to a minor version? (PIM version < 4.x)
+======================================================
 
-We release a minor version 3 times a year:
+
+.. note::
+
+    Since version 5.0, we have stopped releasing minor versions. Instead, we release more frequent, smaller patches. Instructions for installing patches can be found here: :doc:`/migrate_pim/apply_patch/index`
+    
+
+Since 1.x to 3.x, we released a minor version 3 times a year:
 
 * the X.1 (STS: Short Term Support version)
 * the X.2 (also a STS - Short Term Support - version)
@@ -11,14 +17,13 @@ These versions bring new features.
 
 Depending on these features and on the custom code you've added in your project, the migration can be more or less straightforward.
 
-Each release is provided with a migration guide and a set of scripts to automate it as much as possible.
-
-We continue to improve this process to make every new migration easier than the previous one.
+Each minor release was provided with a migration guide and a set of scripts to automate it as much as possible.
 
 Here are the migration guides:
 
 **If you are a Community Edition user**
 
+* `From v3.1 to v3.2`_
 * `From v3.0 to v3.1`_
 * `From v2.3 to v3.0`_
 * `From v2.2 to v2.3`_
@@ -32,6 +37,7 @@ Here are the migration guides:
 * `From v1.1 to v1.2`_
 * `From v1.0 to v1.1`_
 
+.. _From v3.1 to v3.2: https://github.com/akeneo/pim-community-standard/blob/3.2/UPGRADE-3.2.md
 .. _From v3.0 to v3.1: https://github.com/akeneo/pim-community-standard/blob/3.1/UPGRADE-3.1.md
 .. _From v2.3 to v3.0: https://github.com/akeneo/pim-community-standard/blob/3.0/UPGRADE-3.0.md
 .. _From v2.2 to v2.3: https://github.com/akeneo/pim-community-standard/blob/2.3/UPGRADE-2.3.md
@@ -51,6 +57,7 @@ Standard Enterprise Edition (EE) archives are available from `the Portal <https:
 
 Then, follow the migration guides located in your archive to upgrade your project.
 
+* From EE v3.1 to EE v3.2: UPGRADE-3.2.md
 * From EE v3.0 to EE v3.1: UPGRADE-3.1.md
 * From EE v2.3 to EE v3.0: UPGRADE-3.0.md
 * From EE v2.2 to EE v2.3: UPGRADE-2.3.md
