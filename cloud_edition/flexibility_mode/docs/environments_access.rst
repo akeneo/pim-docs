@@ -34,7 +34,7 @@ Always use **akeneo** as the user to connect to your server. It is a user with l
     Using **-A** will forward your SSH agent to the server and allow you to access the Akeneo Entreprise repository once connected.
 
 Troubleshooting
-************************
+---------------
 
 Error: Permission Denied
 ************************
@@ -108,7 +108,7 @@ Files created by **akeneo** user in the SFTP sub-directories, can be modified by
 
 
 Data Transfer Between Instances
-----------------------------------
+-------------------------------
 
 Copy data from one instance to another
 **************************************
