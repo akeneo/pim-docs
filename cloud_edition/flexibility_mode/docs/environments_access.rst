@@ -102,8 +102,8 @@ If **akeneo**, as an SSH user or as a PIM process, creates files in the SFTP sub
 .. _`Akeneo Help Center`:  https://help.akeneo.com/portal/articles/access-akeneo-flexibility.html?utm_source=akeneo-docs&utm_campaign=flexibility_partner_starterkit
 
 
-Copy data from one instance to another
-**************************************
+Transfer data from one instance to another
+******************************************
 
 **Scenario:**
 
@@ -138,3 +138,83 @@ Copy data from one instance to another
     On the SCP command, please note that no domain is specified.
 
     Use the short host name of instance. Connect to the target server and run `hostname` to get this value.
+    
+    
+Copy process (MySQL data & pictures (including assets)) from one instance to another
+************************************************************************************
+
+**Scenario:**
+
+    User wants to copy all the data (including assets & pictures) from staging instance to production instance :
+
+**Step one: Import MySQL data**
+   
+    First, create a MySQL dump of your data:
+
+.. code-block:: bash
+
+    #on mystaging.cloud.akeneo.com
+    mysqldump -u akeneo_pim -p$APP_DATABASE_PASSWORD akeneo_pim > /home/akeneo/pim/dump_`date -u +"%Y-%m-%dT%TZ"`.sql
+
+You could compress it to be more efficient during the copying process.
+Then, transfer your dump into the destination instance (cf previous paragraph)
+Finally, in your destination instance, import your MySQL dump:
+    
+.. code-block:: bash
+
+    #on myproduction.akeneo.com
+    mysql -u akeneo_pim -p$APP_DATABASE_PASSWORD akeneo_pim < /home/akeneo/pim/dump_`date -u +"%Y-%m-%dT%TZ"`.sql
+    
+**Step two: Localize assets storage**
+    
+    Find the asset Location using the following command:
+    
+.. code-block:: bash
+
+    bin/console debug:config OneupFlysystemBundle
+    
+The result indicate the file path of all your assets
+    
+.. code-block:: bash
+
+    asset_storage_adapter:
+            local:
+                location: /home/akeneo/pim/var/file_storage/asset
+                
+**Step three: Copy assets**
+ 
+    Compress all folders according to the locations and copy them into your destination instance. 
+    
+**Step four: Reset and reindex ElasticSearch** 
+
+    - Reset all the indexes from ElasticSearch
+    
+    .. code-block:: bash
+
+        bin/console akeneo:elasticsearch:reset-indexes
+        
+    - Reindex all the indexes one by one
+    
+    .. code-block:: bash
+
+        # Index products
+        bin/console pim:product:index --all
+
+        # Index product model
+        bin/console pim:product-model:index --all
+
+        # Index product proposals
+        bin/console pimee:product-proposal:index
+
+        # Index published products
+        bin/console pimee:published-product:index
+
+        # Index reference entities
+        bin/console akeneo:reference-entity:index-records --all
+
+        # Index assets (4.x)
+        bin/console akeneo:asset-manager:index-assets --all
+
+.. note::
+    After reseting indexes, all the products seems to diseapear from the product list. It's normal, they are well on MySQL but the product list results are based on ElasticSearch indexes. They will be visible once it's fully reindexed.
+    
