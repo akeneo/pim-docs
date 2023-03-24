@@ -1,7 +1,7 @@
 How to apply a patch - Enterprise Edition - Flexibility Cloud offer
 ========================================================================
 
-In the following example, Akeneo PIM version 6.0.50 has just been released and we are still using an Akeneo PIM version 6.0.1.
+In the following example, Akeneo PIM version 6.0.50 has just been released and we are still using Akeneo PIM version 6.0.1.
 
 In your enterprise standard project, the composer.json will reference both community and enterprise bundles repositories.
 
