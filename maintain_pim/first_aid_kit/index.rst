@@ -10,7 +10,7 @@ Sometimes, it's quite clear that the behaviour you experience is a bug. But it i
 
 If you have doubts, please have a look at the following resources. If not, go to the next step.
 
-* `The PIM Help Center <https://help.akeneo.com/pim/v3/index.html>`_
+* `The PIM Help Center <https://help.akeneo.com/en_US/v6/index.html>`_
 * `The PIM online API documentation <https://api.akeneo.com/>`_
 
 .. tip::
