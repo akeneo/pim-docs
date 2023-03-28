@@ -24,7 +24,7 @@ The root of your current installation dir is referred as $INSTALLATION_DIR.
     $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
     $ rm -rf var/cache/
     $ php bin/console doctrine:migrations:migrate
-    $ php bin/console pim:update:check-requirements
+    $ php bin/console pim:installer:check-requirements
 
 .. note::
 
@@ -32,7 +32,7 @@ The root of your current installation dir is referred as $INSTALLATION_DIR.
 
 .. note::
 
-    If the ``pim:update:check-requirements`` return an error you should follow the recommendation before upgrading your technical stack.
+    If the ``pim:installer:check-requirements`` return an error you should follow the recommendation before upgrading your technical stack.
 
 Requirements
 ************
