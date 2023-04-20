@@ -82,12 +82,16 @@ Similarly to PIM job consumers, here is how you can manipulate Onboarder daemons
 
 .. code-block:: bash
    :linenos:
+
    # Start the daemon
    partners_systemctl pim_onboarder_worker@1 start
+
    # Enable daemon #1 to be started at instance boot
    partners_systemctl pim_onboarder_worker@1 enable
+
    # Check the status of the daemon #1
    partners_systemctl pim_onboarder_worker@1 status
+
    # Stop daemon #1
    partners_systemctl pim_onboarder_worker@1 stop
 
