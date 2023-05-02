@@ -86,6 +86,7 @@ That's it! You now have the basic knowledge to start an Akeneo project.
 
     install_pim/index
     migrate_pim/index
+    migrate_pim/migrate_to_saas
     import_and_export_data/index
     manipulate_pim_data/index
     maintain_pim/index
