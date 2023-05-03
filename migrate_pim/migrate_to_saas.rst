@@ -105,6 +105,12 @@ Please send us the results of the following shell commands so that we can ensure
     $ bin/console pimee:database:diff --env=dev
     $ bin/console doctrine:migrations:status
 
+.. warning::
+
+    If the results of ``bin/console doctrine:migrations:status`` show a non-zero number of "New" migrations, your
+    database is not up to date. Please run ``bin/console doctrine:migrations:migrate``, run the ``status`` command again,
+    and send us the output of all of these commands so that we can see any changes.
+
 Check your filesystem
 ~~~~~~~~~~~~~~~~~~~~~
 
