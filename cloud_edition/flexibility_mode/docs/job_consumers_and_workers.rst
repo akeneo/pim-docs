@@ -74,6 +74,19 @@ Examples
       # Enable the consumer to be started automatically at instance boot up
       partners_systemctl pim_job_consumer@4 enable
 
+- Enable the default PIM webhook consumer (which is required for the `Events API <https://api.akeneo.com/events-reference/events-reference-6.0/products.html>`_):
+   .. code-block:: bash
+      :linenos:
+
+      # Start the consumer
+      partners_systemctl pim_webhook_consumer start
+
+      # Enable the consumer to be started automatically when the instance restarts
+      partners_systemctl pim_webhook_consumer enable
+
+      # Check the status to ensure the consumer is running and enabled
+      partners_systemctl pim_webhook_consumer status
+
 - Remove an existing daemon (not possible on Akeneo default ones):
    .. code-block:: bash
       :linenos:
