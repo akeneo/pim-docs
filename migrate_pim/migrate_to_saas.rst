@@ -44,7 +44,7 @@ Check that your PIM is on the latest patch
 If you are not on the latest patch, you may encounter problems that can delay your migration to Serenity. To avoid any problems,
 compare your PIM version (*ex:* ``6.0.68``) with the latest version of Akeneo PIM.
 
-To check if you need to upgrade, you can scroll to the bottom of your PIM's UI — if the PIM can be upgraded, you will see a message like ``New patch available: 6.0.82``
+To check if you need to upgrade, you can scroll to the bottom of your PIM's UI — if the PIM can be upgraded, you will see a message like ``New patch available: 6.0.82``.
 
 Guides to update the PIM to latest patch can be found here: :doc:`./apply_patch/index`
 
@@ -124,8 +124,11 @@ We also require the output of the following commands, so that we can check to ma
 Schedule a timeslot for migration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+The Akeneo Support team **must validate** the output of the above commands before we can schedule any migration.
+
 Once we have received all of this information and validated it, we can schedule the Flexibility to Serenity migration operation with our Cloud Engineering team. 
-Their hours are **Monday to Friday, 9:00 am to 6:00 pm CET**. 
+Their hours are **Monday to Friday, 9:00 am to 6:00 pm CET**. Please provide at least 48 hours notice between your request and the actual migration time slot.
+This gives our team time to prepare and to ensure that your migration runs smoothly.
 
 We usually estimate 2 hours for each migration, although the duration of individual migration operations can vary, especially if your catalog is very large or complex.
 
