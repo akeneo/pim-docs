@@ -133,6 +133,7 @@ This gives our team time to prepare and to ensure that your migration runs smoot
 We usually estimate 2 hours for each migration, although the duration of individual migration operations can vary, especially if your catalog is very large or complex.
 
 .. warning::
+    
     When choosing a timeslot to schedule your migration, please keep in mind that your PIM will not be available while we migrate the data and set up your Serenity instance.
 
 Given our Cloud team's schedule, please let us know the best time to migrate (if it is not available, we will suggest alternate time slots).
