@@ -8,7 +8,7 @@ If you are using **Enterprise Edition** of an On-Premise or Flexibility (PaaS) i
 What to expect
 --------------
 
-* Your PIM's URL will not change
+* Your PIM's URL will not change if you are migrating a Flexibility (PaaS) instance
 
 * If you have multiple instances (*ex: testing, staging, and production*), each instance needs to be migrated individually
 
@@ -130,7 +130,9 @@ Once we have received all of this information and validated it, we can schedule 
 Their hours are **Monday to Friday, 9:00 am to 6:00 pm CET**. Please provide at least 48 hours notice between your request and the actual migration time slot.
 This gives our team time to prepare and to ensure that your migration runs smoothly.
 
-We usually estimate 2 hours for each migration, although the duration of individual migration operations can vary, especially if your catalog is very large or complex.
+For most instances, migrations will take between 2 and 4 hours. However, the duration of individual migration operations can vary — especially if your catalog is very large or complex.
+
+If you have concerns about the timing of a migration, please let us know in the migration Support ticket and we will work with you to find the best solution.
 
 .. warning::
     
