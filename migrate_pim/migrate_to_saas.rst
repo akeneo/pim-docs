@@ -97,6 +97,10 @@ Check your database schema
 
 Please send us the results of the following shell commands so that we can ensure your database schema is up-up-to-date and compatible with a migration.
 
+.. note::
+
+    We use ``/home/akeneo/pim`` to refer to the default path to the PIM installation throughout this guide. If you are using an On Premise installation, your path may be different.
+
 .. code:: bash
 
     $ cd /home/akeneo/pim
