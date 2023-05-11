@@ -89,7 +89,7 @@ or offer solutions that are compatibile with Serenity.
 
 .. warning::
 
-    We cannot validate your instance's migration to Serenity without all of the following information.
+    **We cannot validate your instance's migration to Serenity without all of the following information.**
     If we request any changes, we may ask you to run some commands again to check the updated status of your PIM.
 
 Check your database schema
@@ -103,13 +103,25 @@ Please send us the results of the following shell commands so that we can ensure
     $ bin/console pimee:database:inspect -f --env=dev
     $ composer require jfcherng/php-diff
     $ bin/console pimee:database:diff --env=dev
+    $
     $ bin/console doctrine:migrations:status
+    $
+    $ bin/console doctrine:migrations:list
 
 .. warning::
 
     If the results of ``bin/console doctrine:migrations:status`` show a non-zero number of "New" migrations, your
     database is not up to date. Please run ``bin/console doctrine:migrations:migrate``, run the ``status`` command again,
     and send us the output of all of these commands so that we can see any changes.
+
+Check your Elasticsearch version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please send us the results of the following command so that we can ensure your Elasticsearch indexes can be migrated correctly:
+
+.. code:: bash
+
+    $ bin/console pim:update:check-requirements
 
 Check your filesystem
 ~~~~~~~~~~~~~~~~~~~~~
