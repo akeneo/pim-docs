@@ -55,6 +55,18 @@ We *strongly* advise you to make a MySQL backup of your data before you begin th
 
 To do so, please follow the directions in our :doc:`/cloud_edition/flexibility_mode/docs/system_administration` documentation.
 
+Disable custom code
+~~~~~~~~~~~~~~~~~~~
+
+Serenity does not support custom code within the PIM. In Serenity, all custom features use API connections and apps from the `App Store <https://apps.akeneo.com>`_ 
+(including `custom apps <https://api.akeneo.com/apps/create-custom-app.html>`_).
+
+**If you have custom code bundles, please** `remove them <https://docs.akeneo.com/master/maintain_pim/first_aid_kit/index.html#step-10-did-you-customize-your-pim>`_ 
+**before you begin the migration process.**
+
+If you cannot find a suitable replacement for your custom code, please contact your Customer Success Manager — they may be able to suggest changes
+or offer solutions that are compatibile with Serenity.
+
 The migration process
 ---------------------
 
@@ -74,18 +86,6 @@ Please include the following fields so that we can begin working on your migrati
 +--------------------------------+---------------------------------------------------------------------------------------+
 | *Operation Type*               | **Flexibility** > **Migrate to Serenity** or **On Premise** > **Migrate to Serenity** |
 +--------------------------------+---------------------------------------------------------------------------------------+
-
-Disable custom code
-~~~~~~~~~~~~~~~~~~~
-
-Serenity does not support custom code within the PIM. In Serenity, all custom features use API connections and apps from the `App Store <https://apps.akeneo.com>`_ 
-(including `custom apps <https://api.akeneo.com/apps/create-custom-app.html>`_).
-
-**If you have custom code bundles, please** `remove them <https://docs.akeneo.com/master/maintain_pim/first_aid_kit/index.html#step-10-did-you-customize-your-pim>`_ 
-**before you begin the migration process.**
-
-If you cannot find a suitable replacement for your custom code, please contact your Customer Success Manager — they may be able to suggest changes
-or offer solutions that are compatibile with Serenity.
 
 .. warning::
 
