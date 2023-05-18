@@ -84,6 +84,7 @@ That's it! You now have the basic knowledge to start an Akeneo project.
     :titlesonly:
     :hidden:
 
+    migrate_pim/migrate_to_saas
     install_pim/index
     migrate_pim/index
     import_and_export_data/index
