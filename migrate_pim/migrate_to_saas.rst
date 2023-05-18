@@ -73,7 +73,7 @@ The migration process
 Open a Support ticket
 ~~~~~~~~~~~~~~~~~~~~~
 
-To begin the process to migrate from an On-Premise or Flexibility instance to a Serenity instance, you will need to open a ticket with Akeneo Support. 
+To begin the process to migrate from an On-Premise or Flexibility instance to a Serenity instance, you will need to `open a ticket with Akeneo Support. <https://akeneo.atlassian.net/servicedesk/customer/portal/8/group/8/create/198>_` 
 
 Please include the following fields so that we can begin working on your migration request.
 
