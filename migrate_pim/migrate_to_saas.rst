@@ -73,7 +73,7 @@ The migration process
 Open a Support ticket
 ~~~~~~~~~~~~~~~~~~~~~
 
-To begin the process to migrate from an On-Premise or Flexibility instance to a Serenity instance, you will need to `open a ticket with Akeneo Support. <https://akeneo.atlassian.net/servicedesk/customer/portal/8/group/8/create/198>_` 
+To begin the process to migrate from an On-Premise or Flexibility instance to a Serenity instance, you will need to `open a ticket with Akeneo Support. <https://akeneo.atlassian.net/servicedesk/customer/portal/8/group/8/create/198>`_
 
 Please include the following fields so that we can begin working on your migration request.
 
@@ -104,12 +104,13 @@ Please send us the results of the following shell commands so that we can ensure
 .. code:: bash
 
     $ cd /home/akeneo/pim
+    
     $ bin/console pimee:database:inspect -f --env=dev
     $ composer require jfcherng/php-diff
     $ bin/console pimee:database:diff --env=dev
-    $
+    
     $ bin/console doctrine:migrations:status
-    $
+    
     $ bin/console doctrine:migrations:list
 
 .. warning::
