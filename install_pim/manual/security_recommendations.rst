@@ -17,6 +17,8 @@ On test/dev/staging/pre-prod environments, if needed only, make sure to enable t
 using Apache.
 
 .. code-block:: apacheconf
+	:linenos:
+
 	<Location /adminer.php>
 		{% if adminer_ips_allowed is defined %}
 		Require ip {{ adminer_ips_allowed }}
