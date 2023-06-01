@@ -16,8 +16,7 @@ You should never enable these in production environments as it will lead to majo
 On test/dev/staging/pre-prod environments, if needed only, make sure to enable these with IP filtering like the following configuration
 using Apache.
 
-.. code-block:: httpd.conf
-    :CONFIG:
+.. code-block:: apacheconf
 	<Location /adminer.php>
 		{% if adminer_ips_allowed is defined %}
 		Require ip {{ adminer_ips_allowed }}
