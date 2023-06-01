@@ -13,7 +13,7 @@ You should never enable these in production environments as it will lead to majo
 - `adminer <https://www.adminer.org/>`_
 - `Php Symfony Profiler <https://symfony.com/doc/current/profiler.html>`_
 
-On test/dev/staging/pre-prod environments, if needed only, make sure to enable these with IP filtering like the following configuration
+On test/dev/staging/pre-prod environments, if needed only, make sure to ask support team to add with authorized IPs
 using Apache.
 
 .. code-block:: apacheconf
