@@ -25,3 +25,10 @@ using Apache.
 		{% endif %}
 		Require all denied
 	</Location>
+
+	<Location /app_dev.php>
+		{% if profiler_ips_allowed is defined %}
+		Require ip {{ profiler_ips_allowed }}
+		{% endif %}
+		Require all denied
+	</Location>
