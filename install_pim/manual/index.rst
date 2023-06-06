@@ -18,5 +18,6 @@ Once the requirements are fulfilled, you are ready to install Akeneo PIM. Otherw
 
    installation_ce
    installation_ee_archive
+   security_recommendations
    daemon_queue
    events_api
