@@ -12,7 +12,7 @@ The following domains are always blacklisted:
 - `object-storage`
 - `mysql`
 
-Additionnaly, we also block the ranges of IPs defined in the RFC1918.
+Additionally, we also block the ranges of IPs defined in the RFC1918.
 
 However, **you may need to add an exception to those IP address ranges**, this chapter explains how.
 

@@ -65,7 +65,7 @@ Error: Connection refused
 Something prevents the connection from being established, it can mean that:
 
 - you have a firewall that blocks the port 22 or SSH protocol. Contact your administrator to check for such restrictions.
-- your IP adress is not allowed to connect. IP access ranges have to be explicitely allowed through the Portal.
+- your IP address is not allowed to connect. IP access ranges have to be explicitly allowed through the Portal.
 - if none of the above apply, please contact us.
 
 SSH File Transfer Protocol (SFTP)
@@ -120,7 +120,7 @@ Copy data from one instance to another
 
 **Prerequisites:**
 
-- Get SSH key access to both intances for akeneo user.
+- Get SSH key access to both instances for akeneo user.
 - Get network access to instances.
 
 **Usage:**
