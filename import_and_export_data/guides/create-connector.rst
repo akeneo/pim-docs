@@ -194,12 +194,12 @@ To do that, we need to register a new view in our form, representing the new fie
 .. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Resources/config/form_extensions/csv_product_export_notify_edit.yml
     :language: yaml
     :linenos:
-    :lines: 268-278
+    :lines: 267-277
 
 .. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Resources/config/form_extensions/csv_product_export_notify_show.yml
     :language: yaml
     :linenos:
-    :lines: 250-259
+    :lines: 249-258
 
 Job form fields need special properties defined under the ``config`` key:
 
