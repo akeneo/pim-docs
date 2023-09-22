@@ -22,7 +22,8 @@ class XmlInvalidItemWriter extends AbstractInvalidItemWriter
      */
     protected function getInputFileIterator(JobParameters $jobParameters)
     {
-        $filePath = $jobParameters->get('filePath');
+        $filePath = $jobParameters->get('storage')['file_path'];
+
         $fileIterator = $this->fileIteratorFactory->create($filePath);
         $fileIterator->rewind();
 
@@ -38,7 +39,10 @@ class XmlInvalidItemWriter extends AbstractInvalidItemWriter
         $this->filesystem->put($fileKey, '');
 
         $writeParams = $this->defaultValuesProvider->getDefaultValues();
-        $writeParams['filePath'] = $this->filesystem->getAdapter()->getPathPrefix() . $fileKey;
+        $writeParams['storage'] = [
+            'type' => 'local',
+            'file_path' => $this->filesystem->getAdapter()->getPathPrefix() . $fileKey,
+        ];
 
         $writeJobParameters = new JobParameters($writeParams);
         $writeJobExecution  = new JobExecution();
