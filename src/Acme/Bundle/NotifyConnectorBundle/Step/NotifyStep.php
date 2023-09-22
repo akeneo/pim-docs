@@ -12,7 +12,7 @@ class NotifyStep extends AbstractStep
         // inject the step execution in the step item to be able to log summary info during execution
         $jobParameters = $stepExecution->getJobParameters();
 
-        $directory = dirname($jobParameters->get('filePath'));
+        $directory = dirname($jobParameters->get('storage')['file_path']);
         $fields = sprintf('directory=%s', urlencode($directory));
         $url = $jobParameters->get('urlToNotify');
 

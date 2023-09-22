@@ -40,7 +40,7 @@ You want a supervised worker
 .. warning::
 
     This process is only for "On premise" PIMs. If you are using the Flexibility mode of Akeneo Cloud Edition,
-    please follow :doc:`this documentation </cloud_edition/flexibility_mode/docs/job_consumers_and_workers>` instead.
+    please follow the systemd part below.
 
 You can use supervisor to run the ``worker`` as a daemonized process, supervisor will monitor this process and according to the configuration you'll define it will be autostarted and autorestarted.
 
@@ -66,6 +66,35 @@ You can use supervisor to run the ``worker`` as a daemonized process, supervisor
 .. note::
 
     Supervisor documentation: https://github.com/Supervisor/supervisor#documentation
+
+
+You want a systemd worker
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. warning::
+
+    This process is only for the Flexibility mode of Akeneo Cloud Edition. If you are using an "On premise" PIM,
+    please follow the supervised worker part above.
+
+While Onboarder requires consumers to run at all times, those are disabled by default since some customers do not use Onboarder.
+
+Similarly to PIM job consumers, here is how you can manipulate Onboarder daemons:
+
+.. code-block:: bash
+   :linenos:
+
+   # Start the daemon
+   partners_systemctl pim_onboarder_worker@1 start
+
+   # Enable daemon #1 to be started at instance boot
+   partners_systemctl pim_onboarder_worker@1 enable
+
+   # Check the status of the daemon #1
+   partners_systemctl pim_onboarder_worker@1 status
+
+   # Stop daemon #1
+   partners_systemctl pim_onboarder_worker@1 stop
+
 
 You want an infinite worker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

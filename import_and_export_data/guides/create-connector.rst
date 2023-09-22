@@ -69,7 +69,7 @@ Configure a job instance
 ------------------------
 
 A job can be seen as a template, it cannot be executed on its own: it needs parameters.
-For example our new job needs ``filePath`` and ``urlToNotify`` parameters to work properly (plus the ones needed by the native export step).
+For example our new job needs ``file_path`` and ``urlToNotify`` parameters to work properly (plus the ones needed by the native export step).
 
 Each set of parameters for a given job is called a **job instance**.
 A job instance can be executed, modified or deleted using the UI or the ``akeneo:batch:*`` Symfony commands.
@@ -135,7 +135,7 @@ The ``--config`` option can be used to override the job instance parameters at r
 
 .. code-block:: bash
 
-    php bin/console akeneo:batch:job my_app_product_export --config='{"filePath":"\/tmp\/new_path.csv"}'
+    php bin/console akeneo:batch:publish-job-to-queue csv_product_import -c '{"storage":{"type":"local","file_path":"/test.csv"}}'
 
 .. warning::
 
@@ -194,12 +194,12 @@ To do that, we need to register a new view in our form, representing the new fie
 .. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Resources/config/form_extensions/csv_product_export_notify_edit.yml
     :language: yaml
     :linenos:
-    :lines: 268-278
+    :lines: 267-277
 
 .. literalinclude:: ../../src/Acme/Bundle/NotifyConnectorBundle/Resources/config/form_extensions/csv_product_export_notify_show.yml
     :language: yaml
     :linenos:
-    :lines: 250-259
+    :lines: 249-258
 
 Job form fields need special properties defined under the ``config`` key:
 

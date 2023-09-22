@@ -28,7 +28,8 @@ class XmlWriter extends AbstractFileWriter implements
     public function initialize()
     {
         if (null === $this->xml) {
-            $filePath = $this->stepExecution->getJobParameters()->get('filePath');
+            $jobParameters = $this->stepExecution->getJobParameters();
+            $filePath = $jobParameters->get('storage')['file_path'];
 
             $this->xml = new \XMLWriter();
             $this->xml->openURI($filePath);
@@ -73,7 +74,8 @@ class XmlWriter extends AbstractFileWriter implements
         $this->xml->endElement();
         $this->xml->endDocument();
         $this->xml->flush();
+        $jobParameters = $this->stepExecution->getJobParameters();
 
-        $this->writtenFiles = [$this->stepExecution->getJobParameters()->get('filePath')];
+        $this->writtenFiles = [$this->stepExecution->getJobParameters()->get('storage')['file_path']];
     }
 }
