@@ -2,6 +2,7 @@
 
 namespace Acme\Bundle\XmlConnectorBundle\Job\JobParameters;
 
+use Akeneo\Platform\Bundle\ImportExportBundle\Infrastructure\Validation\Storage;
 use Akeneo\Tool\Component\Batch\Job\JobInterface;
 use Akeneo\Tool\Component\Batch\Job\JobParameters\ConstraintCollectionProviderInterface;
 use Akeneo\Tool\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface;
@@ -28,7 +29,10 @@ class SimpleXmlImport implements
     public function getDefaultValues()
     {
         return [
-            'filePath'                  => null,
+            'storage' => [
+                'type' => 'none',
+                'file_path' => sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'export_%job_label%_%datetime%.xml'
+            ],
             'uploadAllowed'             => true,
             'dateFormat'                => LocalizerInterface::DEFAULT_DATE_FORMAT,
             'decimalSeparator'          => LocalizerInterface::DEFAULT_DECIMAL_SEPARATOR,
@@ -50,15 +54,7 @@ class SimpleXmlImport implements
         return new Collection(
             [
                 'fields' => [
-                    'filePath' => [
-                        new NotBlank(['groups' => ['Execution', 'UploadExecution']]),
-                        new FileExtension(
-                            [
-                                'allowedExtensions' => ['xml', 'zip'],
-                                'groups'            => ['Execution', 'UploadExecution']
-                            ]
-                        )
-                    ],
+                    'storage'   => new Storage(['xml']),
                     'uploadAllowed' => [
                         new Type('bool'),
                         new IsTrue(['groups' => 'UploadExecution']),

@@ -167,3 +167,23 @@ Setup synchronization
 ---------------------
 
 Now that you have a working Onboarder bundle, you have to setup :doc:`synchronization </onboarder/synchronization/index>`
+
+Fix errors and broken installation
+----------------------------------
+
+In some cases the installation of onboarder on Flexibility environments might break the instance.
+If you end up with a broken instance, please execute this process to upgrade your package.json, reinstall the correct version of yarn modules and clean your cache.
+
+.. code-block:: bash
+
+    cp vendor/akeneo/pim-enterprise-dev/std-build/package.json package.json
+    cp vendor/akeneo/pim-enterprise-dev/yarn.lock yarn.lock
+    rm -rf node_modules
+    yarn install
+    partners_php8.1-fpm restart
+    rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
+    bin/console pim:installer:assets
+    bin/console cache:warmup
+    yarn run less
+    make javascript-prod
+    make javascript-extensions

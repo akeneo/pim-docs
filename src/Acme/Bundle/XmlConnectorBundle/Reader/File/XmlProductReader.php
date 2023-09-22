@@ -38,7 +38,8 @@ class XmlProductReader implements
     {
         if (null === $this->xml) {
             $jobParameters = $this->stepExecution->getJobParameters();
-            $filePath = $jobParameters->get('filePath');
+            $filePath = $jobParameters->get('storage')['file_path'];
+
             // for example purpose, we should use XML Parser to read line per line
             $this->xml = simplexml_load_file($filePath, 'SimpleXMLIterator');
             $this->xml->rewind();
