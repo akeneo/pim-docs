@@ -4,10 +4,6 @@ Understanding the Product Import
 It's a good start to understand the overall architecture and how to re-use or replace some parts.
 You can now natively import data into CSV and XLSX format.
 
-.. note::
-
-  The import part has been widely re-worked in 1.6 version of the PIM. Since 1.6 the old import system has been removed, please refer to previous versions of this page if needed.
-
 Definition of the Job
 ---------------------
 
@@ -15,75 +11,72 @@ Take a look at this configuration based on ConnectorBundle (``src/Akeneo/Pim/Enr
 
 .. code-block:: yaml
 
-    parameters:
-        pim_connector.job.simple_job.class: Akeneo\Tool\Component\Batch\Job\Job
-
     services:
         ## CSV product import
         pim_connector.job.csv_product_import:
-            class: '%pim_connector.job.simple_job.class%'
+            class: 'Akeneo\Tool\Component\Batch\Job\Job'
             arguments:
                 - 'csv_product_import'
                 - '@event_dispatcher'
                 - '@akeneo_batch.job_repository'
                 -
+                    - '@akeneo.job_automation.connector.step.download'
                     - '@pim_connector.step.charset_validator'
                     - '@pim_connector.step.csv_product.import'
                     - '@pim_connector.step.csv_product.import_associations'
+                - true
             tags:
                 - { name: akeneo_batch.job, connector: 'Akeneo CSV Connector', type: 'import' }
 
         ## XLSX product import
         pim_connector.job.xlsx_product_import:
-            class: '%pim_connector.job.simple_job.class%'
+            class: 'Akeneo\Tool\Component\Batch\Job\Job'
             arguments:
                 - 'xlsx_product_import'
                 - '@event_dispatcher'
                 - '@akeneo_batch.job_repository'
                 -
+                    - '@akeneo.job_automation.connector.step.download'
                     - '@pim_connector.step.charset_validator'
                     - '@pim_connector.step.xlsx_product.import'
                     - '@pim_connector.step.xlsx_product.import_associations'
+                - true
             tags:
                 - { name: akeneo_batch.job, connector: 'Akeneo XLSX Connector', type: 'import' }
 
 With the ``type`` parameter, we can see that this job is an import.
+
+.. note::
+
+    The parsing of `akeneo_batch.job` tags is quite `specific`, you can take a look at this class to understand it ``Akeneo\Tool\Bundle\BatchBundle\DependencyInjection\Compiler\RegisterJobsPass``.
+
+Download Step
+-----------------------
+
+The purpose of this step is to download the file from a storage (it can be Akeneo in case of manual upload, but it can also be local, Microsoft Azure, Amazon S3, SFTP ...)
+
+This step is already defined in ``src/Akeneo/Platform/Bundle/ImportExportBundle/Resources/config/step.yml``.
+
+.. note::
+
+    This download step can be re-used in other jobs while the import configuration contain storage key (we use it in all file imports).
+
+Example of storage configuration:
+
+.. code-block:: php
+
+    'storage' => [
+        'type' => 'local',
+        'file_path' => '/tmp/%job_label%_product.csv',
+    ],
+
 
 Charset Validation Step
 -----------------------
 
 The purpose of this step is to validate that the input file has the expected encoding (default: UTF-8).
 
-This step is a custom step, not a default ``ItemStep``.
-
-This step is defined in ``src/Akeneo/Tool/Bundle/ConnectorBundle/Resources/config/steps.yml``
-
-.. code-block:: yaml
-
-    parameters:
-        pim_connector.step.validator.class: Akeneo\Tool\Component\Connector\Step\ValidatorStep
-
-    services
-        pim_connector.step.charset_validator:
-            class: '%pim_connector.step.validator.class%'
-            arguments:
-                - 'validation'
-                - '@event_dispatcher'
-                - '@akeneo_batch.job_repository'
-                - '@pim_connector.validator.item.charset_validator'
-
-We can also see that we inject a service ``pim_connector.validator.item.charset_validator`` in this step.
-
-This service is defined in ``src/Akeneo/Tool/Bundle/ConnectorBundle/Resources/config/items.yml``.
-
-.. code-block:: yaml
-
-    parameters:
-        pim_connector.validator.item.charset_validator.class: Akeneo\Tool\Component\Connector\Item\CharsetValidator
-
-    services:
-        pim_connector.validator.item.charset_validator:
-            class: '%pim_connector.validator.item.charset_validator.class%'
+This step is already defined ``src/Akeneo/Tool/Bundle/ConnectorBundle/Resources/config/steps.yml``.
 
 The constructor of the ``CharsetValidator`` shows that it's configured to check only a file which matches some extensions and to check the 'UTF-8' encoding.
 
@@ -99,25 +92,9 @@ The constructor of the ``CharsetValidator`` shows that it's configured to check 
 
 You can define your own service with the same class to validate other kinds of files or encodings.
 
-As it implements ``Akeneo\Tool\Component\Batch\Step\StepExecutionAwareInterface``, the step execution will be injected and usable during the execution.
-
-The ``Akeneo\Tool\Component\Batch\Model\StepExecution`` allows to add information, messages and counters during the execution.
-
-.. code-block:: php
-
-    // for instance, add an info message when the check is not performed
-    $this->stepExecution->addSummaryInfo(
-        'charset_validator.title',
-        'job_execution.summary.charset_validator.skipped'
-    );
-
 .. note::
 
     This charset validator step can be re-used in other jobs (we use it in all file imports).
-
-.. note::
-
-    The parsing of the bath_jobs.yml is quite `specific`, you can take a look at this class to understand it ``Akeneo\Tool\Bundle\BatchBundle\DependencyInjection\Compiler\RegisterJobsPass``.
 
 Product Import Step
 -------------------
@@ -128,29 +105,30 @@ This step is a default step, an ``Akeneo\Tool\Component\Batch\Step\ItemStep`` is
 
 .. code-block:: yaml
 
-    parameters:
-        pim_connector.step.item_step.class: Akeneo\Tool\Component\Batch\Step\ItemStep
-
     services:
         pim_connector.step.csv_product.import:
-            class: '%pim_connector.step.item_step.class%'
+            class: 'Akeneo\Tool\Component\Batch\Step\ItemStep'
             arguments:
                 - 'import'
                 - '@event_dispatcher'
                 - '@akeneo_batch.job_repository'
-                - '@pim_connector.reader.file.csv_product'
-                - '@pim_connector.processor.denormalization.product'
-                - '@pim_connector.writer.database.product'
+                - '@pim_connector.reader.file.csv_product' # Reader
+                - '@pim_connector.processor.denormalization.product' # Processor
+                - '@pim_connector.writer.database.product' # Writer
+                - 10 # Batch size
+                - '@akeneo_batch.job.job_stopper'
 
-    pim_connector.step.xlsx_product.import:
-        class: '%pim_connector.step.item_step.class%'
-        arguments:
-            - 'import'
-            - '@event_dispatcher'
-            - '@akeneo_batch.job_repository'
-            - '@pim_connector.reader.file.xlsx_product'
-            - '@pim_connector.processor.denormalization.product'
-            - '@pim_connector.writer.database.product'
+        pim_connector.step.xlsx_product.import:
+            class: 'Akeneo\Tool\Component\Batch\Step\ItemStep'
+            arguments:
+                - 'import'
+                - '@event_dispatcher'
+                - '@akeneo_batch.job_repository'
+                - '@pim_connector.reader.file.xlsx_product' # Reader
+                - '@pim_connector.processor.denormalization.product' # Processor
+                - '@pim_connector.writer.database.product' # Writer
+                - 10 # Batch size
+                - '@akeneo_batch.job.job_stopper'
 
 An ``ItemStep`` always contains 3 elements, a ``Akeneo\Tool\Component\Batch\Item\ItemReaderInterface``, a ``Akeneo\Tool\Component\Batch\Item\ItemProcessorInterface`` and a ``Akeneo\Tool\Component\Batch\Item\ItemWriterInterface``.
 
@@ -190,14 +168,10 @@ The service is defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/re
 
 .. code-block:: yaml
 
-    parameters:
-        pim_connector.reader.file.xlsx_product.class: Akeneo\Pim\Enrichment\Component\Product\Connector\Reader\File\Xlsx\ProductReader
-        pim_connector.reader.file.csv.class: Akeneo\Tool\Component\Connector\Reader\File\Csv\Reader
-
     services:
         # CSV Reader
         pim_connector.reader.file.csv_product:
-            class: '%pim_connector.reader.file.csv_product.class%'
+            class: 'Akeneo\Tool\Component\Connector\Reader\File\Csv\Reader'
             arguments:
                 - '@pim_connector.reader.file.csv_iterator_factory'
                 - '@pim_connector.array_converter.flat_to_standard.product_delocalized'
@@ -205,7 +179,7 @@ The service is defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/re
 
         # XLSX Reader
         pim_connector.reader.file.xlsx_product:
-           class: '%pim_connector.reader.file.xlsx_product.class%'
+           class: 'Akeneo\Pim\Enrichment\Component\Product\Connector\Reader\File\Xlsx\ProductReader'
            arguments:
                - '@pim_connector.reader.file.xlsx_iterator_factory'
                - '@pim_connector.array_converter.flat_to_standard.product_delocalized'
@@ -256,7 +230,7 @@ This service allows to transform the CSV array of items to the Standard Format a
 
     We aim to use this standard array format everywhere in the PIM, for imports, backend processes, product edit form, variant group values, proposals, etc.
 
-    The versionning will be reworked in a future version to use it too.
+    The versioning will be reworked in a future version to use it too.
 
 AttributeLocalizedConverterInterface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -283,12 +257,9 @@ The service is defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/pr
 
 .. code-block:: yaml
 
-    parameters:
-        pim_connector.processor.denormalization.product.class: Akeneo\Pim\Enrichment\Component\Product\Connector\Processor\Denormalizer\ProductProcessor
-
     services:
         pim_connector.processor.denormalization.product:
-            class: '%pim_connector.processor.denormalization.product.class%'
+            class: 'Akeneo\Pim\Enrichment\Component\Product\Connector\Processor\Denormalizer\ProductProcessor'
             arguments:
                 - '@pim_catalog.repository.product'
                 - '@pim_catalog.builder.product'
@@ -416,36 +387,24 @@ Product Writer
 
 This element receives the validated products and saves them to the database.
 
-The service is defined in ``src\Akeneo\Tool\Bundle\ConnectorBundleBundle\Resources\config\writers.yml``.
+The service is defined in ``src/Akeneo/Pim/Enrichment/Bundle/Resources/config/writers.yml``.
 
 .. code-block:: yaml
 
-    parameters:
-        pim_connector.writer.database.product.class: Akeneo\Pim\Enrichment\Component\Product\Connector\Writer\Database\ProductWriter
-
     services:
         pim_connector.writer.database.product:
-            class: '%pim_connector.writer.database.product.class%'
+            class: 'Akeneo\Pim\Enrichment\Component\Product\Connector\Writer\Database\ProductWriter'
             arguments:
-                - '@pim_versioning.manager.version'
-                - '@pim_catalog.saver.product'
-                - '@akeneo_storage_utils.doctrine.object_detacher'
+            - '@pim_versioning.manager.version'
+            - '@pim_catalog.saver.product'
 
 The class ``Akeneo\Pim\Enrichment\Component\Product\Connector\Writer\Database\ProductWriter`` mainly delegates the operations to different technical and business services.
 
 .. code-block:: php
 
-    /**
-     * Constructor
-     *
-     * @param VersionManager              $versionManager
-     * @param BulkSaverInterface          $productSaver
-     * @param BulkObjectDetacherInterface $detacher
-     */
     public function __construct(
         VersionManager $versionManager,
-        BulkSaverInterface $productSaver,
-        BulkObjectDetacherInterface $detacher
+        BulkSaverInterface $productSaver
     ) {
         // ...
     }
@@ -458,13 +417,6 @@ This service allows to save several objects to the database at once.
 For products, the implementation of ``Akeneo\Pim\Enrichment\Bundle\Doctrine\Common\Saver\ProductSaver`` is used.
 
 A dedicated chapter explains how it works :doc:`/manipulate_pim_data/product/save`.
-
-BulkObjectDetacherInterface
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This service allows to detach several objects from the Doctrine Unit Of Work at once to avoid keeping them in memory.
-
-In other terms, it avoids keeping all the processed objects in memory.
 
 Product Association Import Step
 -------------------------------
@@ -482,27 +434,29 @@ This step is a default step, an ``Akeneo\Tool\Component\Batch\Step\ItemStep`` is
     services:
         ## CSV Import
         pim_connector.step.csv_product.import_associations:
-            class: '%pim_connector.step.item_step.class%'
+            class: 'Akeneo\Tool\Component\Batch\Step\ItemStep'
             arguments:
                 - 'import_associations'
                 - '@event_dispatcher'
                 - '@akeneo_batch.job_repository'
-                - '@pim_connector.reader.file.csv_association'
-                - '@pim_connector.processor.denormalization.product_association'
-                - '@pim_connector.writer.database.product_association'
-                - 1
+                - '@pim_connector.reader.file.csv_association' # Reader
+                - '@pim_connector.processor.denormalization.product_association' # Processor
+                - '@pim_connector.writer.database.product_association' # Writer
+                - 10 # Batch size
+                - '@akeneo_batch.job.job_stopper'
 
         ## XSLX Import
         pim_connector.step.xlsx_product.import_associations:
-            class: '%pim_connector.step.item_step.class%'
+            class: 'Akeneo\Tool\Component\Batch\Step\ItemStep'
             arguments:
                 - 'import_associations'
                 - '@event_dispatcher'
                 - '@akeneo_batch.job_repository'
-                - '@pim_connector.reader.file.xlsx_association'
-                - '@pim_connector.processor.denormalization.product_association'
-                - '@pim_connector.writer.database.product_association'
-                - 1
+                - '@pim_connector.reader.file.xlsx_association' # Reader
+                - '@pim_connector.processor.denormalization.product_association' # Processor
+                - '@pim_connector.writer.database.product_association' # Writer
+                - 10 # Batch size
+                - '@akeneo_batch.job.job_stopper'
 
 We provide here specific implementations for these elements, the services are declared with aliases ``pim_connector.reader.file.csv_association``, ``pim_connector.processor.denormalization.product_association``, ``pim_connector.writer.database.product_association``.
 

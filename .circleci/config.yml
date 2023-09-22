@@ -2,40 +2,37 @@ version: 2.1
 jobs:
     build:
         machine:
-            image: ubuntu-2004:202111-01
+            image: ubuntu-2204:2022.07.1
         steps:
             - checkout
             - run: make build
 
     check-external-link:
         machine:
-            image: ubuntu-2004:202111-01
+            image: ubuntu-2204:2022.07.1
         steps:
             - checkout
             - run: make lint
 
     deploy_staging:
         machine:
-            image: ubuntu-2004:202111-01
+            image: ubuntu-2204:2022.07.1
         steps:
             - checkout
             - add_ssh_keys
             - run:
                   name: Deploy on staging server
-                  command: DEPLOY_HOSTNAME=$STAGING_HOSTNAME DEPLOY_PORT=$STAGING_PORT VERSION="6.0" make deploy
+                  command: DEPLOY_HOSTNAME=$STAGING_HOSTNAME DEPLOY_PORT=$STAGING_PORT VERSION="master" make deploy
 
     deploy_production:
         machine:
-            image: ubuntu-2004:202111-01
+            image: ubuntu-2204:2022.07.1
         steps:
             - checkout
             - add_ssh_keys
             - run:
                   name: Deploy on production server
-                  command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="6.0" make deploy
-
-orbs:
-    pull-up: akeneo-orbs/pull-up@1.0
+                  command: DEPLOY_HOSTNAME=$PROD_HOSTNAME DEPLOY_PORT=$PROD_PORT VERSION="master" make deploy
 
 workflows:
     version: 2
@@ -45,14 +42,14 @@ workflows:
                   filters:
                       branches:
                           ignore:
-                              - '6.0'
+                              - master
 
     deployment:
         jobs:
             - deploy_staging:
                   filters:
                       branches:
-                          only: '6.0'
+                          only: master
             - approve_to_deploy_in_production:
                   type: approval
                   requires:
@@ -61,20 +58,6 @@ workflows:
                   requires:
                       - approve_to_deploy_in_production
 
-    pull_up:
-        jobs:
-            - pull-up/pull-up:
-                  from: "6.0"
-                  into: "master"
-                  branch_prefix: "60_to_master"
-                  github_token: MICHEL_TAG_TOKEN
-                  github_username: "micheltag"
-                  slack_webhook: "${SLACK_URL_PULL_UP}"
-                  filters:
-                      branches:
-                          only:
-                              - "6.0"
-
     nightly:
         triggers:
             - schedule:
@@ -82,6 +65,6 @@ workflows:
                   filters:
                       branches:
                           only:
-                              - "6.0"
+                              - "master"
         jobs:
             - check-external-link

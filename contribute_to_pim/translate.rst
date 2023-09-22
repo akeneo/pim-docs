@@ -36,13 +36,13 @@ Then, copy the translations in the right folders:
 
 .. code-block:: bash
 
-    cp -r crowdin_archive/6.0/Community/* your_app/vendor/akeneo/pim-community-dev/
+    cp -r crowdin_archive/master/Community/* your_app/vendor/akeneo/pim-community-dev/
 
 If you use the Enterprise Edition, run this command too:
 
 .. code-block:: bash
 
-    cp -r crowdin_archive/6.0/Enterprise/* your_app/vendor/akeneo/pim-enterprise-dev/
+    cp -r crowdin_archive/master/Enterprise/* your_app/vendor/akeneo/pim-enterprise-dev/
 
 Then, update the parameters of `your_app/vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/config/locale_provider.yml` to change the minimum percentage and add your new language (here, 10% and Hungarian):
 

@@ -88,35 +88,6 @@ You can also use different Product Repositories, which provide business queries.
 
     You can take a look on related interfaces to see the list of available methods
 
-Use the Query Command
----------------------
-
-We introduced a new Command to execute a query through the Product Query Builder.
-
-.. code-block:: bash
-
-    php bin/console pim:product:query '[{"field":"completeness","operator":"=","value":"100","context":{"locale":"en_US","scope":"print"}}]' --page-size=20
-
-By default this command returns a table formatted list of products on the standard output.
-
-.. code-block:: bash
-
-    +-----+-------------+
-    | id  | identifier  |
-    +-----+-------------+
-    | 1   | AKNTS_BPXS  |
-    | 2   | AKNTS_BPS   |
-    | 3   | AKNTS_BPM   |
-    | ... | ...         |
-    +-----+-------------+
-    20 first products on 112 matching these criteria
-
-You can use the option `json-output` to obtain a json result.
-
-.. code-block:: bash
-
-    ["AKNTS_BPXS","AKNTS_BPS","AKNTS_BPM"]
-
 Use the Query Help Command
 --------------------------
 

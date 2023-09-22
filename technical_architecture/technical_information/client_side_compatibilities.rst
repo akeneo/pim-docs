@@ -29,5 +29,5 @@ Screen resolution
 +------------------------+-------------+
 | Minimal Resolution     | 1280x800px  |
 +------------------------+-------------+
-| Recommended Resolution | 1440x900px  |
+| Recommended Resolution | 1440x900px  |
 +------------------------+-------------+

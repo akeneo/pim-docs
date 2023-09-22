@@ -1,5 +1,5 @@
 pim_catalog_identifier;It is the unique product's identifier. The catalog can contain only one.
-pim_catalog_text;Text 
+pim_catalog_text;Text
 pim_catalog_textarea;Long text
 pim_catalog_boolean;Yes/No
 pim_catalog_number;Number (integer and float)
@@ -10,3 +10,7 @@ pim_catalog_metric;Metric. It consists of a value and a unit (a weight for examp
 pim_catalog_price_collection;Collection of prices. Each price contains a value and a currency.
 pim_catalog_image;Image
 pim_catalog_file;File
+pim_catalog_asset_collection;Collection of assets (Only available in EE)
+pim_catalog_table;A multi dimensional attribute (Only available in EE)
+akeneo_reference_entity;Link to a record (Only available in EE)
+akeneo_reference_entity_collection;Collection of records (Only available in EE)

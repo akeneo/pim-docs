@@ -1,9 +1,9 @@
 How to apply a patch - Enterprise Edition - Flexibility Cloud offer
 ========================================================================
 
-In the following example, Akeneo PIM version 6.0.2 has just been released and we are using an Akeneo PIM version 6.0.1.
+In the following example, Akeneo PIM version 7.0.2 has just been released and we are using an Akeneo PIM version 7.0.1.
 
-We always tag both Community and Enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 6.0.2 fix may depend on CE 6.0.2.
+We always tag both Community and Enterprise versions with aligned version numbers, be sure to use the exact same version for CE and EE, for instance, a EE 7.0.2 fix may depend on CE 7.0.2.
 
 Using the exact patch version will avoid any local composer cache issue.
 
@@ -15,7 +15,7 @@ To upgrade, please change the composer.json to:
 
     {
         ...
-        "akeneo/pim-enterprise-dev": "6.0.2",
+        "akeneo/pim-enterprise-dev": "7.0.2",
         ...
     }
 
@@ -29,7 +29,7 @@ Be aware that your composer.json won't be updated and some dependencies might be
 
 You have to check whether the latest composer.json is different from your own. In this case you should backup your current composer.json and download the newest one beforehand.
 
-Double check in the output of this command that the 6.0.2 version has been fetched, you can also check it by using the following command:
+Double check in the output of this command that the 7.0.2 version has been fetched, you can also check it by using the following command:
 
 .. code-block:: bash
 
@@ -68,7 +68,7 @@ If you have an error during the ``yarn run webpack`` command, please execute thi
     cp vendor/akeneo/pim-enterprise-dev/yarn.lock yarn.lock
     rm -rf node_modules
     yarn install
-    partners_php8.0-fpm restart
+    partners_php8.1-fpm restart
     rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
     bin/console pim:installer:assets
     bin/console cache:warmup

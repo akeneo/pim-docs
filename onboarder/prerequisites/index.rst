@@ -8,7 +8,7 @@ All the Prerequisites listed below have to be fulfilled before the installation 
 +================================================+========================================================================================================+
 | :ref:`PIM <onboarder-prereq-pim>`              | Your Akeneo PIM is an enterprise edition                                                               |
 +                                                +--------------------------------------------------------------------------------------------------------+
-|                                                | Your Akeneo PIM version is >= 6.0                                                                      |
+|                                                | Your Akeneo PIM version is >= 7.0                                                                      |
 +------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 | :ref:`Synchronization <onboarder-prereq-sync>` | The Onboarder parameters are available on your Partner Portal project page                             |
 +                                                +--------------------------------------------------------------------------------------------------------+
@@ -24,8 +24,8 @@ All the Prerequisites listed below have to be fulfilled before the installation 
 PIM
 ---
 
-The Onboarder is compatible with the enterprise edition of the PIM 6.0 version. If you have a PIM 5.0, please see the 
-Onboarder documentation `v5.0` (you can change the version with the dropdown in the top level menu).
+The Onboarder is compatible with the enterprise edition of the PIM 7.0 version. If you have a PIM 6.0, please see the 
+Onboarder documentation `v6.0` (you can change the version with the dropdown in the top level menu).
 
 .. _onboarder-prereq-sync:
 

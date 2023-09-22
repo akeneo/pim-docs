@@ -12,7 +12,7 @@ The application relies on Symfony framework. This web framework allows Akeneo PI
 This means that Akeneo PIM  installation process will use composer to install or update all these dependencies easily.
 
 +---------+-----------------------------------------------------+------------------+
-| PHP     | 8.0 (Apache Fast CGI with FPM, no CGI, nor mod_php) | Required         |
+| PHP     | 8.1 (Apache Fast CGI with FPM, no CGI, nor mod_php) | Required         |
 +---------+-----------------------------------------------------+------------------+
 | Symfony | 5.4                                                 | Shipped with PIM |
 +---------+-----------------------------------------------------+------------------+
@@ -43,7 +43,7 @@ To ensure the best possible quality of our product and avoid any regressions we 
 +---------+-------------------------------------------------------------------------+
 | Behat   | Behavior Driven Development framework (for functional tests)            |
 +---------+-------------------------------------------------------------------------+
-| PHPUnit | Basic but powerful unit testing library (for integration tests)         |
+| PHPUnit | Basic but powerful unit testing library (for integration tests)         |
 +---------+-------------------------------------------------------------------------+
 
 Frontend technologies
@@ -62,9 +62,9 @@ Frontend technologies
 +-----------------+-----------------------------------------------------------------+
 | Bootstrap (2.3) | Frontend framework                                              |
 +-----------------+-----------------------------------------------------------------+
-| jQuery Frontend | library used mostly for DOM interaction                         |
+| jQuery Frontend | Library used mostly for DOM interaction                         |
 +-----------------+-----------------------------------------------------------------+
-| jQuery UI       | Frontend library to improve user experience with better widgets |
+| jQuery UI       | Frontend library to improve user experience with better widgets |
 +-----------------+-----------------------------------------------------------------+
 | Various widgets | Select2 (v3), etc.                                              |
 +-----------------+-----------------------------------------------------------------+
@@ -76,5 +76,5 @@ As mentioned in the Symfony bundles dependencies above, we use LESS stylesheets 
 +-----------+-----------------------------------+
 | Bootstrap | Twitter Bootstrap CSS stylesheets |
 +-----------+-----------------------------------+
-| jQuery UI | jQuery UI CSS stylesheets         |
+| jQuery UI | jQuery UI CSS stylesheets         |
 +-----------+-----------------------------------+

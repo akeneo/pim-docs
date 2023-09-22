@@ -61,10 +61,9 @@ You can check the VirtualHost configuration for 5.0 on your system: :doc:`/insta
 Prepare your project
 ********************
 
-Akeneo PIM composer.json
-----------------------------
-The root of your current installation dir is referred as $INSTALLATION_DIR.
+Your current v4.0 application must have up to date migrations before migrating on the new technical stack.
 
+The root of your current installation dir is referred as $INSTALLATION_DIR.
 
 .. code:: bash
 
@@ -72,8 +71,12 @@ The root of your current installation dir is referred as $INSTALLATION_DIR.
     $ cd $INSTALLATION_DIR
     $ cp -R ./vendor/akeneo/pim-community-dev/upgrades/* ./upgrades/
     $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
-    $ php bin/console doctrine:migrations:version --add --all -q
+    $ php bin/console doctrine:migrations:migrate
     $ rm -rf var/cache/
+
+
+Akeneo PIM composer.json
+----------------------------
 
 Community Edition
 ^^^^^^^^^^^^^^^^^
@@ -234,3 +237,9 @@ From that point, you will have to migrate your bundle one by one.
 
 Remember to check if they are still relevant, as each Akeneo version
 brings new features.
+
+
+Setting up the Events API
+*************************
+
+Configure your Events API with :doc:`/install_pim/manual/events_api`

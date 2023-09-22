@@ -1,8 +1,8 @@
-* Setup *CLI php.ini* file ``/etc/php/8.0/cli/php.ini``
+* Setup *CLI php.ini* file ``/etc/php/8.1/cli/php.ini``
 
 .. code-block:: yaml
 
-    $ sudo vim /etc/php/8.0/cli/php.ini
+    $ sudo vim /etc/php/8.1/cli/php.ini
     memory_limit = 1024M
     date.timezone = UTC
 
@@ -10,7 +10,7 @@
 
     Use the time zone matching your location, for example *America/Los_Angeles* or *Europe/Berlin*. See https://www.php.net/timezones for the list of all available timezones.
 
-* Setup *FPM php.ini* file ``/etc/php/8.0/fpm/php.ini``
+* Setup *FPM php.ini* file ``/etc/php/8.1/fpm/php.ini``
 
 .. note::
 
@@ -18,7 +18,7 @@
 
 .. code-block:: yaml
 
-    $ sudo vim /etc/php/8.0/fpm/php.ini
+    $ sudo vim /etc/php/8.1/fpm/php.ini
     memory_limit = 512M
     date.timezone = UTC
 
@@ -42,17 +42,17 @@ In this example, the user is *my_user* and the group is *my_group*.
 
 .. code-block:: bash
 
-    $ sudo service php8.0-fpm stop
+    $ sudo service php8.1-fpm stop
 
-* Open the file ``/etc/php/8.0/fpm/pool.d/www.conf`` with your favorite text editor:
+* Open the file ``/etc/php/8.1/fpm/pool.d/www.conf`` with your favorite text editor:
 
 .. code-block:: bash
 
-    $ sudo vi /etc/php/8.0/fpm/pool.d/www.conf
+    $ sudo vi /etc/php/8.1/fpm/pool.d/www.conf
     # replace these environment variables:
     user = my_user
     group = my_group
-    listen = /run/php/php8.0-fpm.sock
+    listen = /run/php/php8.1-fpm.sock
     listen.owner = www-data
     listen.group = www-data
 
@@ -60,10 +60,10 @@ In this example, the user is *my_user* and the group is *my_group*.
 
     On the default installation, FPM user and group are ``www-data``.
     ``listen.owner`` and ``listen.group`` must be set on the same user than your Apache server.
-    ``/run/php/php8.0-fpm.sock`` is the default socket path. If you changed it in ``/etc/php/8.0/fpm/pool.d/www.conf``, change it in the Apache virtual host too.
+    ``/run/php/php8.1-fpm.sock`` is the default socket path. If you changed it in ``/etc/php/8.1/fpm/pool.d/www.conf``, change it in the Apache virtual host too.
 
 * Restart FPM
 
 .. code-block:: bash
 
-    $ sudo service php8.0-fpm restart
+    $ sudo service php8.1-fpm restart

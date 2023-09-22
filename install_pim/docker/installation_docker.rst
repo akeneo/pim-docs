@@ -4,8 +4,8 @@ Install Akeneo PIM for development with Docker
 System requirements
 -------------------
 
- - `docker 19+`: `Docker installation <https://docs.docker.com/install/>`_
- - `docker-compose 1.24+`: `docker-compose installation <https://docs.docker.com/compose/install/>`_
+ - `docker 20+`: `Docker installation <https://docs.docker.com/install/>`_
+ - `docker-compose 1.29+`: `docker-compose installation <https://docs.docker.com/compose/install/>`_
  - `make`
  - `bash`
 
@@ -53,14 +53,13 @@ The following command will create a PIM project in the current directory. Please
     $ mkdir pim
     $ cd pim
     $ docker run -ti -u www-data --rm \
-        -e COMPOSER_MEMORY_LIMIT=4G \
         -v $PWD:/srv/pim -v ~/.composer:/var/www/.composer -w /srv/pim \
-        akeneo/pim-php-dev:6.0 php /usr/local/bin/composer create-project \
-        akeneo/pim-community-standard /srv/pim "6.0.*@stable"
+        akeneo/pim-php-dev:8.1 php /usr/local/bin/composer create-project \
+        akeneo/pim-community-standard /srv/pim "7.0.*@stable"
 
 .. note::
     Alternatively, you can download an archive of Akeneo PIM CE containing all the PHP dependencies here:
-    https://download.akeneo.com/pim-community-standard-v6.0-latest-icecat.tar.gz
+    https://download.akeneo.com/pim-community-standard-v7.0-latest-icecat.tar.gz
 
 
 Enterprise Edition
@@ -70,12 +69,11 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
 
 .. code-block:: bash
 
-    $ tar -xvzf pim-enterprise-standard-v6.0.tar.gz
+    $ tar -xvzf pim-enterprise-standard-v7.0.tar.gz
     $ cd pim-enterprise-standard
     $ docker run -ti -u www-data --rm \
-        -e COMPOSER_MEMORY_LIMIT=4G \
         -v $PWD:/srv/pim -v ~/.ssh:/var/www/.ssh -w /srv/pim \
-        akeneo/pim-php-dev:6.0 php /usr/local/bin/composer install
+        akeneo/pim-php-dev:8.1 php /usr/local/bin/composer install
 
 .. note::
     The above Docker command uses a volume to make your SSH private key available to the container, in order for it to access
@@ -85,7 +83,7 @@ You need to get a PIM Enterprise Standard archive from the Partners Portal. See 
 
     .. code-block:: bash
 
-        $ docker run -ti -u www-data -v $PWD:/srv/pim -v $SSH_AUTH_SOCK:/ssh-auth.sock -e SSH_AUTH_SOCK=/ssh-auth.sock -w /srv/pim --rm akeneo/pim-php-dev:6.0 \
+        $ docker run -ti -u www-data -v $PWD:/srv/pim -v $SSH_AUTH_SOCK:/ssh-auth.sock -e SSH_AUTH_SOCK=/ssh-auth.sock -w /srv/pim --rm akeneo/pim-php-dev:8.1\
             /usr/local/bin/composer install
 
     See https://github.com/docker-library/docs/tree/master/composer/#private-repositories--ssh-agent for more details.
@@ -99,8 +97,10 @@ Launching the PIM in dev mode
 
 .. code-block:: bash
 
-	make dev
-
+	$ make dev
+  # Or
+  $ docker run -ti -u www-data -v $(pwd):/srv/pim -v $SSH_AUTH_SOCK:/ssh-auth.sock -e SSH_AUTH_SOCK=/ssh-auth.sock -w /srv/pim --rm akeneo/pim-php-dev:8.1 composer install
+  $ docker run -ti -u www-data -v $(pwd):/srv/pim -v $SSH_AUTH_SOCK:/ssh-auth.sock -e SSH_AUTH_SOCK=/ssh-auth.sock -w /srv/pim --rm akeneo/pim-php-dev:8.1 composer install
 
 Once this command is finished, the PIM is accessible on http://localhost:8080/
 
@@ -122,7 +122,7 @@ Stopping the PIM
 
 .. note::
     As the database lives inside the MySQL container, stopping it will remove all your data.
-    You can add a `docker-composer.override.yml` in order to have a dedicated volume for
+    You can add a `docker-compose.override.yml` in order to have a dedicated volume for
     your MySQL data outside (`/var/lib/mysql`) of the container, in order to persist them.
     Same note applies as well on the Elasticsearch container (`/usr/share/elasticsearch/data`).
 
@@ -146,13 +146,13 @@ To launch a daemon, run the following command:
 
 .. code-block:: bash
 
-   APP_ENV=dev make start-job-worker
+   $ APP_ENV=dev make start-job-worker
 
 If you want to execute only one job:
 
 .. code-block:: bash
 
-   APP_ENV=dev make start-job-worker O="--limit=1"
+   $ APP_ENV=dev make start-job-worker O="--limit=1"
 
 .. warning::
 
@@ -161,7 +161,7 @@ If you want to execute only one job:
 
    .. code-block:: bash
 
-      make stop-workers
+     $ make stop-workers
 
 
 Xdebug

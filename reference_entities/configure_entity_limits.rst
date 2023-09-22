@@ -7,7 +7,7 @@ However, as your catalog is unique, **you may need to raise those values**, this
 .. warning::
     If you hit those limits, this could reflect that **your modelization is not adapted**. If it's the case, we can't guarantee that the PIM will be functional and runs smoothly, be sure to test the performances with your new limits.
 
-All those limits are defined as parameters that you can override like any other `Symfony config parameter <https://symfony.com/doc/3.4/best_practices/configuration.html>`_.
+All those limits are defined as parameters that you can override like any other `Symfony config parameter <https://symfony.com/doc/5.4/best_practices/configuration.html>`_.
 
 Raise the limit of Reference Entities
 -------------------------------------

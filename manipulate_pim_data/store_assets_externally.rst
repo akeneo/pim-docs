@@ -52,12 +52,6 @@ Use Amazon AwsS3v3 as storage
 .. _Awss3 documentation: https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_configuration.html#cfg-version
 .. _AWS SDK for PHP: https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.S3.S3Client.html
 
-First of all, you will need to install the following requirements:
-
-``composer --prefer-dist require aws/aws-sdk-php v3.5.0``
-
-``composer --prefer-dist require league/flysystem-aws-s3-v3 v1.0.6``
-
 In order to use the AwsS3v3 adapter, you first need to create a client object defined as a service:
 
 .. code-block:: yaml

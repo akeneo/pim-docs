@@ -57,7 +57,7 @@ copyright = u'2013-'+ current_year +', Akeneo SAS'
 # built documents.
 #
 # The short X.Y version.
-version = os.getenv('PIM_VERSION', '6.0')
+version = os.getenv('PIM_VERSION', 'master')
 
 # Warning: These versions will be deleted on documentation deploy.
 versions = os.getenv('PIM_VERSIONS', 'master')
@@ -282,4 +282,4 @@ texinfo_documents = [
 linkcheck_anchors = False
 linkcheck_ignore = [r'http://localhost:\d+/', r'http://your\.akeneo-pim\.url.*']
 
-user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99'
+user_agent = 'curl'

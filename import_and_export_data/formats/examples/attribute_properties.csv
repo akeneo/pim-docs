@@ -12,8 +12,7 @@ unique;0;;
 useable_as_grid_filter;0;;
 allowed_extensions;;;"| Must be a subset of extensions set in the parameters `pim_catalog_image_allowed_extensions` (for images)
 | or `pim_catalog_file_allowed_extensions` (for files)"
-metric_family;;metric;Must be a valid metric family
-default_metric_unit;;metric;Must be a valid metric unit and must be part of the specified metric_family
+auto_option_sorting;;simple select,multi select;
 metric_family;;metric;Must be a valid metric family
 default_metric_unit;;metric;Must be a valid metric unit and must be part of the specified metric_family
 available_locales;;;Must be a list of valid and activated locales
@@ -25,6 +24,7 @@ wysiwyg_enabled;;;
 number_min;;;Must be lower than number_max
 number_max;;;Must be greater than number_min
 decimals_allowed;;number, metric, price collection;
+default_value;;all types;
 negative_allowed;;number, metric;
 date_min;;;Must be lower than date_max
 date_max;;;Must be greater than date_min
@@ -32,4 +32,5 @@ max_file_size;;;Must be between 0.01 and 9999.99 (in MB)
 minimum_input_length;;;
 sort_order;0;;Must be a positive integer
 localizable;0;;Must be false if the attribute is unique
+reference_data_name;;reference data,multi reference data,asset,reference entity
 scopable;0;;Must be false if the attribute is unique

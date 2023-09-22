@@ -165,7 +165,7 @@ The default configuration looks like:
 
 .. note::
     You can change <table-name> and <queue-name> in the ``messenger.yml`` configuration file.
-    See https://symfony.com/doc/4.4/messenger.html#doctrine-transport for further information.
+    See https://symfony.com/doc/5.4/messenger.html#doctrine-transport for further information.
 
 .. tip::
     Don't forget to add --env=prod to avoid memory leaks in dev environment (the default environment for commands)

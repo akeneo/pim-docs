@@ -1,9 +1,9 @@
 Upgrade Akeneo PIM projects
 ===========================
 
-This chapter describes how to apply a patch on your current version or how to upgrade from a minor/major version to a more recent one.
+This chapter describes how to apply a patch on your current version or how to upgrade from a major version to a more recent one.
 
-As a prerequisite, we assume that you are using a project installed from a Community Standard (:doc:`/install_pim/index`).
+As a prerequisite, we assume that you are using a project installed from a Community Edition or an Enterprise Edition (:doc:`/install_pim/index`).
 
 .. toctree::
     :maxdepth: 2
@@ -11,5 +11,4 @@ As a prerequisite, we assume that you are using a project installed from a Commu
 
     apply_patch/index
     changelog
-    upgrade_minor_version
     upgrade_major_version

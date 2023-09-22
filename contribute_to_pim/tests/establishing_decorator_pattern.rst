@@ -86,7 +86,7 @@ Navigate And Change The Current Page
     }
 
 Selenium will know which URL to go to thanks to `the protected $path attribute
-<https://github.com/akeneo/pim-community-dev/blob/6.0/tests/legacy/features/Context/Page/Role/Edit.php#L19>`_
+<https://github.com/akeneo/pim-community-dev/blob/master/tests/legacy/features/Context/Page/Role/Edit.php#L19>`_
 contained in *Context\\Page\\Role\\Edit*.
 
 You may notice that this Gherkin method still uses the old implementation of Behat in Akeneo PIM.
@@ -102,7 +102,7 @@ This organization is very helpful to quickly find the context you are looking fo
 
 We are working on permissions that are localized in the system main menu. So let's see the
 `\\Pim\\Behat\\Context\\Domain\\System\\PermissionsContext
-<https://github.com/akeneo/pim-community-dev/blob/6.0/tests/legacy/features/Behat/Context/Domain/System/PermissionsContext.php>`_.
+<https://github.com/akeneo/pim-community-dev/blob/master/tests/legacy/features/Behat/Context/Domain/System/PermissionsContext.php>`_.
 
 .. image:: images/PermissionsContext.png
 
@@ -149,12 +149,12 @@ Pages
 _____
 
 The current page is `Context\\Page\\Role\\Edit
-<https://github.com/akeneo/pim-community-dev/blob/6.0/tests/legacy/features/Context/Page/Role/Edit.php>`_.
+<https://github.com/akeneo/pim-community-dev/blob/master/tests/legacy/features/Context/Page/Role/Edit.php>`_.
 
 When you call *Pim\\Behat\\Context\\NavigationContext->getCurrentPage()* the method will match "Role edit" to
 *return new Context\\Page\\Role\\Edit()*. That's why all of our pages are located in a folder named after the name of
 the Entity. In this folder, each action has its dedicated page such as Index.php, Creation.php, Edit.php as you can see
-in the `Role folder <https://github.com/akeneo/pim-community-dev/tree/6.0/tests/legacy/features/Context/Page/Role>`_ for example.
+in the `Role folder <https://github.com/akeneo/pim-community-dev/tree/master/tests/legacy/features/Context/Page/Role>`_ for example.
 
 .. image:: images/edit.png
 
@@ -247,7 +247,7 @@ The name of the sub-folder is only the representative name of the element, no pr
 have to be suffixed by "Decorator" like *DecoratedElementDecorator*.
 
 The `Pim\\Behat\\Decorator\\Permission\\PermissionDecorator
-<https://github.com/akeneo/pim-community-dev/blob/6.0/tests/legacy/features/Behat/Context/Domain/System/PermissionsContext.php>`_
+<https://github.com/akeneo/pim-community-dev/blob/master/tests/legacy/features/Behat/Context/Domain/System/PermissionsContext.php>`_
 adds behaviors to an Element to be able to navigate between groups and grant or revoke permissions for resources or groups.
 
 .. image:: images/decorator.png
@@ -303,7 +303,7 @@ The method *$this->find()* is neither in the decorator nor in the abstract class
 
 That's how we can call methods from the Element class inside decorators. And obviously, that's why all decorators must
 extend `Pim\\Behat\\Decorator\\ElementDecorator
-<https://github.com/akeneo/pim-community-dev/blob/6.0/tests/legacy/features/Behat/Decorator/ElementDecorator.php>`_.
+<https://github.com/akeneo/pim-community-dev/blob/master/tests/legacy/features/Behat/Decorator/ElementDecorator.php>`_.
 
 .. note::
 

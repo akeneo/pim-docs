@@ -82,7 +82,7 @@ Use registries
 """"""""""""""
 Registries are also a good extension point when you have to deal with many cases (different attribute types, entities, etc.).
 They are used to gather related classes (i.e: filters, sorters).
-Simply declare it as a service and `tag it <https://symfony.com/doc/2.7/service_container/tags.html>`_.
+Simply declare it as a service and `tag it <https://symfony.com/doc/5.4/service_container/tags.html>`_.
 
 .. note::
     Learn more about `registry`_ pattern.
@@ -130,9 +130,9 @@ Two options:
 For your own model classes, create your class and its interface.
 Then you can rely on your interface and use the `Akeneo target resolver`_ which is based on the `Doctrine target entity resolver`_.
 
-.. _oneToOne unidirectional association: https://www.doctrine-project.org/projects/doctrine-orm/en/2.5/reference/association-mapping.html#one-to-one-unidirectional
-.. _Akeneo target resolver: https://github.com/akeneo/pim-community-dev/blob/6.0/src/Akeneo/Tool/Bundle/StorageUtilsBundle/DependencyInjection/Compiler/AbstractResolveDoctrineTargetModelPass.php
-.. _Doctrine target entity resolver: https://symfony.com/doc/4.4/doctrine/resolve_target_entity.html
+.. _oneToOne unidirectional association: https://www.doctrine-project.org/projects/doctrine-orm/en/2.14/reference/association-mapping.html#one-to-one-unidirectional
+.. _Akeneo target resolver: https://github.com/akeneo/pim-community-dev/blob/master/src/Akeneo/Tool/Bundle/StorageUtilsBundle/DependencyInjection/Compiler/AbstractResolveDoctrineTargetModelPass.php
+.. _Doctrine target entity resolver: https://symfony.com/doc/5.4/doctrine/resolve_target_entity.html
 
 
 Repositories

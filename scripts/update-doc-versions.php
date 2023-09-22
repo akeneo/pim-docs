@@ -6,33 +6,52 @@ $versionFile = $argv[2];
 echo "Version file ${versionFile}";
 
 $fileContent = file_get_contents($versionFile) ?: "[]";
+$versions = json_decode($fileContent, true);
 
-$json = json_decode($fileContent);
-
-if (containsBranch($json, initLabelFromBranchName($branch))) {
+$newVersionLabel = versionLabelFromBranchName($branch);
+if (containsVersionLabel($versions, $newVersionLabel)) {
+    writeReorderedVersions($versions, $versionFile);
     echo ("Existing branch $branch in $versionFile, exiting...");
     exit(0);
 }
 
-$json[] = [
-    'label' => initLabelFromBranchName($branch),
+$versions[] = [
+    'label' => $newVersionLabel,
     'url' => "/$branch/index.html"
 ];
 
-file_put_contents("$versionFile",
-    json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+writeReorderedVersions($versions, $versionFile);
 
-function containsBranch(array $json, string $branchName): bool
+function containsVersionLabel(array $versions, string $versionLabel): bool
 {
-    $labelName = initLabelFromBranchName($branchName);
-    foreach ($json as $entry) {
-        if ($branchName === $entry->label)
+    foreach ($versions as $version) {
+        if ($versionLabel === $version['label']) {
             return true;
+        }
     }
+
     return false;
 }
 
-function initLabelFromBranchName(string $branchName)
+function versionLabelFromBranchName(string $branchName): string
 {
     return $branchName == "master" ? $branchName : "v${branchName}";
+}
+
+function writeReorderedVersions(array $versions, string $versionFile): void
+{
+    $versions = orderVersions($versions);
+    file_put_contents("$versionFile", json_encode($versions, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+}
+
+function orderVersions(array $versions): array
+{
+    usort($versions, static function (array $versionA, array $versionB) {
+        if ($versionA['label'] === "master") return -1;
+        if ($versionB['label'] === "master") return 1;
+
+        return $versionB <=> $versionA;
+    });
+
+    return $versions;
 }

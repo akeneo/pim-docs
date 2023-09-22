@@ -8,7 +8,7 @@ on selected products.
 Prerequisite
 ------------
 The mass edit action uses the `BatchBundle
-<https://github.com/akeneo/pim-community-dev/tree/6.0/src/Akeneo/Tool/Bundle/BatchBundle>`_ in order to run mass edit in the background. Readers and Writers are already
+<https://github.com/akeneo/pim-community-dev/tree/master/src/Akeneo/Tool/Bundle/BatchBundle>`_ in order to run mass edit in the background. Readers and Writers are already
 created so in this cookbook we will focus on how to create a Mass Edit Action and create a Processor.
 For more information on how to create Jobs, Readers, Processors, or Writers please see :doc:`/import_and_export_data/index`.
 

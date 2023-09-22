@@ -6,15 +6,29 @@ Use this documentation to upgrade projects based on Akeneo PIM Community Edition
 Disclaimer
 **********
 
-Make sure your production database is backed-up before performing the data migration.
-The queue daemon(s) must be stopped as well.
+.. warning::
+    Make sure your production database is backed-up and the queue daemon(s) have been stopped before performing any data migration.
 
 Prepare your project for the new technical stack
 ************************************************
 
-Your current v5.0 application must have up to date migrations before migrating on the new technical stack.
+.. note::
+    Your 5.0 application must be on the latest patch and migrations must be up-to-date before migrating to the new technical stack.
 
-The root of your current installation dir is referred as $INSTALLATION_DIR.
+    *If you do not apply the most recent patch and migrations, you may experience problems upgrading.*
+
+    Check the most recent patch version here:
+     - `Enterprise Edition <https://updates.akeneo.com/EE-5.0.json>`_
+     - `Community Edition <https://updates.akeneo.com/CE-5.0.json>`_
+
+    You can check your current patch version with the following command: ``composer licenses | grep akeneo/pim``
+
+    To install the most recent patch, use the instructions in :doc:`/migrate_pim/apply_patch/index`
+
+The directory at the root of your current installation is referred to as ``$INSTALLATION_DIR``.
+
+.. warning::
+    Please note that this part of the migration needs to be executed on your PIM 5.0 **before** upgrading your technical stack.
 
 .. code:: bash
 
@@ -22,13 +36,15 @@ The root of your current installation dir is referred as $INSTALLATION_DIR.
     $ cd $INSTALLATION_DIR
     $ cp -R ./vendor/akeneo/pim-community-dev/upgrades/* ./upgrades/
     $ cp -R ./vendor/akeneo/pim-enterprise-dev/upgrades/* ./upgrades/
-    $ php bin/console doctrine:migrations:version --add --all -q
+    $ php bin/console doctrine:migrations:migrate
     $ rm -rf var/cache/
 
-.. note::
+If you are updating an Enterprise Edition instance and are working with Akeneo Support, please run the following command (after executing ``doctrine:migrations:migrate``)
+and provide us with the output so that we can quickly check for any database issues:
 
-    WARNING: please note that this part of the migration needs to be executed on your PIM v5.0 ``before`` upgrading your technical stack. 
+.. code:: bash
 
+    $ php bin/console doctrine:migration:status
 
 Requirements
 ************
@@ -36,35 +52,37 @@ Requirements
 Updated System components
 -------------------------
 
-You have to make sure your system components are updated to the version required for Akeneo PIM:
- - PHP 8.0
- - MySQL 8.0
- - Elasticsearch 7.16
+.. note::
+    If you are using Enterprise Edition on the Akeneo Cloud Flexibility offering,
+    Akeneo will handle the component upgrades if you open a ticket with our Support team.
+
+Your system components must be updated to the versions required for Akeneo PIM:
+ - ``PHP 8.0``
+ - ``MySQL 8.0``
+ - ``Elasticsearch 7.16``
 
 .. note::
-    Elasticsearch supports in-place update: Elasticsearch 7.16 will be able to use indexes created
-    by previous Elasticsearch 7.x.
+    Elasticsearch supports in-place update.
 
-    So there's no need to export and reimport data for this system.
+    Elasticsearch 7.16 will be able to use indexes created by previous versions of Elasticsearch 7.x.
 
+    This means there's no need to export and reimport data for this update.
 
 Updated System dependencies
 ---------------------------
-Check your system dependencies are in sync with :doc:`/install_pim/manual/system_requirements/system_requirements`
-
+Check your system dependencies are in sync with the :doc:`/install_pim/manual/system_requirements/system_requirements`
 
 Updated crontab definition
 --------------------------
-
-Check your crontab is in sync with :doc:`/cloud_edition/flexibility_mode/docs/crontasks`
-
+Check that your crontab is in sync with :doc:`/cloud_edition/flexibility_mode/docs/crontasks`
 
 Upgraded Virtual Host configuration
 -----------------------------------
 
-*OnPremise only*
+OnPremise only
+^^^^^^^^^^^^^^
 
-Since Akeneo PIM, instead of using one fpm pool, we are using one for the API, and one for UI.
+Akeneo PIM uses one fpm pool each for the API and the UI.
 
 You can check the VirtualHost configuration for 6.0 on your system: :doc:`/install_pim/manual/index`
 
@@ -73,12 +91,11 @@ Prepare your project
 
 Akeneo PIM composer.json
 ----------------------------
-The root of your current installation dir is referred as $INSTALLATION_DIR.
 
 Community Edition
 ^^^^^^^^^^^^^^^^^
 
-You can download the composer.json file directly from the Github repository:
+You can download the ``composer.json`` file directly from the Github repository:
 
 .. code:: bash
 
@@ -86,11 +103,12 @@ You can download the composer.json file directly from the Github repository:
 
 Enterprise Edition
 ^^^^^^^^^^^^^^^^^^
-Please visit your `Akeneo Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html>`_ to download the archive.
+Please visit your `Akeneo Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html>`_
+to download the archive, then expand it to the installation directory on your host:
 
 .. code:: bash
 
-    $ tar xvzf pim-enterprise-standard-<archive-suffix>.tar.gz -C $INSTALLATION_DIR --strip-components 1 pim-enterprise-standard/composer.json
+    $ tar xvzf pim-enterprise-standard-<ARCHIVE-SUFFIX>.tar.gz -C $INSTALLATION_DIR --strip-components 1 pim-enterprise-standard/composer.json
 
 Load your PIM Enterprise dependencies
 *****************************************
@@ -100,15 +118,24 @@ Load your PIM Enterprise dependencies
     $ composer update
 
 .. note::
+    You may need to temporarily increase the memory provided to ``composer``, as this step can be very memory consuming:
 
-    You may need to increase the memory provided to `composer`, as this step can be very memory consuming:
 
     .. code:: bash
 
-        $ php  -d memory_limit=4G /path/to/composer update
+        $ php  -d memory_limit=4G <COMPOSER PATH>/composer update
 
 Let Akeneo PIM continue the preparation for you
 ***************************************************
+
+.. warning::
+    **Do not skip this step**
+
+    This script overwrites several configuration files, but it is necessary for the upgrade to succeed.
+
+    If you have customized your PIM (for example, by adding custom bundles),
+    we suggest saving a backup copy of your configuration files,
+    and you will need to resolve any conflicts.
 
 Community Edition
 -----------------
@@ -118,7 +145,6 @@ Community Edition
     $ export APP_ENV=prod
     $ vendor/akeneo/pim-community-dev/std-build/migration/prepare_50_to_60.sh
 
-
 Enterprise Edition
 ------------------
 
@@ -126,11 +152,6 @@ Enterprise Edition
 
     $ export APP_ENV=prod
     $ vendor/akeneo/pim-enterprise-dev/std-build/upgrade/prepare_50_to_60.sh
-
-.. warning::
-    This script overwrites several configuration files.
-
-    In case of customisation, you need to resolve conflicts.
 
 Make sure your environment is ready to be migrated
 **************************************************
@@ -140,11 +161,10 @@ Make sure your environment is ready to be migrated
     $ rm -Rf var/cache
     $ bin/console pim:installer:check-requirements
 
-If this command detects something not working or not properly configured,
-please fix the problem before continuing.
+If this command detects something not working or not properly configured, please fix the problem before continuing.
 
-Prepare the front
-*****************
+Prepare the front-end
+*********************
 
 .. code:: bash
 
@@ -160,48 +180,60 @@ Migrate your data
     $ bin/console pim:data-quality-insights:recompute-product-scores
 
 .. note::
+    You may receive the following warning:
 
-    You may receive the following warnings:
+    .. code:: text
 
-        WARNING! You have X previously executed migrations in the database that are not registered migrations.
+        WARNING! You have [a number of] previously executed migrations in the database that are not registered migrations.
+
+    This can be safely ignored. The message means that your database is up to date, but that Doctrine did not find the migration files corresponding to some prviously-run migrations.
 
 
-    This can be safely ignored as this only means that your database is up to date, but without finding the corresponding
-    migration files.
+.. note::
+    You may also receive:
 
-    Another message could be `Migration _X_Y_ZZZZ was executed but did not result in any SQL statements`.
+    .. code:: text
 
-    This makes sense for some migration that only touches the Elasticsearch index or don't apply because no data linked
-    to this migration have been found.
+        Migration _X_Y_ZZZZ was executed but did not result in any SQL statements
 
-    The message "The migration has already been performed." concerning the "data-quality-insights" migration could be ignored .
+    If a migration only affects the Elasticsearch index or does not apply because no data associated with the migration were found, this can be safely ignored.
+
+.. note::
+    The following message can also be safely ignored if it concerns the ``data-quality-insights`` migration:
+
+    .. code:: text
+
+        The migration has already been performed.
+
 
 Migrate the job queue
 *********************
 
-In 6.0 we set up a new job queue. You may have jobs awaiting in the old queue, they must be migrated in the new queue:
+In 6.0 we set up a new job queue (also known as job consumers). If you have jobs awaiting execution in the old queue, they must be migrated to the new queue.
 
 .. code:: bash
 
     $ bin/console akeneo:batch:migrate-job-messages-from-old-queue
 
-If you want to skip the interactive question and want to migrate directly:
+(Use the ``--no-interaction`` flag if you want to skip the interactive question and want to migrate directly.)
 
-.. code:: bash
-
-    $ bin/console akeneo:batch:migrate-job-messages-from-old-queue --no-interaction
 
 Migrating your custom code
 **************************
+
+.. note::
+    Each Akeneo PIM version brings brand new features, so please check if you still need each custom bundle, as we may have incorporated the same or similar functionality into the PIM.
+
+    You can check for new features and changes in the changelog: :doc:`/migrate_pim/changelog`
+
 
 Applying automatic fixes
 ------------------------
 
 Some changes we made in the code of Akeneo PIM can be automatically applied to your own code.
 
-In order to make this process easier and more error proof, we decided to use PHP Rector (https://github.com/rectorphp/rector)
+In order to make this process easier and more error proof, we decided to use `PHP Rector <https://github.com/rectorphp/rector>`_.
 to apply these changes.
-
 
 Installing Rector
 ^^^^^^^^^^^^^^^^^
@@ -217,26 +249,20 @@ Applying automatic fixes
 
     vendor/bin/rector process src/
 
-
 .. note::
-
     This will use the `rector.yaml` file created by the `prepare.sh` above.
-    Feel free to add your own refactoring rules inside it. More information on https://getrector.org/
+    Feel free to add your own refactoring rules inside it. More information on `getrector.org <https://getrector.org/>`_.
 
 Identifying broken code
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can use PHPStan to help you identify broken code:
 
-
 .. code:: bash
 
     composer require --dev phpstan/phpstan
     vendor/bin/phpstan analyse src/
 
-More information, please check https://github.com/phpstan/phpstan
+For more information, please check the `PhpStan documentation <https://github.com/phpstan/phpstan>`_.
 
-From that point, you will have to migrate your bundle one by one.
-
-Remember to check if they are still relevant, as each Akeneo version
-brings new features.
+You should migrate your bundles one by one to avoid problems and locate any bugs.
