@@ -149,7 +149,7 @@ This first command will build the javascript file for production. The javascript
 yarn webpack-dev
 ++++++++++++++++
 
-This command will build the javascript artefacts in development mode. The size of the generated bundle will be higher and quicker to generate. It's the prefered way to rebuild the frontend after checking out another branch when you are not actively working on the frontend.
+This command will build the javascript artefacts in development mode. The size of the generated bundle will be higher and quicker to generate. It's the preferred way to rebuild the frontend after checking out another branch when you are not actively working on the frontend.
 
 yarn webpack-watch
 ++++++++++++++++++
