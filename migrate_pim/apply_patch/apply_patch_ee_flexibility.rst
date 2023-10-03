@@ -76,6 +76,7 @@ If you have an error during the ``yarn run webpack`` command, please execute thi
     bin/console pim:installer:assets
     bin/console cache:warmup
     yarn run less
+    yarn run packages:build
     make javascript-prod
     make javascript-extensions
     
