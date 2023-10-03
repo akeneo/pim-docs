@@ -100,7 +100,8 @@ Create a file in the configuration directory of supervisor ``/etc/supervisor/con
     :linenos:
 
     [program:akeneo_queue_daemon]
-    command=/path/to/php /path/to/your/pim/bin/console messenger:consume ui_job import_export_job data_maintenance_job --env=prod -vv
+    directory=/path/to/your/pim
+    command=/path/to/php bin/console messenger:consume ui_job import_export_job data_maintenance_job --env=prod -vv
     autostart=false
     autorestart=true
     stderr_logfile=/var/log/akeneo_daemon.err.log
