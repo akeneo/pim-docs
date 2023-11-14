@@ -7,7 +7,14 @@ Disclaimer
 **********
 
 Make sure your production database is backed-up before performing the data migration.
-The queue daemon(s) must be stopped as well.
+
+Several queries will be executed during the migration.
+Every process reading or writing on the database must be stopped. This includes:
+
+  - The commands launched via crontab
+  - The web and external API process daemons
+  - Any running job
+  - Database saving processes...
 
 Prepare your project for the new technical stack
 ************************************************
