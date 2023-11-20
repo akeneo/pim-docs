@@ -15,6 +15,7 @@ You need to run this command to clean them:
 .. code-block:: bash
 
     bin/console akeneo:onboarder:deactivate
+    bin/console akeneo:onboarder:clean-bundle-data
 
 .. warning::
 
