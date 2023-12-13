@@ -112,7 +112,8 @@ Most of this information can be found on the PIM under System > System informati
 You can also read this Medium article `_Because your product catalog typology matters <https://medium.com/akeneo-labs/because-your-product-catalog-typology-matters-e1a9af4c33e0>`__ to see the impacts catalog modeling can have on PIM performances.
 
 .. _did_you_customize_your_pim:
-Step 10: did you customize your PIM?
+
+Step 10: did you customize your PIM?  
 ------------------------------------
 
 .. warning::

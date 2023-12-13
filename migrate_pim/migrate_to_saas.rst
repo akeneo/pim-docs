@@ -12,6 +12,7 @@ If you are using **Enterprise Edition** of an On-Premise or Flexibility (PaaS) i
 
 What to expect
 --------------
+
 * Your PIM's URL will not change if you are migrating a Flexibility (PaaS) instance
 
 * If you have multiple instances (*ex: testing, staging, and production*), each instance needs to be migrated individually
