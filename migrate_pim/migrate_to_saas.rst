@@ -3,7 +3,7 @@ Migrate to Serenity (SaaS)
 
 `Learn more about Akeneo's SaaS offering (Serenity) <https://help.akeneo.com/en_US/everything-you-need-to-know-about-our-pim-versions#serenity>`_
 
-If you are using **Enterprise Edition** of an On-Premise or Flexibility (PaaS) instance, your instance can be migrated to Serenity!
+If you are using **Enterprise Edition** for either an  On-Premise or a Flexibility (PaaS) instance, your instance can be migrated to Serenity!
 
 .. warning::
     All upgrades to Serenity require Akeneo PIM ``v7``. If you are on an earlier version, you will need to upgrade to ``v7`` before migrating to Serenity.
