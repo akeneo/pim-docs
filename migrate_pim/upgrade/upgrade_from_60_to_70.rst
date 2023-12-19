@@ -153,6 +153,24 @@ Prepare the front
 
     $ make upgrade-front
 
+..note:: 
+    If you have an error during the ``yarn run webpack`` command, please execute this process to upgrade your package.json, reinstall the correct version of yarn modules and clean your cache.
+
+.. code-block:: bash
+
+    cp vendor/akeneo/pim-enterprise-dev/std-build/package.json package.json
+    cp vendor/akeneo/pim-enterprise-dev/yarn.lock yarn.lock
+    rm -rf node_modules
+    yarn install
+    partners_php8.1-fpm restart
+    rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
+    bin/console pim:installer:assets
+    bin/console cache:warmup
+    yarn run less
+    make javascript-prod
+    make javascript-extensions
+
+
 Migrate your data
 *****************
 
@@ -177,4 +195,3 @@ Migrate your data
     to this migration have been found.
 
     The message "The migration has already been performed." concerning the "data-quality-insights" migration could be ignored .
-
