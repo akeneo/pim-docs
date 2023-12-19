@@ -153,7 +153,8 @@ Prepare the front
 
     $ make upgrade-front
 
-..note:: 
+..note::
+
     If you have an error during the ``yarn run webpack`` command, please execute this process to upgrade your package.json, reinstall the correct version of yarn modules and clean your cache.
 
 .. code-block:: bash
@@ -195,3 +196,4 @@ Migrate your data
     to this migration have been found.
 
     The message "The migration has already been performed." concerning the "data-quality-insights" migration could be ignored .
+
