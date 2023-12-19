@@ -155,7 +155,7 @@ Prepare the front
 
 ..note::
 
-    If you have an error during the ``yarn run webpack`` command, please execute this process to upgrade your package.json, reinstall the correct version of yarn modules and clean your cache.
+    If you have an error after building the front, please execute this process to upgrade your package.json, reinstall the correct version of yarn modules and clean your cache.
 
 .. code-block:: bash
 
