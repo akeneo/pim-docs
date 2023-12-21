@@ -285,4 +285,5 @@ linkcheck_ignore = [
     r'http://your\.akeneo-pim\.url.*',
     r'http://demo.akeneo.com/user/login' # Temporary added because demo.akeneo.com is down
     ]
+
 user_agent = 'curl'
