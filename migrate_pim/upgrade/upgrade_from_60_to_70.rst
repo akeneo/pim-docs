@@ -153,9 +153,10 @@ Prepare the front
 
     $ make upgrade-front
 
-..note::
+.. note::
 
     If you have an error after building the front, please execute this process to upgrade your package.json, reinstall the correct version of yarn modules and clean your cache.
+
 
 Community Edition
 -----------------
@@ -172,8 +173,10 @@ Community Edition
     yarn run less
     yarn run webpack
 
+
 Enterprise Edition
 -------------------
+
 
 Flexibility Cloud offer:
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -192,6 +195,7 @@ Flexibility Cloud offer:
     make javascript-prod
     make javascript-extensions
 
+
 On Premise offer:
 ^^^^^^^^^^^^^^^^^
 
@@ -200,16 +204,17 @@ On Premise offer:
     cp vendor/akeneo/pim-enterprise-dev/std-build/package.json package.json
     cp vendor/akeneo/pim-enterprise-dev/yarn.lock yarn.lock
     rm -rf node_modules
-    yarn install
     service php8.1-fpm restart
     rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
     bin/console pim:installer:assets
     bin/console cache:warmup
+    yarn install
     yarn run less
     rm -rf public/dist
     yarn run packages:build
     yarn run webpack
     yarn run update-extensions
+
 
 Migrate your data
 *****************

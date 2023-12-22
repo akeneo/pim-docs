@@ -170,6 +170,66 @@ Prepare the front-end
 
     $ make upgrade-front
 
+.. note::
+
+    If you have an error after building the front, please execute this process to upgrade your package.json, reinstall the correct version of yarn modules and clean your cache.
+
+Community Edition
+-----------------
+
+.. code-block:: bash
+
+    rm -rf node_modules
+    service php8.0-fpm restart
+    rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
+    rm yarn.lock
+    bin/console pim:installer:assets
+    bin/console cache:warmup
+    yarn install
+    yarn run less
+    yarn run webpack
+
+Enterprise Edition
+-------------------
+
+Flexibility Cloud offer:
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+    cp vendor/akeneo/pim-enterprise-dev/std-build/package.json package.json
+    cp vendor/akeneo/pim-enterprise-dev/yarn.lock yarn.lock
+    rm -rf node_modules
+    yarn install
+    partners_php8.0-fpm restart
+    rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
+    bin/console pim:installer:assets
+    bin/console cache:warmup
+    yarn run less
+    make javascript-prod
+    make javascript-extensions
+
+
+On Premise offer:
+^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+    cp vendor/akeneo/pim-enterprise-dev/std-build/package.json package.json
+    cp vendor/akeneo/pim-enterprise-dev/yarn.lock yarn.lock
+    rm -rf node_modules
+    service php8.0-fpm restart
+    rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
+    bin/console pim:installer:assets
+    bin/console cache:warmup
+    yarn install
+    yarn run less
+    rm -rf public/dist
+    yarn run packages:build
+    yarn run webpack
+    yarn run update-extensions
+
+
 Migrate your data
 *****************
 
