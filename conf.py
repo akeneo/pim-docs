@@ -281,9 +281,10 @@ texinfo_documents = [
 # When using "linkckeck" builder, no checks on anchors.
 linkcheck_anchors = False
 linkcheck_ignore = [
-  r'http://localhost:\d+/',
-  r'http://your\.akeneo-pim\.url.*',
-  r'http://demo.akeneo.com/user/login' # Temporary added because demo.akeneo.com is down
-]
+    r'http://localhost:\d+/',
+    r'http://your\.akeneo-pim\.url.*',
+    r'http://demo.akeneo.com/user/login' # Temporary added because demo.akeneo.com is down
+    ]
+
 
 user_agent = 'curl'

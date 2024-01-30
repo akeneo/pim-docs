@@ -113,7 +113,7 @@ You can also read this Medium article `_Because your product catalog typology ma
 
 .. _did_you_customize_your_pim:
 
-Step 10: did you customize your PIM?
+Step 10: did you customize your PIM?  
 ------------------------------------
 
 .. warning::
