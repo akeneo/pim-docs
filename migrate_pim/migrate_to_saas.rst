@@ -54,18 +54,6 @@ Check your file structure
 
 * The file structure should be identical to the original PIM file structure.
 
-.. note::
-
-    To get the original PIM file structure, you can install on an empty directory the PIM from the Portal Enterprise Repository.
-    Once you have the ``composer.json`` file in the desired directory, run the following commands:
-
-.. code::
-
-    $ tar xvzf pim-enterprise-standard-<archive-suffix>.tar.gz
-    $ cd pim-enterprise-standard/
-    $ composer --prefer-dist update
-
-
 * There should not be any symbolic link inside the PIM's file structure.
   If there are symbolic links in your PIM's file structure, we require you to remove them
   and restore all PIM directories to their original locations.
@@ -85,7 +73,7 @@ Check your file structure
 Check your storage
 ~~~~~~~~~~~~~~~~~~
 
-Please note that only the files from assets and media locations that have been set up in the filesystem adapter will be migrated.
+Please note that only the files from assets, media locations, jobs, etc., that have been set up in the filesystem adapter will be migrated.
 
 To make sure all media and uploaded file locations can be migrated, you must reference the location properly in ``config/packages/prod/oneup_flysystem.yml``
 
