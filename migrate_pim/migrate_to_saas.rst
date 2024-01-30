@@ -73,7 +73,7 @@ Check your file structure
 Check your storage
 ~~~~~~~~~~~~~~~~~~
 
-Please note that only the files from assets, media locations, jobs, etc., that have been set up in the filesystem adapter will be migrated.
+Please note that only the files from directories that have been set up in the filesystem adapter will be migrated.
 
 To make sure all media and uploaded file locations can be migrated, you must reference the location properly in ``config/packages/prod/oneup_flysystem.yml``
 
