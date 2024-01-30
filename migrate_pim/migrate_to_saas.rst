@@ -32,7 +32,7 @@ Check that your project terms include Serenity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To avoid any delays in migrating your Akeneo PIM to our most advanced cloud offering, please contact your Customer Success Manager to ensure
-they are aware of your migration and that your project terms include Serenity. 
+they are aware of your migration and that your project terms include Serenity.
 
 If any changes need to be made, your CSM can work with you to amend the terms.
 
@@ -44,10 +44,82 @@ compare your PIM version (*ex:* ``7.0.123``) with the latest version of Akeneo P
 
 .. tip::
 
-    To check if you need to upgrade, you can scroll to the bottom of your PIM's UI — 
+    To check if you need to upgrade, you can scroll to the bottom of your PIM's UI —
     if the PIM can be upgraded, you will see a message like ``Version: EE 7.0.20 Buckwheat | New patch available: v7.0.29``.
 
 Guides to update the PIM to latest patch can be found here: :doc:`./apply_patch/index`
+
+Check your file structure
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* The file structure should be identical to the original PIM file structure.
+
+.. note::
+
+    To get the original PIM file structure, you can install on an empty directory the PIM from the Portal Enterprise Repository.
+    Once you have the ``composer.json`` file in the desired directory, run the following commands:
+
+.. code::
+
+    $ tar xvzf pim-enterprise-standard-<archive-suffix>.tar.gz
+    $ cd pim-enterprise-standard/
+    $ composer --prefer-dist update
+
+
+* There should not be any symbolic link inside the PIM's file structure.
+  If there are symbolic links in your PIM's file structure, we require you to remove them
+  and restore all PIM directories to their original locations.
+
+    The symbolic links might be related to:
+
+        * Release directories
+
+        * Shared asset directories
+
+        * etc.
+
+* The PIM files should be inside the 'pim' directory at the root of ``/home/akeneo``
+
+* Any custom, temporary, or backup directories must be removed from ``/home/akeneo``, as they will not be migrated to Serenity.
+
+Check your storage
+~~~~~~~~~~~~~~~~~~
+
+Please note that only the files from assets and media locations that have been set up in the filesystem adapter will be migrated.
+
+To make sure all media and uploaded file locations can be migrated, you must reference the location properly in ``config/packages/prod/oneup_flysystem.yml``
+
+.. code::
+
+    oneup_flysystem:
+        adapters:
+            asset_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/asset/directory]'
+            catalog_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/catalog/directory]'
+            jobs_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/jobs/directory]'
+            archivist_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/archivist/directory]'
+            data_quality_insights_shared_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/data_quality_insights_shared/directory]'
+            tailored_import_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/tailored_import/directory]'
+            category_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/category/directory]'
+            local_storage_adapter:
+                local:
+                    location: '/'
+            catalogs_mapping_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/catalogs_mapping/directory]'
 
 Backup your PIM
 ~~~~~~~~~~~~~~~
@@ -59,7 +131,7 @@ To do so, please follow the directions in our :doc:`/cloud_edition/flexibility_m
 Disable custom code
 ~~~~~~~~~~~~~~~~~~~
 
-Serenity does not support custom code within the PIM. Serenity does support customization, but any customizations use API connections and apps from the `App Store <https://apps.akeneo.com>`_ 
+Serenity does not support custom code within the PIM. Serenity does support customization, but any customizations use API connections and apps from the `App Store <https://apps.akeneo.com>`_
 (this includes `custom apps <https://api.akeneo.com/apps/create-custom-app.html>`_).
 
 **If you have custom code bundles, please** :ref:`remove them <did_you_customize_your_pim>`
@@ -74,7 +146,7 @@ The migration process
 Open a Support ticket
 ~~~~~~~~~~~~~~~~~~~~~
 
-To begin the process to migrate from an On-Premise or Flexibility instance to a Serenity instance, you will need to open a ticket with Akeneo Support. 
+To begin the process to migrate from an On-Premise or Flexibility instance to a Serenity instance, you will need to open a ticket with Akeneo Support.
 
 When creating your Support ticket, please fill out the Help Desk form with the fields listed below:
 
@@ -144,7 +216,7 @@ Schedule a timeslot for migration
 
 The Akeneo Support team **must validate** the output of the above commands before we can schedule any migration.
 
-Once we have received all of this information and validated it, we can schedule the Serenity migration operation with our Cloud Engineering team. 
+Once we have received all of this information and validated it, we can schedule the Serenity migration operation with our Cloud Engineering team.
 Their hours are **Monday to Friday, 9:00 am to 6:00 pm CET**, excluding French public holidays. Please provide at least 48 hours notice between your request and the actual migration time slot.
 This gives our team time to prepare and to ensure that your migration runs smoothly.
 
@@ -153,7 +225,7 @@ For most instances, migrations will take between 2 and 4 hours. However, the dur
 If you have concerns about the timing of a migration, please let us know in the migration Support ticket and we will work with you to find the best solution.
 
 .. warning::
-    
+
     When choosing a timeslot to schedule your migration, please keep in mind that your PIM will not be available while we migrate the data and set up your Serenity instance.
 
 Given our Cloud team's schedule, please let us know the best time to migrate (if it is not available, we will suggest alternate time slots).
