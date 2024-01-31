@@ -32,7 +32,7 @@ Check that your project terms include Serenity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To avoid any delays in migrating your Akeneo PIM to our most advanced cloud offering, please contact your Customer Success Manager to ensure
-they are aware of your migration and that your project terms include Serenity.
+they are aware of your migration and that your project terms include Serenity. 
 
 If any changes need to be made, your CSM can work with you to amend the terms.
 
