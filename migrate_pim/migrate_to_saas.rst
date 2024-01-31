@@ -44,7 +44,7 @@ compare your PIM version (*ex:* ``7.0.123``) with the latest version of Akeneo P
 
 .. tip::
 
-    To check if you need to upgrade, you can scroll to the bottom of your PIM's UI —
+    To check if you need to upgrade, you can scroll to the bottom of your PIM's UI — 
     if the PIM can be upgraded, you will see a message like ``Version: EE 7.0.20 Buckwheat | New patch available: v7.0.29``.
 
 Guides to update the PIM to latest patch can be found here: :doc:`./apply_patch/index`
@@ -119,7 +119,7 @@ To do so, please follow the directions in our :doc:`/cloud_edition/flexibility_m
 Disable custom code
 ~~~~~~~~~~~~~~~~~~~
 
-Serenity does not support custom code within the PIM. Serenity does support customization, but any customizations use API connections and apps from the `App Store <https://apps.akeneo.com>`_
+Serenity does not support custom code within the PIM. Serenity does support customization, but any customizations use API connections and apps from the `App Store <https://apps.akeneo.com>`_ 
 (this includes `custom apps <https://api.akeneo.com/apps/create-custom-app.html>`_).
 
 **If you have custom code bundles, please** :ref:`remove them <did_you_customize_your_pim>`
@@ -134,7 +134,7 @@ The migration process
 Open a Support ticket
 ~~~~~~~~~~~~~~~~~~~~~
 
-To begin the process to migrate from an On-Premise or Flexibility instance to a Serenity instance, you will need to open a ticket with Akeneo Support.
+To begin the process to migrate from an On-Premise or Flexibility instance to a Serenity instance, you will need to open a ticket with Akeneo Support. 
 
 When creating your Support ticket, please fill out the Help Desk form with the fields listed below:
 
@@ -204,7 +204,7 @@ Schedule a timeslot for migration
 
 The Akeneo Support team **must validate** the output of the above commands before we can schedule any migration.
 
-Once we have received all of this information and validated it, we can schedule the Serenity migration operation with our Cloud Engineering team.
+Once we have received all of this information and validated it, we can schedule the Serenity migration operation with our Cloud Engineering team. 
 Their hours are **Monday to Friday, 9:00 am to 6:00 pm CET**, excluding French public holidays. Please provide at least 48 hours notice between your request and the actual migration time slot.
 This gives our team time to prepare and to ensure that your migration runs smoothly.
 
@@ -213,7 +213,7 @@ For most instances, migrations will take between 2 and 4 hours. However, the dur
 If you have concerns about the timing of a migration, please let us know in the migration Support ticket and we will work with you to find the best solution.
 
 .. warning::
-
+   
     When choosing a timeslot to schedule your migration, please keep in mind that your PIM will not be available while we migrate the data and set up your Serenity instance.
 
 Given our Cloud team's schedule, please let us know the best time to migrate (if it is not available, we will suggest alternate time slots).
