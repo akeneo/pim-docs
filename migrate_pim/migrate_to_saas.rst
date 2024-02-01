@@ -58,13 +58,12 @@ Check your file structure
   If there are symbolic links in your PIM's file structure, we require you to remove them
   and restore all PIM directories to their original locations.
 
+.. note::
     The symbolic links might be related to:
 
-        * Release directories
-
-        * Shared asset directories
-
-        * etc.
+    - Release directories
+    - Shared asset directories
+    - etc.
 
 * The PIM files should be inside the 'pim' directory at the root of ``/home/akeneo``
 
