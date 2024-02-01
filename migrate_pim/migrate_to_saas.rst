@@ -49,6 +49,66 @@ compare your PIM version (*ex:* ``7.0.123``) with the latest version of Akeneo P
 
 Guides to update the PIM to latest patch can be found here: :doc:`./apply_patch/index`
 
+Check your file structure
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* The file structure should be identical to the original PIM file structure.
+
+* There should not be any symbolic link inside the PIM's file structure.
+  If there are symbolic links in your PIM's file structure, we require you to remove them
+  and restore all PIM directories to their original locations.
+
+    The symbolic links might be related to:
+
+        * Release directories
+
+        * Shared asset directories
+
+        * etc.
+
+* The PIM files should be inside the 'pim' directory at the root of ``/home/akeneo``
+
+* Any custom, temporary, or backup directories must be removed from ``/home/akeneo``, as they will not be migrated to Serenity.
+
+Check your storage
+~~~~~~~~~~~~~~~~~~
+
+Please note that only the files from directories that have been set up in the filesystem adapter will be migrated.
+
+To make sure all media and uploaded file locations can be migrated, you must reference the location properly in ``config/packages/prod/oneup_flysystem.yml``
+
+.. code::
+
+    oneup_flysystem:
+        adapters:
+            asset_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/asset/directory]'
+            catalog_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/catalog/directory]'
+            jobs_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/jobs/directory]'
+            archivist_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/archivist/directory]'
+            data_quality_insights_shared_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/data_quality_insights_shared/directory]'
+            tailored_import_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/tailored_import/directory]'
+            category_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/category/directory]'
+            local_storage_adapter:
+                local:
+                    location: '/'
+            catalogs_mapping_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/catalogs_mapping/directory]'
+
 Backup your PIM
 ~~~~~~~~~~~~~~~
 
@@ -153,7 +213,7 @@ For most instances, migrations will take between 2 and 4 hours. However, the dur
 If you have concerns about the timing of a migration, please let us know in the migration Support ticket and we will work with you to find the best solution.
 
 .. warning::
-    
+   
     When choosing a timeslot to schedule your migration, please keep in mind that your PIM will not be available while we migrate the data and set up your Serenity instance.
 
 Given our Cloud team's schedule, please let us know the best time to migrate (if it is not available, we will suggest alternate time slots).
