@@ -49,6 +49,65 @@ compare your PIM version (*ex:* ``7.0.123``) with the latest version of Akeneo P
 
 Guides to update the PIM to latest patch can be found here: :doc:`./apply_patch/index`
 
+Check your file structure
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* The file structure should be identical to the original PIM file structure.
+
+* There should not be any symbolic link inside the PIM's file structure.
+  If there are symbolic links in your PIM's file structure, we require you to remove them
+  and restore all PIM directories to their original locations.
+
+.. note::
+    The symbolic links might be related to:
+
+    - Release directories
+    - Shared asset directories
+    - etc.
+
+* The PIM files should be inside the 'pim' directory at the root of ``/home/akeneo``
+
+* Any custom, temporary, or backup directories must be removed from ``/home/akeneo``, as they will not be migrated to Serenity.
+
+Check your storage
+~~~~~~~~~~~~~~~~~~
+
+Please note that only the files from directories that have been set up in the filesystem adapter will be migrated.
+
+To make sure all media and uploaded file locations can be migrated, you must reference the location properly in ``config/packages/prod/oneup_flysystem.yml``
+
+.. code::
+
+    oneup_flysystem:
+        adapters:
+            asset_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/asset/directory]'
+            catalog_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/catalog/directory]'
+            jobs_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/jobs/directory]'
+            archivist_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/archivist/directory]'
+            data_quality_insights_shared_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/data_quality_insights_shared/directory]'
+            tailored_import_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/tailored_import/directory]'
+            category_storage_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/category/directory]'
+            local_storage_adapter:
+                local:
+                    location: '/'
+            catalogs_mapping_adapter:
+                local:
+                    location: '%kernel.project_dir%/[path/to/catalogs_mapping/directory]'
+
 Backup your PIM
 ~~~~~~~~~~~~~~~
 
@@ -93,6 +152,18 @@ When creating your Support ticket, please fill out the Help Desk form with the f
     Please include the output of the commands below, preferably as plain text-formatted attachments so that we can begin working on your migration request.
     **We cannot validate your instance's migration to Serenity without all of the following information.**
     If we request any changes, we may ask you to run some commands again to check the updated status of your PIM.
+    
+Check the custom attribute removal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We need to make sure you do not have any custom attribute type stored in Assets, Reference Entities or Attributes.
+Thus, we require you to send us the results of the following shell commands:
+
+.. code:: bash
+
+    $ bin/console pim:installer:check-attributes
+    $ bin/console akeneo:reference-entity:check-attributes
+    $ bin/console akeneo:asset-manager:check-attributes
 
 Check your database schema
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
