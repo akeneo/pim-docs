@@ -58,13 +58,12 @@ Check your file structure
   If there are symbolic links in your PIM's file structure, we require you to remove them
   and restore all PIM directories to their original locations.
 
+.. note::
     The symbolic links might be related to:
 
-        * Release directories
-
-        * Shared asset directories
-
-        * etc.
+    - Release directories
+    - Shared asset directories
+    - etc.
 
 * The PIM files should be inside the 'pim' directory at the root of ``/home/akeneo``
 
@@ -153,6 +152,18 @@ When creating your Support ticket, please fill out the Help Desk form with the f
     Please include the output of the commands below, preferably as plain text-formatted attachments so that we can begin working on your migration request.
     **We cannot validate your instance's migration to Serenity without all of the following information.**
     If we request any changes, we may ask you to run some commands again to check the updated status of your PIM.
+
+Check the custom attribute removal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We need to make sure you do not have any custom attribute type stored in Assets, Reference Entities or Attributes.
+Thus, we require you to send us the results of the following shell commands:
+
+.. code:: bash
+
+    $ bin/console pim:installer:check-attributes
+    $ bin/console akeneo:reference-entity:check-attributes
+    $ bin/console akeneo:asset-manager:check-attributes
 
 Check your database schema
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
