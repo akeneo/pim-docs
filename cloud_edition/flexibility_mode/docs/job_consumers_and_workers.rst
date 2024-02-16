@@ -87,12 +87,15 @@ Examples
       # Delete its configuration file
       rm /home/akeneo/.systemd/pim_job_consumer/7.conf
 
-- Remove default PIM webhook consumer:
+- Start default PIM webhook consumer and check its status:
    .. code-block:: bash
       :linenos:
 
-      # Stop the consumer with its name (configuration filename without extension)
-      partners_systemctl pim_webhook_consumer stop
+      # Start the consumer with its name (configuration filename without extension)
+      partners_systemctl pim_webhook_consumer start
 
-      # Disable the consumer not to be started automatically at instance boot up
-      partners_systemctl pim_webhook_consumer disable
+      # Restart the consumer
+      partners_systemctl pim_webhook_consumer restart
+
+      # Check the consumer status
+      partners_systemctl pim_webhook_consumer status
