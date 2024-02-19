@@ -24,7 +24,7 @@ Enterprise Edition
 ^^^^^^^^^^^^^^^^^^
 
 You will find the `composer.json` file inside the Akeneo Enterprise Edition archive.
-Please visit your `Akeneo Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html>`_ to download the archive.
+Please visit your `Akeneo Portal <https://help.akeneo.com/en_US/akeneo-portal/get-pim-enterprise-edition-ee-archive>`_ to download the archive.
 
 
 Updated System components
