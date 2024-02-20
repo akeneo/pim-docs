@@ -103,7 +103,7 @@ You can download the ``composer.json`` file directly from the Github repository:
 
 Enterprise Edition
 ^^^^^^^^^^^^^^^^^^
-Please visit your `Akeneo Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html>`_
+Please visit your `Akeneo Portal <https://help.akeneo.com/en_US/akeneo-portal/get-pim-enterprise-edition-ee-archive.html>`_
 to download the archive, then expand it to the installation directory on your host:
 
 .. code:: bash
