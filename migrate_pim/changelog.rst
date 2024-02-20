@@ -1,7 +1,7 @@
 What is a Changelog?
 ========================
 
-When our maintenance team works on issues, they take extreme care to avoid any backward compatibility break, but it might happen. 
+When our maintenance team works on issues, they take extreme care to avoid any backward compatibility break, but it might happen.
 If it is the case, the backward compatibility break is mentioned in the changelog of the version.
 
 Where is the Changelog?
@@ -20,6 +20,6 @@ Community Edition changelog:
 
 Enterprise Edition changelog:
 
-* Get the latest `PIM Enterprise Edition (EE) archive from the Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_.
+* Get the latest `PIM Enterprise Edition (EE) archive from the Portal <https://help.akeneo.com/en_US/akeneo-portal/get-pim-enterprise-edition-ee-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_.
 * If you don't know how to get your archive, please contact us
 * Once installed, select the desired changelog in the list at vendor/akeneo/pim-enterprise-dev, for instance "CHANGELOG-6.0.md"

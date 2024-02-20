@@ -63,7 +63,7 @@ If the patch is a javascript fix, please **clear your browser cache** before tes
 .. note::
 
     We set any other dependencies to their exact patch versions to avoid compatibility issues.
-   
+
 
 Troubleshooting
 -----------------------
@@ -72,13 +72,13 @@ Troubleshooting
 **Cache issues**
 
 If you get a 500 error after upgrading and clear cache isn't working, try clearing the apc cache with a PHP script or restart the Apache/Web server.
-    
-    
-**Composer issues**    
+
+
+**Composer issues**
 
 You have to make sure you have the latest version of composer.json. If this isn't the case, you should backup your current composer.json and download the newest one before updating.
 
-You need to get a PIM Enterprise Standard archive from the Partners Portal. See <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_
+You need to get a PIM Enterprise Standard archive from the Partners Portal. See <https://help.akeneo.com/en_US/akeneo-portal/get-pim-enterprise-edition-ee-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_
 
 You can then copy the composer.json file to your pim installation:
 
