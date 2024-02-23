@@ -8,7 +8,7 @@ By default `Composer <https://getcomposer.org/>`_ uses `packagist.org <https://p
 Creating the PIM project
 ------------------------
 
-You need to get a PIM Enterprise Standard archive from the Partners Portal. See  <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_
+You need to get a PIM Enterprise Standard archive from the Partners Portal. See  <https://help.akeneo.com/en_US/akeneo-portal/get-pim-enterprise-edition-ee-archive.html>`_
 
 .. code-block:: bash
 
