@@ -1,7 +1,7 @@
 Composer settings
 =================
 
-To be able to pull from distribution, you must use a known ssh keypair from `the Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=composer_settings>`_.
+To be able to pull from distribution, you must use a known ssh keypair from `the Portal <https://help.akeneo.com/en_US/akeneo-portal/get-pim-enterprise-edition-ee-archive.html?utm_source=akeneo-docs&utm_campaign=composer_settings>`_.
 You can check your access rights to the distribution repository with this command:
 
 .. code-block:: bash

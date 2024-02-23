@@ -15,6 +15,6 @@ Akeneo PIM CE changelog is available on our GitHub repository:
 
 Akeneo PIM EE changelog is available in your last archive:
 
-* Get the latest `PIM Enterprise Edition (EE) archive from the Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_.
+* Get the latest `PIM Enterprise Edition (EE) archive from the Portal <https://help.akeneo.com/en_US/akeneo-portal/get-pim-enterprise-edition-ee-archive.html?utm_source=akeneo-docs&utm_campaign=portal_archive>`_.
 * In your archive, select the desired Changelog in the list, for instance "CHANGELOG-7.0.md"
 * If you don't know how to get your archive, please contact us
