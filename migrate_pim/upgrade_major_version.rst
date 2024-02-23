@@ -32,7 +32,7 @@ From the 2.3 version, you will be able to follow this migration guide:
 
 **If you are an Enterprise Edition client**
 
-Standard Enterprise Edition (EE) archives are available from `the Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=migration>`_.
+Standard Enterprise Edition (EE) archives are available from `the Portal <https://help.akeneo.com/en_US/akeneo-portal/get-pim-enterprise-edition-ee-archive.html?utm_source=akeneo-docs&utm_campaign=migration>`_.
 
 Then, follow the migration guides located in your archive to upgrade your project.
 

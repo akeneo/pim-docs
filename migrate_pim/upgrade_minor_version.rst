@@ -5,7 +5,7 @@ How to upgrade to a minor version? (PIM version < 4.x)
 .. note::
 
     Since version 5.0, we have stopped releasing minor versions. Instead, we release more frequent, smaller patches. Instructions for installing patches can be found here: :doc:`/migrate_pim/apply_patch/index`
-    
+
 
 Since 1.x to 3.x, we released a minor version 3 times a year:
 
@@ -53,7 +53,7 @@ Here are the migration guides:
 
 **If you are an Enterprise Edition client**
 
-Standard Enterprise Edition (EE) archives are available from `the Portal <https://help.akeneo.com/portal/articles/get-akeneo-pim-enterprise-archive.html?utm_source=akeneo-docs&utm_campaign=migration>`_.
+Standard Enterprise Edition (EE) archives are available from `the Portal <https://help.akeneo.com/en_US/akeneo-portal/get-pim-enterprise-edition-ee-archive.html?utm_source=akeneo-docs&utm_campaign=migration>`_.
 
 Then, follow the migration guides located in your archive to upgrade your project.
 
