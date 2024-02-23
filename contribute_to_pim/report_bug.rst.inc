@@ -11,7 +11,6 @@ Report a Bug
 
 **Community Edition**
 
-* Check if the issue is reproducible on `Demo website <http://demo.akeneo.com/user/login>`_
 * Check if this issue is `already known <https://github.com/akeneo/pim-community-dev/issues>`_
 * Clone `the development repository <https://github.com/akeneo/pim-community-dev>`_ and checkout the branch of the version you want to test
 * Reproduce the bug

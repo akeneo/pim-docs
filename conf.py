@@ -283,8 +283,7 @@ linkcheck_anchors = False
 linkcheck_ignore = [
     r'http://localhost:\d+/',
     r'http://your\.akeneo-pim\.url.*',
-    r'https://deb\.sury\.org/',
-    r'http://demo.akeneo.com/user/login'
+    r'https://deb\.sury\.org/'
 ]
 
 user_agent = 'curl'
