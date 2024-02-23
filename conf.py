@@ -282,8 +282,7 @@ texinfo_documents = [
 linkcheck_anchors = False
 linkcheck_ignore = [
   r'http://localhost:\d+/',
-  r'http://your\.akeneo-pim\.url.*',
-  r'http://demo.akeneo.com/user/login' # Temporary added because demo.akeneo.com is down
+  r'http://your\.akeneo-pim\.url.*'
 ]
 
 user_agent = 'curl'
