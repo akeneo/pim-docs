@@ -1,0 +1,22 @@
+@startuml
+together {
+
+}
+together {
+    class Record  {
+        code: string
+        'label and image are two default attributes.
+        attributes: RecordAttribute[2..*]
+    }
+    Record -> ReferenceEntity: "is instance of"
+
+    class RecordAttributeValue <<UiLocale>> {
+        channel: Channel
+        locale: Locale
+        * value: Object
+    }
+    RecordAttributeValue -> Attribute: "holds value defined by"
+    Record "contains values for attributes" *-- RecordAttributeValue
+
+}
+@enduml
