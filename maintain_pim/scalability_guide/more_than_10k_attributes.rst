@@ -1,8 +1,8 @@
 More than 10k attributes?
 -------------------------
 
-The number of attributes may impact performances of Akeneo PIM in several ways.
-We've tested performances with a set of 10k simple attributes in total (not 10k attributes per product). Note: These attributes were not scopable nor localizable.
+The number of attributes may impact performances of Akeneo PIM in several ways. 
+We’ve tested performances with a set of 10k simple attributes in total (not 10k attributes per product). Note: These attributes were not scopable nor localizable.
 
 .. warning::
 
