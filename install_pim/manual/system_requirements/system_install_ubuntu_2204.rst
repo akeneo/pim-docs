@@ -55,7 +55,7 @@ Then, install PHP and the required extensions:
 
 .. code-block:: bash
 
-    $ apt-get install php8.1-cli php8.1-apcu php8.1-bcmath php8.1-curl php8.1-opcache php8.1-fpm php8.1-gd php8.1-intl php8.1-mysql php8.1-xml php8.1-zip php8.1-mbstring php8.1-imagick
+    $ apt-get install php8.1-cli php8.1-apcu php8.1-bcmath php8.1-curl php8.1-opcache php8.1-fpm php8.1-gd php8.1-intl php8.1-mysql php8.1-xml php8.1-zip php8.1-mbstring php8.1-imagick php8.1-grpc
 
 Composer v2
 ***********
