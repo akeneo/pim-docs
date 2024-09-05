@@ -177,9 +177,8 @@ Please send us the results of the following shell commands so that we can ensure
 .. code:: bash
 
     $ cd /home/akeneo/pim
-    $ bin/console pimee:database:inspect -f --env=dev
-    $ composer require jfcherng/php-diff
-    $ bin/console pimee:database:diff --env=dev
+    $ bin/console pimee:database:inspect -f --env=prod
+    $ bin/console pimee:database:diff --env=prod
     $
     $ bin/console doctrine:migrations:status
     $
