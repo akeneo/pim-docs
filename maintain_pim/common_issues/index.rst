@@ -133,3 +133,10 @@ This parameter is set by the PIM at the index creation. If you want to apply it 
                   }
               }
           }'
+
+
+A CSS update affects all the PIM pages
+--------------------------------------
+
+If you add some CSS instructions in rich text editor into product edit form and don't use specific class name for each html tag you target,
+you will update all the tags that match the selection that are present in your PIM page so if you don't want side effects on all your page be as more specific as possible in the class name you use.
