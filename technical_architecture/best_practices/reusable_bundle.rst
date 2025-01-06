@@ -30,7 +30,7 @@ Many attribute types are managed (14 in CE and one more in EE). Make sure you do
 Try your bundle with other catalogs. Don't forget use cases with many locales, many channels and various catalog volumes.
 
 .. _Community: https://github.com/akeneo/pim-community-standard
-.. _Enterprise: https://www.akeneo.com/akeneo-pim-enterprise-edition/
+.. _Enterprise: https://www.akeneo.com/akeneo-pim/
 .. _data generator bundle: https://github.com/akeneo-labs/DataGeneratorBundle
 
 
