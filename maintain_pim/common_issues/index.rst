@@ -133,3 +133,9 @@ This parameter is set by the PIM at the index creation. If you want to apply it 
                   }
               }
           }'
+
+
+A CSS update affects all the PIM pages
+--------------------------------------
+
+When adding CSS instructions to the rich text editor within the product edit form, avoid using generic class names. Targeting elements with non-specific classes can unintentionally style other elements on the page. To prevent unintended side effects, use highly specific class names that are unique to the desired HTML tags within your product descriptions.
