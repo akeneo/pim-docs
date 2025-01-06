@@ -1,0 +1,76 @@
+@startuml
+together {
+    class ReferenceEntity {
+        identifier: string
+        attributeAsLabel: RecordAttribute
+        attributeAsImage: RecordAttribute
+    }
+
+    abstract class Attribute <<UiLocale>> {
+        *label: string
+        *isRequired:boolean
+        *isScopable: boolean
+        *isLocalizable: boolean
+    }
+
+    ReferenceEntity "defines a list of" *-- Attribute
+
+    class Text {
+        *isTextArea: boolean
+        isRichTextEditor: boolean
+        validationRule: Email | Url | RegExp
+    }
+
+    Attribute <|-- Text
+
+    class Number {
+        *isDecimal: boolean
+        minValue: Number
+        maxValue: Number
+    }
+
+    Attribute <|-- Number
+
+    class Image {
+        maxFileSizeInMb: number
+        allowedExtensions: string[0..*]
+    }
+    Attribute <|-- Image
+
+    abstract class LinkEntityReference <<MultipleOrSimpleSelect>> {
+        *entity: ReferenceEntity
+    }
+
+    Attribute <|-- LinkEntityReference
+
+    class Option <<UiLocale>> {
+        code: string
+    }
+
+    abstract class GenericSelect  <<MultipleOrSimpleSelect>>   {
+        *options: Option[0..*]
+    }
+    GenericSelect "defines list of" *-- Option
+    Attribute <|-- GenericSelect
+
+}
+
+together {
+    class Record  {
+        code: string
+        'label and image are two default attributes.
+        attributes: RecordAttribute[2..*]
+    }
+    Record -> ReferenceEntity: "is instance of"
+
+    class RecordAttributeValue <<UiLocale>> {
+        channel: Channel
+        locale: Locale
+        * value: Object
+    }
+    RecordAttributeValue -> Attribute: "holds value defined by"
+    Record "contains values for attributes" *-- RecordAttributeValue
+
+}
+
+@enduml

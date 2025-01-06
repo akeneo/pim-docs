@@ -1,0 +1,141 @@
+
+@startuml Attribute types
+class AttributeType {
+    ' assetCollection
+    ' date
+    ' file
+    ' identifier
+    ' image
+    ' measurement
+    ' multiSelect
+    ' number
+    ' price
+    ' referenceDataMultiSelect
+    ' referenceDataSimpleSelect
+    ' referenceEntityMultipleLink
+    ' referenceEntitySimpleLink
+    ' simpleSelect
+    ' table
+    ' text
+    ' textArea
+    ' boolean
+}
+
+class AssetCollectionAttribute {
+    'asset collection name
+    referenceDataName: string
+}
+
+ AttributeType <|-- AssetCollectionAttribute
+
+ class DateAttribute {
+     minDate: date
+     maxDate: date
+ }
+
+ AttributeType  <|-- DateAttribute
+
+ class File {
+     maxFileSizeInMb: number
+     allowedExtensions: string[0..*]
+ }
+
+ AttributeType <|-- File
+
+ class IdentifierAttribute {
+     maxCharacters: number
+     validationRule: Regexp
+ }
+ class RegExp {
+     validationRegexp: string
+ }
+
+ AttributeType  <|-- IdentifierAttribute
+
+class Image {
+ }
+
+File <|-- Image
+
+class Number {
+    min: number
+    max: number
+    negativeValueAllowed: boolean
+    decimalValueAllowed: boolean  
+}
+AttributeType <|-- Number
+
+class Measurement {
+    metric: Metric   
+ }
+ Number <|-- Measurement
+
+ enum MetricFamily {}
+ enum DefaultMetricUnit {}
+ class Metric {
+    'can not be changed after creation
+    family:MetricFamily
+    ' can be change after creation
+    defaultMetricUnit: DefaultMetricUnit
+ }
+
+class Price {
+    min: number
+    max: number
+    decimalValueAllowed: boolean  
+}
+
+AttributeType <|-- Price
+class Option <<UiLocale>> {
+    code: string
+}
+
+abstract class GenericSelect <<MultipleOrSimpleSelect>> {
+     minimumLengthForAutoComplete: number
+     options: Option[0..*]
+ }
+
+ AttributeType <|-- GenericSelect
+'  GenericSelect <|-- MultiSelectAttribute
+'  GenericSelect <|-- SimpleSelectAttribute
+
+
+abstract class GenericReferenceData <<MultipleOrSimpleSelect>> {
+    referenceDataType: string
+}
+AttributeType <|-- GenericReferenceData
+
+' GenericReferenceData <|-- ReferenceDataMultiSelect
+' GenericReferenceData <|-- ReferenceDataSimpleSelect
+
+abstract class GenericReferenceEntity <<MultipleOrSimpleSelect>> {
+    referenceEntity: string
+}
+AttributeType <|-- GenericReferenceEntity
+
+' GenericReferenceEntity <|-- ReferenceEntityMultiSelect
+' GenericReferenceEntity <|-- ReferenceEntitySimpleSelect
+
+class Table {
+    'TODO
+}
+AttributeType <|-- Table
+
+class Text {
+    maxCharacters: number
+    validationRule: Email | Url | RegExp
+}
+AttributeType <|-- Text
+
+class TextArea {
+    maxCharacters: number
+    wysiwygEnabled: boolean
+}
+AttributeType <|-- TextArea
+
+class Boolean {
+    defaultValue: boolean
+}
+AttributeType <|-- Boolean
+
+@enduml
