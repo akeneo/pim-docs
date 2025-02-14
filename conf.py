@@ -151,6 +151,8 @@ html_logo = '_themes/akeneo/static/img/akeneo.svg'
 # pixels large.
 html_favicon = 'favicon.ico'
 
+html_extra_path = ['robots.txt']
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
