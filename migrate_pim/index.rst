@@ -12,3 +12,4 @@ As a prerequisite, we assume that you are using a project installed from a Commu
     apply_patch/index
     changelog
     upgrade_major_version
+    migrate_to_saas
