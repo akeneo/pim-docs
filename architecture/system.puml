@@ -1,0 +1,25 @@
+@startuml Akeneo Global System 
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+left to right direction
+LAYOUT_WITH_LEGEND()
+
+Person(Julia, "Julia","Product catalog")
+Person(Roy,"Roy", "Procurements")
+Person(Jimmy,"Jimmy","Supplier")
+System_Boundary(Akeneo, "Akeneo") {
+    System(PIM,"PIM")
+    System(Onboarder,"Onboarder")
+    Rel(Onboarder,PIM,"Product(s) Updates")
+    Rel(PIM,Onboarder,"PIM Updates")
+}
+Rel(Julia,PIM,"maintains catalog")
+Rel(Julia,PIM,"validates 2nd level supplier change ")
+Rel(Julia,PIM,"requires supplier update")
+Rel(Roy, PIM, "configures Supplier Families show/required attributes")
+Rel(Roy, PIM, "validates new Supplier reference")
+Rel(Jimmy,Onboarder, "add new products")
+Rel(Jimmy,Onboarder, "enrich products")
+
+@enduml

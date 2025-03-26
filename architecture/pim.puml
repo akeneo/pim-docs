@@ -1,0 +1,64 @@
+@startuml PIM core domain model
+
+enum Locale {
+    code: string
+    activated: boolean
+}
+enum AttributeType {
+    text
+    simpleSelect
+    boolean
+    multiSelect
+    assetCollection
+    number
+    textArea
+    date
+    identifier
+    referenceEntity
+    entityCollection
+}
+
+'exemple digital_assets_images, product_size_dimensions, product_physical_characteristics
+class AttributeGroup {
+    code: string
+}
+
+'Q: metric Family is used?
+'Q:  isScopable: type value per channel?
+'Q: what is backend Type, what is the use of entity_type ("Akeneo\Pim\Enrichment\Component\Product\Model\Product")
+'display attributes, specific values formats and value constraints not shown
+'Properties: a:4:{s:19:"reference_data_name";N;s:19:"auto_option_sorting";N;s:12:"is_read_only";N;s:13:"default_value";N;}
+'Guidelines:
+'sold_in_orgs: {"en_AU": "List of the Orgs this product can be sold in.\nIf the org is not added to this list, the product can not be sold to customers in that Org."}
+'part_number_list_competitor: {"en_AU": "Add competitor part numbers to this list, separate each with a comma."}
+
+Class Attribute {
+    code: String
+    group: AttributeGroup
+    isRequired: boolean
+    validationRule: Regexp
+    type: AttributeType
+    isLocalizable: boolean
+    isScopable: boolean
+    properties: Object
+    guidelines: Object
+}
+
+Class Product {
+    family: Family
+    familyVariant: FamilyVariant
+}
+
+Class Family {
+
+}
+
+Class FamilyVariant {
+
+}
+
+
+
+
+
+@enduml
