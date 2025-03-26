@@ -1,0 +1,179 @@
+
+@startuml PIM core domain model
+
+'!include "base-classes.iuml"
+'
+' Stereotype: TimeStampable: created,  updated
+'
+
+together   {
+    class Locale {
+        code: string
+        allowedToView: UserGroup[0..*]
+        allowedToEdit: UserGroup[0..*]
+        'additional denormalized col in db  activated: boolean
+    }
+
+    enum Currency {
+        code: string
+        ' must be removed from channel to be disactivated
+        activated: boolean
+    }
+
+    class Category {
+        code: string 
+        children: Category[0..*]
+        root: Category
+        canView: UserGroup[0..*]
+        canEdit: UserGroup[0..*]
+        owns: UserGroup[0..*]
+    }
+    Category -> Category : has children 
+
+    ' Also known as scope in the PIM API
+    class Channel <<UILocale>> {
+        code: string
+        category: Category
+        currencies: Currency[1..*]
+        locales: Locale[1..*]
+        conversionUnits: string
+    }
+
+    Channel o-- Currency : used currencies >
+    Channel o-- Locale: used locales >
+    Channel o-- Category :  category tree >
+
+
+}
+
+
+
+together {
+
+'TODO rename to user_UserGroup
+    class UserGroup {
+        
+    }
+    UserGroup ->  Locale: can view or can edit
+    UserGroup -> Category: owns or can view or edit
+
+    Class Attribute  <<UILocale>>, <<TimeStampable>> {
+        code: String
+        group: AttributeGroup
+        isRequired: boolean
+        ' QUESTION when is it used?
+        '
+        type: AttributeType
+        isLocalizable: boolean
+        isScopable: boolean
+        usableInGrid: boolean
+        localeSpecific: boolean
+        guidelines: string
+    }
+
+    'exemple digital_assets_images, product_size_dimensions, product_physical_characteristics
+    class AttributeGroup <<UILocale>>, <<TimeStampable>> {
+        code: string
+        enabledDataQualityInsights: boolean
+        canViewAttributes: Group[0..*]
+        canEditAttributes: Group[0..*]
+    }
+
+    AttributeGroup "1" *-- "0..*" Attribute
+    UserGroup -> AttributeGroup: "can view or edit"
+
+    'Q: metric Family is used?
+    'Q:  isScopable: type value per channel?
+    'Q: what is backend Type, what is the use of entity_type ("Akeneo\Pim\Enrichment\Component\Product\Model\Product")
+    'display attributes, specific values formats and value constraints not shown
+    'Properties: a:4:{s:19:"reference_data_name";N;s:19:"auto_option_sorting";N;s:12:"is_read_only";N;s:13:"default_value";N;}
+    'Guidelines:
+    'sold_in_orgs: {"en_AU": "List of the Orgs this product can be sold in.\nIf the org is not added to this list, the product can not be sold to customers in that Org."}
+    'part_number_list_competitor: {"en_AU": "Add competitor part numbers to this list, separate each with a comma."}
+
+
+    ' TODO analyse
+    'properties: Object is in child type.
+
+
+
+    Class Family  <<UILocale>>, << TimeStampable >> {
+        code: string
+        label: string
+        attributes: Attribute[0..*]
+        variants: FamilyVariant[0..*]
+    }
+
+    <> familyAttributes
+
+    familyAttributes   -  Family
+    familyAttributes - Attribute
+    familyAttributes - "required family attribute in" Channel 
+
+    Class FamilyVariant <<UILocale>>{
+        code: string
+        label: string
+        variantAxisLevelOne: VariantAxeAttributes
+        variantAxisLevelTwo: VariantAxeAttributes
+    }
+
+    class VariantAxeAttributes {
+        attributes: Attribute[0..*]
+    }
+
+    Family o-- FamilyVariant: can have variants
+
+
+}
+
+together {
+    'TODO "develop"  rawvalues that contains a product... 
+    'QUESTION How can we infer rawValues structure? => inspect real life DB?
+    'TODO "develop"  quantifiedAssociation that contains a product... #associations...
+    'QUESTION How can we infer quantifiedAssociation structure? => inspect real life DB?
+
+   class AttributeValue {
+        attribute: Attribute
+        value: Object
+    }
+    AttributeValue -> Attribute: defined by on 
+
+    abstract Class Product << TimeStampable >>  {
+        id: number
+        identifier: IdentifierAttribute
+        family: Family
+        ' attribute codes are determined recusively on parent (product model)
+        quantifiedAssociation: JSON
+        'Workflow status for business: used in filters
+        isEnabled: boolean
+        rawValues: AttributeValue[0..*]
+    }
+    Product -> Category:  is bound to 0 or more categories in the channel category tree.
+
+    Class ProductModel {
+        parent: ProductModel
+        rawValues: AttributeValue[0..*]
+    }
+
+    ProductModel "second level axe" o-- ProductModel
+
+    class SimpleProduct {
+
+    }
+
+    Product <|-- SimpleProduct
+
+    class ProductVariant {
+        parent: ProductModel
+        familyVariant: FamilyVariant
+    }
+
+    Product <|-- ProductVariant
+
+    ProductModel "first level axe"  *-- ProductVariant
+}
+
+
+
+
+@enduml
