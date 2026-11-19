@@ -1,0 +1,5 @@
+/design_pim/
+/pim-docs-build/
+/pim-docs-lint/
+/docker-compose.override.yml
+/ee_dev/

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+    <product sku="sku-1" name="my name 1" family="camcorders" enabled="1"/>
+    <product sku="sku-2" name="my name 2" family="camcorders" enabled="1"/>
+    <product sku="sku-3" name="my name 3" family="camcorders" enabled="1"/>
+    <product sku="sku-4" name="my name 4" family="wrong_family_code" enabled="0"/>
+    <product sku="" name="my name 5" family="camcorders" enabled="1"/>
+</products>

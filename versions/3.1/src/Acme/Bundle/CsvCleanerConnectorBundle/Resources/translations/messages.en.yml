@@ -1,0 +1,5 @@
+batch_jobs:
+    csv_product_import_cleaner:
+        label: Product Import Cleaned Csv
+        import.label: Product import cleaned
+        validation.label:  File encoding validation

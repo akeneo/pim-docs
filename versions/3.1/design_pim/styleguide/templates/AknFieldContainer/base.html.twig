@@ -1,0 +1,8 @@
+<div class="AknFieldContainer{% if class is defined %} {{ class }}{% endif %}">
+    <div class="AknFieldContainer-header">
+        <label class="AknFieldContainer-label">Label</label>
+    </div>
+    <div class="AknFieldContainer-inputContainer">
+        {% include 'AknTextField/base.html.twig' only %}
+    </div>
+</div>

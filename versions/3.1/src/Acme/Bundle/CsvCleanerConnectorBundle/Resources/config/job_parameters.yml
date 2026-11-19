@@ -1,0 +1,11 @@
+services:
+    acme_csvcleanerconnector.job_parameters.form_configuration_provider.product_csv_import_cleaner:
+        class: '%pim_import_export.job_parameters.form_configuration_provider.product_csv_import.class%'
+        arguments:
+            - '@pim_import_export.job_parameters.form_configuration_provider.simple_csv_import'
+            -
+                - 'csv_product_import_cleaner'
+            - '%pim_catalog.localization.decimal_separators%'
+            - '%pim_catalog.localization.date_formats%'
+        tags:
+            - { name: pim_import_export.job_parameters.form_configuration_provider }
