@@ -1,0 +1,7 @@
+services:
+    acme_notifyconnector.step.notify:
+        class: 'Acme\Bundle\NotifyConnectorBundle\Step\NotifyStep'
+        arguments:
+            - 'notify'
+            - '@event_dispatcher'
+            - '@akeneo_batch.job_repository'

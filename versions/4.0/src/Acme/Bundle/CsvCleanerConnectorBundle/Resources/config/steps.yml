@@ -1,0 +1,10 @@
+services:
+    acme_csvcleanerconnector.step.csv_product.import:
+        class: '%pim_connector.step.item_step.class%'
+        arguments:
+            - 'import'
+            - '@event_dispatcher'
+            - '@akeneo_batch.job_repository'
+            - '@acme_csvcleanerconnector.reader.file.csv_product'
+            - '@pim_connector.processor.denormalization.product'
+            - '@pim_connector.writer.database.product'
