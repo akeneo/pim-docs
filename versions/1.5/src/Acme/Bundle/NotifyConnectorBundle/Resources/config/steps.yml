@@ -1,0 +1,6 @@
+parameters:
+    acme_notifyconnector.step.notify.class:  Acme\Bundle\NotifyConnectorBundle\Step\NotifyStep
+    acme_notifyconnector.handler.curl.class: Acme\Bundle\NotifyConnectorBundle\Handler\CurlHandler
+services:
+    acme_notifyconnector.handler.curl:
+        class: "%acme_notifyconnector.handler.curl.class%"

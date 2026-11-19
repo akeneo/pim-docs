@@ -1,0 +1,4 @@
+code;axis;label-en_US;label-fr_FR;type
+akeneo_mug;main_color,secondary_color;Akeneo Mugs;Mugs Akeneo;VARIANT
+oro_mug;container_material,main_color,secondary_color;Oro Mugs;Mugs Oro;VARIANT
+akeneo_tshirt;clothing_size,main_color,secondary_color;Akeneo T-Shirts;T-Shirts Akeneo;VARIANT

@@ -1,0 +1,6 @@
+parameters:
+    acme_xml_connector.reader.file.xml_product.class: Acme\Bundle\XmlConnectorBundle\Reader\File\XmlProductReader
+
+services:
+    acme_xml_connector.reader.file.xml_product:
+        class: '%acme_xml_connector.reader.file.xml_product.class%'

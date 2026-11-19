@@ -1,0 +1,12 @@
+pim_catalog_identifier;It is the unique product's identifier. The catalog can contain only one.
+pim_catalog_text;Text 
+pim_catalog_textarea;Long text
+pim_catalog_boolean;Yes/No
+pim_catalog_number;Number (integer and float)
+pim_catalog_simpleselect;Simple choice list
+pim_catalog_multiselect;Multiple choice list
+pim_catalog_date;Date
+pim_catalog_metric;Metric. It links a value and a unit like a weight.
+pim_catalog_price_collection;Collection of prices. Each price contains a value and a currency
+pim_catalog_image;Image
+pim_catalog_file;File
