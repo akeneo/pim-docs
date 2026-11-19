@@ -1,0 +1,5 @@
+services:
+    acme_enrich_bundle.mass_edit_action.capitalize_values:
+        class: Acme\Bundle\EnrichBundle\MassEditAction\CapitalizeValues
+        tags:
+            - { name: pim_enrich.mass_edit_action, alias: capitalize-values }

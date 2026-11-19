@@ -1,0 +1,8 @@
+channels:
+    default:
+        label: Default
+        locales:
+            - en_US
+        currencies:
+            - USD
+        tree: default

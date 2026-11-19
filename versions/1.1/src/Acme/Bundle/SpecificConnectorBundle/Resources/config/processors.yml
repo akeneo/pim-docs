@@ -1,0 +1,8 @@
+parameters:
+    acme_specific_connector.processor.product.class: Acme\Bundle\SpecificConnectorBundle\Processor\ProductProcessor
+
+services:
+    acme_specific_connector.processor.product:
+        class: '%acme_specific_connector.processor.product.class%'
+        arguments:
+            - '@pim_catalog.manager.product'
