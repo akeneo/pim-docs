@@ -1,5 +1,0 @@
-services:
-    acme_installer.processor.color:
-        parent: pim_base_connector.processor.transformer
-        arguments:
-            - Acme\Bundle\CatalogBundle\Entity\Color

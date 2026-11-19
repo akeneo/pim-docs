@@ -1,8 +1,0 @@
-parameters:
-    pim_enrich.view_element.category.tab.property.template: 'AcmeEnrichBundle:CategoryTree:Tab/property.html.twig'
-
-services:
-    acme_enrich.form.type.color:
-        class: Acme\Bundle\EnrichBundle\Form\Type\ColorType
-        tags:
-            - { name: form.type, alias: acme_enrich_color }

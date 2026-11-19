@@ -1,8 +1,0 @@
-custom_entities:
-    color:
-        entity_class: Acme\Bundle\CatalogBundle\Entity\Color
-        actions:
-            edit:
-                form_type: acme_enrich_color
-            create:
-                form_type: acme_enrich_color

@@ -1,6 +1,0 @@
-jobs:
-    capitalize_values:
-        connector: Akeneo Mass Edit Connector
-        alias:     capitalize_values
-        label:     Mass edit capitalize values
-        type:      mass_edit
