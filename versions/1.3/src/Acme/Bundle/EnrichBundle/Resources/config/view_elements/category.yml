@@ -1,0 +1,21 @@
+services:
+    pim_enrich.view_element.category.tab.history:
+        parent: pim_enrich.view_element.base
+        arguments:
+            - 'pim_enrich.category.tab.history'
+            - '%pim_enrich.view_element.category.tab.history.template%'
+        calls:
+            - [ addVisibilityChecker, ['@acme_enrich.view_element.visibility_checker.my_custom_visibility_checker', {my_custom_option: 'my_custom_option_value'}] ]
+        tags:
+            - { name: pim_enrich.view_element, type: pim_category.form_tab, position: 110 }
+
+    pim_enrich.view_element.category.tab.my_custom_tab:
+        parent: pim_enrich.view_element.base
+        arguments:
+            - 'pim_enrich.category.tab.my_custom_tab_title'
+            - 'AcmeEnrichBundle:Category:Tab/my_custom_tab.html.twig'
+        calls:
+            - [ addVisibilityChecker, ['@pim_enrich.view_element.visibility_checker.edit_form'] ]
+        tags:
+            - { name: pim_enrich.view_element, type: pim_category.form_tab, position: 120 }
+

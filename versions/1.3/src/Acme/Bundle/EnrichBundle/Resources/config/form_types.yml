@@ -1,0 +1,8 @@
+parameters:
+    pim_enrich.form.type.category.class: Acme\Bundle\EnrichBundle\Form\Type\CategoryType
+
+services:
+    acme_enrich.form.type.color:
+        class: Acme\Bundle\EnrichBundle\Form\Type\ColorType
+        tags:
+            - { name: form.type, alias: acme_enrich_color }
