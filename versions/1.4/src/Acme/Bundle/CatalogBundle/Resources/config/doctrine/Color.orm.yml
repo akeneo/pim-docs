@@ -1,0 +1,30 @@
+Acme\Bundle\CatalogBundle\Entity\Color:
+    type: entity
+    table: acme_catalog_color
+    repositoryClass: Pim\Bundle\CustomEntityBundle\Entity\Repository\TranslatableCustomOptionRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        code:
+            type: string
+            length: 100
+            unique: true
+        created:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updated:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+    oneToMany:
+        translations:
+            targetEntity: Acme\Bundle\CatalogBundle\Entity\ColorTranslation
+            mappedBy: foreignKey
+            cascade:
+                - persist

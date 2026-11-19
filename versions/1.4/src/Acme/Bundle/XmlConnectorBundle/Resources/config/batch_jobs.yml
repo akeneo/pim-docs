@@ -1,0 +1,13 @@
+connector:
+    name: XML Connector
+    jobs:
+        xml_product_import:
+            title: acme_xml_connector.jobs.xml_product_import.title
+            type:  import
+            steps:
+                import:
+                   title: acme_xml_connector.jobs.xml_product_import.import.title
+                   services:
+                        reader:    acme_xml_connector.reader.file.xml_product
+                        processor: pim_connector.processor.denormalization.product.flat
+                        writer:    pim_connector.writer.doctrine.product

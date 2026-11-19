@@ -1,0 +1,13 @@
+connector:
+    name: Dummy Connector
+    jobs:
+        dummy_job:
+            title: acme_dummy_connector.jobs.dummy_job.title
+            type:  export
+            steps:
+                dummy_step:
+                    title:         acme_dummy_connector.jobs.dummy_job.export.title
+                    services:
+                        reader:    pim_connector.reader.dummy_item
+                        processor: pim_connector.processor.dummy_item
+                        writer:    pim_connector.writer.dummy_item
