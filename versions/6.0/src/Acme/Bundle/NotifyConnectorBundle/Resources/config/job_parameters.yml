@@ -1,0 +1,10 @@
+services:
+    acme_notifyconnector.job.job_parameters.csv_product_export_notify:
+        class: 'Acme\Bundle\NotifyConnectorBundle\JobParameters\ProductCsvExportNotify'
+        arguments:
+            - '@pim_connector.job.job_parameters.default_values_provider.product_csv_export'
+            - '@pim_connector.job.job_parameters.constraint_collection_provider.product_csv_export'
+            - ['%acme_notifyconnector.job_name.csv_product_export_notify%']
+        tags:
+            - { name: akeneo_batch.job.job_parameters.constraint_collection_provider }
+            - { name: akeneo_batch.job.job_parameters.default_values_provider }
