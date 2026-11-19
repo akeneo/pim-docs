@@ -1,0 +1,25 @@
+<header class="AknTitleContainer">
+    <div class="AknTitleContainer-backContainer">
+        <a class="AknTitleContainer-backLink" href="#"><i class="icon-chevron-left"></i></a>
+    </div>
+    <div class="AknTitleContainer-contentContainer">
+        <div class="AknTitleContainer-mainLine">
+            <div class="AknTitleContainer-titleContainer">
+                {% include 'AknButtonList/base.html.twig' with { 'class': 'AknTitleContainer-titleButtons' } only %}
+                <h1 class="AknTitleContainer-title">Acer S 240HL Abid</h1>
+            </div>
+            <div class="AknTitleContainer-rightButtons">
+                {% include 'AknButtonList/base.html.twig' with { 'class': 'AknTitleContainer-titleButtons' } only %}
+            </div>
+        </div>
+        <div class="AknTitleContainer-metaLine">
+            <div class="AknTitleContainer-meta">
+                <span class="AknTitleContainer-metaItem">Meta item 1</span>
+                <span class="AknTitleContainer-metaItem">Meta item 2</span>
+            </div>
+            <div class="AknTitleContainer-state">
+                {% include 'AknBadge/withIcon.html.twig' with { 'class': 'AknBadge--warning' } only %}
+            </div>
+        </div>
+    </div>
+</header>

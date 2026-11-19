@@ -1,0 +1,29 @@
+Acme\Bundle\CatalogBundle\Entity\ColorTranslation:
+    type: entity
+    table: acme_catalog_color_translation
+    uniqueConstraints:
+        locale_foreign_key_idx:
+            columns:
+                - locale
+                - foreign_key
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        label:
+            type: string
+            length: 100
+            nullable: true
+        locale:
+            type: string
+            length: 20
+    manyToOne:
+        foreignKey:
+            targetEntity: Acme\Bundle\CatalogBundle\Entity\Color
+            inversedBy: translations
+            joinColumns:
+                foreign_key:
+                    referencedColumnName: id
+                    onDelete: CASCADE

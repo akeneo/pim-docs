@@ -1,0 +1,13 @@
+<header class="AknAttributeActions">
+    <div class="AknAttributeActions-editActions">
+        <div class="AknButtonList AknAttributeActions-contextSelectors">
+            {% include 'AknActionButton/base.html.twig' with { 'text': 'Context selectors' } only %}
+        </div>
+        <div class="AknAttributeActions-otherActions">
+            {% include 'AknActionButton/base.html.twig' with { 'text': 'Other actions' } only %}
+        </div>
+    </div>
+    <div class="AknAttributeActions-copyActions">
+        {% include 'AknActionButton/base.html.twig' with { 'text': 'Copy actions' } only %}
+    </div>
+</header>

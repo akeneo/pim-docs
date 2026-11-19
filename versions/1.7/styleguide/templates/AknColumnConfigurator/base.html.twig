@@ -1,0 +1,26 @@
+<div class="AknColumnConfigurator">
+    <div class="AknColumnConfigurator-column">
+        <div class="AknColumnConfigurator-columnHeader"></div>
+        <div class="AknColumnConfigurator-listContainer">
+            List container 1
+        </div>
+    </div>
+    <div class="AknColumnConfigurator-column">
+        <div class="AknColumnConfigurator-columnHeader">
+            <i class="AknColumnConfigurator-searchIcon icon-search"></i>
+            {% include 'AknTextField/base.html.twig' with { 'class': 'AknColumnConfigurator-searchInput' } only %}
+        </div>
+        <div class="AknColumnConfigurator-listContainer">
+            List container 2
+        </div>
+    </div>
+    <div class="AknColumnConfigurator-column">
+        <div class="AknColumnConfigurator-columnHeader">
+            List header
+            {% include 'AknButton/base.html.twig' only %}
+        </div>
+        <div class="AknColumnConfigurator-listContainer">
+            List container 3
+        </div>
+    </div>
+</div>

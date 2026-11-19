@@ -1,0 +1,10 @@
+vendor/
+app/config/*
+app/cache/*
+app/logs/*
+web/bundles/*
+web/css/*
+_build/
+_exts/
+composer.lock
+pim-docs-build/

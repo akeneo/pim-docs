@@ -1,0 +1,13 @@
+oro_menu_config:
+    items:
+        acme_enrich_color:
+            label:              'Colors'
+            route:              'pim_customentity_index'
+            routeParameters:    { customEntityName: color }
+            
+    tree:
+        application_menu:
+            children:
+                pim_enrich_tab:
+                    children:
+                        acme_enrich_color: ~

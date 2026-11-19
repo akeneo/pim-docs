@@ -1,0 +1,20 @@
+<div class="AknFilterDate">
+    <select class="AknFilterDate-select">
+        <option value="1" selected="selected">between</option>
+        <option value="2">not between</option>
+        <option value="3">more than</option>
+        <option value="4">less than</option>
+    </select>
+    <div class="AknFilterDate-dates">
+        <span class="AknFilterDate-start">
+            {% include 'AknTextField/base.html.twig' only %}
+        </span>
+        <span class="AknFilterDate-separator">-</span>
+        <span class="AknFilterDate-end">
+            {% include 'AknTextField/base.html.twig' only %}
+        </span>
+    </div>
+    <div class="AknButtonList AknButtonList--right">
+        <button class="AknButtonList-item AknButton AknButton--apply">Update</button>
+    </div>
+</div>
