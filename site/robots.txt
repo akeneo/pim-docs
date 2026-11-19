@@ -1,0 +1,3 @@
+# Same policy as the former docs.akeneo.com server: this archive is not indexed.
+User-agent: *
+Disallow: /

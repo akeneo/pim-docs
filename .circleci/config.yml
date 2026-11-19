@@ -1,0 +1,86 @@
+# CI of the Flexibility / On-Premise documentation archive (branch flexibility-docs-archive).
+#
+# - build:   builds every version of versions/ into public/ (on every push)
+# - publish: synchronizes public/ to the site bucket behind docs.akeneo.com
+#            (only on flexibility-docs-archive, after the build)
+#
+# The publish job authenticates on GCP through OIDC, without any service account key.
+# The PIM_DOCS context must hold (see akeneo/gcp-projects, product/documentation/pim-docs/prd):
+#   GOOGLE_PROJECT_NUMBER       number of akecld-prd-pim-docs-prd
+#   OIDC_POOL                   ci-pool
+#   OIDC_PROVIDER               circleci-jwt
+#   OIDC_SERVICE_ACCOUNT_EMAIL  ci-service-account@akecld-prd-pim-docs-prd.iam.gserviceaccount.com
+version: 2.1
+
+parameters:
+  gcp-project:
+    type: string
+    default: "akecld-prd-pim-docs-prd"
+  site-bucket:
+    type: string
+    default: "akecld-prd-pim-docs-prd-site"
+  site-url-map:
+    type: string
+    default: "pim-docs-site"
+
+jobs:
+  build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: medium
+    steps:
+      - checkout
+      - run:
+          name: Build every version
+          command: scripts/build.sh
+      - run:
+          name: Package the site
+          command: tar -czf pim-docs-site.tar.gz -C public .
+      - store_artifacts:
+          path: pim-docs-site.tar.gz
+      - persist_to_workspace:
+          root: .
+          paths:
+            - public
+
+  publish:
+    docker:
+      - image: google/cloud-sdk:502.0.0-slim
+    resource_class: small
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Authenticate on GCP through OIDC
+          command: |
+            echo "${CIRCLE_OIDC_TOKEN_V2}" > /tmp/oidc_token.json
+            gcloud iam workload-identity-pools create-cred-config \
+              "projects/${GOOGLE_PROJECT_NUMBER}/locations/global/workloadIdentityPools/${OIDC_POOL}/providers/${OIDC_PROVIDER}" \
+              --service-account="${OIDC_SERVICE_ACCOUNT_EMAIL}" \
+              --credential-source-file=/tmp/oidc_token.json \
+              --output-file=/tmp/gcp_cred_config.json
+            gcloud auth login --cred-file=/tmp/gcp_cred_config.json --quiet
+            # The CI service account holds no role: it impersonates the main service account.
+            gcloud config set auth/impersonate_service_account \
+              "main-service-account@<< pipeline.parameters.gcp-project >>.iam.gserviceaccount.com"
+      - run:
+          name: Publish to the site bucket
+          command: |
+            SITE_BUCKET="<< pipeline.parameters.site-bucket >>" \
+            GCP_PROJECT="<< pipeline.parameters.gcp-project >>" \
+            SITE_URL_MAP="<< pipeline.parameters.site-url-map >>" \
+            scripts/publish.sh
+
+workflows:
+  build_and_publish:
+    jobs:
+      - build
+      - publish:
+          context: PIM_DOCS
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - flexibility-docs-archive

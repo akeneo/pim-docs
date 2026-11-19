@@ -1,0 +1,23 @@
+# Versions published on the static site, newest first.
+# The first line is also published as /latest/.
+#
+# <version>  <toolchain: target of build/Dockerfile>
+7.0  modern
+6.0  modern
+5.0  modern
+4.0  modern
+3.2  legacy
+3.1  legacy
+3.0  legacy
+2.3  legacy
+2.2  legacy
+2.1  legacy
+2.0  legacy
+1.7  legacy
+1.6  legacy
+1.5  legacy
+1.4  legacy
+1.3  legacy
+1.2  legacy
+1.1  legacy
+1.0  legacy
