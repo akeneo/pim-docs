@@ -1,0 +1,11 @@
+<div class="AknComparableFields">
+    {% include 'AknFieldContainer/base.html.twig' with { 'class': 'AknComparableFields-item' } only %}
+    <div class="AknComparableFields-item AknComparableFields-item--comparisonContainer AknFieldContainer">
+        <div data-attribute="description" class="AknComparableFields">
+            <div class="AknComparableFields-copyContainer">
+                <input type="checkbox" class="AknComparableFields-checkbox">
+                {% include 'AknFieldContainer/base.html.twig' with { 'class': 'AknComparableFields-item' } only %}
+            </div>
+        </div>
+    </div>
+</div>

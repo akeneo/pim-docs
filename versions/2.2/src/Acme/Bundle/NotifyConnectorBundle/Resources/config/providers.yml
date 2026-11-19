@@ -1,0 +1,8 @@
+services:
+    acme_notifyconnector.provider.form.job_instance:
+        class: '%pim_enrich.provider.form.job_instance.class%'
+        arguments:
+            -
+                csv_product_export_notify: pim-job-instance-csv-product-export-notify
+        tags:
+            - { name: pim_enrich.provider.form }
