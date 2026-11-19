@@ -1,0 +1,32 @@
+About CVE-2022-46157
+==============================================================
+
+
+Security Update
+-----------------
+
+A major vulnerability has been identified during our annual pentest. As it also applies to our pim-community project, we decided to register a CVE entry `(CVE-2022-46157)
+<https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-46157>`_. Please find below the details of the remediation of the vulnerability according to your PIM subscription and/or version.
+
+Serenity (SaaS) user
+**********************
+
+If you are an Akeneo SaaS user (i.e, Serenity), the vulnerability has already been patched.
+
+Flexibility (PaaS) user
+***********************
+
+| If you are an Akeneo PaaS (i.e, Flexibility) user, we applied the patch to v5 and v6 as defined on our `support policy <https://help.akeneo.com/pim/serenity/supported-versions-table.html>`_.
+| If you are an Akeneo PaaS user on lower versions, we **strongly advise** you to update your Flexibility versions as these versions will not be patched.
+
+On-premise user
+**********************
+
+We **strongly advise** you to apply our patch available `here
+<https://docs.akeneo.com/master/install_pim/manual/index.html>`_ to your Apache server configuration according your operating system.
+
+
+Additional information
+**********************
+
+Feel free to contact your Akeneo Customer Success Manager if you have any question or need additional information on this subject.

@@ -1,0 +1,13 @@
+services:
+    acme_notifyconnector.csv_product_export_notify:
+        class: 'Akeneo\Tool\Component\Batch\Job\Job'
+        arguments:
+            - 'csv_product_export_notify' # Job name
+            - '@event_dispatcher'
+            - '@akeneo_batch.job_repository'
+            -
+                - '@pim_connector.step.csv_product.export'
+                - '@acme_notifyconnector.step.notify' # You new custom step
+            - true # Does the job is stoppable ?
+        tags:
+            - { name: akeneo_batch.job, connector: 'Acme CSV Notify Connector', type: 'export' }
