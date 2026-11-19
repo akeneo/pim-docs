@@ -1,0 +1,2 @@
+batch_jobs.dummy_job.label: Dummy Job
+batch_jobs.dummy_job.dummy_step.label: Dummy Step

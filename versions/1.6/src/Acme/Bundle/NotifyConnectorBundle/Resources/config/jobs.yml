@@ -1,0 +1,15 @@
+parameters:
+    acme_notifyconnector.job_name.csv_product_export_notify: 'csv_product_export_notify'
+
+services:
+    acme_notifyconnector.notify_product_export:
+        class: '%pim_connector.job.simple_job.class%'
+        arguments:
+            - '%acme_notifyconnector.job_name.csv_product_export_notify%'
+            - '@event_dispatcher'
+            - '@akeneo_batch.job_repository'
+            -
+                - '@pim_connector.step.csv_product.export'
+                - '@acme_notifyconnector.step.notify'
+        tags:
+            - { name: akeneo_batch.job, connector: '%pim_connector.connector_name.csv%', type: '%pim_connector.job.export_type%' }

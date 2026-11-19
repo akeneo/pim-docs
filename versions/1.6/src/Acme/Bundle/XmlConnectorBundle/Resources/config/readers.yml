@@ -1,0 +1,8 @@
+parameters:
+    acme_xml_connector.reader.file.xml_product.class: Acme\Bundle\XmlConnectorBundle\Reader\File\XmlProductReader
+
+services:
+    acme_xml_connector.reader.file.xml_product:
+        class: '%acme_xml_connector.reader.file.xml_product.class%'
+        arguments:
+            - '@pim_connector.array_converter.flat_to_standard.product'

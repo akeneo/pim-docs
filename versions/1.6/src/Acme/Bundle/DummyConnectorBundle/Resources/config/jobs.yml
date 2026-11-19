@@ -1,0 +1,25 @@
+parameters: ~
+
+services:
+    # defines the job
+    acme_dummy_connector.job.dummy_job:
+        class: '%pim_connector.job.simple_job.class%' # we use existing class for the job
+        arguments:
+            - 'dummy_job' # this is the job name
+            - '@event_dispatcher'
+            - '@akeneo_batch.job_repository'
+            -
+                - '@acme_dummy_connector.step.dummy_step'
+        tags:
+            - { name: akeneo_batch.job, connector: 'Dummy Connector', type: '%pim_connector.job.export_type%' }
+
+    # defines the step
+    acme_dummy_connector.step.dummy_step:
+        class: '%pim_connector.step.item_step.class%' # we use existing class for the step
+        arguments:
+            - 'dummy_step' # this is the step name
+            - '@event_dispatcher'
+            - '@akeneo_batch.job_repository'
+            - '@pim_connector.reader.dummy_item'
+            - '@pim_connector.processor.dummy_item'
+            - '@pim_connector.writer.dummy_item'

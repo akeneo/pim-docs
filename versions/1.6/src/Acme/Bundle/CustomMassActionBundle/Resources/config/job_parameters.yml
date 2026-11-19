@@ -1,0 +1,14 @@
+services:
+    acme_custom_mass_action.connector.job.job_parameters.default_values_provider.product_mass_edit:
+        class: '%pim_enrich.connector.job.job_parameters.default_values_provider.product_mass_edit.class%'
+        arguments:
+            - ['mass_edit_capitalize_values']
+        tags:
+            - { name: akeneo_batch.job.job_parameters.default_values_provider }
+
+    acme_custom_mass_action.connector.job.job_parameters.constraint_collection_provider.product_mass_edit:
+        class: '%pim_enrich.connector.job.job_parameters.constraint_collection_provider.product_mass_edit.class%'
+        arguments:
+            - ['mass_edit_capitalize_values']
+        tags:
+            - { name: akeneo_batch.job.job_parameters.constraint_collection_provider }

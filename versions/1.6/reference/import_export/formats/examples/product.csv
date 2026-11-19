@@ -1,0 +1,16 @@
+sku;PACK-groups;PACK-products;SUBSTITUTION-groups;SUBSTITUTION-products;UPSELL-groups;UPSELL-products;X_SELL-groups;X_SELL-products;categories;clothing_size;container_material;description-de_DE-mobile;description-en_US-mobile;description-fr_FR-mobile;enabled;family;groups;main_color;name;picture;price-EUR;price-USD;secondary_color;tshirt_materials;tshirt_style
+AKNTS_BPXS;;;;AKNTS_WPXS,AKNTS_PBXS,AKNTS_PWXS;;;;;goodies,tshirts;xs;;;Akeneo T-Shirt;T-Shirt Akeneo;1;tshirts;akeneo_tshirt;black;Akeneo T-Shirt black and purple with short sleeve;;10;14;purple;cotton;crewneck,short_sleeve
+AKNTS_BPS;;;;AKNTS_WPS,AKNTS_PBS,AKNTS_PWS;;;;;goodies,tshirts;s;;;Akeneo T-Shirt;T-Shirt Akeneo;1;tshirts;akeneo_tshirt;black;Akeneo T-Shirt black and purple with short sleeve;;10;14;purple;cotton;crewneck,short_sleeve
+AKNTS_BPM;;;;AKNTS_WPM,AKNTS_PBM,AKNTS_PWM;;;;;goodies,tshirts;m;;;Akeneo T-Shirt;T-Shirt Akeneo;1;tshirts;akeneo_tshirt;black;Akeneo T-Shirt black and purple with short sleeve;;10;14;purple;cotton;crewneck,short_sleeve
+AKNTS_WPS;;;;;;;;;goodies,tshirts;s;;;Akeneo T-Shirt;T-Shirt Akeneo;1;tshirts;akeneo_tshirt;white;Akeneo T-Shirt white and purple with short sleeve;;10;14;purple;cotton;crewneck,short_sleeve
+AKNTS_WPM;akeneo_mug;OROMUG_DBO,AKNSTK;;;;;;;goodies,tshirts;m;;;Akeneo T-Shirt;T-Shirt Akeneo;1;tshirts;akeneo_tshirt;white;Akeneo T-Shirt white and purple with short sleeve;;10;14;purple;cotton;crewneck,short_sleeve
+AKNTS_BPXS_LS;;;;AKNTS_WPXS_LS,AKNTS_PBXS_LS,AKNTS_PWXS_LS;;;;;goodies,tshirts;xs;;;Akeneo T-Shirt;T-Shirt Akeneo;1;tshirts;akeneo_long_sleeve_tshirt;black;Akeneo T-Shirt black and purple with long sleeve;;10;14;purple;cotton;crewneck,long_sleeve
+AKNTS_BPS_LS;;;;AKNTS_WPS_LS,AKNTS_PBS_LS,AKNTS_PWS_LS;;;;;goodies,tshirts;s;;;Akeneo T-Shirt;T-Shirt Akeneo;1;tshirts;akeneo_long_sleeve_tshirt;black;Akeneo T-Shirt black and purple with long sleeve;;10;14;purple;cotton;crewneck,long_sleeve
+AKNTS_BPM_LS;;;;AKNTS_WPM_LS,AKNTS_PBM_LS,AKNTS_PWM_LS;;;;;goodies,tshirts;m;;;Akeneo T-Shirt;T-Shirt Akeneo;1;tshirts;akeneo_long_sleeve_tshirt;black;Akeneo T-Shirt black and purple with long sleeve;;10;14;purple;cotton;crewneck,long_sleeve
+OROMUG_BO;;;;;;;;;goodies;;ceramic;Oro Mug;Oro Mug;Mug Oro;1;mugs;oro_mug;black;Oro Mug;;5;5;orange;;
+OROMUG_WO;;;;;;;;;goodies;;ceramic;Oro Mug;Oro Mug;Mug Oro;1;mugs;oro_mug;white;Oro Mug;;5;5;orange;;
+OROMUG_DBO;;;;OROMUG_BO,OROMUG_WO,OROMUG_OW,OROMUG_OB,OROMUG_ODB;;;;;goodies;;ceramic;Oro Mug;Oro Mug;Mug Oro;1;mugs;oro_mug;blue;Oro Mug;;5;5;orange;;
+OROMUG_BO_P;;;;;;;;;goodies;;porcelain;Oro Mug;Oro Mug;Mug Oro;1;mugs;oro_mug;black;Oro Mug;;5;5;orange;;
+OROMUG_WO_P;;;;;;;;;goodies;;porcelain;Oro Mug;Oro Mug;Mug Oro;1;mugs;oro_mug;white;Oro Mug;;5;5;orange;;
+AKNMUG_BP;;;;AKNMUG_WP,AKNMUG_PB,AKNMUG_PW;;;;;goodies;;;Akeneo Mug;Akeneo Mug;Mug Akeneo;1;mugs;akeneo_mug;black;Akeneo Mug;;5;5;purple;;
+AKNMUG_WP;akeneo_tshirt;;;;;;;;goodies;;;Akeneo Mug;Akeneo Mug;Mug Akeneo;1;mugs;akeneo_mug;white;Akeneo Mug;;5;5;purple;;

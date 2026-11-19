@@ -1,0 +1,61 @@
+# This file describes an application. You can have multiple applications
+# in the same project.
+
+# The name of this app. Must be unique within a project.
+name: akeneodocs
+
+# The toolstack used to build the application.
+type: "python:2.7"
+
+build:
+    flavor: "none"
+
+# The configuration of app when it is exposed to the web.
+web:
+    # The public directory of the app, relative to its root.
+    document_root: "/build/"
+    index_files:
+      - index.html
+    whitelist:
+      - \.html$
+      - \.txt$
+
+      # CSS and Javascript.
+      - \.css$
+      - \.js$
+      - \.hbs$
+
+      # image/* types.
+      - \.gif$
+      - \.png$
+      - \.ico$
+      - \.svgz?$
+
+      # fonts types.
+      - \.ttf$
+      - \.eot$
+      - \.woff$
+      - \.otf$
+
+      # robots.txt.
+      - /robots\.txt$
+
+# The size of the persistent disk of the application (in MB).
+disk: 128
+
+# Build time dependencies.
+dependencies:
+  python:
+    virtualenv: 15.1.0
+
+# The hooks that will be performed when the package is deployed.
+hooks:
+    build: |
+      virtualenv .virtualenv
+      . .virtualenv/bin/activate
+      # Platform.sh currently sets PIP_USER=1.
+      export PIP_USER=
+      pip install sphinx~=1.5.3
+      pip install git+https://github.com/fabpot/sphinx-php.git
+      pip install git+https://github.com/mickaelandrieu/sphinxcontrib.youtube.git
+      sphinx-build -b html . ./build
