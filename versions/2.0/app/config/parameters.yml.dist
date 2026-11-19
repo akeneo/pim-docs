@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: 3306
+    database_name: pim_doc
+    database_user: akeneo_pim
+    database_password: akeneo_pim
+    locale: en
+    secret: TravisConfigurationDontDeleteIt
+    index_hosts: 'localhost: 9200'
+    product_index_name: pim_doc_product
+    product_model_index_name: pim_doc_product_model
+    product_and_product_model_index_name: pim_doc_product_and_model
